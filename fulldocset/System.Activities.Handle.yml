@@ -15,8 +15,8 @@ items:
   nameWithType: Handle
   fullName: System.Activities.Handle
   type: Class
-  summary: "Represents a type that has its lifetime controlled by the workflow runtime."
-  remarks: "Types derived from Handle have their lifetimes controlled by the workflow runtime. For workflow variables of handle types, the runtime uses the required default constructor to create an instance of the type, assigns it to the <xref:System.Activities.Variable>, and calls <xref:System.Activities.Handle.OnInitialize%2A> when initializing the environment. When the variable goes out of scope, <xref:System.Activities.Handle.OnUninitialize%2A> is called."
+  summary: "해당 수명이 워크플로 런타임에 의해 제어 되는 유형을 나타냅니다."
+  remarks: "핸들에서 파생 된 형식 워크플로 런타임에 의해 제어의 수명이 연결 합니다. 핸들 형식의 워크플로 변수에 런타임이 필수 기본 생성자를 사용 하 여 형식의 인스턴스를 만드는에 할당 된 <xref:System.Activities.Variable>, 및 호출 <xref:System.Activities.Handle.OnInitialize%2A>환경을 초기화할 때.</xref:System.Activities.Handle.OnInitialize%2A> </xref:System.Activities.Variable> 변수 범위를 벗어나면 <xref:System.Activities.Handle.OnUninitialize%2A>호출 됩니다.</xref:System.Activities.Handle.OnUninitialize%2A>"
   syntax:
     content: >-
       [System.Runtime.Serialization.DataContract]
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Handle&quot;></xref> class."
-  remarks: "Classes that derive from <xref:System.Activities.Handle> must provide a default constructor."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Activities.Handle&quot;> </xref> 클래스입니다."
+  remarks: "파생 된 클래스 <xref:System.Activities.Handle>기본 생성자를 제공 해야 합니다.</xref:System.Activities.Handle>"
   syntax:
     content: protected Handle ();
     parameters: []
@@ -61,12 +61,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Gets the name to be used by this <xref href=&quot;System.Activities.Handle&quot;></xref> when added to an activity’s execution properties."
+  summary: "이 사용 될 이름을 가져옵니다 <xref href=&quot;System.Activities.Handle&quot;> </xref> 활동의 실행 속성에 추가 합니다."
   syntax:
     content: public string ExecutionPropertyName { get; }
     return:
       type: System.String
-      description: "The name of derived type as provided by <xref:System.Type.FullName*>."
+      description: "<xref:System.Type.FullName*>.</xref:System.Type.FullName*> 제공 된 대로 파생 된 형식 이름"
   overload: System.Activities.Handle.ExecutionPropertyName*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Called by the workflow runtime when the environment that contains the <xref href=&quot;System.Activities.Handle&quot;></xref> is initialized."
+  summary: "포함 하는 환경을 때 워크플로 런타임에 의해 호출 된 <xref href=&quot;System.Activities.Handle&quot;> </xref> 초기화 됩니다."
   syntax:
     content: protected virtual void OnInitialize (System.Activities.HandleInitializationContext context);
     parameters:
     - id: context
       type: System.Activities.HandleInitializationContext
-      description: "The environment in which the handle is being created."
+      description: "핸들이 생성 되는 환경입니다."
   overload: System.Activities.Handle.OnInitialize*
   exceptions: []
   platform:
@@ -106,13 +106,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Called by the workflow runtime when the <xref href=&quot;System.Activities.Variable&quot;></xref> for the <xref href=&quot;System.Activities.Handle&quot;></xref> goes out of scope."
+  summary: "워크플로 런타임에 의해 호출 때는 <xref href=&quot;System.Activities.Variable&quot;> </xref> 에 대 한는 <xref href=&quot;System.Activities.Handle&quot;> </xref> 범위를 벗어나게 합니다."
   syntax:
     content: protected virtual void OnUninitialize (System.Activities.HandleInitializationContext context);
     parameters:
     - id: context
       type: System.Activities.HandleInitializationContext
-      description: "The environment in which the handle was created."
+      description: "핸들이 작성 된 환경입니다."
   overload: System.Activities.Handle.OnUninitialize*
   exceptions: []
   platform:
@@ -129,12 +129,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Gets the <xref href=&quot;System.Activities.ActivityInstance&quot;></xref> that contains the <xref href=&quot;System.Activities.Variable&quot;></xref> that contains the <xref href=&quot;System.Activities.Handle&quot;></xref>."
+  summary: "가져옵니다는 <xref href=&quot;System.Activities.ActivityInstance&quot;> </xref> 를 포함 하는 <xref href=&quot;System.Activities.Variable&quot;> </xref> 를 포함 하는 <xref href=&quot;System.Activities.Handle&quot;> </xref>합니다."
   syntax:
     content: public System.Activities.ActivityInstance Owner { get; }
     return:
       type: System.Activities.ActivityInstance
-      description: "The activity instance that contains the <xref href=&quot;System.Activities.Variable&quot;></xref> that contains the <xref href=&quot;System.Activities.Handle&quot;></xref>."
+      description: "포함 된 활동 인스턴스는 <xref href=&quot;System.Activities.Variable&quot;> </xref> 를 포함 하는 <xref href=&quot;System.Activities.Handle&quot;> </xref>합니다."
   overload: System.Activities.Handle.Owner*
   exceptions: []
   platform:
@@ -151,8 +151,8 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Throws an <xref:System.InvalidOperationException> if the <xref href=&quot;System.Activities.Handle&quot;></xref> has not been initialized."
-  remarks: "ThrowIfUninitialized gives custom handle derived class authors a convenient method to call from any methods or properties of the derived class that are not valid if the <xref:System.Activities.Handle> is uninitialized."
+  summary: "throw 한 <xref:System.InvalidOperationException>경우는 <xref href=&quot;System.Activities.Handle&quot;> </xref> 초기화 되지 않았습니다.</xref:System.InvalidOperationException>"
+  remarks: "ThrowIfUninitialized 메서드 또는 유효 하지 않은 파생된 클래스의 속성에서 호출 하는 편리한 방법을 사용자 지정 핸들 파생 클래스 작성자에 게 하는 경우는 <xref:System.Activities.Handle>초기화 되지 않았습니다.</xref:System.Activities.Handle>"
   syntax:
     content: protected void ThrowIfUninitialized ();
     parameters: []

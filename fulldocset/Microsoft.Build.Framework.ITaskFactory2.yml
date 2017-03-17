@@ -11,7 +11,7 @@ items:
   nameWithType: ITaskFactory2
   fullName: Microsoft.Build.Framework.ITaskFactory2
   type: Interface
-  summary: "Describes and extended <xref href=&quot;Microsoft.Build.Framework.ITaskFactory&quot;></xref> interface that a task factory instance should implement."
+  summary: "설명 하 고 확장 <xref href=&quot;Microsoft.Build.Framework.ITaskFactory&quot;> </xref> 작업 팩터리 인스턴스를 구현 해야 하는 인터페이스입니다."
   syntax:
     content: 'public interface ITaskFactory2 : Microsoft.Build.Framework.ITaskFactory'
   implements:
@@ -30,20 +30,20 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Create an instance of the task to be used, with an optional set of &quot;special&quot; parameters set on the individual task invocation using the MSBuildRuntime and MSBuildArchitecture default task parameters. MSBuild provides an implementation of this interface, TaskHostFactory, that uses &quot;MSBuildRuntime&quot;, with values &quot;CLR2&quot;, &quot;CLR4&quot;, &quot;CurrentRuntime&quot;, and &quot;*&quot; (Any); and &quot;MSBuildArchitecture&quot;, with values &quot;x86&quot;, &quot;x64&quot;, &quot;CurrentArchitecture&quot;, and &quot;\\*&quot; (Any). An implementer of ITaskFactory2 can choose to use these pre-defined MSBuildRuntime and MSBuildArchitecture values, or can specify new values for these parameters."
-  remarks: "If a task factory implements ITaskFactory2, MSBuild will call this method instead of ITaskFactory.CreateTask."
+  summary: "를 사용 하 여 선택적 MSBuildRuntime 및 MSBuildArchitecture 기본 작업 매개 변수를 사용 하 여 개별 작업 호출에 설정 하는 &quot;특별 한&quot; 매개 변수 집합을 작업의 인스턴스를 만듭니다. MSBuild TaskHostFactory &quot;MSBuildRuntime&quot; 값 &quot;CLR2&quot;, &quot;CLR4&quot;, &quot;CurrentRuntime&quot;를 사용 하는이 인터페이스의 구현을 제공 하 고 &quot;*&quot; (모두); 및 &quot;MSBuildArchitecture&quot; 값이 &quot;x86&quot;, &quot;x64&quot;, &quot;CurrentArchitecture&quot; 및 &quot;\\*&quot; (Any). ITaskFactory2의 구현자는 이러한 미리 정의 된 MSBuildRuntime 및 MSBuildArchitecture 값을 사용 하도록 선택할 수 또는 이러한 매개 변수에 대 한 새 값을 지정할 수 있습니다."
+  remarks: "작업 팩터리 구현 ITaskFactory2, MSBuild는 ITaskFactory.CreateTask 대신이 메서드를 호출 합니다."
   syntax:
     content: public Microsoft.Build.Framework.ITask CreateTask (Microsoft.Build.Framework.IBuildEngine taskFactoryLoggingHost, System.Collections.Generic.IDictionary<string,string> taskIdentityParameters);
     parameters:
     - id: taskFactoryLoggingHost
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "The task factory logging host will log messages in the context of the task."
+      description: "작업 팩터리 로깅 호스트는 작업의 컨텍스트에서 메시지를 기록 됩니다."
     - id: taskIdentityParameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Special parameters that the task factory can use to modify how it executes tasks, such as Runtime and Architecture."
+      description: "작업 팩터리 런타임 및 아키텍처 등의 작업 실행 방법을 수정 하는 데 사용할 수 있는 특수 한 매개 변수입니다."
     return:
       type: Microsoft.Build.Framework.ITask
-      description: "The generated task, or `null` if the task failed to be created."
+      description: "생성 된 작업 또는 `null` 경우 작업을 만들지 못했습니다."
   overload: Microsoft.Build.Framework.ITaskFactory2.CreateTask*
   exceptions: []
   platform:
@@ -60,29 +60,29 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Initializes this factory for instantiating tasks with a particular inline task block and a set of UsingTask parameters. MSBuild provides an implementation of this interface, TaskHostFactory, that uses &quot;Runtime&quot;, with values &quot;CLR2&quot;, &quot;CLR4&quot;, &quot;CurrentRuntime&quot;, and &quot;*&quot; (Any); and &quot;Architecture&quot;, with values &quot;x86&quot;, &quot;x64&quot;, &quot;CurrentArchitecture&quot;, and &quot;\\*&quot; (Any). An implementer of ITaskFactory2 can choose to use these pre-defined Runtime and Architecture values, or can specify new values for these parameters."
-  remarks: "MSBuild engine will call this to initialize the factory. This should initialize the factory enough so that the factory can be asked whether or not task names can be created by the factory. If a task factory implements ITaskFactory2, this Initialize method will be called in place of ITaskFactory.Initialize.       The taskFactoryLoggingHost will log messages in the context of the target where the task is first used."
+  summary: "특정 인라인 작업 블록 및 UsingTask 매개 변수 집합을 사용 하 여 작업을 인스턴스화하기 위해이 팩터리를 초기화합니다. MSBuild TaskHostFactory &quot;Runtime&quot; 값 &quot;CLR2&quot;, &quot;CLR4&quot;, &quot;CurrentRuntime&quot;를 사용 하는이 인터페이스의 구현을 제공 하 고 &quot;*&quot; (모두); 및 &quot;아키텍처&quot; 값이 &quot;x86&quot;, &quot;x64&quot;, &quot;CurrentArchitecture&quot; 및 &quot;\\*&quot; (Any). ITaskFactory2의 구현자는 이러한 미리 정의 된 런타임 및 아키텍처 값을 사용 하도록 선택할 수 또는 이러한 매개 변수에 대 한 새 값을 지정할 수 있습니다."
+  remarks: "MSBuild 엔진이 팩터리를 초기화 하려면이 호출 합니다. 이 작업 이름을 만들 수 있는지 여부는 공장을 요청할 수 있도록 팩터리를 초기화 해야 합니다. 작업 팩터리 ITaskFactory2를 구현 하는 경우이 Initialize 메서드에서 ITaskFactory.Initialize 대신 호출 됩니다.       여기서는 작업을 처음 사용 하는 대상의 컨텍스트에서 taskFactoryLoggingHost 메시지를 기록 됩니다."
   syntax:
     content: public bool Initialize (string taskName, System.Collections.Generic.IDictionary<string,string> factoryIdentityParameters, System.Collections.Generic.IDictionary<string,Microsoft.Build.Framework.TaskPropertyInfo> parameterGroup, string taskBody, Microsoft.Build.Framework.IBuildEngine taskFactoryLoggingHost);
     parameters:
     - id: taskName
       type: System.String
-      description: "Name of the task."
+      description: "작업의 이름입니다."
     - id: factoryIdentityParameters
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Special parameters that the task factory can use to modify how it executes tasks, such as Runtime and Architecture. The key is the name of the parameter and the value is the parameter&quot;s value. This is the set of parameters that was set on the UsingTask using e.g. the UsingTask Runtime and Architecture parameters."
+      description: "작업 팩터리 런타임 및 아키텍처 등의 작업 실행 방법을 수정 하는 데 사용할 수 있는 특수 한 매개 변수입니다. 키는 매개 변수 이름 및 값은 매개 변수의 값입니다. 예를 들어 UsingTask 런타임 및 아키텍처 매개 변수를 사용 하 여 UsingTask에 설정 된 매개 변수 집합입니다."
     - id: parameterGroup
       type: System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo}
-      description: "The parameter group."
+      description: "매개 변수 그룹입니다."
     - id: taskBody
       type: System.String
-      description: "The task body."
+      description: "작업 본문입니다."
     - id: taskFactoryLoggingHost
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "The task factory logging host."
+      description: "작업 팩터리 로깅 호스트 합니다."
     return:
       type: System.Boolean
-      description: "A value indicating whether initialization was successful."
+      description: "초기화에 성공 했는지 여부를 나타내는 값입니다."
   overload: Microsoft.Build.Framework.ITaskFactory2.Initialize*
   exceptions: []
   platform:
