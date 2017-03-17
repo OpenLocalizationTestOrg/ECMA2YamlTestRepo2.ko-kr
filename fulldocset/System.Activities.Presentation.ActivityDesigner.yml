@@ -19,8 +19,8 @@ items:
   nameWithType: ActivityDesigner
   fullName: System.Activities.Presentation.ActivityDesigner
   type: Class
-  summary: "Provides a base class for all activity designer components."
-  remarks: "This type provides the basic look-and-feel functionality for other activity designers and allows a developer to add additional capabilities to an activity designer surface. This is typically done in order to either display additional interesting information to the user of the activity, create a better on canvas editing experience  (for example, using the `ExpressionTextBox` on an `If` activity designer), or to allow contained elements to be edited (again, consider the <xref:System.Activities.Statements.If.Then%2A> and <xref:System.Activities.Statements.If.Else%2A> properties of the <xref:System.Activities.Statements.If> activity).       The ActivityDesigner inherits from <xref:System.Activities.Presentation.WorkflowViewElement> and primarily adds the default styling, as well as the ability to customize the icon via the <xref:System.Activities.Presentation.ActivityDesigner.Icon%2A> property. It should be used whenever you are creating a designer for a type which derives from <xref:System.Activities.Activity>. When associated with an <xref:System.Activities.Activity> type, the <xref:System.Activities.Presentation.WorkflowViewElement.ModelItem%2A> property will point to the ModelItem hierarchy describing the instance of that type being edited."
+  summary: "디자이너 구성 요소는 모든 작업에 대 한 기본 클래스를 제공 합니다."
+  remarks: "이 형식은 다른 활동 디자이너에 대 한 기본 모양 및 기능을 제공 하며 개발자가 활동 디자이너 화면에 추가 기능을 추가할 수 있습니다. 또한 이러한 일반적으로 작업 중 하나는 활동의 사용자에 게 추가 흥미로운 정보를 표시, 편집 환경을 캔버스에 더 만들 (사용 하 여 예를 들어는 `ExpressionTextBox` 에 `If` 활동 디자이너), 하거나 포함 된 요소를 편집할 수 있도록 (를 보세요는 <xref:System.Activities.Statements.If.Then%2A>및 <xref:System.Activities.Statements.If.Else%2A>의 속성은 <xref:System.Activities.Statements.If>활동).</xref:System.Activities.Statements.If> </xref:System.Activities.Statements.If.Else%2A> </xref:System.Activities.Statements.If.Then%2A>       상속 되는 ActivityDesigner <xref:System.Activities.Presentation.WorkflowViewElement>주로 아이콘을 통해 사용자 지정 하는 기능 뿐만 아니라 기본 스타일을 추가 하 고는 <xref:System.Activities.Presentation.ActivityDesigner.Icon%2A>속성.</xref:System.Activities.Presentation.ActivityDesigner.Icon%2A> </xref:System.Activities.Presentation.WorkflowViewElement> <xref:System.Activities.Activity>.</xref:System.Activities.Activity> 에서 파생 되는 형식에 대 한 디자이너를 만들 때마다 사용 해야 연결 된 경우는 <xref:System.Activities.Activity>종류는 <xref:System.Activities.Presentation.WorkflowViewElement.ModelItem%2A>속성을 편집 하 고 해당 형식의 인스턴스를 설명 하는 ModelItem 계층 구조를 가리킵니다.</xref:System.Activities.Presentation.WorkflowViewElement.ModelItem%2A> </xref:System.Activities.Activity>"
   example:
   - "In the sample code below, a `First2of3` activity is defined first, then the code for the First2of3 designer is shown, and finally it is shown how to use the Designer attribute to associate the activity with the designer is provided.  \n  \n```  \n  \n//The First2of3 activity  \nusing System.Activities;  \nusing System.Collections.Generic;  \nusing System.Linq;  \n  \nnamespace Microsoft.Activities.Documentation.ActivityTypes  \n{  \n  \n    public sealed class First2of3 : NativeActivity  \n    {  \n        public Activity Activity1 { get; set; }  \n        public Activity Activity2 { get; set; }  \n        public Activity Activity3 { get; set; }  \n  \n        Variable<List<ActivityInstance>> ExecutingActivities { get; set; }  \n  \n        public First2of3()  \n        {  \n            ExecutingActivities = new Variable<List<ActivityInstance>>();  \n        }  \n  \n        // If your activity returns a value, derive from CodeActivity<TResult>  \n        // and return the value from the Execute method.  \n        protected override void Execute(NativeActivityContext context)  \n        {  \n            // Obtain the runtime value of the Text input argument  \n            var l = new List<ActivityInstance>();  \n            ExecutingActivities.Set(context, l);  \n            l.Add(context.ScheduleActivity(Activity1, onComplete));  \n            l.Add(context.ScheduleActivity(Activity2, onComplete));  \n            l.Add(context.ScheduleActivity(Activity3, onComplete));  \n        }  \n  \n        protected override void CacheMetadata(NativeActivityMetadata metadata)  \n        {  \n            metadata.AddImplementationVariable(ExecutingActivities);  \n            metadata.AddChild(Activity1);  \n            metadata.AddChild(Activity2);  \n            metadata.AddChild(Activity3);  \n        }  \n  \n        private void onComplete(NativeActivityContext context, ActivityInstance completedInstance)  \n        {  \n            var l = ExecutingActivities.Get(context);  \n            l.Remove(completedInstance);  \n            if (l.Count == 1)  \n            {  \n                context.CancelChild(l.Single());  \n            }  \n        }  \n    }  \n}  \n  \n//’Code for the First2of3 Designer:  \n<sap:ActivityDesigner x:Class=\"Microsoft.Activites.Documentation.First2of3Designer\"  \n    xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"  \n    xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"  \n    xmlns:sap=\"clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation\"  \n    xmlns:sapv=\"clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation\">  \n    <StackPanel>  \n        <Label Content=\"2 of 3 activity\">  \n            <Label.ToolTip>  \n                This activity has 3 child activities which will be scheduled in parallel.    \n                Upon completion of any 2, the third will be cancelled  \n            </Label.ToolTip>  \n        </Label>  \n        <StackPanel Orientation=\"Horizontal\">  \n            <Border BorderBrush=\"Blue\" BorderThickness=\"2\" CornerRadius=\"2\" Margin=\"2\" Padding=\"2\">  \n                <sap:WorkflowItemPresenter HintText=\"Drop Activity1 Here\" Item=\"{Binding Path=ModelItem.Activity1, Mode=TwoWay}\" />  \n            </Border>  \n            <Border BorderBrush=\"Blue\" BorderThickness=\"2\" CornerRadius=\"2\" Margin=\"2\" Padding=\"2\">  \n                <sap:WorkflowItemPresenter HintText=\"Drop Activity2 Here\" Item=\"{Binding Path=ModelItem.Activity2, Mode=TwoWay}\" />  \n  \n            </Border>  \n            <Border BorderBrush=\"Blue\" BorderThickness=\"2\" CornerRadius=\"2\" Margin=\"2\" Padding=\"2\">  \n                <sap:WorkflowItemPresenter HintText=\"Drop Activity3 Here\" Item=\"{Binding Path=ModelItem.Activity3, Mode=TwoWay}\" />  \n  \n            </Border>  \n        </StackPanel>  \n    </StackPanel>  \n</sap:ActivityDesigner>  \n  \n//Code for associating the activity with the designer using the Designer attribute.  \n[Designer(typeof(First2of3Designer))]  \npublic sealed class First2of3 : NativeActivity  \n  \n```"
   syntax:
@@ -702,7 +702,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;> </xref> 클래스입니다."
   syntax:
     content: public ActivityDesigner ();
     parameters: []
@@ -722,13 +722,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Returns the string “DisplayName” in this overridden method implementation."
+  summary: "이 재정의 된 메서드가 구현에서 &quot;DisplayName&quot; 문자열을 반환합니다."
   syntax:
     content: protected override string GetAutomationIdMemberName ();
     parameters: []
     return:
       type: System.String
-      description: "The string “DisplayName” in this overridden method implementation."
+      description: "이 재정의 된 메서드가 구현에서 문자열 &quot;DisplayName&quot;입니다."
   overload: System.Activities.Presentation.ActivityDesigner.GetAutomationIdMemberName*
   exceptions: []
   platform:
@@ -745,13 +745,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Returns the status of the automation item."
+  summary: "자동화 항목의 상태를 반환합니다."
   syntax:
     content: protected override string GetAutomationItemStatus ();
     parameters: []
     return:
       type: System.String
-      description: "The status of the automation item."
+      description: "자동화 항목의 상태입니다."
   overload: System.Activities.Presentation.ActivityDesigner.GetAutomationItemStatus*
   exceptions: []
   platform:
@@ -768,12 +768,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Gets or sets the icon associated with this <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;></xref>."
+  summary: "이 연결 된 아이콘을 가져오거나 설정 합니다. <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;> </xref>합니다."
   syntax:
     content: public System.Windows.Media.DrawingBrush Icon { get; set; }
     return:
       type: System.Windows.Media.DrawingBrush
-      description: "Returns a <xref href=&quot;System.Windows.Media.DrawingBrush&quot;></xref> that represents the icon associated with this <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;></xref>."
+      description: "반환 된 <xref href=&quot;System.Windows.Media.DrawingBrush&quot;> </xref> 이 연관 된 아이콘을 나타내는 <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;> </xref>합니다."
   overload: System.Activities.Presentation.ActivityDesigner.Icon*
   exceptions: []
   platform:
@@ -790,12 +790,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Identifies the IconProperty dependency property."
+  summary: "IconProperty 종속성 속성을 식별 합니다."
   syntax:
     content: public static readonly System.Windows.DependencyProperty IconProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -811,7 +811,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Begins the process of applying a template to create an <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;></xref>."
+  summary: "서식 파일을 적용 하는 과정을 시작 프로그램 <xref href=&quot;System.Activities.Presentation.ActivityDesigner&quot;> </xref>합니다."
   syntax:
     content: public override void OnApplyTemplate ();
     parameters: []
@@ -831,7 +831,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Begins the processing that occurs when editing annotation."
+  summary: "주석 편집 하는 경우 발생 하는 처리를 시작 합니다."
   syntax:
     content: protected override void OnEditAnnotation ();
     parameters: []
@@ -851,13 +851,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Begins the processing that occurs when the model item is changed.."
+  summary: "모델 항목을 변경할 때 발생 하는 처리를 시작..."
   syntax:
     content: protected override void OnModelItemChanged (object newItem);
     parameters:
     - id: newItem
       type: System.Object
-      description: "The new item."
+      description: "새 항목입니다."
   overload: System.Activities.Presentation.ActivityDesigner.OnModelItemChanged*
   exceptions: []
   platform:
@@ -874,13 +874,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Begins the processing that occurs when any mouse button is released."
+  summary: "마우스 단추를 놓을 때 발생 하는 처리를 시작 합니다."
   syntax:
     content: protected override void OnMouseUp (System.Windows.Input.MouseButtonEventArgs e);
     parameters:
     - id: e
       type: System.Windows.Input.MouseButtonEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.DragEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Windows.Forms.DragEventArgs&quot;> </xref> 하는 이벤트 데이터를 포함 합니다."
   overload: System.Activities.Presentation.ActivityDesigner.OnMouseUp*
   exceptions: []
   platform:
@@ -897,13 +897,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation
-  summary: "Begins the processing that occurs when an unhandled <xref:System.Windows.Input.Mouse.PreviewMouseDown> attached routed event reaches an element in its route that is derived from this class."
+  summary: "처리 되지 않은 <xref:System.Windows.Input.Mouse.PreviewMouseDown>연결 된 라우트된 이벤트가이 클래스에서 파생 된 해당 경로에서 요소에 도달할</xref:System.Windows.Input.Mouse.PreviewMouseDown> 때 발생 하는 처리를 시작"
   syntax:
     content: protected override void OnPreviewMouseDown (System.Windows.Input.MouseButtonEventArgs e);
     parameters:
     - id: e
       type: System.Windows.Input.MouseButtonEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.DragEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Windows.Forms.DragEventArgs&quot;> </xref> 하는 이벤트 데이터를 포함 합니다."
   overload: System.Activities.Presentation.ActivityDesigner.OnPreviewMouseDown*
   exceptions: []
   platform:
