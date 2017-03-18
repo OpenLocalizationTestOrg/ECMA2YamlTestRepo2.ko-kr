@@ -16,8 +16,8 @@ items:
   nameWithType: IsolationLevel
   fullName: System.Data.IsolationLevel
   type: Enum
-  summary: "Specifies the transaction locking behavior for the connection."
-  remarks: "The IsolationLevel values are used by a .NET Framework data provider when performing a transaction.       The IsolationLevel remains in effect until explicitly changed, but it can be changed at any time. The new value is used at execution time, not parse time. If changed during a transaction, the expected behavior of the server is to apply the new locking level to all statements remaining."
+  summary: "연결에 대 한 트랜잭션 잠금 동작을 지정합니다."
+  remarks: "IsolationLevel 값 트랜잭션을 수행 하는 경우.NET Framework 데이터 공급자가 사용 됩니다.       IsolationLevel 명시적으로 변경 될 때까지 계속 적용 되지만 언제 든 지 변경할 수 있습니다. 새 값은 구문 분석 시간이 아닌 실행 시 사용 됩니다. 트랜잭션 중 변경 하는 경우에 예상 되는 동작은 서버 나머지 모든 문은 새 잠금 수준을 적용할 것입니다."
   example:
   - "This application demonstrates how to use IsolationLevel in <xref:System.Data.Common.DbTransaction>. The sample will demonstrate which of the following behaviors are allowed in the different isolation levels:  \n  \n-   Dirty reads.  \n  \n-   Non-repeatable reads.  \n  \n-   Phantoms.  \n  \n This application will execute in the following isolation levels:  \n  \n-   ReadUncommitted  \n  \n-   ReadCommitted  \n  \n-   RepeatableRead  \n  \n-   Serializable  \n  \n-   Snapshot  \n  \n The PhantomReadThreads class demonstrates if the specific transaction allows the Phantom Read behavior. If the transaction allows the behavior, the threads will operate in the following order:  \n  \n-   In first thread, select the products(All).  \n  \n-   In the second thread, insert a new product.  \n  \n-   Commit the transaction in second thread.  \n  \n-   Select the products again.  \n  \n-   Commit the transaction in first thread.  \n  \n If the transaction allows the behavior, the two Select operations will get the different results.  \n  \n The NonrepeatableReadThreads class demonstrates if the specific transaction allows the Nonrepeatable Read behavior. If the transaction allows the behavior, the threads will operate in the following order:  \n  \n-   In first thread, select the product(ProductId=1).  \n  \n-   In the second thread, update the Quantity value(ProductId=1).  \n  \n-   Commit the transaction in second thread.  \n  \n-   Select the product again.  \n  \n-   Commit the transaction in first thread.  \n  \n If the transaction allows the behavior, the two Select operations will get the different results.  \n  \n The ExchangeValuesThreads class demonstrates the difference between the Serializable and Snapshot transaction. For the the Serializable transaction, threads will operate in the following order:  \n  \n-   In first thread, get the Price of product(ProductId=2) and store in the variable.  \n  \n-   In first thread, update the Price of product(ProductId=1) with the price of product(ProductId=2).  \n  \n-   Commit the transaction in first thread.  \n  \n-   In second thread, get the Price of product(ProductId=1) and store in the variable.  \n  \n-   In second thread, update the Price of product(ProductId=2) with the price of product(ProductId=1).  \n  \n-   Commit the transaction in second thread.  \n  \n Now the values of the Price(ProductId=1 and ProductId=2) are as same as the original Price of Product(ProductId=2).  \n  \n For the Snapshot transaction, threads will operate in the following order:  \n  \n-   In first thread, get the Price of product(ProductId=2) and store in the variable;  \n  \n-   In first thread, update the Price of product(ProductId=1) with the price of product(ProductId=2).  \n  \n-   In second thread, get the Price of product(ProductId=1) from the snapshot and store in the variable.  \n  \n-   In second thread, update the Price of product(ProductId=2) with the price of product(ProductId=1).  \n  \n-   Commit the transaction in second thread.  \n  \n-   Commit the transaction in first thread.  \n  \n Now exchange the Price of products(ProductId=1 and ProductId=2).  \n  \n The DirtyReadThreads class demonstrates if the specific transaction allows the Dirty Read behavior. If the transaction allows the behavior, the threads will operate in the following order:  \n  \n-   In first thread, begin a transaction and add the Quantity value(ProductId=1).  \n  \n-   In the second thread, read the Quantity value and add the value again.  \n  \n-   Commit the transaction in second thread.  \n  \n-   Roll back the transaction in first thread.  \n  \n If the transaction allows the behavior, the Quantity value will be added twice.  \n  \n C# and Visual Basic projects with this code sample can be found on [Developer Code Samples](http://code.msdn.microsoft.com/site/search?query=How%20to%20use%20IsolationLevel%20Enumeration%20in%20DbTransaction&f%5B0%5D.Value=How%20to%20use%20IsolationLevel%20Enumeration%20in%20DbTransaction&f%5B0%5D.Type=SearchText&ac=4).  \n  \n [!code-cs[system_data_IsolationLevel#1](~/add/codesnippet/csharp/t-system.data.isolationl_1.cs)]\n [!code-vb[system_data_IsolationLevel#1](~/add/codesnippet/visualbasic/t-system.data.isolationl_1.vb)]"
   syntax:
@@ -38,12 +38,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "The pending changes from more highly isolated transactions cannot be overwritten."
+  summary: "트랜잭션 격리 수준이 더 높은에서 보류 중인 변경 내용은 덮어쓸 수 없습니다."
   syntax:
     content: Chaos
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -59,12 +59,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Shared locks are held while the data is being read to avoid dirty reads, but the data can be changed before the end of the transaction, resulting in non-repeatable reads or phantom data."
+  summary: "공유 잠금은 더티 읽기를 방지 하기 위해 데이터를 읽고 하지만 반복 불가능 읽기 나 팬텀 데이터가 생성 트랜잭션이 끝나기 전에 데이터를 변경할 수 있습니다."
   syntax:
     content: ReadCommitted
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -80,12 +80,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "A dirty read is possible, meaning that no shared locks are issued and no exclusive locks are honored."
+  summary: "커밋되지 않은 읽기 불가능 즉 공유 잠금이 실행 되 고 없는 배타적 잠금이 유지 되지 않습니다."
   syntax:
     content: ReadUncommitted
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -101,12 +101,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Locks are placed on all data that is used in a query, preventing other users from updating the data. Prevents non-repeatable reads but phantom rows are still possible."
+  summary: "다른 사용자 데이터를 업데이트 하는 것을 방지 쿼리에서 사용 되는 모든 데이터에 잠금이 됩니다. 반복 불가능 읽기 하지만 팬텀 방지 행의 경우는 가능 합니다."
   syntax:
     content: RepeatableRead
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -122,12 +122,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "A range lock is placed on the <xref href=&quot;System.Data.DataSet&quot;></xref>, preventing other users from updating or inserting rows into the dataset until the transaction is complete."
+  summary: "에 범위 잠금이 적용 되는 <xref href=&quot;System.Data.DataSet&quot;> </xref>, 다른 사용자는 트랜잭션이 완료 될 때까지 데이터 집합에 행을 삽입 하거나 업데이트할 수 없게 합니다."
   syntax:
     content: Serializable
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -143,12 +143,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Reduces blocking by storing a version of data that one application can read while another is modifying the same data. Indicates that from one transaction you cannot see changes made in other transactions, even if you requery."
+  summary: "동일한 데이터를 수정 하는 다른 응용 프로그램을 하나를 읽을 수 있는 데이터의 버전을 저장 하 여 차단을 줄입니다. 하 한 트랜잭션에서 보이지 다른 트랜잭션의 변경 내용을 다시 쿼리 해도 나타냅니다."
   syntax:
     content: Snapshot
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -164,13 +164,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "A different isolation level than the one specified is being used, but the level cannot be determined."
-  remarks: "When using <xref:System.Data.Odbc.OdbcTransaction>, if you do not set IsolationLevel or you set IsolationLevel to `Unspecified`, the transaction executes according to the isolation level that is determined by the driver that is being used."
+  summary: "다른 격리 수준을 지정 된 사용량을 하지만 해당 수준을 확인할 수 없습니다."
+  remarks: "사용 하는 경우 <xref:System.Data.Odbc.OdbcTransaction>IsolationLevel 설정 하지 않으면 IsolationLevel을로 설정한 경우 `Unspecified`, 트랜잭션이 사용 되는 드라이버에 의해 결정 되는 격리 수준에 따라 실행 합니다.</xref:System.Data.Odbc.OdbcTransaction>"
   syntax:
     content: Unspecified
     return:
       type: System.Data.IsolationLevel
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

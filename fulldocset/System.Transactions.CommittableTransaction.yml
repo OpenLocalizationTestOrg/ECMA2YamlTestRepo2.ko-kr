@@ -19,8 +19,8 @@ items:
   nameWithType: CommittableTransaction
   fullName: System.Transactions.CommittableTransaction
   type: Class
-  summary: "Describes a committable transaction."
-  remarks: "The CommittableTransaction class provides an explicit way for applications to use a transaction, as opposed to using the <xref:System.Transactions.TransactionScope> class implicitly. Unlike the <xref:System.Transactions.TransactionScope> class, the application writer needs to specifically call the <xref:System.Transactions.CommittableTransaction.Commit%2A> and <xref:System.Transactions.Transaction.Rollback%2A> methods in order to commit or abort the transaction. However, only the creator of a transaction can commit the transaction. Therefore, copies of a committable transaction, obtained through the <xref:System.Transactions.Transaction.Clone%2A> method are not committable.      > [!NOTE] >  It is recommended that you create implicit transactions using the <xref:System.Transactions.TransactionScope> class, so that the ambient transaction context is automatically managed for you. You should also use the <xref:System.Transactions.TransactionScope> and <xref:System.Transactions.DependentTransaction> class for applications that require the use of the same transaction across multiple function calls or multiple thread calls. For more information on this model, see the [Implementing An Implicit Transaction Using Transaction Scope](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) topic.       Creating a CommittableTransaction does not automatically set the ambient transaction, which is the transaction your code executes in. You can get or set the ambient transaction by calling the static <xref:System.Transactions.Transaction.Current%2A> property of the global <xref:System.Transactions.Transaction> object. For more information on ambient transactions, see the &quot; Managing Transaction Flow using TransactionScopeOption&quot; section of the [Implementing An Implicit Transaction Using Transaction Scope](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) topic. If the ambient transaction is not set, any operation on a resource manager is not part of that transaction. You need to explicitly set and reset the ambient transaction, to ensure that resource managers operate under the right transaction context.       Until a CommittableTransaction has been committed, all the resources involved with the transaction are still locked.       A CommittableTransaction object cannot be reused. Once it has been committed or rolled back, it cannot be used again in a transaction or set as the current ambient transaction context."
+  summary: "커밋할 수 있는 트랜잭션에 대해 설명합니다."
+  remarks: "CommittableTransaction 클래스를 사용 하지 않고 트랜잭션을 사용 하도록 응용 프로그램에 대 한 명시적으로 제공 된 <xref:System.Transactions.TransactionScope>암시적으로 클래스.</xref:System.Transactions.TransactionScope> 와 달리는 <xref:System.Transactions.TransactionScope>클래스, 응용 프로그램 기록기를 명시적으로 호출 하는 데 필요한는 <xref:System.Transactions.CommittableTransaction.Commit%2A>및 <xref:System.Transactions.Transaction.Rollback%2A>커밋하거나 트랜잭션을 중단 하 고 메서드.</xref:System.Transactions.Transaction.Rollback%2A> </xref:System.Transactions.CommittableTransaction.Commit%2A> </xref:System.Transactions.TransactionScope> 그러나 작성자만 콘텐츠 팩 트랜잭션의 트랜잭션을 커밋할 수 있습니다. 따라서, 커밋할 수 있는 트랜잭션에의 복사본을 얻은 <xref:System.Transactions.Transaction.Clone%2A>메서드는 커밋할 수 없습니다.</xref:System.Transactions.Transaction.Clone%2A>      > [!NOTE] > 암시적 트랜잭션을 사용 하 여 만드는 것이 좋습니다.는 <xref:System.Transactions.TransactionScope>클래스, 앰비언트 트랜잭션 컨텍스트에 자동으로 관리 되도록.</xref:System.Transactions.TransactionScope> 또한 사용 해야는 <xref:System.Transactions.TransactionScope>및 <xref:System.Transactions.DependentTransaction>여러 함수 호출이 나 여러 스레드 호출에서 동일한 트랜잭션 사용 해야 하는 응용 프로그램에 대 한 클래스입니다.</xref:System.Transactions.DependentTransaction> </xref:System.Transactions.TransactionScope> 이 모델에 대 한 자세한 내용은 참조는 [구현 하는 암시적 트랜잭션을 사용 하 여 트랜잭션 범위](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) 항목입니다.       CommittableTransaction 만드는 사용자 코드에서 실행 되는 앰비언트 트랜잭션을 자동으로 설정 하지 않습니다. 가져오거나 정적을 호출 하 여 앰비언트 트랜잭션을 설정할 수 있습니다 <xref:System.Transactions.Transaction.Current%2A>은 전역 <xref:System.Transactions.Transaction>개체입니다.</xref:System.Transactions.Transaction> </xref:System.Transactions.Transaction.Current%2A> 앰비언트 트랜잭션에 대 한 자세한 내용은의 &quot;Managing 트랜잭션 흐름 TransactionScopeOption를 사용 하 여&quot; 섹션을 참조 하십시오.는 [구현 하는 암시적 트랜잭션을 사용 하 여 트랜잭션 범위](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) 항목입니다. 앰비언트 트랜잭션이 설정 되지 않은 경우 리소스 관리자에 대 한 작업 해당 트랜잭션의 일부가 아닙니다. 명시적으로 설정 하 고 리소스 관리자 올바른 트랜잭션 컨텍스트 내에서 작동 하도록 앰비언트 트랜잭션이 다시 설정 해야 합니다.       CommittableTransaction의 커밋된 될 때까지 트랜잭션과 관련된 된 모든 리소스가 잠겨 있습니다.       CommittableTransaction 개체를 다시 사용할 수 없습니다. 커밋 또는 롤백 되었는지가, 되 면 트랜잭션에서 다시 사용 하거나 현재 앰비언트 트랜잭션 컨텍스트로 설정 될 수 없습니다."
   example:
   - "The following sample creates two new instances of CommittableTransaction, commits and rolls back them respectively.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -69,7 +69,7 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> 클래스입니다."
   remarks: ''
   example:
   - "The following sample creates a new instance of <xref:System.Transactions.CommittableTransaction> and commits it.  \n  \n [!code-cs[Tx_CommittableTx#1](~/add/codesnippet/csharp/m-system.transactions.co_1.cs)]\n [!code-vb[Tx_CommittableTx#1](~/add/codesnippet/visualbasic/m-system.transactions.co_1.vb)]"
@@ -80,7 +80,7 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Windows 98, Windows 98 Second Edition 또는 Windows Millennium Edition에서 트랜잭션을 만들고 하려고 했습니다."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.#ctor(System.TimeSpan)
@@ -95,18 +95,18 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class with the specified <code>timeout</code> value."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> 지정된 된 <code> timeout </code> 값입니다."
   syntax:
     content: public CommittableTransaction (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time the transaction can exist, before it is aborted."
+      description: "중단 되기 전에 트랜잭션이 있을 수는 최대 기간입니다."
   overload: System.Transactions.CommittableTransaction.#ctor*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Windows 98, Windows 98 Second Edition 또는 Windows Millennium Edition에서 트랜잭션을 만들고 하려고 했습니다."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.#ctor(System.Transactions.TransactionOptions)
@@ -121,7 +121,7 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class with the specified transaction options."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> 지정 된 트랜잭션 옵션을 사용 하 여 클래스입니다."
   remarks: ''
   example:
   - "The following sample creates a new instance of <xref:System.Transactions.CommittableTransaction> with options, and aborts it.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -130,15 +130,15 @@ items:
     parameters:
     - id: options
       type: System.Transactions.TransactionOptions
-      description: "A <xref href=&quot;System.Transactions.TransactionOptions&quot;></xref> structure that describes the transaction options to use for the new transaction."
+      description: "A <xref href=&quot;System.Transactions.TransactionOptions&quot;> </xref> 트랜잭션 옵션을 사용 하 여 새 트랜잭션을 나타내는 구조입니다."
   overload: System.Transactions.CommittableTransaction.#ctor*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Windows 98, Windows 98 Second Edition 또는 Windows Millennium Edition에서 트랜잭션을 만들고 하려고 했습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>options</code> is invalid."
+    description: "<code>options</code>잘못 되었습니다."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.BeginCommit(System.AsyncCallback,System.Object)
@@ -153,20 +153,20 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Begins an attempt to commit the transaction asynchronously."
-  remarks: "This method returns immediately, before the transaction has been completed. The transaction then commits on a different thread, and the `asyncCallback` delegate is invoked when it has completed. After this method is called, you do not receive the outcome of the transaction until you call <xref:System.Transactions.CommittableTransaction.EndCommit%2A>.      > [!NOTE] >  The commit process may complete synchronously inside this method call."
+  summary: "트랜잭션을 커밋하는 비동기적으로 시도 시작 합니다."
+  remarks: "이 메서드는 트랜잭션이 완료 되기 전에 즉시 반환 합니다. 트랜잭션 후 다른 스레드에서 커밋 및 `asyncCallback` 완료 되지 않았을 때 대리자가 호출 됩니다. 이 메서드가 호출 된 후 나타나지 않으면 트랜잭션 결과 <xref:System.Transactions.CommittableTransaction.EndCommit%2A>.</xref:System.Transactions.CommittableTransaction.EndCommit%2A> 를 호출 하기 전에      > [!NOTE] >는 커밋 프로세스가이 메서드 호출 내 동기적으로 완료 될 수 있습니다."
   syntax:
     content: public IAsyncResult BeginCommit (AsyncCallback asyncCallback, object asyncState);
     parameters:
     - id: asyncCallback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that is invoked when the transaction completes. This parameter can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, in which case the application is not notified of the transaction&quot;s completion. Instead, the application must use the <xref:System.IAsyncResult> interface to check for completion and wait accordingly, or call <xref:System.Transactions.CommittableTransaction.EndCommit*> to wait for completion."
+      description: "<xref:System.AsyncCallback>해당 트랜잭션이 완료 될 때 호출 되는 대리자입니다.</xref:System.AsyncCallback> 이 매개 변수 수 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>,이 경우 응용 프로그램은 트랜잭션 완료의 알림을 받지 않습니다. 대신, 응용 프로그램을 사용 해야 합니다는 <xref:System.IAsyncResult>완료 여부를 확인 하 고 대기, 인터페이스 또는 호출 <xref:System.Transactions.CommittableTransaction.EndCommit*>완료를 기다리는.</xref:System.Transactions.CommittableTransaction.EndCommit*> </xref:System.IAsyncResult>"
     - id: asyncState
       type: System.Object
-      description: "An object, which might contain arbitrary state information, associated with the asynchronous commitment. This object is passed to the callback, and is not interpreted by <xref href=&quot;System.Transactions&quot;></xref>. A null reference is permitted."
+      description: "개체에 연결 된 비동기 커밋과 임의의 상태 정보를 포함 될 수 있습니다. 이 개체는 콜백에 전달 되 고에서 해석 되지 않습니다 <xref href=&quot;System.Transactions&quot;> </xref>합니다. Null 참조일 수 있습니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> interface that can be used by the caller to check the status of the asynchronous operation, or to wait for the operation to complete."
+      description: "<xref:System.IAsyncResult>을 비동기 작업의 상태를 확인 하거나 작업이 완료 될 때까지 대기 하는 호출자가 사용할 수 있는 인터페이스입니다.</xref:System.IAsyncResult>"
   overload: System.Transactions.CommittableTransaction.BeginCommit*
   exceptions: []
   platform:
@@ -183,8 +183,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Attempts to commit the transaction."
-  remarks: "When this method is called, all objects that have registered to participate in the transaction are polled and can independently indicate their vote to either commit or roll back the transaction. If any participant votes to roll back the transaction, it is rolled back and this method throws a <xref:System.Transactions.TransactionException> exception. This is a normal occurrence for a transaction and your code should catch and process such exceptions.       Commit and <xref:System.Transactions.CommittableTransaction.EndCommit%2A> block until the first phase of transaction processing is complete. The first phase ends after all resource managers and enlistments in the transaction have voted on the transaction outcome and the <xref:System.Transactions.TransactionManager> has durably decided to commit or abort the transaction. The second phase of processing is always asynchronous. Therefore, there is no guarantee that data just committed from within a given transaction will be immediately available afterwards when not using another transaction to view this data.       Because this method blocks until the first phase of transaction processing is complete, you should be extremely careful when using this method in a Windows Form (WinForm) application, or a deadlock can occur. If you call this method inside one WinForm Control event (for example, clicking a button), and use the synchronous <xref:System.Windows.Forms.Control.Invoke%2A> method to direct the control to perform some UI tasks (for example, changing colors) in the middle of processing the transaction, a deadlock will happen. This is because the <xref:System.Windows.Forms.Control.Invoke%2A> method is synchronous and blocks the worker thread until the UI thread finishes its job. However, in our scenario, the UI thread is also waiting for the worker thread to commit the transaction. The result is that none is able to proceed and the scope waits indefinitely for the Commit to finish. You should use <xref:System.Windows.Forms.Control.BeginInvoke%2A> rather than <xref:System.Windows.Forms.Control.Invoke%2A> wherever possible, because it is asynchronous and thus less prone to deadlock."
+  summary: "트랜잭션을 커밋하는 시도 합니다."
+  remarks: "이 메서드는 트랜잭션에 참여 하도록 등록 된 모든 개체 폴링을 수행 하 고 독립적으로 커밋 또는 트랜잭션을 여부를 나타낼 수 있습니다. 트랜잭션을 선택한 참가 요소 롤백됩니다 않으며이 메서드는 <xref:System.Transactions.TransactionException>예외.</xref:System.Transactions.TransactionException> 이 트랜잭션에 대 한 일반적으로 발생 하 고 코드를 catch 하 고 이러한 예외를 처리 해야 합니다.       커밋 및 <xref:System.Transactions.CommittableTransaction.EndCommit%2A>트랜잭션 처리의 첫 번째 단계 완료 될 때까지 차단 합니다.</xref:System.Transactions.CommittableTransaction.EndCommit%2A> 첫 번째 단계는 모든 리소스 관리자 한 후 종료 하 고 트랜잭션에 인 리스트 먼 트 트랜잭션 결과에 투표 했 고 <xref:System.Transactions.TransactionManager>가 지 속력 있게 커밋하거나 트랜잭션을 중단 하 고 결정 됩니다.</xref:System.Transactions.TransactionManager> 처리의 두 번째 단계는 항상 비동기입니다. 따라서은 커밋된 데이터를 바로에서 지정된 된 트랜잭션 내에서 사용할 수 있다는 즉시 나중에이 데이터를 다른 트랜잭션이 사용 하지 않을 때 아닙니다.       이 메서드 차단 트랜잭션 처리의 첫 번째 단계 완료 될 때까지, 매우 주의 해야는 Windows Form (WinForm) 응용 프로그램 또는 교착 상태에서이 메서드를 사용 하는 경우 발생할 수 있습니다 때문에. (예: 단추 클릭), 하나의 WinForm 컨트롤 이벤트 내에서이 메서드를 호출 하 고 동기를 사용 하는 경우 <xref:System.Windows.Forms.Control.Invoke%2A>컨트롤 교착 상태가 발생 하는 트랜잭션을 처리 하는 동안 일부 UI 작업 (예를 들어 변경 색)을 수행 하는 메서드.</xref:System.Windows.Forms.Control.Invoke%2A> 때문에 이것이 <xref:System.Windows.Forms.Control.Invoke%2A>메서드는 동기적 이므로 UI 스레드 작업을 완료 될 때까지 작업자 스레드를 차단 합니다.</xref:System.Windows.Forms.Control.Invoke%2A> 시나리오에서 UI 스레드 또한 트랜잭션을 커밋하는 작업자 스레드 대기 됩니다. 결과를 계속할 수 없는 및 범위는 커밋이 완료에 대 한 무기한 대기입니다. 사용 해야 <xref:System.Windows.Forms.Control.BeginInvoke%2A>대신 <xref:System.Windows.Forms.Control.Invoke%2A>비동기적이 고 교착 상태가 발생할 가능성이 적으므로 이기 때문에 가능 합니다.</xref:System.Windows.Forms.Control.Invoke%2A> </xref:System.Windows.Forms.Control.BeginInvoke%2A>"
   syntax:
     content: public void Commit ();
     parameters: []
@@ -192,10 +192,10 @@ items:
   exceptions:
   - type: System.Transactions.TransactionInDoubtException
     commentId: T:System.Transactions.TransactionInDoubtException
-    description: "Commit is called on a transaction and the transaction becomes <xref href=&quot;System.Transactions.TransactionStatus&quot;></xref>."
+    description: "트랜잭션에 대해 커밋을 호출 되 고 트랜잭션이 트랜잭션이 <xref href=&quot;System.Transactions.TransactionStatus&quot;> </xref>합니다."
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
-    description: "Commit is called and the transaction rolls back for the first time."
+    description: "커밋 라고 하 고 트랜잭션이 처음으로 롤백합니다."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.EndCommit(System.IAsyncResult)
@@ -210,19 +210,19 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Ends an attempt to commit the transaction asynchronously."
-  remarks: "You should call this method in the callback delegate specified as a parameter to the <xref:System.Transactions.CommittableTransaction.BeginCommit%2A> method, when you have finished any cleanup work associated with the asynchronous commitment. You can also call this method early without waiting for the delegate. If, by the time you call this method, the transaction has not completed, this method waits for its completion.      > [!CAUTION] >  The <xref:System.IAsyncResult.CompletedSynchronously%2A> property returned by `asyncResult` is always `false`, even if the operation completed synchronously.       <xref:System.Transactions.CommittableTransaction.Commit%2A> and EndCommit block until the first phase of transaction processing is complete. The first phase ends after all resource managers and enlistments in the transaction have voted on the transaction outcome and the <xref:System.Transactions.TransactionManager> has durably decided to commit or abort the transaction. The second phase of processing is always asynchronous. Therefore, there is no guarantee that data just committed from within a given transaction will be immediately available afterwards when not using another transaction to view this data."
+  summary: "트랜잭션을 커밋하는 비동기적으로 시도 끝냅니다."
+  remarks: "에 대 한 매개 변수로 지정 된 콜백 대리자에서이 메서드를 호출 해야는 <xref:System.Transactions.CommittableTransaction.BeginCommit%2A>메서드를 비동기 커밋과 관련 된 정리 작업을 완료 합니다.</xref:System.Transactions.CommittableTransaction.BeginCommit%2A> 또한이 메서드는 대리자를 기다리지 않고 초기 호출할 수 있습니다. 이 메서드를 호출 하는 시점에서는 트랜잭션이 완료 되지 않은 경우이 메서드는 완료 되기를 기다립니다.      > [!CAUTION] >는 <xref:System.IAsyncResult.CompletedSynchronously%2A>속성에서 반환 되 `asyncResult` 항상 `false`작업이 동기적으로 완료 하는 경우에.</xref:System.IAsyncResult.CompletedSynchronously%2A>       <xref:System.Transactions.CommittableTransaction.Commit%2A>및 트랜잭션 처리의 첫 번째 단계 완료 될 때까지 EndCommit 블록을 추가 합니다.</xref:System.Transactions.CommittableTransaction.Commit%2A> 첫 번째 단계는 모든 리소스 관리자 한 후 종료 하 고 트랜잭션에 인 리스트 먼 트 트랜잭션 결과에 투표 했 고 <xref:System.Transactions.TransactionManager>가 지 속력 있게 커밋하거나 트랜잭션을 중단 하 고 결정 됩니다.</xref:System.Transactions.TransactionManager> 처리의 두 번째 단계는 항상 비동기입니다. 따라서은 커밋된 데이터를 바로에서 지정된 된 트랜잭션 내에서 사용할 수 있다는 즉시 나중에이 데이터를 다른 트랜잭션이 사용 하지 않을 때 아닙니다."
   syntax:
     content: public void EndCommit (IAsyncResult asyncResult);
     parameters:
     - id: asyncResult
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> object associated with the asynchronous commitment."
+      description: "<xref:System.IAsyncResult>비동기 커밋과 관련 된 개체입니다.</xref:System.IAsyncResult>"
   overload: System.Transactions.CommittableTransaction.EndCommit*
   exceptions:
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
-    description: "<xref:System.Transactions.CommittableTransaction.BeginCommit*> is called and the transaction rolls back for the first time."
+    description: "<xref:System.Transactions.CommittableTransaction.BeginCommit*>호출 되 고 트랜잭션이 처음으로 롤백합니다.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncState
@@ -238,12 +238,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the object provided as the last parameter of the <xref:System.Transactions.CommittableTransaction.BeginCommit*> method call."
+  summary: "마지막 매개 변수로 제공 된 개체를 가져옵니다는 <xref:System.Transactions.CommittableTransaction.BeginCommit*>메서드를 호출 합니다.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   syntax:
     content: object System.IAsyncResult.AsyncState { get; }
     return:
       type: System.Object
-      description: "The object provided as the last parameter of the <xref:System.Transactions.CommittableTransaction.BeginCommit*> method call."
+      description: "마지막 매개 변수로 제공 된 개체는 <xref:System.Transactions.CommittableTransaction.BeginCommit*>메서드를 호출 합니다.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncState*
   exceptions: []
   platform:
@@ -261,12 +261,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets a <xref:System.Threading.WaitHandle> that is used to wait for an asynchronous operation to complete."
+  summary: "가져옵니다는 <xref:System.Threading.WaitHandle>비동기 작업이 완료 되기를 기다리는 데 사용 되는.</xref:System.Threading.WaitHandle>"
   syntax:
     content: System.Threading.WaitHandle System.IAsyncResult.AsyncWaitHandle { get; }
     return:
       type: System.Threading.WaitHandle
-      description: "A <xref:System.Threading.WaitHandle> that is used to wait for an asynchronous operation to complete."
+      description: "A <xref:System.Threading.WaitHandle>비동기 작업이 완료 되기를 기다리는 데 사용 되는.</xref:System.Threading.WaitHandle>"
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncWaitHandle*
   exceptions: []
   platform:
@@ -284,12 +284,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets an indication of whether the asynchronous commit operation completed synchronously."
+  summary: "비동기 커밋 작업이 동기적으로 완료 여부를 나타내는 표시를 가져옵니다."
   syntax:
     content: bool System.IAsyncResult.CompletedSynchronously { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the asynchronous commit operation completed synchronously; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. This property always returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the operation completed synchronously."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>비동기 커밋 작업이 동기적으로; 완료 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 이 속성은 항상 반환 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 작업이 동기적으로 완료 하는 경우에 합니다."
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#CompletedSynchronously*
   exceptions: []
   platform:
@@ -307,12 +307,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets an indication whether the asynchronous commit operation has completed."
+  summary: "비동기 커밋 작업이 완료 되었는지 여부를 나타내는 값을 가져옵니다."
   syntax:
     content: bool System.IAsyncResult.IsCompleted { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the operation is complete; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 작업을 완료 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#IsCompleted*
   exceptions: []
   platform:

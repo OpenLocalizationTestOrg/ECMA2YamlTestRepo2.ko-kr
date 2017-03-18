@@ -20,8 +20,8 @@ items:
   nameWithType: ComponentDispatcher
   fullName: System.Windows.Interop.ComponentDispatcher
   type: Class
-  summary: "Enables shared control of the message pump between [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] and [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] in interoperation scenarios."
-  remarks: "Although the class itself is static, all members of ComponentDispatcher are specific to a particular thread. For example, if you examine the value of <xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A> on two different threads, you might get different values.       The methods are static but they are backed by per-thread data structures.  The static methods allow singleton access but the ComponentDispatcher is sorting out the appropriate per-thread operations.       The owner of the message pump is defined by the code that calls the [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] function  [GetMessage](http://msdn.microsoft.com/library/ms644936.aspx). The owner calls <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A> for every keyboard message. This method raises the <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage> event with the messages contained in the event data. If that event is not handled, the owner raises the <xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage> event with the messages contained in the event argument.      > [!NOTE] >  Only keyboard messages are supported."
+  summary: "공유 간에 메시지 펌프의 제어를 사용 [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] 및 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] 상호 운용 시나리오에서 합니다."
+  remarks: "클래스 자체 static 인 ComponentDispatcher의 모든 멤버는 특정 스레드로 다릅니다. 값을 검사 하는 경우 등 <xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A>두 개의 서로 다른 스레드에서 값이 다른 표시 될 수 있습니다.</xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A>       메서드는 정적 하지만 스레드별 데이터 구조에 의해 백업 됩니다.  정적 메서드는 단일 액세스할 수는 있지만 ComponentDispatcher 적절 한 스레드 작업을 정렬 합니다.       메시지 펌프의 소유자는 호출 하는 코드에 의해 정의 됩니다는 [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] 함수 [GetMessage](http://msdn.microsoft.com/library/ms644936.aspx)합니다. 소유자 호출 <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A>모든 키보드 메시지에 대 한.</xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A> 이 메서드는 <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>이벤트 메시지와 함께 데이터 이벤트를 포함 합니다.</xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage> 해당 이벤트가 처리 되지 않은 경우에 소유자 발생는 <xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage>이벤트 메시지와 함께 이벤트에 포함 된 인수입니다.</xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage>      > [!NOTE] > 키보드 메시지만 지원 됩니다."
   syntax:
     content: public static class ComponentDispatcher
   inheritance:
@@ -42,12 +42,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets the last message that was raised."
+  summary: "발생 한 마지막 메시지를 가져옵니다."
   syntax:
     content: public static System.Windows.Interop.MSG CurrentKeyboardMessage { get; }
     return:
       type: System.Windows.Interop.MSG
-      description: "The last message."
+      description: "마지막 메시지입니다."
   overload: System.Windows.Interop.ComponentDispatcher.CurrentKeyboardMessage*
   exceptions: []
   platform:
@@ -64,12 +64,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when a thread becomes modal."
+  summary: "스레드가 모달이 때 발생 합니다."
   syntax:
     content: public static event EventHandler EnterThreadModal;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -85,12 +85,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets a value that indicates whether the thread is modal."
+  summary: "스레드가 모달 인지 여부를 나타내는 값을 가져옵니다."
   syntax:
     content: public static bool IsThreadModal { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the thread is modal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>스레드가 모달이면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Interop.ComponentDispatcher.IsThreadModal*
   exceptions: []
   platform:
@@ -107,12 +107,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when a modal thread becomes nonmodal."
+  summary: "모달 스레드가 모달이 아닌 경우 발생 합니다."
   syntax:
     content: public static event EventHandler LeaveThreadModal;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -128,7 +128,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that a modal thread is no longer modal."
+  summary: "모달 스레드가 모달 더 이상 임을 나타내기 위해 호출 됩니다."
   syntax:
     content: public static void PopModal ();
     parameters: []
@@ -148,7 +148,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that the thread is modal."
+  summary: "스레드가 모달 임을 나타내기 위해 호출 됩니다."
   syntax:
     content: public static void PushModal ();
     parameters: []
@@ -168,7 +168,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that a thread is idle."
+  summary: "스레드가 유휴 상태임을 나타내기 위해 호출 합니다."
   syntax:
     content: public static void RaiseIdle ();
     parameters: []
@@ -188,17 +188,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Indicates that a new message is available for possible handling."
-  remarks: "The owner of the message pump should call this method for every keyboard message."
+  summary: "새 메시지를 가능한 처리에 사용할 수 있는지를 나타냅니다."
+  remarks: "메시지 펌프의 소유자는 모든 키보드 메시지에 대해이 메서드를 호출 해야 합니다."
   syntax:
     content: public static bool RaiseThreadMessage (ref System.Windows.Interop.MSG msg);
     parameters:
     - id: msg
       type: System.Windows.Interop.MSG
-      description: "The message and its associated data."
+      description: "메시지와 관련된 데이터를 제공 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if one of the modules listening to the message loop processed the message. The owner of the message loop should ignore the message. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, if the message was not processed. In this case, the owner of the message pump should call the [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] function [TranslateMessage](http://msdn.microsoft.com/library/ms644955.aspx) followed by [DispatchMessage](http://msdn.microsoft.com/library/ms644934.aspx)."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지 루프를 수신 대기 하는 모듈 중 하나는 메시지를 처리 하는 경우. 메시지 루프의 소유자는 메시지를 무시 해야 합니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>를 경우 메시지가 처리 되지 않았습니다. 이 경우 메시지 펌프의 소유자를 호출 해야 합니다는 [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] 함수 [TranslateMessage](http://msdn.microsoft.com/library/ms644955.aspx) 이어서 [DispatchMessage](http://msdn.microsoft.com/library/ms644934.aspx)합니다."
   overload: System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage*
   exceptions: []
   platform:
@@ -215,12 +215,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the message pump receives a keyboard message."
+  summary: "메시지 펌프가 키보드 메시지를 받을 때 발생 합니다."
   syntax:
     content: public static event System.Windows.Interop.ThreadMessageEventHandler ThreadFilterMessage;
     return:
       type: System.Windows.Interop.ThreadMessageEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -236,13 +236,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the thread is idle."
-  remarks: "If there are no messages in the queue, then the idle state announced by the ThreadIdle event is an efficient time to do processing."
+  summary: "스레드가 유휴 상태일 때 발생 합니다."
+  remarks: "큐에 메시지가 없는 경우 ThreadIdle 이벤트에 의해 발표 유휴 상태에서 효율적으로 처리를 수행할 수는 있습니다."
   syntax:
     content: public static event EventHandler ThreadIdle;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -258,13 +258,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the message pump receives a keyboard message."
-  remarks: "This event should be raised after <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>, if that event is not handled."
+  summary: "메시지 펌프가 키보드 메시지를 받을 때 발생 합니다."
+  remarks: "이 이벤트가 발생 한 후 <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>해당 이벤트가 처리 되지 않은 경우.</xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>"
   syntax:
     content: public static event System.Windows.Interop.ThreadMessageEventHandler ThreadPreprocessMessage;
     return:
       type: System.Windows.Interop.ThreadMessageEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

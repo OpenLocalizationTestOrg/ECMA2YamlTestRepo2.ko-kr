@@ -13,8 +13,8 @@ items:
   nameWithType: SqlMethodAttribute
   fullName: Microsoft.SqlServer.Server.SqlMethodAttribute
   type: Class
-  summary: "Indicates the determinism and data access properties of a method or property on a user-defined type (UDT). The properties on the attribute reflect the physical characteristics that are used when the type is registered with SQL Server."
-  remarks: "For a property, the SqlMethodAttribute should be used on the setter or the getter directly.       SqlMethodAttribute inherits from a <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>, so SqlMethodAttribute inherits the `FillRowMethodName` and `TableDefinition` fields from <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>. Note that it is not possible to write a table-valued method, although the names of these fields might suggest that it is possible."
+  summary: "사용자 정의 형식 (UDT)에 속성 또는 메서드의 결정성 및 데이터 액세스 속성을 나타냅니다. 특성의 속성은 SQL Server에는 형식을 등록할 때 사용 되는 물리적 특성을 반영 합니다."
+  remarks: "속성에 대 한는 SqlMethodAttribute setter 또는 getter에 직접 사용할 수는 있습니다.       상속 SqlMethodAttribute는 <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>SqlMethodAttribute 상속 되므로 `FillRowMethodName` 및 `TableDefinition` <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute>.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute> 필드</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute> 참고 수 있다는 것 하지는 테이블 반환 메서드를 작성 하지만 이러한 필드의 이름이 수 있다는 것을 제시할 수 있습니다."
   example:
   - "The following example shows a UDT method that is attributed to indicate that the method will not be invoked on null instances of the type, that the method will not change the state of the type, and that the method will not be called when `null` parameters are supplied to the method invocation.  \n  \n [!code-cs[DataWorks SqlMethodAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_1_1.cs)]\n [!code-vb[DataWorks SqlMethodAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_1_1.vb)]"
   syntax:
@@ -48,7 +48,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "An attribute on a user-defined type (UDT), used to indicate the determinism and data access properties of a method or a property on a UDT."
+  summary: "사용자 정의 형식 (UDT)에 UDT의 속성 또는 메서드의 결정성 및 데이터 액세스 속성을 나타내는 데 사용 되는 특성입니다."
   syntax:
     content: public SqlMethodAttribute ();
     parameters: []
@@ -68,13 +68,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether SQL Server should invoke the method on null instances."
-  remarks: "The default value for the InvokeIfReceiverIsNull property is `false`.       That is, the method is not invoked on a null instance. If InvokeIfReceiverIsNull is true, the return value of the method depends upon its type. If the return type of the method is nullable, the distinguished null value for the type is returned. If the return type is non-nullable, the default CLR value for the type is returned. The default value for reference types is null. The default value for a value type is the value that is  returned when you call the default constructor for the type."
+  summary: "SQL Server null 인스턴스에서 메서드를 호출 해야 하는지 여부를 나타냅니다."
+  remarks: "InvokeIfReceiverIsNull 속성에 대 한 기본값은 `false`합니다.       즉, 메서드는 null 인스턴스에서 호출 되지 않습니다. InvokeIfReceiverIsNull true 이면 메서드의 반환 값 형식에 따라 달라 집니다. 메서드의 반환 형식에서 null을 허용 하는 경우에 형식에 대 한 고유 null 값이 반환 됩니다. 반환 형식이 nullable이 아닌 형식에 대 한 기본 CLR 값이 반환 됩니다. 참조 형식에 대 한 기본값은 null입니다. 값 형식에 대 한 기본값은 유형에 대 한 기본 생성자를 호출 하는 경우 반환 되는 값입니다."
   syntax:
     content: public bool InvokeIfReceiverIsNull { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if SQL Server should invoke the method on null instances; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;></xref> is returned."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>SQL Server; null 인스턴스에서 메서드를 호출 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 특성을 메서드에), (때문 메서드를 호출할 수 없는 경우는 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] <xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;> </xref> 반환 됩니다."
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.InvokeIfReceiverIsNull*
   exceptions: []
   platform:
@@ -91,13 +91,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether a method on a user-defined type (UDT) is a mutator."
-  remarks: "If the IsMutator property is set to `true` and the return type of the method is `void`, SQL Server marks the method as a mutator. A mutator method is one that causes a state change in the UDT instance. Mutator methods can be called in assignment statements or data modification statements, but cannot be used in queries. If a method is marked as a mutator but does not return void, then CREATE TYPE does not fail with an error. Even though a returned value other than `void` does not raise an error, the returned value is not accessible and cannot be used.       The default value of the IsMutator property is `false`.       A property can be a mutator if <xref:Microsoft.SqlServer.Server.SqlMethodAttribute> is used on the setter and IsMutator is set to `true`. However, a property setter is implicitly treated as a mutator, so it is not necessary to set the IsMutator property of the <xref:Microsoft.SqlServer.Server.SqlMethodAttribute> to `true`."
+  summary: "사용자 정의 형식 (UDT)에서 메서드는 변경자 (mutator) 인지를 나타냅니다."
+  remarks: "IsMutator 속성이로 설정 된 경우 `true` 메서드의 반환 형식이 고 `void`, SQL Server 메서드를 변경자 (mutator)로 표시 합니다. 변경자 (mutator) 메서드는 UDT 인스턴스의 상태 변경을 발생입니다. 변경자 (mutator) 메서드 대입문 이나 데이터 수정 문이 호출 될 수 있지만 쿼리에서 사용할 수 없습니다. 메서드는 변경자 (mutator)로 표시 되어 있지만 void 반환 하지 않는, 오류가 발생 하 여 CREATE TYPE 실패 하지 않습니다. 반환 된 값이 있더라도 `void` 가 반환 되는 값 아니면 오류가 발생 하지에 액세스할 수 없고 사용할 수 없습니다.       IsMutator 속성의 기본값은 `false`합니다.       경우에 속성은 변경자 (mutator) 수 <xref:Microsoft.SqlServer.Server.SqlMethodAttribute>setter에 사용 되 IsMutator로 설정 되어 `true`.</xref:Microsoft.SqlServer.Server.SqlMethodAttribute> 그러나 속성 setter는 암시적으로 처리는 변경자 (mutator)로 않으므로 요소의 IsMutator 속성을 설정할 필요는 없습니다는 <xref:Microsoft.SqlServer.Server.SqlMethodAttribute>를 `true`.</xref:Microsoft.SqlServer.Server.SqlMethodAttribute>"
   syntax:
     content: public bool IsMutator { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is a mutator; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메서드가 변경자; 이면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.IsMutator*
   exceptions: []
   platform:
@@ -114,13 +114,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the method on a user-defined type (UDT) is called when <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> input arguments are specified in the method invocation."
-  remarks: "The default value of the OnNullCall property is `true`."
+  summary: "사용자 정의 형식 (UDT)에 메서드가 때 호출 되는지 여부를 나타냅니다 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 메서드 호출의 입력된 인수를 지정 합니다."
+  remarks: "OnNullCall 속성의 기본값은 `true`합니다."
   syntax:
     content: public bool OnNullCall { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is called when <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> input arguments are specified in the method invocation; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the method returns a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> value when any of its input parameters are <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. If the method cannot be invoked (because of an attribute on the method), the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]<xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;></xref> is returned."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메서드가 호출 될 때 경우 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> ; 메서드 호출에 지정 된 입력된 인수 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 메서드가 반환 하는 경우는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 입력된 매개 변수 중 하나가 되 면 값 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 특성을 메서드에), (때문 메서드를 호출할 수 없는 경우는 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] <xref uid=&quot;langword_csharp_DbNull&quot; name=&quot;DbNull&quot; href=&quot;&quot;> </xref> 반환 됩니다."
   overload: Microsoft.SqlServer.Server.SqlMethodAttribute.OnNullCall*
   exceptions: []
   platform:
