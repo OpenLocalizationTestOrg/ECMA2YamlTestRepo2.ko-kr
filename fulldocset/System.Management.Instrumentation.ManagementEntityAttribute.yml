@@ -13,8 +13,8 @@ items:
   nameWithType: ManagementEntityAttribute
   fullName: System.Management.Instrumentation.ManagementEntityAttribute
   type: Class
-  summary: "The ManagementEntity attribute indicates that a class provides management information exposed through a WMI provider.       Note: the WMI .NET libraries are now considered in final state, and no further development, enhancements, or updates will be available for non-security related issues affecting these libraries. The [MI APIs](https://msdn.microsoft.com/en-us/library/jj152383%28v=vs.80%29.aspx) should be used for all new development."
-  remarks: "The class marked by this attribute must be public."
+  summary: "ManagementEntity 특성 클래스는 WMI 공급자를 통해 노출 하는 관리 정보를 제공 함을 나타냅니다.       참고: WMI.NET 라이브러리 이제 간주 최종 상태 및 이후 개발, 향상 된 기능, 또는 업데이트 이러한 라이브러리에 영향을 주는 비보안 관련된 문제에 대해 사용할 수 있습니다. [MI Api](https://msdn.microsoft.com/en-us/library/jj152383%28v=vs.80%29.aspx) 새로운 개발에 사용 해야 합니다."
+  remarks: "이 특성으로 표시 된 클래스는 공용 이어야 합니다."
   example:
   - "The following example shows how to use the ManagementEntity attribute to mark a class.  \n  \n```  \n// Use the ManagementEntity attribute on the class to specify that this // class contains management information that is available from  \n// provider.  \n  \n    [ManagementEntity(Name = \"MortgageCalc\")]  \n    public class MortgageCalcWMIProvider  \n    {  \n    }  \n```"
   syntax:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Initializes a new instance of the <xref:System.Management.ManagementEntityAttribute> class. This is the default constructor."
-  remarks: "This constructor does not take a name parameter. If you do not specify a name by using the [Name](~/add/includes/ajax-current-ext-md.md) parameter, the name of the associated WMI class will default to the name of the attributed class."
+  summary: "<xref:System.Management.ManagementEntityAttribute>클래스</xref:System.Management.ManagementEntityAttribute> 의 새 인스턴스를 초기화합니다. 기본 생성자입니다."
+  remarks: "이 생성자는 name 매개 변수를 사용 하지 않습니다. 사용 하 여 이름을 지정 하지 않는 경우는 [이름](~/add/includes/ajax-current-ext-md.md) 매개 변수, 연결된 된 WMI 클래스의 이름을 기본값으로 설정 됩니다 특성 사용된 클래스의 이름입니다."
   syntax:
     content: public ManagementEntityAttribute ();
     parameters: []
@@ -61,13 +61,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Gets or sets a value that specifies whether the class represents a WMI class in a provider implemented external to the current assembly."
-  remarks: "This is used when implementing providers that implement classes that extend existing abstract WMI classes."
+  summary: "현재 어셈블리에 외부 클래스는 WMI 클래스에 구현 된 공급자를 나타내는지 여부를 지정 하는 값을 설정 하거나 가져옵니다."
+  remarks: "이 추상 기존 WMI 클래스를 확장 하는 클래스를 구현 하는 공급자를 구현할 때 사용 됩니다."
   syntax:
     content: public bool External { get; set; }
     return:
       type: System.Boolean
-      description: "A boolean value that is true if the class represents an external WMI class and false otherwise."
+      description: "이 클래스는 외부 WMI 클래스 및 false 나타내는 그렇지 않은 경우 true이 고는 부울 값입니다."
   overload: System.Management.Instrumentation.ManagementEntityAttribute.External*
   exceptions: []
   platform:
@@ -84,15 +84,15 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Gets or sets the name of the WMI class."
-  remarks: "If you do not specify the name of the WMI class by setting this property, the WMI class will default to the name of the attributed class."
+  summary: "WMI 클래스의 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성을 설정 하 여 WMI 클래스의 이름을 지정 하지 않으면, WMI 클래스 특성 사용된 클래스의 이름으로 기본적 됩니다."
   example:
   - "In the following example, the Name parameter is used to set the name of the WMI class represented by the MortgageCalcWMIProvider class. It sets the name to MortgageCalculator. If the Name parameter is not used, the corresponding C# class name, MortgageCalcWMIProvider in this case, is used as the WMI class name.  \n  \n```  \n[ManagementEntity(Name = \"MortgageCalculator\")]  \npublic class MortgageCalcWMIProvider  \n{  \n}  \n```"
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A string that contains the name of the WMI class."
+      description: "WMI 클래스의 이름을 포함 하는 문자열입니다."
   overload: System.Management.Instrumentation.ManagementEntityAttribute.Name*
   exceptions: []
   platform:
@@ -109,15 +109,15 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Specifies whether the associated class represents a singleton WMI class."
-  remarks: "A singleton WMI class is one for which there can only ever be a single instance. Although you could code the logic to ensure that only a single instance of a WMI class is ever created, this parameter attribute is provided to make the task easy and consistent.       When working with singleton WMI classes, client applications must use special syntax. For more information, see the Describing an Instance Object Path topic in the MSDN online library at [http://www.msdn.com](http://www.msdn.com/)."
+  summary: "관련된 된 클래스는 단일 WMI 클래스를 나타내는지 여부를 지정 합니다."
+  remarks: "WMI 클래스는 단일 항목을 단일 인스턴스가 될 수 있습니다 하나입니다. WMI 클래스의 단일 인스턴스만 적이 만들어졌는지 확인 하는 논리를 코딩할 수 있지만이 매개 변수 특성이 쉽고 일치 작업을 게 만들기 위해 제공 됩니다.       단일 WMI 클래스를 사용할 때는 클라이언트 응용 프로그램 특수 구문을 사용 해야 합니다. 자세한 내용은 참조는 Describing MSDN online library에서 인스턴스 개체 경로 항목을 [http://www.msdn.com](http://www.msdn.com/)합니다."
   example:
   - "The following code snippet demonstrates how to use the Singleton parameter to indicate that a C# class corresponds to a singleton WMI class.  \n  \n```  \n[ManagementEntity(Singleton=true)]  \npublic class SingletonSample  \n```  \n  \n For a complete, working example of a provider that implements a singleton class, see [How to: Create a Basic Decoupled Provider](http://msdn.microsoft.com/en-us/1dabd442-c1ff-40a1-bb0e-d7b3566c2300)."
   syntax:
     content: public bool Singleton { get; set; }
     return:
       type: System.Boolean
-      description: "A boolean value that is true if the class represents a singleton WMI class and false otherwise."
+      description: "그렇지 않으면 클래스가 나타내는 단일 WMI 클래스와 false 있으면 true 인 부울 값입니다."
   overload: System.Management.Instrumentation.ManagementEntityAttribute.Singleton*
   exceptions: []
   platform:

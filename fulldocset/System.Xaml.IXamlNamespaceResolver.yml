@@ -11,8 +11,8 @@ items:
   nameWithType: IXamlNamespaceResolver
   fullName: System.Xaml.IXamlNamespaceResolver
   type: Interface
-  summary: "Describes a service that can return a XAML namespace that is based on its prefix as it is mapped in XAML markup."
-  remarks: "Type converters and markup extensions can query for IXamlNamespaceResolver as a service on the service context that is provided by a XAML object writer, when the XAML object writer invokes value conversion behavior. For more information, see [Type Converters and Markup Extensions for XAML](~/add/includes/ajax-current-ext-md.md) and [Service Contexts Available to Type Converters and Markup Extensions](~/add/includes/ajax-current-ext-md.md).      ## WPF Usage Notes    This interface is also implemented as part of the WPF XAML implementation in the <xref:System.Windows.Markup.XmlnsDictionary> class. <xref:System.Windows.Markup.XmlnsDictionary> stores XAML namespace information and interacts with XAML processors to forward that information to the service context through the same <xref:System.Windows.Markup.IXamlTypeResolver> interface."
+  summary: "XAML 태그에 매핑된 대로 접두사에 따라 XAML 네임 스페이스를 반환할 수 있는 서비스에 설명 합니다."
+  remarks: "형식 변환기 및 태그 확장은 XAML 개체 작성기 값 변환 동작을 호출 하는 경우 XAML 개체 작성기에서 제공 하는 서비스 컨텍스트에 서비스로 IXamlNamespaceResolver에 쿼리할 수 있습니다. 자세한 내용은 참조 [형식 변환기 및 XAML 태그 확장명](~/add/includes/ajax-current-ext-md.md) 및 [형식 변환기 또는 태그 확장 서비스 컨텍스트에 사용할 수 있는](~/add/includes/ajax-current-ext-md.md)합니다.      ## WPF 사용이 메모 인터페이스 <xref:System.Windows.Markup.XmlnsDictionary>클래스</xref:System.Windows.Markup.XmlnsDictionary> 에서 WPF XAML 구현과의 일부분으로도 구현 됩니다. <xref:System.Windows.Markup.XmlnsDictionary>XAML 네임 스페이스 정보를 저장 하 고 해당 정보를 통해 동일한 서비스 컨텍스트를 전달 하는 XAML 프로세서와 상호 작용 <xref:System.Windows.Markup.IXamlTypeResolver>인터페이스.</xref:System.Windows.Markup.IXamlTypeResolver></xref:System.Windows.Markup.XmlnsDictionary>"
   syntax:
     content: public interface IXamlNamespaceResolver
   implements: []
@@ -30,16 +30,16 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Retrieves a XAML namespace identifier for the specified prefix string."
+  summary: "지정 된 접두사 문자열에 대 한 XAML 네임 스페이스 식별자를 검색합니다."
   syntax:
     content: public string GetNamespace (string prefix);
     parameters:
     - id: prefix
       type: System.String
-      description: "The prefix for which to retrieve the XAML namespace information."
+      description: "XAML 네임 스페이스 정보를 검색할 접두사입니다."
     return:
       type: System.String
-      description: "The requested XAML namespace identifier, as a string."
+      description: "요청 된 XAML 네임 스페이스 식별자, 문자열입니다."
   overload: System.Xaml.IXamlNamespaceResolver.GetNamespace*
   exceptions: []
   platform:
@@ -56,13 +56,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Returns all the possible prefix-to-XAML namespace mappings (<xref href=&quot;System.Xaml.NamespaceDeclaration&quot;></xref> values) that are available in the active XAML schema context."
+  summary: "모든 가능한 접두사와 XAML 네임 스페이스 매핑을 반환 (<xref href=&quot;System.Xaml.NamespaceDeclaration&quot;> </xref> 값)는 활성 XAML 스키마 컨텍스트와에서 사용할 수 있습니다."
   syntax:
     content: public System.Collections.Generic.IEnumerable<System.Xaml.NamespaceDeclaration> GetNamespacePrefixes ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.Xaml.NamespaceDeclaration}
-      description: "An enumerable set of <xref href=&quot;System.Xaml.NamespaceDeclaration&quot;></xref> values. To get all the prefix strings, get the &lt;xref:System.Xaml.NamespaceDeclaration.Prefix%2A?displayProperty=fullName&gt; value from each value in the returned set. To get prefixes for specific XAML namespaces, process any return value that has the desired <xref:System.Xaml.NamespaceDeclaration.Namespace*> value."
+      description: "열거 가능한 집합 <xref href=&quot;System.Xaml.NamespaceDeclaration&quot;> </xref> 값입니다. 모든 접두사 문자열을 가져오려면는 &lt;xref:System.Xaml.NamespaceDeclaration.Prefix%2A?displayProperty=fullName&gt; 반환 된 집합의 각 값의 값입니다. 특정 XAML 네임 스페이스에 대 한 접두사를 가져오려는 원하는 하는 모든 반환 값을 처리 <xref:System.Xaml.NamespaceDeclaration.Namespace*>값.</xref:System.Xaml.NamespaceDeclaration.Namespace*>"
   overload: System.Xaml.IXamlNamespaceResolver.GetNamespacePrefixes*
   exceptions: []
   platform:

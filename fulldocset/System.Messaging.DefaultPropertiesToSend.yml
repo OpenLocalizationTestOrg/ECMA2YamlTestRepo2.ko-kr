@@ -29,8 +29,8 @@ items:
   nameWithType: DefaultPropertiesToSend
   fullName: System.Messaging.DefaultPropertiesToSend
   type: Class
-  summary: "Specifies the default property values that will be used when sending objects other than <xref href=&quot;System.Messaging.Message&quot;></xref> instances to a message queue."
-  remarks: "You can set default values on selected properties for messages sent to a <xref:System.Messaging.MessageQueue>. DefaultPropertiesToSend is used to specify default property values of the message being sent when objects other than <xref:System.Messaging.Message> instances are sent to a queue, for example, the string argument passed into the <xref:System.Messaging.MessageQueue.Send%2A> method in the code fragment, `myMessageQueue.Send(&quot;hello&quot;)`. The <xref:System.Messaging.Message> class has corresponding, identically named properties to those in DefaultPropertiesToSend that provide the values when sending a <xref:System.Messaging.Message> instance specifically. Even if you have specified <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> for a queue, sending a <xref:System.Messaging.Message> object to that queue will cause the values for the identically named <xref:System.Messaging.Message> properties to override the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> values.       Properties that you do not set explicitly default to the values specified by the constructor, <xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A>.       For a list of initial property values for an instance of DefaultPropertiesToSend, see the DefaultPropertiesToSend constructor."
+  summary: "이외의 개체를 보낼 때 사용할 수 있는 기본 속성 값을 지정 <xref href=&quot;System.Messaging.Message&quot;> </xref> 를 메시지 큐 인스턴스."
+  remarks: "에 <xref:System.Messaging.MessageQueue>.</xref:System.Messaging.MessageQueue> 에 전송 된 메시지에 대 한 선택한 속성에 기본값을 설정할 수 있습니다. DefaultPropertiesToSend의 기본 속성 값을 지정 하는 데 사용 됩니다 일 때 보낼 메시지 개체 포인터는 <xref:System.Messaging.Message>문자열 인수에 전달 하는 예를 들어, 인스턴스는 큐로 보내집니다는 <xref:System.Messaging.MessageQueue.Send%2A>메서드 코드 조각에 `myMessageQueue.Send(&quot;hello&quot;)`.</xref:System.Messaging.MessageQueue.Send%2A> </xref:System.Messaging.Message> <xref:System.Messaging.Message>속성과 DefaultPropertiesToSend에서 제공 하는 속성 값을 보낼 때 동일한 이름의 클래스에는 <xref:System.Messaging.Message>특히 인스턴스.</xref:System.Messaging.Message> </xref:System.Messaging.Message> 사용자가 지정한 경우에 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>큐에 대 한 보내기는 <xref:System.Messaging.Message>개체를 해당 큐로 동일 하 게 명명에 대 한 값을 하면 <xref:System.Messaging.Message>큐의 재정의 하는 속성 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A>값.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> </xref:System.Messaging.Message> </xref:System.Messaging.Message> </xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>       설정 하지 않으면 명시적으로 기본 <xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A>.</xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A> 생성자에 의해 지정 된 값에 있는 속성       DefaultPropertiesToSend의 인스턴스에 대 한 초기 속성 값 목록은 DefaultPropertiesToSend 생성자를 참조 하십시오."
   example:
   - "The following code example uses the priority of a message to determine default properties to send for the message.  \n  \n [!code-cpp[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/cpp/t-system.messaging.defau_1.cpp)]\n [!code-cs[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/csharp/t-system.messaging.defau_1.cs)]\n [!code-vb[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/visualbasic/t-system.messaging.defau_1.vb)]"
   syntax:
@@ -56,8 +56,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.DefaultPropertiesToSend&quot;></xref> class."
-  remarks: "You can create a new instance of <xref:System.Messaging.DefaultPropertiesToSend> to define default property values to associate with objects sent to a queue that are not of type <xref:System.Messaging.Message>. When working with <xref:System.Messaging.MessageQueue> objects, a <xref:System.Messaging.DefaultPropertiesToSend> instance is created for you and associated with the <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> member of the <xref:System.Messaging.MessageQueue>.       There are two ways to define a queue&quot;s default properties to send, as shown in the following C# code. You can set values for this instance of <xref:System.Messaging.DefaultPropertiesToSend> and associate it with the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> property:      ```   DefaultPropertiesToSend myDefaultProperties = new DefaultPropertiesToSend();     // Set default values for the properties.     myDefaultProperties.Label = &quot;myLabel&quot;;     myDefaultProperties.Recoverable = false;    ...     myMessageQueue.DefaultPropertiesToSend = myDefaultProperties;     myMessageQueue.Send(&quot;hello&quot;);   ```       Or, you can individually assign values to the <xref:System.Messaging.MessageQueue> instance&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> property directly:      ```   myMessageQueue.DefaultPropertiesToSend.Label = &quot;myLabel&quot;;     myMessageQueue.DefaultPropertiesToSend.Recoverable = false;   ...     myMessageQueue.Send(&quot;hello&quot;);   ```       If you choose the second of these options, you do not need to call the DefaultPropertiesToSend constructor explicitly. You might want to create instances of <xref:System.Messaging.DefaultPropertiesToSend>, for example, if the properties&quot; default values depend on some criterion of the message being sent. You can create multiple <xref:System.Messaging.DefaultPropertiesToSend> instances and assign one to the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> property before sending the message to the queue.       The following table shows initial property values for an instance of <xref:System.Messaging.DefaultPropertiesToSend>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>|`AcknowledgeTypes.None`|   |<xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A>|0|   |<xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A>|`true`|   |<xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A>|`EncryptionAlgorithm.RC2`|   |<xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>|A zero-length array of bytes|   |<xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A>|`HashAlgorithm.MD5`|   |<xref:System.Messaging.DefaultPropertiesToSend.Label%2A>|An empty string (&quot;&quot;)|   |<xref:System.Messaging.DefaultPropertiesToSend.Priority%2A>|`MessagePriority.Normal`|   |<xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>|`Message.InfiniteTimeout`|   |<xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>|`Message.InfiniteTimeout`|   |<xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A>|`false`|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Messaging.DefaultPropertiesToSend&quot;> </xref> 클래스입니다."
+  remarks: "<xref:System.Messaging.DefaultPropertiesToSend> <xref:System.Messaging.Message>.</xref:System.Messaging.Message> 형식의 하지 않은 큐에 전송 하는 개체와 연결할 기본 속성 값을 정의할 수</xref:System.Messaging.DefaultPropertiesToSend> 의 새 인스턴스를 만들 수 있습니다. <xref:System.Messaging.MessageQueue>한 <xref:System.Messaging.DefaultPropertiesToSend>인스턴스가 생성 되 고 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>있는 <xref:System.Messaging.MessageQueue>.</xref:System.Messaging.MessageQueue> 의 멤버</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> 와 연결 된</xref:System.Messaging.DefaultPropertiesToSend> 개체</xref:System.Messaging.MessageQueue> 와 작업 하는 경우       다음 C# 코드에 나와 있는 것 처럼, 보내려고 큐의 기본 속성을 정의 하는 방법은 두 가지가 있습니다. 이 인스턴스에 대 한 값을 설정할 수 <xref:System.Messaging.DefaultPropertiesToSend>는 큐와 연결 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>속성: ```   DefaultPropertiesToSend myDefaultProperties = new DefaultPropertiesToSend();     // Set default values for the properties.     myDefaultProperties.Label = &quot;myLabel&quot;;     myDefaultProperties.Recoverable = false;    ...     myMessageQueue.DefaultPropertiesToSend = myDefaultProperties;     myMessageQueue.Send(&quot;hello&quot;);   ``` 또는 값을 개별적으로 할당할 수 있습니다는 <xref:System.Messaging.MessageQueue>인스턴스의 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A>속성을 직접: ```   myMessageQueue.DefaultPropertiesToSend.Label = &quot;myLabel&quot;;     myMessageQueue.DefaultPropertiesToSend.Recoverable = false;   ...     myMessageQueue.Send(&quot;hello&quot;);   ``` 두 번째이 옵션을 선택 하면 DefaultPropertiesToSend 생성자를 명시적으로 호출 필요가 없습니다.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> </xref:System.Messaging.MessageQueue> </xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> </xref:System.Messaging.DefaultPropertiesToSend> 인스턴스를 만들 수도 <xref:System.Messaging.DefaultPropertiesToSend>예를 들어, 보내는 메시지의 일부 조건에 종속 된 속성의 기본값이 있는지.</xref:System.Messaging.DefaultPropertiesToSend> 여러 개 만들 수 있습니다 <xref:System.Messaging.DefaultPropertiesToSend>인스턴스 및 큐의 지정할 <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>큐에 메시지를 보내기 전에 속성.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> </xref:System.Messaging.DefaultPropertiesToSend>       다음 표에서 <xref:System.Messaging.DefaultPropertiesToSend>안내 하십시오.</xref:System.Messaging.DefaultPropertiesToSend> 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>| `AcknowledgeTypes.None`|   | <xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A>|0|   | <xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A>| `true`|   | <xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A>| `EncryptionAlgorithm.RC2`|   | <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>| 바이트 길이가&0; 인 배열을 |   | <xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A>| `HashAlgorithm.MD5`|   | <xref:System.Messaging.DefaultPropertiesToSend.Label%2A>| 빈 문자열 (&quot;&quot;) |   | <xref:System.Messaging.DefaultPropertiesToSend.Priority%2A>| `MessagePriority.Normal`|   | <xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>| `Message.InfiniteTimeout`|   | <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>| `Message.InfiniteTimeout`|   | <xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A>| `false`|</xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A></xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A></xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A></xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A></xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A></xref:System.Messaging.DefaultPropertiesToSend.Priority%2A></xref:System.Messaging.DefaultPropertiesToSend.Label%2A></xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A></xref:System.Messaging.DefaultPropertiesToSend.Extension%2A></xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A></xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A></xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A></xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>"
   syntax:
     content: public DefaultPropertiesToSend ();
     parameters: []
@@ -77,13 +77,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the type of acknowledgement message to be returned to the sending application."
-  remarks: "The AcknowledgeType property specifies the type of acknowledgment messages to return to the sending application. For example, set the AcknowledgeType property to request notification when a message reaches its destination, when it is retrieved, or whether a time-out has prevented the message from reaching or being retrieved from the destination queue."
+  summary: "보내는 응용 프로그램에 반환할 승인 메시지 유형을 가져오거나 설정 합니다."
+  remarks: "AcknowledgeType 속성에는 보내는 응용 프로그램에 반환할 승인 메시지의 형식을 지정 합니다. 예를 들어 시간 제한에 도달 또는 대상 큐에서 검색 하 고 메시지 인해 여부 또는 메시지를 검색할 때 대상에 도달 하면 알림을 요청할 수 AcknowledgeType 속성을 설정 합니다."
   syntax:
     content: public System.Messaging.AcknowledgeTypes AcknowledgeType { get; set; }
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "One of the <xref href=&quot;System.Messaging.AcknowledgeTypes&quot;></xref> enumeration values. This value is used to determine the type of acknowledgment messages the system posts in the administration queue and when acknowledgments are returned to the sending application. The default is <xref uid=&quot;langword_csharp_AcknowledgeTypes.None&quot; name=&quot;AcknowledgeTypes.None&quot; href=&quot;&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Messaging.AcknowledgeTypes&quot;> </xref> 열거형 값입니다. 이 값은 시스템에서는 관리 큐에 게시 하 고 승인을 보내는 응용 프로그램으로 반환 되는 경우 승인 메시지의 형식을 사용 합니다. 기본값은 <xref uid=&quot;langword_csharp_AcknowledgeTypes.None&quot; name=&quot;AcknowledgeTypes.None&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.AcknowledgeType*
   exceptions: []
   platform:
@@ -100,13 +100,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the queue that receives acknowledgement messages generated by Message Queuing."
-  remarks: "The queue specified in the AdministrationQueue property can be any non-transactional queue. The acknowledgment messages sent to the administration queue can indicate whether or not the original message reached its destination queue, and whether or not it was removed from the queue.       When the <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property has any value other than `None`, the sending application must specify the queue to be used as the administration queue."
+  summary: "메시지 큐에서 생성 하는 승인 메시지를 받는 큐를 가져오거나 설정 합니다."
+  remarks: "AdministrationQueue 속성에 지정 된 큐는 비트랜잭션 큐를 수 있습니다. 관리 큐에 보낸 승인 메시지 원본 메시지가 대상 큐에 도달 하면 여부 및 메시지가 큐에서 제거 되었는지 여부를 나타낼 수 있습니다.       경우는 <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>속성 이외의 모든 값을 가지 `None`, 보내는 응용 프로그램에서 관리 큐로 사용할 큐를 지정 해야 합니다.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>"
   syntax:
     content: public System.Messaging.MessageQueue AdministrationQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The <xref href=&quot;System.Messaging.MessageQueue&quot;></xref> that specifies the administration queue used for system-generated acknowledgment messages. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Messaging.MessageQueue&quot;> </xref> 시스템 생성 승인 메시지에 사용 되는 관리 큐를 지정 하는 합니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.AdministrationQueue*
   exceptions: []
   platform:
@@ -123,13 +123,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets additional, application-specific information."
-  remarks: "The AppSpecific property contains additional, application-specific information that can be used to organize different types of messages, for example, using application-specific indexes. It is the responsibility of the application to interpret AppSpecific information.       Where possible, message data should be included in the body of the message rather than in the AppSpecific property.       When working with foreign queues, use the <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> property to specify non-Message Queuing message properties. As with AppSpecific, it is the responsibility of the application to understand the content of the <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> property."
+  summary: "응용 프로그램 관련 추가 정보를 가져오거나 설정 합니다."
+  remarks: "AppSpecific 속성 추가 정보가 포함 되어 응용 프로그램 관련은 서로 다른 형식의 메시지를 구성 하는 데 사용할 수 있는 예를 들어 응용 프로그램 관련 인덱스를 사용 합니다. 것은 AppSpecific 정보를 해석 하는 응용 프로그램의 책임입니다.       가능한 경우, 메시지 데이터 AppSpecific 속성 아닌 메시지의 본문에 포함 되어야 합니다.       사용 하 여 외부 큐를 사용할 때의 <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>속성을 통해 메시지 큐가 아닌 메시지 속성을 지정 합니다.</xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> 와 마찬가지로 AppSpecific의 내용을 이해 하는 응용 프로그램에서 수행 된 <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>속성.</xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>"
   syntax:
     content: public int AppSpecific { get; set; }
     return:
       type: System.Int32
-      description: "Information specific to the application. The default is 0."
+      description: "응용 프로그램 관련 정보입니다. 기본값은 0입니다."
   overload: System.Messaging.DefaultPropertiesToSend.AppSpecific*
   exceptions: []
   platform:
@@ -146,13 +146,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the sender ID should be attached to the message."
-  remarks: "The sender ID is an array of bytes that represents the identifier of the sending user. The sender ID is set by Message Queuing and is used by the receiving Queue Manager to verify whether the sender has access rights to a queue. The sender ID is only trustworthy if the message was authenticated when it reached the destination queue.       When the sender ID is not attached to the message, the sending application is indicating that Message Queuing should not validate the message&quot;s sender when the message is sent to the destination queue. If the destination queue only accepts authenticated messages, and either <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A> or AttachSenderId is `false`, the message will be rejected when it reaches the queue."
+  summary: "보낸 사람 ID를 메시지에 연결될지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "보낸 사람 ID가 보내는 사용자의 식별자를 나타내는 바이트 배열입니다. 보낸 사람 ID는 메시지 큐에서 설정 되 고 보낸 사람에는 큐에 액세스 권한이 있는지 여부를 확인 하려면 수신 큐 관리자에서 사용 됩니다. 보낸 사람 ID은 메시지가 대상 큐에 도달 했을 때 인증 된 경우에 신뢰할 수만 있습니다.       보낸 사람 ID는 메시지에 연결 되어 있지 않고, 보내는 응용 프로그램 지정 되었음이 표시 되는 메시지 큐을 확인 하지 않아야 메시지의 보낸 사람에 게 대상 큐로 메시지를 보낼 때. 대상 큐는 인증 된 메시지 및 중 하나에 허용 하는 경우 <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>AttachSenderId 아니거나 `false`, 큐에 도달 하면 메시지가 거부 됩니다.</xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>"
   syntax:
     content: public bool AttachSenderId { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if sender ID should be attached to the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>보낸 사람 ID 메시지;에 연결 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.AttachSenderId*
   exceptions: []
   platform:
@@ -169,13 +169,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the encryption algorithm used to encrypt the body of a private message."
-  remarks: "If a message is private, it is encrypted before it is sent and is decrypted when it is received. The EncryptionAlgorithm property specifies the algorithm used to encrypt the message body of a private message.       A queue can require that incoming messages be encrypted. If a non-encrypted (non-private) message is sent to a queue that only accepts private messages, or if a private message is sent to a queue that only accepts non-private messages, the message is rejected by the queue. The sending application can request a negative acknowledgment message be returned to the sending application if a message was rejected."
+  summary: "개인 메시지의 본문을 암호화 하는 데 사용 되는 암호화 알고리즘을 가져오거나 설정 합니다."
+  remarks: "개인 메시지의 경우 전송 되 고 수신 될 때 암호를 해독 하기 전에 암호화 됩니다. EncryptionAlgorithm 속성 개인 메시지의 메시지 본문을 암호화 하는 데 사용 하는 알고리즘을 지정 합니다.       큐에서는 들어오는 메시지를 암호화할 수 있습니다. 암호화 되지 않은 (private이 아닌) 메시지를 개인 메시지를 허용 하는 큐 또는 개인 메시지만 private이 아닌 메시지를 수락 하는 큐에 전송 된 경우 메시지 큐에서 거부 됩니다. 보내는 응용 프로그램은 메시지가 거부 된 경우 부정 승인 메시지는 보내는 응용 프로그램 반환을 요청할 수 있습니다."
   syntax:
     content: public System.Messaging.EncryptionAlgorithm EncryptionAlgorithm { get; set; }
     return:
       type: System.Messaging.EncryptionAlgorithm
-      description: "One of the <xref href=&quot;System.Messaging.EncryptionAlgorithm&quot;></xref> enumeration values. The default is <xref uid=&quot;langword_csharp_RC2&quot; name=&quot;RC2&quot; href=&quot;&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Messaging.EncryptionAlgorithm&quot;> </xref> 열거형 값입니다. 기본값은 <xref uid=&quot;langword_csharp_RC2&quot; name=&quot;RC2&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm*
   exceptions: []
   platform:
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets additional information associated with the message."
-  remarks: "The Extension property provides for additional application-defined information that is associated with the message, such as a large binary object. It is the responsibility of the receiving application to interpret the contents of the Extension.       Where possible, message data should be included in the body of the message rather than in the extension.       When working with foreign queues, use the Extension property to specify non-Message Queuing message properties.       A foreign queue exists in a queuing system other than Microsoft Message Queuing. Microsoft Message Queuing communicates with such queues through a connector application."
+  summary: "메시지와 관련 된 추가 정보를 가져오거나 설정 합니다."
+  remarks: "확장 속성 큰 이진 개체와 같은 메시지와 연결 된 추가 응용 프로그램 정의 정보를 제공 합니다. 확장의 내용을 해석 하는 수신 응용 프로그램의 작업은       가능한 경우, 메시지 데이터는 확장이 아닌 메시지의 본문에 포함 되어야 합니다.       외부 큐를 사용할 때 확장 속성을 사용 하 여 메시지 큐가 아닌 메시지 속성을 지정 합니다.       외부 큐 Microsoft 메시지 큐가 아닌 큐 시스템에 존재합니다. Microsoft 메시지 큐는 커넥터 응용 프로그램을 통해 이러한 큐와 통신합니다."
   syntax:
     content: public byte[] Extension { get; set; }
     return:
       type: System.Byte[]
-      description: "An array of bytes that provides additional, application-defined information associated with the message. The default is a zero-length array."
+      description: "메시지와 관련 된 응용 프로그램 정의 추가 정보를 제공 하는 바이트 배열입니다. 기본값은 빈 배열입니다."
   overload: System.Messaging.DefaultPropertiesToSend.Extension*
   exceptions: []
   platform:
@@ -215,13 +215,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the hashing algorithm used when authenticating messages or creating a digital signature for a message."
-  remarks: "The HashAlgorithm property identifies the hashing algorithm Message Queuing uses when authenticating messages or when creating a digital signature for a message.       Message Queuing on the source computer uses the hashing algorithm when creating a digital signature for a message. The target Queue Manager then uses the same hashing algorithm to authenticate the message when it is received."
+  summary: "메시지를 인증할 때 사용 되는 알고리즘에 해시 또는 메시지에 대 한 디지털 서명을 만드는 값을 가져오거나 설정 합니다."
+  remarks: "HashAlgorithm 속성 해시 알고리즘을 사용 하 여 메시지를 인증 하거나 메시지에 대 한 디지털 서명을 만들 때 메시지 큐를 식별 합니다.       원본 컴퓨터의 메시지 큐는 메시지에 대 한 디지털 서명을 만들 때 해시 알고리즘을 사용 합니다. 대상 큐 관리자는 다음 수신 될 때 메시지를 인증 하 동일한 해시 알고리즘을 사용 합니다."
   syntax:
     content: public System.Messaging.HashAlgorithm HashAlgorithm { get; set; }
     return:
       type: System.Messaging.HashAlgorithm
-      description: "One of the <xref href=&quot;System.Messaging.HashAlgorithm&quot;></xref> enumeration values. The default is <xref uid=&quot;langword_csharp_MD5&quot; name=&quot;MD5&quot; href=&quot;&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Messaging.HashAlgorithm&quot;> </xref> 열거형 값입니다. 기본값은 <xref uid=&quot;langword_csharp_MD5&quot; name=&quot;MD5&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.HashAlgorithm*
   exceptions: []
   platform:
@@ -238,13 +238,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets an application-defined string that describes the message."
-  remarks: "A message label can be used for display purposes, for example, or to selectively process messages based on the label value. The maximum length for a message label is 249 Unicode characters. The label does not need to be unique across messages.       Message queue and message labels represent an application-defined value that can help to identify the queue or message in human-readable terms. It is the responsibility of the application to interpret label contents; they have no intrinsic meaning to the Message Queuing application."
+  summary: "메시지를 설명 하는 응용 프로그램 정의 문자열을 가져오거나 설정 합니다."
+  remarks: "메시지 레이블에 예를 들어 또는 선택적으로 메시지를 처리 하는 레이블 값에 따라 표시를 위해 사용할 수 있습니다. 메시지 레이블의 최대 길이 249 유니코드 문자입니다. 레이블을은 메시지에서 고유할 필요는 없습니다.       메시지 큐와 메시지 레이블은 읽을 측면에서 큐 또는 메시지를 식별 하는 데 도움이 되는 응용 프로그램 정의 값을 나타냅니다. 것은; 레이블 내용을 해석 하는 응용 프로그램의 책임 메시지 큐 응용 프로그램에 내포 된 의미가 없는 갖습니다."
   syntax:
     content: public string Label { get; set; }
     return:
       type: System.String
-      description: "The label of the message. The default is an empty string (&quot;&quot;)."
+      description: "메시지의 레이블입니다. 기본값은 빈 문자열 (&quot;&quot;)."
   overload: System.Messaging.DefaultPropertiesToSend.Label*
   exceptions: []
   platform:
@@ -261,13 +261,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the message priority, which is used to determine where the message is placed in the queue."
-  remarks: "The Priority property affects how Message Queuing handles the message while it is en route, as well as where the message is placed in the queue when it reaches its destination. Higher priority messages are given preference during routing and inserted toward the front of the queue. Messages with the same priority are placed in the queue according to their arrival time.       Message priority can only be set meaningfully for non-transactional messages. The priority for transactional messages is automatically set to `Lowest`, which causes transactional message priority to be ignored."
+  summary: "메시지가 큐에 배치 되는 위치를 결정 하는 데 사용 되는 메시지 우선 순위를 가져오거나 설정 합니다."
+  remarks: "Priority 속성에 메시지 큐 큐에 메시지를 처리 하는 방법 뿐만 아니라 대상에 도달 하는 경우 메시지가 큐에 배치 되는 경우 영향을 줍니다. 높은 우선 순위의 메시지가 라우팅 중 우선 적용 되며 큐의 앞 부분에 삽입 됩니다. 우선 순위가 같은 메시지는 도착 시간에 따라 큐에 배치 됩니다.       메시지 우선 순위가 트랜잭션이 아닌 메시지에 대 한 의미에 따라 설정할 수만 있습니다. 트랜잭션 메시지의 우선 순위 자동으로 설정 됩니다 `Lowest`, 이르게 우선 무시 됩니다."
   syntax:
     content: public System.Messaging.MessagePriority Priority { get; set; }
     return:
       type: System.Messaging.MessagePriority
-      description: "One of the <xref href=&quot;System.Messaging.MessagePriority&quot;></xref> enumeration values that represents the priority level of a non-transactional message. The default is <xref uid=&quot;langword_csharp_Normal&quot; name=&quot;Normal&quot; href=&quot;&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Messaging.MessagePriority&quot;> </xref> 트랜잭션이 아닌 메시지의 우선 순위 수준을 나타내는 열거형 값입니다. 기본값은 <xref uid=&quot;langword_csharp_Normal&quot; name=&quot;Normal&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.Priority*
   exceptions: []
   platform:
@@ -284,13 +284,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the message is guaranteed to be delivered in the event of a computer failure or network problem."
-  remarks: "The Recoverable property indicates whether delivery of a message is guaranteed, even if a computer crashes while the message is en route to the destination queue.       If delivery of a message is guaranteed, the message is stored locally at every step along the route until the message is successfully forwarded to the next computer. Setting Recoverable to `true` on <xref:System.Messaging.DefaultPropertiesToSend> could affect the throughput.       If the message is transactional, Message Queuing automatically treats the message as recoverable, regardless of whether Recoverable is set to `true`."
+  summary: "메시지가 컴퓨터 장애나 네트워크 문제가 발생할 때 배달 보장 되는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "복구 가능한 속성은 대상 큐에 메시지는 동안 컴퓨터가 충돌 하는 경우에 메시지를 배달 보장 되는지 여부를 나타냅니다.       메시지 배달 보장 되는 경우 메시지는 로컬에 저장 경로 따라 모든 단계 다음 컴퓨터를 성공적으로 전달 될 때까지. 복구할 수 있는 설정 `true` 에 <xref:System.Messaging.DefaultPropertiesToSend>처리량에 영향을 줄 수 있습니다.</xref:System.Messaging.DefaultPropertiesToSend>       트랜잭션 된 메시지의 경우 메시지 큐 메시지 복구할 수 있는 설정 되어 있는지 여부에 관계 없이 복구할 수 있는 `true`합니다."
   syntax:
     content: public bool Recoverable { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message is guaranteed delivery by saving it to disk while en route; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if delivery is not assured. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지를 보내는 동안 디스크에 저장 하 여 메시지의 배달 보장 되는 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 배달이 보장 되지 경우. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.Recoverable*
   exceptions: []
   platform:
@@ -307,13 +307,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the queue that receives application-generated response messages."
-  remarks: "The ResponseQueue property identifies the queue that receives application-generated response messages that are returned to the sending application by the receiving application. Response queues are specified by the sending application when the application sends its messages. Any available queue can be specified as a response queue.       Messages returned to the response queue are application-specific. The application must define what is in the messages as well as what is to be done when a message is received."
+  summary: "응용 프로그램 생성 응답 메시지를 받는 큐를 가져오거나 설정 합니다."
+  remarks: "ResponseQueue 속성에는 수신 응용 프로그램에서 보내는 응용 프로그램에 반환 되는 응용 프로그램 생성 응답 메시지를 받는 큐를 식별 합니다. 응용 프로그램은 메시지를 보낼 때 응답 큐는 보내는 응용 프로그램이 지정 됩니다. 사용 가능한 모든 큐는 응답 큐로 지정할 수 있습니다.       응답 큐로 반환 되는 메시지는 응용 프로그램 마다 다릅니다. 응용 프로그램 메시지에 포함 된 내용으로 정의 해야 합니다는 메시지를 받을 때 수행 해야 하는 작업입니다."
   syntax:
     content: public System.Messaging.MessageQueue ResponseQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The <xref href=&quot;System.Messaging.MessageQueue&quot;></xref> to which application-generated response messages are returned. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Messaging.MessageQueue&quot;> </xref> 어떤 응용 프로그램 생성 응답 메시지가 반환 됩니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.ResponseQueue*
   exceptions: []
   platform:
@@ -330,13 +330,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the time limit for the message to be retrieved from the destination queue."
-  remarks: "The TimeToBeReceived property specifies the total time in seconds for a sent message to be received from the destination queue. This time limit includes the time spent getting to the destination queue, plus the time spent waiting in the queue before the message is retrieved by an application.      > [!CAUTION] >  When using dependent client computers, synchronize the clock on the client computer with the clock on the server running Message Queuing. If the two clocks are not synchronized, you might see unpredictable behavior when sending messages when TimeToBeReceived is not <xref:System.Messaging.Message.InfiniteTimeout>.       If the TimeToBeReceived interval expires before the message is removed from the queue, the Message Queuing application discards the message. The message is either sent to the dead-letter queue, if the message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> property is set to `true`, or ignored, if <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> is `false`. If TimeToBeReceived is less than <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>, TimeToBeReceived takes precedence.       The message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property can be set to request that Message Queuing send a negative acknowledgment message back to the sending application if the message is not retrieved before the timer expires.      > [!CAUTION] >  If you have specified to receive <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A> negative acknowledgments, you will not receive them when the value of TimeToBeReceived is less than the value of <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>.       When several messages are sent in a transaction, Message Queuing uses the value of the first message&quot;s TimeToBeReceived property."
+  summary: "대상 큐에서 검색할 메시지에 대 한 제한 시간을 가져오거나 설정 합니다."
+  remarks: "TimeToBeReceived 속성 (초)를 대상 큐 로부터 받는 보낸된 메시지에 대 한 총 시간을 지정 합니다. 대상 큐에 도달 하는 데 걸린 시간을 포함 하는이 제한 시간 및 응용 프로그램에서 메시지를 검색 하기 전에 큐에서 대기를 소요 된 시간입니다.      > [!CAUTION] > 종속 클라이언트 컴퓨터를 사용할 때 메시지 큐를 실행 하는 서버에 있는 시계가와 클라이언트 컴퓨터의 시계가 동기화 합니다. 두 시계 동기화 되지 않은 경우 TimeToBeReceived 없을 때 메시지를 보낼 때 예기치 않은 동작이 발생할 수 있습니다 <xref:System.Messaging.Message.InfiniteTimeout>.</xref:System.Messaging.Message.InfiniteTimeout>       TimeToBeReceived 간격에는 메시지 큐에서 제거 되기 전에 만료 되 면 메시지 큐 응용 프로그램에서 메시지를 삭제 합니다. 메시지는 배달 못 한 편지 큐로 보내지거나 메시지의 <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>속성이 `true`, 무시 되는 경우 또는 <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>은 `false`.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> </xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> TimeToBeReceived 경우 보다 작은 <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>, TimeToBeReceived 우선적으로 적용 합니다.</xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>       메시지의 <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>타이머가 만료 되기 전에 메시지가 검색 되지 않으면 메시지 큐는 보내는 응용 프로그램 부정 승인 메시지를 다시 보내도록로 속성을 설정할 수 있습니다.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>      > [!CAUTION] > <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>부정 승인을 받지 못합니다 timetobereceived 값 <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>.</xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A> 의 값 보다 작으면 때</xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A> 수신 하도록 지정한 경우       트랜잭션에서 여러 개의 메시지를 보내면 메시지 큐 첫 번째 메시지의 TimeToBeReceived 속성의 값을 사용 합니다."
   syntax:
     content: public TimeSpan TimeToBeReceived { get; set; }
     return:
       type: System.TimeSpan
-      description: "The total time, in seconds, for a sent message to be received from the destination queue. The default is <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;></xref>."
+      description: "(초)를 대상 큐 로부터 받는 보낸된 메시지에 대 한 총 시간입니다. 기본값은 <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.TimeToBeReceived*
   exceptions: []
   platform:
@@ -353,13 +353,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the time limit for the message to reach the queue."
-  remarks: "If the TimeToReachQueue interval expires before the message reaches its destination, the Message Queuing application discards the message. The message is either sent to the dead-letter queue, if the message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> property is set to `true`, or ignored, if <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> is `false`. If TimeToReachQueue is greater than <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>, <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A> takes precedence.       The message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property can be set to request that Message Queuing send a negative acknowledgment message back to the sending application if the message does not arrive before the timer expires.       If TimeToReachQueue is 0 seconds, Message Queuing tries once to send the message to its destination if the queue is waiting for the message. If the queue is local, the message always reaches the queue.       When several messages are sent in a transaction, Message Queuing uses the value of the first message&quot;s TimeToReachQueue property."
+  summary: "메시지 큐에 도달 하기에 대 한 제한 시간을 가져오거나 설정 합니다."
+  remarks: "메시지가 대상에 도달 하기 전에 TimeToReachQueue 간격이 만료 메시지 큐 응용 프로그램에서 메시지를 삭제 합니다. 메시지는 배달 못 한 편지 큐로 보내지거나 메시지의 <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>속성이 `true`, 무시 되는 경우 또는 <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>은 `false`.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> </xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> TimeToReachQueue 보다 큰 경우 <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>, <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>우선적으로 적용 합니다.</xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A> </xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>       메시지의 <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>메시지를 보내도록 메시지 큐는 부정 승인을 보내는 응용 프로그램에 다시 타이머가 만료 되기 전에 메시지가 도착 하지 않으면로 속성을 설정할 수 있습니다.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>       이 0 초이면 TimeToReachQueue 메시지 큐 연결을 시도 한 번 메시지에 대 한 큐 대기 하는 경우 대상에 메시지를 보내려고 합니다. 큐가 로컬 이면 메시지는 항상 큐에 도달 합니다.       트랜잭션에서 여러 개의 메시지를 보내면 메시지 큐 첫 번째 메시지의 TimeToReachQueue 속성의 값을 사용 합니다."
   syntax:
     content: public TimeSpan TimeToReachQueue { get; set; }
     return:
       type: System.TimeSpan
-      description: "The time limit in seconds for a message to reach the destination queue, from the time the message is sent. The default is <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;></xref>."
+      description: "메시지 시간에서 대상 큐에 도달 하기 위해 메시지에 대 한 초 제한 시간 전송 됩니다. 기본값은 <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.TimeToReachQueue*
   exceptions: []
   platform:
@@ -376,13 +376,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets the transaction status queue on the source computer."
-  remarks: "The TransactionStatusQueue property identifies the transaction status queue on the source computer. The property is set by Message Queuing, and is used by connector applications when retrieving transactional messages sent to a foreign queue.       A foreign queue exists in a queuing system other than Microsoft Message Queuing. Microsoft Message Queuing communicates with such queues through a connector application.       The connector application can use the transaction status queue to send acknowledgment messages back to the sending application. The transaction status queue should receive these acknowledgments even if the sending application does not request other acknowledgments."
+  summary: "원본 컴퓨터에서의 트랜잭션 상태 큐를 가져옵니다."
+  remarks: "TransactionStatusQueue 속성 원본 컴퓨터의 트랜잭션 상태 큐를 식별합니다. 속성이는 메시지 큐에서 설정 되 고 외부 큐로 보낸 트랜잭션 메시지를 검색할 때 커넥터 응용 프로그램에서 사용 됩니다.       외부 큐 Microsoft 메시지 큐가 아닌 큐 시스템에 존재합니다. Microsoft 메시지 큐는 커넥터 응용 프로그램을 통해 이러한 큐와 통신합니다.       커넥터 응용 프로그램의 트랜잭션 상태 큐를 사용 하는 승인 메시지를 보내는 응용 프로그램 다시 전송할 수 있습니다. 트랜잭션 상태 큐는 보내는 응용 프로그램에 다른 승인을 요청 하지 않을 경우에이 승인을 받아야 합니다."
   syntax:
     content: public System.Messaging.MessageQueue TransactionStatusQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The transaction status queue on the source computer, which is used for sending acknowledgement messages back to the sending application. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "보내는 응용 프로그램에 다시 확인 메시지를 보내는 데 사용 되는 원본 컴퓨터에서 트랜잭션 상태 큐입니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue*
   exceptions: []
   platform:
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the message must be authenticated before being sent."
-  remarks: "The UseAuthentication property specifies whether the message needs to be authenticated. If the sending application requests authentication, Message Queuing creates a digital signature and uses it to sign the message when it is sent and to authenticate the message when it is received.       If a message is sent to a queue that only accepts authenticated messages, the message will be rejected when it reaches the queue if UseAuthentication is set to `false`.       It is not possible to look at the properties of a message and determine whether a message failed authentication. Messages that fail authentication are discarded and are not delivered to the queue."
+  summary: "메시지 전송 되기 전에 인증 해야 하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "UseAuthentication 속성 메시지를 인증 해야 하는지 여부를 지정 합니다. 인증을 요청 하는 송신 응용 프로그램, 메시지 큐 디지털 서명을 만들어을 보낼 때 메시지에 서명 하 고 수신 될 때 메시지를 인증할 사용 합니다.       UseAuthentication로 설정 된 경우 큐에 도달 하면 메시지가 거부는 인증 된 메시지만 허용 하는 큐에 메시지를 보내면 `false`합니다.       메시지의 속성을 보고 하 고 메시지가 인증 실패 하는지 여부를 결정 하는 것이 불가능 합니다. 인증에 실패 하는 메시지는 무시 되 고 큐에 배달 되지 않습니다."
   syntax:
     content: public bool UseAuthentication { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the sending application requested authentication for the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>보내는 응용 프로그램에서 메시지에 대 한 인증을 요청 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.UseAuthentication*
   exceptions: []
   platform:
@@ -422,13 +422,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether a copy of the message that could not be delivered should be sent to a dead-letter queue."
-  remarks: "<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A> and UseDeadLetterQueue specify how Message Queuing will track a message. If UseDeadLetterQueue is `true`, then in case of delivery failure (for non-transactional messages), the message is sent to the non-transactional dead-letter queue on the computer that could not deliver the message (for example, if a message timer expires).       In the case of delivery failure for transactional messages, the message is sent to the transactional dead-letter queue on the source computer in all negative and in-doubt cases.       When you store messages in a dead-letter queue, empty the queue periodically to remove messages that are no longer needed. Messages stored in dead-letter queues count against the size quota for the computer where the queue resides. The computer quota is set by the administrator and refers to the total size allocated for storing messages on a computer, not just in a single queue.       You do not create a journal or dead-letter queue. These are both system queues that are generated by Message Queuing."
+  summary: "배달 못 한 편지 큐로 배달할 수 없는 메시지의 복사본을 보낼지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>고 UseDeadLetterQueue 메시지 큐를 메시지를 추적 하는 방법을 지정 합니다.</xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A> UseDeadLetterQueue 이면 `true`, (메시지에 대 한 비트랜잭션) 배달 오류가 발생 한 경우 (예를 들어 메시지 타이머가 만료 되는 경우) 메시지를 배달 하지 못한 컴퓨터에 대 한 비트랜잭션 배달 못 한 편지 큐로 메시지가 보내집니다.       트랜잭션 메시지를 배달 하지 못한 경우 메시지는 항상 음수 트랜잭션과 미결 원본 컴퓨터에 트랜잭션 배달 못 한 편지 큐로 전송 됩니다.       배달 못 한 편지 큐에 메시지를 저장할 때 더 이상 필요 없는 메시지를 제거 하는 정기적으로 큐를 비웁니다. 메시지 큐가 있는 컴퓨터에 대 한 크기 할당량에 대해 배달 못 한 편지 큐 수에 저장 합니다. 컴퓨터 할당량 관리자가 설정 되 고 단일 큐에서 뿐 아니라 컴퓨터에서 메시지 저장을 위해 할당 된 총 크기를 나타냅니다.       저널 또는 배달 못 한 편지 큐를 만들지 않습니다. 다음은 메시지 큐에서 생성 되는 두 시스템 큐입니다."
   syntax:
     content: public bool UseDeadLetterQueue { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if message delivery failure should result in a copy of the message being sent to a dead-letter queue; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지 배달 실패는 배달 못 한 편지 큐로 송신할 메시지의 복사본에 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue*
   exceptions: []
   platform:
@@ -445,13 +445,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether to make the message private."
-  remarks: "If a message is private, its body is encrypted before it is sent and is decrypted when it is received. To send a private message, the sending application must specify that encryption be used and, optionally, which encryption algorithm to apply.       When sending private messages, it is not necessary that your application perform the message encryption. Message Queuing can encrypt the message body for you when your application sends messages within a Microsoft Windows 2000 enterprise where there is access to the directory service. When receiving private messages, it is always the receiving Queue Manager that decrypts the message body."
+  summary: "개인 메시지를 만들 것인지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "개인 메시지의 경우 전송 되 고 수신 될 때 암호를 해독 하기 전에 해당 본문이 암호화 되어 있습니다. 개인 메시지를 보내려면 보내는 응용 프로그램에서 암호화를 사용 하도록 지정 해야 하 고, 필요에 따라 암호화 알고리즘을 적용 합니다.       개인 메시지를 보내는 경우 응용 프로그램 메시지 암호화를 수행할 필요는 없습니다. 응용 프로그램에서 Microsoft Windows 2000 엔터프라이즈 내에서 메시지를 보낼 때 큐를 메시지 본문 암호화할 수 있습니다 메시지는 디렉터리 서비스에 액세스 합니다. 개인 메시지를 받을 때 항상 메시지 본문을 해독 하는 수신 큐 관리자입니다."
   syntax:
     content: public bool UseEncryption { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to require Message Queuing to encrypt the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지 큐에서 메시지를 암호화를 요구 하도록 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.UseEncryption*
   exceptions: []
   platform:
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether a copy of the message should be kept in a machine journal on the originating computer."
-  remarks: "UseJournalQueue and <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> specify how Message Queuing will track a message. If UseJournalQueue is `true`, then at each step that a message is transmitted, a copy is kept in the computer journal on the originating computer.       The sent message will only be copied to the journal queue if the destination queue is on a remote computer. If the destination is on the local computer, the message is sent directly to the queue; there are no intermediate steps to require journaling.       When you store messages in a journal queue, empty the queue periodically to remove messages that are no longer needed. Messages stored in journal queues count against the quota for the computer where the queue resides (the computer quota is set by the administrator).       You do not create a journal or dead-letter queue. These are both system queues that are generated by Message Queuing.       Journaling can be specified by both the message and the queue. When UseJournalQueue is `true`, the message is journaled when it is sent. When <xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName> is `true`, the message is journaled when it is received."
+  summary: "원본 컴퓨터의 컴퓨터 저널에서 메시지의 복사본을 유지할지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "UseJournalQueue 및 <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>메시지 큐를 메시지를 추적 하는 방법을 지정 합니다.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> UseJournalQueue 이면 `true`, 메시지가 전송 되는 각 단계에서 복사본은 원본 컴퓨터의 컴퓨터 저널에 보관 합니다.       대상 큐가 있는 경우 원격 컴퓨터에서 보낸된 메시지가 업무 일지 큐에만 복사 됩니다. 메시지가 큐에 직접 보내집니다 대상이 로컬 컴퓨터에 있으면 저널링을 요구 하도록 중간 단계가 있습니다.       업무 일지 큐에 메시지를 저장할 때 더 이상 필요 없는 메시지를 제거 하는 정기적으로 큐를 비웁니다. 큐가 있는 컴퓨터에 대 한 할당량에 대 한 업무 일지 큐 수에 저장 된 메시지 (관리자가 컴퓨터 할당량 설정 됨).       저널 또는 배달 못 한 편지 큐를 만들지 않습니다. 다음은 메시지 큐에서 생성 되는 두 시스템 큐입니다.       메시지와 큐 모두에서 저널링을 지정할 수 있습니다. UseJournalQueue 다음과 같은 경우 `true`, 전송 될 때 메시지를 업무 일지에 복사 합니다. 때 <xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName>은 `true`를 받을 때 메시지의 저널링.</xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName>"
   syntax:
     content: public bool UseJournalQueue { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to require that a copy of a message be kept in the originating computer&quot;s machine journal after it has been successfully transmitted from the originating computer to the next step; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>그 뒤에 해당 메시지의 복사본 원래 컴퓨터의 컴퓨터 업무 일지에 보관 하도록 요청 전송한 원래 컴퓨터에서 다음 단계로; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.UseJournalQueue*
   exceptions: []
   platform:
@@ -491,13 +491,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether to trace a message as it moves toward its destination queue."
-  remarks: "The UseTracing property specifies whether to track the route of a message as it moves toward its destination queue. If `true`, a Message Queuing-generated report message is sent to a report queue each time the message passes through a Message Queuing routing server. The report queue is specified by the source Queue Manager. Report queues are not limited to Message Queuing-generated report messages. Your application-generated messages can be sent to report queues as well.       Using tracing involves setting up Active Directory and specifying a report queue for the Message Queuing enterprise. These settings are configured by the administrator."
+  summary: "대상 큐로 이동할 때 메시지를 추적할지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "UseTracing 속성 대상 큐로 이동할 때 메시지의 경로 추적 여부를 지정 합니다. 경우 `true`, 보고 메시지 큐에서 생성 된 메시지 라우팅 메시지 큐 서버를 통해 메시지가 전달 될 때마다 보고서 큐로 전송 됩니다. 보고서 큐 소스 큐 관리자에서 지정 됩니다. 보고서 큐 메시지를 메시지 큐에서 생성 된 보고 하려면 제한 되지 않습니다. 보고서 큐로 응용 프로그램에서 생성 된 메시지를 보낼 수 있습니다.       추적을 사용 하 여 Active Directory 설정 하 고 메시지 큐 엔터프라이즈에 대 한 보고서 큐를 지정 해야 합니다. 이러한 설정은 관리자가 구성 됩니다."
   syntax:
     content: public bool UseTracing { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if each intermediate step made by the original message en route to the destination queue will generate a report to be sent to the system&quot;s report queue; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>대상 큐에 전달 되는 도중에 원본 메시지를 수행한 각 중간 단계를 시스템의 보고서 큐에 보내도록 보고서를 생성 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.DefaultPropertiesToSend.UseTracing*
   exceptions: []
   platform:

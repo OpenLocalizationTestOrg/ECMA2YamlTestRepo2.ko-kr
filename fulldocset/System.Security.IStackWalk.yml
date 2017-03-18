@@ -13,8 +13,8 @@ items:
   nameWithType: IStackWalk
   fullName: System.Security.IStackWalk
   type: Interface
-  summary: "Manages the stack walk that determines whether all callers in the call stack have the required permissions to access a protected resource."
-  remarks: "Partially trusted code always presents a security risk. It can sometimes be manipulated to perform actions on behalf of malicious code that does not have permission to access a resource. In this way, malicious code can achieve higher security access than it should be allowed.       The common language runtime helps protect managed code from these attacks by running a stack walk on all calls. The stack walk requires that all code in the call stack has permission to access a protected resource. Because the code attempting the attack will always be somewhere in the call stack, it will be unable to exceed its own security permissions."
+  summary: "호출 스택의 모든 호출자가 보호 된 리소스에 액세스 하는 데 필요한 권한이 있는지 여부를 결정 하는 스택 워크를 관리 합니다."
+  remarks: "부분적으로 신뢰할 수 있는 코드는 항상 보안 위험을 표시합니다. 리소스에 액세스 권한이 있는 악의적인 코드를 대신 하 여 작업을 수행할 조작할 경우도 있습니다. 이러한 방식으로 악성 코드가 허용 되는 것 보다 더 높은 보안 액세스를 달성할 수 있습니다.       공용 언어 런타임에 대 한 모든 호출에서 스택 워크를 실행 하 여 이러한 공격 으로부터 관리 되는 코드를 보호할 수 있습니다. 스택 워크는 모든 코드가 호출 스택에 있는 보호 된 리소스에 액세스할 수 있는 권한이 필요 합니다. 공격을 시도 하는 코드에 호출 스택을 항상 있이 됩니다, 때문에 되지 것입니다는 자체 보안 권한을 초과할 수 있습니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -35,8 +35,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Asserts that the calling code can access the resource identified by the current permission object, even if callers higher in the stack have not been granted permission to access the resource."
-  remarks: "Calling Assert stops the permission check on callers higher in the call stack. Therefore, even if these callers do not have the requisite permissions, they can still access resources. An assertion is effective only if the code that calls Assert passes the security check for the permission that it is asserting.       A call to Assert is effective until the calling code returns to its caller or until a subsequent call to Assert renders the previous assertion ineffective. Also, <xref:System.Security.CodeAccessPermission.RevertAssert%2A> or <xref:System.Security.CodeAccessPermission.RevertAll%2A> removes a pending Assert.       Assert is ignored for a permission not granted because a demand for that permission will not succeed. However, if code lower on the call stack calls <xref:System.Security.IStackWalk.Demand%2A> for that permission, a <xref:System.Security.SecurityException> is thrown when the stack walk reaches the code that tried to call Assert. This happens because the code that called Assert has not been granted the permission, even though it tried to Assert it.      > [!CAUTION] >  Because calling Assert removes the requirement that all code in the call chain must be granted permission to access the specified resource, it can open up security vulnerabilities if used incorrectly or inappropriately. Therefore, it should be used with great caution."
+  summary: "스택의 상위 호출자가 리소스에 액세스할 수 있는 권한이 부여 되지 않았습니다 하는 경우에 호출 코드에서 현재 사용 권한 개체로 식별 되는 리소스를 액세스할 수 있는지를 어설션 합니다."
+  remarks: "호출 스택의 상위 호출자에 대 한 사용 권한 검사가 중지 Assert를 호출 합니다. 따라서 이러한 호출자가 필수 사용 권한을 없는 경우에 리소스 여전히 액세스할 수 있습니다. 어설션을 Assert를 호출 하는 코드 어설션하는 사용 권한에 대해 보안 검사를 통과 하는 경우에 유효 합니다.       Assert에 대 한 호출 Assert 후속 호출 이전 어설션이 비효율적인 렌더링 하거나 호출 코드의 호출자에 게 반환 될 때까지 유효 합니다. 또한 <xref:System.Security.CodeAccessPermission.RevertAssert%2A>또는 <xref:System.Security.CodeAccessPermission.RevertAll%2A>보류 중인 Assert를 제거 합니다.</xref:System.Security.CodeAccessPermission.RevertAll%2A> </xref:System.Security.CodeAccessPermission.RevertAssert%2A>       Assert 권한에 대 한 요청이 실패 합니다 부여 되지 않은 권한은 대해 무시 됩니다. 그러나 코드가 호출 스택에 낮은 호출 <xref:System.Security.IStackWalk.Demand%2A>권한에 대해는 <xref:System.Security.SecurityException>스택 워크 Assert 호출 하려고 하는 코드에 도달 하면 throw 됩니다.</xref:System.Security.SecurityException> </xref:System.Security.IStackWalk.Demand%2A> 이것은에 부여 하 려 했지만 어설션을 호출한 하는 코드에는 권한이 부여 되지 있기 때문입니다.      > [!CAUTION] > 메서드를 잘못 사용 하는 경우 보안 문제가 발생할 수 있습니다는 모든 코드 호출 체인에 지정된 된 리소스를 액세스할 수 있는 권한이 부여 되어야 하는 요구 사항을 제거 Assert를 호출 하기 때문에 있습니다. 따라서 매우 주의 해 서 사용 해야 합니다."
   syntax:
     content: public void Assert ();
     parameters: []
@@ -44,7 +44,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The calling code does not have <xref href=&quot;System.Security.Permissions.SecurityPermissionFlag&quot;></xref>."
+    description: "호출 코드에 없는 <xref href=&quot;System.Security.Permissions.SecurityPermissionFlag&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Security.IStackWalk.Demand
@@ -59,8 +59,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines at run time whether all callers in the call stack have been granted the permission specified by the current permission object."
-  remarks: "This method is typically used by secure libraries to ensure that callers have permission to access a resource. For example, a file class in a secure class library calls Demand for the necessary <xref:System.Security.Permissions.FileIOPermission> before performing a file operation requested by the caller.       The permissions of the code that calls this method are not examined; the check begins from the immediate caller of that code and proceeds up the stack. Demand succeeds only if no <xref:System.Security.SecurityException> is raised."
+  summary: "런타임 시 호출 스택의 모든 호출자에 게 현재 사용 권한 개체가 지정한 사용 권한이 부여 되었는지 여부를 결정 합니다."
+  remarks: "이 메서드는 일반적으로 호출자에 게 리소스에 액세스할 수 있는 권한이 있는지 확인 하려면 보안 라이브러리에서 사용 됩니다. 예를 들어 보안 클래스 라이브러리의 파일 클래스 호출 필요한에 대 한 수요가 <xref:System.Security.Permissions.FileIOPermission>는 호출자가 요청한 파일 작업을 수행 하기 전에.</xref:System.Security.Permissions.FileIOPermission>       이 메서드를 호출 하는 코드의 사용 권한은 검사 하지 않습니다. 검사 해당 코드의 직접 실행 호출자에서 시작 되 고 스택 위로 진행 됩니다. 요청이 없는 경우에 성공 하면 <xref:System.Security.SecurityException>발생 합니다.</xref:System.Security.SecurityException>"
   syntax:
     content: public void Demand ();
     parameters: []
@@ -68,7 +68,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A caller higher in the call stack does not have the permission specified by the current permission object.       -or-       A caller in the call stack has called <xref:System.Security.IStackWalk.Deny*> on the current permission object."
+    description: "호출 스택의 상위 호출자가 현재 사용 권한 개체가 지정한 사용 권한이 없습니다.       -또는-호출 스택의 호출자가 호출 <xref:System.Security.IStackWalk.Deny*>현재 권한 개체입니다.</xref:System.Security.IStackWalk.Deny*>"
   platform:
   - net462
 - uid: System.Security.IStackWalk.Deny
@@ -83,8 +83,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes every <xref:System.Security.IStackWalk.Demand*> for the current object that passes through the calling code to fail."
-  remarks: "This method prevents callers higher in the call stack from accessing the protected resource through the code that calls this method, even if those callers have been granted permission to access it. The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack.       Deny can limit the liability of the programmer or help prevent accidental security vulnerabilities because it helps prevent the method that calls Deny from being used to access the resource protected by the denied permission. If a method calls Deny on a permission, and if a <xref:System.Security.IStackWalk.Demand%2A> for that permission is invoked by a caller lower in the call stack, that security check will fail when it reaches the Deny.       Deny is ignored for a permission not granted because a demand for that permission will not succeed."
+  summary: "로 인해 모든 <xref:System.Security.IStackWalk.Demand*>호출 코드에 오류를 통해 전달 되는 현재 개체에 대 한.</xref:System.Security.IStackWalk.Demand*>"
+  remarks: "이 메서드는 호출 스택의 상위 호출자가 해당 호출자가 액세스할 수 있는 권한이 부여 되어 있는 경우에이 메서드를 호출 하는 코드를 통해 보호 된 리소스에 액세스 하지 못하도록 방지 합니다. 호출 스택의 호출 스택의 상위 메서드를 호출할 낮은 호출 스택에 있도록 하향식으로 일반적으로 표현 됩니다.       Deny는 프로그래머의 책임을 제한 하거나 거부에서 거부 된 권한으로 보호 되는 리소스에 액세스 하는 데 사용 되 고 호출 하는 메서드를 방지할 수 있으므로 실수로 인 한 보안 취약점을 방지할 수 있습니다. 메서드는 사용 권한에서 거부를 호출 하는 경우는 <xref:System.Security.IStackWalk.Demand%2A>Deny에 도달 하면 해당 보안 검사에서 실패에 해당 권한이 하위 호출 스택의 호출자가 호출 됩니다.</xref:System.Security.IStackWalk.Demand%2A>       거부 권한에 대 한 요청이 실패 합니다 부여 되지 않은 권한은 대해 무시 됩니다."
   syntax:
     content: public void Deny ();
     parameters: []
@@ -104,8 +104,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes every <xref:System.Security.IStackWalk.Demand*> for all objects except the current one that passes through the calling code to fail, even if code higher in the call stack has been granted permission to access other resources."
-  remarks: "PermitOnly is similar to <xref:System.Security.IStackWalk.Deny%2A>, in that both cause stack walks to fail when they would otherwise succeed. The difference is that <xref:System.Security.IStackWalk.Deny%2A> specifies permissions that will cause the stack walk to fail, but PermitOnly specifies the only permissions that do not cause the stack walk to fail. Call this method to ensure that your code can be used to access only the specified resources.       PermitOnly is ignored for a permission not granted because a demand for that permission will not succeed. However, if code lower on the call stack later calls <xref:System.Security.IStackWalk.Demand%2A> for that permission, a <xref:System.Security.SecurityException> is thrown when the stack walk reaches the code that tried to call PermitOnly. This is because the code that called PermitOnly has not been granted the permission, even though it called PermitOnly for that permission. The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack."
+  summary: "로 인해 모든 <xref:System.Security.IStackWalk.Demand*>제외 하 고 현재 호출 스택의 상위 코드에 다른 리소스에 액세스할 권한이 부여 된 경우에 호출 코드에 오류를 통해 전달 되는 모든 개체에 대 한.</xref:System.Security.IStackWalk.Demand*>"
+  remarks: "PermitOnly는 비슷합니다 <xref:System.Security.IStackWalk.Deny%2A>그렇지 않은 경우는 성공 시 작동이 실패 하도록 스택 워크 있는 상황에서,.</xref:System.Security.IStackWalk.Deny%2A> 차이점은 <xref:System.Security.IStackWalk.Deny%2A>지정 스택을 사용 하면 사용 권한을 워크 실패 하지만 PermitOnly 스택 워크 실패 하지 않게 되는 유일한 권한을 지정 합니다.</xref:System.Security.IStackWalk.Deny%2A> 코드 지정 된 리소스에만 액세스할 수 사용 될 수 있도록 하려면이 메서드를 호출 합니다.       PermitOnly는 권한에 대 한 요청이 실패 합니다 부여 되지 않은 사용 권한을 무시 됩니다. 그러나 코드에 대 한 호출에 낮은 나중 스택 하는 경우 호출 <xref:System.Security.IStackWalk.Demand%2A>권한에 대해는 <xref:System.Security.SecurityException>스택 워크 PermitOnly을 호출 하려고 하는 코드에 도달 하면 throw 됩니다.</xref:System.Security.SecurityException> </xref:System.Security.IStackWalk.Demand%2A> 해당 권한이 PermitOnly 호출 했지만 PermitOnly를 호출 하는 코드에는 권한이 부여 되지 때문입니다. 호출 스택의 호출 스택의 상위 메서드를 호출할 낮은 호출 스택에 있도록 하향식으로 일반적으로 표현 됩니다."
   syntax:
     content: public void PermitOnly ();
     parameters: []

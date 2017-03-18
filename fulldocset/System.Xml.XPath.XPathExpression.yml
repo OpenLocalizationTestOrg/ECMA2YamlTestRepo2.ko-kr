@@ -18,8 +18,8 @@ items:
   nameWithType: XPathExpression
   fullName: System.Xml.XPath.XPathExpression
   type: Class
-  summary: "Provides a typed class that represents a compiled XPath expression."
-  remarks: "This class is returned as the result of the <xref:System.Xml.XPath.XPathNavigator.Compile%2A> method of the <xref:System.Xml.XPath.XPathNavigator> class. It is a parameter to the <xref:System.Xml.XPath.XPathNavigator.Evaluate%2A>, <xref:System.Xml.XPath.XPathNavigator.Matches%2A>, <xref:System.Xml.XPath.XPathNavigator.Select%2A>, and <xref:System.Xml.XPath.XPathNavigator.SelectSingleNode%2A> methods of the <xref:System.Xml.XPath.XPathNavigator> class."
+  summary: "컴파일된 XPath 식을 나타내는 형식화 된 클래스를 제공 합니다."
+  remarks: "이 클래스는 <xref:System.Xml.XPath.XPathNavigator.Compile%2A> <xref:System.Xml.XPath.XPathNavigator>클래스</xref:System.Xml.XPath.XPathNavigator> 의 메서드</xref:System.Xml.XPath.XPathNavigator.Compile%2A> 의 결과로 반환 됩니다. 매개 변수는 <xref:System.Xml.XPath.XPathNavigator.Evaluate%2A>, <xref:System.Xml.XPath.XPathNavigator.Matches%2A>, <xref:System.Xml.XPath.XPathNavigator.Select%2A>, <xref:System.Xml.XPath.XPathNavigator.SelectSingleNode%2A> <xref:System.Xml.XPath.XPathNavigator>클래스</xref:System.Xml.XPath.XPathNavigator> 의</xref:System.Xml.XPath.XPathNavigator.SelectSingleNode%2A> 메서드와</xref:System.Xml.XPath.XPathNavigator.Select%2A> </xref:System.Xml.XPath.XPathNavigator.Matches%2A> </xref:System.Xml.XPath.XPathNavigator.Evaluate%2A>"
   example:
   - "The following example shows how to use the XPath return type to determine how to process the XPath expression.  \n  \n [!code-cs[XPathExpression.ReturnType#1](~/add/codesnippet/csharp/t-system.xml.xpath.xpath_0_1.cs)]\n [!code-cpp[XPathExpression.ReturnType#1](~/add/codesnippet/cpp/t-system.xml.xpath.xpath_0_1.cpp)]\n [!code-vb[XPathExpression.ReturnType#1](~/add/codesnippet/visualbasic/t-system.xml.xpath.xpath_0_1.vb)]  \n  \n The example takes the `contosoBooks.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<bookstore xmlns=\"http://www.contoso.com/books\">  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
   syntax:
@@ -42,22 +42,22 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, sorts the nodes selected by the XPath expression according to the specified <xref:System.Collections.IComparer> object."
-  remarks: "The AddSort method enables users to sort objects by their data type instead of by string or number. The <xref:System.Collections.IComparer> object provides an implementation of the <xref:System.Collections.IComparer.Compare%2A> method that supports sorting on user-defined classes.       In the following example, the books are sorted by ISBN number, where `isbn` is an object that implements the <xref:System.Collections.IComparer> interface.      ```vb#   Dim expression As XPathExpression = navigator.Compile(&quot;bookstore/book&quot;)   Dim isbn As ISBN = New ISBN()   expression.AddSort(&quot;@ISBN&quot;, (IComparer)isbn)   ```      ```c#   XPathExpression expression = navigator.Compile(&quot;bookstore/book&quot;);   ISBN isbn = new ISBN();   expression.AddSort(&quot;@ISBN&quot;, (IComparer)isbn);   ```       The following are important notes to consider when using the AddSort method.      -   The order in which the sorts are added provides the sort key order.      -   If the <xref:System.Xml.XPath.XPathExpression> or the sort key requires namespace resolution, you must use the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method to provide an <xref:System.Xml.XmlNamespaceManager> for namespace resolution.      -   If the <xref:System.Xml.XPath.XPathExpression> does not include a prefix, it is assumed that the namespace Uniform Resource Identifier (URI) is the empty namespace. If your XML includes a default namespace, you must still use the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method and provide an <xref:System.Xml.XmlNamespaceManager> that contains a prefix and namespace URI to handle the default namespace."
+  summary: "파생된 클래스에서 재정의 하는 경우에 따라 지정 된 XPath 식으로 선택한 노드를 정렬 <xref:System.Collections.IComparer>개체입니다.</xref:System.Collections.IComparer>"
+  remarks: "AddSort 메서드를 사용 하면 문자열 또는 숫자가 아닌 데이터 형식으로 개체를 정렬할 수 있습니다. <xref:System.Collections.IComparer>개체의 구현을 제공는 <xref:System.Collections.IComparer.Compare%2A>정렬을 지 원하는 사용자 정의 클래스에 메서드.</xref:System.Collections.IComparer.Compare%2A> </xref:System.Collections.IComparer>       다음 예제에서는 책 ISBN 번호에 따라 정렬 됩니다 여기서 `isbn` 구현 하는 개체는 <xref:System.Collections.IComparer>인터페이스.</xref:System.Collections.IComparer>      ```vb#   Dim expression As XPathExpression = navigator.Compile(&quot;bookstore/book&quot;)   Dim isbn As ISBN = New ISBN()   expression.AddSort(&quot;@ISBN&quot;, (IComparer)isbn)   ```      ```c#   XPathExpression expression = navigator.Compile(&quot;bookstore/book&quot;);   ISBN isbn = new ISBN();   expression.AddSort(&quot;@ISBN&quot;, (IComparer)isbn);   ```다음은 AddSort 메서드를 사용할 때 고려해 야 할 중요 한 참고 사항입니다.      -유형을 추가 된 순서 제공 정렬 순서 키입니다.      If는 <xref:System.Xml.XPath.XPathExpression>또는 정렬 키 네임 스페이스 확인에 필요한 사용 해야 합니다는 <xref:System.Xml.XPath.XPathExpression.SetContext%2A>제공 하려면 메서드는 <xref:System.Xml.XmlNamespaceManager>네임 스페이스 확인에 대 한.</xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression.SetContext%2A> </xref:System.Xml.XPath.XPathExpression>      If는 <xref:System.Xml.XPath.XPathExpression>는 접두사가 포함 되지 않은 네임 스페이스 식별자 URI (Uniform Resource) 인지를 빈 네임 스페이스로 가정 합니다.</xref:System.Xml.XPath.XPathExpression> XML에 기본 네임 스페이스를 포함 하는 경우 반드시 사용 해야는 <xref:System.Xml.XPath.XPathExpression.SetContext%2A>메서드를 제공 하 고는 <xref:System.Xml.XmlNamespaceManager>접두사 및 네임 스페이스가 기본 네임 스페이스를 포함 하는.</xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression.SetContext%2A>"
   syntax:
     content: public abstract void AddSort (object expr, System.Collections.IComparer comparer);
     parameters:
     - id: expr
       type: System.Object
-      description: "An object representing the sort key. This can be the <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> value of the node or an <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object with a compiled XPath expression."
+      description: "정렬 키를 나타내는 개체입니다. 이 수는 <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref> 노드의 값 또는 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 컴파일된 XPath 식이 있는 개체입니다."
     - id: comparer
       type: System.Collections.IComparer
-      description: "An <xref:System.Collections.IComparer> object that provides the specific data type comparisons for comparing two objects for equivalence."
+      description: "<xref:System.Collections.IComparer>두 개체가 같은지를 비교 하기 위한 특정 데이터 형식 비교를 제공 하는 개체입니다.</xref:System.Collections.IComparer>"
   overload: System.Xml.XPath.XPathExpression.AddSort*
   exceptions:
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> or sort key includes a prefix and either an <xref:System.Xml.XmlNamespaceManager> is not provided, or the prefix cannot be found in the supplied <xref:System.Xml.XmlNamespaceManager>."
+    description: "<xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 또는 정렬 키에는 접두사와 하나 포함 되어는 <xref:System.Xml.XmlNamespaceManager>를 제공 하지 않으면 또는 제공 된 <xref:System.Xml.XmlNamespaceManager>.</xref:System.Xml.XmlNamespaceManager> 접두사를 찾을 수 없는</xref:System.Xml.XmlNamespaceManager>"
   platform:
   - net462
 - uid: System.Xml.XPath.XPathExpression.AddSort(System.Object,System.Xml.XPath.XmlSortOrder,System.Xml.XPath.XmlCaseOrder,System.String,System.Xml.XPath.XmlDataType)
@@ -72,8 +72,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, sorts the nodes selected by the XPath expression according to the supplied parameters."
-  remarks: "-   The order in which the sorts are added provides the sort key order.      -   If the <xref:System.Xml.XPath.XPathExpression> or the sort key requires namespace resolution, you must use the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method to provide an <xref:System.Xml.XmlNamespaceManager> for namespace resolution.      -   If the <xref:System.Xml.XPath.XPathExpression> does not include a prefix, it is assumed that the namespace Uniform Resource Identifier (URI) is the empty namespace. If your XML includes a default namespace, you must still use the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method and provide an <xref:System.Xml.XmlNamespaceManager> that contains a prefix and namespace URI to handle the default namespace."
+  summary: "파생된 클래스에서 재정의 되 면 제공된 된 매개 변수에 따라 XPath 식으로 선택한 노드를 정렬 합니다."
+  remarks: "-   정렬이 추가 되는 순서 제공 정렬 순서 키입니다.      If는 <xref:System.Xml.XPath.XPathExpression>또는 정렬 키 네임 스페이스 확인에 필요한 사용 해야 합니다는 <xref:System.Xml.XPath.XPathExpression.SetContext%2A>제공 하려면 메서드는 <xref:System.Xml.XmlNamespaceManager>네임 스페이스 확인에 대 한.</xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression.SetContext%2A> </xref:System.Xml.XPath.XPathExpression>      If는 <xref:System.Xml.XPath.XPathExpression>는 접두사가 포함 되지 않은 네임 스페이스 식별자 URI (Uniform Resource) 인지를 빈 네임 스페이스로 가정 합니다.</xref:System.Xml.XPath.XPathExpression> XML에 기본 네임 스페이스를 포함 하는 경우 반드시 사용 해야는 <xref:System.Xml.XPath.XPathExpression.SetContext%2A>메서드를 제공 하 고는 <xref:System.Xml.XmlNamespaceManager>접두사 및 네임 스페이스가 기본 네임 스페이스를 포함 하는.</xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression.SetContext%2A>"
   example:
   - "The following example shows how to sort the books document by price in descending order.  \n  \n [!code-vb[XPathXMLExamples#4](~/add/codesnippet/visualbasic/018cc22b-ec54-467d-9a7f-_1.vb)]  \n  \n [!code-cs[XPathXMLExamples#5](~/add/codesnippet/csharp/018cc22b-ec54-467d-9a7f-_2.cs)]  \n  \n The example takes the `books.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>   \n<bookstore>  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
   syntax:
@@ -81,24 +81,24 @@ items:
     parameters:
     - id: expr
       type: System.Object
-      description: "An object representing the sort key. This can be the <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> value of the node or an <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object with a compiled XPath expression."
+      description: "정렬 키를 나타내는 개체입니다. 이 수는 <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref> 노드의 값 또는 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 컴파일된 XPath 식이 있는 개체입니다."
     - id: order
       type: System.Xml.XPath.XmlSortOrder
-      description: "An <xref href=&quot;System.Xml.XPath.XmlSortOrder&quot;></xref> value indicating the sort order."
+      description: "<xref href=&quot;System.Xml.XPath.XmlSortOrder&quot;> </xref> 정렬 순서를 나타내는 값입니다."
     - id: caseOrder
       type: System.Xml.XPath.XmlCaseOrder
-      description: "An <xref href=&quot;System.Xml.XPath.XmlCaseOrder&quot;></xref> value indicating how to sort uppercase and lowercase letters."
+      description: "<xref href=&quot;System.Xml.XPath.XmlCaseOrder&quot;> </xref> 대 문자와 소문자 정렬 하는 방법을 나타내는 값입니다."
     - id: lang
       type: System.String
-      description: "The language to use for comparison. Uses the <xref:System.Globalization.CultureInfo> class that can be passed to the <xref:System.String.Compare*> method for the language types, for example, &quot;us-en&quot; for U.S. English. If an empty string is specified, the system environment is used to determine the <xref:System.Globalization.CultureInfo>."
+      description: "비교에 사용할 언어입니다. <xref:System.Globalization.CultureInfo> <xref:System.String.Compare*>예를 들어 &quot;금지할&quot; 미국에 대 한 언어 유형에 대 한 메서드</xref:System.String.Compare*> 를 전달할 수 있는 클래스</xref:System.Globalization.CultureInfo> 를 사용 하 여 영어. 시스템 환경 <xref:System.Globalization.CultureInfo>.</xref:System.Globalization.CultureInfo> 결정 하는 데 사용 빈 문자열을 지정 하는 경우"
     - id: dataType
       type: System.Xml.XPath.XmlDataType
-      description: "An <xref href=&quot;System.Xml.XPath.XmlDataType&quot;></xref> value indicating the sort order for the data type."
+      description: "<xref href=&quot;System.Xml.XPath.XmlDataType&quot;> </xref> 데이터 형식에 대 한 정렬 순서를 나타내는 값입니다."
   overload: System.Xml.XPath.XPathExpression.AddSort*
   exceptions:
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> or sort key includes a prefix and either an <xref:System.Xml.XmlNamespaceManager> is not provided, or the prefix cannot be found in the supplied <xref:System.Xml.XmlNamespaceManager>."
+    description: "<xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 또는 정렬 키에는 접두사와 하나 포함 되어는 <xref:System.Xml.XmlNamespaceManager>를 제공 하지 않으면 또는 제공 된 <xref:System.Xml.XmlNamespaceManager>.</xref:System.Xml.XmlNamespaceManager> 접두사를 찾을 수 없는</xref:System.Xml.XmlNamespaceManager>"
   platform:
   - net462
 - uid: System.Xml.XPath.XPathExpression.Clone
@@ -113,14 +113,14 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, returns a clone of this <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref>."
-  remarks: "When overridden in a derived class, the Clone method returns a clone of this <xref:System.Xml.XPath.XPathExpression> object with the same state as this <xref:System.Xml.XPath.XPathExpression> object."
+  summary: "파생된 클래스에서 재정의 되 면이 복제본을 반환 합니다. <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref>합니다."
+  remarks: "Clone 메서드 반환의 복제본을 파생된 클래스에서 재정의 되 면 <xref:System.Xml.XPath.XPathExpression>이와 동일한 상태와 개체 <xref:System.Xml.XPath.XPathExpression>개체입니다.</xref:System.Xml.XPath.XPathExpression> </xref:System.Xml.XPath.XPathExpression>"
   syntax:
     content: public abstract System.Xml.XPath.XPathExpression Clone ();
     parameters: []
     return:
       type: System.Xml.XPath.XPathExpression
-      description: "A new <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object."
+      description: "새 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 개체입니다."
   overload: System.Xml.XPath.XPathExpression.Clone*
   exceptions: []
   platform:
@@ -137,8 +137,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "Compiles the XPath expression specified and returns an <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object representing the XPath expression."
-  remarks: "An XPath expression is evaluated to yield one of the following result types.      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      > [!NOTE] >  If a user-defined function with an invalid number of arguments (or an unimplemented user-defined function) is specified in the XPath expression, an exception occurs only at run time. User-defined functions are not checked at compile time and exceptions that result from user-defined functions occur only if execution evaluates the expression."
+  summary: "지정 된 XPath 식을 컴파일하고 반환는 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> XPath 식을 나타내는 개체입니다."
+  remarks: "XPath 식을 계산 되어 다음 결과 형식 중 하나를 생성 합니다.      - <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>> [!NOTE] > 런타임 시 예외가 발생 수가 잘못 된 인수 (또는 구현 되지 않은 사용자 정의 함수)를 사용 하는 사용자 정의 함수는 XPath 식에 지정 하는 경우.</xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> 컴파일 타임에 사용자 정의 함수를 확인 하지 않습니다 및 사용자 정의 함수에서 발생 하는 예외는 실행 된 식을 평가 하는 경우에 발생 합니다."
   example:
   - "The following example shows how to use the XPath return type to determine how to process the XPath expression. The example uses the Compile method to return the new <xref:System.Xml.XPath.XPathExpression> objects.  \n  \n [!code-cs[XPathExpression.ReturnType#1](~/add/codesnippet/csharp/m-system.xml.xpath.xpath_24_1.cs)]\n [!code-cpp[XPathExpression.ReturnType#1](~/add/codesnippet/cpp/m-system.xml.xpath.xpath_24_1.cpp)]\n [!code-vb[XPathExpression.ReturnType#1](~/add/codesnippet/visualbasic/m-system.xml.xpath.xpath_24_1.vb)]  \n  \n The example takes the `contosoBooks.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<bookstore xmlns=\"http://www.contoso.com/books\">  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
   syntax:
@@ -146,18 +146,18 @@ items:
     parameters:
     - id: xpath
       type: System.String
-      description: "An XPath expression."
+      description: "XPath 식입니다."
     return:
       type: System.Xml.XPath.XPathExpression
-      description: "An <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object."
+      description: "<xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 개체입니다."
   overload: System.Xml.XPath.XPathExpression.Compile*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The XPath expression parameter is not a valid XPath expression."
+    description: "XPath 식 매개 변수가 유효한 XPath 식이 아닙니다."
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The XPath expression is not valid."
+    description: "XPath 식이 잘못 되었습니다."
   platform:
   - net462
 - uid: System.Xml.XPath.XPathExpression.Compile(System.String,System.Xml.IXmlNamespaceResolver)
@@ -172,28 +172,28 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "Compiles the specified XPath expression, with the <xref:System.Xml.IXmlNamespaceResolver> object specified for namespace resolution, and returns an <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object that represents the XPath expression."
-  remarks: "An XPath expression is evaluated to yield one of the following result types.      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      -   <xref:System.Xml.XPath.XPathResultType>      > [!NOTE] >  If a user-defined function with an invalid number of arguments (or an unimplemented user-defined function) is specified in the XPath expression, an exception occurs only at run-time. User-defined functions are not checked at compile time and exceptions resulting from user-defined functions occur only if execution evaluates the expression.      > [!NOTE] >  It is not possible to compile a <xref:System.Xml.XPath.XPathExpression> with a custom context in one step by passing an <xref:System.Xml.Xsl.XsltContext>, which implements <xref:System.Xml.IXmlNamespaceResolver>, as an argument to this method. To use a <xref:System.Xml.XPath.XPathExpression> with a custom context, you must call the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method after compiling the expression."
+  summary: "지정된 된 XPath 식을 사용 하 여 컴파일되는 <xref:System.Xml.IXmlNamespaceResolver>반환 하 고 네임 스페이스 확인에 대 한 지정 된 개체는 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> XPath 식을 나타내는 개체입니다.</xref:System.Xml.IXmlNamespaceResolver>"
+  remarks: "XPath 식을 계산 되어 다음 결과 형식 중 하나를 생성 합니다.      - <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>- <xref:System.Xml.XPath.XPathResultType>> [!NOTE] > 잘못 된 개수의 인수 (또는 구현 되지 않은 사용자 정의 함수)를 사용 하는 사용자 정의 함수는 XPath 식에 지정 하는 경우 예외가 실행 시간에만 발생 합니다.</xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> </xref:System.Xml.XPath.XPathResultType> 컴파일 타임에 사용자 정의 함수를 확인 하지 않습니다 및 사용자 정의 함수에서 발생 한 예외는 실행 된 식을 평가 하는 경우에 발생 합니다.      > [!NOTE] > 컴파일할 수 없으면는 <xref:System.Xml.XPath.XPathExpression>전달 하 여 한 번에 사용자 지정 컨텍스트를 사용는 <xref:System.Xml.Xsl.XsltContext>를 구현 하는 <xref:System.Xml.IXmlNamespaceResolver>,이 메서드에 대 한 인수로.</xref:System.Xml.IXmlNamespaceResolver> </xref:System.Xml.Xsl.XsltContext> </xref:System.Xml.XPath.XPathExpression> 사용 하는 <xref:System.Xml.XPath.XPathExpression>사용자 지정 컨텍스트를 호출 해야 합니다는 <xref:System.Xml.XPath.XPathExpression.SetContext%2A>해당 식을 컴파일한 후 메서드.</xref:System.Xml.XPath.XPathExpression.SetContext%2A> </xref:System.Xml.XPath.XPathExpression>"
   syntax:
     content: public static System.Xml.XPath.XPathExpression Compile (string xpath, System.Xml.IXmlNamespaceResolver nsResolver);
     parameters:
     - id: xpath
       type: System.String
-      description: "An XPath expression."
+      description: "XPath 식입니다."
     - id: nsResolver
       type: System.Xml.IXmlNamespaceResolver
-      description: "An object that implements the <xref:System.Xml.IXmlNamespaceResolver> interface for namespace resolution."
+      description: "구현 하는 개체는 <xref:System.Xml.IXmlNamespaceResolver>네임 스페이스 확인에 대 한 인터페이스입니다.</xref:System.Xml.IXmlNamespaceResolver>"
     return:
       type: System.Xml.XPath.XPathExpression
-      description: "An <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref> object."
+      description: "<xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref> 개체입니다."
   overload: System.Xml.XPath.XPathExpression.Compile*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The XPath expression parameter is not a valid XPath expression."
+    description: "XPath 식 매개 변수가 유효한 XPath 식이 아닙니다."
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The XPath expression is not valid."
+    description: "XPath 식이 잘못 되었습니다."
   platform:
   - net462
 - uid: System.Xml.XPath.XPathExpression.Expression
@@ -208,12 +208,12 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, gets a <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> representation of the <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref>."
+  summary: "파생된 클래스에서 재정의 되 면 한 <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref> 의 표현을 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref>합니다."
   syntax:
     content: public abstract string Expression { get; }
     return:
       type: System.String
-      description: "A <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> representation of the <xref href=&quot;System.Xml.XPath.XPathExpression&quot;></xref>."
+      description: "A <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref> 의 표현을 <xref href=&quot;System.Xml.XPath.XPathExpression&quot;> </xref>합니다."
   overload: System.Xml.XPath.XPathExpression.Expression*
   exceptions: []
   platform:
@@ -230,7 +230,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, gets the result type of the XPath expression."
+  summary: "파생된 클래스에서 재정의 되 면 XPath 식의 결과 형식을 가져옵니다."
   remarks: ''
   example:
   - "The following example shows how to use the XPath return type to determine how to process the XPath expression.  \n  \n [!code-cs[XPathExpression.ReturnType#1](~/add/codesnippet/csharp/p-system.xml.xpath.xpath_3_1.cs)]\n [!code-cpp[XPathExpression.ReturnType#1](~/add/codesnippet/cpp/p-system.xml.xpath.xpath_3_1.cpp)]\n [!code-vb[XPathExpression.ReturnType#1](~/add/codesnippet/visualbasic/p-system.xml.xpath.xpath_3_1.vb)]  \n  \n The example takes the `contosoBooks.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<bookstore xmlns=\"http://www.contoso.com/books\">  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
@@ -238,7 +238,7 @@ items:
     content: public abstract System.Xml.XPath.XPathResultType ReturnType { get; }
     return:
       type: System.Xml.XPath.XPathResultType
-      description: "An <xref href=&quot;System.Xml.XPath.XPathResultType&quot;></xref> value representing the result type of the XPath expression."
+      description: "<xref href=&quot;System.Xml.XPath.XPathResultType&quot;> </xref> XPath 식의 결과 유형을 나타내는 값입니다."
   overload: System.Xml.XPath.XPathExpression.ReturnType*
   exceptions: []
   platform:
@@ -255,8 +255,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, specifies the <xref:System.Xml.IXmlNamespaceResolver> object to use for namespace resolution."
-  remarks: "Namespace resolution is supported using classes that implement the <xref:System.Xml.IXmlNamespaceResolver> interface, such as the <xref:System.Xml.XmlNamespaceManager> class. The <xref:System.Xml.XmlNamespaceManager> stores prefix and namespace Uniform Resource Identifier (URI) mappings. If the <xref:System.Xml.XPath.XPathExpression> requires namespace resolution, the prefix and namespace URI pair must be added to an object, such as the <xref:System.Xml.XmlNamespaceManager> class, which implements the <xref:System.Xml.IXmlNamespaceResolver> interface, and the SetContext method must be called to specify the <xref:System.Xml.IXmlNamespaceResolver> interface object to use for namespace resolution.       The following are important notes to consider when using the SetContext method.      -   If the <xref:System.Xml.XPath.XPathExpression> does not include a prefix, it is assumed that the namespace URI is the empty namespace. If your XML includes a default namespace, you must still use the SetContext method and provide an object that contains a prefix and namespace URI to handle the default namespace.      -   You can also supply an <xref:System.Xml.IXmlNamespaceResolver> interface object for namespace resolution to the <xref:System.Xml.XPath.XPathExpression.Compile%2A> method when you create your <xref:System.Xml.XPath.XPathExpression> object.      -   SetContext accepts <xref:System.Xml.Xsl.XsltContext> as a namespace resolver, so you can implement a custom context and use functions and variables based on <xref:System.Xml.Xsl.IXsltContextFunction> and <xref:System.Xml.Xsl.IXsltContextVariable>. The XPath expression will execute them. For more information, see [User Defined Functions and Variables](~/add/includes/ajax-current-ext-md.md)."
+  summary: "파생된 클래스에서 재정의 되 면 지정 된 <xref:System.Xml.IXmlNamespaceResolver>네임 스페이스 확인에 사용할 개체입니다.</xref:System.Xml.IXmlNamespaceResolver>"
+  remarks: "<xref:System.Xml.IXmlNamespaceResolver> <xref:System.Xml.XmlNamespaceManager>클래스</xref:System.Xml.XmlNamespaceManager> 와 같이 인터페이스를</xref:System.Xml.IXmlNamespaceResolver> 구현 하는 클래스를 사용 하 여 Namespace 해상도 지원 <xref:System.Xml.XmlNamespaceManager>접두사와 네임 스페이스 식별자 URI (Uniform Resource) 매핑을 저장 합니다.</xref:System.Xml.XmlNamespaceManager> 경우는 <xref:System.Xml.XPath.XPathExpression>와 같은 네임 스페이스 확인, 접두사 및 네임 스페이스 URI 쌍 개체를 추가 해야 합니다는 <xref:System.Xml.XmlNamespaceManager>클래스를 구현 하는 <xref:System.Xml.IXmlNamespaceResolver>지정 하기 위해 인터페이스 및 SetContext 메서드를 호출 해야 합니다는 <xref:System.Xml.IXmlNamespaceResolver>인터페이스 네임 스페이스 확인에 사용 하는 개체입니다.</xref:System.Xml.IXmlNamespaceResolver> </xref:System.Xml.IXmlNamespaceResolver> </xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression>       다음은 SetContext 메서드를 사용 하는 경우를 고려해 야 할 중요 한 참고 사항입니다.      If는 <xref:System.Xml.XPath.XPathExpression>는 접두사가 포함 되지 않은 네임 스페이스 URI는 빈 네임 스페이스 임을 가정 합니다.</xref:System.Xml.XPath.XPathExpression> XML에 기본 네임 스페이스를 포함 하는 경우 여전히 SetContext 메서드를 사용 하며 접두사 및 네임 스페이스가 기본 네임 스페이스를 포함 하는 개체를 제공 합니다.      -제공할 수도 있습니다는 <xref:System.Xml.IXmlNamespaceResolver>에 네임 스페이스 확인에 대 한 인터페이스 개체는 <xref:System.Xml.XPath.XPathExpression.Compile%2A>메서드를 만들 때 프로그램 <xref:System.Xml.XPath.XPathExpression>개체입니다.</xref:System.Xml.XPath.XPathExpression> </xref:System.Xml.XPath.XPathExpression.Compile%2A> </xref:System.Xml.IXmlNamespaceResolver>      -SetContext를 <xref:System.Xml.Xsl.XsltContext>네임 스페이스 확인자 하므로 사용자 지정 컨텍스트를 구현 하 고 사용할 수 함수 및 변수 <xref:System.Xml.Xsl.IXsltContextFunction>및 <xref:System.Xml.Xsl.IXsltContextVariable>.</xref:System.Xml.Xsl.IXsltContextVariable> </xref:System.Xml.Xsl.IXsltContextFunction> 에 따라</xref:System.Xml.Xsl.XsltContext> 허용 XPath 식에 실행 됩니다. 자세한 내용은 참조 [사용자 정의 함수 및 변수](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example shows how to use the XPath return type to determine how to process the XPath expression, and how to use the <xref:System.Xml.XPath.XPathExpression.SetContext%2A> method to provide an <xref:System.Xml.XmlNamespaceManager> object for namespace resolution.  \n  \n [!code-cs[XPathExpression.ReturnType#1](~/add/codesnippet/csharp/m-system.xml.xpath.xpath_26_1.cs)]\n [!code-cpp[XPathExpression.ReturnType#1](~/add/codesnippet/cpp/m-system.xml.xpath.xpath_26_1.cpp)]\n [!code-vb[XPathExpression.ReturnType#1](~/add/codesnippet/visualbasic/m-system.xml.xpath.xpath_26_1.vb)]  \n  \n The example takes the `contosoBooks.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<bookstore xmlns=\"http://www.contoso.com/books\">  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
   syntax:
@@ -264,12 +264,12 @@ items:
     parameters:
     - id: nsResolver
       type: System.Xml.IXmlNamespaceResolver
-      description: "An object that implements the <xref:System.Xml.IXmlNamespaceResolver> interface to use for namespace resolution."
+      description: "구현 하는 개체는 <xref:System.Xml.IXmlNamespaceResolver>네임 스페이스 확인에 사용 하는 인터페이스입니다.</xref:System.Xml.IXmlNamespaceResolver>"
   overload: System.Xml.XPath.XPathExpression.SetContext*
   exceptions:
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The <xref:System.Xml.IXmlNamespaceResolver> object parameter is not derived from <xref:System.Xml.IXmlNamespaceResolver>."
+    description: "<xref:System.Xml.IXmlNamespaceResolver>개체 매개 변수가 <xref:System.Xml.IXmlNamespaceResolver>.</xref:System.Xml.IXmlNamespaceResolver> 에서 파생 되지 않습니다</xref:System.Xml.IXmlNamespaceResolver>"
   platform:
   - net462
 - uid: System.Xml.XPath.XPathExpression.SetContext(System.Xml.XmlNamespaceManager)
@@ -284,8 +284,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.XPath
-  summary: "When overridden in a derived class, specifies the <xref:System.Xml.XmlNamespaceManager> object to use for namespace resolution."
-  remarks: "Namespace resolution is supported using the <xref:System.Xml.XmlNamespaceManager> class which stores prefix and namespace Uniform Resource Identifier (URI) mappings. If the <xref:System.Xml.XPath.XPathExpression> requires namespace resolution, the prefix and namespace URI pair must be added to the <xref:System.Xml.XmlNamespaceManager> object and the SetContext method must be called to specify the <xref:System.Xml.XmlNamespaceManager> object to use for namespace resolution.       The following are important notes to consider when using the SetContext method.      -   If the <xref:System.Xml.XPath.XPathExpression> does not include a prefix, it is assumed that the namespace URI is the empty namespace. If your XML includes a default namespace, you must still use the SetContext method and provide an <xref:System.Xml.XmlNamespaceManager> object that contains a prefix and namespace URI to handle the default namespace.      -   You can also supply an <xref:System.Xml.IXmlNamespaceResolver> object for namespace resolution to the <xref:System.Xml.XPath.XPathExpression.Compile%2A> method when you create your <xref:System.Xml.XPath.XPathExpression> object.      -   <xref:System.Xml.XPath.XPathExpression.SetContext%2A> accepts <xref:System.Xml.Xsl.XsltContext> as a namespace resolver, so you can implement a custom context and use functions and variables based on <xref:System.Xml.Xsl.IXsltContextFunction> and <xref:System.Xml.Xsl.IXsltContextVariable>. The XPath expression will execute them. For more information, see [User Defined Functions and Variables](~/add/includes/ajax-current-ext-md.md)."
+  summary: "파생된 클래스에서 재정의 되 면 지정 된 <xref:System.Xml.XmlNamespaceManager>네임 스페이스 확인에 사용할 개체입니다.</xref:System.Xml.XmlNamespaceManager>"
+  remarks: "사용 하 여 Namespace 해상도 지원의 <xref:System.Xml.XmlNamespaceManager>접두사 및 네임 스페이스 식별자 URI (Uniform Resource) 매핑 저장 하는 클래스입니다.</xref:System.Xml.XmlNamespaceManager> 경우는 <xref:System.Xml.XPath.XPathExpression>에 네임 스페이스 확인, 접두사 및 네임 스페이스 URI 쌍을 추가 해야 필요는 <xref:System.Xml.XmlNamespaceManager>지정할 개체 및 SetContext 메서드를 호출 해야 합니다는 <xref:System.Xml.XmlNamespaceManager>네임 스페이스 확인에 사용할 개체입니다.</xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XmlNamespaceManager> </xref:System.Xml.XPath.XPathExpression>       다음은 SetContext 메서드를 사용 하는 경우를 고려해 야 할 중요 한 참고 사항입니다.      If는 <xref:System.Xml.XPath.XPathExpression>는 접두사가 포함 되지 않은 네임 스페이스 URI는 빈 네임 스페이스 임을 가정 합니다.</xref:System.Xml.XPath.XPathExpression> XML에 기본 네임 스페이스를 포함 하는 경우 여전히 SetContext 메서드를 사용 하 고 제공 해야는 <xref:System.Xml.XmlNamespaceManager>접두사와 기본 네임 스페이스가 포함 된 개체입니다.</xref:System.Xml.XmlNamespaceManager>      -제공할 수도 있습니다는 <xref:System.Xml.IXmlNamespaceResolver>에 네임 스페이스 확인에 대 한 개체는 <xref:System.Xml.XPath.XPathExpression.Compile%2A>메서드를 만들 때 프로그램 <xref:System.Xml.XPath.XPathExpression>개체입니다.</xref:System.Xml.XPath.XPathExpression> </xref:System.Xml.XPath.XPathExpression.Compile%2A> </xref:System.Xml.IXmlNamespaceResolver>      - <xref:System.Xml.XPath.XPathExpression.SetContext%2A> <xref:System.Xml.Xsl.XsltContext>네임 스페이스 확인자로 하므로 사용자 지정 컨텍스트를 구현 하 고 사용할 수 함수 및 변수 <xref:System.Xml.Xsl.IXsltContextFunction>및 <xref:System.Xml.Xsl.IXsltContextVariable>.</xref:System.Xml.Xsl.IXsltContextVariable> </xref:System.Xml.Xsl.IXsltContextFunction> 에 따라</xref:System.Xml.Xsl.XsltContext> 허용</xref:System.Xml.XPath.XPathExpression.SetContext%2A> XPath 식에 실행 됩니다. 자세한 내용은 참조 [사용자 정의 함수 및 변수](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example shows how to use the XPath return type to determine how to process the XPath expression, and how to use the SetContext method to provide an <xref:System.Xml.XmlNamespaceManager> object for namespace resolution.  \n  \n [!code-cs[XPathExpression.ReturnType#1](~/add/codesnippet/csharp/m-system.xml.xpath.xpath_39_1.cs)]\n [!code-cpp[XPathExpression.ReturnType#1](~/add/codesnippet/cpp/m-system.xml.xpath.xpath_39_1.cpp)]\n [!code-vb[XPathExpression.ReturnType#1](~/add/codesnippet/visualbasic/m-system.xml.xpath.xpath_39_1.vb)]  \n  \n The example takes the `contosoBooks.xml` file as input.  \n  \n```xml  \n  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<bookstore xmlns=\"http://www.contoso.com/books\">  \n    <book genre=\"autobiography\" publicationdate=\"1981-03-22\" ISBN=\"1-861003-11-0\">  \n        <title>The Autobiography of Benjamin Franklin</title>  \n        <author>  \n            <first-name>Benjamin</first-name>  \n            <last-name>Franklin</last-name>  \n        </author>  \n        <price>8.99</price>  \n    </book>  \n    <book genre=\"novel\" publicationdate=\"1967-11-17\" ISBN=\"0-201-63361-2\">  \n        <title>The Confidence Man</title>  \n        <author>  \n            <first-name>Herman</first-name>  \n            <last-name>Melville</last-name>  \n        </author>  \n        <price>11.99</price>  \n    </book>  \n    <book genre=\"philosophy\" publicationdate=\"1991-02-15\" ISBN=\"1-861001-57-6\">  \n        <title>The Gorgias</title>  \n        <author>  \n            <name>Plato</name>  \n        </author>  \n        <price>9.99</price>  \n    </book>  \n</bookstore>  \n  \n```"
   syntax:
@@ -293,12 +293,12 @@ items:
     parameters:
     - id: nsManager
       type: System.Xml.XmlNamespaceManager
-      description: "An <xref:System.Xml.XmlNamespaceManager> object to use for namespace resolution."
+      description: "<xref:System.Xml.XmlNamespaceManager>네임 스페이스 확인에 사용할 개체입니다.</xref:System.Xml.XmlNamespaceManager>"
   overload: System.Xml.XPath.XPathExpression.SetContext*
   exceptions:
   - type: System.Xml.XPath.XPathException
     commentId: T:System.Xml.XPath.XPathException
-    description: "The <xref:System.Xml.XmlNamespaceManager> object parameter is not derived from the <xref:System.Xml.XmlNamespaceManager> class."
+    description: "<xref:System.Xml.XmlNamespaceManager>개체 매개 변수가 <xref:System.Xml.XmlNamespaceManager>클래스</xref:System.Xml.XmlNamespaceManager> 에서 파생 되지 않습니다</xref:System.Xml.XmlNamespaceManager>"
   platform:
   - net462
 references:

@@ -15,7 +15,7 @@ items:
   nameWithType: TcpConnectionPoolSettingsElement
   fullName: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement
   type: Class
-  summary: "Represents a configuration element that specifies additional connection pool settings for a TCP transport. This class cannot be inherited."
+  summary: "TCP 전송에 대 한 추가 연결 풀 설정을 지정 하는 구성 요소를 나타냅니다. 이 클래스는 상속 될 수 없습니다."
   syntax:
     content: 'public sealed class TcpConnectionPoolSettingsElement : System.ServiceModel.Configuration.ServiceModelConfigurationElement'
   inheritance:
@@ -73,7 +73,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement&quot;> </xref> 클래스입니다."
   syntax:
     content: public TcpConnectionPoolSettingsElement ();
     parameters: []
@@ -93,13 +93,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a string that defines the name of the connection pool used for outgoing channels."
-  remarks: "In streamed mode, connections are not shared, meaning that connection pooling is disabled. The default is a &quot;default&quot; string. You can modify this value to isolate the connections for a particular client into separate groups."
+  summary: "나가는 채널에 사용 되는 연결 풀의 이름을 정의 하는 문자열을 가져오거나 설정 합니다."
+  remarks: "스트리밍 모드에서는 연결이 공유 되지 않습니다, 즉 연결 풀링이 사용 되지 않습니다. 기본값은 &quot;default&quot; 문자열입니다. 이 값을 특정 클라이언트에 대 한 연결을 별도 그룹으로 격리할 수정할 수 있습니다."
   syntax:
     content: public string GroupName { get; set; }
     return:
       type: System.String
-      description: "The name of the connection pool used for outgoing channels."
+      description: "나가는 채널에 사용 되는 연결 풀의 이름입니다."
   overload: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.GroupName*
   exceptions: []
   platform:
@@ -116,12 +116,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the maximum time the connection can be idle before being disconnected."
+  summary: "연결이 끊어지기 전에 유휴 상태일 수는 최대 시간을 가져오거나 설정 합니다."
   syntax:
     content: public TimeSpan IdleTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "A positive <xref:System.TimeSpan> that specifies the maximum time the connection can be idle before being disconnected. The default is 00:02:00."
+      description: "양수 <xref:System.TimeSpan>연결이 끊어지기 전에 유휴 상태일 수 있는 최대 시간을 지정 하는.</xref:System.TimeSpan> 기본값은 00시 02분: 00입니다."
   overload: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.IdleTimeout*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the time span after which an active connection is closed."
-  remarks: "A connection is closed after it is returned to the connection cache and not during active transmission. The connection cache used by the TCP transport creates new connections as required for each endpoint, up to the cache limit that is set by <xref:System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.MaxOutboundConnectionsPerEndpoint%2A>."
+  summary: "활성 연결이 종료 되는 시간 범위를 가져오거나 설정 합니다."
+  remarks: "하 고 활성 전송 중이 아니라 연결 캐시로 반환 된 후 연결이 닫힐 수 있습니다. <xref:System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.MaxOutboundConnectionsPerEndpoint%2A>.</xref:System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.MaxOutboundConnectionsPerEndpoint%2A> 로 설정 된 캐시 제한까지 각 끝점에 필요한 연결을 생성 하는 TCP 전송에 사용 되는 연결 캐시"
   syntax:
     content: public TimeSpan LeaseTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "A <xref:System.TimeSpan> structure that indicates the duration after which the TCP connection is closed."
+      description: "A <xref:System.TimeSpan>구조 TCP 연결이 종료 되는 기간을 나타내는입니다.</xref:System.TimeSpan>"
   overload: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.LeaseTimeout*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the maximum number of connections to a remote endpoint initiated by the service."
-  remarks: "Connections in excess of the limit are queued until a space below the limit becomes available. This property limits the duration in which connections remain queued before an exception is thrown.       This property limits the number of simultaneous active connections from the client to a particular service endpoint. If this value is exceeded by having more active client connections, the service may appear unresponsive to the client. In this case, this value should be adjusted to exceed the maximum number of expected simultaneous client connections to a specific endpoint.       This setting can also be set on the service side, in which case the value is used to set the <xref:System.ServiceModel.Channels.MaxPooledConnections%2A> on the <xref:System.ServiceModel.Channels.TcpChannelListener>."
+  summary: "서비스에서 시작 하는 원격 끝점과 최대 연결 수를 가져오거나 설정 합니다."
+  remarks: "제한 초과 하는 연결 된 한도 아래로 공간이 늘어날 때까지 대기 합니다. 이 속성에는 있는 연결 되기 전에 대기할 시간 예외가 throw 됩니다 제한 합니다.       이 속성의 특정 서비스 끝점에 클라이언트에서 동시 활성 연결 수를 제한 합니다. 활성 클라이언트 연결 하 여이 값을 초과 하면 서비스가 클라이언트에 응답 하지 않는 나타날 수 있습니다. 이 경우이 값을 특정 끝점에 예상 되는 동시 클라이언트 연결의 최대 수를 초과 하도록 조정 해야 합니다.       이 설정은 설정 하는 <xref:System.ServiceModel.Channels.MaxPooledConnections%2A> <xref:System.ServiceModel.Channels.TcpChannelListener>.</xref:System.ServiceModel.Channels.TcpChannelListener> </xref:System.ServiceModel.Channels.MaxPooledConnections%2A> 경우 값을 사용 하는 서비스 쪽에서 설정할 수도 있습니다."
   syntax:
     content: public int MaxOutboundConnectionsPerEndpoint { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of connections to a remote endpoint initiated by the service. The default is 10."
+      description: "서비스에서 시작 하는 원격 끝점에 대 한 연결의 최대 수입니다. 기본값은 10입니다."
   overload: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.MaxOutboundConnectionsPerEndpoint*
   exceptions: []
   platform:
@@ -188,7 +188,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Configuration.TcpConnectionPoolSettingsElement.Properties*
   exceptions: []
   platform:

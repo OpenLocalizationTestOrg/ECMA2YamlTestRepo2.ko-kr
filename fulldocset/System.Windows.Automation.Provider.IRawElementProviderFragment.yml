@@ -15,8 +15,8 @@ items:
   nameWithType: IRawElementProviderFragment
   fullName: System.Windows.Automation.Provider.IRawElementProviderFragment
   type: Interface
-  summary: "Exposes methods and properties on [!INCLUDE[TLA#tla_ui](~/add/includes/tlasharptla-ui-md.md)] elements that are part of a structure more than one level deep, such as a list box or a list item. Implemented by UI Automation providers."
-  remarks: "The root node of the fragment must support the <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot> interface, which inherits from IRawElementProviderFragment."
+  summary: "메서드 및 속성을 통해 노출 [!INCLUDE[TLA#tla_ui](~/add/includes/tlasharptla-ui-md.md)] 둘 이상인 구조체의 일부인 요소 같이 수준이 목록 상자 또는 목록 항목입니다. UI 자동화 공급자가 구현 합니다."
+  remarks: "에 조각의 루트 노드를 지원 해야 합니다는 <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>IRawElementProviderFragment에서 상속 하는 인터페이스입니다.</xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -42,15 +42,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the bounding rectangle of this element."
-  remarks: "No clipping is required if the element is partly obscured or partly off-screen. The <xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A> property should be set to indicate whether the rectangle is actually visible.       Not all points within the bounding rectangle are necessarily clickable."
+  summary: "이 요소의 경계 사각형을 가져옵니다."
+  remarks: "오려낸 없습니다가 려 지 면 부분적으로 또는 화면에서 벗어난 요소는 경우에 필요 합니다. <xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A>사각형 실제로 표시 여부를 나타내는 속성을 설정 해야 합니다.</xref:System.Windows.Automation.AutomationElement.AutomationElementInformation.IsOffscreen%2A>       반드시 클릭할 수 있는 경계 사각형 내의 일부 지점이 있습니다."
   example:
   - "In the following example code, the internal state of the bounding rectangle is kept in a <xref:System.Drawing.Rectangle?displayProperty=fullName>, which is converted to a <xref:System.Windows.Rect?displayProperty=fullName> before being returned.  \n  \n [!code-vb[UIAFragmentProvider_snip#104](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#104)]\n [!code-cs[UIAFragmentProvider_snip#104](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#104)]"
   syntax:
     content: public System.Windows.Rect BoundingRectangle { get; }
     return:
       type: System.Windows.Rect
-      description: "The bounding rectangle, in screen coordinates."
+      description: "경계 사각형을 화면 좌표입니다."
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.BoundingRectangle*
   exceptions: []
   platform:
@@ -67,15 +67,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the root node of the fragment."
-  remarks: "A provider that implements <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot> should return itself."
+  summary: "에 조각의 루트 노드를 검색 합니다."
+  remarks: "구현 하는 공급자 <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>자체를 반환 해야 합니다.</xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>"
   example:
   - "The following code example shows an implementation for an element in a fragment, such as a list item within a list box.  \n  \n [!code-vb[UIAFragmentProvider_snip#105](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#105)]\n [!code-cs[UIAFragmentProvider_snip#105](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#105)]"
   syntax:
     content: public System.Windows.Automation.Provider.IRawElementProviderFragmentRoot FragmentRoot { get; }
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderFragmentRoot
-      description: "The root node."
+      description: "루트 노드입니다."
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.FragmentRoot*
   exceptions: []
   platform:
@@ -92,14 +92,14 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves an array of fragment roots that are embedded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element tree rooted at the current element."
-  remarks: "This method returns an array of fragments only if the current element is hosting another [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] framework. Most providers return `null`."
+  summary: "에 포함 된 조각 루트의 배열을 검색는 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 요소 트리는 현재 요소에서 시작 합니다."
+  remarks: "현재 요소를 다른 호스트 하는 경우에이 메서드에 조각의 배열을 반환 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 프레임 워크입니다. 대부분의 공급자 반환 `null`합니다."
   syntax:
     content: public System.Windows.Automation.Provider.IRawElementProviderSimple[] GetEmbeddedFragmentRoots ();
     parameters: []
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple[]
-      description: "An array of root fragments, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "조각 루트의 배열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.GetEmbeddedFragmentRoots*
   exceptions: []
   platform:
@@ -116,8 +116,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the runtime identifier of an element."
-  remarks: "Implementations should return `null` for an element that corresponds to a window handle. Other elements should return an array that contains <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>, followed by a value that is unique within the fragment.       It is the provider&quot;s responsibility to ensure uniqueness within the fragment; for example, each item in a list must be individually numbered. The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] engine ensures that the identifier is unique among all instances, by translating the <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>value."
+  summary: "요소의 런타임 식별자를 검색합니다."
+  remarks: "구현에서는 반환 해야 `null` 창 핸들에 해당 하는 요소에 대 한 합니다. 다른 요소에 포함 된 배열을 반환 해야 <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>조각 내에서 고유한 값에 이어집니다.</xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>       공급자의 책임; 조각 내에서 고유성을 유지 하는 예를 들어, 각 항목 목록에 개별적으로 번호가 지정 되어야 합니다. [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 엔진 식별자는 번역 하 여 모든 인스턴스 간에 고유한 지 확인는 <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>값.</xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId>"
   example:
   - "The following example code shows an implementation of this method by an element within a fragment, such as an item within a list box. The item has its own unique identifier within this instance of the fragment, and the <xref:System.Windows.Automation.Provider.AutomationInteropProvider.AppendRuntimeId> value ensures that the identifier returned by the method is unique in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree.  \n  \n [!code-vb[UIAFragmentProvider_snip#101](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#101)]\n [!code-cs[UIAFragmentProvider_snip#101](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#101)]"
   syntax:
@@ -125,7 +125,7 @@ items:
     parameters: []
     return:
       type: System.Int32[]
-      description: "The unique run-time identifier of the element."
+      description: "요소의 고유 런타임 식별자입니다."
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.GetRuntimeId*
   exceptions: []
   platform:
@@ -142,8 +142,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element in a specified direction within the tree."
-  remarks: "The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] server&quot;s implementations of this method define the structure of the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element tree.       Navigation must be supported upward to the parent, downward to the first and last child, and laterally to the next and previous siblings, as applicable.       Each child node has only one parent and must be placed in the chain of siblings reached from the parent by <xref:System.Windows.Automation.Provider.NavigateDirection> and <xref:System.Windows.Automation.Provider.NavigateDirection>.       Relationships among siblings must be identical in both directions: if A is B&quot;s <xref:System.Windows.Automation.Provider.NavigateDirection>, then B is A&quot;s <xref:System.Windows.Automation.Provider.NavigateDirection>. A <xref:System.Windows.Automation.Provider.NavigateDirection> has no <xref:System.Windows.Automation.Provider.NavigateDirection>, and a <xref:System.Windows.Automation.Provider.NavigateDirection> has no <xref:System.Windows.Automation.Provider.NavigateDirection>.       Fragment roots do not enable navigation to a parent or siblings; navigation among fragment roots is handled by the default window providers. Elements in fragments must navigate only to other elements within that fragment."
+  summary: "검색 된 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 요소 트리 내에서 지정 된 방향입니다."
+  remarks: "[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 의 구조를 정의 하는 서버의 구현은이 메서드는 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 요소 트리 합니다.       탐색 가능한 지원 되는 위쪽으로 아래로 부모에 첫 번째 및 마지막 자식 및 가로로 다음 이전 형제를 해야 합니다.       각 자식 노드에 하나의 부모와 형제 <xref:System.Windows.Automation.Provider.NavigateDirection>및 <xref:System.Windows.Automation.Provider.NavigateDirection>.</xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> 를 통해 부모 개체에서 연결할 체인에 배치 해야       형제 간의 관계 방향으로 모두 동일 해야 합니다.: A가 B의 <xref:System.Windows.Automation.Provider.NavigateDirection>, B는 A의 <xref:System.Windows.Automation.Provider.NavigateDirection>.</xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> A <xref:System.Windows.Automation.Provider.NavigateDirection>아무런 <xref:System.Windows.Automation.Provider.NavigateDirection>, 그리고 <xref:System.Windows.Automation.Provider.NavigateDirection> <xref:System.Windows.Automation.Provider.NavigateDirection>.</xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection> </xref:System.Windows.Automation.Provider.NavigateDirection>       조각 루트는 부모 또는 형제; 탐색을 사용 하도록 설정 하지 않습니다. 조각 루트 간 탐색은 기본 창 공급자에서 처리 됩니다. 조각의 요소는 해당 조각 내 다른 요소에만 이동 해야 합니다."
   example:
   - "The following example code shows the implementation of Navigate by a fragment root that has a single child element. Because the implementing element is a fragment root, it does not enable navigation to a parent element or sibling elements.  \n  \n [!code-cs[UIAProvider_snip#105](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#105)]\n [!code-vb[UIAProvider_snip#105](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#105)]  \n  \n The following example shows an implementation by a fragment that represents a single item within a list box. In this case, the element enables navigation to its parent and siblings, but not to any children.  \n  \n [!code-vb[UIAFragmentProvider_snip#103](~/add/codesnippet/visualbasic/UIAFragmentProviderVB/ListItemFragment.vb#103)]\n [!code-cs[UIAFragmentProvider_snip#103](~/add/codesnippet/csharp/UIAFragmentProvider_snip.ElementProvider/ListItemFragment.cs#103)]"
   syntax:
@@ -151,10 +151,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Automation.Provider.NavigateDirection
-      description: "The direction in which to navigate."
+      description: "탐색 하는 방향입니다."
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderFragment
-      description: "The element in the specified direction, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no element in that direction"
+      description: "지정 된 방향의 요소 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 해당 방향에 요소가 없는 경우"
   overload: System.Windows.Automation.Provider.IRawElementProviderFragment.Navigate*
   exceptions: []
   platform:
@@ -171,8 +171,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Sets the focus to this element."
-  remarks: "The [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] framework will ensure that the part of the interface that hosts this fragment is already focused before calling this method. Your implementation should update only its internal focus state; for example, by repainting a list item to show that it has the focus. If you prefer that [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] not focus the parent window, set the <xref:System.Windows.Automation.Provider.ProviderOptions> option in <xref:System.Windows.Automation.Provider.ProviderOptions> for the fragment root."
+  summary: "이 요소에 포커스를 설정합니다."
+  remarks: "[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 프레임 워크는이 부분을 호스트 하는 인터페이스의 일부가이 메서드를 호출 하기 전에 이미 포커스가 있는지 확인 합니다. 구현 내부 포커스 상태만; 업데이트 해야 예를 들어는 목록 항목을 다시 그려야으로 포커스를 가집니다. 선호 하는 경우 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 부모 창에 초점을 설정 하지는 <xref:System.Windows.Automation.Provider.ProviderOptions>옵션 <xref:System.Windows.Automation.Provider.ProviderOptions>조각 루트에 대 한.</xref:System.Windows.Automation.Provider.ProviderOptions> </xref:System.Windows.Automation.Provider.ProviderOptions>"
   syntax:
     content: public void SetFocus ();
     parameters: []

@@ -15,8 +15,8 @@ items:
   nameWithType: ActiveXMessageFormatter
   fullName: System.Messaging.ActiveXMessageFormatter
   type: Class
-  summary: "Serializes or deserializes primitive data types and other objects to or from the body of a Message Queuing message, using a format that is compatible with the MSMQ ActiveX Component."
-  remarks: "The ActiveXMessageFormatter is compatible with messages sent using Message Queuing COM components, allowing interoperability with applications that use the MSMQ COM control.       The ActiveXMessageFormatter can serialize most primitives, as well as objects that implement the `IPersistStream` OLE interface. It can deserialize the same set of primitives, but requires further effort when deserializing a COM object (for example, an object created using Visual Basic 6.0) that implements `IPersistStream`. The object to deserialize must be in memory by first importing the object into a .NET Framework application.       When an application sends a message to the queue using an instance of the <xref:System.Messaging.MessageQueue> class, the formatter serializes the object into a stream and inserts it into the message body. When reading from a queue using a <xref:System.Messaging.MessageQueue>, the formatter deserializes the message data into the <xref:System.Messaging.Message.Body%2A> property of a <xref:System.Messaging.Message>.       ActiveX serialization is very compact, which makes using the ActiveXMessageFormatter and MSMQ COM control a very fast method of serialization."
+  summary: "직렬화 또는 기본 데이터 형식 및 MSMQ ActiveX 구성 요소와 호환 되는 형식을 사용 하 여 메시지 큐 메시지의 본문에서 다른 개체를 역직렬화 합니다."
+  remarks: "ActiveXMessageFormatter MSMQ COM 컨트롤을 사용 하는 응용 프로그램과 상호 운용 메시지 큐 COM 구성 요소를 사용 하 여 보낸 메시지와 호환 됩니다.       ActiveXMessageFormatter 대부분 기본 형식으로 구현 하는 개체를 serialize 할 수는 `IPersistStream` OLE 인터페이스입니다. 동일한 집합 기본 형식 역직렬화 할 수 있는 구현 하는 COM 개체 (예를 들어 Visual Basic 6.0을 사용 하 여 만든 개체)를 역직렬화 하는 동안 작업이 더 이상 필요 하지만 `IPersistStream`합니다. 역직렬화 할 개체를 가져와서 첫 번째 개체를.NET Framework 응용 프로그램에 메모리에 있어야 합니다.       응용 프로그램의 인스턴스를 사용 하 여 큐에 메시지를 보낼 때는 <xref:System.Messaging.MessageQueue>포맷터 클래스 개체를 스트림으로 serialize 하 고 메시지 본문에 삽입 합니다.</xref:System.Messaging.MessageQueue> 을 사용 하는 <xref:System.Messaging.MessageQueue>포맷터는 메시지 데이터 <xref:System.Messaging.Message.Body%2A> <xref:System.Messaging.Message>.</xref:System.Messaging.Message> 의 속성</xref:System.Messaging.Message.Body%2A> 으로,</xref:System.Messaging.MessageQueue> 큐에서 읽을 때       ActiveX serialization이 ActiveXMessageFormatter에서 사용 하 여 수 있게 해줍니다 매우 간결 하 고 MSMQ COM serialization 매우 빠른 방법을 제어 합니다."
   syntax:
     content: 'public class ActiveXMessageFormatter : ICloneable, System.Messaging.IMessageFormatter'
   inheritance:
@@ -39,7 +39,7 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref> 클래스입니다."
   syntax:
     content: public ActiveXMessageFormatter ();
     parameters: []
@@ -59,17 +59,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Determines whether the formatter can deserialize the contents of the message."
-  remarks: "CanRead returns `false` if the message body is not a primitive that the Message Queuing ActiveX control can deserialize or if it does not implement the `IPersistStream` interface."
+  summary: "포맷터는 메시지의 콘텐츠를 deserialize 할 수 있는지 여부를 결정 합니다."
+  remarks: "CanRead 반환 `false` 메시지 본문은 메시지 큐 ActiveX 컨트롤을 deserialize 할 수 있는 기본 형식 또는 구현 하지 않는 경우는 `IPersistStream` 인터페이스입니다."
   syntax:
     content: public bool CanRead (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to inspect."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref> 를 검토 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref> can deserialize the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref> 메시지를 deserialize 할 수 있는, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.ActiveXMessageFormatter.CanRead*
   exceptions:
   - type: System.ArgumentNullException
@@ -89,14 +89,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Creates an instance of the <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref> class that is identical to the current <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref>."
-  remarks: "This method is used by the <xref:System.Messaging.MessageQueue> class in order to receive multiple messages at the same time (for example, if the application is receiving asynchronously). You typically do not need to call this method in your application code."
+  summary: "인스턴스를 만듭니다는 <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref> 현재와 동일한 <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref>합니다."
+  remarks: "이 메서드를 사용 하 여는 <xref:System.Messaging.MessageQueue>클래스 (예를 들어 응용 프로그램 받는 경우 비동기적으로) 한 번에 여러 메시지를 수신 하려면.</xref:System.Messaging.MessageQueue> 일반적으로 응용 프로그램 코드에서이 메서드를 호출할 필요가 없습니다."
   syntax:
     content: public object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "An object whose properties are identical to those of this <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref>."
+      description: "이 동일한 속성을 가진 개체 <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref>합니다."
   overload: System.Messaging.ActiveXMessageFormatter.Clone*
   exceptions: []
   platform:
@@ -113,13 +113,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Provides a utility to help serialize COM objects that implement <xref uid=&quot;langword_csharp_IPersistStream&quot; name=&quot;IPersistStream&quot; href=&quot;&quot;></xref> and require <xref uid=&quot;langword_csharp_IPersistStreamInit&quot; name=&quot;IPersistStreamInit&quot; href=&quot;&quot;></xref> to be called."
+  summary: "유틸리티 COM serialize를 구현 하는 개체를 제공 <xref uid=&quot;langword_csharp_IPersistStream&quot; name=&quot;IPersistStream&quot; href=&quot;&quot;> </xref> 필요 <xref uid=&quot;langword_csharp_IPersistStreamInit&quot; name=&quot;IPersistStreamInit&quot; href=&quot;&quot;> </xref> 를 호출할 수 있습니다."
   syntax:
     content: public static void InitStreamedObject (object streamedObject);
     parameters:
     - id: streamedObject
       type: System.Object
-      description: "An OLE object that implements <xref uid=&quot;langword_csharp_IPersistStreamInit&quot; name=&quot;IPersistStreamInit&quot; href=&quot;&quot;></xref>."
+      description: "구현 하는 OLE 개체 <xref uid=&quot;langword_csharp_IPersistStreamInit&quot; name=&quot;IPersistStreamInit&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Messaging.ActiveXMessageFormatter.InitStreamedObject*
   exceptions: []
   platform:
@@ -136,25 +136,25 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Reads the contents from the given message and creates an object that contains the deserialized message."
-  remarks: "If the body of the message represents a primitive type, the message&quot;s <xref:System.Messaging.Message.BodyType%2A> property must be one of the managed types in the following table.      |BodyType value|Managed type|   |--------------------|------------------|   |VT_LPSTR|<xref:System.Char> array (deserialized using ASCII encoding)|   |VT_BSTR, VT_LPWSTR|<xref:System.String> (deserialized using Unicode encoding)|   |VT_VECTOR &#124; VT_UI1|<xref:System.Byte> array|   |VT_BOOL|<xref:System.Boolean>|   |VT_CLSID|<xref:System.Guid>|   |VT_CY|<xref:System.Decimal>|   |VT_DATE|<xref:System.DateTime>|   |VT_I1, VT_UI1|<xref:System.Byte>|   |VT_I2|<xref:System.Int16>|   |VT_UI2|<xref:System.UInt16>|   |VT_I4|<xref:System.Int32>|   |VT_UI4|<xref:System.UInt32>|   |VT_I8|<xref:System.Int64>|   |VT_UI8|<xref:System.UInt64>|   |VT_R4|<xref:System.Single>|   |VT_R8|<xref:System.Double>|   |VT_NULL|`null`|   |VT_STREAMED_OBJECT|<xref:System.Object>|"
+  summary: "지정된 된 메시지의 콘텐츠를 읽고 deserialize 된 메시지를 포함 하는 개체를 만듭니다."
+  remarks: "메시지의 본문 기본 형식을 나타냅니다, 메시지의 <xref:System.Messaging.Message.BodyType%2A>속성 다음 표에 관리 되는 형식 중 하나 여야 합니다.</xref:System.Messaging.Message.BodyType%2A>      | BodyType 값 | 관리 되는 형식 |   |--------------------|------------------|   | VT_LPSTR | <xref:System.Char>배열 (ASCII 인코딩을 사용 하 여 역직렬화) |   | VT_BSTR, VT_LPWSTR | <xref:System.String>(유니코드 인코딩을 사용 하 여 역직렬화) |   | VT_VECTOR | VT_UI1 | <xref:System.Byte>배열 |   | VT_BOOL | <xref:System.Boolean>|   | VT_CLSID | <xref:System.Guid>|   | VT_CY | <xref:System.Decimal>|   | VT_DATE | <xref:System.DateTime>|   | VT_I1, VT_UI1 | <xref:System.Byte>|   | VT_I2 | <xref:System.Int16>|   | VT_UI2 | <xref:System.UInt16>|   | VT_I4 | <xref:System.Int32>|   | VT_UI4 | <xref:System.UInt32>|   | VT_I8 | <xref:System.Int64>|   | VT_UI8 | <xref:System.UInt64>|   | VT_R4 | <xref:System.Single>|   | VT_R8 | <xref:System.Double>|   | VT_NULL | `null`|   | VT_STREAMED_OBJECT | <xref:System.Object>|</xref:System.Object></xref:System.Double></xref:System.Single></xref:System.UInt64></xref:System.Int64></xref:System.UInt32></xref:System.Int32></xref:System.UInt16></xref:System.Int16></xref:System.Byte></xref:System.DateTime></xref:System.Decimal></xref:System.Guid></xref:System.Boolean></xref:System.Byte></xref:System.String></xref:System.Char>"
   syntax:
     content: public object Read (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref>, in MSMQ ActiveX control format, to deserialize."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref>, MSMQ ActiveX 컨트롤 형식으로 deserialize 하는 데 있습니다."
     return:
       type: System.Object
-      description: "The deserialized message."
+      description: "Deserialize 된 메시지입니다."
   overload: System.Messaging.ActiveXMessageFormatter.Read*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Messaging.Message.BodyType*> property of the <code>message</code> passed as a parameter cannot be mapped to a primitive type, nor does it represent a streamed object."
+    description: "<xref:System.Messaging.Message.BodyType*>의 속성은 <code> message </code> 전달 된 매개 변수는 기본 형식에 매핑할 수 없습니다 및 스트리밍된 개체를 나타냅니다.</xref:System.Messaging.Message.BodyType*>"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The body represents a stored object. The <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;></xref> does not support deserialization of stored objects."
+    description: "본문은 저장 된 개체를 나타냅니다. <xref href=&quot;System.Messaging.ActiveXMessageFormatter&quot;> </xref> 저장 된 개체의 deserialization을 지원 하지 않습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>message</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -172,22 +172,22 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Serializes an object into the body of the message."
-  remarks: "The following table shows the relationship between managed types and the <xref:System.Messaging.Message.BodyType%2A> property. The object that you serialize must be one of these managed types or must implement the OLE `IPersistStream` interface.      |BodyType value|Managed type|   |--------------------|------------------|   |VT_LPSTR|<xref:System.Char>|   |VT_BSTR, VT_LPWSTR|<xref:System.String>|   |VT_VECTOR &#124; VT_UI1|<xref:System.Byte>|   |VT_BOOL|<xref:System.Boolean>|   |VT_CLSID|<xref:System.Guid>|   |VT_CY|<xref:System.Decimal>|   |VT_DATE|<xref:System.DateTime>|   |VT_I1, VT_UI1|<xref:System.Byte>|   |VT_I2|<xref:System.Int16>|   |VT_UI2|<xref:System.UInt16>|   |VT_I4|<xref:System.Int32>|   |VT_UI4|<xref:System.UInt32>|   |VT_I8|<xref:System.Int64>|   |VT_UI8|<xref:System.UInt64>|   |VT_R4|<xref:System.Single>|   |VT_R8|<xref:System.Double>|   |VT_NULL|`null`|   |VT_STREAMED_OBJECT|`IPersistStream` (OLE) <xref:System.Object>|"
+  summary: "메시지의 본문으로 개체를 serialize합니다."
+  remarks: "다음 표에서 관리 되는 형식 간의 관계를 보여 줍니다. 및 <xref:System.Messaging.Message.BodyType%2A>속성.</xref:System.Messaging.Message.BodyType%2A> 개체를 serialize 하면 이러한 관리 되는 형식 중 하나 여야 하거나 구현 해야 OLE `IPersistStream` 인터페이스입니다.      | BodyType 값 | 관리 되는 형식 |   |--------------------|------------------|   | VT_LPSTR | <xref:System.Char>|   | VT_BSTR, VT_LPWSTR | <xref:System.String>|   | VT_VECTOR | VT_UI1 | <xref:System.Byte>|   | VT_BOOL | <xref:System.Boolean>|   | VT_CLSID | <xref:System.Guid>|   | VT_CY | <xref:System.Decimal>|   | VT_DATE | <xref:System.DateTime>|   | VT_I1, VT_UI1 | <xref:System.Byte>|   | VT_I2 | <xref:System.Int16>|   | VT_UI2 | <xref:System.UInt16>|   | VT_I4 | <xref:System.Int32>|   | VT_UI4 | <xref:System.UInt32>|   | VT_I8 | <xref:System.Int64>|   | VT_UI8 | <xref:System.UInt64>|   | VT_R4 | <xref:System.Single>|   | VT_R8 | <xref:System.Double>|   | VT_NULL | `null`|   | VT_STREAMED_OBJECT | `IPersistStream` (OLE) <xref:System.Object>|</xref:System.Object></xref:System.Double></xref:System.Single></xref:System.UInt64></xref:System.Int64></xref:System.UInt32></xref:System.Int32></xref:System.UInt16></xref:System.Int16></xref:System.Byte></xref:System.DateTime></xref:System.Decimal></xref:System.Guid></xref:System.Boolean></xref:System.Byte></xref:System.String></xref:System.Char>"
   syntax:
     content: public void Write (System.Messaging.Message message, object obj);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> whose <xref:System.Messaging.Message.Body*> property will contain the serialized object."
+      description: "<xref href=&quot;System.Messaging.Message&quot;> </xref> 인 <xref:System.Messaging.Message.Body*>속성은 직렬화 된 개체를 포함 합니다.</xref:System.Messaging.Message.Body*>"
     - id: obj
       type: System.Object
-      description: "The object to be serialized into the message body."
+      description: "메시지 본문으로 serialize 할 개체입니다."
   overload: System.Messaging.ActiveXMessageFormatter.Write*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The object to serialize is neither a primitive nor a streamed object that implements the OLE <xref uid=&quot;langword_csharp_IPersistStream&quot; name=&quot;IPersistStream&quot; href=&quot;&quot;></xref> interface."
+    description: "Serialize 할 개체도 기본 형식이 아니고 OLE를 구현 하는 스트리밍된 개체 <xref uid=&quot;langword_csharp_IPersistStream&quot; name=&quot;IPersistStream&quot; href=&quot;&quot;> </xref> 인터페이스입니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>message</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."

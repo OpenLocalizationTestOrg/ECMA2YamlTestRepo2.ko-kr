@@ -15,8 +15,8 @@ items:
   nameWithType: ChannelDispatcherBase
   fullName: System.ServiceModel.Dispatcher.ChannelDispatcherBase
   type: Class
-  summary: "Abstract base class for the channel dispatcher that accepts channels and associates them with a service."
-  remarks: "This is used by developers who want to keep the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] programming model but replace the system-provided runtime. Such applications will pull messages out of channels and handle them directly with user-defined dispatchers. To use ChannelDispatcherBase , create a class derived from it, extend <xref:System.ServiceModel.ServiceHost> and override <xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A>, adding instances of your class derived from ChannelDispatcherBase to <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>.       The <xref:System.ServiceModel.Channels.IChannelListener> and the <xref:System.ServiceModel.ServiceHost>, associated with the ChannelDispatcherBase object are available for inspection or modification through the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A> and <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> respectively.       <xref:System.ServiceModel.ServiceHost> calls the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29> or <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29> methods when adding or removing a ChannelDispatcherBase item from its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection.       <xref:System.ServiceModel.ServiceHost> calls the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A> during shutdown before closing InstanceContexts. [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] uses this call to close datagram channels and wait for all messages to get to an InstanceContext."
+  summary: "채널 허용 하는 서비스에 연결 하는 채널 디스패처에 대 한 추상 기본 클래스입니다."
+  remarks: "이 유지 하려는 개발자가 사용는 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] 프로그래밍 모델 하면서 시스템 제공 런타임 대체 합니다. 이러한 응용 프로그램 채널에서 메시지를 사용자 정의 디스패처를 사용 하 여 직접 처리 합니다. 파생 된 클래스를 만든를 ChannelDispatcherBase 사용 하려면, <xref:System.ServiceModel.ServiceHost> <xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A> <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> ChannelDispatcherBase에서 파생 된 클래스의 인스턴스를 추가,</xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A> 재정의 및</xref:System.ServiceModel.ServiceHost> 확장       <xref:System.ServiceModel.Channels.IChannelListener>및 <xref:System.ServiceModel.ServiceHost>연관 된 ChannelDispatcherBase 개체와 통해 검사 하거나 수정에 사용할 수 있는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A>및 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A>각각.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A> </xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Channels.IChannelListener>       <xref:System.ServiceModel.ServiceHost>호출 된 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29>또는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29>메서드를 추가 하거나 ChannelDispatcherBase 항목을 제거할 때 해당 <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>컬렉션.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29></xref:System.ServiceModel.ServiceHost>       <xref:System.ServiceModel.ServiceHost>호출 된 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A>InstanceContexts를 닫기 전에 종료 하는 동안.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A></xref:System.ServiceModel.ServiceHost> [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]이 호출을 사용 하 여 데이터 그램 채널을 닫고 모든 메시지를 InstanceContext로 가져올 때까지 대기 합니다."
   syntax:
     content: 'public abstract class ChannelDispatcherBase : System.ServiceModel.Channels.CommunicationObject'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherBase&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherBase&quot;> </xref> 클래스입니다."
   syntax:
     content: protected ChannelDispatcherBase ();
     parameters: []
@@ -57,28 +57,28 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, attaches the channel dispatcher to a specific host."
-  remarks: "This method can only be set when the instance of the <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> is in the <xref:System.ServiceModel.CommunicationState> state, as this is the only state that is both mutable and not disposed.       A <xref:System.ServiceModel.ServiceHost> calls this method when the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is added to its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection.  This gives the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> a chance to hook events and inspect the <xref:System.ServiceModel.ServiceHost>, and provides the value that should be returned from the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> property."
+  summary: "파생된 클래스에서 재정의 되 면 특정 호스트에 채널 디스패처를 연결 합니다."
+  remarks: "이 방법은 수만 설정 될 때의 인스턴스는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>에 <xref:System.ServiceModel.CommunicationState>상태는 변경 가능 하면서 삭제 되지 않은 유일한 상태 이것이.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher>       A <xref:System.ServiceModel.ServiceHost>이 메서드를 호출 하는 경우는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>에 추가 됩니다 해당 <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>컬렉션.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> </xref:System.ServiceModel.ServiceHost>  이렇게 하면는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>이벤트를 연결 하 고를 검사 하는 <xref:System.ServiceModel.ServiceHost>에서 반환 되어야 하는 값을 제공 된 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A>속성.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> </xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: protected virtual void Attach (System.ServiceModel.ServiceHostBase host);
     parameters:
     - id: host
       type: System.ServiceModel.ServiceHostBase
-      description: "The <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref> for the service."
+      description: "<xref href=&quot;System.ServiceModel.ServiceHostBase&quot;> </xref> 서비스에 대 한 합니다."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>host</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>host</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The communication object is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state or the host is already set."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>또는 <xref:System.ServiceModel.CommunicationState>상태 이거나 호스트가 이미 설정 되어 있습니다.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>또는 <xref:System.ServiceModel.CommunicationState>상태.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> state."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>상태.</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput
@@ -93,8 +93,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, removes the endpoint dispatchers associated with the channel dispatcher."
-  remarks: "<xref:System.ServiceModel.ServiceHost> calls this method during shutdown to give the dispatcher a chance to drain messages. <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> uses this call to close datagram channels."
+  summary: "파생된 클래스에서 재정의 하는 경우 채널 디스패처에 연결 된 끝점 디스패처를 제거 합니다."
+  remarks: "<xref:System.ServiceModel.ServiceHost>종료 메시지를 비울 발송자 제공할 수 있도록 하는 동안이 메서드를 호출 합니다.</xref:System.ServiceModel.ServiceHost> <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>이 호출을 사용 하 여 데이터 그램 채널을 닫습니다.</xref:System.ServiceModel.Dispatcher.ChannelDispatcher>"
   syntax:
     content: public virtual void CloseInput ();
     parameters: []
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, detaches the channel dispatcher from a specific host."
-  remarks: "The <xref:System.ServiceModel.ServiceHostBase> can only be detached when the instance of the <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> is in the <xref:System.ServiceModel.CommunicationState> state, as this is the only state that is both mutable and not disposed.       Should set the <xref:System.ServiceModel.ServiceHostBase> associated with the channel dispatcher to `null`.       <xref:System.ServiceModel.ServiceHost> calls this method when the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is removed from its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection. This gives the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> a chance to unhook events and inspect the <xref:System.ServiceModel.ServiceHost>."
+  summary: "파생된 클래스에서 재정의 되 면 채널 디스패처를 특정 호스트에서 분리 합니다."
+  remarks: "<xref:System.ServiceModel.ServiceHostBase>만 경우 분리할 수의 인스턴스는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>에 <xref:System.ServiceModel.CommunicationState>상태는 변경 가능 하면서 삭제 되지 않은 유일한 상태 이것이.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher> </xref:System.ServiceModel.ServiceHostBase>       설정 해야는 <xref:System.ServiceModel.ServiceHostBase>를 채널 디스패처에 연결 된 `null`.</xref:System.ServiceModel.ServiceHostBase>       <xref:System.ServiceModel.ServiceHost>이 메서드를 호출 하는 경우는 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>에서 제거 됩니다 해당 <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>컬렉션.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase></xref:System.ServiceModel.ServiceHost> 이렇게 하면 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>기회 이벤트를 언 <xref:System.ServiceModel.ServiceHost>.</xref:System.ServiceModel.ServiceHost> 검사</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: protected virtual void Detach (System.ServiceModel.ServiceHostBase host);
     parameters:
@@ -126,16 +126,16 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>host</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>host</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The communication object is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state or the host is already set."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>또는 <xref:System.ServiceModel.CommunicationState>상태 이거나 호스트가 이미 설정 되어 있습니다.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>또는 <xref:System.ServiceModel.CommunicationState>상태.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> state."
+    description: "통신 개체가 <xref:System.ServiceModel.CommunicationState>상태.</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host
@@ -150,13 +150,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, gets the service host associated with the channel dispatcher."
-  remarks: "Each <xref:System.ServiceModel.ServiceHost> object can have many <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> objects, each associated with a different <xref:System.ServiceModel.Channels.IChannelListener> for that service. The host keeps a list of these <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> objects in the <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection."
+  summary: "파생된 클래스에서 재정의 하는 경우 채널 디스패처에 연결 된 서비스 호스트를 가져옵니다."
+  remarks: "각 <xref:System.ServiceModel.ServiceHost>개체 수는 많은 <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>개체, 연결 된 다른 <xref:System.ServiceModel.Channels.IChannelListener>해당 서비스에 대 한.</xref:System.ServiceModel.Channels.IChannelListener> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher> </xref:System.ServiceModel.ServiceHost> 이러한 목록을 저장 하는 호스트 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>개체에 <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>컬렉션.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: public abstract System.ServiceModel.ServiceHostBase Host { get; }
     return:
       type: System.ServiceModel.ServiceHostBase
-      description: "The <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref> for the service associated with the dispatcher."
+      description: "<xref href=&quot;System.ServiceModel.ServiceHostBase&quot;> </xref> 디스패처에 연결 된 서비스에 대 한 합니다."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host*
   exceptions: []
   platform:
@@ -173,13 +173,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, gets the channel listener associated with the channel dispatcher."
-  remarks: "A <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> associates an <xref:System.ServiceModel.Channels.IChannelListener> whose channels and messages this <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is dispatching."
+  summary: "파생된 클래스에서 재정의 하는 경우 채널 디스패처에 연결 된 채널 수신기를 가져옵니다."
+  remarks: "A <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>연결는 <xref:System.ServiceModel.Channels.IChannelListener>해당 채널과 메시지이 <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>디스패치하지 않습니다.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> </xref:System.ServiceModel.Channels.IChannelListener> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher>"
   syntax:
     content: public abstract System.ServiceModel.Channels.IChannelListener Listener { get; }
     return:
       type: System.ServiceModel.Channels.IChannelListener
-      description: "The <xref href=&quot;System.ServiceModel.Channels.IChannelListener&quot;></xref> associated with the channel dispatcher."
+      description: "<xref href=&quot;System.ServiceModel.Channels.IChannelListener&quot;> </xref> 채널 디스패처에 연결 된입니다."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener*
   exceptions: []
   platform:

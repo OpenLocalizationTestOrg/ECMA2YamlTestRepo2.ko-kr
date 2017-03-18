@@ -14,8 +14,8 @@ items:
   nameWithType: MarshalByRefObject
   fullName: System.MarshalByRefObject
   type: Class
-  summary: "Enables access to objects across application domain boundaries in applications that support remoting."
-  remarks: "An application domain is a partition in an operating system process where one or more applications reside. Objects in the same application domain communicate directly. Objects in different application domains communicate either by transporting copies of objects across application domain boundaries, or by using a proxy to exchange messages.       MarshalByRefObject is the base class for objects that communicate across application domain boundaries by exchanging messages using a proxy. Objects that do not inherit from MarshalByRefObject are implicitly marshal by value. When a remote application references a marshal by value object, a copy of the object is passed across application domain boundaries.       MarshalByRefObject objects are accessed directly within the boundaries of the local application domain. The first time an application in a remote application domain accesses a MarshalByRefObject, a proxy is passed to the remote application. Subsequent calls on the proxy are marshaled back to the object residing in the local application domain.       Types must inherit from MarshalByRefObject when the type is used across application domain boundaries, and the state of the object must not be copied because the members of the object are not usable outside the application domain where they were created.       When you derive an object from MarshalByRefObject for use across application domain boundaries, you should not override any of its members, nor should you call its methods directly. The runtime recognizes that classes derived from  MarshalByRefObject should be marshaled across app domain boundaries."
+  summary: "개체에 액세스할 수는 응용 프로그램에서 응용 프로그램 도메인 경계를 넘어 지원 remoting에 해당 합니다."
+  remarks: "응용 프로그램 도메인은 하나 이상의 응용 프로그램이 있는 운영 체제 프로세스의 파티션입니다. 동일한 응용 프로그램 도메인의 개체는 직접 통신 합니다. 다른 응용 프로그램 도메인의 개체에는 응용 프로그램 도메인 경계를 넘어 개체의 복사본을 전송 하거나 메시지를 교환 하는 프록시를 사용 하 여 통신 합니다.       MarshalByRefObject는 프록시를 사용 하 여 메시지를 교환 하 여 응용 프로그램 도메인 경계에 걸쳐 통신 하는 개체에 대 한 기본 클래스입니다. MarshalByRefObject에서 상속 되지 않는 개체는 암시적으로 값별로 합니다. 마샬링을 값 개체에서 참조 하는 원격 응용 프로그램, 응용 프로그램 도메인 경계를 넘어 개체의 복사본이 전달 됩니다.       MarshalByRefObject 개체는 로컬 응용 프로그램 도메인의 경계 내에서 직접 액세스 합니다. 처음으로 원격 응용 프로그램 도메인에서 응용 프로그램에 액세스 하는 MarshalByRefObject 프록시 원격 응용 프로그램에 전달 됩니다. 프록시에 대 한 후속 호출 로컬 응용 프로그램 도메인에 있는 개체로 다시 마샬링됩니다.       형식 유형 응용 프로그램 도메인 경계에 걸쳐 사용 되 고 개체의 상태 개체의 멤버가 자신이 만들어진 응용 프로그램 도메인 외부에서 사용할 수 없기 때문에 복사 하면 안 때 MarshalByRefObject에서 상속 해야 합니다.       개체 MarshalByRefObject에서 사용 하기 위해 응용 프로그램 도메인 경계를 넘어을 파생할 경우에 해당 구성원을 재정의 하지 않아야 함 하거나 해야 하는 메서드를 직접 호출 합니다. 런타임에서 MarshalByRefObject에서 파생 된 클래스를 응용 프로그램 도메인 경계를 넘어 마샬링되어야 한다는 것을 인식 합니다."
   example:
   - "This section contains two code examples. The first code example shows how to create an instance of a class in another application domain. The second code example shows a simple class that can be used for remoting.  \n  \n **Example 1**  \n  \n The following code example shows the simplest way to execute code in another application domain. The example defines a class named `Worker` that inherits MarshalByRefObject, with a method that displays the name of the application domain in which it is executing. The example creates instances of `Worker` in the default application domain and in a new application domain.  \n  \n> [!NOTE]\n>  The assembly that contains `Worker` must be loaded into both application domains, but it could load other assemblies that would exist only in the new application domain.  \n  \n [!code-cpp[CreateInstanceAndUnwrap2#1](~/add/codesnippet/cpp/t-system.marshalbyrefobj_1.cpp)]\n [!code-cs[CreateInstanceAndUnwrap2#1](~/add/codesnippet/csharp/t-system.marshalbyrefobj_1.cs)]\n [!code-vb[CreateInstanceAndUnwrap2#1](~/add/codesnippet/visualbasic/t-system.marshalbyrefobj_1.vb)]  \n  \n **Example 2**  \n  \n The following example demonstrates a class derived from MarshalByRefObject that is used later in remoting.  \n  \n [!code-cpp[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/cpp/t-system.marshalbyrefobj_2.cpp)]\n [!code-cs[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/csharp/t-system.marshalbyrefobj_2.cs)]\n [!code-vb[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/visualbasic/t-system.marshalbyrefobj_2.vb)]"
   syntax:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.MarshalByRefObject&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.MarshalByRefObject&quot;> </xref> 클래스입니다."
   syntax:
     content: protected MarshalByRefObject ();
     parameters: []
@@ -61,25 +61,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object."
-  remarks: "TheCreateObjRef method is called by remote object creation methods such as <xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName> and <xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName>. In most cases, there is no need to override this method."
+  summary: "원격 개체와 통신 하는 데 프록시를 생성 하는 데 필요한 모든 관련 정보를 포함 하는 개체를 만듭니다."
+  remarks: "TheCreateObjRef 메서드는 원격 개체 생성 방법 <xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName>및 <xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName>.</xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName> </xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName> 등 대부분의 경우에서이 메서드를 재정의 하지 않아도가 있습니다."
   syntax:
     content: public virtual System.Runtime.Remoting.ObjRef CreateObjRef (Type requestedType);
     parameters:
     - id: requestedType
       type: System.Type
-      description: "The <xref:System.Type> of the object that the new <xref href=&quot;System.Runtime.Remoting.ObjRef&quot;></xref> will reference."
+      description: "<xref:System.Type>개체의 하는 새 <xref href=&quot;System.Runtime.Remoting.ObjRef&quot;> </xref> 참조 합니다.</xref:System.Type>"
     return:
       type: System.Runtime.Remoting.ObjRef
-      description: "Information required to generate a proxy."
+      description: "프록시를 생성 하는 데 필요한 정보입니다."
   overload: System.MarshalByRefObject.CreateObjRef*
   exceptions:
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: "This instance is not a valid remoting object."
+    description: "이 인스턴스는 올바른 원격 개체 하지 않습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.MarshalByRefObject.GetLifetimeService
@@ -94,19 +94,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Retrieves the current lifetime service object that controls the lifetime policy for this instance."
-  remarks: "For more information about lifetime services, see the <xref:System.Runtime.Remoting.Lifetime.LifetimeServices> class."
+  summary: "이 인스턴스에 대 한 수명 정책을 제어 하는 수명이 현재 서비스 개체를 검색 합니다."
+  remarks: "수명 서비스에 대 한 자세한 내용은 <xref:System.Runtime.Remoting.Lifetime.LifetimeServices>클래스</xref:System.Runtime.Remoting.Lifetime.LifetimeServices> 를 참조 하십시오."
   syntax:
     content: public object GetLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "An object of type <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;></xref> used to control the lifetime policy for this instance."
+      description: "형식의 개체 <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;> </xref> 이 인스턴스에 대 한 수명 정책을 제어 하는 데 사용 합니다."
   overload: System.MarshalByRefObject.GetLifetimeService*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.MarshalByRefObject.InitializeLifetimeService
@@ -121,8 +121,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Obtains a lifetime service object to control the lifetime policy for this instance."
-  remarks: "For more information about lifetime services, see the <xref:System.Runtime.Remoting.Lifetime.LifetimeServices> class."
+  summary: "이 인스턴스에 대 한 수명 정책을 제어를 수명 서비스 개체를 가져옵니다."
+  remarks: "수명 서비스에 대 한 자세한 내용은 <xref:System.Runtime.Remoting.Lifetime.LifetimeServices>클래스</xref:System.Runtime.Remoting.Lifetime.LifetimeServices> 를 참조 하십시오."
   example:
   - "The following code example demonstrates creating a lease.  \n  \n [!code-cpp[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/cpp/m-system.marshalbyrefobj_1.cpp)]\n [!code-vb[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/visualbasic/m-system.marshalbyrefobj_1.vb)]\n [!code-cs[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/csharp/m-system.marshalbyrefobj_1.cs)]"
   syntax:
@@ -130,12 +130,12 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: "An object of type <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;></xref> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the &lt;xref:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime%2A?displayProperty=fullName&gt; property."
+      description: "형식의 개체 <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;> </xref> 이 인스턴스에 대 한 수명 정책을 제어 하는 데 사용 합니다. 이 한이 인스턴스에 대 한 서비스 개체가 있는지 현재 수명 새 수명을 서비스 개체의 값으로 초기화 하는 그렇지 않은 경우는 &lt;xref:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime%2A?displayProperty=fullName&gt; 속성입니다."
   overload: System.MarshalByRefObject.InitializeLifetimeService*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.MarshalByRefObject.MemberwiseClone(System.Boolean)
@@ -150,17 +150,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Creates a shallow copy of the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object."
-  remarks: "The MemberwiseClone method creates a shallow copy by creating a new <xref:System.MarshalByRefObject> object, and then copying the nonstatic fields of the current <xref:System.MarshalByRefObject> object to the new object. If a field is a value type, a bit-by-bit copy of the field is performed. If a field is a reference type, the reference is copied but the referred object is not; therefore, the original object and its clone refer to the same object.       For example, consider a <xref:System.MarshalByRefObject> object called X that references objects A and B. Object B, in turn, references object C. A shallow copy of X creates new object X2 that also references objects A and B. In contrast, a deep copy of X creates a new object X2 that references the new objects A2 and B2, which are copies of A and B. B2, in turn, references the new object C2, which is a copy C. Use a class that implements the <xref:System.ICloneable> interface to perform a deep or shallow copy of an object.       The identity of a <xref:System.MarshalByRefObject> object is defined as the remote server object that is the target of a remoting client call. By default, the memberwise clone of a <xref:System.MarshalByRefObject> object has the same identity as the original object, which is typically not the correct behavior for clones of server-side objects that are marshaled across a remoting boundary to the client side. Specify `false`, which is usually appropriate, to delete the identity of the clone and cause a new identity to be assigned when the clone is marshaled across a remoting boundary, or `true` to cause the clone to retain the identity of the original <xref:System.MarshalByRefObject> object. The MemberwiseClone method is intended to be used by developers implementing remote server objects."
+  summary: "현재의 단순 복사본을 만듭니다 <xref href=&quot;System.MarshalByRefObject&quot;> </xref> 개체입니다."
+  remarks: "MemberwiseClone 메서드 새 단순 복사본을 만듭니다. <xref:System.MarshalByRefObject>개체를 현재의 비정적 필드를 복사 하 여 <xref:System.MarshalByRefObject>개체를 새 개체입니다.</xref:System.MarshalByRefObject> </xref:System.MarshalByRefObject> 필드 값 형식이 필드의 비트 단위로 복사가 수행 됩니다. 필드 참조 형식인 경우 참조를 복사할 수 있지만 참조 된 개체는 필요는 없습니다. 따라서 원래 개체와 해당 복제 같은 개체를 참조 합니다.       예를 들어 <xref:System.MarshalByRefObject>개체를 참조 하는 개체 B 및 a, X 라는&3;. 개체를 참조 X의 단순 복사본을 만듭니다 개체 A와 B를 참조 하는 새 개체 X2 반면, X의 전체 복사본을 새 개체 X2 A2 및 b&2;를 A의 복사본 인 새 개체를 참조 하는 만들고 B. b&2;를 참조 합니다.&3;. 사용 하 여 구현 하는 클래스 복사본 인 새 개체 c&2;는 <xref:System.ICloneable>개체의 전체 또는 단순 복사를 수행 하는 인터페이스입니다.</xref:System.ICloneable> </xref:System.MarshalByRefObject>       id는 <xref:System.MarshalByRefObject>원격 클라이언트 호출의 대상이 되는 원격 서버 개체를 개체 이루어집니다.</xref:System.MarshalByRefObject> 멤버 수준 복제를 기본적으로는 <xref:System.MarshalByRefObject>개체에는 보통 되지 않은 클라이언트 쪽 원격 경계를 넘어 마샬링되는 서버 쪽 개체의 복제본에 대 한 올바른 동작은 원래 개체와 동일한 id.</xref:System.MarshalByRefObject> 지정 `false`, 일반적으로 적절 하 게 복제의 id를 삭제 하 고 원격 경계를 넘어 복제본 마샬링될 때 할당 될 새 id를 일으킬 변수인 또는 `true` 원래 id 유지 하도록 복제본을 <xref:System.MarshalByRefObject>개체입니다.</xref:System.MarshalByRefObject> MemberwiseClone 메서드는 원격 서버 개체를 구현 하는 개발자가 사용 하는 데 사용 됩니다."
   syntax:
     content: protected MarshalByRefObject MemberwiseClone (bool cloneIdentity);
     parameters:
     - id: cloneIdentity
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to delete the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object&quot;s identity, which will cause the object to be assigned a new identity when it is marshaled across a remoting boundary. A value of <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> is usually appropriate. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to copy the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object&quot;s identity to its clone, which will cause remoting client calls to be routed to the remote server object."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>현재 삭제 하려면 <xref href=&quot;System.MarshalByRefObject&quot;> </xref> 원격 경계를 넘어 마샬링하는 경우 새 id를 할당할 하면 개체가 개체의 id입니다. 값이 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 일반적으로 적합 합니다. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>현재 복사 하려면 <xref href=&quot;System.MarshalByRefObject&quot;> </xref> 개체의 id를 해당 복제 하는 원격 서버 개체에 게 라우팅되도록 원격 클라이언트 호출 됩니다."
     return:
       type: System.MarshalByRefObject
-      description: "A shallow copy of the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object."
+      description: "현재의 단순 복사본을 <xref href=&quot;System.MarshalByRefObject&quot;> </xref> 개체입니다."
   overload: System.MarshalByRefObject.MemberwiseClone*
   exceptions: []
   platform:

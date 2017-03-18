@@ -19,8 +19,8 @@ items:
   nameWithType: WebMessageEncodingElement
   fullName: System.ServiceModel.Configuration.WebMessageEncodingElement
   type: Class
-  summary: "Represents the configuration element that specifies the character encoding used for non-SOAP messages. This class cannot be inherited."
-  remarks: "Encoding is the process of transforming a set of Unicode characters into a sequence of bytes. The types of encoding for non-SOAP messages are text, JSON and raw.       The WebMessageEncodingElement represents the <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> in configuration. The <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> provides the extensibility point for plugging in a composite encoder that can be used to override how incoming message content-types map to the various inner encoders (text/JSON/raw binary) provided by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]. The composite message encoder does not support SOAP or WS-Addressing."
+  summary: "비 SOAP 메시지에 사용 되는 문자 인코딩을 지정 하는 구성 요소를 나타냅니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "인코딩은 유니코드 문자 집합을 바이트 시퀀스로 변형 하는 프로세스입니다. 비 SOAP 메시지는 텍스트, JSON 인코딩 형식 및 원시 합니다.       WebMessageEncodingElement 나타냅니다는 <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement>구성에서.</xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement>재정의 어떻게 수신 하는 메시지 콘텐츠 형식 맵 다양 한 내부 인코더 (텍스트/JSON/원시 이진)에서 제공 하는 데 사용할 수 있는 복합 인코더 플러그 인을 위한 확장 지점을 제공 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)].</xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> 복합 메시지 인코더는 SOAP 또는 Ws-addressing를 지원 하지 않습니다."
   example:
   - "```c#  \nusing System;  \nusing System.Text;  \nusing System.ServiceModel;  \nusing System.ServiceModel.Web;  \nusing System.ServiceModel.Configuration;  \n  \nclass Program  \n{  \n  static void Main(string[] args)  \n  {  \n      WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n      Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n  \n      int maxReadPoolSize = webMEE.MaxReadPoolSize;  \n      Console.WriteLine(\"The MaxReadPoolSize is: {0}\", maxReadPoolSize);  \n      maxReadPoolSize = 128;  \n      Console.WriteLine(\"The MaxReadPoolSize has been changed to: {0}\", maxReadPoolSize);  \n  \n      int maxWritePoolSize = webMEE.MaxWritePoolSize;  \n      Console.WriteLine(\"The MaxWritePoolSize is: {0}\", maxWritePoolSize);  \n      maxWritePoolSize = 48;  \n      Console.WriteLine(\"The MaxWritePoolSize has been changed to: {0}\", maxWritePoolSize);  \n  \n      Encoding webMessageEncoding = webMEE.WriteEncoding;  \n      Console.WriteLine(\"The write encoding is: {0}\", webMessageEncoding);  \n      webMessageEncoding = UnicodeEncoding.Unicode;  \n      Console.WriteLine(\"The write encoding has been changed to: {0}\", webMessageEncoding);  \n  \n      XmlDictionaryReaderQuotasElement webMessageReaderQuotasElement = webMEE.ReaderQuotas;  \n      Console.WriteLine(\"The max depth of the reader Quotas is: {0}\", webMessageReaderQuotasElement.MaxDepth);  \n  \n      Console.WriteLine(\"Press <ENTER> to terminate the program.\");  \n      Console.ReadLine();  \n        }  \n    }  \n```"
   syntax:
@@ -85,7 +85,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.WebMessageEncodingElement&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Configuration.WebMessageEncodingElement&quot;> </xref> 클래스입니다."
   remarks: ''
   example:
   - "```  \nstatic void Main(string[] args)  \n {  \n    WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n    Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n  }  \n```"
@@ -108,13 +108,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Applies the content of a specified binding element to this binding configuration section."
+  summary: "지정 된 바인딩 요소의 내용을이 바인딩 구성 섹션에 적용 됩니다."
   syntax:
     content: public override void ApplyConfiguration (System.ServiceModel.Channels.BindingElement bindingElement);
     parameters:
     - id: bindingElement
       type: System.ServiceModel.Channels.BindingElement
-      description: "The <xref:System.ServiceModel.Channels.BindingElement> to be applied."
+      description: "<xref:System.ServiceModel.Channels.BindingElement>을 적용할 수 있습니다.</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.ApplyConfiguration*
   exceptions: []
   platform:
@@ -131,7 +131,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets the type of the binding element enabled by this configuration element."
+  summary: "이 구성 요소에서 사용 하도록 설정 하는 바인딩 요소의 형식을 가져옵니다."
   remarks: ''
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n   WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n   Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n }  \n```"
@@ -139,7 +139,7 @@ items:
     content: public override Type BindingElementType { get; }
     return:
       type: System.Type
-      description: 'The type of binding element enabled by this configuration element: <xref href=&quot;System.ServiceModel.Channels.WebMessageEncodingBindingElement&quot;></xref>.'
+      description: '이 구성 요소에서 사용 하도록 설정 하는 바인딩 요소의 형식을: <xref href=&quot;System.ServiceModel.Channels.WebMessageEncodingBindingElement&quot;> </xref>합니다.'
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.BindingElementType*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Copies the content of the specified configuration section to this element."
+  summary: "이 요소에 지정된 된 구성 섹션의 콘텐츠를 복사합니다."
   syntax:
     content: public override void CopyFrom (System.ServiceModel.Configuration.ServiceModelExtensionElement from);
     parameters:
     - id: from
       type: System.ServiceModel.Configuration.ServiceModelExtensionElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.ServiceModelExtensionElement&quot;></xref> to be copied."
+      description: "<xref href=&quot;System.ServiceModel.Configuration.ServiceModelExtensionElement&quot;> </xref> 복사할 수 있습니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.CopyFrom*
   exceptions: []
   platform:
@@ -184,7 +184,7 @@ items:
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.CreateBindingElement*
   exceptions: []
   platform:
@@ -201,15 +201,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a value that specifies the maximum number of messages that can be read simultaneously without allocating new readers."
-  remarks: "Larger pool sizes make the system more tolerant to activity spikes at the cost of a larger working set. The `WebMessageEncodingElement` configures a composite encoder that is capable of reading and writing plain-text XML, JSON, and raw binary. This encoder is composed of three separate encoders. This setting affects the maximum number of readers for each individual encoder."
+  summary: "새 판독기를 할당 하지 않고 동시에 읽을 수 있는 메시지의 최대 수를 지정 하는 값을 가져오거나 설정 합니다."
+  remarks: "풀 크기가 커지면 작업 집합이 커지는 활동 보다 적절 하 게 시스템을 확인합니다. `WebMessageEncodingElement` 읽고 일반 텍스트 XML, JSON 및 원시 이진 파일을 쓸 수 있는 복합 인코더를 구성 합니다. 이 인코더는 세 명의 개별 인코더로 구성 됩니다. 이 설정은 인코더 별 판독기의 최대 수를 결정합니다."
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n    WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n    int maxReadPoolSize = webMEE.MaxReadPoolSize;  \n    Console.WriteLine(\"The MaxReadPoolSize is: {0}\", maxReadPoolSize);  \n    maxReadPoolSize = 128;  \n    Console.WriteLine(\"The MaxReadPoolSize has been changed to: {0}\", maxReadPoolSize);  \n}  \n```"
   syntax:
     content: public int MaxReadPoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of messages that can be read simultaneously without allocating new readers. The default is 64."
+      description: "새 판독기를 할당 하지 않고 동시에 읽을 수 있는 메시지의 최대 수입니다. 기본값은 64입니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.MaxReadPoolSize*
   exceptions: []
   platform:
@@ -226,15 +226,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a value that specifies the maximum number of messages that can be sent simultaneously without allocating new writers."
-  remarks: "Larger pool sizes make the system more tolerant to activity spikes at the cost of a larger working set. The `WebMessageEncodingElement` configures a composite encoder that is capable of reading and writing plain-text XML, JSON, and raw binary. This encoder is composed of three separate encoders. This setting affects the maximum number of writers for each individual encoder."
+  summary: "새 작성기를 할당 하지 않고 동시에 보낼 수 있는 메시지의 최대 수를 지정 하는 값을 가져오거나 설정 합니다."
+  remarks: "풀 크기가 커지면 작업 집합이 커지는 활동 보다 적절 하 게 시스템을 확인합니다. `WebMessageEncodingElement` 읽고 일반 텍스트 XML, JSON 및 원시 이진 파일을 쓸 수 있는 복합 인코더를 구성 합니다. 이 인코더는 세 명의 개별 인코더로 구성 됩니다. 이 설정은 인코더 별 작성기의 최대 수를 결정합니다."
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n   int maxWritePoolSize = webMEE.MaxWritePoolSize;  \n   Console.WriteLine(\"The MaxWritePoolSize is: {0}\", maxWritePoolSize);  \n   maxWritePoolSize = 48;  \n   Console.WriteLine(\"The MaxWritePoolSize has been changed to: {0}\", maxWritePoolSize);  \n}  \n```"
   syntax:
     content: public int MaxWritePoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of messages that can be sent simultaneously without allocating new writers. The default is 16."
+      description: "새 작성기를 할당 하지 않고 동시에 보낼 수 있는 메시지의 최대 수입니다. 기본값은 16입니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.MaxWritePoolSize*
   exceptions: []
   platform:
@@ -251,15 +251,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets constraints on the complexity of SOAP messages that can be processed by endpoints configured with this binding."
-  remarks: "The complexity constraints include items like a maximum element depth, or a maximum length for string content within the message. The constraints protect against a type of denial of service (DOS) attacks that attempt to use message complexity to tie up endpoint processing resources."
+  summary: "이 바인딩으로 구성 된 끝점에서 처리할 수 있는 SOAP 메시지의 복잡성에 대 한 제약 조건을 가져오거나 설정 합니다."
+  remarks: "복잡성 제약 조건을 최대 요소 깊이, 메시지 내 문자열 내용의 최대 길이 등이 포함 됩니다. 서비스 거부 (DOS) 공격 메시지 복잡성을 사용 하 여 끝점 처리 리소스를 계속 사용 하려면 하려고 하는 유형의 제약 조건을 방지할 수 있습니다."
   example:
   - "```  \nXmlDictionaryReaderQuotasElement webMessageReaderQuotasElement = webMEE.ReaderQuotas;  \nConsole.WriteLine(\"The max depth of the reader Quotas is: {0}\", webMessageReaderQuotasElement.MaxDepth);  \n```"
   syntax:
     content: public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get; }
     return:
       type: System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement&quot;></xref> that specifies the complexity constraints."
+      description: "<xref href=&quot;System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement&quot;> </xref> 복잡성 제약 조건을 지정 하는 합니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.ReaderQuotas*
   exceptions: []
   platform:
@@ -276,13 +276,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the type name of a <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;></xref> that specifies the format to which the content type of an incoming message is mapped."
-  remarks: "This is an extensibility point in the programming model that is used by the Web message encoder to override how content types are mapped to formats."
+  summary: "형식 이름을 가져오거나 설정 합니다.는 <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;> </xref> 들어오는 메시지의 콘텐츠 형식을 매핑할 형식을 지정 하는 합니다."
+  remarks: "이것이 형식이 매핑되는 콘텐츠 형식 방법을 재정의 하는 웹 메시지 인코더에서 사용 되는 프로그래밍 모델의 확장 지점입니다."
   syntax:
     content: public string WebContentTypeMapperType { get; set; }
     return:
       type: System.String
-      description: "The type name of a <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;></xref>."
+      description: "형식 이름을 <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;> </xref>합니다."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.WebContentTypeMapperType*
   exceptions: []
   platform:
@@ -299,7 +299,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the character set encoding to be used for emitting messages on the binding."
+  summary: "문자 집합 바인딩에서 메시지를 내보내는 데 사용할 인코딩을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "```  \nusing System;  \nusing System.Text;  \nusing System.ServiceModel;  \nusing System.ServiceModel.Web;  \nusing System.ServiceModel.Configuration;  \n  \nstatic void Main()  \n{  \n    Encoding webMessageEncoding = webMEE.WriteEncoding;  \n    Console.WriteLine(\"The write encoding is: {0}\",     webMessageEncoding);  \n    webMessageEncoding = UnicodeEncoding.Unicode;  \n    Console.WriteLine(\"The write encoding has been changed to: {0}\", webMessageEncoding);  \n}  \n```"
@@ -307,12 +307,12 @@ items:
     content: public System.Text.Encoding WriteEncoding { get; set; }
     return:
       type: System.Text.Encoding
-      description: "A valid <xref:System.Text.Encoding> value that specifies the character set encoding to be used for emitting messages on the binding. The default is <xref:System.Text.UTF8Encoding>."
+      description: "유효한 <xref:System.Text.Encoding>문자를 지정 하는 값 집합 바인딩에서 메시지를 내보낼 때 사용할 인코딩입니다.</xref:System.Text.Encoding> 기본값은 <xref:System.Text.UTF8Encoding>.</xref:System.Text.UTF8Encoding>"
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.WriteEncoding*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value set is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "값 집합이 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   platform:
   - net462
 references:

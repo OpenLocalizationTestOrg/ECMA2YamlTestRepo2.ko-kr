@@ -12,8 +12,8 @@ items:
   nameWithType: ManagementConfigurationAttribute
   fullName: System.Management.Instrumentation.ManagementConfigurationAttribute
   type: Class
-  summary: "The ManagementConfiguration attribute indicates that a property or field represents a read-write WMI property.       Note: the WMI .NET libraries are now considered in final state, and no further development, enhancements, or updates will be available for non-security related issues affecting these libraries. The [MI APIs](https://msdn.microsoft.com/en-us/library/jj152383%28v=vs.80%29.aspx) should be used for all new development."
-  remarks: "The property or field must be public. The class that contains the property must be marked with the <xref:System.Management.Instrumentation.ManagementEntityAttribute> attribute.       Any fields or properties in the class that are not marked with this or another WMI Provider Extensions attribute will not be instrumented."
+  summary: "ManagementConfiguration 특성은 속성 또는 필드에는 읽기 / 쓰기 WMI 속성을 나타내는 것을 나타냅니다.       참고: WMI.NET 라이브러리 이제 간주 최종 상태 및 이후 개발, 향상 된 기능, 또는 업데이트 이러한 라이브러리에 영향을 주는 비보안 관련된 문제에 대해 사용할 수 있습니다. [MI Api](https://msdn.microsoft.com/en-us/library/jj152383%28v=vs.80%29.aspx) 새로운 개발에 사용 해야 합니다."
+  remarks: "속성 또는 필드는 공용 이어야 합니다. 속성을 포함 하는 클래스도 표시 되어야 합니다는 <xref:System.Management.Instrumentation.ManagementEntityAttribute>특성.</xref:System.Management.Instrumentation.ManagementEntityAttribute>       모든 필드 또는 클래스에서이 컴퓨터나 다른 WMI 공급자 확장 특성으로 표시 되지 않은 속성 계측 되지 않습니다."
   example:
   - "The following example shows how to use the ManagementConfiguration attribute to mark a property. This property is exposed to WMI.  \n  \n [C#]  \n  \n```  \n// Use the ManagementConfiguration attribute to specify that a property  \n// is a read/write property in the provider. Consumers will be  \n// able to get and set this property value through WMI.  \n[ManagementConfiguration]  \npublic double ReadableWritableProperty  \n{  \n    get { return this.propertyValue; }  \n    set { this.propertyValue = value; }  \n}  \n```"
   syntax:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Initializes a new instance of the <xref:System.Management.ManagementConfigurationAttribute> class. This is the default constructor."
+  summary: "<xref:System.Management.ManagementConfigurationAttribute>클래스</xref:System.Management.ManagementConfigurationAttribute> 의 새 인스턴스를 초기화합니다. 기본 생성자입니다."
   syntax:
     content: public ManagementConfigurationAttribute ();
     parameters: []
@@ -61,13 +61,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Gets or sets the mode of the property, which specifies whether changes to it are applied as soon as possible or when a commit method is called."
-  remarks: "If there is a commit method defined, it is responsible for updating all read-write WMI properties that use the <xref:System.Management.Instrumentation.ManagementConfigurationType> mode. It is identified by the <xref:System.Management.Instrumentation.ManagementCommitAttribute>."
+  summary: "변경 내용을 가능한 한 빨리 적용 됩니다 또는 commit 메서드가 호출 될 때 지정 된 속성의 모드를 가져오거나 설정 합니다."
+  remarks: "사용 하는 모든 읽기 / 쓰기 WMI 속성을 업데이트 해야이 정의 된 커밋 메서드인 경우는 <xref:System.Management.Instrumentation.ManagementConfigurationType>모드.</xref:System.Management.Instrumentation.ManagementConfigurationType> <xref:System.Management.Instrumentation.ManagementCommitAttribute>.</xref:System.Management.Instrumentation.ManagementCommitAttribute> 의해 식별 됩니다."
   syntax:
     content: public System.Management.Instrumentation.ManagementConfigurationType Mode { get; set; }
     return:
       type: System.Management.Instrumentation.ManagementConfigurationType
-      description: "Returns a <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;></xref> that indicates whether the WMI property uses <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;></xref> or <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;></xref> mode."
+      description: "반환 된 <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;> </xref> WMI 속성을 사용할지 여부를 나타내는 <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;> </xref> 또는 <xref href=&quot;System.Management.Instrumentation.ManagementConfigurationType&quot;> </xref> 모드입니다."
   overload: System.Management.Instrumentation.ManagementConfigurationAttribute.Mode*
   exceptions: []
   platform:
@@ -84,13 +84,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Management.Instrumentation
-  summary: "Gets or sets a value that defines the type of output that the property that is marked with the ManagementConfiguration attribute will return."
-  remarks: "If the returned type is <xref:System.Object?displayProperty=fullName>, then the output should be treated as a value of type <xref:System.Object?displayProperty=fullName>."
+  summary: "ManagementConfiguration 특성으로 표시 된 속성은 반환 하는 출력의 형식을 정의 하는 값을 가져오거나 설정 합니다."
+  remarks: "반환 된 형식이 <xref:System.Object?displayProperty=fullName>출력을 <xref:System.Object?displayProperty=fullName>.</xref:System.Object?displayProperty=fullName> 형식의 값으로 처리 해야 하는 다음,</xref:System.Object?displayProperty=fullName>"
   syntax:
     content: public Type Schema { get; set; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> value representing the type of output that the property marked with the ManagementConfiguration attribute will return."
+      description: "A <xref:System.Type>속성이 ManagementConfiguration 특성으로 표시 하는 출력의 유형을 나타내는 값을 반환 합니다.</xref:System.Type>"
   overload: System.Management.Instrumentation.ManagementConfigurationAttribute.Schema*
   exceptions: []
   platform:
