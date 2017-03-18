@@ -17,8 +17,8 @@ items:
   nameWithType: XmlSecureResolver
   fullName: System.Xml.XmlSecureResolver
   type: Class
-  summary: "Helps to secure another implementation of <xref href=&quot;System.Xml.XmlResolver&quot;></xref> by wrapping the <xref href=&quot;System.Xml.XmlResolver&quot;></xref> object and restricting the resources that the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref> has access to."
-  remarks: "The <xref:System.Xml.XmlUrlResolver> class is the default resolver for all classes in the <xref:System.Xml> namespace. It is used to load XML documents and to resolve external resources such as entities, DTDs or schemas, and import or include directives.       You can override this default by specifying the <xref:System.Xml.XmlResolver> object to use. For example, if you want to restrict the resources that the underlying <xref:System.Xml.XmlResolver> can access, you can use an XmlSecureResolver object.       XmlSecureResolver wraps around a concrete implementation of <xref:System.Xml.XmlResolver> and restricts the resources that the underlying <xref:System.Xml.XmlResolver> has access to. For example, XmlSecureResolver has the ability to prohibit cross-domain redirection, which occurs from an embedded Uniform Resource Identifier (URI) reference.       When you construct an XmlSecureResolver object, you provide a valid <xref:System.Xml.XmlResolver> implementation along with a URL, an instance of an evidence object, or a permission set, which is used by the XmlSecureResolver to determine security. Either a <xref:System.Security.PermissionSet?displayProperty=fullName> is generated or the existing one is used and <xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName> is called on it to help secure the underlying <xref:System.Xml.XmlResolver>.      > [!IMPORTANT] >  XmlSecureResolver objects can contain sensitive information such as user credentials. You should be careful when caching XmlSecureResolver objects and should not pass the XmlSecureResolver object to an untrusted component.      > [!IMPORTANT] >  There are differences in the security infrastructure for code running on the .NET Framework common language runtime (CLR) and for code running on the CLR that is integrated within Microsoft SQL Server 2005. This can lead to cases where code developed for the .NET Framework CLR operates differently when used on the SQL Server integrated CLR. One of these differences affects the XmlSecureResolver class when you have evidence that is based on a URL (that is, when you use the <xref:System.Xml.XmlSecureResolver.CreateEvidenceForUrl%28System.String%29> method or the <xref:System.Xml.XmlSecureResolver.%23ctor%2A> constructor). The policy resolution mechanism of the SQL Server integrated CLR does not use the <xref:System.Security.Policy.Url> or <xref:System.Security.Policy.Zone> information. Instead, it grants permissions based on the GUID that the server adds when assemblies are loaded. When you use the XmlSecureResolver in the SQL Server integrated CLR, provide any required evidence directly by using a specified <xref:System.Security.PermissionSet>.      ## To use a secure resolver      1.  Create an XmlSecureResolver with the correct permission set.      2.  Create an <xref:System.Xml.XmlReaderSettings> object that uses the XmlSecureResolver object.           [!code-vb[XmlSecureResolver_Samples#5a](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_1.vb)]      [!code-cs[XmlSecureResolver_Samples#5a](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_1.cs)]      3.  Pass  the <xref:System.Xml.XmlReaderSettings> object to the <xref:System.Xml.XmlReader.Create%2A> method when you&quot;re creating the <xref:System.Xml.XmlReader> object.           [!code-vb[XmlSecureResolver_Samples#5b](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_2.vb)]      [!code-cs[XmlSecureResolver_Samples#5b](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_2.cs)]      ## To restrict access by using a URL    Use the <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.String%29> constructor to create an XmlSecureResolver object that is allowed to access your local intranet site only.       [!code-vb[XmlSecureResolver_Samples#3](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_3.vb)]  [!code-cs[XmlSecureResolver_Samples#3](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_3.cs)]      ## To restrict access by using a permission set      1.  Create a <xref:System.Net.WebPermission> object.           [!code-vb[XmlSecureResolver_Samples#4a](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_4.vb)]      [!code-cs[XmlSecureResolver_Samples#4a](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_4.cs)]      2.  Specify the URLs that you want to allow access to.           [!code-vb[XmlSecureResolver_Samples#4b](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_5.vb)]      [!code-cs[XmlSecureResolver_Samples#4b](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_5.cs)]      3.  Add the web permissions to the <xref:System.Security.PermissionSet> object.           [!code-vb[XmlSecureResolver_Samples#4c](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_6.vb)]      [!code-cs[XmlSecureResolver_Samples#4c](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_6.cs)]      4.  Use the <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.PermissionSet%29> constructor to create an XmlSecureResolver object by using the permission set.           [!code-vb[XmlSecureResolver_Samples#4d](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_7.vb)]      [!code-cs[XmlSecureResolver_Samples#4d](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_7.cs)]           See the <xref:System.Xml.XmlSecureResolver.%23ctor%2A> reference page for another example.      ## To restrict access by using evidence    You can restrict access by using the <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.Policy.Evidence%29> constructor and specifying <xref:System.Security.Policy.Evidence>. The <xref:System.Security.Policy.Evidence> is used to create the <xref:System.Security.PermissionSet> that is applied to the underlying <xref:System.Xml.XmlResolver>. The XmlSecureResolver calls <xref:System.Security.PermissionSet.PermitOnly%2A> on the created <xref:System.Security.PermissionSet> before opening any resources.       Here are some common scenarios and the type of evidence to provide for each:      -   If you are working in a fully trusted environment, use your assembly to create the evidence:           [!code-vb[XmlSecureResolver_Samples#1](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_8.vb)]      [!code-cs[XmlSecureResolver_Samples#1](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_8.cs)]      -   If you are working in a semi-trusted environment, you have code or data coming from an outside source, and you know the origin of the outside source and have a verifiable URI, use the URI to create the evidence:           [!code-vb[XmlSecureResolver_Samples#2](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_9.vb)]      [!code-cs[XmlSecureResolver_Samples#2](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_9.cs)]      -   If you are working in a semi-trusted environment and you have code or data coming from an outside source, but you don&quot;t know the origin of the outside source, either:           Set the `evidence` parameter to `null`. This allows no access to resources.           -or-           If your application requires some access to resources, request evidence from the caller.      ## To use the secure resolver to load an XSLT style sheet      1.  Create an XmlSecureResolver with the correct permission set.      2.  Pass the XmlSecureResolver to the <xref:System.Xml.Xsl.XslCompiledTransform.Load%2A> method.           [!code-vb[XmlSecureResolver_Samples#6](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_10.vb)]      [!code-cs[XmlSecureResolver_Samples#6](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_10.cs)]"
+  summary: "다른 구현을 보호 하는 데 도움이 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 래핑하여는 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 개체 리소스를 제한할 하는 내부 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 에 액세스할 수 있습니다."
+  remarks: "<xref:System.Xml.XmlUrlResolver>클래스는 모든 클래스에 대 한 기본 해결 프로그램은 <xref:System.Xml>네임 스페이스.</xref:System.Xml> </xref:System.Xml.XmlUrlResolver> XML 문서를 로드 하 고 엔터티, Dtd 또는 스키마와 같은 외부 리소스를 확인 하 고 가져오기 또는 지시문을 포함 하는 데 사용 됩니다.       지정 하 여이 기본값을 재정의할 수는 <xref:System.Xml.XmlResolver>사용할 개체입니다.</xref:System.Xml.XmlResolver> 예를 들어, 리소스를 제한 하려는 경우는 내부 <xref:System.Xml.XmlResolver>액세스할 수 있는, XmlSecureResolver 개체를 사용할 수 있습니다.</xref:System.Xml.XmlResolver>       XmlSecureResolver의 구체적 구현으로 줄 바꿈됩니다 <xref:System.Xml.XmlResolver>하 고 리소스를 제한 하는 내부 <xref:System.Xml.XmlResolver>에 액세스할 수 있습니다.</xref:System.Xml.XmlResolver> </xref:System.Xml.XmlResolver> 예를 들어 XmlSecureResolver에는 포함 된 식별자 URI (Uniform Resource) 참조에서 발생 하는 도메인 간 리디렉션 금지 하는 기능이 있습니다.       제공한 유효한 XmlSecureResolver 개체를 생성할 때 <xref:System.Xml.XmlResolver>증거 개체 또는 보안을 결정 하는 XmlSecureResolver에 사용 되는 사용 권한 집합의 인스턴스는 URL 따라 구현.</xref:System.Xml.XmlResolver> 중 하나는 <xref:System.Security.PermissionSet?displayProperty=fullName>생성 또는 사용 하는 기존 및 <xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName>가 호출 보안을 유지 하려면 기본 <xref:System.Xml.XmlResolver>.</xref:System.Xml.XmlResolver> </xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName> </xref:System.Security.PermissionSet?displayProperty=fullName>      > [!IMPORTANT] > XmlSecureResolver 개체는 사용자 자격 증명과 같은 중요 한 정보를 포함할 수 있습니다. XmlSecureResolver 개체 캐싱과 XmlSecureResolver 개체 신뢰할 수 없는 구성 요소에 전달 하지 않아야 하는 경우 주의 해야 합니다.      > [!IMPORTANT] >.NET Framework 공용 언어 런타임 (CLR)에서 실행 되는 코드에 대 한 및 Microsoft SQL Server 2005 내에서 통합 된 CLR에서 실행 되는 코드에 대 한 보안 인프라에는 차이점이 있습니다. SQL Server에서 사용할 때.NET Framework CLR 다르게 작동 하기 위해 개발 하는 코드는 CLR를 통합 하는 경우 발생할 수 있습니다. URL을 기반으로 하는 분명 때 XmlSecureResolver 클래스를에 적용 되며 이러한 차이점 중 하나 (즉, 사용 하는 경우는 <xref:System.Xml.XmlSecureResolver.CreateEvidenceForUrl%28System.String%29>메서드 또는 <xref:System.Xml.XmlSecureResolver.%23ctor%2A>생성자).</xref:System.Xml.XmlSecureResolver.%23ctor%2A> </xref:System.Xml.XmlSecureResolver.CreateEvidenceForUrl%28System.String%29> 정책 확인 메커니즘의 SQL Server CLR 통합을 사용 하지 않습니다는 <xref:System.Security.Policy.Url>또는 <xref:System.Security.Policy.Zone>정보.</xref:System.Security.Policy.Zone> </xref:System.Security.Policy.Url> 대신 어셈블리를 로드할 때 서버를 추가 하는 GUID를 기반으로 하는 권한을 부여 합니다. CLR 통합에서 XmlSecureResolver SQL Server에서 사용 하는 경우,에 지정 된 <xref:System.Security.PermissionSet>.</xref:System.Security.PermissionSet> 를 사용 하 여 직접 필요한 증명 정보를 제공 합니다.      ## 보안 확인자 1을 사용 합니다.  올바른 권한 집합으로는 XmlSecureResolver를 만듭니다.      2.  만들기는 <xref:System.Xml.XmlReaderSettings>XmlSecureResolver 개체를 사용 하는 개체입니다.</xref:System.Xml.XmlReaderSettings>           [!code-vb[XmlSecureResolver_Samples #5a](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_1.vb)][!code-cs[XmlSecureResolver_Samples #5a](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_1.cs) ] 3입니다.        전달 된 <xref:System.Xml.XmlReaderSettings>개체를 <xref:System.Xml.XmlReader.Create%2A>메서드를 작성할 때는 <xref:System.Xml.XmlReader>개체입니다.</xref:System.Xml.XmlReader> </xref:System.Xml.XmlReader.Create%2A> </xref:System.Xml.XmlReaderSettings>           [!code-vb[XmlSecureResolver_Samples&#5;b](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_2.vb)][!code-cs[XmlSecureResolver_Samples&#5;b](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_2.cs) ] # # URL 사용 하 여 액세스를 제한 하는 <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.String%29>생성자가 로컬 인트라넷 사이트에만 액세스할 수 있는 XmlSecureResolver 개체를 만듭니다.</xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.String%29>             [!code-vb[XmlSecureResolver_Samples #3](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_3.vb)][!code-cs[XmlSecureResolver_Samples #3](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_3.cs) ] # # 사용 권한을 사용 하 여 액세스를 제한 하려면 1을 설정 합니다.    만들기는 <xref:System.Net.WebPermission>개체입니다.</xref:System.Net.WebPermission>           [!code-vb[XmlSecureResolver_Samples #4a](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_4.vb)][!code-cs[XmlSecureResolver_Samples #4a](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_4.cs) ] 2입니다.        에 대 한 액세스를 허용 하려는 하는 Url을 지정 합니다.           [!code-vb[XmlSecureResolver_Samples #4b](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_5.vb)][!code-cs[XmlSecureResolver_Samples #4b](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_5.cs) ] 3입니다.        에 웹 권한을 추가 <xref:System.Security.PermissionSet>개체입니다.</xref:System.Security.PermissionSet>           [!code-vb[C# 4 XmlSecureResolver_Samples](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_6.vb)][!code-cs[XmlSecureResolver_Samples #4 c](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_6.cs) ] 4입니다.        사용 하 여는 <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.PermissionSet%29>생성자 사용 권한 집합을 사용 하 여 XmlSecureResolver 개체를 만들려고 합니다.</xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.PermissionSet%29>           [!code-vb[XmlSecureResolver_Samples&#4; d](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_7.vb)][!code-cs[XmlSecureResolver_Samples&#4; d](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_7.cs) ] 참조는 <xref:System.Xml.XmlSecureResolver.%23ctor%2A>또 다른 예에 대 한 참조 페이지.</xref:System.Xml.XmlSecureResolver.%23ctor%2A>            ## 증거를 사용 하 여 액세스를 제한 하는 <xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.Policy.Evidence%29>생성자와 <xref:System.Security.Policy.Evidence>.</xref:System.Security.Policy.Evidence> 지정</xref:System.Xml.XmlSecureResolver.%23ctor%28System.Xml.XmlResolver%2CSystem.Security.Policy.Evidence%29> 을 사용 하 여 액세스를 제한할 수 있습니다. <xref:System.Security.Policy.Evidence> <xref:System.Security.PermissionSet>기본 <xref:System.Xml.XmlResolver>.</xref:System.Xml.XmlResolver> 에 적용 되는</xref:System.Security.PermissionSet> 만드는 데 사용 되</xref:System.Security.Policy.Evidence> 는 XmlSecureResolver 호출 <xref:System.Security.PermissionSet.PermitOnly%2A>에 만들어진 <xref:System.Security.PermissionSet>모든 리소스를 열기 전에.</xref:System.Security.PermissionSet> </xref:System.Security.PermissionSet.PermitOnly%2A>       다음은 몇 가지 일반적인 시나리오와 각각에 대해 제공할 증명 정보 형식:-완전히 신뢰할 수 있는 환경에서 작업 하는 경우 어셈블리를 사용 하 여 증명 정보를 만듭니다: [!code-vb [XmlSecureResolver_Samples&#1;](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_8.vb)][!code-cs[XmlSecureResolver_Samples&#1;](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_8.cs) ] -부분 신뢰 환경에서 작업 하는, 코드 또는 데이터를 외부 소스에서 들어오는 있고 외부 소스의 출처를 알고 있으며 확인 가능한 URI가 URI를 사용 하 여 증명 정보를 만듭니다: [!code-vb [XmlSecureResolver_Samples&#2;](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_9.vb)][!code-cs[XmlSecureResolver_Samples&#2;](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_9.cs) ] 부분 신뢰 환경에서 작업 하는 및를 외부 소스에서 가져온 코드나 데이터가 있지만 경우 알 수 없는 외부 소스의 출처 하거나-: 설정의 `evidence` 매개 변수를 `null`합니다.             그러면 리소스에 액세스할 수 없습니다.           -또는-응용 프로그램의 리소스에 액세스 해야 하는 경우 호출자의 증명 정보를 요청 합니다.      ## 확인자를 사용 보안 1 XSLT 스타일 시트를 로드 합니다.  올바른 권한 집합으로는 XmlSecureResolver를 만듭니다.      2.  XmlSecureResolver에 전달 된 <xref:System.Xml.Xsl.XslCompiledTransform.Load%2A>메서드.</xref:System.Xml.Xsl.XslCompiledTransform.Load%2A>           [!code-vb[#6 XmlSecureResolver_Samples](~/add/codesnippet/visualbasic/t-system.xml.xmlsecurere_10.vb)][!code-cs[XmlSecureResolver_Samples&#6;      ](~/add/codesnippet/csharp/t-system.xml.xmlsecurere_10.cs)]"
   syntax:
     content: 'public class XmlSecureResolver : System.Xml.XmlResolver'
   inheritance:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> class with the <xref href=&quot;System.Xml.XmlResolver&quot;></xref> and <xref href=&quot;System.Security.PermissionSet&quot;></xref> specified."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 클래스와 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 및 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 지정 합니다."
   remarks: ''
   example:
   - "The following example constructs an <xref:System.Xml.XmlSecureResolver> object by using a customized permission set.  \n  \n [!code-cs[XmlSecureResolver.cctor#1](~/add/codesnippet/csharp/e6fb0edb-66a8-45c7-82d0-_1.cs)]\n [!code-cpp[XmlSecureResolver.cctor#1](~/add/codesnippet/cpp/e6fb0edb-66a8-45c7-82d0-_1.cpp)]\n [!code-vb[XmlSecureResolver.cctor#1](~/add/codesnippet/visualbasic/e6fb0edb-66a8-45c7-82d0-_1.vb)]"
@@ -50,10 +50,10 @@ items:
     parameters:
     - id: resolver
       type: System.Xml.XmlResolver
-      description: "The XML resolver that is wrapped by the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref>."
+      description: "래핑된 XML 확인자는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref>합니다."
     - id: permissionSet
       type: System.Security.PermissionSet
-      description: "The permission set to apply to the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. The <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> calls the &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; method on the permission set before calling the <xref:System.Xml.XmlSecureResolver.GetEntity*> method on the underlying XML resolver."
+      description: "사용 권한 집합 내부에 적용할 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 호출은 &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; 권한 호출 하기 전에 집합에 대 한 메서드는 <xref:System.Xml.XmlSecureResolver.GetEntity*>메서드 내부 XML 확인자를.</xref:System.Xml.XmlSecureResolver.GetEntity*>"
   overload: System.Xml.XmlSecureResolver.#ctor*
   exceptions: []
   platform:
@@ -70,17 +70,17 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> class with the <xref href=&quot;System.Xml.XmlResolver&quot;></xref> and <xref href=&quot;System.Security.Policy.Evidence&quot;></xref> specified."
-  remarks: "Here are some possible scenarios and the type of evidence to provide for each scenario:      -   If you are working in a fully trusted environment, use your assembly to create the evidence:           [!code-vb[XmlSecureResolver_Samples#1](~/add/codesnippet/visualbasic/74601da4-12bd-44fe-a117-_1.vb)]      [!code-cs[XmlSecureResolver_Samples#1](~/add/codesnippet/csharp/74601da4-12bd-44fe-a117-_1.cs)]      -   If you are working in a semi-trusted environment, you have code or data coming from an outside source, and you know the origin of the outside source and have a verifiable URI, use the URI to create the evidence:           [!code-vb[XmlSecureResolver_Samples#2](~/add/codesnippet/visualbasic/74601da4-12bd-44fe-a117-_2.vb)]      [!code-cs[XmlSecureResolver_Samples#2](~/add/codesnippet/csharp/74601da4-12bd-44fe-a117-_2.cs)]      -   If you are working in a semi-trusted environment and you have code or data coming from an outside source, but you don&quot;t know the origin of the outside source, either:           Set the `evidence` parameter to `null`. This allows no access to resources.           -or-           If your application requires some access to resources, request evidence from the caller."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 클래스와 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 및 <xref href=&quot;System.Security.Policy.Evidence&quot;> </xref> 지정 합니다."
+  remarks: "다음은 몇 가지 가능한 시나리오와 각 시나리오에 대해 제공할 증명 정보 형식:-완전히 신뢰할 수 있는 환경에서 작업 하는 경우 어셈블리를 사용 하 여 증명 정보를 만듭니다: [!code-vb [XmlSecureResolver_Samples&#1;](~/add/codesnippet/visualbasic/74601da4-12bd-44fe-a117-_1.vb)][!code-cs[XmlSecureResolver_Samples&#1;](~/add/codesnippet/csharp/74601da4-12bd-44fe-a117-_1.cs) ] -부분 신뢰 환경에서 작업 하는, 코드 또는 데이터를 외부 소스에서 들어오는 있고 외부 소스의 출처를 알고 있으며 확인 가능한 URI가 URI를 사용 하 여 증명 정보를 만듭니다: [!code-vb [XmlSecureResolver_Samples&#2;](~/add/codesnippet/visualbasic/74601da4-12bd-44fe-a117-_2.vb)][!code-cs[XmlSecureResolver_Samples&#2;](~/add/codesnippet/csharp/74601da4-12bd-44fe-a117-_2.cs) ] 부분 신뢰 환경에서 작업 하는 및를 외부 소스에서 가져온 코드나 데이터가 있지만 경우 알 수 없는 외부 소스의 출처 하거나-: 설정의 `evidence` 매개 변수를 `null`합니다.             그러면 리소스에 액세스할 수 없습니다.           -또는-응용 프로그램의 리소스에 액세스 해야 하는 경우 호출자의 증명 정보를 요청 합니다."
   syntax:
     content: public XmlSecureResolver (System.Xml.XmlResolver resolver, System.Security.Policy.Evidence evidence);
     parameters:
     - id: resolver
       type: System.Xml.XmlResolver
-      description: "The XML resolver that is wrapped by the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref>."
+      description: "래핑된 XML 확인자는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref>합니다."
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "The evidence used to create the <xref href=&quot;System.Security.PermissionSet&quot;></xref> that will be applied to the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. The <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> calls the &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; method on the created <xref href=&quot;System.Security.PermissionSet&quot;></xref> before calling <xref:System.Xml.XmlSecureResolver.GetEntity*> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>."
+      description: "만드는 데 사용한 증거는 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 내부에 적용 될 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 호출은 &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; 메서드를 만든 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 호출 하기 전에 <xref:System.Xml.XmlSecureResolver.GetEntity*>은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>.</xref:System.Xml.XmlSecureResolver.GetEntity*>"
   overload: System.Xml.XmlSecureResolver.#ctor*
   exceptions: []
   platform:
@@ -97,7 +97,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> class with the <xref href=&quot;System.Xml.XmlResolver&quot;></xref> and URL provided."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 클래스와 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 및 제공 된 URL입니다."
   remarks: >-
     > [!IMPORTANT]
 
@@ -109,10 +109,10 @@ items:
     parameters:
     - id: resolver
       type: System.Xml.XmlResolver
-      description: "The XML resolver that is wrapped by the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref>."
+      description: "래핑된 XML 확인자는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref>합니다."
     - id: securityUrl
       type: System.String
-      description: "The URL used to create the <xref href=&quot;System.Security.PermissionSet&quot;></xref> that will be applied to the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. The <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> calls &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; on the created <xref href=&quot;System.Security.PermissionSet&quot;></xref> before calling <xref:System.Xml.XmlSecureResolver.GetEntity*> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>."
+      description: "URL을 만드는 데 사용 된 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 내부에 적용 될 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 호출 &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; 에 만들어진 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 호출 하기 전에 <xref:System.Xml.XmlSecureResolver.GetEntity*>은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>.</xref:System.Xml.XmlSecureResolver.GetEntity*>"
   overload: System.Xml.XmlSecureResolver.#ctor*
   exceptions: []
   platform:
@@ -129,7 +129,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Creates evidence using the supplied URL."
+  summary: "제공된 된 URL을 사용 하 여 증명 정보를 만듭니다."
   remarks: >-
     > [!IMPORTANT]
 
@@ -139,10 +139,10 @@ items:
     parameters:
     - id: securityUrl
       type: System.String
-      description: "The URL used to create the evidence."
+      description: "증거를 만드는 데 URL입니다."
     return:
       type: System.Security.Policy.Evidence
-      description: "The evidence generated from the supplied URL as defined by the default policy."
+      description: "기본 정책에 의해 정의 된 대로 제공된 된 URL에서 생성 된 증명 정보입니다."
   overload: System.Xml.XmlSecureResolver.CreateEvidenceForUrl*
   exceptions: []
   platform:
@@ -159,7 +159,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Sets credentials used to authenticate web requests."
+  summary: "웹 요청을 인증 하는 데 사용 되는 자격 증명을 설정 합니다."
   remarks: ''
   example:
   - "The following example uses an <xref:System.Xml.XmlSecureResolver> with default credentials to resolve and open network resources needed by the <xref:System.Xml.XmlTextReader>.  \n  \n [!code-cpp[XmlSecureResolver.Credentials#1](~/add/codesnippet/cpp/p-system.xml.xmlsecurere_1.cpp)]\n [!code-vb[XmlSecureResolver.Credentials#1](~/add/codesnippet/visualbasic/p-system.xml.xmlsecurere_1.vb)]\n [!code-cs[XmlSecureResolver.Credentials#1](~/add/codesnippet/csharp/p-system.xml.xmlsecurere_1.cs)]"
@@ -167,7 +167,7 @@ items:
     content: public override System.Net.ICredentials Credentials { set; }
     return:
       type: System.Net.ICredentials
-      description: "The credentials to be used to authenticate web requests. The <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> sets the given credentials on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. If this property is not set, the value defaults to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>; that is, the <xref href=&quot;System.Xml.XmlSecureResolver&quot;></xref> has no user credentials."
+      description: "웹 요청을 인증 하는 데 사용할 자격 증명입니다. <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 지정된 된 자격 증명은 기본 설정 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. 기본값은이 속성을 설정 하지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 즉는 <xref href=&quot;System.Xml.XmlSecureResolver&quot;> </xref> 에 사용자 자격 증명이 없습니다."
   overload: System.Xml.XmlSecureResolver.Credentials*
   exceptions: []
   platform:
@@ -184,7 +184,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Maps a URI to an object that contains the actual resource. This method temporarily sets the <xref href=&quot;System.Security.PermissionSet&quot;></xref> created in the constructor by calling &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; before calling <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;></xref> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref> to open the resource."
+  summary: "실제 리소스가 포함 된 개체로 URI를 매핑합니다. 이 메서드를 일시적으로 설정는 <xref href=&quot;System.Security.PermissionSet&quot;> </xref> 생성자에서 호출 하 여 만든 &lt;xref:System.Security.PermissionSet.PermitOnly%2A?displayProperty=fullName&gt; 호출 하기 전에 <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;> </xref> 은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> 리소스를 엽니다."
   remarks: >-
     > [!IMPORTANT]
 
@@ -194,30 +194,30 @@ items:
     parameters:
     - id: absoluteUri
       type: System.Uri
-      description: "The URI that is returned from <xref:System.Xml.XmlSecureResolver.ResolveUri*>."
+      description: "<xref:System.Xml.XmlSecureResolver.ResolveUri*>.</xref:System.Xml.XmlSecureResolver.ResolveUri*> 에서 반환 되는 URI"
     - id: role
       type: System.String
-      description: "Currently not used."
+      description: "현재 사용 되지 않습니다."
     - id: ofObjectToReturn
       type: System.Type
-      description: "The type of object to return. The current version only returns <xref:System.IO.Stream> objects."
+      description: "반환할 개체의 형식입니다. 현재 버전에만 반환 <xref:System.IO.Stream>개체입니다.</xref:System.IO.Stream>"
     return:
       type: System.Object
-      description: "The stream returned by calling <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;></xref> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. If a type other than <xref:System.IO.Stream> is specified, the method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "호출 하 여 반환 된 스트림이 <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;> </xref> 은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. 이외의 형식을 경우 <xref:System.IO.Stream>지정 하면 메서드가 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.IO.Stream>"
   overload: System.Xml.XmlSecureResolver.GetEntity*
   exceptions:
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
-    description: "<code>ofObjectToReturn</code> is neither <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> nor a <xref:System.IO.Stream> type."
+    description: "<code>ofObjectToReturn</code>가 아닌 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 <xref:System.IO.Stream> 유형입니다."
   - type: System.UriFormatException
     commentId: T:System.UriFormatException
-    description: "The specified URI is not an absolute URI."
+    description: "지정된 된 URI는 절대 URI가 아닙니다."
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "<code>absoluteUri</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>absoluteUri</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "There is a runtime error (for example, an interrupted server connection)."
+    description: "런타임 오류 (예를 들어 중단 된 서버 연결)입니다."
   platform:
   - net462
 - uid: System.Xml.XmlSecureResolver.GetEntityAsync(System.Uri,System.String,System.Type)
@@ -232,22 +232,22 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Asynchronously maps a URI to an object that contains the actual resource."
+  summary: "실제 리소스가 포함 된 개체로 URI를 비동기적으로 매핑합니다."
   syntax:
     content: public override System.Threading.Tasks.Task<object> GetEntityAsync (Uri absoluteUri, string role, Type ofObjectToReturn);
     parameters:
     - id: absoluteUri
       type: System.Uri
-      description: "The URI returned from <xref:System.Xml.XmlSecureResolver.ResolveUri*>."
+      description: "<xref:System.Xml.XmlSecureResolver.ResolveUri*>.</xref:System.Xml.XmlSecureResolver.ResolveUri*> 에서 반환 된 URI"
     - id: role
       type: System.String
-      description: "Currently not used."
+      description: "현재 사용 되지 않습니다."
     - id: ofObjectToReturn
       type: System.Type
-      description: "The type of object to return. The current version only returns <xref:System.IO.Stream> objects."
+      description: "반환할 개체의 형식입니다. 현재 버전에만 반환 <xref:System.IO.Stream>개체입니다.</xref:System.IO.Stream>"
     return:
       type: System.Threading.Tasks.Task{System.Object}
-      description: "The stream returned by calling <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;></xref> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>. If a type other than <xref:System.IO.Stream> is specified, the method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "호출 하 여 반환 된 스트림이 <xref uid=&quot;langword_csharp_GetEntity&quot; name=&quot;GetEntity&quot; href=&quot;&quot;> </xref> 은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다. 이외의 형식을 경우 <xref:System.IO.Stream>지정 하면 메서드가 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.IO.Stream>"
   overload: System.Xml.XmlSecureResolver.GetEntityAsync*
   exceptions: []
   platform:
@@ -264,24 +264,24 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Resolves the absolute URI from the base and relative URIs by calling <xref uid=&quot;langword_csharp_ResolveUri&quot; name=&quot;ResolveUri&quot; href=&quot;&quot;></xref> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>."
+  summary: "기본 및 상대 Uri에서 절대 URI를 호출 하 여 확인 <xref uid=&quot;langword_csharp_ResolveUri&quot; name=&quot;ResolveUri&quot; href=&quot;&quot;> </xref> 은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>합니다."
   syntax:
     content: public override Uri ResolveUri (Uri baseUri, string relativeUri);
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "The base URI used to resolve the relative URI."
+      description: "기본 URI는 상대 URI를 확인 하는 데 사용 합니다."
     - id: relativeUri
       type: System.String
-      description: "The URI to resolve. The URI can be absolute or relative. If absolute, this value effectively replaces the `baseUri` value. If relative, it combines with the `baseUri` to make an absolute URI."
+      description: "확인할 URI입니다. 절대 또는 상대 URI 수 있습니다. 경우 절대이 값이 대체는 `baseUri` 값입니다. 경우 상대와 결합 하 여는 `baseUri` 를 절대 URI를 확인 합니다."
     return:
       type: System.Uri
-      description: "The absolute URI or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the relative URI cannot be resolved (returned by calling <xref uid=&quot;langword_csharp_ResolveUri&quot; name=&quot;ResolveUri&quot; href=&quot;&quot;></xref> on the underlying <xref href=&quot;System.Xml.XmlResolver&quot;></xref>)."
+      description: "절대 URI 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 상대 URI를 확인할 수 없는 경우 (호출 하 여 반환 <xref uid=&quot;langword_csharp_ResolveUri&quot; name=&quot;ResolveUri&quot; href=&quot;&quot;> </xref> 은 기본 <xref href=&quot;System.Xml.XmlResolver&quot;> </xref>)."
   overload: System.Xml.XmlSecureResolver.ResolveUri*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>relativeUri</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>relativeUri</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

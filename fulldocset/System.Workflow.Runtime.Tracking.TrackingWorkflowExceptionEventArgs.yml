@@ -14,8 +14,8 @@ items:
   nameWithType: TrackingWorkflowExceptionEventArgs
   fullName: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs
   type: Class
-  summary: "Contains data associated with an exception that occurs during the execution of a workflow instance."
-  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]       When an exception occurs during the execution of a workflow instance and a <xref:System.Workflow.Runtime.Tracking.TrackingProfile> that is associated with the workflow instance includes a <xref:System.Workflow.Runtime.Tracking.WorkflowTrackPoint> configured for a <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowEvent?displayProperty=fullName>, the workflow tracking infrastructure sets <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord.EventArgs%2A> to an TrackingWorkflowExceptionEventArgs in the <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord> that it sends to the tracking service.      > [!NOTE] >  TrackingWorkflowExceptionEventArgs is used only by the runtime tracking service to pass information in a <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord>."
+  summary: "워크플로 인스턴스를 실행 하는 동안 발생 하는 예외와 연결 된 데이터를 포함 합니다."
+  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]워크플로 인스턴스를 실행 하는 동안 예외가 발생 하는 경우와 <xref:System.Workflow.Runtime.Tracking.TrackingProfile>연결 된 인스턴스가 포함 된 워크플로와의 <xref:System.Workflow.Runtime.Tracking.WorkflowTrackPoint>에 대해 구성 된는 <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowEvent?displayProperty=fullName>, 워크플로 추적 인프라 집합 <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord.EventArgs%2A>에 TrackingWorkflowExceptionEventArgs에는 <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord>를 추적 서비스로 보내는.</xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord> </xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord.EventArgs%2A> </xref:System.Workflow.Runtime.Tracking.TrackingWorkflowEvent?displayProperty=fullName> </xref:System.Workflow.Runtime.Tracking.WorkflowTrackPoint> </xref:System.Workflow.Runtime.Tracking.TrackingProfile>      > [!NOTE] > TrackingWorkflowExceptionEventArgs <xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord>.</xref:System.Workflow.Runtime.Tracking.WorkflowTrackingRecord> 정보를 전달 하는 런타임 추적 서비스가 의해서만 사용 됩니다"
   example:
   - "The following code example demonstrates a method, named `WriteExceptionEventArgs`, which captures a TrackingWorkflowExceptionEventArgs. The code checks whether the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception%2A> property is `null` (`Nothing` in Visual Basic).  \n  \n If it is not, the code writes the message associated with the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception%2A> property to the console. In addition, the code converts the value of the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.OriginalActivityPath%2A> property to a string and writes it to the console.  \n  \n This code example is part of the EventArgs Tracking SDK sample from the Program.cs file. For more information, see [EventArgs Tracking Sample](http://msdn.microsoft.com/en-us/94818da2-c3c4-4a13-b47a-a0fb30dbbf1c).  \n  \n [!code-cs[WF_Samples#289](~/add/codesnippet/csharp/wf_snippets/snippets24.cs#289)]\n [!code-vb[WF_Samples#289](~/add/codesnippet/visualbasic/wf_snippets/snippets24.vb#289)]"
   syntax:
@@ -41,12 +41,12 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: "Gets the context ID of the associated activity."
+  summary: "연결된 된 활동의 컨텍스트 ID를 가져옵니다."
   syntax:
     content: public Guid ContextGuid { get; }
     return:
       type: System.Guid
-      description: "A <xref:System.Guid> that contains the context ID of the <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;></xref>."
+      description: "A <xref:System.Guid>의 컨텍스트 ID를 포함 하는 <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;> </xref>.</xref:System.Guid>"
   overload: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.ContextGuid*
   exceptions: []
   platform:
@@ -63,13 +63,13 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: "Gets the <xref:System.Workflow.ComponentModel.Activity.QualifiedName*> of the activity currently throwing the exception."
-  remarks: "Exceptions are passed up the chain of exception handler activities. An exception handler may choose to throw an exception again. When an exception handler throws the exception again, a new exception tracking event containing a new <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs> is raised to the runtime tracking infrastructure. CurrentActivityPath refers to the activity that is currently throwing the exception."
+  summary: "가져옵니다는 <xref:System.Workflow.ComponentModel.Activity.QualifiedName*>현재 예외를 throw 하는 활동의.</xref:System.Workflow.ComponentModel.Activity.QualifiedName*>"
+  remarks: "예외는 예외 처리기 활동 체인 위로 전달 됩니다. 예외 처리기 다시 예외를 throw 하도록 선택할 수 있습니다. 예외 처리기에서 throw 할 때 예외를 다시 새를 포함 하는 새 예외 추적 이벤트가 <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs>는 런타임 추적 인프라에 발생 합니다.</xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs> CurrentActivityPath 현재 예외를 throw 하는 작업을 가리킵니다."
   syntax:
     content: public string CurrentActivityPath { get; }
     return:
       type: System.String
-      description: "The <xref:System.Workflow.ComponentModel.Activity.QualifiedName*> of the activity currently throwing the exception."
+      description: "<xref:System.Workflow.ComponentModel.Activity.QualifiedName*>현재 예외를 throw 하는 활동의.</xref:System.Workflow.ComponentModel.Activity.QualifiedName*>"
   overload: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.CurrentActivityPath*
   exceptions: []
   platform:
@@ -86,7 +86,7 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: "Gets the <xref:System.Exception> that is being thrown by the workflow instance."
+  summary: "가져옵니다는 <xref:System.Exception>워크플로 인스턴스가 throw 되는.</xref:System.Exception>"
   remarks: ''
   example:
   - "The following code example demonstrates a method, named `WriteExceptionEventArgs`, which captures a <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs>. The code checks whether the Exception property is `null` (`Nothing` in Visual Basic). If it is not, the code writes the message associated with the Exception property to the console. If Exception is `null` (`Nothing`), the code converts the value of the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.OriginalActivityPath%2A> property to a string and writes it to the console.  \n  \n This code example is part of the EventArgs Tracking SDK Sample from the Program.cs file. For more information, see [EventArgs Tracking Sample](http://msdn.microsoft.com/en-us/94818da2-c3c4-4a13-b47a-a0fb30dbbf1c).  \n  \n [!code-cs[WF_Samples#289](~/add/codesnippet/csharp/wf_snippets/snippets24.cs#289)]\n [!code-vb[WF_Samples#289](~/add/codesnippet/visualbasic/wf_snippets/snippets24.vb#289)]"
@@ -94,7 +94,7 @@ items:
     content: public Exception Exception { get; }
     return:
       type: System.Exception
-      description: "The exception that is being thrown by the workflow instance."
+      description: "워크플로 인스턴스가 throw 되는 예외입니다."
   overload: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception*
   exceptions: []
   platform:
@@ -111,15 +111,15 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: "Gets the <xref:System.Workflow.ComponentModel.Activity.QualifiedName*> of the activity that originally threw the exception."
-  remarks: "Exceptions are passed up the chain of exception handler activities. An exception handler may choose to throw an exception again. When an exception handler throws an exception again, a new exception tracking event containing a new <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs> is raised to the runtime tracking infrastructure. OriginalActivityPath refers to the activity that originally threw the exception."
+  summary: "가져옵니다는 <xref:System.Workflow.ComponentModel.Activity.QualifiedName*>원래 예외를 발생 시킨 작업의.</xref:System.Workflow.ComponentModel.Activity.QualifiedName*>"
+  remarks: "예외는 예외 처리기 활동 체인 위로 전달 됩니다. 예외 처리기 다시 예외를 throw 하도록 선택할 수 있습니다. 예외 처리기에서 throw 할 때 다시 예외를 새를 포함 하는 새 예외 추적 이벤트가 <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs>는 런타임 추적 인프라에 발생 합니다.</xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs> OriginalActivityPath 원래 예외를 발생 시킨 작업을 가리킵니다."
   example:
   - "The following code example demonstrates a method, named `WriteExceptionEventArgs`, which captures a <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs>. The code checks whether the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception%2A> property is `null` (`Nothing` in Visual Basic). If it is not, the code writes the message associated with the <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception%2A> property to the console. If <xref:System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.Exception%2A> is `null` (`Nothing`), the code converts the value of the OriginalActivityPath property to a string and writes it to the console.  \n  \n This code example is part of the EventArgs Tracking SDK Sample from the Program.cs file. For more information, see [EventArgs Tracking Sample](http://msdn.microsoft.com/en-us/94818da2-c3c4-4a13-b47a-a0fb30dbbf1c).  \n  \n [!code-cs[WF_Samples#289](~/add/codesnippet/csharp/wf_snippets/snippets24.cs#289)]\n [!code-vb[WF_Samples#289](~/add/codesnippet/visualbasic/wf_snippets/snippets24.vb#289)]"
   syntax:
     content: public string OriginalActivityPath { get; }
     return:
       type: System.String
-      description: "The <xref:System.Workflow.ComponentModel.Activity.QualifiedName*> of the activity that originally threw the exception."
+      description: "<xref:System.Workflow.ComponentModel.Activity.QualifiedName*>원래 예외를 발생 시킨 작업의.</xref:System.Workflow.ComponentModel.Activity.QualifiedName*>"
   overload: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.OriginalActivityPath*
   exceptions: []
   platform:
@@ -136,12 +136,12 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Tracking
-  summary: "Gets the context ID of the parent activity."
+  summary: "부모 활동의 컨텍스트 ID를 가져옵니다."
   syntax:
     content: public Guid ParentContextGuid { get; }
     return:
       type: System.Guid
-      description: "A <xref:System.Guid> that contains the context ID of the parent <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;></xref>."
+      description: "A <xref:System.Guid>부모의 컨텍스트 ID를 포함 하는 <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;> </xref>.</xref:System.Guid>"
   overload: System.Workflow.Runtime.Tracking.TrackingWorkflowExceptionEventArgs.ParentContextGuid*
   exceptions: []
   platform:

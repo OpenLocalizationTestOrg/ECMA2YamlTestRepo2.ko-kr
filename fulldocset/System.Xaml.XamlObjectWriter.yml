@@ -30,8 +30,8 @@ items:
   nameWithType: XamlObjectWriter
   fullName: System.Xaml.XamlObjectWriter
   type: Class
-  summary: "Creates an object graph from a source XAML node stream."
-  remarks: "The `Write` methods of XamlObjectWriter implement a pattern so that the XamlObjectWriter uses the <xref:System.Xaml.XamlWriter> that is defined by the <xref:System.Xaml.XamlWriter.WriteNode%2A> method. <xref:System.Xaml.XamlWriter.WriteNode%2A> logic switches between the `Write` methods, depending on which node type is at the current position in the reader.      ## Scope    A XamlObjectWriter has a concept of scope; that is, the XamlObjectWriter maintains a conceptual point of reference in its output object graph. For a particular scope, certain operations might be valid or invalid, or produce a no-operation result. For example, if you call <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> to write directives for initialization on an object that already exists as an instance, the default implementation throws an exception.       A possible technique for tracking scope in a custom XamlObjectWriter is to align the node actions with a stack or frame class. The stack or frame can keep track of push and pop for each level of object-model depth that is entered or exited while the XamlObjectWriter writes the object graph.      ## Callbacks    To support intermediate and advanced XamlObjectWriter scenarios, the mechanism of writing an object graph provides callback entry points that occur when a XamlObjectWriter commits or is about to commit certain actions. Some callbacks are enabled in the settings and are not specific to the object type or the member being written; however, callback information is often available in context or is in the event data that is sent through the callback. The following is a list of relevant callbacks:      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A> is invoked when the scope goes to a new object and at the <xref:System.ComponentModel.ISupportInitialize.BeginInit%2A> phase of object lifetime for each created object.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A> is invoked when the scope goes to a new object and at the <xref:System.ComponentModel.ISupportInitialize.EndInit%2A> phase of object lifetime for each created object.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A> is invoked when the scope starts in an object, and occurs when the first <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> call to that object scope is made but not yet committed.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A> is invoked when the scope starts in an object, and happens when the <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> call to that object scope is made but not yet committed.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> is invoked when <xref:System.Xaml.XamlObjectWriter.OnSetValue%2A> is called.      ## Writing Dictionary Keys    The default implementation of XamlObjectWriter supports type conversion on the constraints of a <xref:System.Collections.Generic.Dictionary%602> before the dictionary contents are added to the object graph. In this manner, a generic dictionary can be keyed at run time by objects and can match the relevant generic `Add` and indexer behavior. However, as implemented for the base XamlObjectWriter, this capability exists only for object graph creation from the base <xref:System.Collections.Generic.Dictionary%602> class and not for derived classes of <xref:System.Collections.Generic.Dictionary%602>.      ## Checks for Disposed    XAML writers are potentially used for deferred operations or where a call is made against a XAML writer instance that has been disposed in the interim. Various APIs of XamlObjectWriter might throw <xref:System.ObjectDisposedException> in these cases."
+  summary: "소스 XAML 노드 스트림에서 개체 그래프를 만듭니다."
+  remarks: "`Write` XamlObjectWriter의 메서드는 XamlObjectWriter 사용 하는 패턴을 구현는 <xref:System.Xaml.XamlWriter>정의 되는 <xref:System.Xaml.XamlWriter.WriteNode%2A>메서드.</xref:System.Xaml.XamlWriter.WriteNode%2A> </xref:System.Xaml.XamlWriter> <xref:System.Xaml.XamlWriter.WriteNode%2A>전환 하는 논리는 `Write` 메서드를 따라 어떤 노드 형식이 판독기의 현재 위치에 있습니다.</xref:System.Xaml.XamlWriter.WriteNode%2A>      ## 범위는 XamlObjectWriter 개념이 범위가 지정 됩니다. 즉,는 XamlObjectWriter 개념적 출력 개체 그래프에 대 한 참조 지점 유지 관리합니다. 특정 범위에 대 한 특정 작업 올 바르 거 나 유효 하지 수도 아니요 작업 결과 생성 합니다. 예를 들어, 호출 하는 경우 <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>기본 구현 인스턴스로 존재 하므로 이미 있는 개체에 초기화에 대 한 지시문 쓰려고 예외를 throw 합니다.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>       사용자 지정 XamlObjectWriter에서 범위를 추적 하기 위한 가능한 기술에는 스택 또는 프레임 클래스를 사용 하 여 노드 작업을 맞추는 것입니다. 스택 또는 프레임의 추적할 수 푸시 및 팝을 시작 하거나 XamlObjectWriter는 개체 그래프를 작성 하는 동안 종료 하는 개체 모델의 각 수준에 대 한 합니다.      ## 콜백을를 지원 중급 및 고급 XamlObjectWriter 시나리오, 개체 그래프를 작성 하는 메커니즘 제공 콜백은 XamlObjectWriter 커밋 또는 특정 작업을 커밋에 때 발생 하는 진입점 합니다. 일부 콜백을 설정에서 사용 되 고 개체 유형 또는 쓰여지는; 멤버에 한정 되지 않는 그러나 콜백 정보 컨텍스트에서 사용할 수 종종 되었거나 되는 콜백을 통해 전송 된 데이터를 이벤트. 다음은 관련 콜백이 목록이:-선언 된 콜백 <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A>범위가에 새 개체를 이동할 때 호출 되는 <xref:System.ComponentModel.ISupportInitialize.BeginInit%2A>생성된 된 각 개체에 대 한 개체 수명의 단계.</xref:System.ComponentModel.ISupportInitialize.BeginInit%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A>      선언 된-콜백 <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A>범위가에 새 개체를 이동할 때 호출 되는 <xref:System.ComponentModel.ISupportInitialize.EndInit%2A>생성된 된 각 개체에 대 한 개체 수명의 단계.</xref:System.ComponentModel.ISupportInitialize.EndInit%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A>      -콜백을 선언 된 <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A>범위 개체에 시작 하 고 발생 될 때 호출 되는 경우 첫 번째 <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>해당 개체 범위를 호출 했지만 아직 커밋되지 않은.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A>      -콜백을 선언 된 <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A>범위 개체에 시작 하 고 수행 될 때 호출 되는 경우는 <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>해당 개체 범위를 호출 했지만 아직 커밋되지 않은.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A>      선언 된-콜백 <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>호출할 때 <xref:System.Xaml.XamlObjectWriter.OnSetValue%2A>호출 됩니다.</xref:System.Xaml.XamlObjectWriter.OnSetValue%2A> </xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>      ## 제한 사항에 형식 변환을 지원 사전 키는 XamlObjectWriter의 기본 구현을 작성 한 <xref:System.Collections.Generic.Dictionary%602>사전 전에 내용이 개체 그래프에 추가 됩니다.</xref:System.Collections.Generic.Dictionary%602> 이러한 방식으로 제네릭 사전 개체에 의해 런타임 시 입력 될 수 및 관련 제네릭 맞는지 `Add` 및 인덱서 동작 합니다. 그러나 기본 XamlObjectWriter에 대 한 구현 된 대로이 기능을 위해서만 존재 기본에서 개체 그래프를 만들거나 <xref:System.Collections.Generic.Dictionary%602>클래스 <xref:System.Collections.Generic.Dictionary%602>.</xref:System.Collections.Generic.Dictionary%602> 의 파생된 클래스에</xref:System.Collections.Generic.Dictionary%602>      ## 지연 된 작업 또는 중간에 삭제 된 XAML 작성기 인스턴스에 대해 호출할 위치에 잠재적으로 삭제 하는 XAML 작성기에 대 한 검사 사용 됩니다. 다양 한 Api XamlObjectWriter 스트림이 <xref:System.ObjectDisposedException>이러한 경우.</xref:System.ObjectDisposedException>"
   syntax:
     content: 'public class XamlObjectWriter : System.Xaml.XamlWriter, System.Xaml.IXamlLineInfoConsumer'
   inheritance:
@@ -58,18 +58,18 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> class using  the XAML schema context that is used by a <xref href=&quot;System.Xaml.XamlReader&quot;></xref>."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> 클래스에서 사용 되는 XAML 스키마 컨텍스트를 사용 하는 <xref href=&quot;System.Xaml.XamlReader&quot;> </xref>합니다."
   syntax:
     content: public XamlObjectWriter (System.Xaml.XamlSchemaContext schemaContext);
     parameters:
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "A XAML schema context that is shared with the XAML reader that provides nodes for writing."
+      description: "쓰기를 위한 노드를 제공 하는 XAML 판독기와 공유 하는 XAML 스키마 컨텍스트."
   overload: System.Xaml.XamlObjectWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>schemaContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.#ctor(System.Xaml.XamlSchemaContext,System.Xaml.XamlObjectWriterSettings)
@@ -84,21 +84,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> class using the context that is used by a <xref href=&quot;System.Xaml.XamlReader&quot;></xref> and its settings."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> 클래스에서 사용 되는 컨텍스트를 사용 하는 <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> 및 설정 합니다."
   syntax:
     content: public XamlObjectWriter (System.Xaml.XamlSchemaContext schemaContext, System.Xaml.XamlObjectWriterSettings settings);
     parameters:
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "A XAML schema context that is shared with the XAML reader that provides nodes for writing."
+      description: "쓰기를 위한 노드를 제공 하는 XAML 판독기와 공유 하는 XAML 스키마 컨텍스트."
     - id: settings
       type: System.Xaml.XamlObjectWriterSettings
-      description: "A settings object that specifies certain options for <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> behavior and output."
+      description: "특정 옵션을 지정 하는 설정 개체 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> 동작과 출력 합니다."
   overload: System.Xaml.XamlObjectWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>schemaContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.Clear
@@ -113,7 +113,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Resets all possible frames and clears the object graph."
+  summary: "가능한 모든 프레임을 다시 설정 하 고 개체 그래프를 지웁니다."
   syntax:
     content: public void Clear ();
     parameters: []
@@ -133,13 +133,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>, and optionally, releases the managed resources."
+  summary: "사용 하는 관리 되지 않는 리소스를 해제는 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>, 선택적으로 관리 되는 리소스를 해제 합니다."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release the managed resources; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>관리 되는 리소스만 해제 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Xaml.XamlObjectWriter.Dispose*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*> method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "호출 <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*>연관 된 메서드가 <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> 이 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*>"
   syntax:
     content: protected virtual void OnAfterBeginInit (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. The object is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "보고 하는 개체입니다. 개체로 패키지 됩니다 <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> 처리기가 호출 됩니다."
   overload: System.Xaml.XamlObjectWriter.OnAfterBeginInit*
   exceptions: []
   platform:
@@ -179,13 +179,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*> method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "호출 <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*>연관 된 메서드가 <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> 이 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*>"
   syntax:
     content: protected virtual void OnAfterEndInit (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. The value  is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "보고 하는 개체입니다. 값은로 패키지 됩니다 <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> 처리기가 호출 됩니다."
   overload: System.Xaml.XamlObjectWriter.OnAfterEndInit*
   exceptions: []
   platform:
@@ -202,13 +202,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "호출 <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*>참조와 연결 된 메서드 <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> 이 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*>"
   syntax:
     content: protected virtual void OnAfterProperties (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. This is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "보고 하는 개체입니다. 이로 패키지 됩니다 <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> 처리기가 호출 됩니다."
   overload: System.Xaml.XamlObjectWriter.OnAfterProperties*
   exceptions: []
   platform:
@@ -225,13 +225,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "호출 <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*>참조와 연결 된 메서드 <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> 이 <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*>"
   syntax:
     content: protected virtual void OnBeforeProperties (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value to pass through <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "통해 전달할 값을 <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> 처리기가 호출 됩니다."
   overload: System.Xaml.XamlObjectWriter.OnBeforeProperties*
   exceptions: []
   platform:
@@ -248,23 +248,23 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this writer, as long as <code>handled</code> in <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref> event data is not <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
-  remarks: "If the `SetValue` operation for this XAML writer has an associated handler (a <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> is declared in <xref:System.Xaml.XamlObjectWriterSettings>), this method creates new <xref:System.Windows.Markup.XamlSetValueEventArgs> and passes them to the handler. The return value is set by reading the <xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A> value that is passed through the event data. If no handler exists and this method is invoked, the call returns `false`."
+  summary: "호출 <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*>참조와 연결 된 메서드 <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> 길이 만큼이 작성기에 대 한 <code> handled </code> 에 <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref> 이벤트 데이터가 않습니다 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*>"
+  remarks: "경우는 `SetValue` 이 XAML 작성기에 대 한 작업에 연결 된 처리기가 (한 <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>에 선언 된 <xref:System.Xaml.XamlObjectWriterSettings>),이 메서드가 만드는 새 <xref:System.Windows.Markup.XamlSetValueEventArgs>처리기에 전달 합니다.</xref:System.Windows.Markup.XamlSetValueEventArgs> </xref:System.Xaml.XamlObjectWriterSettings> </xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> 반환 값이 참조 하 여 설정 된 <xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A>이벤트 데이터를 통해 전달 되는 값입니다.</xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A> 호출에서 반환 하는 경우 처리기 존재 하 고이 메서드가 호출 된 경우 `false`합니다."
   syntax:
     content: protected virtual bool OnSetValue (object eventSender, System.Xaml.XamlMember member, object value);
     parameters:
     - id: eventSender
       type: System.Object
-      description: "The object to report as the source to the handler."
+      description: "처리기에 대 한 원본으로 보고서에 사용 되는 개체입니다."
     - id: member
       type: System.Xaml.XamlMember
-      description: "The name of the property to set, which is passed to the handler as part of <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref>."
+      description: "일환으로 처리기에 전달 되는 속성을 설정 하 고, 이름을 <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref>합니다."
     - id: value
       type: System.Object
-      description: "The value to provide for the property that is named by `property`. The value is passed to the handler as part of <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref>."
+      description: "로 명명 된 속성에 제공할 값 `property`합니다. 값의의 일부로 처리기에 전달 <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "A Boolean value that is set by any associated handler; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. See Remarks."
+      description: "연결된 된 처리기;으로 설정 하는 부울 값 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 설명 부분을 참조 하십시오."
   overload: System.Xaml.XamlObjectWriter.OnSetValue*
   exceptions: []
   platform:
@@ -281,13 +281,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the last object that was written. Typically only called when the node stream is at its end and the object graph is complete."
-  remarks: "The most typical usage of Result is to call it only when the node stream is known to be at its end, and the object graph is complete. Otherwise, the object graph is likely to be incomplete, and is not useful for most platform scenarios.       Result typically only contains a non-null value if it is called immediately after a call to <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>, and if the current scope is in the member where the object provides a value."
+  summary: "작성 된 마지막 개체를 가져옵니다. 일반적으로 노드 스트림의 끝에 있고 개체 그래프가 완성 된 때만 호출 합니다."
+  remarks: "결과의 가장 일반적인 사용의 끝에 노드 스트림의 알려져 개체 그래프가 완성 된 경우에이 호출 하는 것입니다. 그렇지 않은 경우 개체 그래프 완료 하지 못할 수 이며 대부분의 플랫폼 시나리오에 유용 하지 않습니다.       결과 일반적으로 포함 된 null이 아닌 값에 대 한 호출 후 즉시 호출 되 면 <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>, 현재 범위는 개체 값을 제공 하는 멤버의 경우.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>"
   syntax:
     content: public virtual object Result { get; }
     return:
       type: System.Object
-      description: "The last object written, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. See Remarks."
+      description: "마지막으로 작성 된 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 설명 부분을 참조 하십시오."
   overload: System.Xaml.XamlObjectWriter.Result*
   exceptions: []
   platform:
@@ -304,13 +304,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the <xref:System.Windows.Markup.INameScope> service that maintains the XAML namescope for the absolute node root of the XAML object writer."
-  remarks: "The value of this property may come from the object writer context."
+  summary: "가져옵니다는 <xref:System.Windows.Markup.INameScope>XAML 개체 작성기의 절대 노드 루트에 대 한 XAML 이름 범위를 유지 하는 서비스.</xref:System.Windows.Markup.INameScope>"
+  remarks: "이 속성의 값으로 개체 작성기 컨텍스트에서 수행할 수 있습니다."
   syntax:
     content: public System.Windows.Markup.INameScope RootNameScope { get; }
     return:
       type: System.Windows.Markup.INameScope
-      description: "The <xref:System.Windows.Markup.INameScope> service that maintains the XAML namescope for the current root of the object writer."
+      description: "<xref:System.Windows.Markup.INameScope>개체 작성기의 현재 루트에 대 한 XAML 이름 범위를 유지 하는 서비스.</xref:System.Windows.Markup.INameScope>"
   overload: System.Xaml.XamlObjectWriter.RootNameScope*
   exceptions: []
   platform:
@@ -327,13 +327,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the active XAML schema context."
-  remarks: "XAML schema context is a necessary information source for most practical object-writing scenarios. The XAML schema context influences the type lookup for backing types and holds information about the assemblies where backing types exist. The default XAML schema context is based on CLR type-mapping rules. Frameworks typically provide their own XAML schema context in order to assure that that the assembly-loading mechanisms match the framework&quot;s programming amd application models."
+  summary: "활성 XAML 스키마 컨텍스트를 가져옵니다."
+  remarks: "XAML 스키마 컨텍스트는 대부분의 실제 개체 작성 시나리오에 대 한 필요한 정보 소스입니다. XAML 스키마 컨텍스트 지원 형식에 대 한 유형 조회에 영향을 줍니다 및 지원 형식이 있는 어셈블리에 대 한 정보를 보유 합니다. 기본 XAML 스키마 컨텍스트는 CLR 형식 매핑 규칙을 기반으로 합니다. 프레임 워크는 일반적으로 하는 어셈블리 로드 메커니즘 프레임 워크의 프로그래밍 및 응용 프로그램 모델과 일치 하는지 확인 하기 위해 자신의 XAML 스키마 컨텍스트를 제공 합니다."
   syntax:
     content: public override System.Xaml.XamlSchemaContext SchemaContext { get; }
     return:
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context."
+      description: "XAML 스키마 컨텍스트입니다."
   overload: System.Xaml.XamlObjectWriter.SchemaContext*
   exceptions: []
   platform:
@@ -350,17 +350,17 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Implements &lt;xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo%2A?displayProperty=fullName&gt; and provides line information for exceptions."
-  remarks: "This service method is not intended to be called directly from your code. However, if you are creating a derived class from <xref:System.Xaml.XamlObjectWriter> and expect to report a context where line numbers are unavailable or not useful, this method may be called."
+  summary: "구현 &lt;xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo%2A?displayProperty=fullName&gt; 예외에 대 한 줄 정보를 제공 합니다."
+  remarks: "이 서비스 메서드의 사용자 코드에서 직접 호출할 수 없습니다. 그러나에서 파생된 된 클래스를 만드는 경우 <xref:System.Xaml.XamlObjectWriter>및 줄 번호 사용할 수 없는 컨텍스트를 보고 하기 위해 활성화 되거나 유용 하지이 메서드가 호출 될 수 있습니다.</xref:System.Xaml.XamlObjectWriter>"
   syntax:
     content: public void SetLineInfo (int lineNumber, int linePosition);
     parameters:
     - id: lineNumber
       type: System.Int32
-      description: "The line number from the reader."
+      description: "판독기에서 줄 번호입니다."
     - id: linePosition
       type: System.Int32
-      description: "The line position from the reader."
+      description: "판독기에서 줄 위치입니다."
   overload: System.Xaml.XamlObjectWriter.SetLineInfo*
   exceptions: []
   platform:
@@ -377,13 +377,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets a value that reports whether a line information service should provide values and therefore, should also call the <xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*> method when it is relevant."
-  remarks: "This implementation always returns `true`."
+  summary: "가져온 줄 정보 서비스가 제공 해야 하는지 여부를 보고 하는 값 값 이므로 호출 또한 해야는 <xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*>경우 관련 방법.</xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*>"
+  remarks: "이 구현은 항상 `true`합니다."
   syntax:
     content: public bool ShouldProvideLineInfo { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if line information is used by the writer; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>작성기;에서 줄 정보를 사용 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Xaml.XamlObjectWriter.ShouldProvideLineInfo*
   exceptions: []
   platform:
@@ -400,7 +400,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Closes the current member scope, and may write the value of the member scope while it closes. The new scope becomes the parent object scope of the member."
+  summary: "현재 멤버 범위를 닫고 닫는 동안에 멤버 범위 변수의 값을 쓸 수 있습니다. 새 범위에는 멤버의 부모 개체 범위가 됩니다."
   syntax:
     content: public override void WriteEndMember ();
     parameters: []
@@ -408,7 +408,7 @@ items:
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Failed to create member value from a value node that is encountered between this call and a previous <xref uid=&quot;langword_csharp_StartMember&quot; name=&quot;StartMember&quot; href=&quot;&quot;></xref>."
+    description: "이 호출 하 고 이전 사이 발생 하는 값 노드로부터의 멤버 값을 만들지 못했습니다 <xref uid=&quot;langword_csharp_StartMember&quot; name=&quot;StartMember&quot; href=&quot;&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteEndObject
@@ -423,8 +423,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Closes the current object scope in the writer. The new object scope becomes the parent member scope."
-  remarks: "If this `EndObject` position scope is closing the root object, the new object scope becomes the root scope.       The call to <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> might not yet have created the object because an object member might be a necessary initialization pathway, such as initialization text or initialization parameters. For these cases, the call to WriteEndObject actually writes the object."
+  summary: "작성기에서 현재 개체 범위를 닫습니다. 새 개체 범위는 부모 멤버 범위가 됩니다."
+  remarks: "이 경우 `EndObject` 위치 범위가 루트 개체를 닫고, 새 개체 범위 루트 범위가 있습니다.       에 대 한 호출 <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>아직 만들지 않은 경우 개체는 개체 멤버 초기화 텍스트 초기화 매개 변수 등의 필요한 초기화 변수와 수 있기 때문입니다.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> 이러한 경우에 대 한 WriteEndObject에 대 한 호출은 실제로 개체를 씁니다."
   syntax:
     content: public override void WriteEndObject ();
     parameters: []
@@ -444,8 +444,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes the conceptual <xref uid=&quot;langword_csharp_StartObject&quot; name=&quot;StartObject&quot; href=&quot;&quot;></xref> into the object graph when the specified object is a default or implicit value of the parent property. The implicit value comes from information that is obtained from the XAML schema context and backing type information, instead of being specified as an object value in the input XAML node set."
-  remarks: "The difference between writing with WriteGetObject and writing with <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> can be seen in the resulting object graph. WriteGetObject does not construct an instance of a type because the WriteGetObject API has no information to inform the object graph of what to construct. Instead, the object was created when the parent property was initialized; so a <xref:System.Xaml.XamlObjectWriter> does not need to construct it. In contrast, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> specifies that an instance of that type should be constructed and inserted into the object graph.       If you think of the XAML node stream as a series of frames, a WriteGetObject is balanced to a <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> call. Therefore, the number of WriteGetObject plus <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> calls should equal the number of <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> calls as part of a complete object-writing evaluation of the XAML node stream.       The conceptual `StartObject` position for an implicit object in the object graph is necessary because although the object value itself is an implicit default, that object might still have members that need to be written based on the XAML node stream. A typical scenario where this occurs is when <xref:System.Xaml.XamlObjectWriter> writes member nodes for a collection property, and the collection initialization is implicit to creating the object that owns the collection property."
+  summary: "개념적 씁니다 <xref uid=&quot;langword_csharp_StartObject&quot; name=&quot;StartObject&quot; href=&quot;&quot;> </xref> 지정된 개체가 기본값 또는 암시적 값 부모 속성의 경우 개체 그래프에 있습니다. XAML 스키마 컨텍스트에서 가져온 정보 및 입력된 XAML 노드 집합에서 개체 값으로 지정 되지 않고 지원 형식 정보에서 암시적 값을 가져옵니다."
+  remarks: "WriteGetObject 쓰고로 작성의 차이점 <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>결과 개체 그래프에서 볼 수 있습니다.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> WriteGetObject은 WriteGetObject API에 생성할 개체 그래프를 정보가 없으므로 형식의 인스턴스를 생성 하지 않습니다. Parent 속성; 초기화 될 때 개체가 만들어진 대신, 하므로 <xref:System.Xaml.XamlObjectWriter>생성 하십시오. 필요가 없음</xref:System.Xaml.XamlObjectWriter> 반면, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>해당 형식의 인스턴스 생성 및 개체 그래프에 삽입을 지정 합니다.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       에 WriteGetObject 균형 일련의 프레임으로 XAML 노드 스트림의 생각 되 면 한 <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>호출.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> 따라서 더하기 WriteGetObject 수가 <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>호출의 수와 같아야 <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>XAML 노드 스트림의 전체 개체 쓰기 평가의 일부로 호출.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       개념적 `StartObject` 암시적 개체는 개체 그래프에는 필요한 개체를 쓸 수 기반으로 해야 XAML 노드 스트림에서 멤버 개체 값 자체 암시적 기본값인 경우에 있을 수 있습니다 위치를 지정 합니다. 일반적인 시나리오가 현상이 발생 하는 경우 <xref:System.Xaml.XamlObjectWriter>컬렉션 속성을 초기화 하는 컬렉션에 대 한 쓰기 멤버 노드는 컬렉션 속성을 소유 하는 개체를 만드는 암시적.</xref:System.Xaml.XamlObjectWriter>"
   syntax:
     content: public override void WriteGetObject ();
     parameters: []
@@ -465,14 +465,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Defines a namespace declaration that applies to the next object scope or member scope."
-  remarks: "A namespace declaration can be written if the current scope is a root scope, object scope, or member scope. However, WriteNamespace can only be called immediately before a call to one of the following: WriteNamespace, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>, or <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>. The consecutive WriteNamespace case is for writing multiple namespace declarations to the same node. Eventually, either <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> or <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> must be called.       WriteNamespace does not use a `Start`/`End` metaphor. Although a XAML namespace has members in the CLR representation sense, the members are known and do not need to be represented as a special type of <xref:System.Xaml.XamlMember> for extensibility. To access the values of a <xref:System.Xaml.NamespaceDeclaration>, you access its <xref:System.Xaml.NamespaceDeclaration.Namespace%2A> and <xref:System.Xaml.NamespaceDeclaration.Prefix%2A> properties.       A namespace declaration may have a <xref:System.String.Empty?displayProperty=fullName> value for the prefix. A <xref:System.String.Empty?displayProperty=fullName> prefix represents a declaration of the default XAML namespace. Do not attempt to use null to represent the default prefix;  it throws an exception in this API. For more information, see <xref:System.Xaml.NamespaceDeclaration>."
+  summary: "다음 개체 범위 또는 멤버 범위에 적용 되는 네임 스페이스 선언은 정의 합니다."
+  remarks: "현재 범위는 루트 범위, 개체 범위 또는 멤버 범위 경우 네임 스페이스 선언을 작성할 수 있습니다. 그러나 WriteNamespace 에서만 호출 될 수는 다음 중 하나를 호출 하기 직전: WriteNamespace, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>, 또는 <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> 연속 된 WriteNamespace 대/소문자는 동일한 노드를 여러 네임 스페이스 선언을 쓸 때 사용 합니다. 결국 <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>또는 <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>호출 해야 합니다.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       WriteNamespace 사용 하지 않는 한 `Start` / `End` 메타포 합니다. XAML 네임 스페이스에는 CLR 표현의에 멤버가 있지만 멤버를 하며 특수 한 유형의으로 표현 될 필요가 없습니다 <xref:System.Xaml.XamlMember>확장성.</xref:System.Xaml.XamlMember> 값에 액세스 하는 <xref:System.Xaml.NamespaceDeclaration>를 액세스 하면 해당 <xref:System.Xaml.NamespaceDeclaration.Namespace%2A>및 <xref:System.Xaml.NamespaceDeclaration.Prefix%2A>속성.</xref:System.Xaml.NamespaceDeclaration.Prefix%2A> </xref:System.Xaml.NamespaceDeclaration.Namespace%2A> </xref:System.Xaml.NamespaceDeclaration>       네임 스페이스 선언에 사용할 수는 <xref:System.String.Empty?displayProperty=fullName>접두사 값입니다.</xref:System.String.Empty?displayProperty=fullName> A <xref:System.String.Empty?displayProperty=fullName>접두사의 기본 XAML 네임 스페이스 선언을 나타냅니다.</xref:System.String.Empty?displayProperty=fullName> 기본 접두사; 나타내기 위해 null을 사용 하지 마십시오  이 API의 예외를 throw 합니다. 자세한 내용은 <xref:System.Xaml.NamespaceDeclaration>.</xref:System.Xaml.NamespaceDeclaration> 을 참조 하십시오."
   syntax:
     content: public override void WriteNamespace (System.Xaml.NamespaceDeclaration namespaceDeclaration);
     parameters:
     - id: namespaceDeclaration
       type: System.Xaml.NamespaceDeclaration
-      description: "The namespace declaration to write."
+      description: "작성 하는 네임 스페이스 선언 합니다."
   overload: System.Xaml.XamlObjectWriter.WriteNamespace*
   exceptions:
   - type: System.ArgumentNullException
@@ -483,7 +483,7 @@ items:
     description: "A component of <code>namespaceDeclaration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Xaml.XamlObjectReaderException
     commentId: T:System.Xaml.XamlObjectReaderException
-    description: "Tried to write a XAML namespace node in an invalid scope."
+    description: "잘못 된 범위에서 XAML 네임 스페이스 노드를 쓰려고 했습니다."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteStartMember(System.Xaml.XamlMember)
@@ -498,7 +498,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a new member node into the current object scope, and the scope becomes a new member scope."
+  summary: "현재 개체 범위에 새 멤버 노드를 작성 범위에 새 멤버 범위 됩니다."
   remarks: >-
     > [!TIP]
 
@@ -508,18 +508,18 @@ items:
     parameters:
     - id: property
       type: System.Xaml.XamlMember
-      description: "The XAML property to write. Typically you obtain this value from a XAML reader through the XAML node stream intermediate."
+      description: "XAML 쓸 속성입니다. 일반적으로 XAML 노드 스트림의 중간 통해 XAML 판독기에서이 값을 가져옵니다."
   overload: System.Xaml.XamlObjectWriter.WriteStartMember*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "<code>property</code> has <xref:System.Xaml.XamlMember.IsUnknown*> set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>.       -or-       <xref:System.Xaml.XamlLanguage.UnknownContent*> passed, which indicates that the XAML node stream contained content for an object that does not support content.       -or-       Attempted to write a start member in an invalid scope."
+    description: "<code>property</code>has <xref:System.Xaml.XamlMember.IsUnknown*> set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>.       -또는- <xref:System.Xaml.XamlLanguage.UnknownContent*> XAML 노드 스트림의 콘텐츠를 지원 하지 않는 개체에 대 한 콘텐츠에 포함 되어 있음을 나타냅니다를 전달 합니다.       -또는-잘못 된 범위에서 시작 멤버를 쓰려고 시도 합니다."
   - type: System.Xaml.XamlDuplicateMemberException
     commentId: T:System.Xaml.XamlDuplicateMemberException
-    description: "<code>property</code> specifies a property that is already explicitly set in the parent object scope."
+    description: "<code>property</code>부모 개체 범위에 이미 명시적으로 설정 된 속성을 지정 합니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>property</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>property</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteStartObject(System.Xaml.XamlType)
@@ -534,24 +534,24 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes an object node into the current scope, and sets the scope to a new object scope."
+  summary: "현재 범위에 개체 노드를 작성 하 고 새 개체 범위에 범위를 설정 합니다."
   syntax:
     content: public override void WriteStartObject (System.Xaml.XamlType xamlType);
     parameters:
     - id: xamlType
       type: System.Xaml.XamlType
-      description: "The type to write. Typically you obtain this value from a XAML reader."
+      description: "쓰기 형식입니다. 일반적으로 XAML 판독기에서이 값을 가져옵니다."
   overload: System.Xaml.XamlObjectWriter.WriteStartObject*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Processing an <xref:System.Xaml.XamlType.IsUnknown*> type and cannot create an object.       -or-       Attempted to write a start object in an invalid scope."
+    description: "처리는 <xref:System.Xaml.XamlType.IsUnknown*>입력 하 고 개체를 만들 수 없습니다.</xref:System.Xaml.XamlType.IsUnknown*>       -또는-잘못 된 범위에서 시작 개체를 쓰려고 시도 합니다."
   - type: System.Xaml.XamlParseException
     commentId: T:System.Xaml.XamlParseException
-    description: "Attempted to write a root object when the root object was already provided in the settings."
+    description: "설정에 이미 제공 된 루트 개체가 때 루트 개체에 쓰려고 했습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlType</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlType</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteValue(System.Object)
@@ -566,18 +566,18 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a value to the current member scope. If the current scope is inside a collection, dictionary, or array object, the value should be added to the collection, dictionary, or array."
+  summary: "현재 멤버 범위에 값을 씁니다. 현재 범위 컬렉션, 사전 또는 배열 개체 안에 있으면 값 컬렉션, 사전 또는 배열에 추가할 해야 합니다."
   syntax:
     content: public override void WriteValue (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value to write."
+      description: "작성할 값입니다."
   overload: System.Xaml.XamlObjectWriter.WriteValue*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Attempted to write a value in an invalid scope."
+    description: "잘못 된 범위에서 값을 쓰려고 했습니다."
   platform:
   - net462
 references:

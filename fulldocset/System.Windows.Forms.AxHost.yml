@@ -135,8 +135,8 @@ items:
   nameWithType: AxHost
   fullName: System.Windows.Forms.AxHost
   type: Class
-  summary: "Wraps ActiveX controls and exposes them as fully featured Windows Forms controls."
-  remarks: "You typically do not use the AxHost class directly. You can use the [Aximp.exe (Windows Forms ActiveX Control Importer)](~/add/includes/ajax-current-ext-md.md) to generate the wrappers that extend AxHost.       The ActiveX Control Importer generates a class that is derived from the AxHost class, and compiles it into a library file (DLL) that can be added as a reference to your application. Alternatively, you can use the `/source` switch with the ActiveX Control Importer and a C# file is generated for your AxHost derived class. You can then make changes to the code and recompile it into a library file.      > [!NOTE] >  If the name of a member of the ActiveX control matches a name defined in the .NET Framework, then the ActiveX Control Importer will prefix the member name with &quot;Ctl&quot; when it creates the AxHost derived class. For example, if your ActiveX control has a member named &quot;Layout&quot;, it is renamed &quot;CtlLayout&quot; in the AxHost derived class because the `Layout` event is defined within the .NET Framework.       Most of the common properties of the AxHost class are only valid and used if the underlying ActiveX control exposes those properties. A few examples of the common properties are <xref:System.Windows.Forms.Control.BackColor%2A>, <xref:System.Windows.Forms.Control.Cursor%2A>, <xref:System.Windows.Forms.Control.Font%2A>, and <xref:System.Windows.Forms.Control.Text%2A>.      > [!NOTE] >  If you are using Visual Studio as your Windows Forms design environment, you can make an ActiveX control available to your application by adding the ActiveX control to your Toolbox. To accomplish this, right-click the **Toolbox**, select **Customize Toolbox**, then browse to the ActiveX control&quot;s.ocx file. For more information, see &quot;Adding ActiveX Controls to Windows Forms&quot; in the Visual Studio documentation."
+  summary: "ActiveX 컨트롤을 래핑하고 모든 기능을 갖춘 Windows Forms 컨트롤로 나타납니다."
+  remarks: "일반적으로 사용 하지 않는 AxHost 클래스 직접 합니다. 사용할 수는 [Aximp.exe (Windows Forms ActiveX 컨트롤 가져오기)](~/add/includes/ajax-current-ext-md.md) 를 사용할 수 있는 클래스를 확장 하는 래퍼를 생성 합니다.       ActiveX 컨트롤 가져오기 AxHost 클래스에서 파생 되 고 응용 프로그램에 대 한 참조로 추가할 수 있는 라이브러리 파일 (DLL)로 컴파일되 하는 클래스를 생성 합니다. 사용할 수 있습니다는 `/source` ActiveX 컨트롤 가져오기를 사용 하는 전환 되 고 AxHost 파생 클래스에 대 한 C# 파일을 생성 합니다. 다음 코드를 변경할 수 있으며 라이브러리 파일로 다시 컴파일합니다.      > [!NOTE] > ActiveX 컨트롤 가져오기 AxHost 파생 클래스를 만들 때 멤버 이름 앞에 &quot;Ctl&quot; 접두사는 경우 ActiveX 컨트롤의 멤버 이름이.NET Framework에 정의 된 이름과 일치 합니다. 예를 들어, ActiveX 컨트롤에 &quot;레이아웃&quot; 라는 멤버를 않으면 이름이 바뀐된 &quot;ctllayout&quot;으로 변경에서 AxHost 파생 클래스는 `Layout` 이벤트는.NET Framework 내에서 정의 됩니다.       AxHost 클래스의 공용 속성의 대부분은 유효 내부 ActiveX 컨트롤이 해당 속성을 노출 하는 경우 사용 합니다. 공용 속성의 몇 가지 예는 <xref:System.Windows.Forms.Control.BackColor%2A>, <xref:System.Windows.Forms.Control.Cursor%2A>, <xref:System.Windows.Forms.Control.Font%2A>, 및 <xref:System.Windows.Forms.Control.Text%2A>.</xref:System.Windows.Forms.Control.Text%2A> </xref:System.Windows.Forms.Control.Font%2A> </xref:System.Windows.Forms.Control.Cursor%2A> </xref:System.Windows.Forms.Control.BackColor%2A>      > [!NOTE] > Visual Studio를 Windows Forms 디자인 환경으로 사용 하는 경우 사용할 수 있습니다 ActiveX 컨트롤 응용 프로그램에 도구 상자에 ActiveX 컨트롤을 추가 하 여 합니다. 이렇게 하려면 마우스 오른쪽 단추로 클릭는 **도구 상자**선택, **도구 상자 사용자 지정**, 다음 ActiveX 컨트롤의.ocx 파일을 찾습니다. 자세한 내용은 Visual Studio 설명서에서 &quot;Windows Forms에 ActiveX 컨트롤 추가&quot;를 참조 하십시오."
   example:
   - "The following code example overrides the constructor, and the <xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> and <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A> methods of an AxHost derived class that wraps the Microsoft Masked Edit ActiveX Control. This code requires that you have created the generated source code by running the AxImp.exe on the MSMask32.ocx file with the `/source` switch to generate the wrapper class to be edited. This code is only shown in C# syntax because that is the only language output by the AxImp.exe.  \n  \n [!code-cs[AxHost_Wrap_MaskEdit#1](~/add/codesnippet/csharp/t-system.windows.forms.a_6_1.cs)]"
   syntax:
@@ -487,13 +487,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class, wrapping the ActiveX control indicated by the specified CLSID."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스를 지정된 된 CLSID로 표시 된 ActiveX 컨트롤을 배치 합니다."
   syntax:
     content: protected AxHost (string clsid);
     parameters:
     - id: clsid
       type: System.String
-      description: "The CLSID of the ActiveX control to wrap."
+      description: "CLSID를 래핑하는 ActiveX 컨트롤입니다."
   overload: System.Windows.Forms.AxHost.#ctor*
   exceptions: []
   platform:
@@ -510,17 +510,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class, wrapping the ActiveX control indicated by the specified CLSID, and using the shortcut-menu behavior indicated by the specified <code>flags</code> value."
-  remarks: "If the binary representation of the `flags` parameter value contains the bit represented by the value 0x1, the shortcut menu for the control will not contain an **Edit** option unless the ActiveX control explicitly provides it.       If the binary representation of the `flags` parameter value contains the bit represented by the value 0x2, the shortcut menu for the control will contain a Properties option if the ActiveX control offers a set of property pages; otherwise, the shortcut menu will contain a Properties option only if the ActiveX control explicitly provides it."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> ActiveX 컨트롤을 배치 하는 클래스를 지정된 된 CLSID로 표시 하 고 바로 가기 메뉴 동작을 사용 하 여 지정 된 지정 된 <code> flags </code> 값입니다."
+  remarks: "하는 경우의 이진 표현에서 `flags` 값 0x1의 비트를 포함 하는 매개 변수 값, 컨트롤에 대 한 바로 가기 메뉴에 포함 되지 것입니다는 **편집** ActiveX 컨트롤에서 명시적으로 제공 하지 않는 한 옵션입니다.       하는 경우의 이진 표현에서 `flags` 매개 변수 비트가 포함 된 경우 속성 페이지의 집합을 제공 하는 ActiveX 컨트롤 컨트롤 속성 옵션이 포함 됩니다에 대 한 0x2, 바로 가기 메뉴 값으로 표시, 속성 옵션 ActiveX 컨트롤에서 명시적으로 제공 하는 경우에 바로 가기 메뉴는 그렇지 않은 경우 포함할 합니다."
   syntax:
     content: protected AxHost (string clsid, int flags);
     parameters:
     - id: clsid
       type: System.String
-      description: "The CLSID of the ActiveX control to wrap."
+      description: "CLSID를 래핑하는 ActiveX 컨트롤입니다."
     - id: flags
       type: System.Int32
-      description: "An <xref:System.Int32> that modifies the shortcut-menu behavior for the control."
+      description: "<xref:System.Int32>컨트롤에 대 한 바로 가기 메뉴 동작을 수정 하는.</xref:System.Int32>"
   overload: System.Windows.Forms.AxHost.#ctor*
   exceptions: []
   platform:
@@ -537,7 +537,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "When overridden in a derived class, attaches interfaces to the underlying ActiveX control."
+  summary: "파생된 클래스에서 재정의 되 면 인터페이스를 내부 ActiveX 컨트롤에 연결 합니다."
   remarks: ''
   example:
   - "The following code example overrides the constructor, and the <xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> and AttachInterfaces methods of an <xref:System.Windows.Forms.AxHost> derived class that wraps the Microsoft Masked Edit ActiveX Control. This code requires that you have created the generated source code by running the AxImp.exe on the MSMask32.ocx file with the `/source` switch to generate the wrapper class to be edited. This code is only shown in C# syntax because that is the only language output by the AxImp.exe.  \n  \n [!code-cs[AxHost_Wrap_MaskEdit#1](~/add/codesnippet/csharp/m-system.windows.forms.a_3_1.cs)]"
@@ -560,12 +560,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This member is not meaningful for this control."
+  summary: "이 멤버는이 컨트롤에 의미가 없습니다."
   syntax:
     content: public override System.Drawing.Color BackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A Color that represents the background color of the control."
+      description: "컨트롤의 배경색을 나타내는 색입니다."
   overload: System.Windows.Forms.AxHost.BackColor*
   exceptions: []
   platform:
@@ -582,13 +582,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The BackColorChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the BackColorChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "BackColorChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 BackColorChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler BackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -604,12 +604,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Drawing.Image BackgroundImage { get; set; }
     return:
       type: System.Drawing.Image
-      description: "The background image displayed in the control."
+      description: "컨트롤에 표시할 배경 이미지입니다."
   overload: System.Windows.Forms.AxHost.BackgroundImage*
   exceptions: []
   platform:
@@ -626,13 +626,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The BackgroundImageChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the BackgroundImageChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "BackgroundImageChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 BackgroundImageChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler BackgroundImageChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -648,7 +648,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Windows.Forms.ImageLayout BackgroundImageLayout { get; set; }
     return:
@@ -670,12 +670,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This event is not relevant for this class."
+  summary: "이 이벤트는이 클래스와 관련이 없습니다."
   syntax:
     content: public event EventHandler BackgroundImageLayoutChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -691,8 +691,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Begins the initialization of the ActiveX control."
-  remarks: "Design environments typically use this method to start the initialization of a component that is used on a form or used by another component. The <xref:System.Windows.Forms.AxHost.EndInit%2A> method ends the initialization. Using the BeginInit and <xref:System.Windows.Forms.AxHost.EndInit%2A> methods prevents the control from being used before it is fully initialized. The initialization occurs at run time."
+  summary: "ActiveX 컨트롤의 초기화를 시작 합니다."
+  remarks: "디자인 환경에서는 일반적으로이 메서드를 사용 하 여 폼에 사용 되거나 다른 구성 요소에서 사용 하는 구성 요소 초기화를 시작 합니다. <xref:System.Windows.Forms.AxHost.EndInit%2A>메서드 초기화를 끝냅니다.</xref:System.Windows.Forms.AxHost.EndInit%2A> BeginInit를 사용 하 여 및 <xref:System.Windows.Forms.AxHost.EndInit%2A>메서드는 컨트롤이 완전히 초기화 되기 전에 사용 되지 않습니다.</xref:System.Windows.Forms.AxHost.EndInit%2A> 초기화는 런타임에 발생 합니다."
   syntax:
     content: public void BeginInit ();
     parameters: []
@@ -712,13 +712,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The BindingContextChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the BindingContextChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "BindingContextChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 BindingContextChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler BindingContextChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The ChangeUICues event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the ChangeUICues event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "ChangeUICues 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 ChangeUICues 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.UICuesEventHandler ChangeUICues;
     return:
       type: System.Windows.Forms.UICuesEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -756,13 +756,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The Click event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the Click event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "Click 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 클릭 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler Click;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -778,13 +778,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the control containing the ActiveX control."
-  remarks: "The ContainingControl property value can be different from the <xref:System.Windows.Forms.Control.Parent%2A> property. The <xref:System.Windows.Forms.ContainerControl> represented by this property is the ActiveX control&quot;s logical container. For example, if an ActiveX control is hosted in a <xref:System.Windows.Forms.GroupBox> control, and the <xref:System.Windows.Forms.GroupBox> is contained on a <xref:System.Windows.Forms.Form>, then the ContainingControl property value of the ActiveX control is the <xref:System.Windows.Forms.Form>, and the <xref:System.Windows.Forms.Control.Parent%2A> property value is the <xref:System.Windows.Forms.GroupBox> control."
+  summary: "ActiveX 컨트롤을 포함 하는 컨트롤을 가져오거나 설정 합니다."
+  remarks: "ContainingControl 속성 값이 다를 수 있습니다는 <xref:System.Windows.Forms.Control.Parent%2A>속성.</xref:System.Windows.Forms.Control.Parent%2A> <xref:System.Windows.Forms.ContainerControl>이 속성으로 표현 되는 ActiveX 컨트롤의 논리적 컨테이너입니다.</xref:System.Windows.Forms.ContainerControl> 예를 들어, ActiveX 컨트롤에서 호스트 될 경우는 <xref:System.Windows.Forms.GroupBox>컨트롤 및 <xref:System.Windows.Forms.GroupBox>에 포함 되어는 <xref:System.Windows.Forms.Form>, ActiveX 컨트롤의 ContainingControl 속성 값은는 <xref:System.Windows.Forms.Form>, 및 <xref:System.Windows.Forms.Control.Parent%2A>속성 값이는 <xref:System.Windows.Forms.GroupBox>컨트롤.</xref:System.Windows.Forms.GroupBox> </xref:System.Windows.Forms.Control.Parent%2A> </xref:System.Windows.Forms.Form> </xref:System.Windows.Forms.Form> </xref:System.Windows.Forms.GroupBox> </xref:System.Windows.Forms.GroupBox>"
   syntax:
     content: public System.Windows.Forms.ContainerControl ContainingControl { get; set; }
     return:
       type: System.Windows.Forms.ContainerControl
-      description: "A <xref href=&quot;System.Windows.Forms.ContainerControl&quot;></xref> that represents the control containing the ActiveX control."
+      description: "A <xref href=&quot;System.Windows.Forms.ContainerControl&quot;> </xref> ActiveX 컨트롤을 포함 하는 컨트롤을 나타내는입니다."
   overload: System.Windows.Forms.AxHost.ContainingControl*
   exceptions: []
   platform:
@@ -801,12 +801,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Windows.Forms.ContextMenu ContextMenu { get; set; }
     return:
       type: System.Windows.Forms.ContextMenu
-      description: "The shortcut menu associated with the control."
+      description: "컨트롤과 연결 된 바로 가기 메뉴입니다."
   overload: System.Windows.Forms.AxHost.ContextMenu*
   exceptions: []
   platform:
@@ -823,13 +823,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The ContextMenuChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the ContextMenuChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "ContextMenuChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 ContextMenuChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler ContextMenuChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -845,7 +845,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a handle for the control."
+  summary: "컨트롤에 대 한 핸들을 만듭니다."
   syntax:
     content: protected override void CreateHandle ();
     parameters: []
@@ -865,16 +865,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Called by the system to create the ActiveX control."
+  summary: "ActiveX 컨트롤을 만들 수 있도록 시스템에서 호출 됩니다."
   syntax:
     content: protected virtual object CreateInstanceCore (Guid clsid);
     parameters:
     - id: clsid
       type: System.Guid
-      description: "The CLSID of the ActiveX control."
+      description: "ActiveX 컨트롤의 CLSID입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the ActiveX control."
+      description: "<xref:System.Object>ActiveX 컨트롤을 나타내는.</xref:System.Object>"
   overload: System.Windows.Forms.AxHost.CreateInstanceCore*
   exceptions: []
   platform:
@@ -891,12 +891,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the required creation parameters when the control handle is created."
+  summary: "컨트롤 핸들이 만들어지는 경우 필요한 작성 매개 변수를 가져옵니다."
   syntax:
     content: protected override System.Windows.Forms.CreateParams CreateParams { get; }
     return:
       type: System.Windows.Forms.CreateParams
-      description: "A <xref href=&quot;System.Windows.Forms.CreateParams&quot;></xref> that contains the required creation parameters when the handle to the control is created."
+      description: "A <xref href=&quot;System.Windows.Forms.CreateParams&quot;> </xref> 컨트롤에 대 한 핸들을 만들 때 필요한 작성 매개 변수를 포함 하는 합니다."
   overload: System.Windows.Forms.AxHost.CreateParams*
   exceptions: []
   platform:
@@ -913,8 +913,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Called by the control to prepare it for listening to events."
-  remarks: "This base-class implementation is empty."
+  summary: "이벤트를 수신 대기를 위해 준비 하는 컨트롤에 의해 호출 됩니다."
+  remarks: "이 기본 클래스 구현은 비어 있습니다."
   syntax:
     content: protected virtual void CreateSink ();
     parameters: []
@@ -934,12 +934,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Windows.Forms.Cursor Cursor { get; set; }
     return:
       type: System.Windows.Forms.Cursor
-      description: "The foreground color of the control."
+      description: "컨트롤의 전경색입니다."
   overload: System.Windows.Forms.AxHost.Cursor*
   exceptions: []
   platform:
@@ -956,13 +956,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The CursorChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the CursorChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "CursorChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 CursorChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler CursorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -978,12 +978,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the default size of the control."
+  summary: "컨트롤의 기본 크기를 가져옵니다."
   syntax:
     content: protected override System.Drawing.Size DefaultSize { get; }
     return:
       type: System.Drawing.Size
-      description: "The default <xref href=&quot;System.Drawing.Size&quot;></xref> of the control."
+      description: "기본 <xref href=&quot;System.Drawing.Size&quot;> </xref> 컨트롤의 합니다."
   overload: System.Windows.Forms.AxHost.DefaultSize*
   exceptions: []
   platform:
@@ -1000,7 +1000,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Destroys the handle associated with the control."
+  summary: "컨트롤과 연결 된 핸들을 소멸 시킵니다."
   syntax:
     content: protected override void DestroyHandle ();
     parameters: []
@@ -1020,8 +1020,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Called by the control when it stops listening to events."
-  remarks: "This base-class implementation is empty."
+  summary: "컨트롤에서 이벤트 수신을 중지할 때 호출 됩니다."
+  remarks: "이 기본 클래스 구현은 비어 있습니다."
   syntax:
     content: protected virtual void DetachSink ();
     parameters: []
@@ -1041,13 +1041,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Windows.Forms.Control&quot;></xref> and its child controls and optionally releases the managed resources."
+  summary: "사용 하는 관리 되지 않는 리소스를 해제는 <xref href=&quot;System.Windows.Forms.Control&quot;> </xref> 및 해당 자식 제어 하 고 선택적으로 관리 되는 리소스를 해제 합니다."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>관리 되는 관리 되지 않는 리소스만 해제 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 만 관리 되지 않는 리소스를 해제 합니다."
   overload: System.Windows.Forms.AxHost.Dispose*
   exceptions: []
   platform:
@@ -1064,13 +1064,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The DoubleClick event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the DoubleClick event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "DoubleClick 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 DoubleClick 이벤트의 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler DoubleClick;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1086,14 +1086,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Requests that an object perform an action in response to an end-user&quot;s action."
-  remarks: "This method passes the specified verb to the [IOleObject::DoVerb](http://go.microsoft.com/fwlink/?LinkId=166076) method of the hosted control."
+  summary: "개체는 최종 사용자의 작업에 대 한 응답에는 작업을 수행 하도록 요청 합니다."
+  remarks: "이 메서드를 지정된 된 동사에 전달 된 [IOleObject::DoVerb](http://go.microsoft.com/fwlink/?LinkId=166076) 호스팅된 컨트롤의 메서드."
   syntax:
     content: public void DoVerb (int verb);
     parameters:
     - id: verb
       type: System.Int32
-      description: "One of the actions enumerated for the object in IOleObject::EnumVerbs."
+      description: "IOleObject::EnumVerbs의 개체에 대해 열거 작업 중 하나입니다."
   overload: System.Windows.Forms.AxHost.DoVerb*
   exceptions: []
   platform:
@@ -1110,13 +1110,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The DragDrop event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the DragDrop event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "DragDrop 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 DragDrop 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.DragEventHandler DragDrop;
     return:
       type: System.Windows.Forms.DragEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1132,13 +1132,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The DragEnter event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the DragEnter event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "수행 하 여 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 수행 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.DragEventHandler DragEnter;
     return:
       type: System.Windows.Forms.DragEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1154,13 +1154,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The DragLeave event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the DragLeave event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "현재의에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 현재의 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler DragLeave;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1176,13 +1176,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The DragOver event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the DragOver event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "끌기 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 끌기 이벤트의 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.DragEventHandler DragOver;
     return:
       type: System.Windows.Forms.DragEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1198,7 +1198,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This method is not supported by this control."
+  summary: "이 메서드는이 컨트롤에서 지원 되지 않습니다."
   syntax:
     content: public void DrawToBitmap (System.Drawing.Bitmap bitmap, System.Drawing.Rectangle targetBounds);
     parameters:
@@ -1224,12 +1224,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a value that indicates whether the hosted control is in edit mode."
+  summary: "호스팅된 컨트롤이 편집 모드에 있는지 여부를 나타내는 값을 반환 합니다."
   syntax:
     content: public bool EditMode { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the hosted control is in edit mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>호스팅된 컨트롤에 있으면 편집 모드입니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.EditMode*
   exceptions: []
   platform:
@@ -1246,12 +1246,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "A <xref:System.Boolean> value."
+      description: "A <xref:System.Boolean>값.</xref:System.Boolean>"
   overload: System.Windows.Forms.AxHost.Enabled*
   exceptions: []
   platform:
@@ -1268,13 +1268,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The EnabledChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the EnabledChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "EnabledChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 EnabledChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler EnabledChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1290,8 +1290,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Ends the initialization of an ActiveX control."
-  remarks: "Design environments typically use this method to finish the initialization of a component that is used on a form or used by another component. The EndInit method ends the initialization. Using the <xref:System.Windows.Forms.AxHost.BeginInit%2A> and EndInit methods prevents the control from being used before it is fully initialized. The initialization occurs at run time."
+  summary: "ActiveX 컨트롤의 초기화를 끝냅니다."
+  remarks: "디자인 환경에서는 일반적으로 폼에 사용 되거나 다른 구성 요소에서 사용 하는 구성 요소의 초기화를 완료 하는 데이 메서드를 사용 합니다. EndInit 메서드 초기화를 끝냅니다. 사용 하 여 <xref:System.Windows.Forms.AxHost.BeginInit%2A>하 고 컨트롤을 완전히 초기화 되기 전에 사용 되지 않도록 하 EndInit 메서드.</xref:System.Windows.Forms.AxHost.BeginInit%2A> 초기화는 런타임에 발생 합니다."
   syntax:
     content: public void EndInit ();
     parameters: []
@@ -1311,12 +1311,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Drawing.Font Font { get; set; }
     return:
       type: System.Drawing.Font
-      description: "The font of the text displayed by the control."
+      description: "컨트롤에 의해 표시 되는 텍스트의 글꼴입니다."
   overload: System.Windows.Forms.AxHost.Font*
   exceptions: []
   platform:
@@ -1333,13 +1333,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The FontChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the FontChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "FontChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 FontChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler FontChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1355,12 +1355,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override System.Drawing.Color ForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The foreground color of the control."
+      description: "컨트롤의 전경색입니다."
   overload: System.Windows.Forms.AxHost.ForeColor*
   exceptions: []
   platform:
@@ -1377,13 +1377,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The ForeColorChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the ForeColorChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "ForeColorChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 ForeColorChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler ForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1399,16 +1399,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a <xref href=&quot;System.Drawing.Color&quot;></xref> structure that corresponds to the specified OLE color value."
+  summary: "반환 된 <xref href=&quot;System.Drawing.Color&quot;> </xref> 지정된 된 OLE 색 값에 해당 합니다."
   syntax:
     content: protected static System.Drawing.Color GetColorFromOleColor (uint color);
     parameters:
     - id: color
       type: System.UInt32
-      description: "The OLE color value to translate."
+      description: "변환할 OLE 색 값입니다."
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> structure that represents the translated OLE color value."
+      description: "<xref href=&quot;System.Drawing.Color&quot;> </xref> 번역 된 OLE 색 값을 나타내는 구조입니다."
   overload: System.Windows.Forms.AxHost.GetColorFromOleColor*
   exceptions: []
   platform:
@@ -1425,16 +1425,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a <xref href=&quot;System.Drawing.Font&quot;></xref> created from the specified OLE [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) object."
+  summary: "반환 된 <xref href=&quot;System.Drawing.Font&quot;> </xref> 지정 된 OLE에서 만든 [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) 개체입니다."
   syntax:
     content: protected static System.Drawing.Font GetFontFromIFont (object font);
     parameters:
     - id: font
       type: System.Object
-      description: "The IFont to create a <xref href=&quot;System.Drawing.Font&quot;></xref> from."
+      description: "만들려는 IFont는 <xref href=&quot;System.Drawing.Font&quot;> </xref> 에서 합니다."
     return:
       type: System.Drawing.Font
-      description: "The <xref href=&quot;System.Drawing.Font&quot;></xref> created from the specified [IFont](http://go.microsoft.com/fwlink/?LinkId=166075), &lt;xref:System.Windows.Forms.Control.DefaultFont%2A?displayProperty=fullName&gt; if the font could not be created, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if <code>font</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Drawing.Font&quot;> </xref> 지정 된 위치에서 만든 [IFont](http://go.microsoft.com/fwlink/?LinkId=166075), &lt;xref:System.Windows.Forms.Control.DefaultFont%2A?displayProperty=fullName&gt; 글꼴을 만들 수 있는 경우 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 <code> font </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.GetFontFromIFont*
   exceptions: []
   platform:
@@ -1451,16 +1451,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a <xref href=&quot;System.Drawing.Font&quot;></xref> created from the specified OLE [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) object."
+  summary: "반환 된 <xref href=&quot;System.Drawing.Font&quot;> </xref> 지정 된 OLE에서 만든 [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) 개체입니다."
   syntax:
     content: protected static System.Drawing.Font GetFontFromIFontDisp (object font);
     parameters:
     - id: font
       type: System.Object
-      description: "The IFontDisp to create a <xref href=&quot;System.Drawing.Font&quot;></xref> from."
+      description: "만들려는 IFontDisp는 <xref href=&quot;System.Drawing.Font&quot;> </xref> 에서 합니다."
     return:
       type: System.Drawing.Font
-      description: "The <xref href=&quot;System.Drawing.Font&quot;></xref> created from the specified [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073), &lt;xref:System.Windows.Forms.Control.DefaultFont%2A?displayProperty=fullName&gt; if the font could not be created, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if <code>font</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Drawing.Font&quot;> </xref> 지정 된 위치에서 만든 [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073), &lt;xref:System.Windows.Forms.Control.DefaultFont%2A?displayProperty=fullName&gt; 글꼴을 만들 수 있는 경우 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 <code> font </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.GetFontFromIFontDisp*
   exceptions: []
   platform:
@@ -1477,21 +1477,21 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) object created from the specified <xref href=&quot;System.Drawing.Font&quot;></xref> object."
+  summary: "OLE 반환 [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) 지정 된 위치에서 만든 개체 <xref href=&quot;System.Drawing.Font&quot;> </xref> 개체입니다."
   syntax:
     content: protected static object GetIFontDispFromFont (System.Drawing.Font font);
     parameters:
     - id: font
       type: System.Drawing.Font
-      description: "The font to create an IFontDisp object from."
+      description: "IFontDisp 개체를 만들 수는 글꼴입니다."
     return:
       type: System.Object
-      description: "The [IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) object created from the specified font or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if <code>font</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "[IFontDisp](http://go.microsoft.com/fwlink/?LinkId=166073) 지정된 된 글꼴에서 만든 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 <code> font </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.GetIFontDispFromFont*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Drawing.Font.Unit*> property value is not <xref href=&quot;System.Drawing.GraphicsUnit&quot;></xref>."
+    description: "<xref:System.Drawing.Font.Unit*>속성 값이 <xref href=&quot;System.Drawing.GraphicsUnit&quot;> </xref>.</xref:System.Drawing.Font.Unit*>"
   platform:
   - net462
 - uid: System.Windows.Forms.AxHost.GetIFontFromFont(System.Drawing.Font)
@@ -1506,21 +1506,21 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) object created from the specified <xref href=&quot;System.Drawing.Font&quot;></xref> object."
+  summary: "OLE 반환 [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) 지정 된 위치에서 만든 개체 <xref href=&quot;System.Drawing.Font&quot;> </xref> 개체입니다."
   syntax:
     content: protected static object GetIFontFromFont (System.Drawing.Font font);
     parameters:
     - id: font
       type: System.Drawing.Font
-      description: "The font to create an IFont object from."
+      description: "IFont 개체를 만들 수는 글꼴입니다."
     return:
       type: System.Object
-      description: "The [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) object created from the specified font, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if <code>font</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or the [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) could not be created."
+      description: "[IFont](http://go.microsoft.com/fwlink/?LinkId=166075) 지정된 된 글꼴에서 만든 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 <code> font </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 [IFont](http://go.microsoft.com/fwlink/?LinkId=166075) 만들 수 없습니다."
   overload: System.Windows.Forms.AxHost.GetIFontFromFont*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Drawing.Font.Unit*> property value is not <xref href=&quot;System.Drawing.GraphicsUnit&quot;></xref>."
+    description: "<xref:System.Drawing.Font.Unit*>속성 값이 <xref href=&quot;System.Drawing.GraphicsUnit&quot;> </xref>.</xref:System.Drawing.Font.Unit*>"
   platform:
   - net462
 - uid: System.Windows.Forms.AxHost.GetIPictureDispFromPicture(System.Drawing.Image)
@@ -1535,16 +1535,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;></xref> object corresponding to the specified <xref href=&quot;System.Drawing.Image&quot;></xref>."
+  summary: "OLE 반환 <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;> </xref> 에 해당 하는 지정 된 개체 <xref href=&quot;System.Drawing.Image&quot;> </xref>합니다."
   syntax:
     content: protected static object GetIPictureDispFromPicture (System.Drawing.Image image);
     parameters:
     - id: image
       type: System.Drawing.Image
-      description: "The <xref href=&quot;System.Drawing.Image&quot;></xref> to convert."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 변환 합니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the OLE <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;></xref> object."
+      description: "<xref:System.Object>OLE 나타내는 <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;> </xref> 개체입니다.</xref:System.Object>"
   overload: System.Windows.Forms.AxHost.GetIPictureDispFromPicture*
   exceptions: []
   platform:
@@ -1561,16 +1561,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> object corresponding to the specified <xref href=&quot;System.Windows.Forms.Cursor&quot;></xref>."
+  summary: "OLE 반환 <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 에 해당 하는 지정 된 개체 <xref href=&quot;System.Windows.Forms.Cursor&quot;> </xref>합니다."
   syntax:
     content: protected static object GetIPictureFromCursor (System.Windows.Forms.Cursor cursor);
     parameters:
     - id: cursor
       type: System.Windows.Forms.Cursor
-      description: "A <xref href=&quot;System.Windows.Forms.Cursor&quot;></xref>, which is an image that represents the Windows mouse pointer."
+      description: "A <xref href=&quot;System.Windows.Forms.Cursor&quot;> </xref>, 변수인 Windows 마우스 포인터를 나타내는 이미지입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> object."
+      description: "<xref:System.Object>OLE 나타내는 <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 개체입니다.</xref:System.Object>"
   overload: System.Windows.Forms.AxHost.GetIPictureFromCursor*
   exceptions: []
   platform:
@@ -1587,16 +1587,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> object corresponding to the specified <xref href=&quot;System.Drawing.Image&quot;></xref>."
+  summary: "OLE 반환 <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 에 해당 하는 지정 된 개체 <xref href=&quot;System.Drawing.Image&quot;> </xref>합니다."
   syntax:
     content: protected static object GetIPictureFromPicture (System.Drawing.Image image);
     parameters:
     - id: image
       type: System.Drawing.Image
-      description: "The <xref href=&quot;System.Drawing.Image&quot;></xref> to convert."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 변환 합니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> object."
+      description: "<xref:System.Object>OLE 나타내는 <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 개체입니다.</xref:System.Object>"
   overload: System.Windows.Forms.AxHost.GetIPictureFromPicture*
   exceptions: []
   platform:
@@ -1613,22 +1613,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE Automation date that corresponds to the specified <xref:System.DateTime> structure."
-  remarks: "An OLE Automation date is implemented as a floating-point number whose value is the number of days from midnight, 30 December 1899. For example, midnight, 31 December 1899 is represented by 1.0; 6 A.M., 1 January 1900 is represented by 2.25; midnight, 29 December 1899 is represented by -1.0; and 6 A.M., 29 December 1899 is represented by -1.25.       The base OLE Automation Date is midnight, 30 December 1899. The maximum OLE Automation Date is the same as <xref:System.DateTime>, the last moment of 31 December 9999.       For more information about OLE Automation, see the [MSDN Library](http://go.microsoft.com/fwlink/?linkid=37118)."
+  summary: "해당 하는 OLE 자동화 날짜를 지정 된 반환 <xref:System.DateTime>구조.</xref:System.DateTime>"
+  remarks: "OLE 자동화 날짜 값이 1899 년 12 월 30 일 자정부터의 일 수를 부동 소수점 숫자로 구현 됩니다. 예를 들어 자정 1899 년 12 월 31 나타내는 1.0; 오전 6 1900 년 1 월 1 2.25;로 표시 됩니다. 자정 1899 년 12 월 29-1.0;로 표시 됩니다. 고 오전 6 1899 년 12 월 29-1.25로 표시 됩니다.       기본 OLE 자동화 날짜는 1899 년 12 월 30 일 자정입니다. 최대 OLE 자동화 날짜는 동일 <xref:System.DateTime>, 31 년 12 월의 마지막 순간 9999.</xref:System.DateTime>       OLE 자동화에 대 한 자세한 내용은 참조는 [MSDN Library](http://go.microsoft.com/fwlink/?linkid=37118)합니다."
   syntax:
     content: protected static double GetOADateFromTime (DateTime time);
     parameters:
     - id: time
       type: System.DateTime
-      description: "The <xref:System.DateTime> structure to translate."
+      description: "<xref:System.DateTime>변환 하는 구조체.</xref:System.DateTime>"
     return:
       type: System.Double
-      description: "A double-precision floating-point number that contains an OLE Automation date equivalent to specified <code>time</code> value."
+      description: "지정에 해당 하는 OLE 자동화 날짜를 포함 하는 배정밀도 부동 소수점 숫자 <code> time </code> 값입니다."
   overload: System.Windows.Forms.AxHost.GetOADateFromTime*
   exceptions:
   - type: System.OverflowException
     commentId: T:System.OverflowException
-    description: "The value of this instance cannot be represented as an OLE Automation Date."
+    description: "OLE 자동화 날짜와이 인스턴스의 값을 나타낼 수 없습니다."
   platform:
   - net462
 - uid: System.Windows.Forms.AxHost.GetOcx
@@ -1643,7 +1643,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves a reference to the underlying ActiveX control."
+  summary: "내부 ActiveX 컨트롤에 대 한 참조를 검색합니다."
   remarks: ''
   example:
   - "The following code example overrides the constructor, and the <xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> and <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A> methods of an <xref:System.Windows.Forms.AxHost> derived class that wraps the Microsoft Masked Edit ActiveX Control. This code requires that you have created the generated source code by running the AxImp.exe on the MSMask32.ocx file with the `/source` switch to generate the wrapper class to be edited. This code is only shown in C# syntax because that is the only language output by the AxImp.exe.  \n  \n [!code-cs[AxHost_Wrap_MaskEdit#1](~/add/codesnippet/csharp/m-system.windows.forms.a_0_1.cs)]"
@@ -1652,7 +1652,7 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: "An object that represents the ActiveX control."
+      description: "ActiveX 컨트롤을 나타내는 개체입니다."
   overload: System.Windows.Forms.AxHost.GetOcx*
   exceptions: []
   platform:
@@ -1669,16 +1669,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an OLE color value that corresponds to the specified <xref href=&quot;System.Drawing.Color&quot;></xref> structure."
+  summary: "지정 된 해당 하는 OLE 색 값을 반환 합니다. <xref href=&quot;System.Drawing.Color&quot;> </xref> 구조입니다."
   syntax:
     content: protected static uint GetOleColorFromColor (System.Drawing.Color color);
     parameters:
     - id: color
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> structure to translate."
+      description: "<xref href=&quot;System.Drawing.Color&quot;> </xref> 변환 하는 구조입니다."
     return:
       type: System.UInt32
-      description: "The OLE color value that represents the translated <xref href=&quot;System.Drawing.Color&quot;></xref> structure."
+      description: "변환 된 나타내는 OLE 색 값 <xref href=&quot;System.Drawing.Color&quot;> </xref> 구조입니다."
   overload: System.Windows.Forms.AxHost.GetOleColorFromColor*
   exceptions: []
   platform:
@@ -1695,17 +1695,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an <xref href=&quot;System.Drawing.Image&quot;></xref> corresponding to the specified OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> object."
-  remarks: "You can use this method to convert `IPictureDisp` objects in addition to `IPicture` objects. This works because the `IPictureDisp` OLE interface is a subset of the `IPicture` interface. Converting `IPictureDisp` objects with this method is necessary because the <xref:System.Windows.Forms.AxHost.GetPictureFromIPictureDisp%2A> does not work correctly at this time."
+  summary: "반환 된 <xref href=&quot;System.Drawing.Image&quot;> </xref> 에 해당 하는 지정 된 OLE <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 개체입니다."
+  remarks: "이 메서드를 사용 하 여 변환할 `IPictureDisp` 외에 개체 `IPicture` 개체입니다. 에서는이 방법이 `IPictureDisp` OLE 인터페이스의 하위 집합인는 `IPicture` 인터페이스입니다. 변환 `IPictureDisp` 이 메서드를 사용 하 여 개체는 필요 하기 때문에 <xref:System.Windows.Forms.AxHost.GetPictureFromIPictureDisp%2A>이 이번에 제대로 작동 하지 않습니다.</xref:System.Windows.Forms.AxHost.GetPictureFromIPictureDisp%2A>"
   syntax:
     content: protected static System.Drawing.Image GetPictureFromIPicture (object picture);
     parameters:
     - id: picture
       type: System.Object
-      description: "The <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref> to convert."
+      description: "<xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref> 변환 합니다."
     return:
       type: System.Drawing.Image
-      description: "An <xref href=&quot;System.Drawing.Image&quot;></xref> representing the <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 나타내는 <xref uid=&quot;langword_csharp_IPicture&quot; name=&quot;IPicture&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.GetPictureFromIPicture*
   exceptions: []
   platform:
@@ -1722,17 +1722,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an <xref href=&quot;System.Drawing.Image&quot;></xref> corresponding to the specified OLE <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;></xref> object."
-  remarks: "This method does not work correctly. You can use the <xref:System.Windows.Forms.AxHost.GetPictureFromIPicture%2A> method to convert an `IPictureDisp` object into an <xref:System.Drawing.Image>, however, because the `IPictureDisp` OLE interface is a subset of the `IPicture` interface."
+  summary: "반환 된 <xref href=&quot;System.Drawing.Image&quot;> </xref> 에 해당 하는 지정 된 OLE <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;> </xref> 개체입니다."
+  remarks: "이 메서드는 제대로 작동 하지 않습니다. 사용할 수는 <xref:System.Windows.Forms.AxHost.GetPictureFromIPicture%2A>변환 하는 메서드는 `IPictureDisp` 개체는 <xref:System.Drawing.Image>그러나 때문에 `IPictureDisp` OLE 인터페이스의 하위 집합인는 `IPicture` 인터페이스.</xref:System.Drawing.Image> </xref:System.Windows.Forms.AxHost.GetPictureFromIPicture%2A>"
   syntax:
     content: protected static System.Drawing.Image GetPictureFromIPictureDisp (object picture);
     parameters:
     - id: picture
       type: System.Object
-      description: "The <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;></xref> to convert."
+      description: "<xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;> </xref> 변환 합니다."
     return:
       type: System.Drawing.Image
-      description: "An <xref href=&quot;System.Drawing.Image&quot;></xref> representing the <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 나타내는 <xref uid=&quot;langword_csharp_IPictureDisp&quot; name=&quot;IPictureDisp&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.GetPictureFromIPictureDisp*
   exceptions: []
   platform:
@@ -1749,23 +1749,23 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Called by the system to retrieve the current bounds of the ActiveX control."
-  remarks: "ActiveX controls scale themselves, so this method does not perform any special calculations, ignores the `factor` and `specified` values, and returns the `bounds` value unchanged."
+  summary: "ActiveX 컨트롤의 현재 범위를 검색할 시스템에 의해 호출 됩니다."
+  remarks: "ActiveX 컨트롤의 비율이 조정 자체를 무시 하므로이 메서드는 특별 한 계산을 수행 하지 않습니다는 `factor` 및 `specified` 값, 및 반환는 `bounds` 변경 되지 않은 값입니다."
   syntax:
     content: protected override System.Drawing.Rectangle GetScaledBounds (System.Drawing.Rectangle bounds, System.Drawing.SizeF factor, System.Windows.Forms.BoundsSpecified specified);
     parameters:
     - id: bounds
       type: System.Drawing.Rectangle
-      description: "The original bounds of the ActiveX control."
+      description: "ActiveX 컨트롤의 원래 범위입니다."
     - id: factor
       type: System.Drawing.SizeF
-      description: "A scaling factor."
+      description: "배율 인수입니다."
     - id: specified
       type: System.Windows.Forms.BoundsSpecified
       description: "A <xref href=&quot;System.Windows.Forms.BoundsSpecified&quot;></xref> value."
     return:
       type: System.Drawing.Rectangle
-      description: "The unmodified <code>bounds</code> value."
+      description: "수정 되지 않은 <code> bounds </code> 값입니다."
   overload: System.Windows.Forms.AxHost.GetScaledBounds*
   exceptions: []
   platform:
@@ -1782,22 +1782,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a <xref:System.DateTime> structure that corresponds to the specified OLE Automation date."
-  remarks: "The `date` parameter is a double-precision floating-point number that represents a date as the number of days before or after the base date, midnight, 30 December 1899. The sign and integral part of `date` encode the date as a positive or negative day displacement from 30 December 1899, and the absolute value of the fractional part of `date` encodes the time of day as a fraction of a day displacement from midnight. `date` must be a value between negative 657435.0 through positive 2958466.0.       Note that because of the way dates are encoded, there are two ways of representing any time of day on 30 December 1899. For example, -0.5 and 0.5 both mean noon on 30 December 1899 because a day displacement of plus or minus zero days from the base date is still the base date, and a half day displacement from midnight is noon.       For more information about OLE Automation, see the [MSDN Library](http://go.microsoft.com/fwlink/?linkid=37118)."
+  summary: "반환 된 <xref:System.DateTime>지정된 된 OLE 자동화 날짜에 해당 합니다.</xref:System.DateTime>"
+  remarks: "`date` 매개 변수는 이전 또는 이후의 기준 날짜 자정 1899 년 12 월 30 일 수로 날짜를 나타내는 배정밀도 부동 소수점 숫자입니다. 기호와 정수 부분의 `date` 1899 년 12 월 30에서 더하거나 빼는 치환 및에서 소수 부분의 절대값으로 날짜를 인코딩하고 `date` 시간 자정에서 하루 치환 분수로을 인코딩합니다. `date`음수 657435.0 양수 2958466.0 사이의 값 이어야 합니다.       날짜가 인코딩 되는 방식으로 인해 1899 년 12 월 30 일 든 지를 나타내는 두 가지 방법으로 note 합니다. 예를 들어-0.5와 0.5 정오를 의미 1899 년 12 월 30 일 변위 더하거나 기준 날짜에서 0 일은 여전히 기본 날짜 자정에서 1/2 일 치환 정오 이기 때문에 있습니다.       OLE 자동화에 대 한 자세한 내용은 참조는 [MSDN Library](http://go.microsoft.com/fwlink/?linkid=37118)합니다."
   syntax:
     content: protected static DateTime GetTimeFromOADate (double date);
     parameters:
     - id: date
       type: System.Double
-      description: "The OLE Automate date to translate."
+      description: "변환할 OLE 자동화 날짜입니다."
     return:
       type: System.DateTime
-      description: "A <xref:System.DateTime> that represents the same date and time as <code>date</code>."
+      description: "A <xref:System.DateTime>있는지 나타내는 동일한와 날짜 및 시간 <code> date </code>.</xref:System.DateTime>"
   overload: System.Windows.Forms.AxHost.GetTimeFromOADate*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The date is not a valid OLE Automation Date value."
+    description: "날짜는 유효한 OLE 자동화 날짜 값이 아닙니다."
   platform:
   - net462
 - uid: System.Windows.Forms.AxHost.GiveFeedback
@@ -1812,13 +1812,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The GiveFeedback event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the GiveFeedback event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "GiveFeedback 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 GiveFeedback 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.GiveFeedbackEventHandler GiveFeedback;
     return:
       type: System.Windows.Forms.GiveFeedbackEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1834,15 +1834,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the ActiveX control has an **About** dialog box."
-  remarks: "The **About** dialog box typically displays version and copyright information about the ActiveX control."
+  summary: "ActiveX 컨트롤에 있는지 여부를 나타내는 값을 가져옵니다는 **에 대 한** 대화 상자."
+  remarks: "**에 대 한** 대화 상자에는 일반적으로 ActiveX 컨트롤에 대 한 버전 및 저작권 정보가 표시 됩니다."
   example:
   - "The following code example overrides the constructor, and the <xref:System.Windows.Forms.AxHost.SetAboutBoxDelegate%2A> and <xref:System.Windows.Forms.AxHost.AttachInterfaces%2A> methods of an <xref:System.Windows.Forms.AxHost> derived class that wraps the Microsoft Masked Edit ActiveX Control. This code requires that you have created the generated source code by running the AxImp.exe on the MSMask32.ocx file with the `/source` switch to generate the wrapper class to be edited. This code is only shown in C# syntax because that is the only language output by the AxImp.exe.  \n  \n [!code-cs[AxHost_Wrap_MaskEdit#1](~/add/codesnippet/csharp/p-system.windows.forms.a_2_1.cs)]"
   syntax:
     content: public bool HasAboutBox { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the ActiveX control has an **About** dialog box; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>ActiveX 컨트롤에 있는 경우는 **에 대 한** 대화 상자, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.HasAboutBox*
   exceptions: []
   platform:
@@ -1859,14 +1859,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines if the ActiveX control has a property page."
-  remarks: "Property pages allow an ActiveX control user to view and change ActiveX control properties. These properties are accessed by invoking a control properties dialog box, which contains one or more property pages that provide a customized, graphical interface for viewing and editing the control properties."
+  summary: "ActiveX 컨트롤 속성 페이지에 있는지 확인 합니다."
+  remarks: "속성 페이지 보기 및 ActiveX 컨트롤 속성을 변경 하는 ActiveX 컨트롤 사용자를 사용 합니다. 이러한 속성 보기 및 편집 컨트롤 속성에 대 한 사용자 지정,이 그래픽 인터페이스를 제공 하는 하나 이상의 속성 페이지를 포함 하는 컨트롤 속성 대화 상자를 호출 하 여 액세스 됩니다."
   syntax:
     content: public bool HasPropertyPages ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the ActiveX control has a property page; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>ActiveX 컨트롤에 있는 경우 속성 페이지. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.HasPropertyPages*
   exceptions: []
   platform:
@@ -1883,13 +1883,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The HelpRequested event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the HelpRequested event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "HelpRequested 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 HelpRequested 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.HelpEventHandler HelpRequested;
     return:
       type: System.Windows.Forms.HelpEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1905,7 +1905,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public System.Windows.Forms.ImeMode ImeMode { get; set; }
     return:
@@ -1927,13 +1927,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The ImeModeChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the ImeModeChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "ImeModeChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 ImeModeChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler ImeModeChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1949,7 +1949,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Attempts to activate the editing mode of the hosted control."
+  summary: "호스팅된 컨트롤의 편집 모드를 활성화 하려고 시도 합니다."
   syntax:
     content: public void InvokeEditMode ();
     parameters: []
@@ -1969,17 +1969,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines if a character is an input character that the ActiveX control recognizes."
-  remarks: "The IsInputChar method is called during window message preprocessing to determine whether the given input character should be preprocessed or sent directly to the ActiveX control. The preprocessing of a character includes checking whether the character is a mnemonic of another control.       As implemented in the <xref:System.Windows.Forms.AxHost> class, the IsInputChar method always returns `true`, so the specified character is sent directly to the ActiveX control."
+  summary: "ActiveX 컨트롤이 인식 하는 입력된 문자 인지를 결정 합니다."
+  remarks: "IsInputChar 메서드 창 메시지를 전처리 지정된 된 입력된 문자를 전처리 또는 ActiveX 컨트롤에 직접 전달 되는지를 확인 하는 동안 호출 됩니다. 전처리는 문자를 포함 다른 컨트롤의 니모닉 문자 인지 확인 합니다.       구현 되는 <xref:System.Windows.Forms.AxHost>클래스 IsInputChar 메서드는 항상 반환 `true`이므로 지정된 된 문자 ActiveX 컨트롤에 직접 전송 됩니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: protected override bool IsInputChar (char charCode);
     parameters:
     - id: charCode
       type: System.Char
-      description: "The character to test."
+      description: "테스트할 문자입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the character should be sent directly to the ActiveX control and not preprocessed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>문자를 전처리 하지 않고; ActiveX 컨트롤에 직접 전달 하면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.IsInputChar*
   exceptions: []
   platform:
@@ -1996,13 +1996,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The KeyDown event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the KeyDown event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "KeyDown 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 또는 KeyDown 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.KeyEventHandler KeyDown;
     return:
       type: System.Windows.Forms.KeyEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2018,13 +2018,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The KeyPress event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the KeyPress event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "KeyPress 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 KeyPress 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.KeyPressEventHandler KeyPress;
     return:
       type: System.Windows.Forms.KeyPressEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2040,13 +2040,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The KeyUp event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the KeyUp event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "KeyUp 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 KeyUp 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.KeyEventHandler KeyUp;
     return:
       type: System.Windows.Forms.KeyEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2062,13 +2062,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The Layout event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the Layout event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "레이아웃 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 레이아웃 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.LayoutEventHandler Layout;
     return:
       type: System.Windows.Forms.LayoutEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2084,7 +2084,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Announces to the component change service that the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> has changed."
+  summary: "구성 요소에 대 한 알림 변경 서비스는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 변경 되었습니다."
   syntax:
     content: public void MakeDirty ();
     parameters: []
@@ -2104,12 +2104,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This event is not relevant for this class."
+  summary: "이 이벤트는이 클래스와 관련이 없습니다."
   syntax:
     content: public event EventHandler MouseClick;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2125,12 +2125,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This event is not relevant for this class."
+  summary: "이 이벤트는이 클래스와 관련이 없습니다."
   syntax:
     content: public event EventHandler MouseDoubleClick;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2146,13 +2146,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseDown event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseDown event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseDown 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseDown 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.MouseEventHandler MouseDown;
     return:
       type: System.Windows.Forms.MouseEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2168,13 +2168,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseEnter event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseEnter event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseEnter 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseEnter 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler MouseEnter;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2190,13 +2190,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseHover event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseHover event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseHover 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseHover 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler MouseHover;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2212,13 +2212,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseLeave event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseLeave event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseLeave 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseLeave 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler MouseLeave;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2234,13 +2234,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseMove event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseMove event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseMove 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseMove 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.MouseEventHandler MouseMove;
     return:
       type: System.Windows.Forms.MouseEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2256,13 +2256,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseUp event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseUp event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseUp 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseUp 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.MouseEventHandler MouseUp;
     return:
       type: System.Windows.Forms.MouseEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2278,13 +2278,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The MouseWheel event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the MouseWheel event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "MouseWheel 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 MouseWheel 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.MouseEventHandler MouseWheel;
     return:
       type: System.Windows.Forms.MouseEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2300,18 +2300,18 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the persisted state of the ActiveX control."
-  remarks: "The value of the OcxState property is used after the control is created but before it is shown. The persisted state of the underlying ActiveX control is returned in the <xref:System.Windows.Forms.AxHost.State>."
+  summary: "ActiveX 컨트롤에 대 한 지속된 상태를 가져오거나 설정 합니다."
+  remarks: "OcxState 속성의 값은 컨트롤을 만든 후 있지만 표시 되기 전에 사용 됩니다. 내부 ActiveX 컨트롤에 대 한 지속된 상태 <xref:System.Windows.Forms.AxHost.State>.</xref:System.Windows.Forms.AxHost.State> 반환 됩니다."
   syntax:
     content: public System.Windows.Forms.AxHost.State OcxState { get; set; }
     return:
       type: System.Windows.Forms.AxHost.State
-      description: "A <xref:System.Windows.Forms.AxHost.State> that represents the persisted state of the ActiveX control."
+      description: "A <xref:System.Windows.Forms.AxHost.State>ActiveX 컨트롤에 대 한 지속된 상태를 나타내는입니다.</xref:System.Windows.Forms.AxHost.State>"
   overload: System.Windows.Forms.AxHost.OcxState*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "The ActiveX control is already loaded."
+    description: "ActiveX 컨트롤이 이미 로드 되었습니다."
   platform:
   - net462
 - uid: System.Windows.Forms.AxHost.OnBackColorChanged(System.EventArgs)
@@ -2326,13 +2326,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Control.BackColorChanged&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Control.BackColorChanged&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Forms.AxHost.OnBackColorChanged*
   exceptions: []
   platform:
@@ -2349,13 +2349,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Control.FontChanged&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Control.FontChanged&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnFontChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Forms.AxHost.OnFontChanged*
   exceptions: []
   platform:
@@ -2372,13 +2372,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Control.ForeColorChanged&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Control.ForeColorChanged&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Forms.AxHost.OnForeColorChanged*
   exceptions: []
   platform:
@@ -2395,13 +2395,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Control.HandleCreated&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Control.HandleCreated&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnHandleCreated (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Forms.AxHost.OnHandleCreated*
   exceptions: []
   platform:
@@ -2418,8 +2418,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Called when the control transitions to the in-place active state."
-  remarks: "This base-class implementation is empty."
+  summary: "컨트롤 전체 활성 상태로 전환 될 때 호출 됩니다."
+  remarks: "이 기본 클래스 구현은 비어 있습니다."
   syntax:
     content: protected virtual void OnInPlaceActive ();
     parameters: []
@@ -2439,13 +2439,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Control.LostFocus&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Control.LostFocus&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnLostFocus (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Forms.AxHost.OnLostFocus*
   exceptions: []
   platform:
@@ -2462,13 +2462,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The Paint event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the Paint event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "Paint 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 Paint 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.PaintEventHandler Paint;
     return:
       type: System.Windows.Forms.PaintEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2484,16 +2484,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Preprocesses keyboard or input messages within the message loop before they are dispatched."
+  summary: "키보드 또는 입력된 메시지는 메시지 루프 내에서 디스패치 되기 전에 전처리 합니다."
   syntax:
     content: public override bool PreProcessMessage (ref System.Windows.Forms.Message msg);
     parameters:
     - id: msg
       type: System.Windows.Forms.Message
-      description: "A <xref href=&quot;System.Windows.Forms.Message&quot;></xref>, passed by reference, that represents the message to process. The possible values are WM_KEYDOWN, WM_SYSKEYDOWN, WM_CHAR, and WM_SYSCHAR."
+      description: "A <xref href=&quot;System.Windows.Forms.Message&quot;> </xref>, 처리할 메시지를 나타내는 참조로 전달 합니다. 가능한 값은 WM_KEYDOWN, WM_SYSKEYDOWN, WM_CHAR 및 wm_syschar입니다 됩니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message was processed by the control; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컨트롤이 메시지를 처리 하면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.PreProcessMessage*
   exceptions: []
   platform:
@@ -2510,16 +2510,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Processes a dialog key."
+  summary: "대화 상자 키를 처리합니다."
   syntax:
     content: protected override bool ProcessDialogKey (System.Windows.Forms.Keys keyData);
     parameters:
     - id: keyData
       type: System.Windows.Forms.Keys
-      description: "One of the <xref href=&quot;System.Windows.Forms.Keys&quot;></xref> values that represents the key to process."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.Keys&quot;> </xref> 처리할 키를 나타내는 값입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the key was processed by the control; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컨트롤이 키를 처리 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.ProcessDialogKey*
   exceptions: []
   platform:
@@ -2536,16 +2536,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Processes a mnemonic character."
+  summary: "니모닉 문자를 처리 합니다."
   syntax:
     content: protected override bool ProcessMnemonic (char charCode);
     parameters:
     - id: charCode
       type: System.Char
-      description: "The character to process."
+      description: "처리할 문자입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the character was processed as a mnemonic by the control; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컨트롤이 문자를 니모닉으로 처리 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.ProcessMnemonic*
   exceptions: []
   platform:
@@ -2562,13 +2562,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a value that indicates whether the hosted control is in a state in which its properties can be accessed."
+  summary: "호스팅된 컨트롤이 해당 속성을 액세스할 수 있는 상태 인지 여부를 나타내는 값을 반환 합니다."
   syntax:
     content: protected bool PropsValid ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the properties of the hosted control can be accessed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>호스팅된 컨트롤의 속성에 액세스할 수 있는; 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.PropsValid*
   exceptions: []
   platform:
@@ -2585,13 +2585,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The QueryAccessibilityHelp event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the QueryAccessibilityHelp event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "QueryAccessibilityHelp 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 QueryAccessibilityHelp 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.QueryAccessibilityHelpEventHandler QueryAccessibilityHelp;
     return:
       type: System.Windows.Forms.QueryAccessibilityHelpEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2607,13 +2607,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The QueryContinueDrag event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the QueryContinueDrag event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "QueryContinueDrag 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 QueryContinueDrag 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event System.Windows.Forms.QueryContinueDragEventHandler QueryContinueDrag;
     return:
       type: System.Windows.Forms.QueryContinueDragEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2629,22 +2629,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;></xref> event using the specified 32-bit signed integers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;> </xref> 지정 된 32 비트 부호 있는 정수를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseDown (short button, short shift, int x, int y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Int32
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Int32
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseDown*
   exceptions: []
   platform:
@@ -2661,22 +2661,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;></xref> event using the specified single-precision floating-point numbers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;> </xref> 지정 된 단 정밀도 부동 소수점 숫자를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseDown (short button, short shift, float x, float y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Single
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Single
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseDown*
   exceptions: []
   platform:
@@ -2693,22 +2693,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;></xref> event using the specified objects."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseDown&quot;> </xref> 지정 된 개체를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseDown (object o1, object o2, object o3, object o4);
     parameters:
     - id: o1
       type: System.Object
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: o2
       type: System.Object
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: o3
       type: System.Object
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: o4
       type: System.Object
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseDown*
   exceptions: []
   platform:
@@ -2725,22 +2725,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;></xref> event using the specified 32-bit signed integers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;> </xref> 지정 된 32 비트 부호 있는 정수를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseMove (short button, short shift, int x, int y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Int32
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Int32
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseMove*
   exceptions: []
   platform:
@@ -2757,22 +2757,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;></xref> event using the specified single-precision floating-point numbers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;> </xref> 지정 된 단 정밀도 부동 소수점 숫자를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseMove (short button, short shift, float x, float y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Single
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Single
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseMove*
   exceptions: []
   platform:
@@ -2789,22 +2789,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;></xref> event using the specified objects."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseMove&quot;> </xref> 지정 된 개체를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseMove (object o1, object o2, object o3, object o4);
     parameters:
     - id: o1
       type: System.Object
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: o2
       type: System.Object
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: o3
       type: System.Object
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: o4
       type: System.Object
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseMove*
   exceptions: []
   platform:
@@ -2821,22 +2821,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;></xref> event using the specified 32-bit signed integers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;> </xref> 지정 된 32 비트 부호 있는 정수를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseUp (short button, short shift, int x, int y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Int32
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Int32
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseUp*
   exceptions: []
   platform:
@@ -2853,22 +2853,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;></xref> event using the specified single-precision floating-point numbers."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;> </xref> 지정 된 단 정밀도 부동 소수점 숫자를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseUp (short button, short shift, float x, float y);
     parameters:
     - id: button
       type: System.Int16
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: shift
       type: System.Int16
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: x
       type: System.Single
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: y
       type: System.Single
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseUp*
   exceptions: []
   platform:
@@ -2885,22 +2885,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;></xref> event using the specified objects."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.AxHost.MouseUp&quot;> </xref> 지정 된 개체를 사용 하 여 이벤트입니다."
   syntax:
     content: protected void RaiseOnMouseUp (object o1, object o2, object o3, object o4);
     parameters:
     - id: o1
       type: System.Object
-      description: "One of the <xref href=&quot;System.Windows.Forms.MouseButtons&quot;></xref> values that indicate which mouse button was pressed."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.MouseButtons&quot;> </xref> 누른 마우스 단추를 표시 하는 값입니다."
     - id: o2
       type: System.Object
-      description: "Not used."
+      description: "사용되지 않습니다."
     - id: o3
       type: System.Object
-      description: "The x-coordinate of a mouse click, in pixels."
+      description: "마우스의 x 좌표 (픽셀)를 클릭 합니다."
     - id: o4
       type: System.Object
-      description: "The y-coordinate of a mouse click, in pixels."
+      description: "마우스의 y-좌표 (픽셀)를 클릭 합니다."
   overload: System.Windows.Forms.AxHost.RaiseOnMouseUp*
   exceptions: []
   platform:
@@ -2917,12 +2917,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public virtual bool RightToLeft { get; set; }
     return:
       type: System.Boolean
-      description: "A <xref:System.Boolean> value."
+      description: "A <xref:System.Boolean>값.</xref:System.Boolean>"
   overload: System.Windows.Forms.AxHost.RightToLeft*
   exceptions: []
   platform:
@@ -2939,13 +2939,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The RightToLeftChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the RightToLeftChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "RightToLeftChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 RightToLeftChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler RightToLeftChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -2966,7 +2966,7 @@ items:
     parameters:
     - id: d
       type: System.Windows.Forms.AxHost.AboutBoxDelegate
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Windows.Forms.AxHost.SetAboutBoxDelegate*
   exceptions: []
   platform:
@@ -2983,25 +2983,25 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Performs the work of setting the specified bounds of this control."
+  summary: "이 컨트롤의 지정 된 범위를 설정 합니다."
   syntax:
     content: protected override void SetBoundsCore (int x, int y, int width, int height, System.Windows.Forms.BoundsSpecified specified);
     parameters:
     - id: x
       type: System.Int32
-      description: "The new <xref:System.Windows.Forms.Control.Left*> property value of the control."
+      description: "새 <xref:System.Windows.Forms.Control.Left*>컨트롤의 속성 값.</xref:System.Windows.Forms.Control.Left*>"
     - id: y
       type: System.Int32
-      description: "The new <xref:System.Windows.Forms.Control.Top*> property value of the control."
+      description: "새 <xref:System.Windows.Forms.Control.Top*>컨트롤의 속성 값.</xref:System.Windows.Forms.Control.Top*>"
     - id: width
       type: System.Int32
-      description: "The new <xref:System.Windows.Forms.Control.Width*> property value of the control."
+      description: "새 <xref:System.Windows.Forms.Control.Width*>컨트롤의 속성 값.</xref:System.Windows.Forms.Control.Width*>"
     - id: height
       type: System.Int32
-      description: "The new <xref:System.Windows.Forms.Control.Height*> property value of the control."
+      description: "새 <xref:System.Windows.Forms.Control.Height*>컨트롤의 속성 값.</xref:System.Windows.Forms.Control.Height*>"
     - id: specified
       type: System.Windows.Forms.BoundsSpecified
-      description: "A bitwise combination of the <xref href=&quot;System.Windows.Forms.BoundsSpecified&quot;></xref> values."
+      description: "비트 조합 된 <xref href=&quot;System.Windows.Forms.BoundsSpecified&quot;> </xref> 값입니다."
   overload: System.Windows.Forms.AxHost.SetBoundsCore*
   exceptions: []
   platform:
@@ -3018,13 +3018,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Sets the control to the specified visible state."
+  summary: "컨트롤을 지정 된 표시 상태로 설정합니다."
   syntax:
     content: protected override void SetVisibleCore (bool value);
     parameters:
     - id: value
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to make the control visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>볼 수 있도록 하려면 컨트롤; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.AxHost.SetVisibleCore*
   exceptions: []
   platform:
@@ -3041,8 +3041,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Displays the ActiveX control&quot;s **About** dialog box."
-  remarks: "If <xref:System.Windows.Forms.AxHost.HasAboutBox%2A> is `false`, no **About** dialog box is displayed."
+  summary: "ActiveX 컨트롤의 표시 **에 대 한** 대화 상자."
+  remarks: "경우 <xref:System.Windows.Forms.AxHost.HasAboutBox%2A>은 `false`, no **에 대 한** 대화 상자가 표시 됩니다.</xref:System.Windows.Forms.AxHost.HasAboutBox%2A>"
   syntax:
     content: public void ShowAboutBox ();
     parameters: []
@@ -3062,8 +3062,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Displays the property pages associated with the ActiveX control."
-  remarks: "If <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A> is `false`, no property pages are displayed.       Property pages allow an ActiveX control user to view and change ActiveX control properties. These properties are accessed by invoking a control properties dialog box, which contains one or more property pages that provide a customized, graphical interface for viewing and editing the control properties."
+  summary: "ActiveX 컨트롤에 연결 된 속성 페이지를 표시 합니다."
+  remarks: "경우 <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>은 `false`, 속성 페이지가 표시 됩니다.</xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>       속성 페이지 보기 및 ActiveX 컨트롤 속성을 변경 하는 ActiveX 컨트롤 사용자를 사용 합니다. 이러한 속성 보기 및 편집 컨트롤 속성에 대 한 사용자 지정,이 그래픽 인터페이스를 제공 하는 하나 이상의 속성 페이지를 포함 하는 컨트롤 속성 대화 상자를 호출 하 여 액세스 됩니다."
   syntax:
     content: public void ShowPropertyPages ();
     parameters: []
@@ -3083,14 +3083,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Displays the property pages associated with the ActiveX control assigned to the specified parent control."
-  remarks: "If <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A> is `false`, no property pages are displayed.       Property pages allow an ActiveX control user to view and change ActiveX control properties. These properties are accessed by invoking a control properties dialog box, which contains one or more property pages that provide a customized, graphical interface for viewing and editing the control properties."
+  summary: "지정한 부모 컨트롤에 할당 된 ActiveX 컨트롤과 연결 된 속성 페이지를 표시 합니다."
+  remarks: "경우 <xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>은 `false`, 속성 페이지가 표시 됩니다.</xref:System.Windows.Forms.AxHost.HasPropertyPages%2A>       속성 페이지 보기 및 ActiveX 컨트롤 속성을 변경 하는 ActiveX 컨트롤 사용자를 사용 합니다. 이러한 속성 보기 및 편집 컨트롤 속성에 대 한 사용자 지정,이 그래픽 인터페이스를 제공 하는 하나 이상의 속성 페이지를 포함 하는 컨트롤 속성 대화 상자를 호출 하 여 액세스 됩니다."
   syntax:
     content: public void ShowPropertyPages (System.Windows.Forms.Control control);
     parameters:
     - id: control
       type: System.Windows.Forms.Control
-      description: "The parent <xref href=&quot;System.Windows.Forms.Control&quot;></xref> of the ActiveX control."
+      description: "부모 <xref href=&quot;System.Windows.Forms.Control&quot;> </xref> ActiveX 컨트롤의 합니다."
   overload: System.Windows.Forms.AxHost.ShowPropertyPages*
   exceptions: []
   platform:
@@ -3107,12 +3107,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the site of the control."
+  summary: "컨트롤의 사이트를 가져오거나 설정 합니다."
   syntax:
     content: public override System.ComponentModel.ISite Site { set; }
     return:
       type: System.ComponentModel.ISite
-      description: "The <xref href=&quot;System.ComponentModel.ISite&quot;></xref> associated with the Control, if any."
+      description: "<xref href=&quot;System.ComponentModel.ISite&quot;> </xref> 컨트롤과 관련 된, 있는 경우."
   overload: System.Windows.Forms.AxHost.Site*
   exceptions: []
   platform:
@@ -3129,13 +3129,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The StyleChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the StyleChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "StyleChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 StyleChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler StyleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -3152,13 +3152,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a collection of type <xref:System.Attribute> for the current object."
+  summary: "형식의 컬렉션을 반환 <xref:System.Attribute>현재 개체에 대 한.</xref:System.Attribute>"
   syntax:
     content: System.ComponentModel.AttributeCollection ICustomTypeDescriptor.GetAttributes ();
     parameters: []
     return:
       type: System.ComponentModel.AttributeCollection
-      description: "An <xref href=&quot;System.ComponentModel.AttributeCollection&quot;></xref> with the attributes for the current object."
+      description: "<xref href=&quot;System.ComponentModel.AttributeCollection&quot;> </xref> 현재 개체의 특성을 사용 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetAttributes*
   exceptions: []
   platform:
@@ -3176,14 +3176,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the class name of the current object."
-  remarks: "Use the type name instead of the value that the ICustomTypeDescriptor.GetClassName method returns."
+  summary: "현재 개체의 클래스 이름을 반환합니다."
+  remarks: "ICustomTypeDescriptor.GetClassName 메서드가 반환 하는 값 대신 형식 이름을 사용 합니다."
   syntax:
     content: string ICustomTypeDescriptor.GetClassName ();
     parameters: []
     return:
       type: System.String
-      description: "Returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> in all cases."
+      description: "반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 모든 경우에에서 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetClassName*
   exceptions: []
   platform:
@@ -3201,14 +3201,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the name of the current object."
-  remarks: "Use the default name instead of the value that the ICustomTypeDescriptor.GetComponentName method returns."
+  summary: "현재 개체의 이름을 반환합니다."
+  remarks: "기본 이름을 ICustomTypeDescriptor.GetComponentName 메서드가 반환 하는 값 대신 사용 합니다."
   syntax:
     content: string ICustomTypeDescriptor.GetComponentName ();
     parameters: []
     return:
       type: System.String
-      description: "Returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> in all cases."
+      description: "반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 모든 경우에에서 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetComponentName*
   exceptions: []
   platform:
@@ -3226,14 +3226,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a type converter for the current object."
-  remarks: "Use the default type converter instead of the value that the ICustomTypeDescriptor.GetConverter method returns."
+  summary: "현재 개체에 대 한 형식 변환기를 반환합니다."
+  remarks: "ICustomTypeDescriptor.GetConverter 메서드가 반환 하는 값 대신 기본 형식 변환기를 사용 합니다."
   syntax:
     content: System.ComponentModel.TypeConverter ICustomTypeDescriptor.GetConverter ();
     parameters: []
     return:
       type: System.ComponentModel.TypeConverter
-      description: "Returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> in all cases."
+      description: "반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 모든 경우에에서 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetConverter*
   exceptions: []
   platform:
@@ -3251,13 +3251,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the default event for the current object."
+  summary: "현재 개체에 대 한 기본 이벤트를 반환합니다."
   syntax:
     content: System.ComponentModel.EventDescriptor ICustomTypeDescriptor.GetDefaultEvent ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptor
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptor&quot;></xref> that represents the default event for the current object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object does not have events."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptor&quot;> </xref> 현재 개체에 대 한 기본 이벤트를 나타내는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체에는 이벤트가 없을 경우."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetDefaultEvent*
   exceptions: []
   platform:
@@ -3275,13 +3275,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the default property for the current object."
+  summary: "현재 개체에 대 한 기본 속성을 반환 합니다."
   syntax:
     content: System.ComponentModel.PropertyDescriptor ICustomTypeDescriptor.GetDefaultProperty ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that represents the default property for the current object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object does not have properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> 현재 개체에 대 한 기본 속성을 나타내는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체 속성이 없을 경우."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetDefaultProperty*
   exceptions: []
   platform:
@@ -3299,16 +3299,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns an editor of the specified type for the current object."
+  summary: "현재 개체에 대 한 지정 된 형식의 편집기를 반환 합니다."
   syntax:
     content: object ICustomTypeDescriptor.GetEditor (Type editorBaseType);
     parameters:
     - id: editorBaseType
       type: System.Type
-      description: "A <xref:System.Type> that represents the editor for the current object."
+      description: "A <xref:System.Type>현재 개체에 대 한 편집기를 나타내는입니다.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An object of the specified type that is the editor for the current object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the editor cannot be found."
+      description: "현재 개체에 대 한 편집기 인 지정 된 형식의 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 편집기를 찾을 수 없는 경우."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetEditor*
   exceptions: []
   platform:
@@ -3326,13 +3326,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the events for the current object."
+  summary: "현재 개체에 대 한 이벤트를 반환합니다."
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the events for the current object."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref> 현재 개체에 대 한 이벤트를 나타내는입니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -3350,16 +3350,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the events for the current object using the specified attribute array as a filter."
+  summary: "지정한 특성 배열을 필터로 사용 하 여 현재 개체에 대 한 이벤트를 반환 합니다."
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "형식의 배열 <xref:System.Attribute>필터로 사용 되는.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the events for the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> that match the given set of attributes."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref> 에 대 한 이벤트를 나타내는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 지정 된 특성 집합을 일치 하는 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -3377,13 +3377,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the properties for the current object."
+  summary: "현재 개체에 대 한 속성을 반환합니다."
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the events for the current object."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 현재 개체에 대 한 이벤트를 나타내는입니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -3401,16 +3401,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the properties for the current object using the specified attribute array as a filter."
+  summary: "지정한 특성 배열을 필터로 사용 하 여 현재 개체에 대 한 속성을 반환 합니다."
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "형식의 배열 <xref:System.Attribute>필터로 사용 되는.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the events for the current <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> that match the given set of attributes."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 현재에 대 한 이벤트를 나타내는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 지정 된 특성 집합을 일치 하는 합니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -3428,16 +3428,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the object that owns the specified value."
+  summary: "지정된 된 값을 소유 하는 개체를 반환 합니다."
   syntax:
     content: object ICustomTypeDescriptor.GetPropertyOwner (System.ComponentModel.PropertyDescriptor pd);
     parameters:
     - id: pd
       type: System.ComponentModel.PropertyDescriptor
-      description: "Not used."
+      description: "사용되지 않습니다."
     return:
       type: System.Object
-      description: "The current object."
+      description: "현재 개체입니다."
   overload: System.Windows.Forms.AxHost.System#ComponentModel#ICustomTypeDescriptor#GetPropertyOwner*
   exceptions: []
   platform:
@@ -3454,12 +3454,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "This property is not relevant for this class."
+  summary: "이 속성은이 클래스와 관련이 없습니다."
   syntax:
     content: public override string Text { get; set; }
     return:
       type: System.String
-      description: "The text associated with this control."
+      description: "이 컨트롤과 관련 된 텍스트입니다."
   overload: System.Windows.Forms.AxHost.Text*
   exceptions: []
   platform:
@@ -3476,13 +3476,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "The TextChanged event is not supported by the <xref href=&quot;System.Windows.Forms.AxHost&quot;></xref> class."
-  remarks: "If you attempt to add or remove a handler for the TextChanged event, a <xref:System.NotSupportedException> is thrown. The events derived from the <xref:System.Windows.Forms.Control> class are not supported by the <xref:System.Windows.Forms.AxHost> class. The events exposed by the ActiveX control when the <xref:System.Windows.Forms.AxHost> wrapper is created are the events that should be used."
+  summary: "TextChanged 이벤트에서 지원 되지 않습니다는 <xref href=&quot;System.Windows.Forms.AxHost&quot;> </xref> 클래스입니다."
+  remarks: "추가 하거나 TextChanged 이벤트에 대 한 처리기를 제거 하려는 경우는 <xref:System.NotSupportedException>throw 됩니다.</xref:System.NotSupportedException> <xref:System.Windows.Forms.Control> <xref:System.Windows.Forms.AxHost>클래스</xref:System.Windows.Forms.AxHost> 에서 클래스를 지원 하지 않는</xref:System.Windows.Forms.Control> 에서 파생 된 이벤트 Activex 노출 하는 이벤트 제어는 <xref:System.Windows.Forms.AxHost>래퍼가 생성 될 이벤트가 사용 해야 합니다.</xref:System.Windows.Forms.AxHost>"
   syntax:
     content: public event EventHandler TextChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -3498,13 +3498,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Processes Windows messages."
+  summary: "Windows 메시지를 처리 합니다."
   syntax:
     content: protected override void WndProc (ref System.Windows.Forms.Message m);
     parameters:
     - id: m
       type: System.Windows.Forms.Message
-      description: "The Windows <xref href=&quot;System.Windows.Forms.Message&quot;></xref> to process."
+      description: "Windows <xref href=&quot;System.Windows.Forms.Message&quot;> </xref> 프로세스에 있습니다."
   overload: System.Windows.Forms.AxHost.WndProc*
   exceptions: []
   platform:

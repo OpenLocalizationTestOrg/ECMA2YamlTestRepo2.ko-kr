@@ -13,8 +13,8 @@ items:
   nameWithType: IDbTransaction
   fullName: System.Data.IDbTransaction
   type: Interface
-  summary: "Represents a transaction to be performed at a data source, and is implemented by .NET Framework data providers that access relational databases."
-  remarks: "The IDbTransaction interface allows an inheriting class to implement a Transaction class, which represents the transaction to be performed at a data source. For more information about Transaction classes, see [Transactions and Concurrency](~/add/includes/ajax-current-ext-md.md).       An application does not create an instance of the IDbTransaction interface directly, but creates an instance of a class that inherits IDbTransaction.       Classes that inherit IDbTransaction must implement the inherited members, and typically define additional members to add provider-specific functionality. For example, the IDbTransaction interface defines the <xref:System.Data.IDbTransaction.Commit%2A> method. In turn, the <xref:System.Data.OleDb.OleDbTransaction> class inherits this property, and also defines the <xref:System.Data.OleDb.OleDbTransaction.Begin%2A> method."
+  summary: "데이터 원본에서 수행할 트랜잭션을 나타냅니다 및 관계형 데이터베이스에 액세스 하는.NET Framework 데이터 공급자에 의해 구현 됩니다."
+  remarks: "IDbTransaction 인터페이스는 데이터 원본에서 수행할 트랜잭션을 나타내는 트랜잭션 클래스를 구현 하 상속 하는 클래스를 허용 합니다. 트랜잭션 클래스에 대 한 자세한 내용은 참조 [트랜잭션 및 동시성](~/add/includes/ajax-current-ext-md.md)합니다.       응용 프로그램을 직접 IDbTransaction 인터페이스의 인스턴스를 만들지 않는 있지만 IDbTransaction 상속 하는 클래스의 인스턴스를 만듭니다.       IDbTransaction 상속 된 클래스는 상속 된 멤버를 구현 하 고 일반적으로 공급자 특정 기능을 추가 하려면 추가 멤버를 정의 해야 합니다. 예를 들어 IDbTransaction 인터페이스 정의 <xref:System.Data.IDbTransaction.Commit%2A>메서드.</xref:System.Data.IDbTransaction.Commit%2A> 차례로 <xref:System.Data.OleDb.OleDbTransaction>이 속성을 상속 하 고 정의 하는 클래스는 <xref:System.Data.OleDb.OleDbTransaction.Begin%2A>메서드.</xref:System.Data.OleDb.OleDbTransaction.Begin%2A> </xref:System.Data.OleDb.OleDbTransaction>"
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/t-system.data.idbtransac_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/t-system.data.idbtransac_1.vb)]"
   syntax:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Commits the database transaction."
+  summary: "데이터베이스 트랜잭션을 커밋합니다."
   remarks: ''
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and a <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/m-system.data.idbtransac_0_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/m-system.data.idbtransac_0_1.vb)]"
@@ -46,10 +46,10 @@ items:
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An error occurred while trying to commit the transaction."
+    description: "트랜잭션을 커밋하는 동안 오류가 발생 했습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction has already been committed or rolled back.       -or-       The connection is broken."
+    description: "트랜잭션이 이미 커밋 또는 롤백됩니다.       -또는-연결이 끊어졌습니다."
   platform:
   - net462
 - uid: System.Data.IDbTransaction.Connection
@@ -64,13 +64,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Specifies the Connection object to associate with the transaction."
-  remarks: "A single application may have multiple database connections, each with zero or more transactions. This property enables you to determine the connection object associated with a particular transaction."
+  summary: "트랜잭션에 연결 된 연결 개체를 지정 합니다."
+  remarks: "단일 응용 프로그램에는 각각&0; 개 이상의 트랜잭션을 사용 하 여 여러 데이터베이스 연결을 있을 수 있습니다. 이 속성을 사용 하면 특정 트랜잭션과 연관 된 연결 개체를 확인할 수 있습니다."
   syntax:
     content: public System.Data.IDbConnection Connection { get; }
     return:
       type: System.Data.IDbConnection
-      description: "The Connection object to associate with the transaction."
+      description: "거래와 연결할 연결 개체입니다."
   overload: System.Data.IDbTransaction.Connection*
   exceptions: []
   platform:
@@ -87,13 +87,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Specifies the <xref href=&quot;System.Data.IsolationLevel&quot;></xref> for this transaction."
-  remarks: "Parallel transactions are not supported. Therefore, the <xref:System.Data.IsolationLevel> applies to the entire transaction."
+  summary: "지정 된 <xref href=&quot;System.Data.IsolationLevel&quot;> </xref> 이 트랜잭션에 대 한 합니다."
+  remarks: "병렬 트랜잭션은 지원 되지 않습니다. 따라서는 <xref:System.Data.IsolationLevel>전체 트랜잭션에 적용 됩니다.</xref:System.Data.IsolationLevel>"
   syntax:
     content: public System.Data.IsolationLevel IsolationLevel { get; }
     return:
       type: System.Data.IsolationLevel
-      description: "The <xref href=&quot;System.Data.IsolationLevel&quot;></xref> for this transaction. The default is <xref uid=&quot;langword_csharp_ReadCommitted&quot; name=&quot;ReadCommitted&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Data.IsolationLevel&quot;> </xref> 이 트랜잭션에 대 한 합니다. 기본값은 <xref uid=&quot;langword_csharp_ReadCommitted&quot; name=&quot;ReadCommitted&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.IDbTransaction.IsolationLevel*
   exceptions: []
   platform:
@@ -110,8 +110,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Rolls back a transaction from a pending state."
-  remarks: "The transaction can only be rolled back from a pending state (after <xref:System.Data.IDbConnection.BeginTransaction%2A> has been called, but before <xref:System.Data.IDbTransaction.Commit%2A> is called)."
+  summary: "보류 상태에서 트랜잭션을 롤백합니다."
+  remarks: "트랜잭션이 롤백할 수 보류 상태에서 (후 <xref:System.Data.IDbConnection.BeginTransaction%2A>호출 하기 전에 <xref:System.Data.IDbTransaction.Commit%2A>라고).</xref:System.Data.IDbTransaction.Commit%2A> </xref:System.Data.IDbConnection.BeginTransaction%2A>"
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and a <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/m-system.data.idbtransac_1_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/m-system.data.idbtransac_1_1.vb)]"
   syntax:
@@ -121,10 +121,10 @@ items:
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An error occurred while trying to commit the transaction."
+    description: "트랜잭션을 커밋하는 동안 오류가 발생 했습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction has already been committed or rolled back.       -or-       The connection is broken."
+    description: "트랜잭션이 이미 커밋 또는 롤백됩니다.       -또는-연결이 끊어졌습니다."
   platform:
   - net462
 references:

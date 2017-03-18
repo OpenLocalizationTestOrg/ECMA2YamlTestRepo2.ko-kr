@@ -12,8 +12,8 @@ items:
   nameWithType: IPendingWork
   fullName: System.Workflow.Runtime.IPendingWork
   type: Interface
-  summary: "Provides methods to participate in a work batch."
-  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]       The IPendingWork interface is provided for services that want to participate in the workflow runtime engine batching mechanism. The batching mechanism is especially useful for services that use a durable store. It is often important in these cases to maintain consistency between the durable store used by the service and the internal state of the workflow runtime engine.       If you want your service to participate in workflow transaction batching provided by the <xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService>, you must implement the methods defined by the IPendingWork interface. The workflow runtime engine will call the <xref:System.Workflow.Runtime.IPendingWork.Commit%2A> method on your service to commit the batch.       The <xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService> class implements the IPendingWork interface."
+  summary: "작업 일괄 처리에 참여 하는 메서드를 제공 합니다."
+  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]IPendingWork 인터페이스 메커니즘을 일괄 처리 하는 워크플로 런타임 엔진에 참여 하는 서비스에 제공 됩니다. 영 속 저장소를 사용 하는 서비스에 대 한 일괄 처리 메커니즘은 특히 유용 합니다. 종종 이러한 경우 워크플로 런타임 엔진의 내부 상태와 서비스에서 사용 하는 영 속 저장소 간의 일관성을 유지 하는 것이 유용 합니다.       서비스는 워크플로 트랜잭션 일괄 처리에서 제공에 참여 하도록 하려는 경우는 <xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService>, IPendingWork 인터페이스에 의해 정의 된 메서드를 구현 해야 합니다.</xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService> 워크플로 런타임 엔진에서 호출 됩니다는 <xref:System.Workflow.Runtime.IPendingWork.Commit%2A>일괄 처리 커밋을 서비스에서 메서드.</xref:System.Workflow.Runtime.IPendingWork.Commit%2A>       <xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService>클래스 IPendingWork 인터페이스를 구현 합니다.</xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService>"
   syntax:
     content: >-
       [System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")]
@@ -34,17 +34,17 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime
-  summary: "Commits the list of work items by using the specified <xref href=&quot;System.Transactions.Transaction&quot;></xref> object."
-  remarks: "The workflow runtime engine calls the Commit method when its semantics dictate that the pending work in the work batch should be committed. When it reaches a commit point, the workflow runtime engine calls the Commit method on each <xref:System.Workflow.Runtime.IPendingWork> object in its work batch; the workflow runtime engine passes the Commit method the collection of items associated with that <xref:System.Workflow.Runtime.IPendingWork> object. Either all of the work in a batch succeeds or none of it succeeds. You should throw an exception if any of the work items passed to the Commit method in your implementation cannot be committed. Depending on your implementation, you may want to perform some rollback in your Commit method if it cannot commit its work items. If the workflow runtime engine successfully commits all of the work in the work batch, it calls <xref:System.Workflow.Runtime.IPendingWork.Complete%2A> with the `succeeded` parameter set to `true`; otherwise, it calls <xref:System.Workflow.Runtime.IPendingWork.Complete%2A> with `succeeded` set to `false`."
+  summary: "지정 된를 사용 하 여 작업 항목 목록을 커밋합니다 <xref href=&quot;System.Transactions.Transaction&quot;> </xref> 개체입니다."
+  remarks: "워크플로 런타임 엔진은 해당 의미 체계가 작업 일괄 처리의 보류 중인 작업 커밋되어야 함을 지시 Commit 메서드를 호출 합니다. 커밋 지점에 도달 하면 워크플로 런타임 엔진은 각 Commit 메서드를 호출할 <xref:System.Workflow.Runtime.IPendingWork>은 작업 일괄 처리에서 개체, 않으면 워크플로 런타임 엔진은 통과 Commit 메서드와 연결 된 항목의 컬렉션 <xref:System.Workflow.Runtime.IPendingWork>개체입니다.</xref:System.Workflow.Runtime.IPendingWork> </xref:System.Workflow.Runtime.IPendingWork> 일괄 처리에서 작업을 모두 성공 하거나 모두 실패 합니다. Commit 메서드 구현에서에 전달 되는 작업 항목이 커밋할 수 없는 경우 예외를 throw 해야 합니다. 구현에 따라 작업 항목을 커밋할 수 없는 경우 커밋 메서드에서 일부 롤백을 수행 해야 할 수도 있습니다. 워크플로 런타임 엔진의 모든 작업 일괄 처리에서 작업을 성공적으로 커밋하면, 호출 <xref:System.Workflow.Runtime.IPendingWork.Complete%2A>와 `succeeded` 매개 변수 설정 `true`, 그렇지 않으면 호출 <xref:System.Workflow.Runtime.IPendingWork.Complete%2A>와 `succeeded` 로 설정 `false`.</xref:System.Workflow.Runtime.IPendingWork.Complete%2A> </xref:System.Workflow.Runtime.IPendingWork.Complete%2A>"
   syntax:
     content: public void Commit (System.Transactions.Transaction transaction, System.Collections.ICollection items);
     parameters:
     - id: transaction
       type: System.Transactions.Transaction
-      description: "The <xref href=&quot;System.Transactions.Transaction&quot;></xref> associated with the pending work."
+      description: "<xref href=&quot;System.Transactions.Transaction&quot;> </xref> 보류 중인 작업을 연관 됩니다."
     - id: items
       type: System.Collections.ICollection
-      description: "The work items to be committed."
+      description: "작업 항목을 커밋할 수입니다."
   overload: System.Workflow.Runtime.IPendingWork.Commit*
   exceptions: []
   platform:
@@ -61,17 +61,17 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime
-  summary: "Called when the transaction has completed."
-  remarks: "If `succeeded` is `true`, the transaction succeeded and any resources used by the work batch may be released. If `succeeded` is `false`, the transaction failed. Depending on your implementation, you can perform any appropriate roll back on the work in the work batch when the transaction fails."
+  summary: "트랜잭션이 완료 될 때 호출 합니다."
+  remarks: "경우 `succeeded` 은 `true`이면 트랜잭션이 성공 했으며 작업 일괄 처리에서 사용 하는 모든 리소스를 해제할 수 있습니다. 경우 `succeeded` 은 `false`, 트랜잭션이 실패 했습니다. 구현에 따라 트랜잭션이 실패할 경우 작업 일괄 처리에서 작업 적절 한 롤백을 수행할 수 있습니다."
   syntax:
     content: public void Complete (bool succeeded, System.Collections.ICollection items);
     parameters:
     - id: succeeded
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the transaction succeeded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>트랜잭션이 성공 했으면; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: items
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of work items."
+      description: "<xref:System.Collections.ICollection>작업 항목.</xref:System.Collections.ICollection>"
   overload: System.Workflow.Runtime.IPendingWork.Complete*
   exceptions: []
   platform:
@@ -88,17 +88,17 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime
-  summary: "Allows the items in the work batch to assert whether they must commit immediately."
-  remarks: "If MustCommit returns `false`, the work can be postponed to a future commit point. If any of the items must be committed, then return `true` and all items will be committed at the current commit point. For a discussion about possible commit points, see the <xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService> class."
+  summary: "항목이 있는지 여부를 즉시 커밋되어야 어설션 작업 일괄 처리에서 수 있도록 합니다."
+  remarks: "MustCommit 반환 하는 경우 `false`, 작업이 이후 커밋 지점으로 연기 될 수 있습니다. 항목을 커밋해야 하는 경우 다음 반환 `true` 모든 항목이 현재 커밋 지점에서 커밋됩니다. 가능한 커밋 지점에 대 한 논의 알려면 <xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService>클래스</xref:System.Workflow.Runtime.Hosting.SqlWorkflowPersistenceService>"
   syntax:
     content: public bool MustCommit (System.Collections.ICollection items);
     parameters:
     - id: items
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of work items."
+      description: "<xref:System.Collections.ICollection>작업 항목.</xref:System.Collections.ICollection>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if any item in the collection must be committed immediately; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컬렉션의 항목이 즉시 커밋되어야; 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Workflow.Runtime.IPendingWork.MustCommit*
   exceptions: []
   platform:
