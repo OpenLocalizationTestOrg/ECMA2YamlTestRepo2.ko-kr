@@ -49,8 +49,8 @@ items:
   nameWithType: Timeline
   fullName: System.Windows.Media.Animation.Timeline
   type: Class
-  summary: "Defines a segment of time."
-  remarks: "A timeline represents a segment of time.  It provides properties that enable you to specify the length of that segment, when it should start, how many times it will repeat, how fast time progresses in that segment, and more.       Classes that inherit from the timeline class provide additional functionality, such as animation and media playback. The following are examples of some of the different types of specialized timelines available.      -   **Animations**: An <xref:System.Windows.Media.Animation.AnimationTimeline> is a type of timeline that produces output values. When you associate an animation with a property, the animation updates the property&quot;s value as it plays, thereby &quot;animating&quot; it. For an introduction to animations, see [Animation Overview](~/add/includes/ajax-current-ext-md.md). For information about the different ways to apply animations, see the [Property Animation Techniques Overview](~/add/includes/ajax-current-ext-md.md).      -   **MediaTimelines**: A <xref:System.Windows.Media.MediaTimeline> is a type of timeline that controls the playback of a media file.      -   **ParallelTimelines**: A <xref:System.Windows.Media.Animation.ParallelTimeline> is a type of timeline that groups other timelines.      -   **Storyboards**: A <xref:System.Windows.Media.Animation.Storyboard> is a special type of <xref:System.Windows.Media.Animation.ParallelTimeline> that provides object and property targeting information for the timelines it contains. For more information about <xref:System.Windows.Media.Animation.Storyboard> objects, see the [Storyboards Overview](~/add/includes/ajax-current-ext-md.md).       For more information about using timelines, see the [Animation Overview](../Topic/Animation%20Overview.md). For an introduction to the timing features of timelines, see the [Timing Behaviors Overview](~/add/includes/ajax-current-ext-md.md).      ## Data Binding and Animating Timelines    Most timeline properties can be data bound or animated; however, because of the way the timing system works, data bound or animated timelines do not behave like other data bound or animated objects. To understand their behavior, it helps to understand what it means to activate a timeline.       When a timeline is applied, copies are made of the timeline and its child timelines. These copies are frozen (made read-only) and <xref:System.Windows.Media.Animation.Clock> objects are created from them. It&quot;s these clocks that do the actual work of animating the targeted properties. If a timeline was data bound or animated, a snapshot of its current values was made when its clock was created. Even though the original timeline might continue to change, its clock does not.       For a timeline to reflect data binding or animation changes, its clock must be regenerated. Clocks are not regenerated for you automatically. The following are several ways to apply timeline changes:      -   If the timeline is or belongs to a <xref:System.Windows.Media.Animation.Storyboard>, you can make it reflect changes by reapplying its storyboard using a <xref:System.Windows.Media.Animation.BeginStoryboard> or the <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> method. This has the side effect of also restarting the animation. In code, you can use the <xref:System.Windows.Media.Animation.Storyboard.Seek%2A> method to advance the storyboard back to its previous position.      -   If you applied an animation directly to a property using the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method, call the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method again and pass it the animation that&quot;s been modified.      -   If you are working directly at the clock level, create and apply a new set of clocks and use them to replace the previous set of generated clocks.       For an example of a data bound animation, see the [Key Spline Animation Sample](http://go.microsoft.com/fwlink/?LinkID=160011) .      ## Using a Timeline as a Timer    A timeline&quot;s clock will only progress when there&quot;s an event hander associated with it or (in the case of an <xref:System.Windows.Media.Animation.AnimationClock> object) it is associated with a property. For this reason (and others), it&quot;s not recommended that you use a Timeline as a timer."
+  summary: "시간 세그먼트를 정의합니다."
+  remarks: "일정 시간을 세그먼트를 나타냅니다.  시작, 반복 되는 횟수 등 해당 세그먼트 시간 진행 속도 세그먼트의 길이 지정할 수 있는 속성을 제공 합니다.       타임 라인 클래스에서 상속 된 클래스 애니메이션 및 미디어 재생 등의 추가 기능을 제공 합니다. 다음은 몇 가지 특수 한 타임 라인 사용할 수 있는 다양 한 유형의 예입니다.      - **애니메이션**:는 <xref:System.Windows.Media.Animation.AnimationTimeline>출력 값을 생성 하는 타임 라인의 형식입니다.</xref:System.Windows.Media.Animation.AnimationTimeline> 속성을 갖는 애니메이션을 연결 하는 경우 재생 될 함으로써 되면서 애니메이션 속성의 값을 업데이트 합니다. 애니메이션에 대 한 소개를 참조 하십시오. [애니메이션 개요](~/add/includes/ajax-current-ext-md.md)합니다. 애니메이션을 적용 하는 다양 한 방법에 대 한 정보를 참조 하십시오.는 [속성 애니메이션 기술 개요](~/add/includes/ajax-current-ext-md.md)합니다.      - **MediaTimelines**: A <xref:System.Windows.Media.MediaTimeline>미디어 파일의 재생을 제어 하는 타임 라인의 형식입니다.</xref:System.Windows.Media.MediaTimeline>      - **Paralleltimeline**: A <xref:System.Windows.Media.Animation.ParallelTimeline>다른 타임 라인을 그룹화 하는 타임 라인의 형식입니다.</xref:System.Windows.Media.Animation.ParallelTimeline>      - **스토리 보드**: A <xref:System.Windows.Media.Animation.Storyboard>는 특수 한 유형의 <xref:System.Windows.Media.Animation.ParallelTimeline>개체 및 포함 된 타임 라인에 대 한 정보를 대상으로 하는 속성을 제공 하는.</xref:System.Windows.Media.Animation.ParallelTimeline> </xref:System.Windows.Media.Animation.Storyboard> 에 대 한 자세한 내용은 <xref:System.Windows.Media.Animation.Storyboard>개체 참조는 [적기](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Media.Animation.Storyboard>       타임 라인을 사용 하는 방법에 대 한 자세한 내용은 참조는 [애니메이션 개요](../Topic/Animation%20Overview.md)합니다. 타임 라인의 타이밍 기능 소개를 참조 하십시오.는 [타이밍 동작 개요](~/add/includes/ajax-current-ext-md.md)합니다.      ## 데이터 바인딩 및 가장 타임 라인이 애니메이션 타임 라인 속성 바인딩하거나 애니메이션; 데이터를 적용할 수 있습니다. 그러나 타이밍 시스템의 작동 방식 때문에 데이터 바인딩된 또는 애니메이션 타임 라인 다른 데이터 처럼 작동 하지 않는 바인딩하거나 애니메이션 개체. 해당 동작을 이해 하려면 타임 라인을 활성화 하는 의미를 이해할 수 있습니다.       일정에 적용 되는 경우 타임 라인 및 해당 자식 타임 라인의 복사본이 만들어집니다. 이러한 복사본 고정 (읽기 전용으로 설정) 및 <xref:System.Windows.Media.Animation.Clock>임원의 개체가 만들어집니다.</xref:System.Windows.Media.Animation.Clock> 대상된 속성에 애니메이션 적용의 실제 작업을 수행 하는 이러한 clock이 있습니다. 또는 된 경우 타임 라인 데이터 바인딩된 애니메이션이 적용 된 현재 값의 스냅숏을 만들어졌습니다 해당 클록을 만들 때. 원래 일정을 변경 하려면 계속 될 수 있습니다, 경우에 해당 클록 준수 하지 않습니다.       데이터 바인딩 또는 애니메이션 변경 내용을 반영 하도록 타임 라인에 대 한 해당 시계를 다시 생성 해야 합니다. 시계를 자동으로 생성 되지 않습니다. 다음은 일정 변경 내용을 적용 하려면 여러 가지 방법으로:-타임 라인은 또는에 속하는 경우 한 <xref:System.Windows.Media.Animation.Storyboard>, 해당 스토리 보드를 사용 하 여 다시 적용 하 여 변경 내용을 반영 만들 수 있습니다는 <xref:System.Windows.Media.Animation.BeginStoryboard>또는 <xref:System.Windows.Media.Animation.Storyboard.Begin%2A>메서드.</xref:System.Windows.Media.Animation.Storyboard.Begin%2A> </xref:System.Windows.Media.Animation.BeginStoryboard> </xref:System.Windows.Media.Animation.Storyboard> 이 있으며도 애니메이션 다시 시작 합니다. 코드에서 사용할 수는 <xref:System.Windows.Media.Animation.Storyboard.Seek%2A>스토리 보드를 이동 하는 메서드를 이전 위치로 다시.</xref:System.Windows.Media.Animation.Storyboard.Seek%2A>      -직접 사용 하 여 속성에 애니메이션을 적용 하는 경우는 <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>메서드를 호출은 <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>메서드를 다시 수정 된 애니메이션을 전달 합니다.</xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> </xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>      -클록 수준에서 직접 작업 하는 경우 및 클록 새 집합을 적용할 만들고 생성 된 clock 이전 집합을 대체 합니다.       바인딩된 애니메이션의 데이터 예제를 참조는 [키 스플라인 애니메이션 샘플](http://go.microsoft.com/fwlink/?LinkID=160011) 합니다.      ## 연결 된 이벤트 처리기는 때에 타이머는 타임 라인의 클록 진행 되는 대로 타임 라인을 사용 하 여 또는 (의 경우에 <xref:System.Windows.Media.Animation.AnimationClock>개체) 속성에 연결 됩니다.</xref:System.Windows.Media.Animation.AnimationClock> 등에 대 한이 이유 (), 하지 일정 타이머로 사용 하는 것이 좋습니다."
   syntax:
     content: >-
       [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
@@ -123,7 +123,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 클래스입니다."
   syntax:
     content: protected Timeline ();
     parameters: []
@@ -143,13 +143,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 지정 <xref:System.Windows.Media.Animation.Timeline.BeginTime*>.</xref:System.Windows.Media.Animation.Timeline.BeginTime*> 클래스"
   syntax:
     content: protected Timeline (Nullable<TimeSpan> beginTime);
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "에이 시간 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 시작 해야 합니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.BeginTime*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -166,7 +166,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*> and <xref:System.Windows.Media.Animation.Timeline.Duration*>."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 지정된 된 <> </> *> 및 <> </> *> 합니다."
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "에이 시간 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 시작 해야 합니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.BeginTime*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "이 타임 라인이 재생, 반복을 제외 하는 시간의 길이입니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.Duration*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -195,7 +195,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>, <xref:System.Windows.Media.Animation.Timeline.Duration*>, and <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 지정된 된 <> </> *>, <> </> *>, 및 <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -204,13 +204,13 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "에이 시간 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 시작 해야 합니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.BeginTime*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "이 타임 라인이 재생, 반복을 제외 하는 시간의 길이입니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.Duration*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
     - id: repeatBehavior
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "The repeating behavior of this timeline, either as an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> or a repeat <xref:System.Windows.Media.Animation.RepeatBehavior.Duration*>. See the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> property for more information."
+      description: "반복으로이 타임 라인의 반복 동작 <> </> *>는, 반복 또는 <> </> *> 합니다. 참조는 <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>속성에 대 한 자세한 내용은.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -227,21 +227,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate."
-  remarks: "Use the AccelerationRatio property to create animations that start slowly and then speed up as time progresses. The AccelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "타임 라인의 백분율을 지정 하는 값을 가져오거나 설정 합니다. <xref:System.Windows.Media.Animation.Timeline.Duration*>시간의 경과를 최대&0;에서가 속하는 데 걸리는.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "천천히 시작 된 시간이 지나면 속도를 애니메이션을 만드는 AccelerationRatio 속성을 사용 합니다. AccelerationRatio 속성은 느려지는 효과 만들거나 게 더 자연 스러운 울 이동 하는 데 유용 합니다. AccelerationRatio를 사용 하 여 및 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>속성을 느리게 시작 하는 애니메이션을 만들 함께, 속도 마치기 전에 다시 속도가 느려집니다.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>"
   syntax:
     content: public double AccelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> property is also set, the sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "타임 라인의 백분율을 지정 하는 값 0과 1 사이의 <> </> *> 시간의 경과를 최대 0에서가 속하는 데 걸리는 합니다. 하는 경우 타임 라인의 <> </> *> 속성이 설정 된 AccelerationRatio의 합계와 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>1 보다 작거나 같아야 합니다.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> 기본값은 0입니다"
   overload: System.Windows.Media.Animation.Timeline.AccelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "AccelerationRatio is less than 0 or greater than 1."
+    description: "AccelerationRatio가 0 보다 작거나 1 보다 큰 경우"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> exceeds 1."
+    description: "AccelerationRatio의 합계와 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>1을 초과 합니다.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.AccelerationRatioProperty
@@ -256,12 +256,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AccelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -278,13 +278,13 @@ items:
   - PresentationCore
   namespace: System.Windows.Media.Animation
   summary: "Creates a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method is called by the <xref:System.Windows.Media.Animation.Timeline.CreateClock%2A> method and should not be called directly by your code."
+  remarks: "이 메서드는 <xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>메서드 이며 사용자 코드에서 직접 호출할 수 없습니다.</xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>"
   syntax:
     content: protected virtual System.Windows.Media.Animation.Clock AllocateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A clock for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "이 대 한 클록 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.AllocateClock*
   exceptions: []
   platform:
@@ -301,13 +301,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that indicates whether the timeline plays in reverse after it completes a forward iteration."
-  remarks: "If the AutoReverse property is set to `true`, the timeline plays for twice the length of time specified by its <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property.      ### AutoReverse and Repetitions    When a timeline&quot;s AutoReverse property is set to `true` and its <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> property causes it to repeat, each forward iteration is followed by a backward iteration. This makes one repetition. For example, a timeline with an AutoReverse value of `true` with an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forward once, then backwards, then forwards again, and then backwards again.      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|   |Metadata properties set to `true`|None|"
+  summary: "시간 표시 막대 앞으로 반복을 완료 한 후 반대 방향으로 재생 되는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "AutoReverse 속성이로 설정 된 경우 `true`, 변수로 지정 된 길이의&2; 배에 대 한 타임 라인 재생 해당 <xref:System.Windows.Media.Animation.Timeline.Duration%2A>속성.</xref:System.Windows.Media.Animation.Timeline.Duration%2A>      ### AutoReverse 및 타임 라인의 AutoReverse 속성이로 설정 된 경우 반복 `true` 및 해당 <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A>속성으로 인해 반복, 앞으로 반복 되는 이전 버전과 반복 차례로 나옵니다.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> 따라서 단일 반복 합니다. 예를 들어 AutoReverse 값이 타임 라인 `true` 반복 된 <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>2는 재생 전달 한 번씩, 다음 이전 버전과 호환성 다시 차례로 뒤로 다시.</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>"
   syntax:
     content: public bool AutoReverse { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the timeline plays in reverse at the end of each iteration; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>타임 라인의 각 반복 끝에 역방향으로 재생 되 면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.AutoReverse*
   exceptions: []
   platform:
@@ -324,12 +324,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AutoReverse*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.AutoReverse*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.AutoReverse*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AutoReverseProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -345,7 +345,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin."
+  summary: "에이 시간을 가져오거나 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 시작 해야 합니다."
   remarks: "The BeginTime property is useful for creating timelines that play in a sequence: by increasing the BeginTime of successive timelines that share the same parent, you can stagger their play times.  \n  \n## Negative Values  \n A negative BeginTime value causes a <xref:System.Windows.Media.Animation.Timeline> to behave as though it started at some time in the past. For example, a <xref:System.Windows.Media.Animation.Timeline> with a BeginTime of negative 2.5 seconds and a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 5 seconds will appear to be half-way finished when it starts.  \n  \n## BeginTime and SpeedRatio  \n The time described by the BeginTime property is measured in the timeline's parent's time. For example, a timeline with a BeginTime of 5 whose parent has a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2 actually starts after 2.5 seconds.  \n  \n A timeline's own <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> setting does not affect its BeginTime. For example, a timeline with a BeginTime of 5 seconds, a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2, and a parent timeline with a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 1 starts after 5 seconds, not 2.5.  \n  \n<a name=\"dependencyPropertyInfo_BeginTime\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.BeginTimeProperty>|  \n|Metadata properties set to `true`|None|  \n  \n<a name=\"xamlAttributeUsage_BeginTime\"></a>   \n## XAML Attribute Usage  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*:*seconds*[.*fractionalSeconds*]\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-]*days*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"{[x:Null Markup Extension](~/add/includes/ajax-current-ext-md.md)}\"/>  \n  \n<a name=\"xamlValues_BeginTime\"></a>   \n## XAML Values  \n Items in square brackets (`[` and `]`) are optional.  \n  \n *days*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value greater than or equal to 0 that describes the number of days spanned by this begin time.  \n  \n *hours*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 23 that represents the number of hours spanned by this begin time.  \n  \n *minutes*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of minutes spanned by this begin time.  \n  \n *seconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of seconds spanned by this begin time.  \n  \n *fractionalSeconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value consisting of 1 to 7 digits that represents fractional seconds.  \n  \n For the complete <xref:System.TimeSpan> syntax, see the Remarks section of the <xref:System.TimeSpan.Parse%2A> page."
   example:
   - "A timeline's BeginTime property determines the beginning of a timeline's active period. If the timeline has a parent timeline, the BeginTime property determines how long it takes the timeline to start after its parent starts. If the timeline is a root timeline (a <xref:System.Windows.Media.Animation.Storyboard>, for example), the BeginTime property determines how long the timeline takes to start playing after it is triggered.  \n  \n The following example shows several different timelines with different BeginTime settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_BeginTimeExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/BeginTimeExample.xaml#_graphicsmm_begintimeexamplewholepage)]"
@@ -353,7 +353,7 @@ items:
     content: public Nullable<TimeSpan> BeginTime { get; set; }
     return:
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin, relative to its parent&quot;s BeginTime. If this timeline is a root timeline, the time is relative to its interactive begin time (the moment at which the timeline was triggered). This value may be positive, negative, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>; a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> value means the timeline never plays. The default value is zero."
+      description: "에이 시간 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 부모의 BeginTime 기준으로 시작 해야 합니다. 이 타임 라인이 루트 타임 라인인, 경우 시간은 관련 됩니다 대화형 시작 시간 (타임 라인이 트리거된 순간). 음수이 값이 음수일 수 있습니다 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>; <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 값 이면 타임 라인이 되지 재생 합니다. 기본값은&0;입니다."
   overload: System.Windows.Media.Animation.Timeline.BeginTime*
   exceptions: []
   platform:
@@ -370,12 +370,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.BeginTime*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty BeginTimeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -391,14 +391,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, making deep copies of this object&quot;s values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.       When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values."
+  summary: "수정 가능한 복제본을 만듭니다 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>,이 개체 값의 전체 복사본입니다."
+  remarks: "수정 가능한 복사본을 생성 하기 위해이 메서드는 고정 된 <xref:System.Windows.Freezable>개체 (또는 모든 <xref:System.Windows.Freezable>개체).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 편의 위해이 메서드는 강력한 형식의 구현이 포함 된 상속 된 버전을 숨깁니다.       자세한 내용은 <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName> 을 참조 하십시오.       종속성 속성을 복사 하는 경우이 메서드는 리소스 참조와 데이터 바인딩을 복사 (하지만 이러한 요소는 더 이상 확인) 나 하지 않습니다 애니메이션의 현재 값입니다."
   syntax:
     content: public System.Windows.Media.Animation.Timeline Clone ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
+      description: "현재 개체의 수정 가능한 복제본입니다. 복제 된 개체의 <> </> *> 속성은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우에 원본의 <> </> *> 속성은<xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
   overload: System.Windows.Media.Animation.Timeline.Clone*
   exceptions: []
   platform:
@@ -415,14 +415,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object, making deep copies of this object&quot;s current values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.       Resource references, data bindings, and animations are not copied, but their current values are."
+  summary: "수정 가능한 복제본을 만듭니다 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 개체를이 개체의 현재 값의 전체 복사본입니다."
+  remarks: "수정 가능한 복사본을 생성 하기 위해이 메서드는 고정 된 <xref:System.Windows.Freezable>개체 (또는 모든 <xref:System.Windows.Freezable>개체).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 편의 위해이 메서드는 강력한 형식의 구현이 포함 된 상속 된 버전을 숨깁니다.       자세한 내용은 <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName> 을 참조 하십시오.       리소스 참조, 데이터 바인딩 및 애니메이션은 복사 되지 않지만 이러한 요소의 현재 값은입니다."
   syntax:
     content: public System.Windows.Media.Animation.Timeline CloneCurrentValue ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "현재 개체의 수정 가능한 복제본입니다. 복제 된 개체의 <> </> *> 속성은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우에 원본의 <> </> *> 속성은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.CloneCurrentValue*
   exceptions: []
   platform:
@@ -439,15 +439,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: 'Occurs when this timeline has completely finished playing: it will no longer enter its active period.'
-  remarks: "If this timeline is the root timeline of a timeline tree, it has completed playing after it reaches the end of its active period (which includes repeats) and all its children have reached the end of their active periods. If this timeline is a child timeline, it is considered to have completely finished playing when the root timeline of the timeline tree to which it belongs reaches the end of its active period and all its child timelines have finished playing.       Stopping a timeline does not trigger its completed event, but skipping it to its fill period does.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: '이 타임 라인 재생를 완전히 완료 되 면 발생 합니다: 더 이상 활성 기간으로 전환 됩니다.'
+  remarks: "이 타임 라인이 루트 타임 라인의 시간 표시 막대 트리를 (반복을 포함)은 활성 기간의 끝에 도달 하 고 모든 자식을 해당 활성 기간의 끝에 도달한 후 재생이 완료 되었습니다. 이 타임 라인에 자식 타임 라인 이면 량에 도달 속해 있는 시간 표시 막대 트리 루트 타임 라인인 활성 기간 및 모든 해당 자식 타임 라인의 끝이 완료 되 면 재생 재생를 완전히 완료으로 간주 됩니다.       중지 완료 이벤트는 트리거되지 않습니다 지원 하지만 않습니다 채우기 기간에 해당 항목을 건너뜁니다.       <xref:System.Object> <xref:System.EventHandler>이벤트 처리기는 타임 라인의 <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> 의 매개 변수</xref:System.Object>       이 이벤트 처리기는 시간 표시 막대와 연결할 보이지만 실제로을 등록 된 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 생성.</xref:System.Windows.Media.Animation.Clock>  자세한 내용은 참조는 [타이밍 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "In the following example, two <xref:System.Windows.Media.Animation.Storyboard> objects are used to create an animation transition between two images, stored using <xref:System.Windows.Media.ImageSource> objects and displayed using an <xref:System.Windows.Controls.Image> control. One storyboard shrinks the image control until it disappears. After it completes, the old <xref:System.Windows.Media.ImageSource> is swapped with the other <xref:System.Windows.Media.ImageSource>, and a second storyboard that expands the image control until it is full-sized again.  \n  \n [!code-xml[timingbehaviors_snip#TimelineCompletedExampleMarkupUsingWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/TimelineCompletedExample.xaml#timelinecompletedexamplemarkupusingwholepage)]  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public event EventHandler Completed;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -463,14 +463,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "새로 만들고, 제어할 수 있는 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다. 이 경우 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 자식이,이 사용 하 여 클록 트리 만들어집니다 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 루트로 합니다."
+  remarks: '하지만이 <xref:System.Windows.Media.Animation.Timeline>하나 이상의 자식일 수 <xref:System.Windows.Media.Animation.TimelineGroup>개체의 경우이 정보는 무시 됩니다:이 메서드는 현재 처리 <xref:System.Windows.Media.Animation.Timeline>루트로 <xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "새 제어 가능한 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이에서 생성 된 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다. 이 경우 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 는 <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;> </xref> 자식 타임 라인의 트리를 포함 하 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 제어할 수 있는 사용 하 여 만든 개체 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 만든 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 루트로 합니다."
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -487,17 +487,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> and specifies whether the new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is controllable. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "새로 만듭니다. <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 지정 하 고 있는지 여부를 새 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 는 제어할 수 있습니다. 이 경우 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 자식이,이 사용 하 여 클록 트리 만들어집니다 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 루트로 합니다."
+  remarks: '하지만이 <xref:System.Windows.Media.Animation.Timeline>하나 이상의 자식일 수 <xref:System.Windows.Media.Animation.TimelineGroup>개체의 경우이 정보는 무시 됩니다:이 메서드는 현재 처리 <xref:System.Windows.Media.Animation.Timeline>루트로 <xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock (bool hasControllableRoot);
     parameters:
     - id: hasControllableRoot
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the root <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> returned should return a <xref href=&quot;System.Windows.Media.Animation.ClockController&quot;></xref> from its <xref:System.Windows.Media.Animation.Clock.Controller*> property so that the <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> tree can be interactively controlled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 루트 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 반환 반환할지 여부는 <xref href=&quot;System.Windows.Media.Animation.ClockController&quot;> </xref> 에서 해당 <xref:System.Windows.Media.Animation.Clock.Controller*>속성 있도록는 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 대화형으로 제어 되 고, 그렇지 않으면 트리 수 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Windows.Media.Animation.Clock.Controller*>"
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "새 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이에서 생성 된 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다. 이 경우 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 는 <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;> </xref> 자식 타임 라인의 트리를 포함 하 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 제어할 수 있는 사용 하 여 만든 개체 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 만든 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 루트로 합니다."
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -514,15 +514,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the rate at which time progresses for the timeline&quot;s clock changes."
-  remarks: "The current global speed of a timeline&quot;s clock changes in the following circumstances:      -   The clock changes direction because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> setting.      -   The clock accelerates or decelerates because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> property settings.      -   The clock is paused or resumed.      -   The clock becomes inactive or reactivates.      -   The <xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A> of one of the clock&quot;s parent changes.       The CurrentGlobalSpeedInvalidated event is useful for tracking when a timeline&quot;s clock becomes paused; in your event handler, use your storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A> method or check the clock&quot;s <xref:System.Windows.Media.Animation.Clock.IsPaused%2A> property to determine whether its clock is paused; compare this against a previously cached value to determine whether it changed.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "타임 라인의 클록 변경에 대 한 속도 될 때 진행 되는 경우 발생 합니다."
+  remarks: "다음과 같은 경우에는 타임 라인의 클록의 현재 글로벌 속도 변경:-클록의 타임 라인의 인해 방향 변경 <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>설정.</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>      -클록 속도 높여 또는 타임 라인의 인해 감속 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>또는 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>속성 설정을.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      -클록 일시 중지 또는 다시 시작 합니다.      -클록이 비활성화 되거나 다시 활성화 합니다.      - <xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>클록의 부모 변경 사항 중 하나입니다.</xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>       CurrentGlobalSpeedInvalidated 이벤트는 타임 라인의 클록이 일시 중지; 때 추적 하는 데 유용 이벤트 처리기에서 사용 하 여 스토리 보드의 <xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>메서드나 검사 클록의 <xref:System.Windows.Media.Animation.Clock.IsPaused%2A>clock; 일시 중지 하는지 여부를 확인 하려면 속성을 변경 되었는지 확인 하는 이전에 캐시 된 값이 비교 합니다.</xref:System.Windows.Media.Animation.Clock.IsPaused%2A> </xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>       <xref:System.Object> <xref:System.EventHandler>이벤트 처리기는 타임 라인의 <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> 의 매개 변수</xref:System.Object>       이 이벤트 처리기는 시간 표시 막대와 연결할 보이지만 실제로을 등록 된 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 생성.</xref:System.Windows.Media.Animation.Clock>  자세한 내용은 참조는 [타이밍 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example shows how to register for the CurrentGlobalSpeedInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentGlobalSpeedInvalidatedExample.cs#timelinecurrentglobalspeedinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrentglobalspeedinvalidatedexample.vb#timelinecurrentglobalspeedinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentGlobalSpeedInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -538,13 +538,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentState*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the CurrentStateInvalidated event when you want to be notified  when a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> starts, stops, or fills.       Pausing a <xref:System.Windows.Media.Animation.Clock> does not change its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>. To be notified when a clock becomes paused, use the <xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated> event.       Although this event occurs when the <xref:System.Windows.Media.Animation.ClockState> becomes invalid, that doesn&quot;t necessarily mean the <xref:System.Windows.Media.Animation.ClockState> changed: a <xref:System.Windows.Media.Animation.Clock> that switches from <xref:System.Windows.Media.Animation.ClockState> to <xref:System.Windows.Media.Animation.ClockState> and then back to <xref:System.Windows.Media.Animation.ClockState> in the same tick will cause this event to fire, but its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A> property won&quot;t actually change.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the  <xref:System.Windows.Media.Animation.Clock> that was created for this timeline.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "발생 경우는 <xref:System.Windows.Media.Animation.Clock.CurrentState*>타임 라인의 속성 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 업데이트 됩니다.</xref:System.Windows.Media.Animation.Clock.CurrentState*>"
+  remarks: "CurrentStateInvalidated 이벤트는 타임 라인의 경우 알림을 보낼 때 사용 하 여 <xref:System.Windows.Media.Animation.Clock>시작, 중지 또는 채웁니다.</xref:System.Windows.Media.Animation.Clock>       <xref:System.Windows.Media.Animation.Clock>해당 <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>.</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> 바뀌지 않으면</xref:System.Windows.Media.Animation.Clock> 일시 중지 클록이 일시 중지 하는 경우 알림을 받을 수를 사용 하 여는 <xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>이벤트.</xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>       이 이벤트 발생 하지만 때는 <xref:System.Windows.Media.Animation.ClockState>없게 되 면 반드시 의미 하는 <xref:System.Windows.Media.Animation.ClockState>변경:는 <xref:System.Windows.Media.Animation.Clock>에서 전환 되는 <xref:System.Windows.Media.Animation.ClockState>를 <xref:System.Windows.Media.Animation.ClockState>다시 <xref:System.Windows.Media.Animation.ClockState>같은 눈금에는이 이벤트를 발생 시킨 수행 되지 것입니다 했지만 해당 <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>속성 실제로 변경 되지 않습니다.</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState>       <xref:System.Object>의 매개 변수는 <xref:System.EventHandler>이벤트 처리기는 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 만들어진.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       이 이벤트 처리기는 시간 표시 막대와 연결할 보이지만 실제로을 등록 된 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 생성.</xref:System.Windows.Media.Animation.Clock>  자세한 내용은 참조는 [타이밍 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public event EventHandler CurrentStateInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -560,15 +560,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentTime*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the <xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated> event when you want to be notified when the <xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> of a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> is updated.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "발생 경우는 <xref:System.Windows.Media.Animation.Clock.CurrentTime*>타임 라인의 속성 <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 업데이트 됩니다.</xref:System.Windows.Media.Animation.Clock.CurrentTime*>"
+  remarks: "사용 하 여는 <xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>하고자 할 때 이벤트 알림을 <xref:System.Windows.Media.Animation.Clock.CurrentTime%2A>는 타임 라인의 <xref:System.Windows.Media.Animation.Clock>업데이트 됩니다.</xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> </xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>       <xref:System.Object> <xref:System.EventHandler>이벤트 처리기는 타임 라인의 <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> 의 매개 변수</xref:System.Object>       이 이벤트 처리기는 시간 표시 막대와 연결할 보이지만 실제로을 등록 된 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 생성.</xref:System.Windows.Media.Animation.Clock>  자세한 내용은 참조는 [타이밍 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example shows how to register for the CurrentTimeInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentTimeInvalidatedExample.cs#timelinecurrenttimeinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrenttimeinvalidatedexample.vb#timelinecurrenttimeinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentTimeInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -584,21 +584,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero."
-  remarks: "Use the DecelerationRatio property to create animations that slow down before stopping. The DecelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> and DecelerationRatio properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "타임 라인의 백분율을 지정 하는 값을 가져오거나 설정 합니다. <xref:System.Windows.Media.Animation.Timeline.Duration*>시간의 흐름을 최대 속도에서&0;으로 감속 하는 데 걸린.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "애니메이션을 만드는 해당 느리게 중지 하기 전에 decelerationratio가 속성을 사용 합니다. Decelerationratio가 속성은 느려지는 효과 만들거나 게 더 자연 스러운 울 이동 하는 데 유용 합니다. 사용 된 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>와 decelerationratio가 속성을 함께 느리게 시작 하는 애니메이션 만들기, 속도 마치기 전에 다시 속도가 느려집니다.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>"
   syntax:
     content: public double DecelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> property is also set, the sum of DecelerationRatio and <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "타임 라인의 백분율을 지정 하는 값 0과 1 사이의 <> </> *> 시간의 흐름을 최대 속도에서 0으로 감속 하는 데 걸린 합니다. 하는 경우 타임 라인의 <> </> *> 속성이 설정 된 decelerationratio가의 합계와 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>1 보다 작거나 같아야 합니다.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> 기본값은 0입니다"
   overload: System.Windows.Media.Animation.Timeline.DecelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "DecelerationRatio is less than 0 or greater than 1."
+    description: "Decelerationratio가 0 보다 작거나 1 보다 큰 경우"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> and DecelerationRatio exceeds 1."
+    description: "총 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>decelerationratio가 1을 초과 하 고.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.DecelerationRatioProperty
@@ -613,12 +613,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> dependency property."
+  summary: "에 대 한 식별 된 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DecelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -634,12 +634,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*> attached property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>연결 된 속성입니다.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DesiredFrameRateProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -655,7 +655,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the length of time for which this timeline plays, not counting repetitions."
+  summary: "이 타임 라인이 재생, 반복을 제외 하는 시간의 길이 가져오거나 설정 합니다."
   remarks: "A timeline's simple duration constitutes the time for a single forward iteration versus the total play time, which includes repetitions.  \n  \n## Default Duration Behavior  \n The behavior of a Duration structure with a value of <xref:System.Windows.Duration.Automatic%2A> depends on the type of timeline:  \n  \n|||  \n|-|-|  \n|**Timeline**|**Behavior**|  \n|<xref:System.Windows.Media.Animation.Timeline>|Undetermined (<xref:System.Windows.Media.Animation.Timeline> is abstract)|  \n|<xref:System.Windows.Media.Animation.ParallelTimeline>,<br /><br /> <xref:System.Windows.Media.Animation.Storyboard>,<br /><br /> <xref:System.Windows.Media.Animation.TimelineGroup>|Expands to fit child timelines|  \n|\\<*Type*>Animation (Known as a \"From/To/By\" or \"basic\" animations)|1 second|  \n|\\<*Type*>AnimationUsingKeyFrames (Known as key frame animations)|Sum of all key frame <xref:System.Windows.Media.Animation.KeyTime> values|  \n  \n<a name=\"dependencyPropertyInfo_Duration\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.DurationProperty>|  \n|Metadata properties set to `true`|None|"
   example:
   - "<xref:System.Windows.Media.Animation.ParallelTimeline> and <xref:System.Windows.Media.Animation.Storyboard> are types of <xref:System.Windows.Media.Animation.TimelineGroup> objects. The duration of a <xref:System.Windows.Media.Animation.TimelineGroup> is determined by the duration of its child timelines. For example, the <xref:System.Windows.Media.Animation.Storyboard> below will run for six seconds (duration of 6 seconds) because that is when its last child Timeline (<xref:System.Windows.Media.Animation.DoubleAnimation>) ends.  \n  \n> [!NOTE]\n>  Note: code has been omitted from the following examples, which are provided for illustrative purposed only.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n    <DoubleAnimation Duration=\"0:0:2\" …/>  \n    <DoubleAnimation Duration=\"0:0:4\" BeginTime=\"0:0:2\" …/>  \n  </Storyboard>   \n...  \n```  \n  \n Examples of \\<*Type*>Animations include <xref:System.Windows.Media.Animation.DoubleAnimation>, <xref:System.Windows.Media.Animation.PointAnimation>, <xref:System.Windows.Media.Animation.ColorAnimation>, etc. If no Duration is specified for these types of animations, they will run for one second.  \n  \n [xaml]  \n  \n```  \n...  \n  <!-- With no Duration specified, this animation will run for   \n       one second -->  \n  <DoubleAnimation .../>  \n...  \n```  \n  \n Examples of \\<*Type*>AnimationUsingKeyFrames include <xref:System.Windows.Media.Animation.DoubleAnimationUsingKeyFrames>, <xref:System.Windows.Media.Animation.PointAnimationUsingKeyFrames>, etc. If no Duration is specified for these types of animations they will run until all key frames are finished.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n  \n    <!-- This key frame animation will end at 4.5 seconds  \n         Because that is when its last KeyFrame KeyTime ends. -->  \n    <DoubleAnimationUsingKeyFrames ...>  \n      <LinearDoubleKeyFrame ... KeyTime=\"0:0:3\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:3.5\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4.5\" />  \n    </DoubleAnimationUsingKeyFrames>  \n  </Storyboard>   \n...  \n```"
@@ -680,12 +680,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Duration*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.Duration*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DurationProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -701,13 +701,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that specifies how the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> behaves after it reaches the end of its active period."
-  remarks: "Set an animations FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior> when you want the animation to hold its value after it reaches the end of its active period. An animation that has reached the end of its active period that has a FillBehavior setting of <xref:System.Windows.Media.Animation.FillBehavior> is said to be in its fill period. When you don&quot;t want an animation to hold its value after it reaches the end of its active period, set its       FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior>.       Because an animation in its fill period continues to override its target property&quot;s value, attempting to set the target property&quot;s value through other means might appear to have no effect. For an example showing how to set a property value after it has been animated, see [How to: Set a Property After Animating It with a Storyboard](~/add/includes/ajax-current-ext-md.md).       A child timeline stops playing and filling when its parent timeline stops; if you want a child timeline to fill, make sure its parent timeline has a FillBehavior of <xref:System.Windows.Media.Animation.FillBehavior>.      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "지정 하는 값을 가져오거나 설정 합니다. 방법을 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 활성 기간의 끝에 도달 하 게 작동 합니다."
+  remarks: "애니메이션 FillBehavior 속성을 설정 <xref:System.Windows.Media.Animation.FillBehavior>활성 기간의 끝에 도달한 후 해당 값을 유지 하도록 하려는 경우.</xref:System.Windows.Media.Animation.FillBehavior> 에 도달한 활성 기간의 끝은 애니메이션이 FillBehavior로 설정 되어 <xref:System.Windows.Media.Animation.FillBehavior>채우기 기간에 있는 것으로 간주 됩니다.</xref:System.Windows.Media.Animation.FillBehavior> 애니메이션을 활성 기간의 끝에 도달한 후 해당 값을가지고 않도록 하기 <xref:System.Windows.Media.Animation.FillBehavior>.</xref:System.Windows.Media.Animation.FillBehavior> FillBehavior 속성을 설정 합니다.       효과가 없습니다. 대상 속성의 값을 재정의 하는 애니메이션 채우기 기간에을 계속 하기 때문에 처럼 나타날 수 있습니다 다른 수단을 통해 대상 속성의 값을 설정 하려고 합니다. 애니메이션이 적용 된 후 속성 값을 설정 하는 방법을 보여 주는 예제를 참조 하십시오. [하는 방법: 설정는 속성 후 애니메이션에 스토리](~/add/includes/ajax-current-ext-md.md)합니다.       자식 타임 라인을 재생 하 고 해당 부모 타임 라인 멈추면; 채우기 중지 채울 자식 타임 라인을 하려는 경우 해당 부모 타임 라인 <xref:System.Windows.Media.Animation.FillBehavior>안내 하십시오.</xref:System.Windows.Media.Animation.FillBehavior> FillBehavior에 있는지 확인      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.FillBehavior FillBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.FillBehavior
-      description: "A value that specifies how the timeline behaves after it reaches the end of its active period but its parent is inside its active or fill period. The default value is <xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;></xref>."
+      description: "시간 표시 막대의 부모는 활성 활성 기간의 끝에 도달한 후 동작을 지정 하는 값 또는 채우기 기간입니다. 기본값은 <xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.FillBehavior*
   exceptions: []
   platform:
@@ -724,12 +724,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.FillBehavior*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.FillBehavior*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.FillBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty FillBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -745,17 +745,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> unmodifiable or determines whether it can be made unmodifiable."
-  remarks: "Do not call this method directly (except when calling base in an implementation). This method is called internally by <xref:System.Windows.Freezable.Freeze%2A>."
+  summary: "이 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 수정할 수 없게 하거나 설정할 수 있는지 여부를 결정 합니다."
+  remarks: "직접 (제외 경우 기본 구현에서 호출)이이 메서드를 호출 하지 마십시오. 이 메서드는 내부적으로 <xref:System.Windows.Freezable.Freeze%2A>.</xref:System.Windows.Freezable.Freeze%2A>"
   syntax:
     content: protected override bool FreezeCore (bool isChecking);
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to check if this instance can be frozen; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to freeze this instance."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 인스턴스를 고정할 수는 경우를 확인 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 을이 인스턴스의 고정 합니다."
     return:
       type: System.Boolean
-      description: "If <code>isChecking</code> is true, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance can be made read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only.       If <code>isChecking</code> is false, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance is now read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object."
+      description: "경우 <code> isChecking </code> 가 true 이면이 메서드는 반환 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 이 인스턴스를 읽기 전용으로 설정할 수 있으면 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 읽기 전용으로 만들 수 없는 경우.       경우 <code> isChecking </code> 이 false 이면이 메서드는 반환 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 이 인스턴스가 읽기 전용으로 설정 되었으면 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 읽기 전용으로이 개체의 고정된 상태가 변경 되므로 수 없는 경우."
   overload: System.Windows.Media.Animation.Timeline.FreezeCore*
   exceptions: []
   platform:
@@ -772,14 +772,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object."
-  remarks: "When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values. Note that if these properties contain resource references or data bindings, <xref:System.Windows.Freezable.GetAsFrozen%2A> will fail when trying to freeze the object and will throw an <xref:System.InvalidOperationException>.       This method is called by the <xref:System.Windows.Freezable.GetAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetAsFrozen%2A> instead of calling this method directly.       For more information, see <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "이 인스턴스는 지정 된 복제본 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 개체입니다."
+  remarks: "종속성 속성을 복사 하는 경우이 메서드는 리소스 참조와 데이터 바인딩을 복사 (하지만 이러한 요소는 더 이상 확인) 나 하지 않습니다 애니메이션의 현재 값입니다. 이러한 속성에 리소스 참조 또는 데이터 바인딩을 포함 하는 경우 <xref:System.Windows.Freezable.GetAsFrozen%2A>하면 개체를 고정 하 고 <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> 시킵니다</xref:System.Windows.Freezable.GetAsFrozen%2A>       이 메서드는 <xref:System.Windows.Freezable.GetAsFrozen%2A>메서드를 호출 하지 않은 수 사용자 코드에서 직접 제외 하 고이 메서드를 재정의 하는 동안 기본 구현을 호출 하는 경우.</xref:System.Windows.Freezable.GetAsFrozen%2A> 현재 개체의 고정 된 복사본을 만들려면 호출 <xref:System.Windows.Freezable.GetAsFrozen%2A>이 메서드를 직접 호출 하는 대신.</xref:System.Windows.Freezable.GetAsFrozen%2A>       자세한 내용은 <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName> 을 참조 하십시오."
   syntax:
     content: protected override void GetAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> instance to clone."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 인스턴스를 복제 합니다."
   overload: System.Windows.Media.Animation.Timeline.GetAsFrozenCore*
   exceptions: []
   platform:
@@ -796,14 +796,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a frozen clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. Resource references, data bindings, and animations are not copied, but their current values are."
-  remarks: "This method is called by the <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> instead of calling this method directly.       For more information see <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "이 인스턴스는 지정 된 고정된 된 복제본 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다. 리소스 참조, 데이터 바인딩 및 애니메이션은 복사 되지 않지만 이러한 요소의 현재 값은입니다."
+  remarks: "이 메서드는 <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>메서드를 호출 하지 않은 수 사용자 코드에서 직접 제외 하 고이 메서드를 재정의 하는 동안 기본 구현을 호출 하는 경우.</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> 현재 개체의 고정 된 복사본을 만들려면 호출 <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>이 메서드를 직접 호출 하는 대신.</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>       자세한 내용은 <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName> 을 참조 하십시오."
   syntax:
     content: protected override void GetCurrentValueAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to copy and freeze."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 복사 및 고정할 합니다."
   overload: System.Windows.Media.Animation.Timeline.GetCurrentValueAsFrozenCore*
   exceptions: []
   platform:
@@ -820,17 +820,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method provides read access to the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "지정 된 원하는 프레임 속도 가져옵니다 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
+  remarks: "에 대 한 읽기 액세스를 제공 하는이 메서드는 <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>연결 된 속성입니다.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> 자세한 내용은 참조는 <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>페이지.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static Nullable<int> GetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The timeline from which to retrieve the desired frame rate."
+      description: "원하는 프레임 속도 검색할 수 있는 타임 라인입니다."
     return:
       type: System.Nullable{System.Int32}
-      description: "The desired frame rate of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "이 타임 라인의 원하는 프레임 속도입니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.GetDesiredFrameRate*
   exceptions: []
   platform:
@@ -847,17 +847,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method should only be called when the <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property is set to <xref:System.Windows.Duration.Automatic%2A>. If <xref:System.Windows.Media.Animation.Timeline.Duration%2A> is <xref:System.Windows.Duration.Automatic%2A>, the natural duration is determined by that particular class&quot;s implementation of <xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.       If GetNaturalDuration returns <xref:System.Windows.Duration.Automatic%2A>, it means that the natural duration is unknown, which implies a natural duration of <xref:System.Windows.Duration.Forever%2A>. Such is the case for streaming media.       Note that passing this method a clock other than the one that was created for this timeline is possible, but will provide unreliable results."
+  summary: "이 단일 반복 길이 반환 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
+  remarks: "이 메서드는 경우에 호출할 <xref:System.Windows.Media.Animation.Timeline.Duration%2A> <xref:System.Windows.Duration.Automatic%2A>.</xref:System.Windows.Duration.Automatic%2A> 속성</xref:System.Windows.Media.Animation.Timeline.Duration%2A> 경우 <xref:System.Windows.Media.Animation.Timeline.Duration%2A> <xref:System.Windows.Duration.Automatic%2A>자연 지속 시간이 <xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A> 해당 특정 클래스의 구현에 의해 결정 됩니다</xref:System.Windows.Duration.Automatic%2A> ,</xref:System.Windows.Media.Animation.Timeline.Duration%2A>       <xref:System.Windows.Duration.Automatic%2A>자연 지속 시간이 않는 알 수 없음, <xref:System.Windows.Duration.Forever%2A>안내 하십시오.</xref:System.Windows.Duration.Forever%2A> 자연 지속 시간이 의미 있는 것,</xref:System.Windows.Duration.Automatic%2A> GetNaturalDuration 반환 하는 경우 이 스트리밍 미디어에 있습니다.       이때가 타임이 라인에 대해 생성 된 것과 다른 클록이이 메서드에 전달은 가능 하지만 신뢰할 수 없는 결과 제공 합니다."
   syntax:
     content: protected System.Windows.Duration GetNaturalDuration (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 대해 만들어진 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "이 단일 반복 길이 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>, 또는 <xref:System.Windows.Duration.Automatic*>자연 지속 시간이 알 수 없는 경우.</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDuration*
   exceptions: []
   platform:
@@ -874,17 +874,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>."
-  remarks: "This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> and should not be called directly from your code. Use <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> instead."
+  summary: "이 단일 반복 길이 반환 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다. 이 메서드는 <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*> 에 대 한 구현을 제공합니다"
+  remarks: "이 메서드는에 대 한 구현을 제공 <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>이며 사용자 코드에서 직접 호출할 수 없습니다.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> 사용 하 여 <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>대신.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>"
   syntax:
     content: protected virtual System.Windows.Duration GetNaturalDurationCore (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> 이 대해 만들어진 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "이 단일 반복 길이 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>, 또는 <xref:System.Windows.Duration.Automatic*>자연 지속 시간이 알 수 없는 경우.</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDurationCore*
   exceptions: []
   platform:
@@ -901,12 +901,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the name of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+  summary: "이의 이름을 가져오거나 설정 합니다. <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "The name of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "이 타임 라인의 이름입니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Media.Animation.Timeline.Name*
   exceptions: []
   platform:
@@ -923,12 +923,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Name*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.Name*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.Name*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty NameProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -944,13 +944,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the clock created for this timeline or one of its parent timelines is removed."
-  remarks: "This event is raised by applying a <xref:System.Windows.Media.Animation.RemoveStoryboard> action to a storyboard, using a Storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.Remove%2A> method, or (when working directly with clocks) calling the <xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> method.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "클록이 타임이 라인에 대 한 생성 되거나 해당 부모 타임 라인 중 하나를 제거 될 때 발생 합니다."
+  remarks: "적용 하 여이 이벤트는 발생 한 <xref:System.Windows.Media.Animation.RemoveStoryboard>는 스토리 보드를 사용 하 여 스토리 보드에 작업 <xref:System.Windows.Media.Animation.Storyboard.Remove%2A>메서드를 (직접 작업할 때는 시계) 또는 호출의 <xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName>메서드.</xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Storyboard.Remove%2A> </xref:System.Windows.Media.Animation.RemoveStoryboard>       이 이벤트 처리기는 시간 표시 막대와 연결할 보이지만 실제로을 등록 된 <xref:System.Windows.Media.Animation.Clock>이 타임 라인에 대해 생성.</xref:System.Windows.Media.Animation.Clock>  자세한 내용은 참조는 [타이밍 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public event EventHandler RemoveRequested;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -966,13 +966,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the repeating behavior of this timeline."
-  remarks: "If an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> is specified and the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property is set to `true`, a single repetition consists of one forward iteration and one backward iteration. A timeline with an <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property set to true an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forwards, then backwards, then forwards again, and then backwards again.       Instead of specifying the number of times a timeline plays, you can also specify the total length of time you want the timeline to play. For a timeline to repeat, this <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> value should be greater than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. For example, a timeline with a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 2 seconds and a <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> of 4 seconds will play twice. If the <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> is less than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>, the timeline&quot;s active period is cut short.       For more information about repeating timelines, see [Animation Overview](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "이 타임 라인의 반복 동작을 가져오거나 설정 합니다."
+  remarks: "반복 하는 경우 <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>지정 및 타임 라인의 <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>속성이로 설정 되어 `true`, 단일 반복 정방향 반복 및 이전 버전과 반복 하나 구성 됩니다.</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> 으로 시간대는 <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>속성 반복을 true로 설정 <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>2 재생 앞으로, 다음 이전 버전과 호환성 다시 차례로 뒤로 다시.</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> </xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>       타임 라인을 수행 하는 횟수를 지정 하지 않고 시간 표시 막대를 재생 하려면의 총 길이 지정할 수 있습니다. 반복이 <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>값은 타임 라인의 <xref:System.Windows.Media.Animation.Timeline.Duration%2A>.</xref:System.Windows.Media.Animation.Timeline.Duration%2A> 보다 커야</xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> 에 대 한 예를 들어으로 시간대는 <xref:System.Windows.Media.Animation.Timeline.Duration%2A>2 초의 및 <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>4 시간 (초)을 두 번 재생.</xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Timeline.Duration%2A> 경우는 <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>타임 라인의 보다 작으면 <xref:System.Windows.Media.Animation.Timeline.Duration%2A>, 타임 라인의 활성 기간 관리가 중단 됩니다.</xref:System.Windows.Media.Animation.Timeline.Duration%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>       타임 라인을 반복 하는 방법에 대 한 자세한 내용은 참조 [애니메이션 개요](~/add/includes/ajax-current-ext-md.md)합니다.      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.RepeatBehavior RepeatBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "An iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> that specifies the number of times the timeline should play, a <xref:System.TimeSpan> value that specifies the total the length of this timeline&quot;s active period, or the special value <xref:System.Windows.Media.Animation.RepeatBehavior.Forever*>, which specifies that the timeline should repeat indefinitely. The default value is a <xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;></xref> with a <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> of `1`, which indicates that the timeline plays once."
+      description: "반복 <> </> *>는 타임 라인이 재생 되어야 하는 횟수를 지정 하는 <xref:System.TimeSpan>총이 타임이 라인의 활성 기간을 지정 하는 값 또는 특수 값 <> </> *>, 시간 표시 막대 무기한 반복 되도록 지정 하는.</xref:System.TimeSpan> 기본값은 한 <xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;> </xref> 와 <xref:System.Windows.Media.Animation.RepeatBehavior.Count*>의 `1`, 타임 라인을 한 번 재생 나타냅니다.</xref:System.Windows.Media.Animation.RepeatBehavior.Count*>"
   overload: System.Windows.Media.Animation.Timeline.RepeatBehavior*
   exceptions: []
   platform:
@@ -989,12 +989,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty RepeatBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1010,17 +1010,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Sets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method sets the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "원하는 프레임 속도 지정 된 설정 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
+  remarks: "이 메서드는 설정의 <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>연결 된 속성입니다.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> 자세한 내용은 참조는 <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>페이지.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static void SetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline, Nullable<int> desiredFrameRate);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to which `desiredFrameRate` is assigned."
+      description: "<xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> 있는 `desiredFrameRate` 할당 됩니다."
     - id: desiredFrameRate
       type: System.Nullable{System.Int32}
-      description: "The maximum number of frames this timeline should generate each second, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the system should control the number of frames."
+      description: "이 타임 라인에는 매 초 마다 생성 해야 하는 프레임 수가 최대 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 시스템 프레임 수를 제어 하는 경우."
   overload: System.Windows.Media.Animation.Timeline.SetDesiredFrameRate*
   exceptions: []
   platform:
@@ -1037,20 +1037,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the rate, relative to its parent, at which time progresses for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "A timeline&quot;s SpeedRatio setting does not have an effect on its <xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; that time is relative to the timeline&quot;s parent or, if the timeline is a root timeline, the moment at which the timeline&quot;s clock was begun.       If <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> are specified, this SpeedRatio is the average ratio over the natural length of the timeline.      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "이 대 한 진행에 부모에 상대적인 속도 가져오거나 <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>합니다."
+  remarks: "타임 라인의 동안 설정 영향을 준 것 해당 <xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; 해당 시간은 시간 표시 막대의 부모에 상대적인 또는 타임 라인이 루트 타임 라인인 타임 라인의 클록을 시작 하는 순간.</xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>       경우 <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>또는 <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>이 동안 타임 라인의 기본 길이 대 한 평균 비율이 지정 됩니다.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>"
   example:
   - "A timeline's SpeedRatio property controls its rate of progress, relative to its parent. If the timeline is a root, its <xref:System.Windows.Media.MediaPlayer.SpeedRatio%2A> is relative to the default timeline speed. The following example shows several timelines with different SpeedRatio settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_SpeedExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/SpeedExample.xaml#_graphicsmm_speedexamplewholepage)]"
   syntax:
     content: public double SpeedRatio { get; set; }
     return:
       type: System.Double
-      description: "A finite value greater than 0 that describes the rate at which time progresses for this timeline, relative to the speed of the timeline&quot;s parent or, if this is a root timeline, the default timeline speed. The default value is 1."
+      description: "시간 표시 막대의 부모의 속도 기준으로이 타임 라인에 대 한 진행 속도 설명 하는 0 보다 큰 유한 값 또는 기본 시간 표시 막대 속도 루트 타임 라인인 경우입니다. 기본값은 1입니다."
   overload: System.Windows.Media.Animation.Timeline.SpeedRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "SpeedRatio is less than 0 or is not a finite value."
+    description: "동안이 0 보다 작은 또는 무한 값이 아닙니다."
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.SpeedRatioProperty
@@ -1065,12 +1065,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.SpeedRatio*> dependency property."
+  summary: "에 대 한 식별 된 <xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>종속성 속성입니다.</xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SpeedRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

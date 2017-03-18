@@ -16,8 +16,8 @@ items:
   nameWithType: CacheItemPolicy
   fullName: System.Runtime.Caching.CacheItemPolicy
   type: Class
-  summary: "Represents a set of eviction and expiration details for a specific cache entry."
-  remarks: "A CacheItemPolicy instance contains information that can be associated with a cache entry. For example, when a cache entry is about to be removed from the cache, a <xref:System.Runtime.Caching.CacheEntryUpdateArguments> object is passed to a callback method. The <xref:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItemPolicy%2A> property of the <xref:System.Runtime.Caching.CacheEntryUpdateArguments> object can pass a reference to a CacheItemPolicy instance that can include eviction and expiration details about the cache entry.       Some methods in the <xref:System.Runtime.Caching.MemoryCache> and <xref:System.Runtime.Caching.ObjectCache> classes accept a CacheItemPolicy instance to describe eviction or expiration policy."
+  summary: "특정 캐시 항목에 대 한 세부 정보를 제거 및 만료의 집합을 나타냅니다."
+  remarks: "CacheItemPolicy 인스턴스에 캐시 항목에 연결 될 수 있는 정보를 포함 합니다. 예를 들어 때 캐시 항목은 캐시에서 제거 하려는 <xref:System.Runtime.Caching.CacheEntryUpdateArguments>개체를 콜백 메서드에 전달 됩니다.</xref:System.Runtime.Caching.CacheEntryUpdateArguments> <xref:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItemPolicy%2A>의 속성은 <xref:System.Runtime.Caching.CacheEntryUpdateArguments>개체는 캐시 엔트리에 대 한 세부 정보를 제거 및 만료를 포함할 수 있는 CacheItemPolicy 인스턴스에 대 한 참조를 전달할 수 있습니다.</xref:System.Runtime.Caching.CacheEntryUpdateArguments> </xref:System.Runtime.Caching.CacheEntryUpdateArguments.UpdatedCacheItemPolicy%2A>       일부 메서드는 <xref:System.Runtime.Caching.MemoryCache>및 <xref:System.Runtime.Caching.ObjectCache>제거 또는 만료 정책을 설명 하기 위해 CacheItemPolicy 인스턴스를 적용 하는 클래스입니다.</xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.MemoryCache>"
   example:
   - "The following example shows how to create an in-memory cache item that monitors the path for a text file. The cache creates a CacheItemPolicy object and sets the <xref:System.Runtime.Caching.CacheItemPolicy.AbsoluteExpiration%2A> property to evict the cache after 60 seconds.  \n  \n [Visual Basic]  \n  \n```  \nProtected Sub Button1_Click(ByVal sender As Object, _  \n            ByVal e As System.EventArgs) Handles Button1.Click  \n    Dim cache As ObjectCache = MemoryCache.Default  \n    Dim fileContents As String = TryCast(cache(\"filecontents\"), _  \n            String)  \n    If fileContents Is Nothing Then  \n        Dim policy As New CacheItemPolicy()  \n        policy.AbsoluteExpiration = _  \n            DateTimeOffset.Now.AddSeconds(60.0)  \n        Dim filePaths As New List(Of String)()  \n     Dim cachedFilePath As String = Server.MapPath(\"~\") & _  \n         \"\\cacheText.txt\"  \n        filePaths.Add(cachedFilePath)  \n        policy.ChangeMonitors.Add(New _  \n            HostFileChangeMonitor(filePaths))  \n  \n        ' Fetch the file contents.  \n        fileContents = File.ReadAllText(cachedFilePath)  \n        cache.Set(\"filecontents\", fileContents, policy)  \n    End If  \n    Label1.Text = fileContents  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \nprotected void Button1_Click(object sender, EventArgs e)  \n    {  \n        ObjectCache cache = MemoryCache.Default;  \n            string fileContents = cache[\"filecontents\"] as string;  \n            if (fileContents == null)  \n            {  \n                CacheItemPolicy policy = new CacheItemPolicy();  \n                policy.AbsoluteExpiration =   \n                    DateTimeOffset.Now.AddSeconds(60.0);  \n  \n                List<string> filePaths = new List<string>();  \n             string cachedFilePath = Server.MapPath(\"~\") +   \n                 \"\\\\cacheText.txt\";  \n             filePaths.Add(cachedFilePath);  \n  \n                policy.ChangeMonitors.Add(new   \n                    HostFileChangeMonitor(filePaths));  \n  \n                // Fetch the file contents.  \n                fileContents = File.ReadAllText(cachedFilePath);  \n  \n                cache.Set(\"filecontents\", fileContents, policy);  \n  \n            }  \n  \n            Label1.Text = fileContents;  \n        }  \n```"
   syntax:
@@ -40,7 +40,7 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Caching.CacheItemPolicy&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Runtime.Caching.CacheItemPolicy&quot;> </xref> 클래스입니다."
   syntax:
     content: public CacheItemPolicy ();
     parameters: []
@@ -60,12 +60,12 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets a value that indicates whether a cache entry should be evicted after a specified duration."
+  summary: "지정한 기간 후 캐시 엔트리를 제거 해야 하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
   syntax:
     content: public DateTimeOffset AbsoluteExpiration { get; set; }
     return:
       type: System.DateTimeOffset
-      description: "The period of time that must pass before a cache entry is evicted. The default value is <xref href=&quot;System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration&quot;></xref>, meaning that the entry does not expire."
+      description: "시간에 캐시 엔트리를 제거 하기 전에 경과 해야 하는 기간입니다. 기본값은 <xref href=&quot;System.Runtime.Caching.ObjectCache.InfiniteAbsoluteExpiration&quot;> </xref>, 항목이 만료 되지 않는 의미 합니다."
   overload: System.Runtime.Caching.CacheItemPolicy.AbsoluteExpiration*
   exceptions: []
   platform:
@@ -82,13 +82,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets a collection of <xref href=&quot;System.Runtime.Caching.ChangeMonitor&quot;></xref> objects that are associated with a cache entry."
-  remarks: "You can add to or remove change monitors that are associated with a cache entry. However, the set of change monitors must be complete before you pass a <xref:System.Runtime.Caching.CacheItemPolicy> instance to an <xref:System.Runtime.Caching.ObjectCache> implementation. If you change the set of change monitors on a <xref:System.Runtime.Caching.CacheItemPolicy> object after the <xref:System.Runtime.Caching.CacheItemPolicy> object has been passed to an <xref:System.Runtime.Caching.ObjectCache> implementation, the changes have no effect."
+  summary: "컬렉션을 가져옵니다 <xref href=&quot;System.Runtime.Caching.ChangeMonitor&quot;> </xref> 캐시 항목과 연결 된 개체입니다."
+  remarks: "에 추가 하거나 캐시 항목과 연결 된 변경 모니터를 제거할 수 있습니다. 그러나 변경 모니터 집합 완료 해야 전달 하기 전에 <xref:System.Runtime.Caching.CacheItemPolicy>인스턴스는 <xref:System.Runtime.Caching.ObjectCache>구현.</xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.CacheItemPolicy> 에 변경 모니터 집합을 변경 하는 경우는 <xref:System.Runtime.Caching.CacheItemPolicy>후 개체는 <xref:System.Runtime.Caching.CacheItemPolicy>에 전달 된 개체는 <xref:System.Runtime.Caching.ObjectCache>구현 변경 해도 효과가 없습니다.</xref:System.Runtime.Caching.ObjectCache> </xref:System.Runtime.Caching.CacheItemPolicy> </xref:System.Runtime.Caching.CacheItemPolicy>"
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.Runtime.Caching.ChangeMonitor> ChangeMonitors { get; }
     return:
       type: System.Collections.ObjectModel.Collection{System.Runtime.Caching.ChangeMonitor}
-      description: "A collection of change monitors. The default is an empty collection."
+      description: "컬렉션 변경 모니터입니다. 기본값은 빈 컬렉션입니다."
   overload: System.Runtime.Caching.CacheItemPolicy.ChangeMonitors*
   exceptions: []
   platform:
@@ -105,13 +105,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets a priority setting that is used to determine whether to evict a cache entry."
-  remarks: "In ASP.NET, the priority enumeration only has two possible priorities: <xref:System.Runtime.Caching.CacheItemPriority> (which means no priority), and <xref:System.Runtime.Caching.CacheItemPriority> (which means the entry cannot be removed). Therefore, the only priority that can be set is whether a cache entry should remain in the cache forever.      > [!IMPORTANT] >  Adding an entry to the cache with a priority level of <xref:System.Runtime.Caching.CacheItemPriority> can cause the cache to overflow with entries that can never be removed. Cache implementations should set the <xref:System.Runtime.Caching.CacheItemPriority> priority for a cache entry only if the cache implementation provides ways to evict entries from the cache and to manage the number of cache entries."
+  summary: "캐시 엔트리를 제거할지 여부를 결정 하는 데 사용 되는 우선 순위 설정을 가져오거나 설정 합니다."
+  remarks: "Asp.net에서는 우선 순위 열거형에만 두 개의 가능한 우선 순위: <xref:System.Runtime.Caching.CacheItemPriority>(우선 순위가 없음을 뜻함)을 및 <xref:System.Runtime.Caching.CacheItemPriority>(즉, 항목을 제거할 수 없습니다).</xref:System.Runtime.Caching.CacheItemPriority> </xref:System.Runtime.Caching.CacheItemPriority> 따라서 설정할 수 있는 유일한 우선 순위는 캐시 항목이 캐시에 영원히 유지 해야 하는지 여부를 합니다.      > [!IMPORTANT] >의 우선 순위 수준 사용 하는 캐시에 항목 추가 <xref:System.Runtime.Caching.CacheItemPriority>수 있는 항목을 사용한 오버플로 캐시가 될 수 있습니다.</xref:System.Runtime.Caching.CacheItemPriority> 캐시 구현 설정할지는 <xref:System.Runtime.Caching.CacheItemPriority>캐시에서 항목을 제거 하 고 캐시 항목 수를 관리 하는 방법을 제공 하는 경우에 캐시 항목에 대 한 우선 순위.</xref:System.Runtime.Caching.CacheItemPriority>"
   syntax:
     content: public System.Runtime.Caching.CacheItemPriority Priority { get; set; }
     return:
       type: System.Runtime.Caching.CacheItemPriority
-      description: "One of the enumeration values that indicates the priority for eviction. The default priority value is <xref href=&quot;System.Runtime.Caching.CacheItemPriority&quot;></xref>, which means no priority."
+      description: "제거에 대 한 우선 순위를 나타내는 열거형 값 중 하나입니다. 기본 우선 순위 값은 <xref href=&quot;System.Runtime.Caching.CacheItemPriority&quot;> </xref>, 우선 순위가 없음을 의미 합니다."
   overload: System.Runtime.Caching.CacheItemPolicy.Priority*
   exceptions: []
   platform:
@@ -128,13 +128,13 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets a reference to a <xref href=&quot;System.Runtime.Caching.CacheEntryRemovedCallback&quot;></xref> delegate that is called after an entry is removed from the cache."
-  remarks: "After a cache entry has been removed from the cache, the cache invokes the callback object that is referenced by the RemovedCallback property. A cache implementation can use this callback to notify the calling method that a cache entry has been removed."
+  summary: "에 대 한 참조를 가져오거나는 <xref href=&quot;System.Runtime.Caching.CacheEntryRemovedCallback&quot;> </xref> 항목이 캐시에서 제거 된 후 호출 되는 대리자입니다."
+  remarks: "캐시에서 캐시 엔트리를 제거한 후 캐시 RemovedCallback 속성에서 참조 되는 콜백 개체를 호출 합니다. 캐시를 구현 하는 캐시 엔트리가 제거 되었습니다 호출 하는 메서드를 알리려면이 콜백을 사용 수 합니다."
   syntax:
     content: public System.Runtime.Caching.CacheEntryRemovedCallback RemovedCallback { get; set; }
     return:
       type: System.Runtime.Caching.CacheEntryRemovedCallback
-      description: "A reference to a delegate that is called by a cache implementation."
+      description: "캐시 구현에 의해 호출 되는 대리자에 대 한 참조입니다."
   overload: System.Runtime.Caching.CacheItemPolicy.RemovedCallback*
   exceptions: []
   platform:
@@ -151,12 +151,12 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets a value that indicates whether a cache entry should be evicted if it has not been accessed in a given span of time."
+  summary: "시간의 지정 된 범위에 액세스 하지 않은 경우는 캐시 엔트리를 제거 해야 하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
   syntax:
     content: public TimeSpan SlidingExpiration { get; set; }
     return:
       type: System.TimeSpan
-      description: "A span of time within which a cache entry must be accessed before the cache entry is evicted from the cache. The default is <xref href=&quot;System.Runtime.Caching.ObjectCache.NoSlidingExpiration&quot;></xref>, meaning that the item should not be expired based on a time span."
+      description: "캐시 항목에 액세스 해야 캐시 엔트리를 캐시에서 제거 하기 전에 시간 범위입니다. 기본값은 <xref href=&quot;System.Runtime.Caching.ObjectCache.NoSlidingExpiration&quot;> </xref>의미 하는 시간 범위에 따라 항목이 만료 되지 않아야 합니다."
   overload: System.Runtime.Caching.CacheItemPolicy.SlidingExpiration*
   exceptions: []
   platform:
@@ -173,12 +173,12 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching
-  summary: "Gets or sets a reference to a <xref href=&quot;System.Runtime.Caching.CacheEntryUpdateCallback&quot;></xref> delegate that is called before a cache entry is removed from the cache."
+  summary: "에 대 한 참조를 가져오거나는 <xref href=&quot;System.Runtime.Caching.CacheEntryUpdateCallback&quot;> </xref> 캐시 항목이 캐시에서 제거 되기 전에 호출 되는 대리자입니다."
   syntax:
     content: public System.Runtime.Caching.CacheEntryUpdateCallback UpdateCallback { get; set; }
     return:
       type: System.Runtime.Caching.CacheEntryUpdateCallback
-      description: "A reference to a delegate that is called by a cache implementation."
+      description: "캐시 구현에 의해 호출 되는 대리자에 대 한 참조입니다."
   overload: System.Runtime.Caching.CacheItemPolicy.UpdateCallback*
   exceptions: []
   platform:

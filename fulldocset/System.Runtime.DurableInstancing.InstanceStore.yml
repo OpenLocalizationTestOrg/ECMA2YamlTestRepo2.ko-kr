@@ -30,8 +30,8 @@ items:
   nameWithType: InstanceStore
   fullName: System.Runtime.DurableInstancing.InstanceStore
   type: Class
-  summary: "Represents an instance store."
-  remarks: "A persistence provider provides access to an instance store through a concrete implementation of the InstanceStore class.       Persistence providers may call InstanceHandle.Free on handles passed to TryCommand, even after the command has finished executing. But persistence providers must not hold strong references to InstanceHandle or InstanceOwner objects, as this can prevent InstanceStore from being garbage collected.      > [!WARNING] >  Workflow definitions for persisted workflows cannot be changed. If a workflow definition is changed after it is persisted, the workflow runtime will crash when the workflow is reloaded."
+  summary: "인스턴스 저장소를 나타냅니다."
+  remarks: "지 속성 공급자는 InstanceStore 클래스의 구체적인 구현을 통해 인스턴스 저장소에 대 한 액세스를 제공합니다.       지 속성 공급자는 명령 실행을 마친 후에 TryCommand에 전달 된 핸들에서 InstanceHandle.Free를 호출할 수 있습니다. 하지만 이렇게 하면 InstanceStore 가비지 수집 되지 않도록 방지할 수 대로 지 속성 공급자를 강력한 가져야 합니다. InstanceHandle 또는 InstanceOwner 개체를 참조 합니다.      > [!WARNING] > 지속형된 워크플로에 대 한 워크플로 정의 변경할 수 없습니다. 워크플로 정의 유지 된 후 변경 되 면 워크플로 런타임은 워크플로가 다시 로드할 때 작동이 중단 됩니다."
   syntax:
     content: public abstract class InstanceStore
   inheritance:
@@ -52,7 +52,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;></xref> class."
+  summary: "인스턴스를 초기화는 <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;> </xref> 클래스입니다."
   syntax:
     content: protected InstanceStore ();
     parameters: []
@@ -72,29 +72,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Asynchronously executes persistence commands such as <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>."
-  remarks: "A host calls the BeginExecute method to execute a persistence command against an instance handle asynchronously. The host obtains the instance handle by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time."
+  summary: "등을 지 속성 명령을 비동기적으로 실행 <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> 및 <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>합니다."
+  remarks: "호스트는 인스턴스 핸들에 대해 지 속성 명령을 비동기적으로 실행 하는 BeginExecute 메서드를 호출 합니다. 호스트를 호출 하 여 인스턴스 핸들을 가져옵니다는 <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>메서드.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> 인스턴스 핸들이 인스턴스, 인스턴스 소유자 또는 인스턴스 잠금과 같은 명령 주체 및 컨텍스트를 나타내는 엔터티에 바인딩할 수 있습니다.  하나의 명령이 한 번에 인스턴스 핸들에 대해 실행 될 수 있습니다."
   syntax:
     content: public IAsyncResult BeginExecute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "인스턴스 핸들입니다."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "실행할 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "명령 실행에 대 한 제한 시간 값입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "비동기 작업의 완료에 대 한 알림을 수신 하는 비동기 콜백 대리자입니다."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "상태 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "비동기 작업의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginExecute*
   exceptions: []
   platform:
@@ -111,29 +111,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed. If the command can be executed, executes the command asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the InstancePersistenceContext to provide the results of the command.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "지 속성 공급자는 특정 지 속성 명령을 실행할 수 있는지 여부를 결정 하는이 메서드를 구현 합니다. 명령을 실행할 수는 명령을 비동기적으로 실행 합니다."
+  remarks: "명령, 실행할 수 있으면 지 속성 공급자 명령의 결과 제공 하는 InstancePersistenceContext에서 관련 메서드를 호출 합니다.      > [!WARNING] >으로이 메서드를 선언 하는 경우에 `virtual` 대신 `abstract`, 구현은 없습니다. 기능을 제공 하기 위해이 메서드를 재정의 해야 합니다."
   syntax:
     content: protected virtual IAsyncResult BeginTryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "인스턴스 컨텍스트입니다."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "실행할 지 속성 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "명령 실행에 대 한 제한 시간 값입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "비동기 작업의 완료에 대 한 알림을 수신 하는 비동기 콜백 대리자입니다."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "상태 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "비동기 작업의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginTryCommand*
   exceptions: []
   platform:
@@ -150,25 +150,25 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begins an asynchronous operation to listen for any events raised by the instance store for a specific instance handle."
+  summary: "특정 인스턴스 핸들에 대 한 인스턴스 저장소에서 발생 한 이벤트 수신 대기 하는 비동기 작업을 시작 합니다."
   syntax:
     content: public IAsyncResult BeginWaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "인스턴스 핸들입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the operation times out."
+      description: "작업 시간이 초과 되는 기간입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called after the asynchronous operation is complete."
+      description: "비동기 작업이 완료 된 후 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An object containing the state information associated with the asynchronous operation."
+      description: "비동기 작업과 연결 된 상태 정보를 포함 하는 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "Returns an <xref:System.IAsyncResult> object.."
+      description: "<xref:System.IAsyncResult>개체..</xref:System.IAsyncResult> 를 반환 함"
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*
   exceptions: []
   platform:
@@ -185,13 +185,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle."
+  summary: "인스턴스 핸들을 만듭니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "인스턴스 핸들입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle.  If the DefaultInstanceOwner is set, the value is automatically bound as the new handle’s instance owner.  The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "인스턴스 핸들을 만듭니다.  DefaultInstanceOwner가 설정 값은 자동으로 새 핸들의 인스턴스 소유자로 바인딩됩니다.  매개 변수로 전달 된 인스턴스 식별자는 자동으로 새 핸들의 인스턴스로 바인딩됩니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (Guid instanceId);
     parameters:
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "인스턴스 식별자입니다. Guid.empty가 아니어야 합니다."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "인스턴스 핸들입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -234,16 +234,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.)"
+  summary: "인스턴스 핸들을 만듭니다. 매개 변수로 전달 된 인스턴스 소유자는 null이 아니면 값은 자동으로 새 핸들의 인스턴스 소유자로 바인딩됩니다.  (그렇지 않은 경우 인스턴스 소유자가 바인딩되지 않습니다 DefaultInstanceOwner가 설정 하는 경우에.)"
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The owner of an instance."
+      description: "인스턴스 소유자입니다."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle. A null value indicates that the new handle should not be automatically bound to an instance owner."
+      description: "인스턴스 핸들입니다. Null 값을 새 핸들 자동으로 바인딩되지 않아야 인스턴스 소유자에 나타냅니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -260,19 +260,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.) The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "인스턴스 핸들을 만듭니다. 매개 변수로 전달 된 인스턴스 소유자는 null이 아니면 값은 자동으로 새 핸들의 인스턴스 소유자로 바인딩됩니다.  (그렇지 않은 경우 인스턴스 소유자가 바인딩되지 않습니다 DefaultInstanceOwner가 설정 하는 경우에.) 매개 변수로 전달 된 인스턴스 식별자는 자동으로 새 핸들의 인스턴스로 바인딩됩니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner, Guid instanceId);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An InstanceOwner object  that represents the owner of an instance. Pass null as the value for this parameter to indicate that the new handle should not be automatically bound to an instance owner."
+      description: "인스턴스 소유자를 나타내는 InstanceOwner 개체입니다. 이 매개 변수를 나타내는 새 핸들 자동으로 바인딩되지 않아야 인스턴스 소유자에 대 한 값으로 null을 전달 합니다."
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "인스턴스 식별자입니다. Guid.empty가 아니어야 합니다."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "인스턴스 핸들입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -289,13 +289,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets or sets the default instance owner."
-  remarks: "Some hosts infer the instance owner to use by reading this property. WorkflowApplication can use this property. WorkflowServiceHost does not use this property.       The DefaultInstanceOwner propery must be set to null when it is no longer necessary. InstanceStore objects might not be garbage collected if DefaultInstanceOwner is not null.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "기본 인스턴스 소유자를 가져오거나 설정 합니다."
+  remarks: "일부 호스트는이 속성을 읽어 사용할 인스턴스 소유자를 유추 합니다. WorkflowApplication이이 속성을 사용할 수 있습니다. WorkflowServiceHost에서이 속성을 사용 하지 않습니다.       DefaultInstanceOwner 속성은 더 이상 필요한 경우 null로 설정 되어야 합니다. InstanceStore 개체가 가비지 수집 DefaultInstanceOwner null이 아닐 수 있습니다.      > [!WARNING] >으로이 메서드를 선언 하는 경우에 `virtual` 대신 `abstract`, 구현은 없습니다. 기능을 제공 하기 위해이 메서드를 재정의 해야 합니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceOwner DefaultInstanceOwner { get; set; }
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The default instance owner."
+      description: "기본 인스턴스 소유자입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.DefaultInstanceOwner*
   exceptions: []
   platform:
@@ -312,17 +312,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation."
-  remarks: "If BeginExecute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed."
+  summary: "비동기 작업을 종료 합니다."
+  remarks: "트랜잭션에서 BeginExecute가 호출 하는 경우이 상태는 커밋되지 않은 데이터를 포함할 수 있습니다. 트랜잭션이 성공적으로 커밋되면 InstanceView 개체로 간주할 수의 데이터는 커밋된 합니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView EndExecute (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "작업의 결과입니다."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object  representing the known state of the instance after the successful completion of the command."
+      description: "명령이 완료 된 후 인스턴스의 알려진된 상태를 나타내는 InstanceView 개체입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndExecute*
   exceptions: []
   platform:
@@ -339,7 +339,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends an asynchronous operation."
+  summary: "비동기 작업을 끝냅니다."
   remarks: >-
     > [!WARNING]
 
@@ -349,10 +349,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "작업의 결과입니다."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return false if it doesn’t support the command passed to the BeginTryCommand method. Otherwise it should return true or throw an exception."
+      description: "지 속성 공급자 구현에서는 BeginTryCommand 메서드에 전달 된 명령을 지원 하지 않을 경우 false를 반환 해야 합니다. 그렇지 않으면 true를 반환 하거나 예외를 throw 해야 합니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndTryCommand*
   exceptions: []
   platform:
@@ -369,16 +369,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation initiated by the <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*> method."
+  summary: "시작 된 비동기 작업을 종료 하는 <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>메서드.</xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>"
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> EndWaitForEvents (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "An IAsyncResult object that was handed over to the client by the Begin method."
+      description: "Begin 메서드에 의해 클라이언트에 전달 된 IAsyncResult 개체."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "Returns a list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "목록을 반환 <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> 개체..."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndWaitForEvents*
   exceptions: []
   platform:
@@ -395,23 +395,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: 'Executes a persistence command synchronously. Examples of persistence commands are: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>.'
-  remarks: "A host calls the Execute method to execute a persistence command against an instance handle, which the host obtains by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time.      > [!WARNING] >  If this method is executed with a <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, it will create an <xref:System.Runtime.DurableInstancing.InstanceOwner> and bind it to the instance. This means that no other process will be able to access that workflow; if the process ends, the workflow cannot be recovered or executed. If such a workflow is executed again, a <xref:System.Runtime.DurableInstancing.InstanceLockedException> will be thrown.   >    >  If <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> is not used, the instance store will create a temporary <xref:System.Runtime.DurableInstancing.InstanceOwner> that will be deleted at the end of the process. However, if the process ends before the workflow’s final persistence point, this exception will be thrown, unless the period of time specified in the **HostLockRenewalPeriod** parameter has expired."
+  summary: '지 속성 명령을 동기적으로 실행 합니다. 지 속성 명령의 예로: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> 및 <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>합니다.'
+  remarks: "호출 하 여 가져오고 호스트는 인스턴스 핸들에 대해 지 속성 명령을 실행 하려면 Execute 메서드를 호출 하는 호스트는 <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>메서드.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> 인스턴스 핸들이 인스턴스, 인스턴스 소유자 또는 인스턴스 잠금과 같은 명령 주체 및 컨텍스트를 나타내는 엔터티에 바인딩할 수 있습니다.  하나의 명령이 한 번에 인스턴스 핸들에 대해 실행 될 수 있습니다.      > [!WARNING] >으로이 메서드를 실행 한 <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, 만들어집니다는 <xref:System.Runtime.DurableInstancing.InstanceOwner>인스턴스에 바인딩합니다.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> 다른 프로세스가 해당 워크플로;에 액세스할 수 됩니다. 프로세스가 종료 되 면 워크플로 복구 하거나 실행할 수 없습니다. 워크플로 다시 실행 되는 경우는 <xref:System.Runtime.DurableInstancing.InstanceLockedException>throw 됩니다.</xref:System.Runtime.DurableInstancing.InstanceLockedException>   >> If <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>은 사용 하지 않을 경우 인스턴스 저장소 만들어집니다. 임시 <xref:System.Runtime.DurableInstancing.InstanceOwner>하는 프로세스의 끝에 삭제 됩니다.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> 그러나 프로세스 워크플로의 마지막 지 속성 지점 앞으로 끝나는 경우이 예외가 throw 됩니다, 시간에 지정 된 경우는 **HostLockRenewalPeriod** 매개 변수 만료 되었습니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView Execute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "인스턴스 핸들입니다."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "실행할 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the operation."
+      description: "작업에 대 한 제한 시간 값입니다."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object representing the known state of the instance after the successful completion of the command.  If Execute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed"
+      description: "명령이 완료 된 후 인스턴스의 알려진된 상태를 나타내는 InstanceView 개체입니다.  트랜잭션 내에서 Execute를 호출 하는 경우이 상태는 커밋되지 않은 데이터를 포함할 수 있습니다. 트랜잭션이 성공적으로 커밋되면 InstanceView 개체로 간주할 수의 데이터는 커밋된"
   overload: System.Runtime.DurableInstancing.InstanceStore.Execute*
   exceptions: []
   platform:
@@ -428,16 +428,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets all the signaled events bound to an <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object."
+  summary: "신호를 받은 이벤트에 바인딩된 모든 가져옵니다는 <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> 개체입니다."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstancePersistenceEvent[] GetEvents (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object representing the owner of an instance."
+      description: "<xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> 인스턴스의 소유자를 나타내는 개체입니다."
     return:
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent[]
-      description: "Returns an array of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "배열을 반환 <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> 개체..."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetEvents*
   exceptions: []
   platform:
@@ -454,14 +454,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets each InstanceOwner object that is bound to a valid instance handle or has not been garbage collected."
-  remarks: "Returns an array of InstanceOwner objects."
+  summary: "유효한 인스턴스 핸들에 바인딩되거나 가비지 수집 되지 않았지만 각 InstanceOwner 개체를 가져옵니다."
+  remarks: "InstanceOwner 개체 배열을 반환합니다."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstanceOwner[] GetInstanceOwners ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner[]
-      description: "The owner of the instance."
+      description: "인스턴스 소유자입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetInstanceOwners*
   exceptions: []
   platform:
@@ -478,16 +478,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when an instance handle is freed."
+  summary: "인스턴스 핸들이 해제 될 때 호출 됩니다."
   syntax:
     content: protected virtual void OnFreeInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle, object userContext);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that was freed."
+      description: "해제 된 인스턴스 핸들입니다."
     - id: userContext
       type: System.Object
-      description: "The persistence provider’s user context information that was returned from OnNewInstanceHandle, or null if OnNewInstanceHandle is not overridden."
+      description: "OnNewInstanceHandle이 재정의 되지 않는 경우 null 또는, OnNewInstanceHandle에서 반환 된 지 속성 공급자의 사용자 컨텍스트 정보입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnFreeInstanceHandle*
   exceptions: []
   platform:
@@ -504,16 +504,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when a new instance handle is created."
+  summary: "새 인스턴스 핸들이 만들어질 때 호출 됩니다."
   syntax:
     content: protected virtual object OnNewInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "인스턴스 핸들입니다."
     return:
       type: System.Object
-      description: "An object.  This user context object will be available to the persistence provider when commands are executed using the handle, and when the handle is freed."
+      description: "개체입니다.  이 사용자 컨텍스트 개체 핸들을 사용 하 여 명령이 실행 되 고 핸들이 해제 될 때 지 속성 공급자에 게 제공 됩니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnNewInstanceHandle*
   exceptions: []
   platform:
@@ -530,16 +530,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Resets the signaled event and removes the event from the signaled events list maintained by the instance owner."
+  summary: "신호를 받은 이벤트를 다시 설정 하 고 인스턴스 소유자에 의해 관리 되는 신호를 받은 이벤트 목록에서 이벤트를 제거 합니다."
   syntax:
     content: protected void ResetEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event that was signaled earlier and to be reset."
+      description: "이전 신호를 받은 지 속성 이벤트를 다시 설정할 수 있습니다."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner associated with the persistence event."
+      description: "지 속성 이벤트와 연결 된 인스턴스 소유자입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.ResetEvent*
   exceptions: []
   platform:
@@ -556,16 +556,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "An instance store invokes this method to signal an event. A workflow host that subscribes for this persistence event receives it and takes an appropriate action."
+  summary: "인스턴스 저장소에 이벤트를 알리기 위해이 메서드를 호출 합니다. 이 지 속성 이벤트를 구독 하는 워크플로 호스트를 받아 적절 한 작업을 수행 합니다."
   syntax:
     content: protected void SignalEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event to be signaled."
+      description: "지 속성 이벤트 신호를 보낼 수입니다."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner."
+      description: "인스턴스 소유자입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.SignalEvent*
   exceptions: []
   platform:
@@ -582,23 +582,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed and if the command can be executed executes it asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the <xref:System.Runtime.DurableInstancing.InstancePersistenceContext> to provide the results of the command."
+  summary: "지 속성 공급자는 특정 지 속성 명령이 실행 될 수 있는지 여부를 결정 하는 명령을 실행할 수 있으면이 비동기적으로 실행 하는이 메서드를 구현 합니다."
+  remarks: "지 속성 공급자에서 관련 메서드를 호출 하는 경우 명령이 실행 될 수는 <xref:System.Runtime.DurableInstancing.InstancePersistenceContext>명령의 결과 제공 합니다.</xref:System.Runtime.DurableInstancing.InstancePersistenceContext>"
   syntax:
     content: protected virtual bool TryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "인스턴스 컨텍스트입니다."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "실행할 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "Timeout value for the operation."
+      description: "작업에 대 한 제한 시간 값입니다."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it doesn’t support the command passed as a parameter; otherwise it should return <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> or throw an exception."
+      description: "지 속성 공급자 구현을 반환 해야 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> ; 매개 변수로 전달 된 명령을 지원 하지 않을 경우 그렇지 않으면 반환 해야 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 이거나 예외를 throw 합니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.TryCommand*
   exceptions: []
   platform:
@@ -615,19 +615,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A workflow host typically invokes this method to wait for an event to be signaled."
+  summary: "워크플로 호스트는 일반적으로 이벤트에서 신호를 받을 때까지 대기 하려면이 메서드를 호출 합니다."
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> WaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that is bound to the event."
+      description: "이벤트에 바인딩된 인스턴스 핸들입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time span after which the waiting operation times out."
+      description: "대기 작업 시간이 초과 되는 시간 범위입니다."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "A list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects."
+      description: "목록이 <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> 개체입니다."
   overload: System.Runtime.DurableInstancing.InstanceStore.WaitForEvents*
   exceptions: []
   platform:
