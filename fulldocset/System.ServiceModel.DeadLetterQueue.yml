@@ -12,8 +12,8 @@ items:
   nameWithType: DeadLetterQueue
   fullName: System.ServiceModel.DeadLetterQueue
   type: Enum
-  summary: "Specifies the type of dead-letter queue to be used."
-  remarks: "The dead-letter queue is a queue on the queue manager of the sending application for expired messages that have failed to be delivered. The DeadLetterQueue enumeration specifies the type of dead-letter queue to use. The values are:      -   None: No dead-letter queue is required. If a message fails delivery, no record of it is maintained in the dead-letter queue. This is the default value when <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is set to `false`.      -   System: The system-wide, dead-letter queue is used to record messages that fail delivery. MSMQ has a transactional, system, dead-letter queue and a non-transactional, system, dead-letter queue to record expired messages that failed delivery from transactional and non-transactional queues, respectively. This is the default value when <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is set to `true`.      -   Custom: The queue specified in the <xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A> is used to record messages that fail delivery.       A message can fail to reach the receiving application for any of the following reasons:      -   A transactional message is sent to a non-transactional queue.      -   A non-transactional message is sent to a transactional queue.      -   An unauthenticated message is sent to a queue that accepts only authenticated messages.      -   An unencrypted message is sent to a queue that accepts only encrypted messages.      -   The message&quot;s time-to-live value expires before the message is delivered to a receiver.      -   The message storage quota of the target computer or the storage quota of the destination queue is exceeded, or there is no available storage space on the target computer when the message arrives.      -   The sender does not have the [access rights](http://go.microsoft.com/fwlink/?LinkID=96167) required to place the message in the destination queue.      -   The digital signature attached to the message is not valid.      -   An encrypted message cannot be decrypted by the destination queue manager.      -   The destination queue is purged or deleted before the message is retrieved."
+  summary: "사용할 배달 못 한 편지 큐의 형식을 지정 합니다."
+  remarks: "배달 못 한 편지 큐는 배달 하지 못한 만료 된 메시지에 대 한 송신 응용 프로그램의 큐 관리자에 있습니다. DeadLetterQueue 열거형에는 사용할 배달 못 한 편지 큐의 형식을 지정 합니다. 값은:-None: 배달 못 한 편지 큐가 필요 합니다. 메시지 배달 하지 못한 경우의 기록이 배달 못 한 편지 큐에 유지 됩니다. 이것이 기본 설정 값으로 <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>로 설정 된 `false`.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>      -System: 배달 실패 한 메시지를 기록 하는 시스템 차원의 배달 못 한 편지 큐 사용 됩니다. MSMQ에는 트랜잭션 시스템 배달 못 한 편지 큐 및 비트랜잭션, 시스템, 배달 못 한 편지 큐가 각각 큐와 비트랜잭션 큐에서는 배달 하지 못하고 만료 된 메시지를 기록 합니다. 이것이 기본 설정 값으로 <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>로 설정 된 `true`.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>      -에 지정 된 큐 사용자 지정:는 <xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A>메시지 배달 실패를 기록 하는 데 사용 됩니다.</xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A>       메시지는 다음과 같은 원인에 대 한 수신 응용 프로그램에 연결 되지 않을 수 있습니다.-트랜잭션 메시지가 비트랜잭션 큐로 전송 됩니다.      -비트랜잭션 메시지가 트랜잭션 큐로 전송 됩니다.      -인증 되지 않은 메시지가 인증 된 메시지만 허용 하는 큐로 전송 됩니다.      -암호화 되지 않은 메시지가 암호화 된 메시지만 허용 하는 큐로 전송 됩니다.      -메시지의 활성 시간 값에는 메시지 받는 사람에 게 배달 되기 전에 만료 됩니다.      대상 컴퓨터의-메시지 저장 할당량 또는 대상 큐의 저장 할당량이 초과 되었거나 메시지가 도착할 때 대상 컴퓨터에서 사용 가능한 저장소 공간이 없을 합니다.      -발신자가 갖고 있지는 [액세스 권한을](http://go.microsoft.com/fwlink/?LinkID=96167) 대상 큐에 메시지를 저장 하는 데 필요한 합니다.      메시지에 첨부 된-디지털 서명이 올바르지 않습니다.      -대상 큐 관리자 암호화 된 메시지를 해독할 수 없습니다.      -대상 큐가 제거 되었거나 메시지를 검색 하기 전에 삭제 했습니다."
   syntax:
     content: public enum DeadLetterQueue
   inheritance:
@@ -32,12 +32,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Custom dead-letter queue."
+  summary: "사용자 지정 배달 못 한 편지 큐입니다."
   syntax:
     content: Custom
     return:
       type: System.ServiceModel.DeadLetterQueue
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -53,12 +53,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "No dead-letter queue is to be used."
+  summary: "배달 못 한 편지 큐를 사용할 것입니다."
   syntax:
     content: None
     return:
       type: System.ServiceModel.DeadLetterQueue
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -74,12 +74,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Use the system-wide, dead-letter queue."
+  summary: "시스템 차원의 배달 못 한 편지 큐를 사용 합니다."
   syntax:
     content: System
     return:
       type: System.ServiceModel.DeadLetterQueue
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

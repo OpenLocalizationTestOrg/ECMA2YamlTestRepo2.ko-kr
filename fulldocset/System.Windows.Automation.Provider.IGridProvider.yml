@@ -12,8 +12,8 @@ items:
   nameWithType: IGridProvider
   fullName: System.Windows.Automation.Provider.IGridProvider
   type: Interface
-  summary: "Exposes methods and properties to support UI Automation client access to controls that act as containers for a collection of child elements. The children of this element must implement <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;></xref> and be organized in a two-dimensional logical coordinate system that can be traversed (that is, a UI Automation client can move to adjacent controls) by using the keyboard."
-  remarks: "Implemented on a UI Automation provider that must support the <xref:System.Windows.Automation.GridPattern> control pattern.       IGridProvider does not enable active manipulation of a grid; <xref:System.Windows.Automation.Provider.ITransformProvider> must be implemented to enable this functionality."
+  summary: "자식 요소의 컬렉션에 대 한 컨테이너 역할을 하는 컨트롤에 대 한 UI 자동화 클라이언트 액세스를 지원 하도록 메서드 및 속성을 노출 합니다. 이 요소의 자식 항목이 구현 해야 <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;> </xref> 는&2; 차원 논리적 좌표계로 이동할 수 있는 구성 (UI 자동화 클라이언트가 인접 한 컨트롤로 이동할 수 있습니다.) 키보드를 사용 하 여 합니다."
+  remarks: "지원 해야 하는 UI 자동화 공급자에서 구현 되는 <xref:System.Windows.Automation.GridPattern>컨트롤 패턴.</xref:System.Windows.Automation.GridPattern>       IGridProvider는 표의 활성 구현을 사용 하도록 설정 하지 않습니다. <xref:System.Windows.Automation.Provider.ITransformProvider>이 기능을 사용 하도록 구현 해야 합니다.</xref:System.Windows.Automation.Provider.ITransformProvider>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,15 +38,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of columns in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "표에 열의 총 수를 가져옵니다."
+  remarks: "숨겨진된 행 및 열 공급자 구현에서 로드할 수 있습니다는 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 트리 및에 반영 된 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>및 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>속성.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> 숨겨진된 행 및 열이 아직 로드 되지 않은 경우에 속성에 반영 되지 않습니다."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#102](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#102)]\n [!code-cs[UIAMiscPatternProviders_snip#102](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#102)]"
   syntax:
     content: public int ColumnCount { get; }
     return:
       type: System.Int32
-      description: "The total number of columns in a grid."
+      description: "표에 있는 열의 총 수입니다."
   overload: System.Windows.Automation.Provider.IGridProvider.ColumnCount*
   exceptions: []
   platform:
@@ -63,8 +63,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the UI Automation provider for the specified cell."
-  remarks: "-   Grid coordinates are zero-based with the upper left (or upper right cell depending on locale) having coordinates (0,0).      -   If a cell is empty a UI Automation provider must still be returned in order to support the <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> property for that cell. This is possible when the layout of child elements in the grid is similar to a ragged array.       ![Windows Explorer view showing ragged layout.](~/add/media/uia-gridpattern-ragged-array.PNG &quot;Windows Explorer view showing ragged layout.&quot;)   Example of a Grid Control with Empty Coordinates      -   Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> and <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they should not be counted."
+  summary: "지정된 된 셀에 대 한 UI 자동화 공급자를 검색합니다."
+  remarks: "-Grid 좌표는 왼쪽 위 (오른쪽 상단 셀 로캘에 따라)와 좌표가 (0,&0;)&0;부터 시작 합니다.      -셀이 비어 있는 경우 UI 자동화 공급자 반환 되어야 지원 하기 위해는 <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A>해당 셀에 대 한 속성.</xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> 눈금에서 자식 요소의 레이아웃이 비정형된 배열과 유사한 경우 이것이 가능 합니다.       ![Windows 탐색기 보기 좋지 않은 레이아웃을 봅니다. ] (~/add/media/uia-gridpattern-ragged-array.PNG &quot;Windows 탐색기 보기 보기 좋지 않은 레이아웃 합니다.&quot;)   빈 조정-숨겨진된 행 및 열 공급자 구현에 따라 있는 그리드 컨트롤의 예제를 로드할 수는 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 트리 및에 반영는 <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A>및 <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A>속성.</xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> </xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> 숨겨진된 행 및 열이 아직 로드 되지 않은 반영 하지 않습니다."
   example:
   - "The following code is an example implementation of this method that returns an object representing the item at the specified location.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#101](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#101)]\n [!code-cs[UIAMiscPatternProviders_snip#101](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#101)]"
   syntax:
@@ -72,13 +72,13 @@ items:
     parameters:
     - id: row
       type: System.Int32
-      description: "The ordinal number of the row of interest."
+      description: "관심 있는 행의 서 수입니다."
     - id: column
       type: System.Int32
-      description: "The ordinal number of the column of interest."
+      description: "관심 있는 열의 서 수입니다."
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple
-      description: "The UI Automation provider for the specified cell."
+      description: "지정된 된 셀에 대 한 UI 자동화 공급자입니다."
   overload: System.Windows.Automation.Provider.IGridProvider.GetItem*
   exceptions: []
   platform:
@@ -95,15 +95,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of rows in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the logical tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "표에 행의 총 수를 가져옵니다."
+  remarks: "숨겨진된 행과 공급자 구현에 따라 열 논리 트리에 로드 될 수 있으며에 반영 된 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>및 <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>속성.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> 숨겨진된 행 및 열이 아직 로드 되지 않은 경우에 속성에 반영 되지 않습니다."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#103](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#103)]\n [!code-cs[UIAMiscPatternProviders_snip#103](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#103)]"
   syntax:
     content: public int RowCount { get; }
     return:
       type: System.Int32
-      description: "The total number of rows in a grid."
+      description: "표의 행의 총 수입니다."
   overload: System.Windows.Automation.Provider.IGridProvider.RowCount*
   exceptions: []
   platform:

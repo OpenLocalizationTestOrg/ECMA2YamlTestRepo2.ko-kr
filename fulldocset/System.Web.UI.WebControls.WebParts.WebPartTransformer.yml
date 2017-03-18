@@ -14,8 +14,8 @@ items:
   nameWithType: WebPartTransformer
   fullName: System.Web.UI.WebControls.WebParts.WebPartTransformer
   type: Class
-  summary: "Provides basic implementation for transformer classes to convert data between two incompatible connection points."
-  remarks: "Transformers are used to translate data between two Web Parts controls with incompatible connection points. Connection points are incompatible when they provide or consume data through different interfaces. For example, a provider implementing a provider connection point of type <xref:System.Web.UI.WebControls.WebParts.IWebPartRow> could not directly connect to a consumer expecting a provider connection point of type <xref:System.Web.UI.WebControls.WebParts.IWebPartTable>. Instead, a transformer must be used to connect the two Web Parts controls.       The transformer accepts data of the type supported by the provider connection point. It does the necessary internal processing to convert that data into the type supported by the consumer connection point.       A transformer can provide a user interface (UI) that allows the user to configure the transformer when in the connect mode. The configuration control is retrieved through the <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.CreateConfigurationControl%2A> method and is displayed in a Web Parts connections zone.       WebPartTransformer is an abstract class and must be extended to provide customized translations between different types of connection points."
+  summary: "호환 되지 않는 두 연결점 간에 데이터를 변환할 transformer 클래스에 대 한 기본 구현을 제공 합니다."
+  remarks: "변환기는 호환 되지 않는 연결 지점과 두 개의 웹 파트 컨트롤 간의 데이터를 변환 하는 데 사용 됩니다. 연결 지점을 제공 하거나 다른 인터페이스를 통해 데이터를 사용 하는 경우 호환 되지 않습니다. 예를 들어, 형식 <xref:System.Web.UI.WebControls.WebParts.IWebPartRow>공급자 연결 지점 이름 필드에 <xref:System.Web.UI.WebControls.WebParts.IWebPartTable>.</xref:System.Web.UI.WebControls.WebParts.IWebPartTable> 의 기대 하는 소비자에 직접 연결할 수</xref:System.Web.UI.WebControls.WebParts.IWebPartRow> 의 공급자 연결 지점을 구현 하는 공급자 대신 두 웹 파트 컨트롤을 연결 하는 변환기를 사용 해야 합니다.       변환기는 공급자 연결 지점에서 지 원하는 형식의 데이터를 허용 합니다. 소비자 연결 지점에서 지 원하는 형식으로 해당 데이터를 변환 하는 데 필요한 내부 처리를 수행 합니다.       변환기에 사용자 연결 모드에 있을 때 변환기를 구성 하는 사용자 인터페이스 (UI)를 제공할 수 있습니다. 구성 제어를 통해 검색 되는 <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.CreateConfigurationControl%2A>메서드 및 웹 파트 연결 영역에 표시 됩니다.</xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.CreateConfigurationControl%2A>       WebPartTransformer는 클래스는 추상 클래스 및 다양 한 유형의 연결 지점 간의 사용자 지정된 변환을 제공 하도록 확장할 수 있어야 합니다."
   example:
   - "The following code example demonstrates how to create a customized transformer that derives from the WebPartTransformer class. The transformer, named `RowToStringTransformer`, allows for a Web Parts provider and Web Parts consumer with incompatible connection points to be connected. The provider presents data of type <xref:System.Web.UI.WebControls.WebParts.IWebPartRow>, but the consumer accepts only data of type <xref:System.String>. The `RowToStringTransformer` class performs the necessary conversion.  \n  \n The code example does not include an implementation of the provider or consumer. You must create a provider that implements the <xref:System.Web.UI.WebControls.WebParts.IWebPartRow> interface and a consumer that expects data through a customized interface named `IString` for the example to work.  \n  \n [!code-vb[WebParts_WebPartTransformer_Overview#5](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_170_1.vb)]\n [!code-cs[WebParts_WebPartTransformer_Overview#5](~/add/codesnippet/csharp/t-system.web.ui.webcontr_170_1.cs)]  \n  \n The first section of the code example contains code for the provider and consumer Web Parts controls, and the code for the transformer.  \n  \n [!code-vb[WebParts_WebPartTransformer_Overview#4](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_170_2.vb)]\n [!code-cs[WebParts_WebPartTransformer_Overview#4](~/add/codesnippet/csharp/t-system.web.ui.webcontr_170_2.cs)]  \n  \n The second section of the code example shows how to include the transformer within the declarative syntax for a <xref:System.Web.UI.WebControls.WebParts.WebPartConnection> object.  \n  \n [!code-cs[WebParts_WebPartTransformer_Overview#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_170_3.aspx)]\n [!code-vb[WebParts_WebPartTransformer_Overview#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_170_3.aspx)]  \n  \n A customized transformer must be specified in the `<transformers>` section of the Web.config file to be available for use in a Web page. The third section of the code example shows how to add the customized transformer to the Web.config file.  \n  \n [Visual Basic]  \n  \n```  \n<webParts enableExport=\"true\">  \n    <transformers>  \n       <add name=\"RowToStringTransformer\"  \n          type=\"Samples.AspNet.VB.Controls.RowToStringTransformer\" />  \n    </transformers>  \n</webParts>  \n```  \n  \n [C#]  \n  \n```  \n<webParts enableExport=\"true\">  \n    <transformers>  \n       <add name=\"RowToStringTransformer\"  \n          type=\"Samples.AspNet.CS.Controls.RowToStringTransformer\" />  \n    </transformers>  \n</webParts>  \n```  \n  \n The code example includes a user control that enables you to change display modes on a Web Parts page. The source code for the user control comes from another topic. You can obtain the .ascx file for the user control from [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md), and it must be placed in the same folder as the .aspx page."
   syntax:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartTransformer&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartTransformer&quot;> </xref> 클래스입니다."
   syntax:
     content: protected WebPartTransformer ();
     parameters: []
@@ -58,14 +58,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Displays an ASP.NET control that configures a transformer in the <xref href=&quot;System.Web.UI.WebControls.WebParts.ConnectionsZone&quot;></xref> zone."
-  remarks: "A configuration control can be displayed when a transformer requires a user to configure it. The configuration control provides a user interface (UI) that allows the user to select which values will be transformed. It is rendered in a connections zone. The configuration control must implement the <xref:System.Web.UI.WebControls.WebParts.ITransformerConfigurationControl> interface."
+  summary: "변환기를 구성 하는 ASP.NET 컨트롤 표시는 <xref href=&quot;System.Web.UI.WebControls.WebParts.ConnectionsZone&quot;> </xref> 영역입니다."
+  remarks: "변환기를 구성 하는 사용자를 해야 하는 경우 구성 컨트롤을 표시할 수 있습니다. 구성 컨트롤 사용자가 변환 될 어떤 값을 선택할 수 있도록 사용자 인터페이스 (UI)를 제공 합니다. 연결 영역에서 렌더링 됩니다. 구성 컨트롤 구현 해야 합니다는 <xref:System.Web.UI.WebControls.WebParts.ITransformerConfigurationControl>인터페이스.</xref:System.Web.UI.WebControls.WebParts.ITransformerConfigurationControl>"
   syntax:
     content: public virtual System.Web.UI.Control CreateConfigurationControl ();
     parameters: []
     return:
       type: System.Web.UI.Control
-      description: "An ASP.NET control that configures a transformer."
+      description: "변환기를 구성 하는 ASP.NET 컨트롤입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartTransformer.CreateConfigurationControl*
   exceptions: []
   platform:
@@ -82,14 +82,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Loads the configuration state saved with the <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*> method."
-  remarks: "Use this method to load the saved configuration state into the ASP.NET control used to configure a transformer."
+  summary: "와 함께 저장 구성 상태를 로드는 <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*>"
+  remarks: "이 메서드를 사용 하 여 변환기를 구성 하는 데 ASP.NET 컨트롤에 저장 된 구성 상태를 로드 합니다."
   syntax:
     content: protected virtual void LoadConfigurationState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An object containing configuration state saved by using <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*>."
+      description: "<xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*>.</xref:System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*> 를 사용 하 여 저장 된 구성 상태를 포함 하는 개체"
   overload: System.Web.UI.WebControls.WebParts.WebPartTransformer.LoadConfigurationState*
   exceptions: []
   platform:
@@ -106,14 +106,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves the configuration state set by the user in the ASP.NET configuration control."
-  remarks: "Use this method to save the configuration data set in the ASP.NET control used to configure a transformer."
+  summary: "ASP.NET 구성 컨트롤에서 사용자가 설정한 구성 상태를 저장 합니다."
+  remarks: "변환기를 구성 하는 데 ASP.NET 컨트롤의 구성 데이터 집합을 저장 하려면이 메서드를 사용 합니다."
   syntax:
     content: protected virtual object SaveConfigurationState ();
     parameters: []
     return:
       type: System.Object
-      description: "An object representing the configuration state."
+      description: "구성 상태를 나타내는 개체입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartTransformer.SaveConfigurationState*
   exceptions: []
   platform:
@@ -130,8 +130,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "When implemented, provides an object for transforming the data."
-  remarks: "You must override this method when implementing the <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer> class."
+  summary: "구현 된 경우 데이터 변환에 대 한 개체를 제공 합니다."
+  remarks: "<xref:System.Web.UI.WebControls.WebParts.WebPartTransformer>클래스</xref:System.Web.UI.WebControls.WebParts.WebPartTransformer> 를 구현 하는 경우이 메서드를 재정의 해야 합니다."
   example:
   - "The following code example demonstrates how to override the Transform method in a customized <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer> class. It is part of a larger example found in the <xref:System.Web.UI.WebControls.WebParts.WebPartTransformer> class overview.  \n  \n [!code-vb[WebParts_WebPartTransformer_Overview#3](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_210_1.vb)]\n [!code-cs[WebParts_WebPartTransformer_Overview#3](~/add/codesnippet/csharp/m-system.web.ui.webcontr_210_1.cs)]"
   syntax:
@@ -139,10 +139,10 @@ items:
     parameters:
     - id: providerData
       type: System.Object
-      description: "The provider data to be transformed."
+      description: "공급자의 데이터는 변환입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the data to be transformed."
+      description: "<xref:System.Object>변환 해야 할 데이터를 나타내는.</xref:System.Object>"
   overload: System.Web.UI.WebControls.WebParts.WebPartTransformer.Transform*
   exceptions: []
   platform:
