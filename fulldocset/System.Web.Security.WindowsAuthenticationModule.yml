@@ -13,8 +13,8 @@ items:
   nameWithType: WindowsAuthenticationModule
   fullName: System.Web.Security.WindowsAuthenticationModule
   type: Class
-  summary: "Sets the identity of the user for an ASP.NET application when Windows authentication is enabled. This class cannot be inherited."
-  remarks: "When the authentication <xref:System.Web.Configuration.AuthenticationSection.Mode%2A> is set to <xref:System.Web.Configuration.AuthenticationMode>, the WindowsAuthenticationModule sets the <xref:System.Web.HttpContext.User%2A> property of the current <xref:System.Web.HttpContext> to an <xref:System.Security.Principal.IPrincipal> object that represents the Windows identity supplied by IIS for the current request. If IIS uses anonymous authentication, then the WindowsAuthenticationModule uses the identity returned by the <xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A> method.       The WindowsAuthenticationModule exposes an <xref:System.Web.Security.WindowsAuthenticationModule.Authenticate> event that enables you to provide a custom <xref:System.Security.Principal.IPrincipal> object for the <xref:System.Web.HttpContext.User%2A> property of the current <xref:System.Web.HttpContext>. The <xref:System.Web.Security.WindowsAuthenticationModule.Authenticate> event is accessed by specifying a subroutine named **WindowsAuthentication_OnAuthenticate** in the Global.asax file for your ASP.NET application.      > [!NOTE] >  In IIS 7.0, using the WindowsAuthenticationModule class with the <xref:System.Web.Security.FormsAuthenticationModule> class is not supported. For more information about compatibility issues in Integrated mode, see [Moving an ASP.NET Application from IIS 6.0 to IIS 7.0](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Windows 인증을 사용 하는 경우에 ASP.NET 응용 프로그램에 대 한 사용자의 id를 설정 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "때 인증 <xref:System.Web.Configuration.AuthenticationSection.Mode%2A>로 설정 되어 <xref:System.Web.Configuration.AuthenticationMode>, WindowsAuthenticationModule 집합은 <xref:System.Web.HttpContext.User%2A>현재 <xref:System.Web.HttpContext>에 <xref:System.Security.Principal.IPrincipal>현재 요청에 대 한 IIS에서 제공 하는 Windows id를 나타내는 개체입니다.</xref:System.Security.Principal.IPrincipal> </xref:System.Web.HttpContext> </xref:System.Web.HttpContext.User%2A> </xref:System.Web.Configuration.AuthenticationMode> </xref:System.Web.Configuration.AuthenticationSection.Mode%2A> IIS에서 익명 인증을 사용할 경우는 WindowsAuthenticationModule 반환한 id를 사용 하 여는 <xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A>메서드.</xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A>       WindowsAuthenticationModule <xref:System.Web.Security.WindowsAuthenticationModule.Authenticate>사용자 지정 <xref:System.Security.Principal.IPrincipal> <xref:System.Web.HttpContext.User%2A> <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> 현재 속성</xref:System.Web.HttpContext.User%2A> 에 대 한 개체</xref:System.Security.Principal.IPrincipal> 를 제공할 수 있도록 하는 이벤트</xref:System.Web.Security.WindowsAuthenticationModule.Authenticate> 를 노출합니다. <xref:System.Web.Security.WindowsAuthenticationModule.Authenticate>라는 서브루틴을 지정 하 여 액세스 하는 이벤트 **WindowsAuthentication_OnAuthenticate** ASP.NET 응용 프로그램의 Global.asax 파일에.</xref:System.Web.Security.WindowsAuthenticationModule.Authenticate>      > [!NOTE] > 사용 하 여 WindowsAuthenticationModule 클래스를 사용 하 여 IIS 7.0에서 <xref:System.Web.Security.FormsAuthenticationModule>클래스가 지원 되지 않습니다.</xref:System.Web.Security.FormsAuthenticationModule> 통합된 모드의 호환성 문제에 대 한 자세한 내용은 참조 [ASP.NET 응용 프로그램을 IIS 6.0에서 IIS 7.0 이동](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example uses the **WindowsAuthentication_OnAuthenticate** event to set the <xref:System.Web.HttpContext.User%2A> property of the current <xref:System.Web.HttpContext> to a custom <xref:System.Security.Principal.IPrincipal> object.  \n  \n [!code-cs[System.Web.Security.WindowsAuthenticationModule#1](~/add/codesnippet/csharp/t-system.web.security.wi_1_1.asax)]\n [!code-vb[System.Web.Security.WindowsAuthenticationModule#1](~/add/codesnippet/visualbasic/t-system.web.security.wi_1_1.asax)]"
   syntax:
@@ -38,8 +38,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;></xref> class."
-  remarks: "This constructor is not intended to be called from application code.       ASP.NET calls this constructor to create an instance of the <xref:System.Web.Security.WindowsAuthenticationModule> class. After calling the constructor, it calls the <xref:System.Web.Security.WindowsAuthenticationModule.Init%2A> method to initialize the new <xref:System.Web.Security.WindowsAuthenticationModule> object."
+  summary: "인스턴스를 만듭니다는 <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;> </xref> 클래스입니다."
+  remarks: "이 생성자는 응용 프로그램 코드에서 호출할 수 없습니다.       <xref:System.Web.Security.WindowsAuthenticationModule>클래스</xref:System.Web.Security.WindowsAuthenticationModule> 의 인스턴스를 만들려면이 생성자를 호출 하는 ASP.NET 생성자를 호출한 후 호출 된 <xref:System.Web.Security.WindowsAuthenticationModule.Init%2A>새로운 초기화 하려면 메서드 <xref:System.Web.Security.WindowsAuthenticationModule>개체입니다.</xref:System.Web.Security.WindowsAuthenticationModule> </xref:System.Web.Security.WindowsAuthenticationModule.Init%2A>"
   syntax:
     content: public WindowsAuthenticationModule ();
     parameters: []
@@ -59,15 +59,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Occurs when the application authenticates the current request."
-  remarks: "The Authenticate event is raised during the <xref:System.Web.HttpApplication.AuthenticateRequest> event.       You can access the Authenticate event of the <xref:System.Web.Security.WindowsAuthenticationModule> class by specifying a subroutine named **WindowsAuthentication_OnAuthenticate** in the Global.asax file for your ASP.NET application.       You can use the <xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A> property of the <xref:System.Web.Security.WindowsAuthenticationEventArgs> object supplied to the **WindowsAuthentication_OnAuthenticate** event to set the <xref:System.Web.HttpContext.User%2A> property of the current <xref:System.Web.HttpContext> to a custom <xref:System.Security.Principal.IPrincipal> object. If you do not specify a value for the <xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A> property during the **WindowsAuthentication_OnAuthenticate** event, the Windows identity supplied by IIS is used as the identity for the current request. If IIS uses anonymous authentication, then the <xref:System.Web.Security.WindowsAuthenticationEventArgs.Identity%2A> property is set to the identity returned by the <xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A> method.       The **WindowsAuthentication_OnAuthenticate** event is raised only when the authentication <xref:System.Web.Configuration.AuthenticationSection.Mode%2A> is set to <xref:System.Web.Configuration.AuthenticationMode> and the <xref:System.Web.Security.WindowsAuthenticationModule> is an active HTTP module for the application.      > [!NOTE] >  In IIS 7.0 running in Integrated Mode, the Authenticate event of the <xref:System.Web.Security.WindowsAuthenticationModule> is not raised when both the ASP.NET <xref:System.Web.Security.WindowsAuthenticationModule> and the IIS `AnonymousAuthenticationModule` modules are enabled. In this scenario, to receive authentication notification, subscribe to the <xref:System.Web.HttpApplication.AuthenticateRequest> event of the <xref:System.Web.HttpApplication> instance. For more information about compatibility issues in Integrated modes, see [Moving an ASP.NET Application from IIS 6.0 to IIS 7.0](~/add/includes/ajax-current-ext-md.md)."
+  summary: "응용 프로그램은 현재 요청을 인증 하는 경우 발생 합니다."
+  remarks: "Authenticate 발생 하는 동안는 <xref:System.Web.HttpApplication.AuthenticateRequest>이벤트.</xref:System.Web.HttpApplication.AuthenticateRequest>       인증 이벤트에 액세스할 수 있습니다는 <xref:System.Web.Security.WindowsAuthenticationModule>라는 서브루틴을 지정 하 여 클래스 **WindowsAuthentication_OnAuthenticate** ASP.NET 응용 프로그램의 Global.asax 파일에.</xref:System.Web.Security.WindowsAuthenticationModule>       사용할 수 있습니다는 <xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A>속성은 <xref:System.Web.Security.WindowsAuthenticationEventArgs>개체에 제공 되는 **WindowsAuthentication_OnAuthenticate** 설정 하는 이벤트는 <xref:System.Web.HttpContext.User%2A>현재 <xref:System.Web.HttpContext>을 사용자 지정 <xref:System.Security.Principal.IPrincipal>개체.</xref:System.Security.Principal.IPrincipal> </xref:System.Web.HttpContext> </xref:System.Web.HttpContext.User%2A> </xref:System.Web.Security.WindowsAuthenticationEventArgs> </xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A> 에 대 한 값을 지정 하지 않으면는 <xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A>하는 동안 속성에서 **WindowsAuthentication_OnAuthenticate** 이벤트를 IIS에서 제공 하는 id가 현재 요청에 대 한 id로 사용 하는 Windows.</xref:System.Web.Security.WindowsAuthenticationEventArgs.User%2A> IIS는 익명 인증을 사용 하는 경우 하면 <xref:System.Web.Security.WindowsAuthenticationEventArgs.Identity%2A>속성에서 반환 된 id로 설정 되는 <xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A>메서드.</xref:System.Security.Principal.WindowsIdentity.GetAnonymous%2A> </xref:System.Web.Security.WindowsAuthenticationEventArgs.Identity%2A>       **WindowsAuthentication_OnAuthenticate** 이벤트가 발생할 경우에만 인증 <xref:System.Web.Configuration.AuthenticationSection.Mode%2A>로 설정 되어 <xref:System.Web.Configuration.AuthenticationMode>및 <xref:System.Web.Security.WindowsAuthenticationModule>는 응용 프로그램에 대 한 활성 HTTP 모듈.</xref:System.Web.Security.WindowsAuthenticationModule> </xref:System.Web.Configuration.AuthenticationMode> </xref:System.Web.Configuration.AuthenticationSection.Mode%2A>      > [!NOTE] > 인증 이벤트의 통합 모드로 실행 되는 IIS 7.0에는 <xref:System.Web.Security.WindowsAuthenticationModule>발생할 때 두 ASP.NET <xref:System.Web.Security.WindowsAuthenticationModule>및 IIS `AnonymousAuthenticationModule` 모듈을 사용 하도록 설정 됩니다.</xref:System.Web.Security.WindowsAuthenticationModule> </xref:System.Web.Security.WindowsAuthenticationModule> 이 시나리오에서는 인증 알림을 받으려면를 구독 하는 <xref:System.Web.HttpApplication.AuthenticateRequest>의 이벤트는 <xref:System.Web.HttpApplication>인스턴스.</xref:System.Web.HttpApplication> </xref:System.Web.HttpApplication.AuthenticateRequest> 통합된 모드의 호환성 문제에 대 한 자세한 내용은 참조 [ASP.NET 응용 프로그램을 IIS 6.0에서 IIS 7.0 이동](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example uses the **WindowsAuthentication_OnAuthenticate** event to set the <xref:System.Web.HttpContext.User%2A> property of the current <xref:System.Web.HttpContext> to a custom <xref:System.Security.Principal.IPrincipal> object.  \n  \n [!code-cs[System.Web.Security.WindowsAuthenticationModule#1](~/add/codesnippet/csharp/e-system.web.security.wi_1.asax)]\n [!code-vb[System.Web.Security.WindowsAuthenticationModule#1](~/add/codesnippet/visualbasic/e-system.web.security.wi_1.asax)]"
   syntax:
     content: public event System.Web.Security.WindowsAuthenticationEventHandler Authenticate;
     return:
       type: System.Web.Security.WindowsAuthenticationEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -83,8 +83,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Releases all resources, other than memory, used by the <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;></xref>."
-  remarks: "This method is not intended to be called from application code."
+  summary: "사용 하는 메모리의 모든 리소스를 해제는 <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;> </xref>합니다."
+  remarks: "이 메서드는 응용 프로그램 코드에서 호출할 수 없습니다."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -104,14 +104,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Initializes the <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;></xref> object."
-  remarks: "This method is not intended to be called from application code.       The Init method ensures that the <xref:System.Web.Security.WindowsAuthenticationModule> is included in the processing of the <xref:System.Web.HttpApplication.AuthenticateRequest> event."
+  summary: "초기화는 <xref href=&quot;System.Web.Security.WindowsAuthenticationModule&quot;> </xref> 개체입니다."
+  remarks: "이 메서드는 응용 프로그램 코드에서 호출할 수 없습니다.       Init 메서드를 사용 하면는 <xref:System.Web.Security.WindowsAuthenticationModule>의 처리에 포함 된 <xref:System.Web.HttpApplication.AuthenticateRequest>이벤트.</xref:System.Web.HttpApplication.AuthenticateRequest> </xref:System.Web.Security.WindowsAuthenticationModule>"
   syntax:
     content: public void Init (System.Web.HttpApplication app);
     parameters:
     - id: app
       type: System.Web.HttpApplication
-      description: "The current <xref href=&quot;System.Web.HttpApplication&quot;></xref> instance."
+      description: "현재 <xref href=&quot;System.Web.HttpApplication&quot;> </xref> 인스턴스."
   overload: System.Web.Security.WindowsAuthenticationModule.Init*
   exceptions: []
   platform:

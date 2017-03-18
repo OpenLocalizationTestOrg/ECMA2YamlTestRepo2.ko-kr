@@ -14,8 +14,8 @@ items:
   nameWithType: Substitution
   fullName: System.Web.UI.WebControls.Substitution
   type: Class
-  summary: "Specifies a section on an output-cached Web page that is exempt from caching. At this location, dynamic content is retrieved and substituted for the Substitution control."
-  remarks: "In this topic:      -   [Introduction](#introduction)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;introduction&quot;></a>    ## Introduction    Use the Substitution control to specify a section on an output-cached Web page where you want dynamic content substituted for the control. The Substitution control offers a simplified solution to partial page caching for pages where the majority of the content is cached. You can output-cache the entire page, and then use Substitution controls to specify the parts of the page that are exempt from caching. Cached regions execute only once and are replayed from the cache until the cache entry expires or is purged. Dynamic regions execute each time the page is requested. This caching model simplifies the code for pages that are primarily static, because you do not have to encapsulate the sections to cache in Web user controls. For example, this caching model is useful in a scenario where you have a page that contains static content, such as news stories, and an <xref:System.Web.UI.WebControls.AdRotator> control that displays advertisements. The news stories do not change, which means that they can be cached. However, each time a user requests the page, you want to display a new advertisement. The <xref:System.Web.UI.WebControls.AdRotator> control directly supports post-cache substitution and renders a new advertisement each time the page posts back, regardless of whether the page is cached.      > [!NOTE] >  You can place a Substitution control in a user control that is contained in a cached page. However, you cannot place a Substitution control in an output-cached user control.       When the Substitution control executes, it calls a method that returns a string. The string that the method returns is the content to display on the page at the location of the Substitution control. Use the <xref:System.Web.UI.WebControls.Substitution.MethodName%2A> property to specify the name of the callback method to invoke when the Substitution control executes. The callback method that you specify must be a static method on the page or user control that contains the Substitution control. The signature for the callback method must match the signature for an <xref:System.Web.HttpResponseSubstitutionCallback> delegate that takes an <xref:System.Web.HttpContext> parameter and returns a string.       To manipulate the output cache for a page, you can use the [@ OutputCache](http://msdn.microsoft.com/en-us/28a9e101-fb44-4198-9cb6-b8a52312fec2) directive, the <xref:System.Web.HttpCachePolicy> class, or the <xref:System.Web.HttpResponse.Cache%2A> property. For more information on caching pages, see [Caching ASP.NET Pages](~/add/includes/ajax-current-ext-md.md) and [Caching Portions of an ASP.NET Page](~/add/includes/ajax-current-ext-md.md).       As an alternative to using the Substitution control, you can also get substitution caching behavior using a <xref:System.Web.HttpResponseSubstitutionCallback> delegate. In addition, you can get substitution caching behavior on controls, such as the <xref:System.Web.UI.WebControls.AdRotator> control, that directly support this feature. For more information, see [Dynamically Updating Portions of a Cached Page](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:Substitution       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       MethodName=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   />   ```"
+  summary: "캐싱에서 제외 되며 하는 출력 캐시 된 웹 페이지의 섹션을 지정 합니다. 이 위치에 동적 콘텐츠 검색 및 대체 컨트롤에 대 한 대체 합니다."
+  remarks: "이 항목의:- [소개](#introduction)      -   [선언적 구문](#declarative_syntax) <a name=&quot;introduction&quot;> </a> # # 소개 사용 하 여 대체 컨트롤 동적 콘텐츠를 원하는 출력 캐시 된 웹 페이지에서 섹션을 지정 하는 컨트롤에 대 한 대체 합니다.       대체 컨트롤은 대부분의 콘텐츠는 캐시 된 페이지에 대 한 캐싱에 부분 페이지 간소화 된 솔루션을 제공 합니다. 출력 캐시를 전체 페이지 수 하 고 대체 컨트롤을 사용 하 여 캐시에서 제외 되는 페이지의 부분을 지정 합니다. 캐시 된 영역은 한 번만 실행 되 고 캐시 항목이 만료 되거나 제거 될 때까지 캐시에서 재생 됩니다. 동적 영역은 페이지가 요청 될 때마다를 실행 합니다. 이 캐싱 모델은 섹션 캐시에 웹 사용자 정의 컨트롤을 캡슐화 없기 때문에 주로 정적 페이지에 대 한 코드를 간소화 합니다. 예를 들어 캐싱이 모델은 뉴스 기사와 같은 정적 콘텐츠를 포함 하는 페이지 수 있는 시나리오에서 유용 및 <xref:System.Web.UI.WebControls.AdRotator>광고를 표시 하는 컨트롤.</xref:System.Web.UI.WebControls.AdRotator> 뉴스 기사 바뀌지 않습니다, 캐시 될 수 있습니다. 그러나 사용자가 페이지를 요청할 때마다 표시 하려면 새 보급 알림을 합니다. <xref:System.Web.UI.WebControls.AdRotator>컨트롤에서 직접 캐시 후 대체를 지원 하 고 페이지가 페이지가 캐시 여부에 관계 없이 다시 게시 될 때마다 새 광고를 렌더링 합니다.</xref:System.Web.UI.WebControls.AdRotator>      > [!NOTE] > 캐시 된 페이지에 포함 된 사용자 정의 컨트롤에 대체 컨트롤을 배치할 수 있습니다. 그러나 출력 캐시 된 사용자 정의 컨트롤에는 대체 컨트롤을 배치할 수 없습니다.       대체 컨트롤 실행 하는 경우 문자열을 반환 하는 메서드를 호출 합니다. 메서드가 반환 하는 문자열은 대체 컨트롤의 위치에 있는 페이지에 표시할 수 있는 콘텐츠입니다. 사용 하 여는 <xref:System.Web.UI.WebControls.Substitution.MethodName%2A>대체 컨트롤 실행 될 때 호출할 콜백 메서드의 이름을 지정 하는 속성.</xref:System.Web.UI.WebControls.Substitution.MethodName%2A> 지정 하는 콜백 메서드 대체 컨트롤을 포함 하는 페이지 또는 사용자 정의 컨트롤에 정적 메서드여야 합니다. 콜백 메서드에 대 한 서명이 서명과 일치 해야 합니다는 <xref:System.Web.HttpResponseSubstitutionCallback>대리자에는 <xref:System.Web.HttpContext>매개 변수는 문자열을 반환 합니다.</xref:System.Web.HttpContext> </xref:System.Web.HttpResponseSubstitutionCallback>       페이지 출력 캐시를 조작 하려면 사용할 수 있습니다는 [@ OutputCache](http://msdn.microsoft.com/en-us/28a9e101-fb44-4198-9cb6-b8a52312fec2) 지시문의 <xref:System.Web.HttpCachePolicy>클래스 또는 <xref:System.Web.HttpResponse.Cache%2A>속성.</xref:System.Web.HttpResponse.Cache%2A> </xref:System.Web.HttpCachePolicy> 페이지 캐싱에 대 한 자세한 내용은 참조 하십시오. [ASP.NET 페이지 캐싱](~/add/includes/ajax-current-ext-md.md) 및 [ASP.NET 페이지의 부분 캐싱을](~/add/includes/ajax-current-ext-md.md)합니다.       대체 컨트롤을 사용 하는 대신을 얻을 수 있습니다 대체 사용 하 여 동작 캐싱는 <xref:System.Web.HttpResponseSubstitutionCallback>위임.</xref:System.Web.HttpResponseSubstitutionCallback> 컨트롤에서 대체와 같은 캐싱 동작을 얻을 수는 또한는 <xref:System.Web.UI.WebControls.AdRotator>컨트롤은이 기능을 직접 지원 합니다.</xref:System.Web.UI.WebControls.AdRotator> 자세한 내용은 참조 [캐시 된 페이지의 동적으로 업데이트 일부](~/add/includes/ajax-current-ext-md.md)합니다.      <a name=&quot;declarative_syntax&quot;></a># # 선언적 구문```   <asp:Substitution       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       MethodName=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   />   ```"
   example:
   - "The following code example demonstrates how to add a Substitution control declaratively to an output-cached Web page. When the page loads, the current date and time are displayed to the user in a label. This section of the page is cached and updated only every 60 seconds. When the Substitution control executes, it calls the `GetCurrentDateTime` method. The string returned by `GetCurrentDateTime` is displayed to the user. This section of the page is not cached and is updated each time the page is refreshed.  \n  \n [!code-cs[SubstitutionsClass1#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_307_1.aspx)]\n [!code-vb[SubstitutionsClass1#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_307_1.aspx)]"
   syntax:
@@ -154,8 +154,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;></xref> class."
-  remarks: "Use the Substitution constructor to create and initialize a new instance of the <xref:System.Web.UI.WebControls.Substitution> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;> </xref> 클래스입니다."
+  remarks: "대체 생성자를 사용 하 여 만들고 <xref:System.Web.UI.WebControls.Substitution>클래스</xref:System.Web.UI.WebControls.Substitution> 의 새 인스턴스를 초기화 합니다."
   example:
   - "The following code example demonstrates how to add a <xref:System.Web.UI.WebControls.Substitution> control programmatically to an output-cached Web page. When the page loads, the current date and time are displayed to the user in a label. This section of the page is cached and updated only every 60 seconds. When the <xref:System.Web.UI.WebControls.Substitution> control executes, it calls the `GetCurrentDateTime` method. The string returned by `GetCurrentDateTime` is displayed to the user. This section of the page is not cached and is updated each time the page is refreshed.  \n  \n [!code-cs[SubstitutionCstr#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_15_1.aspx)]\n [!code-vb[SubstitutionCstr#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_15_1.aspx)]"
   syntax:
@@ -177,14 +177,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Returns an <xref href=&quot;System.Web.UI.EmptyControlCollection&quot;></xref> object, indicating that the <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;></xref> control does not support child controls."
-  remarks: "The CreateControlCollection method is typically used to create a <xref:System.Web.UI.ControlCollection> object to store the child controls for a control. The implementation of the CreateControlCollection method for a <xref:System.Web.UI.WebControls.Substitution> control always returns an <xref:System.Web.UI.EmptyControlCollection> object, to indicate that the <xref:System.Web.UI.WebControls.Substitution> control does not support child controls."
+  summary: "반환 된 <xref href=&quot;System.Web.UI.EmptyControlCollection&quot;> </xref> 하는지 여부를 나타내는 개체는 <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;> </xref> 컨트롤이 자식 컨트롤을 지원 하지 않습니다."
+  remarks: "CreateControlCollection 메서드는 만드는 데 일반적으로 <xref:System.Web.UI.ControlCollection>컨트롤에 대 한 자식 컨트롤을 저장할 개체입니다.</xref:System.Web.UI.ControlCollection> 에 대 한 CreateControlCollection 메서드의 구현은 <xref:System.Web.UI.WebControls.Substitution>반환을 항상 제어는 <xref:System.Web.UI.EmptyControlCollection>나타내기 위해 개체는 <xref:System.Web.UI.WebControls.Substitution>컨트롤이 자식 컨트롤을 지원 하지 않습니다.</xref:System.Web.UI.WebControls.Substitution> </xref:System.Web.UI.EmptyControlCollection> </xref:System.Web.UI.WebControls.Substitution>"
   syntax:
     content: protected override System.Web.UI.ControlCollection CreateControlCollection ();
     parameters: []
     return:
       type: System.Web.UI.ControlCollection
-      description: "An <xref href=&quot;System.Web.UI.EmptyControlCollection&quot;></xref>, indicating that the control does not support child controls."
+      description: "<xref href=&quot;System.Web.UI.EmptyControlCollection&quot;> </xref>, 나타내는 컨트롤이 자식 컨트롤을 지원 하지 않습니다."
   overload: System.Web.UI.WebControls.Substitution.CreateControlCollection*
   exceptions: []
   platform:
@@ -201,15 +201,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the name of the callback method to invoke when the <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;></xref> control executes."
-  remarks: "Use the MethodName property to specify the name of the callback method to invoke when the <xref:System.Web.UI.WebControls.Substitution> control executes. The callback method that you specify must be a static method on the page or user control that contains the <xref:System.Web.UI.WebControls.Substitution> control. The signature for the callback method must match the signature for a <xref:System.Web.HttpResponseSubstitutionCallback> delegate that takes an <xref:System.Web.HttpContext> parameter and returns a string. The string that the callback method returns is the content to display on the page at the location of the <xref:System.Web.UI.WebControls.Substitution> control.       The <xref:System.Web.HttpContext> parameter encapsulates all HTTP-specific information about an individual HTTP request. You can use it to access session variables, authorization information, and personalization details. For more information, see <xref:System.Web.HttpResponseSubstitutionCallback>."
+  summary: "될 때 호출할 콜백 메서드의 이름을 가져오거나 설정 합니다.는 <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;> </xref> 제어를 실행 합니다."
+  remarks: "MethodName 속성을 사용 하 여 될 때 호출할 콜백 메서드의 이름을 지정 하는 <xref:System.Web.UI.WebControls.Substitution>제어를 실행 합니다.</xref:System.Web.UI.WebControls.Substitution> 지정 하는 콜백 메서드를 포함 하는 페이지 또는 사용자 정의 컨트롤에 대 한 정적 메서드 있어야는 <xref:System.Web.UI.WebControls.Substitution>컨트롤.</xref:System.Web.UI.WebControls.Substitution> 콜백 메서드에 대 한 서명이 서명과 일치 해야 합니다는 <xref:System.Web.HttpResponseSubstitutionCallback>대리자에는 <xref:System.Web.HttpContext>매개 변수는 문자열을 반환 합니다.</xref:System.Web.HttpContext> </xref:System.Web.HttpResponseSubstitutionCallback> 콜백 메서드에서 반환 하는 문자열은의 위치에 있는 페이지에 표시할 수 있는 콘텐츠는 <xref:System.Web.UI.WebControls.Substitution>컨트롤.</xref:System.Web.UI.WebControls.Substitution>       <xref:System.Web.HttpContext>개별 HTTP 요청에 대 한 모든 HTTP 관련 정보를 캡슐화 하는 매개 변수.</xref:System.Web.HttpContext> 세션 변수, 권한 부여 정보 및 개인 설정 정보에 액세스할 사용할 수 있습니다. 자세한 내용은 <xref:System.Web.HttpResponseSubstitutionCallback>.</xref:System.Web.HttpResponseSubstitutionCallback> 을 참조 하십시오."
   example:
   - "The following code example demonstrates how to add a <xref:System.Web.UI.WebControls.Substitution> control declaratively to an output-cached Web page. When the page loads, a static bulleted list is displayed to the user. This section of the page is cached and updated only every 60 seconds. When the <xref:System.Web.UI.WebControls.Substitution> control executes, it calls the `GetUser` method, which returns a string that represents the current user. This string is displayed at the location of the <xref:System.Web.UI.WebControls.Substitution> control on the page. This section of the page is not cached and is updated each time the page is refreshed.  \n  \n [!code-cs[Substitution.MethodName#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_838_1.aspx)]\n [!code-vb[Substitution.MethodName#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_838_1.aspx)]"
   syntax:
     content: public virtual string MethodName { get; set; }
     return:
       type: System.String
-      description: "A string that represents the name of the method to invoke when the <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;></xref> control executes."
+      description: "될 때 호출할 메서드의 이름을 나타내는 문자열의 <xref href=&quot;System.Web.UI.WebControls.Substitution&quot;> </xref> 제어를 실행 합니다."
   overload: System.Web.UI.WebControls.Substitution.MethodName*
   exceptions: []
   platform:
@@ -226,18 +226,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event."
+  summary: "발생 된 <xref href=&quot;System.Web.UI.Control.PreRender&quot;> </xref> 이벤트입니다."
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는 개체입니다.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.Substitution.OnPreRender*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The parent control or master page is cached."
+    description: "부모 컨트롤 또는 마스터 페이지가 캐시 됩니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.Substitution.Render(System.Web.UI.HtmlTextWriter)
@@ -252,13 +252,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sends server control content to a provided <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object, which writes the content to be rendered on the clien"
+  summary: "지정 된 서버 컨트롤 콘텐츠를 보냅니다 <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 클라이언트에서 렌더링 될 내용을 쓰는 개체"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object that receives the server control content."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 서버 컨트롤 콘텐츠를 받는 개체입니다."
   overload: System.Web.UI.WebControls.Substitution.Render*
   exceptions: []
   platform:

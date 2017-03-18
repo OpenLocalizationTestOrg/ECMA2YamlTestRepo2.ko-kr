@@ -38,8 +38,8 @@ items:
   nameWithType: WebPartPersonalization
   fullName: System.Web.UI.WebControls.WebParts.WebPartPersonalization
   type: Class
-  summary: "Implements low-level personalization operations."
-  remarks: "This class implements the logic required to carry out lower-level personalization operations. Although the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> class manages the high-level life cycle of personalization, it is the WebPartPersonalization class that is responsible for actually implementing the physical steps necessary to carry out specific personalization actions. The WebPartPersonalization class in turn relies on an implementation of <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider> to communicate with the underlying data store for personalization information.       If you use the default implementation of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager>, it creates an instance of the WebPartPersonalization class that you can use by referencing the <xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> property. For example, to access the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property, you would specify `WebPartManager.Personalization.InitialScope`."
+  summary: "하위 수준 개인 설정 작업을 구현 합니다."
+  remarks: "이 클래스는 하위 개인 설정 작업을 수행 하는 데 필요한 논리를 구현 합니다. 하지만 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>클래스 개인 설정의 상위 수준 수명 주기 관리, 실제로 특정 개인 설정 동작을 수행 하는 데 필요한 물리적 단계를 구현 하는 일을 담당 하는 WebPartPersonalization 클래스입니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> WebPartPersonalization 클래스의 구현에 의존 하는데 <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>개인 설정 정보에 대 한 기본 데이터 저장소와 통신할 수 있습니다.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>       기본 구현을 사용 하는 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>를 참조 하 여 사용할 수 있는 WebPartPersonalization 클래스의 인스턴스를 만들고는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A>속성.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 예를 들어 액세스는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>속성을 지정 하는 경우 `WebPartManager.Personalization.InitialScope`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   example:
   - "The following code example shows how the WebPartPersonalization class is used, as well as providing an example of how personalization scope affects the results of personalized properties. This example has five files:  \n  \n-   An .aspx page that declaratively creates two Web Part zones, each with a control.  \n  \n-   A user control called `Color.ascx` that allows a user to change a personalized property that applies a text box background color based on the user's authorization rights to modify state information and to enter shared scope.  \n  \n-   A user control called `Persmode.ascx` that indicates what the current page scope is and what rights the current user has to enter shared scope or to modify data; it also provides two buttons; one to change scope and one to reset current user personalization information.  \n  \n-   A login control that is used to authorize users.  \n  \n-   A Web.config file with a section that provides an example of authorizing a user to modify personalization state and to enter shared scope.  \n  \n The following code creates an aspx page  with a <xref:System.Web.UI.WebControls.WebParts.WebPartManager> and two Web Part zones and displays the `Color.ascx` and `Persmode.ascx` controls. The page loads a login page that is used to get the current user information. Use the ASP.NET Web Site Administration Tool in [!INCLUDE[vsprvsext](~/add/includes/ajax-current-ext-md.md)] to create users to access the page. See the Web.config file for an example of a user granted authorization in the configuration file to change scope and modify state information.  \n  \n [!code-cs[WebParts_WebPartPersonalization#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_1.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_1.aspx)]  \n  \n The following example code creates a login page. After a successful login, it redirects to the main aspx page.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#5](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_2.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#5](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_2.aspx)]  \n  \n The following example code is a portion of the Web.config file for this application. This section shows how to set authorization for a user, in this case \"user2\", to enter shared personalization scope and to modify personalization state information. It also shows an example of a role, in this case \"admin\", that can be used to allow users in the \"admin\" role to enter shared personalization scope and to modify personalization state information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following example code creates a user control, called `Color.ascx`, that allows the user to change a personalized property, in this case the background color of two text boxes, based on the current personalization scope and the authorization rights of the user.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#3](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_4.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#3](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_4.ascx)]  \n  \n The following example code creates a user control, called `Persmode.ascx`, that shows the current personalization scope and the user rights to modify state and to enter shared scope. It also has a reset button for resetting the current personalization state.  \n  \n [!code-cs[WebParts_WebPartPersonalization#4](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_5.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#4](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_5.ascx)]"
   syntax:
@@ -65,19 +65,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "This constructor initializes an instance of this class and associates it with the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control on whose behalf the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance will carry out personalization operations."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 클래스입니다."
+  remarks: "이 생성자는이 클래스의 인스턴스를 초기화 하 고 사용 하 여 연결 된 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤에는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>인스턴스 개인 설정 작업을 수행 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public WebPartPersonalization (System.Web.UI.WebControls.WebParts.WebPartManager owner);
     parameters:
     - id: owner
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> used to manage the personalization information"
+      description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 개인 설정 정보를 관리 하는 데 사용"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>owner</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>owner</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState
@@ -92,8 +92,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "개인 설정 데이터를 부모 적용 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이로 설정 되어 `true`,이 메서드를 호출는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>에서 메서드는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>개인 설정 상태는 제공 된 웹 파트 컨트롤에 적용할 인스턴스.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState ();
     parameters: []
@@ -116,22 +116,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the specified <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This method is called to apply personalization data to an individual <xref:System.Web.UI.WebControls.WebParts.WebPart>-derived class when requested to do so by the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control.       If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "개인 설정 데이터를 지정 된 적용 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> 부모를 제어 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "개인 설정 데이터를 개별 적용 하려면이 메서드는 <xref:System.Web.UI.WebControls.WebParts.WebPart>-부모를 클래스를 파생 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPart>       경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이로 설정 되어 `true`,이 메서드를 호출는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>에서 메서드는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>개인 설정 상태는 제공 된 웹 파트 컨트롤에 적용할 인스턴스.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to which personalization data is to be applied."
+      description: "웹 파트를 개인 설정 데이터가 적용 하는 것을 제어 합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to apply personalization state to a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "개인 설정 상태는 부모에 의해 관리 되지 않는 웹 파트 컨트롤에 적용 하려고 했습니다 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>webPart</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>webPart</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An attempt was made to apply personalization data more than once to the same Web Parts control."
@@ -149,15 +149,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "This property returns `true` if the user is authorized in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       The first time the property is called, it determines the user&quot;s right to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope and caches the information. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not shown on subsequent calls to this property."
+  summary: "사용자 입력을 권한이 있는지를 나타내는 값을 반환 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 범위입니다."
+  remarks: "이 속성은 반환 `true` 사용자에 게 권한이 부여 되는 <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>입력 <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>범위.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>       처음으로 속성, 사용자의 오른쪽 입력에서 결정 <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>범위가 지정 되 고 정보를 캐시 합니다.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>사전이 수정 된 후 처음으로이 속성이 호출 될,이 속성에 대 한 후속 호출에 변경 내용이 표시 되지 않습니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the CanEnterSharedScope property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/p-system.web.ui.webcontr_259_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_259_1.ascx)]"
   syntax:
     content: public bool CanEnterSharedScope { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>사용자는 입력을 허용 하는 경우 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 범위; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope*
   exceptions: []
   platform:
@@ -174,22 +174,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Changes the current page&quot;s <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance to the scope specified."
-  remarks: "This method changes the currently executing page&quot;s personalization scope to the new scope specified by the `newScope` parameter. This method is the protected helper method that is called by the public <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method. This protected method exists to handle future extensibility if there are more than two possible scopes to switch between.       If the current scope and `newScope` are the same value, then this method performs no operation."
+  summary: "현재 페이지의 변경 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 인스턴스를 지정 된 범위입니다."
+  remarks: "이 메서드는 현재 실행 중인 페이지의 개인 설정 범위를 지정 하는 새 범위를 변경는 `newScope` 매개 변수입니다. 이 메서드는 public에 의해 호출 되는 보호 된 도우미 메서드입니다 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> 이 보호 된 메서드를 전환 하려면 두 개 이상의 가능한 범위에 있는 경우 다음 버전의 확장을 처리할 수 있습니다.       하는 경우 현재 범위와 `newScope` 동일한 값은 다음이 메서드에서 아무런 작업도 수행 합니다."
   syntax:
     content: protected virtual void ChangeScope (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The new personalization scope for the current page."
+      description: "현재 페이지에 대 한 새 개인 설정 범위를 지정 합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "If attempting to switch from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope, the current user does not have the user capability to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
+    description: "전환 하려고 할 경우 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 의 범위를 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 범위, 현재 사용자가 없습니다 입력 하기 위한 사용자 기능이 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 범위입니다."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "<code>scope</code>유효한 멤버가 아닙니다.는 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 열거형입니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState(System.Web.UI.WebControls.WebParts.WebPart,System.Web.UI.WebControls.WebParts.WebPart)
@@ -204,17 +204,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts the personalization state from one Web Parts control and applies it to a second Web Parts control."
-  remarks: "This method extracts the personalization state from `webPartA` and applies it to `webPartB`. This method assumes that `webPartA` and `webPartB` are the same type. If the Web Parts controls are <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> controls, the method copies the personalization state from the child control wrapped in `webPartA` to the child control wrapped in `webPartB`.       As part of the copy operation, `webPartB` is marked as &quot;dirty&quot;."
+  summary: "한 웹 파트 컨트롤에서 개인 설정 상태를 추출 하 고 두 번째 웹 파트 컨트롤에 적용 됩니다."
+  remarks: "이 메서드를 개인 설정 상태에서 추출 `webPartA` 에 적용 됩니다 `webPartB`합니다. 이 메서드는 가정 `webPartA` 및 `webPartB` 동일한 형식이 있습니다. 경우에 웹 파트 컨트롤 <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>컨트롤 메서드 개인 설정 상태에서 자식 컨트롤에 래핑된 복사 `webPartA` 자식 컨트롤에에 래핑된 `webPartB`.</xref:System.Web.UI.WebControls.WebParts.GenericWebPart>       복사 작업의 일부로 `webPartB` &quot;것&quot;으로 표시 됩니다."
   syntax:
     content: protected virtual void CopyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPartA, System.Web.UI.WebControls.WebParts.WebPart webPartB);
     parameters:
     - id: webPartA
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control supplying the personalization data."
+      description: "개인 설정 데이터를 제공 하는 웹 파트 컨트롤입니다."
     - id: webPartB
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control receiving the personalization data."
+      description: "개인 설정 데이터를 받는 웹 파트 컨트롤입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState*
   exceptions:
   - type: System.ArgumentNullException
@@ -237,18 +237,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether personalization is requested to be enabled for the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This property indicates whether personalization is requested to be enabled for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. Note that this is a subtle but important distinction from the intent of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means that the Enabled property must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element if personalization should be disabled. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "개인 설정 가능 하도록 요청 되었는지 여부를 나타내는 값을 반환 관련 된 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "이 속성은 개인 설정 부모에 대해 사용 하도록 요청 되었는지 여부를 나타냅니다 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 중요 하지만 미묘한 차이가 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>및 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 의 용도와 이것이 note       이 속성의 완료 되기 전에 설정할 수 있습니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 에 Enabled 속성 페이지 태그에서 설정할 수 해야 즉 실제로 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>요소 개인 설정을 사용 하지 않도록 설정 해야 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 하는 동안이 속성 또는 설정할 수는 `PreInit` 의 단계는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>개인 설정 사용 되 면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "연결 된 후이 속성 값을 설정 하려고 했습니다 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>메서드를 완료 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled(System.Boolean)
@@ -263,14 +263,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Ensures that the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance has completed initialization or that the current user has rights to modify personalization state."
+  summary: "되도록는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 초기화 또는 현재 사용자 개인 설정 상태를 수정할 수 있는 권한이 있는지 인스턴스가 완료 되었습니다."
   remarks: "This method is a helper method used in several <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> methods to ensure one of two things:  \n  \n-   The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance has completed initialization (for example, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method was called and successfully completed). This check is made if the `ensureModifiable` parameter equals `false`.  \n  \n     \\- or -  \n  \n-   The current user has rights to modify personalization state. This check is made if `ensureModifiable` equals `true`.  \n  \n The <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control also calls this method in a number of cases:  \n  \n-   To switch the display mode to something other than normal. The current user must have rights to modify personalization state.  \n  \n-   To add, delete, or move Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To connect, disconnect, and edit Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To export the Web Parts controls on a page. The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance must have completed initialization.  \n  \n-   To import Web Parts controls. The current user must have rights to modify personalization state."
   syntax:
     content: public void EnsureEnabled (bool ensureModifiable);
     parameters:
     - id: ensureModifiable
       type: System.Boolean
-      description: "A Boolean value indicating which type of check should be made."
+      description: "검사의 유형을 나타내는 부울 값을 구성 하는 것입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled*
   exceptions:
   - type: System.InvalidOperationException
@@ -290,13 +290,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "The user right is represented by the string &quot;enterSharedScope&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "나타냅니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> 를 입력 하는 사용자의 권한 부여의 인스턴스 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 범위입니다."
+  remarks: "사용자 권한을 &quot;enterSharedScope&quot; 문자열에 의해 표시 됩니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>인스턴스.</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability EnterSharedScopeUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -312,8 +312,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control during its <xref:System.Web.UI.Page.SaveStateComplete> event.       This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "부모에서 개인 설정 데이터를 추출 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이로 설정 되어 `true`, 페이지 요청 하는 동안 개인 설정 상태를 다시 설정 하지 않는 (예를 들어는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>속성은 `false`),이 메서드는 부모 개체에서 개인 설정 데이터를 추출 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>제어 하는 동안 해당 <xref:System.Web.UI.Page.SaveStateComplete>이벤트.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>       이 메서드를 호출는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>에서 메서드는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>부모에서 개인 설정 상태를 추출 하는 인스턴스 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState ();
     parameters: []
@@ -336,19 +336,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from a Web Parts control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the Web Parts control specified by `webPart`. This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the supplied Web Parts control."
+  summary: "부모를 웹 파트 컨트롤에서 개인 설정 데이터를 추출 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이 `true`, 페이지 요청 하는 동안 개인 설정 상태를 다시 설정 하지 않는 (예를 들어는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>속성은 `false`),이 메서드는 지정 된 웹 파트 컨트롤에서 개인 설정 데이터를 추출 `webPart`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 이 메서드를 호출는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>에서 메서드는 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>는 제공 된 웹 파트 컨트롤에서 개인 설정 상태를 추출 하는 인스턴스.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control containing personalization data to be extracted."
+      description: "웹 파트 포함 된 개인 설정 데이터를 추출할 수를 제어 합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ExtractPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to extract personalization state from a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "부모에 의해 관리 되지 않는 웹 파트 컨트롤에서 개인 설정 상태를 추출 하려고 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPart\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
@@ -366,17 +366,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Retrieves the authorization filter, if any, associated with the specified Web Parts control."
-  remarks: "This method retrieves the authorization filter, if any, associated with the Web Parts control identified by `webPartID`. Each Web Parts control that is serialized and managed by personalization is associated with a `webPartID` parameter. At run time, a page&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control can filter the controls displayed on a page by determining whether each Web Parts control is authorized. This authorization information is stored as a string in the data associated with each Web Parts control."
+  summary: "에 연결 된 지정된 된 웹 파트 컨트롤 경우 권한 부여 필터를 검색 합니다."
+  remarks: "이 메서드는 연결로 식별 되는 웹 파트 컨트롤 된 경우 권한 부여 필터를 검색 `webPartID`합니다. 직렬화 되 고 개인 설정 하 여 관리 되는 각 웹 파트 컨트롤 연관는 `webPartID` 매개 변수입니다. 런타임 시 페이지의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤 각 웹 파트 컨트롤 수 있는 권한이 있는지 확인 하 여 페이지에 표시 되는 컨트롤을 필터링 할 수 있습니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 이 인증 정보는 각 웹 파트 컨트롤에 연결 된 데이터에서를 문자열로 저장 됩니다."
   syntax:
     content: protected virtual string GetAuthorizationFilter (string webPartID);
     parameters:
     - id: webPartID
       type: System.String
-      description: "The ID of the Web Parts control associated with the filter to be retrieved."
+      description: "검색 필터에 연결 된 웹 파트 컨트롤의 ID입니다."
     return:
       type: System.String
-      description: "The authorization filter for the specified Web Parts control."
+      description: "지정된 된 웹 파트 컨트롤에 대 한 권한 부여 필터입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.GetAuthorizationFilter*
   exceptions:
   - type: System.InvalidOperationException
@@ -384,7 +384,7 @@ items:
     description: "An attempt was made to retrieve an authorization filter when <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> by calling this method too early in the page life cycle.  \n  \n \\- or -  \n  \n An attempt was made to retrieve an authorization filter and no personalization state has been loaded.  \n  \n \\- or  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>webPartID</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;)."
+    description: "<code>webPartID</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 빈 문자열 (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the current page and personalization scope have associated personalization data."
-  remarks: "This is a convenient method for determining whether the current page and scope combination has personalization data associated with it. Internally, the method calls <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A> on the provider to determine whether data exists."
+  summary: "현재 페이지 및 개인 설정 범위 개인 설정 데이터에 연결 되어 있는지 여부를 나타내는 값을 반환 합니다."
+  remarks: "이것이 현재 페이지와 범위의 조합에 연관 된 개인 설정 데이터가 있는지 여부를 확인 하기 위한 편리한 방법입니다. 메서드 호출을 내부적으로 <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>데이터가 있는지 확인 하는 공급자에.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>"
   syntax:
     content: public virtual bool HasPersonalizationState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the page has personalization data associated with it; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>페이지에 연결 된 개인 설정 데이터가 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState*
   exceptions:
   - type: System.InvalidOperationException
@@ -425,21 +425,21 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the default personalization scope."
-  remarks: "This property represents the default personalization scope that should be used for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control in the absence of previous knowledge about the proper scope. If this property is not explicitly set, it defaults to returning <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means InitialScope must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "기본 개인 설정 범위를 가져오거나 설정 합니다."
+  remarks: "이 속성은 부모에 사용 해야 하는 기본 개인 설정 범위 나타냅니다 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>적절 한 범위에 대 한 이전 지식이 없는 경우에는 제어 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 이 속성을 명시적으로 설정 하지 기본값으로 반환 <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>범위.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>       이 속성의 완료 되기 전에 설정할 수 있습니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 실제로, 즉, InitialScope에 페이지 태그에서 설정 해야 합니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>요소.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 하는 동안이 속성 또는 설정할 수는 `PreInit` 의 단계는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual System.Web.UI.WebControls.WebParts.PersonalizationScope InitialScope { get; set; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> indicating the default personalization scope of the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 관련 된 기본 개인 설정 범위를 나타내는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "연결 된 후이 속성의 현재 값이 아닌 값을 설정 하려고 했습니다 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>메서드를 완료 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to set a value of InitialScope that is not a member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "구성원이 아니므로 InitialScope의 값을 설정 하려고 했습니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 열거형입니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled
@@ -454,13 +454,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "Prior to loading personalization data, this property will always return `false`. For example, this property will return `false` during the `PreInit` phase. After the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called), this property will then return `true`.       This property is a publicly accessible alias for the protected <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A> property."
+  summary: "개인 설정을 사용할지 여부와이 인스턴스에 대 한 개인 설정 데이터를 성공적으로 로드를 나타내는 값을 가져옵니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 클래스입니다."
+  remarks: "이 속성은 항상 개인 설정 데이터를 로드 하기 전에 반환 `false`합니다. 이 속성은 반환 하는 예를 들어 `false` 중의 `PreInit` 단계입니다. 연결 된 후 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드가 성공적으로 완료 (입니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>메서드는),이 속성은 다음 반환 `true`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>       이 속성은 보호 된 항목에 대 한 공개적으로 액세스할 수 있는 별칭 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>속성.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>"
   syntax:
     content: public bool IsEnabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled for the current <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance and personalization data has successfully loaded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>개인 설정을 현재 사용할 수 있는 경우 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 인스턴스 및 개인 설정 데이터에 성공적으로 고, 그러지 않으면 로드 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*
   exceptions: []
   platform:
@@ -477,13 +477,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "If the personalization feature is enabled (if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> property is set to `true`), the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance is considered initialized immediately after the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called). Prior to loading personalization data, this property always returns `false`."
+  summary: "개인 설정을 사용할지 여부와이 인스턴스에 대 한 개인 설정 데이터를 성공적으로 로드를 나타내는 값을 가져옵니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 클래스입니다."
+  remarks: "개인 설정 기능이 활성화 된 경우 (하는 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A>속성이로 설정 되어 `true`), <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>인스턴스는 연결 된 직후에 초기화 된 것으로 간주 됩니다 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드가 성공적으로 완료 (입니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>메서드는).</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> 개인 설정 데이터를 로드 하기 전에이 속성은 항상 반환 `false`합니다."
   syntax:
     content: protected bool IsInitialized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is initialized for this instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>개인 설정에 따라이 인스턴스를 초기화 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized*
   exceptions: []
   platform:
@@ -500,15 +500,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether the current user is authorized to modify state information."
-  remarks: "The first time this property is called, it caches the result of determining the user’s right to modify personalization state. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not reflected in subsequent calls to this property."
+  summary: "현재 사용자 상태 정보를 수정할 수 있는 권한이 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "이 속성을 호출할 처음으로 개인 설정 상태를 수정 하는 사용자의 권한을 확인 한 결과가 캐시 합니다. 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>사전 처음이 속성이이 호출 된 후 수정 되 면 변경 내용이 반영 되지 않습니다이 속성에 대 한 후속 호출.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the IsModifiable property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#6](~/add/codesnippet/csharp/p-system.web.ui.webcontr_67_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#6](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_67_1.ascx)]"
   syntax:
     content: public bool IsModifiable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to modify state information; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>사용자는 상태 정보를 수정 하도록 허용 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable*
   exceptions: []
   platform:
@@ -525,14 +525,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes personalization."
-  remarks: "This is the main entry point for initializing personalization information on behalf of the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. This method is called during the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. Normally, if personalization has been disabled on the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control, this method will never be called.       During the course of this method, the following initializations occur:      -   A reference to either the default personalization provider, or the custom provider indicated in the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> page markup or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> property, is obtained.      -   The provider is called to determine the user capabilities (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) for the currently executing user.      -   The personalization state for the current page/user/scope combination is loaded from the underlying data store by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) and stored within the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance.      -   The personalization scope for the current page/user/scope is determined by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>). Note that the result of this determination might be different than the value of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property.       The scope value returned from this method is used as the value for the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A> property.      > [!NOTE] >  An <xref:System.InvalidOperationException> exception due to personalization not being enabled will occur only if the Load method is called directly. In the ASP.NET implementation, an internal helper method is actually called to perform the load, and this helper method silently returns if personalization has not been enabled for the page."
+  summary: "개인 설정을 초기화합니다."
+  remarks: "이 부모를 대신 하 여 개인 설정 정보를 초기화 하기 위한 주 진입점 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 이 메서드는 부모 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 일반적으로 부모에서 해제 되어이 개인 설정 하는 경우 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤,이 메서드는 호출 되지 않습니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>       이 메서드는 동안 다음 내용이 초기화:-A 기본 개인 설정 공급자를 참조 하거나 사용자 지정 공급자에 표시 된는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>페이지 태그 또는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A>속성을 가져옵니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>      -공급자 사용자 기능을 결정 하기 위해 호출 됩니다 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) 현재 실행 중인 사용자에 대 한.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>      -현재 페이지/사용자/범위의 조합에 대 한 개인 설정 상태 공급자가 기본 데이터 저장소에서 로드 되 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) 내에 저장 된 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>인스턴스.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>      -현재 페이지/사용자/범위에 대 한 개인 설정 범위 공급자에 의해 결정 됩니다 (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>).</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A> 이 결정의 결과 수의 값 보다 다 수는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>속성.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>       이 메서드에서 반환 되는 범위 값에 대 한 값으로 사용 되는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>속성.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>      > [!NOTE] >는 <xref:System.InvalidOperationException>Load 메서드는 직접 호출 하는 경우에 개인 설정이 활성화 되지 않은 예외가 발생 합니다.</xref:System.InvalidOperationException> ASP.NET 구현에서 로드를 수행 하는 내부 도우미 메서드가 실제로 호출 하 고이 도우미 메서드는 개인 설정 페이지에 대해 설정 되지 않은 경우 자동으로 반환 합니다."
   syntax:
     content: protected virtual System.Web.UI.WebControls.WebParts.PersonalizationScope Load ();
     parameters: []
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 부모에 대 한 인스턴스 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*
   exceptions:
   - type: System.InvalidOperationException
@@ -546,7 +546,7 @@ items:
     description: "A problem occurred while loading and deserializing data.  \n  \n \\- or -  \n  \n An error occurred in the definition of a personalization provider in the configuration file."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "The underlying personalization providers failed to initialize because a default provider could not be found or because a failure occurred while attempting to initialize a personalization provider."
+    description: "기본 개인 설정 공급자를 개인 설정 공급자를 초기화 하는 동안 오류가 발생 했기 때문에 또는 기본 공급자를 찾을 수 없어서을 초기화 하지 못했습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability
@@ -561,13 +561,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to modify personalization state."
-  remarks: "The user right is represented by the string &quot;modifyState&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "나타냅니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> 개인 설정 상태를 수정 하는 사용자의 권한 부여의 인스턴스."
+  remarks: "사용자 권한을 &quot;modifyState&quot; 문자열에 의해 표시 됩니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>인스턴스.</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability ModifyStateUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -583,18 +583,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the provider name for personalization."
-  remarks: "This property returns the value set for this property in the page declaration. If this property was not set, it returns <xref:System.String.Empty>. In this case, the page uses the default personalization provider specified in the configuration file.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. This means the ProviderName property must be set in the page declaration on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element.  Alternatively, this property can be set during the `PreInit` phase."
+  summary: "개인 설정에 대 한 공급자 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성 페이지 선언에서이 속성에 설정 된 값을 반환 합니다. 이 속성이 설정 되지 않은 <xref:System.String.Empty>.</xref:System.String.Empty> 반환 이 경우 페이지에서 구성 파일에 지정 된 기본 개인 설정 공급자를 사용 합니다.       이 속성의 완료 되기 전에 설정할 수 있습니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 즉,에 페이지 선언에서 ProviderName 속성을 설정 해야는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>요소.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>  하는 동안이 속성 또는 설정할 수는 `PreInit` 단계입니다."
   syntax:
     content: public virtual string ProviderName { get; set; }
     return:
       type: System.String
-      description: "The name of the personalization provider."
+      description: "개인 설정 공급자의 이름입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method has completed."
+    description: "후에 현재 값이 아닌 값으로이 속성을 설정 하려고 했습니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 컨트롤의 <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>메서드가 완료 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState
@@ -609,8 +609,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Resets personalization data for the current page, scope, and user in the underlying data store."
-  remarks: "This method resets personalization data for the current page, scope, and user in the underlying data store. As a side effect of the reset, the currently executing page is re-executed by a <xref:System.Web.HttpServerUtility.Transfer%2A> call. Note that this transfer re-executes the current page as a `GET` request regardless of how the page was originally requested.       This method can be called at any time. Internally, this method calls the ResetPersonalizationState method on the provider. After data is successfully reset, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is set to `true`. This property is used elsewhere by the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance to bypass extracting personalization data from control properties and saving it if data has already been reset."
+  summary: "현재 페이지, 범위 및 내부 데이터 저장소에서 사용자에 대 한 개인 설정 데이터를 다시 설정합니다."
+  remarks: "이 메서드는 현재 페이지, 범위 및 내부 데이터 저장소에서 사용자에 대 한 개인 설정 데이터를 다시 설정합니다. 재설정의 부작용을으로 현재 실행 중인 페이지는 다시 실행 하 여 한 <xref:System.Web.HttpServerUtility.Transfer%2A>호출.</xref:System.Web.HttpServerUtility.Transfer%2A> 이 명령으로 현재 페이지를 다시 실행 한 `GET` 페이지 원래 요청 된 방식에 관계 없이 요청 합니다.       언제 든 지가이 메서드를 호출할 수 있습니다. 내부적으로이 메서드는 공급자에 ResetPersonalizationState 메서드를 호출합니다. 데이터를 성공적으로 다시 설정는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>속성이 `true`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> 이 속성은 다른 곳에서 사용 된 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>컨트롤 속성에서 개인 설정 데이터를 압축 해제 하지 않으려면 인스턴스 및 데이터 이미 다시 설정 하는 경우 저장 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>"
   syntax:
     content: public virtual void ResetPersonalizationState ();
     parameters: []
@@ -618,7 +618,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance cannot reference a valid personalization provider."
+    description: "<xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 인스턴스 유효한 개인 설정 공급자를 참조할 수 없습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Save
@@ -633,8 +633,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves personalization data for the current page, scope, and user to the underlying data store."
-  remarks: "This method is called during the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event. Internally, the method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A> method on the provider.       Attempting to save personalization data when the currently executing user does not have the capability called <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> (within the current <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance) results in an <xref:System.InvalidOperationException> exception. Note that this would only be true if the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control called the protected Save method directly. In the ASP.NET implementation, an internal helper method is actually called to perform the save, and this helper method silently returns if the currently executing user does not have rights to modify data."
+  summary: "기본 데이터 저장소를 현재 페이지, 범위 및 사용자에 대 한 개인 설정 데이터를 저장합니다."
+  remarks: "이 메서드는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.Page.SaveStateComplete>이벤트.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 내부적으로 메서드 호출의 <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>메서드는 공급자에.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>       현재 실행 중인 사용자가 호출 하는 기능이 없는 경우 개인 설정 데이터를 저장 하는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability>(현재 <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>인스턴스)의 결과 <xref:System.InvalidOperationException>예외.</xref:System.InvalidOperationException> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> 이 것만 수 true 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤을 보호 된 메서드를 직접 저장 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> ASP.NET 구현에서 저장을 수행 하는 내부 도우미 메서드가 실제로 호출 되 고이 도우미 메서드는 현재 실행 중인 사용자에 게 데이터를 수정 하는 경우 권한이 자동으로 반환 합니다."
   syntax:
     content: protected virtual void Save ();
     parameters: []
@@ -657,13 +657,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the current personalization scope for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This value is initially set based on the value returned from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method. This value can be modified by calling the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method.       Note that this represents the scope used for applying and extracting personalization information. The value of this property might differ from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> method."
+  summary: "현재 개인 설정 범위는 부모를 가져옵니다 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 제어 합니다."
+  remarks: "이 값은 기반으로 초기 설정에서 반환 된 값은 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> 호출 하 여이 값을 수정할 수는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>       이 적용 하 고 개인 설정 정보를 추출에 사용 되는 범위는 note 합니다. 이 속성의 값에서 다를 수 있습니다는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>속성 또는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   syntax:
     content: public System.Web.UI.WebControls.WebParts.PersonalizationScope Scope { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance indicating the scope of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 의 범위를 나타내는 인스턴스는 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope*
   exceptions: []
   platform:
@@ -680,8 +680,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method might invoke security checks and code access security permission checks. Internally, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A> method.       Note that the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control tracks &quot;dirty&quot; state internally and exposes the &quot;dirtiness&quot; of the manager through the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> property rather than through this method."
+  summary: "부모 표시 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 개인 설정 데이터가 변경 된 것으로 제어 (&quot;더티&quot; 임)."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이 `true`,이 메서드는 부모 표시 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;더티&quot;로 제어.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 구현 세부 정보에 따라는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>의 컨트롤의 인스턴스 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>,이 메서드 코드 액세스 보안 권한 검사 및 보안 검사를 호출할 수 있습니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> 이 메서드를 호출 내부적으로 <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>메서드.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>       <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤 &quot;더티&quot; 상태를 내부적으로 추적을 통해 관리자의 &quot;dirtiness&quot;를 표시는 <xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A>속성 대신이 메서드를 통해.</xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty ();
     parameters: []
@@ -689,7 +689,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "개인 설정 데이터가 로드 되었습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty(System.Web.UI.WebControls.WebParts.WebPart)
@@ -704,22 +704,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the specified Web Parts control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the specified Web Parts control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method may invoke security checks and code access security permission checks."
+  summary: "개인 설정 데이터가 변경 된 것으로 지정된 된 웹 파트 컨트롤 표시 (&quot;더티&quot; 임)."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>속성이 `true`,이 메서드는 지정 된 웹 파트 컨트롤 &quot;더티&quot;으로 표시 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> 구현 세부 정보에 따라는 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>의 컨트롤의 인스턴스 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>,이 메서드 코드 액세스 보안 권한 검사 및 보안 검사를 호출할 수 있습니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to be marked &quot;dirty&quot;."
+      description: "웹 파트 컨트롤 표시 &quot;더티&quot;입니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Attempted to mark as &quot;dirty&quot; a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "&quot;더티&quot; 웹 파트 컨트롤의 부모에 의해 관리 되지 않는 것으로 표시 하려고 했습니다. <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "개인 설정 데이터가 로드 되었습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value that indicates whether the personalization data of the current page has been reset (for example, a request was made to delete the personalization data from the underlying data store)."
-  remarks: "If this property is set to `true`, it indicates that the personalization state for the current page has been reset and that extraction of personalization data from controls and subsequent save operations should be skipped. Currently, this property is automatically set to `true` by the personalization infrastructure if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A> method is called.       Note that although there are no restrictions on when this property can be set, the property must be set to `true` prior to the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event to have any effect."
+  summary: "현재 페이지의 개인 설정 데이터가 다시 설정 되었는지 여부를 나타내는 값을 가져오거나 설정 합니다. (예를 들어 한 요청에 대해 기본 데이터 저장소에서 개인 설정 데이터를 삭제) 합니다."
+  remarks: "이 속성은로 설정 하는 경우 `true`, 현재 페이지에 대 한 개인 설정 상태를 다시 설정 하 고 개인 설정 데이터의 추출 컨트롤 및 이후의 저장 작업을 건너뛰도록 나타냅니다. 현재,이 속성이 자동으로 설정 되어 `true` 개인 설정 인프라에 의해 경우는 <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>메서드를 호출 합니다.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>       이 속성을 설정할 수 있습니다에 제한이 없지만 속성 설정 해야 `true` 이전에 <xref:System.Web.UI.WebControls.WebParts.WebPartManager>컨트롤의 <xref:System.Web.UI.Page.SaveStateComplete>이벤트를 사용 하려면.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected bool ShouldResetPersonalizationState { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the personalization state for the current page has been reset; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>현재 페이지에 대 한 개인 설정 상태를 다시 설정 했기; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState*
   exceptions: []
   platform:
@@ -757,8 +757,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Switches the current page&quot;s personalization scope from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> or from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>."
-  remarks: "This method toggles the currently executing page&quot;s personalization scope. Toggling the scope results in a <xref:System.Web.HttpServerUtility.Transfer%2A> back to the current executing page.       This method performs no operation if it is called while an export or import of a Web Parts control is occurring.       If a toggle scope request occurs for a page that was submitted via a `POST` request, then any query string values will be preserved during the transfer; query string parameters are not preserved if the page was submitted via a `GET` request."
+  summary: "현재 페이지의 개인 설정 범위에서 전환 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 를 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 또는 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 를 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>합니다."
+  remarks: "이 메서드는 현재 실행 중인 페이지의 개인 설정 범위를 전환합니다. 결과 범위를 설정/해제는 <xref:System.Web.HttpServerUtility.Transfer%2A>현재 실행 중인 페이지에 다시.</xref:System.Web.HttpServerUtility.Transfer%2A>       이 이렇게 하면 아무런 작업도 수행 발생 하는 웹 파트 컨트롤의 가져오기 또는 내보내기 하는 동안 호출 됩니다.       토글 범위 요청을 통해 제출 된 페이지에 대 한 발생 하는 경우는 `POST` 모든 쿼리 문자열 값 다음 요청을 전송 하는 동안 유지 됩니다; 쿼리 문자열 매개 변수 페이지를 통해 전송 된 경우 유지 되지 않습니다는 `GET` 요청 합니다."
   example:
   - "The following code demonstrates using the ToggleScope method. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/m-system.web.ui.webcontr_235_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_235_1.ascx)]"
   syntax:
@@ -771,7 +771,7 @@ items:
     description: "The current user does not have the user capability to enter <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope when attempting to switch from <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope to <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance has not completed initialization.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to toggle to a scope that is not defined in the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration. Technically, this situation should never occur."
+    description: "에 정의 되지 않은 범위를 설정/해제 하려고 했습니다는 <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> 열거 합니다. 기술적으로이 상황이 발생 하지 않습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities
@@ -786,13 +786,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the set of user capabilities from <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> granted to the current user."
+  summary: "집합에서 사용자 기능을 가져옵니다. <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> 현재 사용자에 게 부여 합니다."
   remarks: 'Currently the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> class contains two values indicating a user''s capabilities: `modifyState` and `enterSharedScope`. For ease of use, the capabilities contained within the dictionary can be checked with the helper properties <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope%2A>. Note the restrictions on changing capabilities after either of these properties have been accessed; for details, see the description section of each property.'
   syntax:
     content: protected virtual System.Collections.IDictionary UserCapabilities { get; }
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing the set of user capabilities granted to the current user, or an empty <xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;></xref> if the user is anonymous."
+      description: "<xref:System.Collections.IDictionary>빈 또는 현재 사용자에 부여 된 사용자 기능 집합이 포함 된 <xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;> </xref> 사용자가 익명인 경우.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities*
   exceptions: []
   platform:
@@ -809,13 +809,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets an instance of the current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control associated with this <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance."
-  remarks: "Use this property to determine the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control associated with this instance of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class."
+  summary: "현재 부모의 인스턴스를 가져옵니다 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> 이 연결 된 컨트롤 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> 인스턴스."
+  remarks: "이 속성을 사용 하 여 <xref:System.Web.UI.WebControls.WebParts.WebPartManager> <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>클래스</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> 의이 인스턴스와 연결 된 컨트롤</xref:System.Web.UI.WebControls.WebParts.WebPartManager> 을 확인 하려면"
   syntax:
     content: protected System.Web.UI.WebControls.WebParts.WebPartManager WebPartManager { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "현재 부모 <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.WebPartManager*
   exceptions: []
   platform:

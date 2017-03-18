@@ -16,8 +16,8 @@ items:
   nameWithType: ISessionStateItemCollection
   fullName: System.Web.SessionState.ISessionStateItemCollection
   type: Interface
-  summary: "Defines the contract for the collection used by ASP.NET session state to manage session."
-  remarks: "The ISessionStateItemCollection interface defines the collection of session items exposed to application code by the <xref:System.Web.SessionState.HttpSessionStateContainer> class.       The ASP.NET implementation of the ISessionStateItemCollection interface is the <xref:System.Web.SessionState.SessionStateItemCollection> class.       If you create a class derived from the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class to store session data, you can either use the <xref:System.Web.SessionState.SessionStateItemCollection> class to manage the stored objects or implement the ISessionStateItemCollection interface on your own collection manager.       If you implement the ISessionStateItemCollection interface, you must also create a class that inherits the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class in order to make use of your ISessionStateItemCollection implementation to manage session variables.       An ISessionStateItemCollection implementation must also implement the members of the <xref:System.Collections.ICollection> interface."
+  summary: "ASP.NET 세션 상태에서 세션을 관리 하는 데 사용 하는 컬렉션에 대 한 계약을 정의 합니다."
+  remarks: "<xref:System.Web.SessionState.HttpSessionStateContainer>클래스</xref:System.Web.SessionState.HttpSessionStateContainer> 에서 응용 프로그램 코드에 노출 하는 세션 항목의 컬렉션을 정의 하는 ISessionStateItemCollection 인터페이스       ISessionStateItemCollection 인터페이스의 ASP.NET 구현에는 <xref:System.Web.SessionState.SessionStateItemCollection>클래스</xref:System.Web.SessionState.SessionStateItemCollection> 입니다.       파생 된 클래스를 만드는 경우는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>세션 데이터를 저장할 클래스를 사용 하거나는 <xref:System.Web.SessionState.SessionStateItemCollection>저장된 된 개체를 관리 하거나 사용자 고유의 컬렉션 관리자에 ISessionStateItemCollection 인터페이스를 구현 하는 클래스입니다.</xref:System.Web.SessionState.SessionStateItemCollection> </xref:System.Web.SessionState.SessionStateStoreProviderBase>       상속 하는 클래스도 만들어야 ISessionStateItemCollection 인터페이스를 구현 하는 경우는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>확인 하기 위해 클래스 ISessionStateItemCollection 구현 세션 변수를 관리를 사용 하 여.</xref:System.Web.SessionState.SessionStateStoreProviderBase>       ISessionStateItemCollection 구현을의 멤버를 구현도 <xref:System.Collections.ICollection>인터페이스.</xref:System.Collections.ICollection>"
   example:
   - "The following code example implements the ISessionStateItemCollection and uses the <xref:System.Collections.SortedList> class to store session-state variable names and values.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#1](~/add/codesnippet/csharp/t-system.web.sessionstat_2_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#1](~/add/codesnippet/visualbasic/t-system.web.sessionstat_2_1.vb)]"
   syntax:
@@ -38,8 +38,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Removes all values and keys from the session-state collection."
-  remarks: "In implementing the Clear method, you should set the <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A> property to `true` to indicatethatvalues in the <xref:System.Web.SessionState.ISessionStateItemCollection> implementation have been modified."
+  summary: "세션 상태 컬렉션에서 모든 값 및 키를 제거합니다."
+  remarks: "설정 Clear 메서드를 구현 해야는 <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>속성을 `true` indicatethatvalues에서 하는 <xref:System.Web.SessionState.ISessionStateItemCollection>구현이 수정 되었습니다.</xref:System.Web.SessionState.ISessionStateItemCollection> </xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>"
   example:
   - "The following code example shows an implementation of the Clear method. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided for the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#6](~/add/codesnippet/csharp/m-system.web.sessionstat_2_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#6](~/add/codesnippet/visualbasic/m-system.web.sessionstat_2_1.vb)]"
   syntax:
@@ -61,15 +61,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Gets or sets a value indicating whether the collection has been marked as changed."
-  remarks: "The Dirty property is used by the <xref:System.Web.SessionState.SessionStateModule> to determine whether the values in an <xref:System.Web.SessionState.ISessionStateItemCollection> implementation have been modified.       In implementing the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, you should initialize the Dirty property as `false` and set the <xref:System.Web.SessionState.SessionStateItemCollection.Dirty%2A> property to `true` in the implementations of the <xref:System.Web.SessionState.ISessionStateItemCollection.Remove%2A>, <xref:System.Web.SessionState.ISessionStateItemCollection.RemoveAt%2A>, or <xref:System.Web.SessionState.ISessionStateItemCollection.Clear%2A> methods."
+  summary: "컬렉션 변경 된 것으로 표시 되었는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "Dirty 속성은 사용는 <xref:System.Web.SessionState.SessionStateModule>확인 하려면 여부의 값은 <xref:System.Web.SessionState.ISessionStateItemCollection>구현이 수정 되었습니다.</xref:System.Web.SessionState.ISessionStateItemCollection> </xref:System.Web.SessionState.SessionStateModule>       구현에 <xref:System.Web.SessionState.ISessionStateItemCollection>인터페이스를 더티 속성으로 초기화 해야 `false` 설정 하 고는 <xref:System.Web.SessionState.SessionStateItemCollection.Dirty%2A>속성을 `true` 구현에서는 <xref:System.Web.SessionState.ISessionStateItemCollection.Remove%2A>, <xref:System.Web.SessionState.ISessionStateItemCollection.RemoveAt%2A>, 또는 <xref:System.Web.SessionState.ISessionStateItemCollection.Clear%2A>메서드.</xref:System.Web.SessionState.ISessionStateItemCollection.Clear%2A> </xref:System.Web.SessionState.ISessionStateItemCollection.RemoveAt%2A> </xref:System.Web.SessionState.ISessionStateItemCollection.Remove%2A> </xref:System.Web.SessionState.SessionStateItemCollection.Dirty%2A> </xref:System.Web.SessionState.ISessionStateItemCollection>"
   example:
   - "The following code example shows an implementation of the Dirty property. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided for the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#2](~/add/codesnippet/csharp/p-system.web.sessionstat_14_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#2](~/add/codesnippet/visualbasic/p-system.web.sessionstat_14_1.vb)]"
   syntax:
     content: public bool Dirty { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.SessionState.SessionStateItemCollection&quot;></xref> contents have been changed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Web.SessionState.SessionStateItemCollection&quot;> </xref> 고, 그렇지 않으면 변경 된 내용을 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.SessionState.ISessionStateItemCollection.Dirty*
   exceptions: []
   platform:
@@ -86,7 +86,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Gets or sets a value in the collection by numerical index."
+  summary: "숫자 인덱스 별로 컬렉션의 값을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example shows an implementation of the Item property that uses a <xref:System.Collections.SortedList> to store session-variable names and values. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided in the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#3](~/add/codesnippet/csharp/p-system.web.sessionstat_3_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#3](~/add/codesnippet/visualbasic/p-system.web.sessionstat_3_1.vb)]"
@@ -95,10 +95,10 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The numerical index of the value in the collection."
+      description: "컬렉션에 있는 값의 숫자 인덱스입니다."
     return:
       type: System.Object
-      description: "The value in the collection stored at the specified index."
+      description: "지정된 된 인덱스에 저장 된 컬렉션의 값입니다."
   overload: System.Web.SessionState.ISessionStateItemCollection.Item*
   exceptions: []
   platform:
@@ -115,7 +115,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Gets or sets a value in the collection by name."
+  summary: "이름으로 컬렉션의 값을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example shows an implementation of the Item property that uses a <xref:System.Collections.SortedList> to store session-variable names and values. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided in the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#4](~/add/codesnippet/csharp/p-system.web.sessionstat_18_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#4](~/add/codesnippet/visualbasic/p-system.web.sessionstat_18_1.vb)]"
@@ -124,10 +124,10 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The key name of the value in the collection."
+      description: "컬렉션에 있는 값의 키 이름입니다."
     return:
       type: System.Object
-      description: "The value in the collection with the specified name."
+      description: "컬렉션에서 지정된 된 이름 가진 값입니다."
   overload: System.Web.SessionState.ISessionStateItemCollection.Item*
   exceptions: []
   platform:
@@ -144,7 +144,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Gets a collection of the variable names for all values stored in the collection."
+  summary: "변수 이름 컬렉션에 저장 된 모든 값의 컬렉션을 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows an implementation of the Keys property that uses a <xref:System.Collections.SortedList> to store session-variable names and values. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided in the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#5](~/add/codesnippet/csharp/p-system.web.sessionstat_21_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#5](~/add/codesnippet/visualbasic/p-system.web.sessionstat_21_1.vb)]"
@@ -152,7 +152,7 @@ items:
     content: public System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys { get; }
     return:
       type: System.Collections.Specialized.NameObjectCollectionBase.KeysCollection
-      description: "The <xref:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection> that contains all the collection keys."
+      description: "<xref:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection>모든 컬렉션 키가 들어 있는.</xref:System.Collections.Specialized.NameObjectCollectionBase.KeysCollection>"
   overload: System.Web.SessionState.ISessionStateItemCollection.Keys*
   exceptions: []
   platform:
@@ -169,8 +169,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Deletes an item from the collection."
-  remarks: "In implementing the Remove method, you should set the <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A> property to `true` to indicatevalues in the <xref:System.Web.SessionState.ISessionStateItemCollection> implementation have been modified.       If the <xref:System.Web.SessionState.ISessionStateItemCollection> implementation does not contain an element with the specified `name`, the collection should remain unchanged and no exception be thrown."
+  summary: "컬렉션에서 항목을 삭제 합니다."
+  remarks: "설정의 Remove 메서드를 구현 해야는 <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>속성을 `true` indicatevalues에서 하는 <xref:System.Web.SessionState.ISessionStateItemCollection>구현이 수정 되었습니다.</xref:System.Web.SessionState.ISessionStateItemCollection> </xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>       경우는 <xref:System.Web.SessionState.ISessionStateItemCollection>구현에 지정 된 요소를 포함 하지 `name`이면 컬렉션에 변경 되지 않은 상태로 유지 해야 이며 예외가 throw 됩니다.</xref:System.Web.SessionState.ISessionStateItemCollection>"
   example:
   - "The following code example shows an implementation of the Remove method. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided in the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#7](~/add/codesnippet/csharp/m-system.web.sessionstat_3_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#7](~/add/codesnippet/visualbasic/m-system.web.sessionstat_3_1.vb)]"
   syntax:
@@ -178,7 +178,7 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the item to delete from the collection."
+      description: "컬렉션에서 삭제할 항목의 이름입니다."
   overload: System.Web.SessionState.ISessionStateItemCollection.Remove*
   exceptions: []
   platform:
@@ -195,8 +195,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Deletes an item at a specified index from the collection."
-  remarks: "In implementing the RemoveAt method, you should set the <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A> property to `true` to indicatevalues in the <xref:System.Web.SessionState.ISessionStateItemCollection> implementation have been modified.       Your implementation of the RemoveAt method should throw an <xref:System.ArgumentOutOfRangeException> exception if `index` is less than zero or is equal to or greater than <xref:System.Collections.ICollection.Count%2A?displayProperty=fullName>."
+  summary: "컬렉션에서 지정된 된 인덱스에 항목을 삭제 합니다."
+  remarks: "설정 RemoveAt 메서드를 구현 해야는 <xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>속성을 `true` indicatevalues에서 하는 <xref:System.Web.SessionState.ISessionStateItemCollection>구현이 수정 되었습니다.</xref:System.Web.SessionState.ISessionStateItemCollection> </xref:System.Web.SessionState.ISessionStateItemCollection.Dirty%2A>       RemoveAt 메서드를 구현할 throw 해야는 <xref:System.ArgumentOutOfRangeException>예외 경우 `index` 가 음수 이거나 <xref:System.Collections.ICollection.Count%2A?displayProperty=fullName>.</xref:System.Collections.ICollection.Count%2A?displayProperty=fullName> 보다 크거나 같으면</xref:System.ArgumentOutOfRangeException>"
   example:
   - "The following code example shows an implementation of the RemoveAt method. For an example of a complete implementation of the <xref:System.Web.SessionState.ISessionStateItemCollection> interface, see the example provided in the <xref:System.Web.SessionState.ISessionStateItemCollection> interface overview.  \n  \n [!code-cs[System.Web.SessionState.ISessionStateItemCollection#8](~/add/codesnippet/csharp/m-system.web.sessionstat_9_1.cs)]\n [!code-vb[System.Web.SessionState.ISessionStateItemCollection#8](~/add/codesnippet/visualbasic/m-system.web.sessionstat_9_1.vb)]"
   syntax:
@@ -204,7 +204,7 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index of the item to remove from the collection."
+      description: "컬렉션에서 제거할 항목의 인덱스입니다."
   overload: System.Web.SessionState.ISessionStateItemCollection.RemoveAt*
   exceptions: []
   platform:

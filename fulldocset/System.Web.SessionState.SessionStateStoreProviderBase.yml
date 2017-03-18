@@ -22,8 +22,8 @@ items:
   nameWithType: SessionStateStoreProviderBase
   fullName: System.Web.SessionState.SessionStateStoreProviderBase
   type: Class
-  summary: "Defines the required members of a session-state provider for a data store."
-  remarks: "ASP.NET session state reads and writes session data from and to a data store using a session-state store provider. A session-state store provider is a class that inherits the SessionStateStoreProviderBase abstract class and overrides its members with implementations specific to the data store. The session-state store provider is called by the <xref:System.Web.SessionState.SessionStateModule> class during the processing of an ASP.NET page to communicate with the data store for the storage and retrieval of session variables and related session information such as the time-out value.       Session data within each ASP.NET application is stored separately for each <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> property. ASP.NET applications do not share session data.       You can specify a custom SessionStateStoreProviderBase implementation for an ASP.NET application by setting the `mode` attribute of the `sessionState` configuration element to <xref:System.Web.SessionState.SessionStateMode> and the `customProvider` attribute to the name of the custom provider, as shown in the example for this topic.      ## Locking Session Store Data    Because ASP.NET applications are multithreaded to support responding to concurrent requests, it is possible that concurrent requests might attempt to access the same session information. Consider a scenario where multiple frames in a frameset all access the same application. The separate requests for each frame in the frameset can be executed on the Web server concurrently on different threads. If the ASP.NET pages for each frame source access session-state variables, then you could have multiple threads accessing the session store concurrently.       To avoid data collisions at the session store and unexpected session-state behavior, the <xref:System.Web.SessionState.SessionStateModule> and SessionStateStoreProviderBase classes include lock functionality that exclusively locks the session store item for a particular session for the duration of the execution of an ASP.NET page. Note that even if the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is marked as `ReadOnly`, other ASP.NET pages in the same application might be able to write to the session store, so a request for read-only session data from the store might still end up waiting for locked data to be freed.       A lock is set on session-store data at the beginning of the request, in the call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> method. When the request completes, the lock is released during the call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A> method.       If the <xref:System.Web.SessionState.SessionStateModule> object encounters locked session data during the call to either the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> or the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> method, it will re-request the session data at half-second intervals until either the lock is released or the amount of time that the session data has been locked exceeds the value of the <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> property. If the execution time out is exceeded, the <xref:System.Web.SessionState.SessionStateModule> object will call the <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> method to free the session-store data and request the session-store data at that time.       Because locked session-store data might have been freed by a call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> method on a separate thread before the call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A> method for the current response, an attempt could be made to set and release session-state store data that has already been released and modified by another session. To avoid this situation, the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> and <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> methods return a lock identifier. This lock identifier must be included with each request to modify locked session-store data. Session-store data is modified only if the lock identifier in the data store matches the lock identifier supplied by the <xref:System.Web.SessionState.SessionStateModule>.      ## Deleting Expired Session Store Data    When the <xref:System.Web.SessionState.HttpSessionState.Abandon%2A> method is called for a particular session, the data for that session is deleted from the data store using the <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> method; otherwise, the data will remain in the session data store to server future requests for the session. It is up to the SessionStateStoreProviderBase implementation to delete expired session data."
+  summary: "데이터 저장소에 대 한 세션 상태 공급자의 필수 멤버를 정의합니다."
+  remarks: "ASP.NET 세션 상태를 읽고 세션 상태를 사용 하 여 데이터 저장소에서 세션 데이터 저장소 공급자를 기록 합니다. 세션 상태 저장소 공급자는 SessionStateStoreProviderBase 추상 클래스를 상속 하 고 데이터 저장소에 관련 된 구현으로 멤버를 재정의 하는 클래스입니다. 세션 상태 저장소 공급자에 의해 호출 됩니다는 <xref:System.Web.SessionState.SessionStateModule>클래스 저장소에 대 한 데이터 저장소와 통신 하는 ASP.NET 페이지를 처리 하 고 세션 변수 및 제한 시간 값 등의 관련된 세션 정보 검색 중.</xref:System.Web.SessionState.SessionStateModule>       각각에 대해 각 ASP.NET 응용 프로그램 내에서 세션 데이터를 별도로 저장 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>속성.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> ASP.NET 응용 프로그램에서 세션 데이터를 공유 하지 않습니다.       설정 하 여 ASP.NET 응용 프로그램에 대 한 사용자 지정 SessionStateStoreProviderBase 구현을 지정할 수 있습니다는 `mode` 특성에는 `sessionState` 구성 요소를 <xref:System.Web.SessionState.SessionStateMode>및 `customProvider` 이 항목의 예제에 표시 된 대로 특성을 사용자 지정 공급자의 이름입니다.</xref:System.Web.SessionState.SessionStateMode>      ## 잠금 세션 저장소 데이터 때문에 ASP.NET 응용 프로그램은 동시 요청에 응답을 지원 하기 위해 다중 스레드, 동시 요청 수가 동일한 세션 정보에 액세스를 시도할 수 있습니다. 여기서 프레임셋에 여러 프레임 동일한 응용 프로그램에 액세스 하는 시나리오를 살펴보겠습니다. 서로 다른 여러 스레드에서 동시에 웹 서버에는 프레임셋에서 각 프레임에 대 한 별도 요청을 실행할 수 있습니다. 세션 상태 변수를 각 프레임 원본에 대 한 ASP.NET 페이지에 액세스할 경우 동시 세션 스토어에 액세스 하는 여러 스레드를 있을 수 있습니다.       세션 저장소 및 예기치 않은 세션 상태 동작에 대 한 데이터 충돌을 방지 하기는 <xref:System.Web.SessionState.SessionStateModule>SessionStateStoreProviderBase 클래스를 단독으로 ASP.NET 페이지의 실행 기간 동안에 대 한 특정 세션에 대 한 세션 저장소 항목을 잠그는 잠금 기능을 포함 하 고.</xref:System.Web.SessionState.SessionStateModule> 경우에 해당는 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성으로 표시 되어 `ReadOnly`, 동일한 응용 프로그램의 다른 ASP.NET 페이지 데이터 저장소에서 여전히 생길 수에 대 한 대기 중인 읽기 전용 세션에 대 한 요청 차단 해제 될 데이터 세션 저장소에 쓸 수 있습니다.</xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>       세션 저장소 데이터에 대 한 호출에서 요청의 시작 부분에 잠금이 설정 되 고 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> 요청이 완료 되 면 호출 하는 동안에 잠금이 해제 되는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A>       경우는 <xref:System.Web.SessionState.SessionStateModule>개체 중 하나를 호출 하는 동안 잠긴된 세션 데이터가 발견는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>또는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A>메서드를 다시 요청 세션 데이터&0;.5 초 간격으로 잠금이 해제 되 되거나 잠긴 세션 데이터는 시간의 양을 값을 초과할 때까지 <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>속성.</xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule> 실행 제한 시간 초과 하는 경우는 <xref:System.Web.SessionState.SessionStateModule>개체 호출 됩니다는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>메서드를 세션 저장소 데이터를 해제 하 고 해당 시점에 세션 저장소 데이터를 요청 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule>       세션 저장소 잠겨 있기 때문에 데이터에 대 한 호출에 의해 해제 될 수 있습니다는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>메서드를 호출 하기 전에 별도 스레드에서 <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A>현재 응답에 대 한 메서드를 설정 하 고이 이미 해제 되 고 다른 세션에서 수정 하는 데이터를 세션 상태 저장소 해제 시도가 수행 수 없습니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> 이러한 상황을 방지 하는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A>및 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>메서드 잠금 식별자를 반환 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> 이 잠금 식별자 잠긴된 세션 저장소 데이터를 수정 하는 각 요청에 포함 되어 있어야 합니다. 세션 저장소는 데이터 저장소의 잠금 식별자에 <xref:System.Web.SessionState.SessionStateModule>.</xref:System.Web.SessionState.SessionStateModule> 제공 잠금 식별자와 일치 하는 경우에 데이터가 수정 될      ## 삭제 만료 된 세션 저장 데이터는 <xref:System.Web.SessionState.HttpSessionState.Abandon%2A>특정 세션에 대 한 메서드는, 사용 하 여 데이터 저장소에서 해당 세션에 대 한 데이터가 삭제 되는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A>메서드도 있습니다; 그렇지 않으면 데이터는 세션에 대 한 이후 요청을 처리 하기 위해 세션 데이터 저장소에 유지 됩니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> </xref:System.Web.SessionState.HttpSessionState.Abandon%2A> 만료 된 세션 데이터를 삭제 하려면 SessionStateStoreProviderBase 구현 됩니다."
   example:
   - "For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).  \n  \n The following code example shows the Web.config file for an ASP.NET application that is configured to use a custom session-state store provider.  \n  \n```  \n<configuration>  \n  <connectionStrings>  \n    <add name=\"OdbcSessionServices\" connectionString=\"DSN=SessionState;\" />  \n  </connectionStrings>  \n  \n  <system.web>  \n    <sessionState   \n      mode=\"Custom\"  \n      customProvider=\"OdbcSessionProvider\">  \n      <providers>  \n        <add name=\"OdbcSessionProvider\"  \n             type=\"Samples.AspNet.Session.OdbcSessionStateStore\"  \n             connectionStringName=\"OdbcSessionServices\" />  \n      </providers>  \n    </sessionState>  \n  </system.web>  \n</configuration>  \n```"
   syntax:
@@ -50,8 +50,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;></xref> class."
-  remarks: "You are not required to implement a constructor for a class that inherits the <xref:System.Web.SessionState.SessionStateStoreProviderBase> abstract class. Initialization values for a <xref:System.Web.SessionState.SessionStateStoreProviderBase> implementation are passed to the <xref:System.Configuration.Provider.ProviderBase.Initialize%2A> method implementation."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;> </xref> 클래스입니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateStoreProviderBase>추상 클래스</xref:System.Web.SessionState.SessionStateStoreProviderBase> 를 상속 하는 클래스에 대 한 생성자를 구현할 필요가 없습니다. 초기화에 대 한 값을 <xref:System.Web.SessionState.SessionStateStoreProviderBase>구현에 전달 되는 <xref:System.Configuration.Provider.ProviderBase.Initialize%2A>메서드 구현.</xref:System.Configuration.Provider.ProviderBase.Initialize%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -73,8 +73,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Creates a new <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> object to be used for the current request."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the CreateNewStoreData method at the beginning of a request for an ASP.NET page, during the <xref:System.Web.HttpApplication.AcquireRequestState> event. The CreateNewStoreData method is called if:      -   the incoming request has no session ID, or      -   the incoming request has a session ID, but the session is not found in the data store.       The CreateNewStoreData method creates a new <xref:System.Web.SessionState.SessionStateStoreData> object with an empty <xref:System.Web.SessionState.ISessionStateItemCollection> object, an <xref:System.Web.HttpStaticObjectsCollection> collection, and the specified `timeout` value. The <xref:System.Web.HttpStaticObjectsCollection> collection for the ASP.NET application can be retrieved using the <xref:System.Web.SessionState.SessionStateUtility.GetSessionStaticObjects%2A> method."
+  summary: "새 <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 현재 요청에 사용할 개체입니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중 ASP.NET 페이지에 대 한 요청의 시작 부분에 CreateNewStoreData 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.AcquireRequestState>이벤트.</xref:System.Web.HttpApplication.AcquireRequestState> </xref:System.Web.SessionState.SessionStateModule> CreateNewStoreData 메서드가 호출 하는 경우:-들어오는 요청에 세션 ID 또는-들어오는 요청에 ID, 하지만 세션 데이터 저장소에 없는 세션입니다.       CreateNewStoreData 메서드를 새로 만들고 <xref:System.Web.SessionState.SessionStateStoreData>비어 있는 개체 <xref:System.Web.SessionState.ISessionStateItemCollection>개체는 <xref:System.Web.HttpStaticObjectsCollection>컬렉션 및 지정 된 `timeout` 값.</xref:System.Web.HttpStaticObjectsCollection> </xref:System.Web.SessionState.ISessionStateItemCollection> </xref:System.Web.SessionState.SessionStateStoreData> <xref:System.Web.HttpStaticObjectsCollection>를 사용 하 여 ASP.NET 응용 프로그램에 대 한 컬렉션을 검색할 수 있습니다는 <xref:System.Web.SessionState.SessionStateUtility.GetSessionStaticObjects%2A>메서드.</xref:System.Web.SessionState.SessionStateUtility.GetSessionStaticObjects%2A> </xref:System.Web.HttpStaticObjectsCollection>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -82,13 +82,13 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: timeout
       type: System.Int32
-      description: "The session-state <xref:System.Web.SessionState.HttpSessionState.Timeout*> value for the new <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref>."
+      description: "세션 상태 <xref:System.Web.SessionState.HttpSessionState.Timeout*>값에서 새 <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref>.</xref:System.Web.SessionState.HttpSessionState.Timeout*>"
     return:
       type: System.Web.SessionState.SessionStateStoreData
-      description: "A new <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> for the current request."
+      description: "새 <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 현재 요청에 대 한 합니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData*
   exceptions: []
   platform:
@@ -105,8 +105,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Adds a new session-state item to the data store."
-  remarks: "The CreateUninitializedItem method is used with sessions when the `cookieless` and `regenerateExpiredSessionId` attributes are both `true`. Having the `regenerateExpiredSessionId attribute` set to `true` causes the <xref:System.Web.SessionState.SessionStateModule> object to generate a new <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value when an expired <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value is encountered.       The process of generating a new <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value requires redirecting the browser to a URL that contains the newly generated <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value. The CreateUninitializedItem method is called during the initial request that contains an expired <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value. After the <xref:System.Web.SessionState.SessionStateModule> object acquires a new <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value to replace the expired value, it calls the CreateUninitializedItem method to add an uninitialized entry to the session-state data store. The browser is then redirected to the URL containing the newly generated <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value. The existence of the uninitialized entry in the session data store ensures that the redirected request that includes the newly generated <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value is not mistaken for a request for an expired session and is, instead, treated as a new session.       The uninitialized entry in the session data store is associated with the newly generated <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> value and contains only default values, including an expiration date and time and a value that corresponds to the `actionFlags` parameter of the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> and <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> methods. The uninitialized entry in the session-state store should include an `actionFlags` value equal to the <xref:System.Web.SessionState.SessionStateActions> enumeration value. This value is passed to the <xref:System.Web.SessionState.SessionStateModule> object by the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> and <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> methods, and informs the <xref:System.Web.SessionState.SessionStateModule> object that the current session is a new but uninitialized session. The <xref:System.Web.SessionState.SessionStateModule> object will then initialize the new session and raise the `Session_OnStart` event.       For more information about cookieless sessions, see the <xref:System.Web.SessionState.HttpSessionState.IsCookieless%2A> property."
+  summary: "데이터 저장소에 새 세션 상태 항목을 추가 합니다."
+  remarks: "세션 CreateUninitializedItem 메서드를 사용 하는 경우는 `cookieless` 및 `regenerateExpiredSessionId` 특성은 둘 다 `true`합니다. 필요는 `regenerateExpiredSessionId attribute` 로 설정 `true` 하면는 <xref:System.Web.SessionState.SessionStateModule>생성할 새 개체 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>만료 된 경우 값 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값이 발견.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> </xref:System.Web.SessionState.HttpSessionState.SessionID%2A> </xref:System.Web.SessionState.SessionStateModule>       새 생성 프로세스는 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값을 새로 생성 된 포함 된 URL로 브라우저를 리디렉션할 해야 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> </xref:System.Web.SessionState.HttpSessionState.SessionID%2A> 만료 된를 포함 하는 초기 요청 동안 CreateUninitializedItem 메서드는 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> 후의 <xref:System.Web.SessionState.SessionStateModule>개체 획득 새 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>만료 값을 바꿀 값, 세션 상태 데이터 저장소에 초기화 되지 않은 항목을 추가 하도록 CreateUninitializedItem 메서드를 호출 합니다.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> </xref:System.Web.SessionState.SessionStateModule> 브라우저는 새로 생성 된 포함 된 URL로 리디렉션됩니다 다음 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> 세션 데이터 저장소에 초기화 되지 않은 항목의 존재 여부 확인 새로 생성 된 포함 된 리디렉션된 요청이 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값은 만료 된 세션에 대 한 요청에 대해 잘못 인식 되지 않고 및 대신, 새로운 세션으로 취급 합니다.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A>       세션 데이터 저장소에 초기화 되지 않은 항목은 새로 생성 된 연결 된 <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>값과 기본 값만 포함, 만료 날짜, 시간 및 해당 하는 값을 포함 하는 `actionFlags` 의 매개 변수는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A>및 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> </xref:System.Web.SessionState.HttpSessionState.SessionID%2A> 세션 상태 저장소에 초기화 되지 않은 항목을 포함 해야는 `actionFlags` 값과 같지는 <xref:System.Web.SessionState.SessionStateActions>열거형 값입니다.</xref:System.Web.SessionState.SessionStateActions> 이 값이 전달는 <xref:System.Web.SessionState.SessionStateModule>개체는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A>및 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>메서드에 게 알립니다는 <xref:System.Web.SessionState.SessionStateModule>현재 세션은 새 서로 개체 세션 초기화 되지 않았습니다.</xref:System.Web.SessionState.SessionStateModule> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> </xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> </xref:System.Web.SessionState.SessionStateModule> <xref:System.Web.SessionState.SessionStateModule>개체 그런 다음 새 세션을 초기화 하 고 발생 시키는 `Session_OnStart` 이벤트.</xref:System.Web.SessionState.SessionStateModule>       쿠키가 없는 세션에 대 한 자세한 내용은 참조는 <xref:System.Web.SessionState.HttpSessionState.IsCookieless%2A>속성.</xref:System.Web.SessionState.HttpSessionState.IsCookieless%2A>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -114,13 +114,13 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The <xref:System.Web.SessionState.HttpSessionState.SessionID*> for the current request."
+      description: "<xref:System.Web.SessionState.HttpSessionState.SessionID*>현재 요청에 대 한.</xref:System.Web.SessionState.HttpSessionState.SessionID*>"
     - id: timeout
       type: System.Int32
-      description: "The session <xref:System.Web.SessionState.HttpSessionState.Timeout*> for the current request."
+      description: "세션 <xref:System.Web.SessionState.HttpSessionState.Timeout*>현재 요청에 대 한.</xref:System.Web.SessionState.HttpSessionState.Timeout*>"
   overload: System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem*
   exceptions: []
   platform:
@@ -137,8 +137,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Releases all resources used by the <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;></xref> implementation."
-  remarks: "The Dispose method is called when the <xref:System.Web.SessionState.SessionStateModule.Dispose%2A?displayProperty=fullName> method executes at the closing of the application domain. Classes that inherit the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class can use this method to free any resources no longer in use."
+  summary: "사용 하는 모든 리소스를 해제는 <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;> </xref> 구현 합니다."
+  remarks: "Dispose 메서드는 시기는 <xref:System.Web.SessionState.SessionStateModule.Dispose%2A?displayProperty=fullName>이 메서드는 응용 프로그램 도메인을 닫을 때 실행 됩니다.</xref:System.Web.SessionState.SessionStateModule.Dispose%2A?displayProperty=fullName> 상속 된 클래스는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>클래스를 더 이상 사용 중인 모든 리소스를 해제 합니다.이 메서드를 사용할 수 없습니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -160,8 +160,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Called by the <xref href=&quot;System.Web.SessionState.SessionStateModule&quot;></xref> object at the end of a request."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the EndRequest method at the end of a request for an ASP.NET page, during the <xref:System.Web.HttpApplication.EndRequest> event. You can use the EndRequest method to perform any per-request cleanup required by your session-state store provider."
+  summary: "에 의해 호출 된 <xref href=&quot;System.Web.SessionState.SessionStateModule&quot;> </xref> 요청의 끝에 있는 개체입니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중 ASP.NET 페이지에 대 한 요청이 끝날 때 EndRequest 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.EndRequest>이벤트.</xref:System.Web.HttpApplication.EndRequest> </xref:System.Web.SessionState.SessionStateModule> 세션 상태 저장소 공급자에 필요한 요청 정리 작업을 수행 하려면 EndRequest 메서드를 사용할 수 있습니다."
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -169,7 +169,7 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.EndRequest*
   exceptions: []
   platform:
@@ -186,8 +186,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Returns read-only session-state data from the session data store."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the GetItem method at the beginning of a request, during the <xref:System.Web.HttpApplication.AcquireRequestState> event, when the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is set to `ReadOnly`. If the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is set to `true`, the <xref:System.Web.SessionState.SessionStateModule> object instead calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> method.       The GetItem method returns a <xref:System.Web.SessionState.SessionStateStoreData> object populated with session information from the data store and updates the expiration date of the session data. If no session-item data is found at the data store, the GetItem method sets the `locked``out` parameter to `false` and returns `null`. This causes the <xref:System.Web.SessionState.SessionStateModule> object to call the <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A> method to create a new session item in the data store.       If session-item data is found at the data store but the data is locked, the GetItem method sets the `locked``out` parameter to `true`, sets the `lockAge``out` parameter to the current date and time minus the date and time when the item was locked (which is retrieved from the data store), sets the `lockId``out` parameter to the lock identifier retrieved from the data store, and returns `null`. This causes the <xref:System.Web.SessionState.SessionStateModule> object to call the GetItem method again after a half-second interval to attempt to retrieve the session-item information.       If the value that the `lockAge``out` parameter is set to exceed the <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> value, then the <xref:System.Web.SessionState.SessionStateModule> object calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> method to clear the lock on the session-item data, and then calls the GetItem method again.       The `actionFlags` parameter is used when both the `cookieless` and `regenerateExpiredSessionId` attributes are set to `true`. An `actionFlags` value set to <xref:System.Web.SessionState.SessionStateActions> indicates that the entry in the session data store is a new session that requires initialization. Uninitialized entries in the session data store are created by a call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A> method. If the item from the session data store is not an uninitialized item, the `actionFlags` parameter will be set to zero.       Custom session-state store implementers that support cookieless sessions should set the `actionFlags` `out` parameter to the value returned from the session data store for the current item. If the `actionFlags` parameter value for the requested session-store item equals the <xref:System.Web.SessionState.SessionStateActions> enumeration value, then the GetItem method should set the value in the data store to zero after setting the `actionFlags` `out` parameter."
+  summary: "세션 데이터 저장소에서 읽기 전용 세션 상태 데이터를 반환합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중 요청을 맨 앞에 GetItem 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.AcquireRequestState>이벤트 때는 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성이로 설정 된 `ReadOnly`.</xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> </xref:System.Web.HttpApplication.AcquireRequestState> </xref:System.Web.SessionState.SessionStateModule> 경우는 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성이로 설정 된 `true`, <xref:System.Web.SessionState.SessionStateModule>개체를 대신 호출은 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule> </xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>       GetItem 메서드는 반환 된 <xref:System.Web.SessionState.SessionStateStoreData>개체 데이터 저장소에서 세션 정보로 채워진와 세션 데이터의 만료 날짜를 업데이트 합니다.</xref:System.Web.SessionState.SessionStateStoreData> GetItem 메서드를 설정 하는 세션 항목 데이터가 없는 데이터 저장소에 경우는 `locked``out` 매개 변수를 `false` 반환 `null`합니다. 이 인해는 <xref:System.Web.SessionState.SessionStateModule>호출 하는 개체는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A>메서드를 데이터 저장소에서 새 세션 항목을 만듭니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A> </xref:System.Web.SessionState.SessionStateModule>       경우 세션 항목 데이터를 데이터 저장소에서 찾을 수 있지만 데이터 잠겨 GetItem 메서드 설정은 `locked``out` 매개 변수를 `true`, 설정는 `lockAge``out` 매개 변수 설정 (데이터 저장소에서 검색 되는), 현재 날짜와 시간을 뺀 날짜와 시간에서 항목을 잠근는 `lockId``out` 잠금 식별자로 매개 변수 데이터 저장소 및 반환에서 검색 `null`합니다. 이 인해는 <xref:System.Web.SessionState.SessionStateModule>세션 항목 정보를 검색 하려고 하는&0;.5 초 간격 후에 다시 GetItem 메서드를 호출 하는 개체입니다.</xref:System.Web.SessionState.SessionStateModule>       경우 값 하는 `lockAge``out` 초과로 설정 된는 <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>값을 하면 <xref:System.Web.SessionState.SessionStateModule>호출 개체는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>세션 항목 데이터에 대 한 잠금을 해제 하려면 GetItem 메서드를 다시 호출 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule> </xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>       `actionFlags` 매개 변수는 사용 때 모두는 `cookieless` 및 `regenerateExpiredSessionId` 특성으로 설정 되어 `true`합니다. `actionFlags` 값으로 설정 <xref:System.Web.SessionState.SessionStateActions>초기화 작업을 수행 하는 새 세션의 세션 데이터 저장소에 있는 항목 임을 나타냅니다.</xref:System.Web.SessionState.SessionStateActions> 호출 하 여 세션 데이터 저장소의 초기화 되지 않은 항목이 생성 됩니다는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A> 세션 데이터 저장소의 항목이 지원 되지 않는 초기화 되지 않은 항목을는 `actionFlags` 매개 변수를&0;으로 설정 됩니다.       쿠키 없는 세션을 지 원하는 사용자 지정 세션 상태 저장소 구현 자가 `actionFlags` `out` 현재 항목에 대 한 세션 데이터 저장소에서 반환 된 매개 변수 값입니다. 경우는 `actionFlags` 항목 같은 요청된 된 세션 저장소에 대 한 매개 변수 값은 <xref:System.Web.SessionState.SessionStateActions>GetItem 메서드 다음 열거형 값을 설정한 후&0;은 데이터 저장소에 값을 설정 해야는 `actionFlags` `out` 매개 변수.</xref:System.Web.SessionState.SessionStateActions>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -195,25 +195,25 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The <xref:System.Web.SessionState.HttpSessionState.SessionID*> for the current request."
+      description: "<xref:System.Web.SessionState.HttpSessionState.SessionID*>현재 요청에 대 한.</xref:System.Web.SessionState.HttpSessionState.SessionID*>"
     - id: locked
       type: System.Boolean
-      description: "When this method returns, contains a Boolean value that is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the requested session item is locked at the session data store; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "이 메서드가 반환 될 때로 설정 하는 부울 값을 포함 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 요청한 세션 항목이 고, 그렇지 않으면 세션 데이터 저장소에서 잠긴 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: lockAge
       type: System.TimeSpan
-      description: "When this method returns, contains a <xref:System.TimeSpan> object that is set to the amount of time that an item in the session data store has been locked."
+      description: "이 메서드가 반환 될 때를 포함 한 <xref:System.TimeSpan>세션 데이터 저장소의 항목이 잠긴 시간으로 설정 된 개체입니다.</xref:System.TimeSpan>"
     - id: lockId
       type: System.Object
-      description: "When this method returns, contains an object that is set to the lock identifier for the current request. For details on the lock identifier, see &quot;Locking Session-Store Data&quot; in the <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;></xref> class summary."
+      description: "이 메서드가 반환 될 때 현재 요청에 대 한 잠금 식별자로 설정 하는 개체를 포함 합니다. 잠금 식별자에 자세한에서 &quot;잠금 세션 저장소 데이터&quot;를 참조는 <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;> </xref> 클래스 요약 합니다."
     - id: actions
       type: System.Web.SessionState.SessionStateActions
-      description: "When this method returns, contains one of the <xref href=&quot;System.Web.SessionState.SessionStateActions&quot;></xref> values, indicating whether the current session is an uninitialized, cookieless session."
+      description: "이 메서드가 반환 될 때 포함 중 하나는 <xref href=&quot;System.Web.SessionState.SessionStateActions&quot;> </xref> 현재 세션에는 초기화 되지 않은 쿠키 없는 세션 인지를 나타내는 값입니다."
     return:
       type: System.Web.SessionState.SessionStateStoreData
-      description: "A <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> populated with session values and information from the session data store."
+      description: "A <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 세션 값 및 세션 데이터 저장소의 정보로 채워집니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.GetItem*
   exceptions: []
   platform:
@@ -230,8 +230,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Returns read-only session-state data from the session data store."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the GetItemExclusive method at the beginning of a request, during the <xref:System.Web.HttpApplication.AcquireRequestState> event, when the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is set to `true`, which is the default. If the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is set to `ReadOnly`, the <xref:System.Web.SessionState.SessionStateModule> object instead calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> method.       The GetItemExclusive method returns a <xref:System.Web.SessionState.SessionStateStoreData> object populated with session information from the data store, updates the expiration date of the stored data, and locks the session-item data at the data store for the duration of the request. If no session-item data is found at the data store, the GetItemExclusive method sets the `locked` `out` parameter to `false` and returns `null`. This causes the <xref:System.Web.SessionState.SessionStateModule> object to call the <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A> method to create a new session item in the data store. If session-item data is found at the data store but the data is locked, the GetItemExclusive method sets the `locked` `out` parameter to `true`, sets the `lockAge` `out` parameter to the current date and time minus the date and time when the item was locked (which is retrieved from the data store), sets the `lockId` `out` parameter to the lock identifier retrieved from the data store, and returns `null`. This causes the <xref:System.Web.SessionState.SessionStateModule> object to call the GetItemExclusive method again after a half-second interval to attempt to retrieve the session-item information and obtain a lock on the data. If the value that the `lockAge` `out` parameter is set to exceeds the <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> value, then the <xref:System.Web.SessionState.SessionStateModule> calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> method to clear the lock on the session-item data, and then calls the GetItemExclusive method again.       The `actionFlags` parameter is used when the `cookieless` and `regenerateExpiredSessionId` attributes are both set to `true`. An `actionFlags` value set to <xref:System.Web.SessionState.SessionStateActions> indicates that the entry in the session data store is a new session that requires initialization. Uninitialized entries in the session data store are created by a call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A> method. If the item from the session data store is not an uninitialized item, the `actionFlags` parameter will be set to zero.       Custom session-state store implementers that support cookieless sessions should set the `actionFlags` `out` parameter to the value returned from the session data store for the current item. If the `actionFlags` parameter value for the requested session-store item equals the <xref:System.Web.SessionState.SessionStateActions> enumeration value, then the GetItemExclusive method should set the value in the data store to zero after setting the `actionFlags` `out` parameter."
+  summary: "세션 데이터 저장소에서 읽기 전용 세션 상태 데이터를 반환합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중 요청을 맨 앞에 GetItemExclusive 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.AcquireRequestState>이벤트 때는 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성이로 설정 된 `true`, 기본값.</xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> </xref:System.Web.HttpApplication.AcquireRequestState> </xref:System.Web.SessionState.SessionStateModule> 경우는 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성이로 설정 된 `ReadOnly`, <xref:System.Web.SessionState.SessionStateModule>개체를 대신 호출은 <xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.GetItem%2A> </xref:System.Web.SessionState.SessionStateModule> </xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>       GetItemExclusive 메서드는 반환 된 <xref:System.Web.SessionState.SessionStateStoreData>데이터 저장소에서 세션 정보로 채워진 개체는 저장 된 데이터의 만료 날짜를 업데이트 하 고 요청 기간에 대 한 데이터 저장소에서 세션 항목 데이터를 잠급니다.</xref:System.Web.SessionState.SessionStateStoreData> GetItemExclusive 메서드를 설정 하는 세션 항목 데이터가 없는 데이터 저장소에 경우는 `locked` `out` 매개 변수를 `false` 반환 `null`합니다. 이 인해는 <xref:System.Web.SessionState.SessionStateModule>호출 하는 개체는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A>메서드를 데이터 저장소에서 새 세션 항목을 만듭니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateNewStoreData%2A> </xref:System.Web.SessionState.SessionStateModule> 경우 세션 항목 데이터를 데이터 저장소에서 찾을 수 있지만 데이터 잠겨 GetItemExclusive 메서드 설정은 `locked` `out` 매개 변수를 `true`, 설정는 `lockAge` `out` 매개 변수 설정 (데이터 저장소에서 검색 되는), 현재 날짜와 시간을 뺀 날짜와 시간에서 항목을 잠근는 `lockId` `out` 잠금 식별자로 매개 변수 데이터 저장소 및 반환에서 검색 `null`합니다. 이 인해는 <xref:System.Web.SessionState.SessionStateModule>세션 항목 정보를 검색 하 고 데이터에 대해 잠금을 획득 하려고 하는&0;.5 초 간격 후에 다시 GetItemExclusive 메서드를 호출 하는 개체입니다.</xref:System.Web.SessionState.SessionStateModule> 경우 값 하는 `lockAge` `out` 초과로 설정 된는 <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>값을 하면 <xref:System.Web.SessionState.SessionStateModule>호출은 <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>세션 항목 데이터에 대 한 잠금을 해제 하려면 다시 GetItemExclusive 메서드를 호출 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule> </xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>       `actionFlags` 매개 변수를 사용 하면는 `cookieless` 및 `regenerateExpiredSessionId` 특성은 모두로 설정 됩니다 `true`합니다. `actionFlags` 값으로 설정 <xref:System.Web.SessionState.SessionStateActions>초기화 작업을 수행 하는 새 세션의 세션 데이터 저장소에 있는 항목 임을 나타냅니다.</xref:System.Web.SessionState.SessionStateActions> 호출 하 여 세션 데이터 저장소의 초기화 되지 않은 항목이 생성 됩니다는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.CreateUninitializedItem%2A> 세션 데이터 저장소의 항목이 지원 되지 않는 초기화 되지 않은 항목을는 `actionFlags` 매개 변수를&0;으로 설정 됩니다.       쿠키 없는 세션을 지 원하는 사용자 지정 세션 상태 저장소 구현 자가 `actionFlags` `out` 현재 항목에 대 한 세션 데이터 저장소에서 반환 된 매개 변수 값입니다. 경우는 `actionFlags` 항목 같은 요청된 된 세션 저장소에 대 한 매개 변수 값은 <xref:System.Web.SessionState.SessionStateActions>열거형 값을 다음 GetItemExclusive 메서드 데이터 저장소를 설정한 후&0;에 값을 설정 해야는 `actionFlags` `out` 매개 변수.</xref:System.Web.SessionState.SessionStateActions>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -239,25 +239,25 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The <xref:System.Web.SessionState.HttpSessionState.SessionID*> for the current request."
+      description: "<xref:System.Web.SessionState.HttpSessionState.SessionID*>현재 요청에 대 한.</xref:System.Web.SessionState.HttpSessionState.SessionID*>"
     - id: locked
       type: System.Boolean
-      description: "When this method returns, contains a Boolean value that is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a lock is successfully obtained; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "이 메서드가 반환 될 때로 설정 하는 부울 값을 포함 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 잠금 상태가 성공적으로 가져온 아니면, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: lockAge
       type: System.TimeSpan
-      description: "When this method returns, contains a <xref:System.TimeSpan> object that is set to the amount of time that an item in the session data store has been locked."
+      description: "이 메서드가 반환 될 때를 포함 한 <xref:System.TimeSpan>세션 데이터 저장소의 항목이 잠긴 시간으로 설정 된 개체입니다.</xref:System.TimeSpan>"
     - id: lockId
       type: System.Object
-      description: "When this method returns, contains an object that is set to the lock identifier for the current request. For details on the lock identifier, see &quot;Locking Session-Store Data&quot; in the <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;></xref> class summary."
+      description: "이 메서드가 반환 될 때 현재 요청에 대 한 잠금 식별자로 설정 하는 개체를 포함 합니다. 잠금 식별자에 자세한에서 &quot;잠금 세션 저장소 데이터&quot;를 참조는 <xref href=&quot;System.Web.SessionState.SessionStateStoreProviderBase&quot;> </xref> 클래스 요약 합니다."
     - id: actions
       type: System.Web.SessionState.SessionStateActions
-      description: "When this method returns, contains one of the <xref href=&quot;System.Web.SessionState.SessionStateActions&quot;></xref> values, indicating whether the current session is an uninitialized, cookieless session."
+      description: "이 메서드가 반환 될 때 포함 중 하나는 <xref href=&quot;System.Web.SessionState.SessionStateActions&quot;> </xref> 현재 세션에는 초기화 되지 않은 쿠키 없는 세션 인지를 나타내는 값입니다."
     return:
       type: System.Web.SessionState.SessionStateStoreData
-      description: "A <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> populated with session values and information from the session data store."
+      description: "A <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 세션 값 및 세션 데이터 저장소의 정보로 채워집니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.GetItemExclusive*
   exceptions: []
   platform:
@@ -274,8 +274,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Called by the <xref href=&quot;System.Web.SessionState.SessionStateModule&quot;></xref> object for per-request initialization."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the InitializeRequest method before calling any other <xref:System.Web.SessionState.SessionStateStoreProviderBase> method. You can use the InitializeRequest method to perform any per-request initialization required by your session-state store provider."
+  summary: "에 의해 호출 된 <xref href=&quot;System.Web.SessionState.SessionStateModule&quot;> </xref> 요청별 초기화에 대 한 개체입니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>다른를 호출 하기 전에 InitializeRequest 메서드를 호출 하는 개체 <xref:System.Web.SessionState.SessionStateStoreProviderBase>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase> </xref:System.Web.SessionState.SessionStateModule> 세션 상태 저장소 공급자에 필요한 요청 초기화를 수행 하기 InitializeRequest 메서드를 사용할 수 있습니다."
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -283,7 +283,7 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.InitializeRequest*
   exceptions: []
   platform:
@@ -300,8 +300,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Releases a lock on an item in the session data store."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the ReleaseItemExclusive method to update the expiration date and release a lock on an item in the session data store. It is called at the end of a request, during the <xref:System.Web.HttpApplication.ReleaseRequestState> event, if session values are unchanged. If session values have been modified, the <xref:System.Web.SessionState.SessionStateModule> object instead calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A> method.       The <xref:System.Web.SessionState.SessionStateModule> object also calls the ReleaseItemExclusive method when a lock on an item in the session data store has exceeded the <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> value. For more information about locking and details about the lock identifier, see &quot;Locking Session-Store Data&quot; in the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class overview.       The ReleaseItemExclusive method only removes the lock from an item in the session data store for the current application that matches the supplied session `id` and `lockId` values. If the `lockId` does not match the one in the data store, the ReleaseItemExclusive method does nothing."
+  summary: "릴리스 세션 데이터에 있는 항목에 대 한 잠금을 저장 합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>개체가 만료 날짜를 업데이트 하 고 세션 데이터 저장소에 있는 항목에 대 한 잠금을 해제 하려면 ReleaseItemExclusive 메서드를 호출 합니다.</xref:System.Web.SessionState.SessionStateModule> 중에 요청이 끝날 때 호출 됩니다는 <xref:System.Web.HttpApplication.ReleaseRequestState>세션 값이 변경 되지 않은 경우 이벤트.</xref:System.Web.HttpApplication.ReleaseRequestState> 세션 값이 수정 된 경우는 <xref:System.Web.SessionState.SessionStateModule>개체를 대신 호출은 <xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A>메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive%2A> </xref:System.Web.SessionState.SessionStateModule>       <xref:System.Web.SessionState.SessionStateModule>세션 데이터 저장소에 있는 항목에 대 한 잠금을 초과할 경우에 개체 ReleaseItemExclusive 메서드 호출의 <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A>값.</xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A> </xref:System.Web.SessionState.SessionStateModule> &quot;세션 저장소 데이터 잠금&quot; 잠금에 대 한 자세한 내용 및 잠금 식별자에 대 한 세부 정보에 대 한 참조는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>클래스 개요.</xref:System.Web.SessionState.SessionStateStoreProviderBase>       ReleaseItemExclusive 메서드는 제공 된 세션을 일치 하는 현재 응용 프로그램에 대 한 세션 데이터 저장소에 있는 항목에서 잠금을 제거 `id` 및 `lockId` 값입니다. 경우는 `lockId` 과 일치 하지 않는 한 데이터 저장소에, ReleaseItemExclusive 메서드는 아무 작업도 수행 합니다."
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -309,13 +309,13 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The session identifier for the current request."
+      description: "현재 요청에 대 한 세션 식별자입니다."
     - id: lockId
       type: System.Object
-      description: "The lock identifier for the current request."
+      description: "현재 요청에 대 한 잠금 식별자입니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive*
   exceptions: []
   platform:
@@ -332,8 +332,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Deletes item data from the session data store."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the RemoveItem method at the end of a request, during the <xref:System.Web.HttpApplication.ReleaseRequestState> event, to delete the data for a session item from the session data store if the <xref:System.Web.SessionState.HttpSessionState.Abandon%2A> method has been called. Only session data for the current application that matches the supplied session `id` and `lockId` values is deleted. For more information about locking and details about the lock identifier, see &quot;Locking Session-Store Data&quot; in the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class overview."
+  summary: "항목 세션 데이터 저장소에서 데이터를 삭제 합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중와 같은 요청이 끝날 때 RemoveItem 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.ReleaseRequestState>경우 세션 데이터 저장소에서 세션 항목에 대 한 데이터를 삭제 하려면 이벤트는 <xref:System.Web.SessionState.HttpSessionState.Abandon%2A>메서드가 호출 되었습니다.</xref:System.Web.SessionState.HttpSessionState.Abandon%2A> </xref:System.Web.HttpApplication.ReleaseRequestState> </xref:System.Web.SessionState.SessionStateModule> 제공된 된 세션을 일치 하는 현재 응용 프로그램에 대 한 세션 데이터만 `id` 및 `lockId` 값 삭제 됩니다. &quot;세션 저장소 데이터 잠금&quot; 잠금에 대 한 자세한 내용 및 잠금 식별자에 대 한 세부 정보에 대 한 참조는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>클래스 개요.</xref:System.Web.SessionState.SessionStateStoreProviderBase>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -341,16 +341,16 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The session identifier for the current request."
+      description: "현재 요청에 대 한 세션 식별자입니다."
     - id: lockId
       type: System.Object
-      description: "The lock identifier for the current request."
+      description: "현재 요청에 대 한 잠금 식별자입니다."
     - id: item
       type: System.Web.SessionState.SessionStateStoreData
-      description: "The <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> that represents the item to delete from the data store."
+      description: "<xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 데이터 저장소에서 삭제할 항목을 나타내는입니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem*
   exceptions: []
   platform:
@@ -367,8 +367,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Updates the expiration date and time of an item in the session data store."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the ResetItemTimeout method to update the expiration date and time for a session to the current date and time plus the session <xref:System.Web.SessionState.HttpSessionState.Timeout%2A> value when either:      -   the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is `true`, or      -   the request did not raise the <xref:System.Web.HttpApplication.AcquireRequestState> and <xref:System.Web.HttpApplication.ReleaseRequestState> events due to an error.       If an ASP.NET page is requested and the <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> attribute is set to `false`, the ResetItemTimeout method is still called to update the expiration date and time of the data in the session data store."
+  summary: "만료 날짜 및 세션 데이터 저장소에 있는 항목의 시간을 업데이트합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>만료 날짜와 시간을 세션에 대 한 현재 날짜 및 시간 외에 세션을 업데이트 하려면 ResetItemTimeout 메서드를 호출 하는 개체 <xref:System.Web.SessionState.HttpSessionState.Timeout%2A>경우이 값 중 하나:- <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성은 `true`, 또는-요청 생성 하지 않았습니다.는 <xref:System.Web.HttpApplication.AcquireRequestState>및 <xref:System.Web.HttpApplication.ReleaseRequestState>오류로 인해 이벤트.</xref:System.Web.HttpApplication.ReleaseRequestState> </xref:System.Web.HttpApplication.AcquireRequestState> </xref:System.Web.Configuration.PagesSection.EnableSessionState%2A> </xref:System.Web.SessionState.HttpSessionState.Timeout%2A> </xref:System.Web.SessionState.SessionStateModule>       ASP.NET 페이지를 요청 하는 경우 및 <xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>특성이로 설정 된 `false`, 만료 날짜와 세션 데이터 저장소에 있는 데이터의 시간을 업데이트 하려면 ResetItemTimeout 메서드는 호출 됩니다.</xref:System.Web.Configuration.PagesSection.EnableSessionState%2A>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -376,10 +376,10 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The session identifier for the current request."
+      description: "현재 요청에 대 한 세션 식별자입니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.ResetItemTimeout*
   exceptions: []
   platform:
@@ -396,8 +396,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Updates the session-item information in the session-state data store with values from the current request, and clears the lock on the data."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the SetAndReleaseItemExclusive method at the end of a request, during the <xref:System.Web.HttpApplication.ReleaseRequestState> event, to insert current session-item information into the data store or update existing session-item information in the data store with current values, to update the expiration time on the item, and to release the lock on the data. Only session data for the current application that matches the supplied session `id` and `lockId` values is updated. For more information about locking, see &quot;Locking Session Store Data&quot; in the <xref:System.Web.SessionState.SessionStateStoreProviderBase> class overview.       If the session values for the current request have not been modified, the SetAndReleaseItemExclusive method is not called. Instead, the <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A> method is called.       If the <xref:System.Web.SessionState.HttpSessionState.Abandon%2A> method has been called, the SetAndReleaseItemExclusive method is not called. Instead, the <xref:System.Web.SessionState.SessionStateModule> object calls the <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> method to delete session-item data from the data source."
+  summary: "현재 요청에서 값을 가진 세션 상태 데이터 저장소에 세션 항목 정보를 업데이트 하 고 데이터에 대 한 잠금을 해제 합니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>중와 같은 요청이 끝날 때 SetAndReleaseItemExclusive 메서드를 호출 하는 개체는 <xref:System.Web.HttpApplication.ReleaseRequestState>, 이벤트를 데이터 저장소에 현재 세션 항목 정보를 삽입 하거나, 항목에 대 한 만료 시간을 업데이트 하 고 데이터에 대 한 잠금을 해제 하려면 현재 값으로 데이터 저장소에서 기존 세션 항목 정보를 업데이트 합니다.</xref:System.Web.HttpApplication.ReleaseRequestState> </xref:System.Web.SessionState.SessionStateModule> 제공된 된 세션을 일치 하는 현재 응용 프로그램에 대 한 세션 데이터만 `id` 및 `lockId` 값이 업데이트 됩니다. 잠금에 대 한 자세한 내용은 &quot;세션 저장소 데이터 잠금&quot;의 참조는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>클래스 개요.</xref:System.Web.SessionState.SessionStateStoreProviderBase>       현재 요청에 대 한 세션 값 수정 되지 않은 SetAndReleaseItemExclusive 메서드가 호출 되지 않습니다. 대신,는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>메서드를 호출 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.ReleaseItemExclusive%2A>       경우는 <xref:System.Web.SessionState.HttpSessionState.Abandon%2A>메서드를 호출한, SetAndReleaseItemExclusive 메서드가 호출 되지 않습니다.</xref:System.Web.SessionState.HttpSessionState.Abandon%2A> 대신,는 <xref:System.Web.SessionState.SessionStateModule>호출 개체는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A>메서드 데이터 원본에서 세션 항목 데이터를 삭제 합니다.</xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> </xref:System.Web.SessionState.SessionStateModule>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -405,19 +405,19 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 현재 요청에 대 한 합니다."
     - id: id
       type: System.String
-      description: "The session identifier for the current request."
+      description: "현재 요청에 대 한 세션 식별자입니다."
     - id: item
       type: System.Web.SessionState.SessionStateStoreData
-      description: "The <xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;></xref> object that contains the current session values to be stored."
+      description: "<xref href=&quot;System.Web.SessionState.SessionStateStoreData&quot;> </xref> 현재 세션 값을 저장할 수 있는 개체입니다."
     - id: lockId
       type: System.Object
-      description: "The lock identifier for the current request."
+      description: "현재 요청에 대 한 잠금 식별자입니다."
     - id: newItem
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to identify the session item as a new item; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to identify the session item as an existing item."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>세션 항목; 새 항목으로 식별 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 에 기존 항목으로 세션 항목을 식별 합니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.SetAndReleaseItemExclusive*
   exceptions: []
   platform:
@@ -434,8 +434,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.SessionState
-  summary: "Sets a reference to the <xref href=&quot;System.Web.SessionState.SessionStateItemExpireCallback&quot;></xref> delegate for the <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;></xref> event defined in the Global.asax file."
-  remarks: "The <xref:System.Web.SessionState.SessionStateModule> object calls the SetItemExpireCallback method when the module is initialized to determine whether calls to the `Session_OnEnd` event are supported by the <xref:System.Web.SessionState.SessionStateStoreProviderBase> implementation and to associate the <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate with the `Session_OnEnd` event.       Custom session-state store provider implementers should use the SetItemExpireCallback method to inform the <xref:System.Web.SessionState.SessionStateModule> object whether calls to the `Session_OnEnd` event are supported and to set a local reference to the <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate supplied by the `expireCallback` parameter. The custom implementation must decide when the local <xref:System.Web.SessionState.SessionStateItemExpireCallback> delegate will be called. For example, the delegate could be called during the call to the <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A> method, which is called when a session is abandoned."
+  summary: "대 한 참조를 설정 하는 <xref href=&quot;System.Web.SessionState.SessionStateItemExpireCallback&quot;> </xref> 에 대 한 대리자는 <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;> </xref> Global.asax 파일에 정의 된 이벤트입니다."
+  remarks: "<xref:System.Web.SessionState.SessionStateModule>결정 하는 모듈을 초기화 하는 경우 개체 SetItemExpireCallback 메서드를 호출 여부에 대 한 호출이 `Session_OnEnd` 에서 지원 되는 이벤트는 <xref:System.Web.SessionState.SessionStateStoreProviderBase>구현 연결 하 고는 <xref:System.Web.SessionState.SessionStateItemExpireCallback>대리자를 함께 `Session_OnEnd` 이벤트.</xref:System.Web.SessionState.SessionStateItemExpireCallback> </xref:System.Web.SessionState.SessionStateStoreProviderBase> </xref:System.Web.SessionState.SessionStateModule>       사용자 지정 세션 상태 저장소 공급자 구현자에 게 알리는 SetItemExpireCallback 메서드를 사용 해야는 <xref:System.Web.SessionState.SessionStateModule>개체 여부에 대 한 호출이 `Session_OnEnd` 이벤트 지원 됩니다에 로컬 참조를 설정 하는 <xref:System.Web.SessionState.SessionStateItemExpireCallback>대리자가 제공한는 `expireCallback` 매개 변수.</xref:System.Web.SessionState.SessionStateItemExpireCallback> </xref:System.Web.SessionState.SessionStateModule> 사용자 지정 구현 시기를 결정 해야 로컬 <xref:System.Web.SessionState.SessionStateItemExpireCallback>호출 될 대리자입니다.</xref:System.Web.SessionState.SessionStateItemExpireCallback> 예를 들어 호출 하는 동안 대리자를 호출할 수 있습니다는 <xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A>세션이 중단 될 때 호출 되는 메서드.</xref:System.Web.SessionState.SessionStateStoreProviderBase.RemoveItem%2A>"
   example:
   - For an example of a session-state store provider implementation, see [Implementing a Session-State Store Provider](~/add/includes/ajax-current-ext-md.md).
   syntax:
@@ -443,10 +443,10 @@ items:
     parameters:
     - id: expireCallback
       type: System.Web.SessionState.SessionStateItemExpireCallback
-      description: "The <xref href=&quot;System.Web.SessionState.SessionStateItemExpireCallback&quot;></xref> delegate for the <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;></xref> event defined in the Global.asax file."
+      description: "<xref href=&quot;System.Web.SessionState.SessionStateItemExpireCallback&quot;> </xref> 에 대 한 대리자는 <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;> </xref> Global.asax 파일에 정의 된 이벤트입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the session-state store provider supports calling the <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;></xref> event; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>세션 상태 저장소 공급자 호출을 지 원하는 경우는 <xref uid=&quot;langword_csharp_Session_OnEnd&quot; name=&quot;Session_OnEnd&quot; href=&quot;&quot;> </xref> 이벤트, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.SessionState.SessionStateStoreProviderBase.SetItemExpireCallback*
   exceptions: []
   platform:

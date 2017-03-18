@@ -29,8 +29,8 @@ items:
   nameWithType: LoginView
   fullName: System.Web.UI.WebControls.LoginView
   type: Class
-  summary: "Displays the appropriate content template for a given user, based on the user&quot;s authentication status and role membership."
-  remarks: "In this topic:      -   [Introduction](#introduction)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;introduction&quot;></a>    ## Introduction    The LoginView control displays different Web site content templates (or &quot;views&quot;) for different users, based on whether the user is authenticated and, if so, which Web site roles he or she belongs to.      > [!NOTE] >  If you are not familiar with the set of login controls available in ASP.NET, see [ASP.NET Login Controls Overview](~/add/includes/ajax-current-ext-md.md) before continuing. For a list of other topics related to login controls and membership, see [Managing Users by Using Membership](~/add/includes/ajax-current-ext-md.md).       The template stored in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property is displayed to any visitor to the Web site who has not logged in. Once a user is logged in, the site displays either a template associated with one of the user&quot;s roles in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> property or the default template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property.       The LoginView control manages switching among the various templates once you assign templates to any of the three template properties of the LoginView class:      -   <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> - Specifies the template to display to users who are not logged in to the Web site. Users who are logged in will never see this template.      -   <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> - Specifies the default template to display to users who are logged in to the Web site but do not belong to any role groups with defined templates.      -   <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> - Specifies the template to display to logged-in users who are members of roles with defined role-group templates. Content templates are associated with particular sets of roles in <xref:System.Web.UI.WebControls.RoleGroup> instances.       Role-group templates are searched in the order they are defined in the source. The first matching role-group template is displayed to the user. If a user is a member of more than one role, the first role-group template that matches any of the user&quot;s roles is used. If more than one template is associated with a single role, only the first defined template is used.       The following table describes the behavior of the LoginView control when various combinations of templates are used.      |LoggedIn Template Property|Anonymous Template Property|RoleGroups Property|LoginView behavior|   |--------------------------------|---------------------------------|-------------------------|------------------------|   |Not set|Not set|Not set|Displays no content.|   |Set|Not set|Not set|Displays content only when the user is logged in.|   |Not set|Set|Not set|Displays content only when the user is not logged in.|   |Not set|Not set|Set|Displays the first template in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> collection that matches one of the user&quot;s roles. If no match is found, displays no content.|   |Set|Set|Not set|If the user is logged in, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property. If the user in not logged in, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property.|   |Set|Set|Set|If the user is logged in, displays the first template in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> collection that matches one of the user&quot;s roles. If no match is found, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property. If the user is not logged in, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property.|   |Set|Not set|Set|If the user is logged in, displays the first template in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> collection that matches one of the user&quot;s roles. If no match is found, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property. If the user is not logged in, nothing is displayed.|   |Not set|Set|Set|If the user is logged in, displays the first template in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> collection that matches one of the user&quot;s roles. If no match is found, nothing is displayed. If the user is not logged in, displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property.|       The <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> and <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> can be used with any authentication scheme that sets the <xref:System.Security.Principal.IIdentity.Name%2A> property of the <xref:System.Web.UI.Page> object&quot;s <xref:System.Web.UI.Page.User%2A> property. You must configure role management to use the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> property to define templates base on the user&quot;s role on the Web site. For more information, see [Understanding Role Management](~/add/includes/ajax-current-ext-md.md).       The <xref:System.Web.UI.Control.Focus%2A> method does not set the initial focus of the Web page to the LoginView control, or any of its child controls. Controls contained in the LoginView control are created after the <xref:System.Web.UI.Control.PreRender> event. To set the focus to a child control contained by the LoginView, handle the `On_PreRender` and call its <xref:System.Web.UI.Control.Focus%2A> method.  You can also use the <xref:System.Web.UI.WebControls.LoginView.ViewChanging> and <xref:System.Web.UI.WebControls.LoginView.ViewChanged> events to programmatically access the controls in the LoginView control templates.      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:LoginView       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       OnViewChanged=&quot;ViewChanged event handler&quot;       OnViewChanging=&quot;ViewChanging event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <AnonymousTemplate>               <!-- child controls -->           </AnonymousTemplate>           <LoggedInTemplate>               <!-- child controls -->           </LoggedInTemplate>           <RoleGroups>                   <asp:RoleGroup                       Roles=&quot;string&quot;                   >                           <ContentTemplate>                               <!-- child controls -->                           </ContentTemplate>                   </asp:RoleGroup>           </RoleGroups>   </asp:LoginView>   ```"
+  summary: "사용자의 인증 상태 및 역할 멤버 자격에 따라 지정된 된 사용자에 대 한 적절 한 콘텐츠 템플릿을 표시 합니다."
+  remarks: "이 항목의:- [소개](#introduction)      -   [선언적 구문](#declarative_syntax) <a name=&quot;introduction&quot;> </a> # # 다른 웹 사이트 콘텐츠 서식 파일 (또는 &quot;보기&quot;) 다른 사용자에 대해 사용자가 인증 되는지 여부에 따라 소개 The LoginView 컨트롤 표시 하 고, 웹 사이트 역할 자신이 속한 없으면 합니다.            > [!NOTE] > ASP.NET에서 사용할 수 있는 login 컨트롤 집합에 익숙하지 않은 경우 참조 [ASP.NET Login 컨트롤 개요](~/add/includes/ajax-current-ext-md.md) 계속 하기 전에. Login 컨트롤 및 멤버 자격과 관련 된 기타 항목 목록을 참조 하십시오. [멤버 자격을 사용 하 여 사용자 관리](~/add/includes/ajax-current-ext-md.md)합니다.       <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성은 인치를 로그온 하지 않은 웹 사이트에 모든 방문자에 게 표시</xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> 에 저장 된 서식 파일 사용자가 로그인 하 고, 사이트에서 사용자의 역할 중 하나가 지정 된 연결 된 템플릿을 표시 됩니다는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>속성 또는에 지정 된 기본 서식 파일은 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> </xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>       LoginView 컨트롤 템플릿을 LoginView 클래스의 세 가지 템플릿 속성 중 하나에 할당 하면 다양 한 서식 파일 간의 전환을 관리:- <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>-웹 사이트에 로그인 하지 않은 사용자에 게 표시할 템플릿을 지정 합니다.</xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> 로그인은 사용자가이 템플릿을 볼 수 없습니다.      - <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>-웹 사이트에 로그인 했지만 정의 된 템플릿이 있는 역할 그룹에 속하지 않는 사용자에 게 표시할 기본 템플릿을 지정 합니다.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>      - <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>-정의 된 역할 그룹 템플릿 포함 하는 역할의 구성원 인 로그인 사용자에 게 표시할 템플릿을 지정 합니다.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> 서식 파일에는 역할의 특정 집합이 연관 된 콘텐츠 <xref:System.Web.UI.WebControls.RoleGroup>인스턴스.</xref:System.Web.UI.WebControls.RoleGroup>       역할 그룹 템플릿은 소스에 정의 된 순서로 검색 됩니다. 첫 번째 일치 하는 역할 그룹 템플릿이 사용자에 게 표시 됩니다. 사용자가 여러 역할의 멤버, 사용자의 역할 중 하 나와 일치 하는 첫 번째 역할 그룹 템플릿이 사용 됩니다. 둘 이상의 템플릿을 단일 역할에 연결 된 경우에 정의 된 첫 번째 템플릿만 사용 됩니다.       다음 표에서 서식 파일의 다양 한 조합을 사용할 때는 LoginView 컨트롤의 동작을 설명 합니다.      | LoggedIn 템플릿 속성 | 익명 템플릿이 속성 | RoleGroups 속성 | LoginView 동작 |   |--------------------------------|---------------------------------|-------------------------|------------------------|   | 설정 되지 | 설정 되지 | 설정 되지 | 내용도 표시 되지 않습니다. |   | 설정 | 설정 되지 | 설정 되지 | 사용자가 로그인 하는 경우에 콘텐츠를 표시 합니다. |   | 설정 되지 | 설정 | 설정 되지 | 사용자가 로그인 하지 않은 경우에 콘텐츠를 표시 합니다. |   | 설정 되지 | 설정 되지 | 설정 | 첫 번째 템플릿을 표시는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>사용자의 역할 중 하 나와 일치 하는 컬렉션.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> 일치 항목이 없는 경우 콘텐츠를 표시 합니다. |   | 설정 | 설정 | 설정 되지 | 사용자가 로그인 하는 경우에 지정 된 템플릿을 표시 하는 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> 사용자에 로그인 하지 않은 경우, <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성에 지정 된 서식 파일을 표시 합니다. |   | 설정 | 설정 | 설정 | 사용자가 로그인 하는 경우에 첫 번째 템플릿을 표시는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>사용자의 역할 중 하 나와 일치 하는 컬렉션.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> </xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> 일치 항목이 없는 경우에 지정 된 서식 파일에 표시 된 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> 사용자가 로그인 하지 않은 경우 <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성에 지정 된 서식 파일을 표시 합니다. |   | 설정 | 설정 되지 | 설정 | 사용자가 로그인 하는 경우에 첫 번째 템플릿을 표시는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>사용자의 역할 중 하 나와 일치 하는 컬렉션.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> </xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> 일치 항목이 없는 경우에 지정 된 서식 파일에 표시 된 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> 사용자가 로그인 하지 않은 경우 아무 것도 표시 합니다. |   | 설정 되지 | 설정 | 설정 | 사용자가 로그인 하는 경우에 첫 번째 템플릿을 표시는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>사용자의 역할 중 하 나와 일치 하는 컬렉션.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> 일치 하는 항목이 아무 내용도 표시 됩니다. 사용자가 로그인 하지 않은 경우 <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성에 지정 된 서식 파일을 표시 합니다. |       <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>및 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>설정 하는 인증 스키마에 사용할 수는 <xref:System.Security.Principal.IIdentity.Name%2A>의 속성은 <xref:System.Web.UI.Page>개체의 <xref:System.Web.UI.Page.User%2A>속성.</xref:System.Web.UI.Page.User%2A> </xref:System.Web.UI.Page> </xref:System.Security.Principal.IIdentity.Name%2A> </xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> </xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> </xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> 역할 관리를 사용 하도록 구성 해야는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>웹 사이트에서 사용자의 역할에 기본 템플릿 정의 하는 속성.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> 자세한 내용은 참조 [역할 관리 이해](~/add/includes/ajax-current-ext-md.md)합니다.       <xref:System.Web.UI.Control.Focus%2A>메서드로 설정 하지 않습니다는 웹 페이지의 초기 포커스 LoginView 컨트롤 또는 해당 자식 컨트롤.</xref:System.Web.UI.Control.Focus%2A> LoginView 컨트롤에 포함 된 컨트롤 이후에 생성 되는 <xref:System.Web.UI.Control.PreRender>이벤트.</xref:System.Web.UI.Control.PreRender> LoginView는에 포함 된 자식 컨트롤에 포커스를 설정 하려면 처리는 `On_PreRender` 호출 하 고 해당 <xref:System.Web.UI.Control.Focus%2A>메서드.</xref:System.Web.UI.Control.Focus%2A>  사용할 수도 있습니다는 <xref:System.Web.UI.WebControls.LoginView.ViewChanging>및 <xref:System.Web.UI.WebControls.LoginView.ViewChanged>이벤트는 LoginView 컨트롤을 프로그래밍 방식으로 액세스를 컨트롤 템플릿.</xref:System.Web.UI.WebControls.LoginView.ViewChanged> </xref:System.Web.UI.WebControls.LoginView.ViewChanging>      <a name=&quot;declarative_syntax&quot;></a># # 선언적 구문```   <asp:LoginView       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       OnViewChanged=&quot;ViewChanged event handler&quot;       OnViewChanging=&quot;ViewChanging event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <AnonymousTemplate>               <!-- child controls -->           </AnonymousTemplate>           <LoggedInTemplate>               <!-- child controls -->           </LoggedInTemplate>           <RoleGroups>                   <asp:RoleGroup                       Roles=&quot;string&quot;                   >                           <ContentTemplate>                               <!-- child controls -->                           </ContentTemplate>                   </asp:RoleGroup>           </RoleGroups>   </asp:LoginView>   ```"
   example:
   - "The following code example shows how to set templates for each of the three template types supported by the LoginView control.  \n  \n [!code-vb[LoginViewClass#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_335_1.aspx)]\n [!code-cs[LoginViewClass#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_335_1.aspx)]"
   syntax:
@@ -167,7 +167,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
   syntax:
     content: public LoginView ();
     parameters: []
@@ -187,15 +187,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the template to display to users who are not logged in to the Web site."
-  remarks: "The AnonymousTemplate property specifies the content template to display to Web site users when they are not logged in to the Web site. This template is displayed when the <xref:System.Security.Principal.IIdentity.Name%2A> property of the <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A> property is `null`.       The AnonymousTemplate template is never displayed to authenticated users. If the AnonymousTemplate property is empty, no content is displayed to users who are not logged in."
+  summary: "웹 사이트에 로그인 하지 않은 사용자에 게 표시 하려면 서식 파일을 가져오거나 설정 합니다."
+  remarks: "AnonymousTemplate 속성에는 웹 사이트에 기록 되지 않습니다 때 웹 사이트 사용자에 게 표시할 콘텐츠 템플릿을 지정 합니다. 이 템플릿은 표시 됩니다 때는 <xref:System.Security.Principal.IIdentity.Name%2A>의 속성은 <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A>속성은 `null`.</xref:System.Web.UI.Page.User%2A></xref:System.Web.UI.Page> </xref:System.Security.Principal.IIdentity.Name%2A>       인증 된 사용자에 게는 AnonymousTemplate 템플릿이 표시 되지 않습니다. AnonymousTemplate 속성이 비어 있으면 콘텐츠 로그인 하지 않은 사용자에 게 표시 됩니다."
   example:
   - "The following code example uses the template specified in the AnonymousTemplate template to display an invitation to sign up for personalized services.  \n  \n [!code-vb[LoginViewAnonymousTemplate#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_899_1.aspx)]\n [!code-cs[LoginViewAnonymousTemplate#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_899_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.ITemplate AnonymousTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: "The <xref href=&quot;System.Web.UI.ITemplate&quot;></xref> to display."
+      description: "<xref href=&quot;System.Web.UI.ITemplate&quot;> </xref> 표시 합니다."
   overload: System.Web.UI.WebControls.LoginView.AnonymousTemplate*
   exceptions: []
   platform:
@@ -212,12 +212,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the <xref href=&quot;System.Web.UI.ControlCollection&quot;></xref> object that contains the child controls for the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
+  summary: "가져옵니다는 <xref href=&quot;System.Web.UI.ControlCollection&quot;> </xref> 자식을 포함 하는 개체에 대 한 제어는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
   syntax:
     content: public override System.Web.UI.ControlCollection Controls { get; }
     return:
       type: System.Web.UI.ControlCollection
-      description: "The collection of child controls for the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
+      description: "에 대 한 자식 컨트롤의 컬렉션은 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
   overload: System.Web.UI.WebControls.LoginView.Controls*
   exceptions: []
   platform:
@@ -234,8 +234,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates the child controls that make up the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
-  remarks: "The CreateChildControls method creates the individual controls that make up the <xref:System.Web.UI.WebControls.LoginView> control. The set of controls created varies according to the content template displayed for the user. For example, when a user is not logged in to the Web site, only the controls contained in the template specified in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property are created."
+  summary: "자식 구성 하는 컨트롤을 만듭니다는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
+  remarks: "CreateChildControls 메서드를 구성 하는 개별 컨트롤을 만듭니다는 <xref:System.Web.UI.WebControls.LoginView>컨트롤.</xref:System.Web.UI.WebControls.LoginView> 만든 컨트롤의 집합은 사용자에 게 표시 되는 내용 템플릿에 따라 다릅니다. 에 서식 파일에 포함 된 컨트롤에만 지정 된 사용자가 웹 사이트에 로그인 하지 않은 경우 예를 들어는 <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성 만들어집니다.</xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>"
   syntax:
     content: protected override void CreateChildControls ();
     parameters: []
@@ -255,8 +255,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Binds a data source to <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> and all its child controls."
-  remarks: "Use the DataBind method to bind data from a source to the <xref:System.Web.UI.WebControls.LoginView> control and its children. This method resolves all data-binding expressions in the <xref:System.Web.UI.WebControls.LoginView> control and any child controls in the active template."
+  summary: "데이터 소스를 바인딩합니다 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 및 모든 자식 컨트롤입니다."
+  remarks: "에 대 한 원본에서 데이터를 바인딩할 DataBind 메서드를 사용 하 여는 <xref:System.Web.UI.WebControls.LoginView>컨트롤과 해당 자식.</xref:System.Web.UI.WebControls.LoginView> 이 방법의 모든 데이터 바인딩 식 해결 되는 <xref:System.Web.UI.WebControls.LoginView>컨트롤과 모든 자식 컨트롤의 현재 서식 파일.</xref:System.Web.UI.WebControls.LoginView>"
   syntax:
     content: public override void DataBind ();
     parameters: []
@@ -276,13 +276,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value indicating whether themes can be applied to the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
-  remarks: "The EnableTheming property indicates whether themes are enabled for the <xref:System.Web.UI.WebControls.LoginView> control. The EnableTheming property also affects whether themes are enabled for the controls contained in its <xref:System.Web.UI.WebControls.LoginView.Controls%2A> collection. When the EnableTheming property is `true`, the application&quot;s theme directory is searched for control skins to apply. If no skin for the particular control exists in the theme directory, a skin is not applied. When the EnableTheming property is `false`, the theme directory is not searched and the contents of the <xref:System.Web.UI.WebControls.LoginView.SkinID%2A> property are not used.       A control can override the EnableTheming value set by its parent control, or the containing page. For example, if a parent control has EnableTheming set to `false`, you can selectively apply themes to child controls contained within the parent by setting the EnableTheming property to `true` on the individual child controls."
+  summary: "에 테마를 적용할 수 있는지 여부를 나타내는 값을 가져오거나 설정 합니다.는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
+  remarks: "EnableTheming 속성에 대 한 테마를 사용할 수 있는지 여부를 나타냅니다.는 <xref:System.Web.UI.WebControls.LoginView>컨트롤.</xref:System.Web.UI.WebControls.LoginView> EnableTheming 속성도 영향을 줍니다에 포함 된 컨트롤에 대 한 테마를 사용할 수 있는지 여부를 해당 <xref:System.Web.UI.WebControls.LoginView.Controls%2A>컬렉션.</xref:System.Web.UI.WebControls.LoginView.Controls%2A> EnableTheming 속성이 `true`을 적용할 컨트롤 스킨에 대 한 응용 프로그램의 테마 디렉터리를 검색 합니다. 테마 디렉터리에 특정 컨트롤에 대 한 스킨이 스킨 적용 되지 않습니다. EnableTheming 속성이 `false`, 테마 디렉터리 검색 되지 않고의 내용과 <xref:System.Web.UI.WebControls.LoginView.SkinID%2A>속성은 사용 되지 않습니다.</xref:System.Web.UI.WebControls.LoginView.SkinID%2A>       컨트롤, 부모 컨트롤 또는 포함 하는 페이지에 의해 설정 EnableTheming 값을 재정의할 수 있습니다. 예를 들어, 부모 컨트롤에 있는 경우 EnableTheming로 설정 `false`, 부모 EnableTheming 속성을 설정 하 여 포함 된 자식 컨트롤에 테마를 선택적으로 적용할 수 `true` 개별 자식 컨트롤입니다."
   syntax:
     content: public override bool EnableTheming { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use themes; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>테마를 사용 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.LoginView.EnableTheming*
   exceptions: []
   platform:
@@ -299,8 +299,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sets input focus to a control."
-  remarks: "The Focus method does not set the initial focus of the Web page to the <xref:System.Web.UI.WebControls.LoginView> control or to any of its child controls. Controls that are contained in the <xref:System.Web.UI.WebControls.LoginView> control are created after the <xref:System.Web.UI.Control.PreRender> event. To set the focus to a child control contained by the <xref:System.Web.UI.WebControls.LoginView>, handle the `On_PreRender` and call its <xref:System.Web.UI.Control.Focus%2A> method."
+  summary: "입력 컨트롤에 포커스를 설정 합니다."
+  remarks: "포커스 메서드를 웹 페이지의 초기 포커스를 설정 하지 않습니다는 <xref:System.Web.UI.WebControls.LoginView>제어 하거나 해당 자식 컨트롤 중 하나에.</xref:System.Web.UI.WebControls.LoginView> 에 포함 된 컨트롤에는 <xref:System.Web.UI.WebControls.LoginView>후에 생성 된 컨트롤의 <xref:System.Web.UI.Control.PreRender>이벤트.</xref:System.Web.UI.Control.PreRender> </xref:System.Web.UI.WebControls.LoginView> 에 포함 된 자식 컨트롤에 포커스를 설정 하려면는 <xref:System.Web.UI.WebControls.LoginView>, 처리는 `On_PreRender` 호출 하 고 해당 <xref:System.Web.UI.Control.Focus%2A>메서드.</xref:System.Web.UI.Control.Focus%2A> </xref:System.Web.UI.WebControls.LoginView>"
   syntax:
     content: public override void Focus ();
     parameters: []
@@ -308,7 +308,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "You call the Focus method."
+    description: "포커스 메서드를 호출 합니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.LoginView.LoadControlState(System.Object)
@@ -323,13 +323,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "This method implements <xref:System.Web.UI.Control.LoadControlState*>."
+  summary: "이 메서드 구현 <xref:System.Web.UI.Control.LoadControlState*>.</xref:System.Web.UI.Control.LoadControlState*>"
   syntax:
     content: protected override void LoadControlState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An <xref:System.Object> that represents the control state to be restored."
+      description: "<xref:System.Object>복원할 컨트롤 상태를 나타내는입니다.</xref:System.Object>"
   overload: System.Web.UI.WebControls.LoginView.LoadControlState*
   exceptions: []
   platform:
@@ -346,15 +346,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the template to display to Web site users who are logged in to the Web site but are not members of one of the role groups specified in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups*> property."
-  remarks: "The LoggedInTemplate property is displayed to Web site users when both of the following conditions are met:      -   The <xref:System.Security.Principal.IIdentity.Name%2A> property of the <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A> property is not `null`      -   The user does not belong to a role group defined in the <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> property.       The LoggedInTemplate property specifies a default template for authenticated Web site users. If you have not configured role management, the LoggedInTemplate is the only template available for authenticated users. For more information about configuring role management, see [Understanding Role Management](~/add/includes/ajax-current-ext-md.md)."
+  summary: "웹 사이트 사용자에 게 웹 사이트에 로그인 했지만 하나에 지정 된 역할 그룹의 구성원이 아닌 표시할 템플릿을 가져오거나 설정 합니다.는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups*>속성.</xref:System.Web.UI.WebControls.LoginView.RoleGroups*>"
+  remarks: "다음 조건이 모두 충족 되 면 웹 사이트 사용자에 게 표시 되는 LoggedInTemplate 속성:- <xref:System.Security.Principal.IIdentity.Name%2A>속성은 <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A>속성은 `null` -사용자에 정의 된 역할 그룹에 속하지 않습니다는 <xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A>속성.</xref:System.Web.UI.WebControls.LoginView.RoleGroups%2A> </xref:System.Web.UI.Page.User%2A></xref:System.Web.UI.Page> </xref:System.Security.Principal.IIdentity.Name%2A>       LoggedInTemplate 속성 인증된 웹 사이트 사용자에 대 한 기본 서식 파일을 지정합니다. 역할 관리를 구성 하지 않은 경우는 LoggedInTemplate는 인증 된 사용자에 사용할 수 있는 유일한 템플릿입니다. 역할 관리를 구성 하는 방법에 대 한 자세한 내용은 참조 [역할 관리 이해](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example uses the LoggedInTemplate template to display links to personalized information for logged-in users.  \n  \n [!code-vb[LoginViewAnonymousTemplate#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_127_1.aspx)]\n [!code-cs[LoginViewAnonymousTemplate#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_127_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.ITemplate LoggedInTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: "The <xref href=&quot;System.Web.UI.ITemplate&quot;></xref> to display."
+      description: "<xref href=&quot;System.Web.UI.ITemplate&quot;> </xref> 표시 합니다."
   overload: System.Web.UI.WebControls.LoginView.LoggedInTemplate*
   exceptions: []
   platform:
@@ -371,14 +371,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.Init&quot;></xref> event."
-  remarks: "The OnInit method performs initialization for the <xref:System.Web.UI.WebControls.LoginView> control.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnInit method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Web.UI.Control.Init&quot;> </xref> 이벤트입니다."
+  remarks: "에 대 한 초기화를 수행 하는 OnInit 메서드는 <xref:System.Web.UI.WebControls.LoginView>컨트롤.</xref:System.Web.UI.WebControls.LoginView>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [NIB: 이벤트를 발생 시키는](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)합니다.       OnInit 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는 개체입니다.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.LoginView.OnInit*
   exceptions: []
   platform:
@@ -395,14 +395,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Determines which role-group template to display, based on the roles of the logged-in user."
-  remarks: "The OnPreRender method is called during the <xref:System.Web.UI.Control.PreRender> event to determine which content template to display to the user. If the <xref:System.Security.Principal.IIdentity.Name%2A> property of the <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A> property is `null`, the template specified in the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> property is displayed; otherwise, the template associated with the user&quot;s role is displayed. If the user does not belong to a defined role group, or if you have not configured role management, the <xref:System.Web.UI.WebControls.LoginView> control displays the template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property. For more information about configuring role management, see [Role Management Providers](~/add/includes/ajax-current-ext-md.md).       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreRender method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "로그인 한 사용자 역할에 따라을 표시 하려면 그룹 역할 템플릿을 결정 합니다."
+  remarks: "OnPreRender 메서드 동안 호출 됩니다는 <xref:System.Web.UI.Control.PreRender>사용자에 게 표시할 콘텐츠 템플릿을 결정 하는 이벤트입니다.</xref:System.Web.UI.Control.PreRender> 경우는 <xref:System.Security.Principal.IIdentity.Name%2A>의 속성은 <xref:System.Web.UI.Page><xref:System.Web.UI.Page.User%2A>속성은 `null`에 지정 된 템플릿이 <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A>속성이 표시 됩니다; 그렇지 않으면 사용자의 역할에 연결 된 서식 파일에 표시 됩니다.</xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> </xref:System.Web.UI.Page.User%2A></xref:System.Web.UI.Page> </xref:System.Security.Principal.IIdentity.Name%2A> 역할 관리를 구성 하지 않은 경우 또는 사용자 정의 된 역할 그룹에 속하지 않는 경우는 <xref:System.Web.UI.WebControls.LoginView>컨트롤에 지정 된 템플릿을 표시는 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> </xref:System.Web.UI.WebControls.LoginView> 역할 관리를 구성 하는 방법에 대 한 자세한 내용은 참조 [역할 관리 공급자](~/add/includes/ajax-current-ext-md.md)합니다.       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [NIB: 이벤트를 발생 시키는](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)합니다.       OnPreRender 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는 개체입니다.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.LoginView.OnPreRender*
   exceptions: []
   platform:
@@ -419,14 +419,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.LoginView.ViewChanged&quot;></xref> event after the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control switches views."
-  remarks: "When the <xref:System.Web.UI.WebControls.LoginView> control switches views, it removes the controls from the previous template and creates new child controls from the new template. The OnViewChanged method is called after the new child controls are created.       Use the OnViewChanged method to perform any processing, such as data binding, necessary to initialize the controls on the new view.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnViewChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생는 <xref href=&quot;System.Web.UI.WebControls.LoginView.ViewChanged&quot;> </xref> 후 이벤트는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 컨트롤 보기를 전환 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.LoginView>컨트롤 뷰를 전환할 이전 서식 파일에서 컨트롤을 제거 하 고 새 서식 파일을 새 자식 컨트롤을 만듭니다.</xref:System.Web.UI.WebControls.LoginView> OnViewChanged 메서드는 새 자식 컨트롤을 만든 후에 호출 됩니다.       과 같은 데이터 바인딩, 새 뷰에서 컨트롤을 초기화 하는 데 필요한 처리를 수행 하려면 OnViewChanged 메서드를 사용 합니다.       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [NIB: 이벤트를 발생 시키는](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)합니다.       OnViewChanged 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnViewChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는 개체입니다.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.LoginView.OnViewChanged*
   exceptions: []
   platform:
@@ -443,14 +443,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.WebControls.LoginView.ViewChanging&quot;></xref> event before the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control switches views."
-  remarks: "When the <xref:System.Web.UI.WebControls.LoginView> controls switches views, it removes the controls from the previous template and creates new child controls from the new template. The OnViewChanging method is called before the previous controls are removed.       Use the OnViewChanging method to perform any necessary processing, such as saving control information, before the controls are removed.       Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnViewChanging method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생는 <xref href=&quot;System.Web.UI.WebControls.LoginView.ViewChanging&quot;> </xref> 이전 이벤트는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 컨트롤 보기를 전환 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.LoginView>컨트롤 뷰를 전환할 이전 서식 파일에서 컨트롤을 제거 하 고 새 서식 파일을 새 자식 컨트롤을 만듭니다.</xref:System.Web.UI.WebControls.LoginView> OnViewChanging 메서드는 이전 컨트롤이 제거 되기 전에 호출 됩니다.       컨트롤이 제거 되기 전에 제어 정보를 저장 하는 등의 필요한 처리를 수행 하려면 OnViewChanging 메서드를 사용 합니다.       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [NIB: 이벤트를 발생 시키는](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2)합니다.       OnViewChanging 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnViewChanging (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> object that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는 개체입니다.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.LoginView.OnViewChanging*
   exceptions: []
   platform:
@@ -467,14 +467,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Renders the Web server control content to the client&quot;s browser using the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The Render method is used to render the server control content to the client&quot;s browser using the specified <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName> object.       **Note** This method is used primarily by control developers to extend the <xref:System.Web.UI.WebControls.LoginView> control."
+  summary: "웹 서버 컨트롤 콘텐츠를 사용 하 여 지정 된 클라이언트의 브라우저 렌더링 <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 개체입니다."
+  remarks: "Render 메서드는 사용 하 여 지정 된 클라이언트의 브라우저에 서버 컨트롤 콘텐츠를 렌더링 하는 데 <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName>개체입니다.</xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName>       **참고** 이 메서드는 주로 컨트롤 개발자가 확장 된 <xref:System.Web.UI.WebControls.LoginView>컨트롤.</xref:System.Web.UI.WebControls.LoginView>"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> used to render the server control content on the client&quot;s browser."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 클라이언트의 브라우저에서 서버 컨트롤 콘텐츠를 렌더링 하는 데 사용 합니다."
   overload: System.Web.UI.WebControls.LoginView.Render*
   exceptions: []
   platform:
@@ -491,15 +491,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a collection of role groups that associate content templates with particular roles."
-  remarks: "The RoleGroups property contains the content templates associated with various roles on the Web site. The collection in the RoleGroups property is searched in the order in which templates are defined in the source. The first matching role-group template is displayed to the user. If a user is a member of more than one role, the first role-group template that matches any of the user&quot;s roles is used. If more than one template is associated with a single role, only the first defined template will be used.       If a logged-in user does not belong to any role contained in the role-group collection, the site displays the content template specified in the <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> property. Anonymous users are never shown any template contained in the RoleGroups collection.       You must configure role management to use the RoleGroups property to define templates based on the user&quot;s role on the Web site. For more information, see [Understanding Role Management](~/add/includes/ajax-current-ext-md.md).       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "특정 역할에 콘텐츠 서식 파일을 연결 하는 역할 그룹의 컬렉션을 가져옵니다."
+  remarks: "RoleGroups 속성 웹 사이트에서 다양 한 역할과 연결 된 콘텐츠 서식 파일을 포함 합니다. 컬렉션 RoleGroups 속성에는 원본에 정의 되어 있는 템플릿 순서 대로 검색 됩니다. 첫 번째 일치 하는 역할 그룹 템플릿이 사용자에 게 표시 됩니다. 사용자가 여러 역할의 멤버, 사용자의 역할 중 하 나와 일치 하는 첫 번째 역할 그룹 템플릿이 사용 됩니다. 둘 이상의 템플릿이 있으면 단일 역할에 연결 된 정의 된 첫 번째 템플릿만 사용 됩니다.       사이트에 지정 된 콘텐츠 템플릿을 표시 로그인 한 사용자 역할 그룹 컬렉션에 포함 된 모든 역할에 속하지 않으면는 <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A>속성.</xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> 익명 사용자에 게 RoleGroups 컬렉션에 포함 된 템플릿을 표시 하지 않습니다 됩니다.       역할 관리 웹 사이트에서 사용자의 역할을 기반으로 템플릿을 정의 하려면 RoleGroups 속성을 사용 하도록 구성 해야 합니다. 자세한 내용은 참조 [역할 관리 이해](~/add/includes/ajax-current-ext-md.md)합니다.       테마 또는 스타일 시트 테마가이 속성을 설정할 수 없습니다. 자세한 내용은 참조 <xref:System.Web.UI.ThemeableAttribute>및 [ASP.NET 테마와 스킨](~/add/includes/ajax-current-ext-md.md).</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example demonstrates using the RoleGroups collection. Because the <xref:System.Web.UI.WebControls.LoginView.AnonymousTemplate%2A> and <xref:System.Web.UI.WebControls.LoginView.LoggedInTemplate%2A> properties are not set, the content is displayed only to users who belong to roles with a defined content template.  \n  \n [!code-vb[LoginViewRoleGroups#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_566_1.aspx)]\n [!code-cs[LoginViewRoleGroups#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_566_1.aspx)]"
   syntax:
     content: public virtual System.Web.UI.WebControls.RoleGroupCollection RoleGroups { get; }
     return:
       type: System.Web.UI.WebControls.RoleGroupCollection
-      description: "A <xref href=&quot;System.Web.UI.WebControls.RoleGroupCollection&quot;></xref> object that contains the defined role-group templates."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.RoleGroupCollection&quot;> </xref> 정의 된 역할 그룹 템플릿을 포함 하는 개체입니다."
   overload: System.Web.UI.WebControls.LoginView.RoleGroups*
   exceptions: []
   platform:
@@ -516,13 +516,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves any server control state changes that have occurred since the time the page was posted back to the server."
+  summary: "페이지가 서버에 다시 게시 된 시간 이후에 발생 한 상태 변경을 서버 컨트롤을 저장 합니다."
   syntax:
     content: protected override object SaveControlState ();
     parameters: []
     return:
       type: System.Object
-      description: "Returns the server control&quot;s current state. If there is no state associated with the control, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "서버 컨트롤의 현재 상태를 반환합니다. 컨트롤과 연결 된 상태가 없으면이 메서드가 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.LoginView.SaveControlState*
   exceptions: []
   platform:
@@ -539,13 +539,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sets design-time data for a control."
+  summary: "컨트롤에 대 한 디자인 타임 데이터를 설정합니다."
   syntax:
     content: protected override void SetDesignModeState (System.Collections.IDictionary data);
     parameters:
     - id: data
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing the design-time data for the control."
+      description: "<xref:System.Collections.IDictionary>컨트롤에 대 한 디자인 타임 데이터가 들어 있는.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.WebControls.LoginView.SetDesignModeState*
   exceptions: []
   platform:
@@ -562,18 +562,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the skin to apply to the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control."
-  remarks: "Skins available to a control are contained in one or more skin files in a theme directory. The SkinID property specifies which of these skins to apply to the control. A skin is specific to a particular control; you cannot share skin settings between controls of different types.       If you do not set the SkinID property, a control uses the default skin if one is defined. For example, if a skin without an ID is defined for an <xref:System.Web.UI.WebControls.Image> control, then that skin applies to all <xref:System.Web.UI.WebControls.Image> controls that do not explicitly reference a skin by ID and that are not set to disable theming. If a skin with an ID is defined for an <xref:System.Web.UI.WebControls.Image> control, then that skin applies only to <xref:System.Web.UI.WebControls.Image> controls whose <xref:System.Web.UI.WebControls.WebControl.SkinID%2A> is set to that ID.       If the skin files in a theme directory do not contain a skin with the specified SkinID, an <xref:System.ArgumentException> exception is thrown at run time."
+  summary: "에 적용할 스킨을 가져오거나 설정 합니다.는 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다."
+  remarks: "컨트롤에 사용할 수 있는 스킨 테마 디렉터리에서 하나 이상의 스킨 파일에 포함 됩니다. 컨트롤에 적용 하려면 이러한 스킨의 SkinID 속성 지정 합니다. 특정 컨트롤로; 특정 스킨은 다른 유형의 컨트롤 간의 스킨 설정을 공유할 수 없습니다.       SkinID 속성을 설정 하지 않으면 정의 된 경우 컨트롤의 기본 스킨을 사용 합니다. 예를 들어 없는 스킨이 ID는에 대 한 정의 <xref:System.Web.UI.WebControls.Image>모든 스킨이 적용 됩니다. 제어 <xref:System.Web.UI.WebControls.Image>컨트롤 ID로 스킨을 명시적으로 참조 하지 않는 및 테마를 사용 하지 않도록 설정으로 설정 되지 않은.</xref:System.Web.UI.WebControls.Image> </xref:System.Web.UI.WebControls.Image> Id는 스킨 <xref:System.Web.UI.WebControls.Image>다음 스킨 <xref:System.Web.UI.WebControls.Image> <xref:System.Web.UI.WebControls.WebControl.SkinID%2A>ID로 설정 된</xref:System.Web.UI.WebControls.WebControl.SkinID%2A> 컨트롤</xref:System.Web.UI.WebControls.Image> 에 적용 되도록 컨트롤</xref:System.Web.UI.WebControls.Image> 에 대해 정의 된 경우       지정 된 SkinID 있는 스킨이 스킨 파일 테마 디렉터리에 포함 되어 있지는 <xref:System.ArgumentException>런타임 시 예외가 throw 됩니다.</xref:System.ArgumentException>"
   syntax:
     content: public override string SkinID { get; set; }
     return:
       type: System.String
-      description: "The name of the skin to apply to the <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;></xref> control. The default value is an empty string (&quot;&quot;)."
+      description: "에 적용할 스킨의 이름에서 <xref href=&quot;System.Web.UI.WebControls.LoginView&quot;> </xref> 제어 합니다. 기본값은 빈 문자열 (&quot;&quot;)."
   overload: System.Web.UI.WebControls.LoginView.SkinID*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The skin specified in the SkinID property does not exist in the theme."
+    description: "테마에 SkinID 속성에 지정 된 스킨 존재 하지 않습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.LoginView.ViewChanged
@@ -588,13 +588,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs after the view is changed."
-  remarks: "When the <xref:System.Web.UI.WebControls.LoginView> control switches views, it removes the controls from the previous template and creates new child controls from the new template. The ViewChanged event is raised after the new child controls are created.       Use the ViewChanged event to perform any processing, such as data binding, necessary to initialize the controls on the new view.      > [!NOTE] >  The ViewChanged event is only raised if the login status for a user changes during a postback to the page. The ViewChanged event will not be raised if a user logs in using the <xref:System.Web.UI.WebControls.Login> control, or if the user logs out using the <xref:System.Web.UI.WebControls.LoginStatus> control. The ViewChanged event will also not occur if a user is logged in or out followed by a redirect. An example of when the ViewChanged event will occur is when a user is logged out by calling the <xref:System.Web.Security.FormsAuthentication.SignOut%2A> method without being redirected to another page. During the next postback to the page, the <xref:System.Web.UI.WebControls.LoginView> control will detect the change in the login status for the user, and then raise the ViewChanged event.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "뷰를 변경한 후 발생 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.LoginView>컨트롤 뷰를 전환할 이전 서식 파일에서 컨트롤을 제거 하 고 새 서식 파일을 새 자식 컨트롤을 만듭니다.</xref:System.Web.UI.WebControls.LoginView> ViewChanged 이벤트는 새 자식 컨트롤이 만들어진 후에 발생 합니다.       ViewChanged 이벤트를 사용 하 여 같은 데이터 바인딩, 새 뷰에서 컨트롤을 초기화 하는 데 필요한 모든 처리를 수행 합니다.      > [!NOTE] > The ViewChanged 이벤트는 사용자에 대 한 로그인 상태 페이지에 다시 게시 하는 동안 변경 된 경우에 발생 합니다. 사용자가 사용 하 여 로그인 하는 경우 ViewChanged 이벤트를 발생 하지 것입니다는 <xref:System.Web.UI.WebControls.Login>컨트롤을 사용 하 여 사용자 로그 아웃 하는 경우 또는 <xref:System.Web.UI.WebControls.LoginStatus>컨트롤.</xref:System.Web.UI.WebControls.LoginStatus> </xref:System.Web.UI.WebControls.Login> ViewChanged 이벤트도 일어나지 사용자 로그인 또는 리디렉션을 아웃 하는 경우. ViewChanged 이벤트가 발생 하는 경우의 예로 사용자를 호출 하 여 로그 아웃 한 경우는 <xref:System.Web.Security.FormsAuthentication.SignOut%2A>다른 페이지로 리디렉션되지 없이 메서드.</xref:System.Web.Security.FormsAuthentication.SignOut%2A> 페이지에 다시 게시는 <xref:System.Web.UI.WebControls.LoginView>컨트롤에서는 사용자에 대 한 로그인 상태에 변경 내용을 검색 하 고 다음 ViewChanged 이벤트를 발생 시킵니다.</xref:System.Web.UI.WebControls.LoginView>       이벤트를 처리 하는 방법에 대 한 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public event EventHandler ViewChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -610,13 +610,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Occurs before the view is changed."
-  remarks: "When the <xref:System.Web.UI.WebControls.LoginView> control switches views, it removes the controls from the previous template and creates new child controls from the new template. The ViewChanging event is raised before the previous controls are removed.       Use the ViewChanging event to perform any processing, such as saving control information, necessary before the controls are removed.      > [!NOTE] >  The ViewChanging event is only raised if the login status for a user changes during a postback to the page. The ViewChanging event will not be raised if a user logs in using the <xref:System.Web.UI.WebControls.Login> control, or if the user logs out using the <xref:System.Web.UI.WebControls.LoginStatus> control. The ViewChanging event will also not occur if a user is logged in or out followed by a redirect. An example of when the ViewChanging event will occur is when a user is logged out by calling the <xref:System.Web.Security.FormsAuthentication.SignOut%2A> method without being redirected to another page. During the next postback to the page, the <xref:System.Web.UI.WebControls.LoginView> control will detect the change in the login status for the user, and then raise the ViewChanging event.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "뷰를 변경 하기 전에 발생 합니다."
+  remarks: "경우는 <xref:System.Web.UI.WebControls.LoginView>컨트롤 뷰를 전환할 이전 서식 파일에서 컨트롤을 제거 하 고 새 서식 파일을 새 자식 컨트롤을 만듭니다.</xref:System.Web.UI.WebControls.LoginView> ViewChanging 이벤트는 이전 컨트롤이 제거 되기 전에 발생 합니다.       ViewChanging 이벤트를 사용 하 여 컨트롤이 제거 하기 전에 필요한 제어 정보를 저장 하는 등의 모든 처리를 수행 합니다.      > [!NOTE] > The ViewChanging 이벤트는 사용자에 대 한 로그인 상태 페이지에 다시 게시 하는 동안 변경 된 경우에 발생 합니다. 사용자가 사용 하 여 로그인 하는 경우 ViewChanging 이벤트를 발생 하지 것입니다는 <xref:System.Web.UI.WebControls.Login>컨트롤을 사용 하 여 사용자 로그 아웃 하는 경우 또는 <xref:System.Web.UI.WebControls.LoginStatus>컨트롤.</xref:System.Web.UI.WebControls.LoginStatus> </xref:System.Web.UI.WebControls.Login> ViewChanging 이벤트도 일어나지 사용자 로그인 또는 리디렉션을 아웃 하는 경우. ViewChanging 이벤트가 발생 하는 경우의 예로 사용자를 호출 하 여 로그 아웃 한 경우는 <xref:System.Web.Security.FormsAuthentication.SignOut%2A>다른 페이지로 리디렉션되지 없이 메서드.</xref:System.Web.Security.FormsAuthentication.SignOut%2A> 페이지에 다시 게시는 <xref:System.Web.UI.WebControls.LoginView>컨트롤에서는 사용자에 대 한 로그인 상태에 변경 내용을 검색 하 고 다음 ViewChanging 이벤트를 발생 시킵니다.</xref:System.Web.UI.WebControls.LoginView>       이벤트를 처리 하는 방법에 대 한 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public event EventHandler ViewChanging;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

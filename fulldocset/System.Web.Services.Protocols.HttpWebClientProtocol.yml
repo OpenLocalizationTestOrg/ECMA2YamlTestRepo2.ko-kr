@@ -23,8 +23,8 @@ items:
   nameWithType: HttpWebClientProtocol
   fullName: System.Web.Services.Protocols.HttpWebClientProtocol
   type: Class
-  summary: "Represents the base class for all XML Web service client proxies that use the HTTP transport protocol."
-  remarks: "The properties on this class are used to control the behavior of the HTTP request object used to transmit the XML Web service request and response. The properties map to properties found on <xref:System.Net.HttpWebRequest>.       To communicate with an XML Web service using HTTP, you must create a proxy class deriving indirectly or directly from HttpWebClientProtocol for the XML Web service. Instead of creating the proxy class manually, you can use the Wsdl.exe tool to create a proxy class for a given XML Web service&quot;s service description.       Since HttpWebClientProtocol is the base class for all proxy classes, its properties are on your proxy classes. These properties are useful for controlling the request behavior of the underlying transport. For example, use the <xref:System.Web.Services.Protocols.HttpWebClientProtocol.Proxy%2A> property for calling XML Web services through a firewall. Many of these properties are used to initialize the <xref:System.Net.HttpWebRequest> that makes the Web request.       <xref:System.Web.Services.Protocols.SoapHttpClientProtocol>, <xref:System.Web.Services.Protocols.HttpGetClientProtocol>, and <xref:System.Web.Services.Protocols.HttpPostClientProtocol> derive directly or indirectly from HttpWebClientProtocol to provide support for SOAP, HTTP-GET and HTTP-POST respectively."
+  summary: "HTTP 전송 프로토콜을 사용 하는 모든 XML 웹 서비스 클라이언트 프록시에 대 한 기본 클래스를 나타냅니다."
+  remarks: "이 클래스의 속성이 XML 웹 서비스 요청 및 응답을 전송 하는 데 사용 되는 HTTP 요청 개체의 동작을 제어 하에 사용 됩니다. 속성에 <xref:System.Net.HttpWebRequest>.</xref:System.Net.HttpWebRequest> 속성 맵       을 HTTP를 사용 하는 XML 웹 서비스와 통신 하도록 XML 웹 서비스에 대 한 HttpWebClientProtocol에서 직접 또는 간접적으로 파생 프록시 클래스를 만들어야 합니다. 프록시 클래스를 수동으로 만들지 않고 지정된 된 XML 웹 서비스의 서비스 설명에 대 한 프록시 클래스를 만드는 Wsdl.exe 도구를 사용할 수 있습니다.       HttpWebClientProtocol 모든 프록시 클래스에 대 한 기본 클래스 이므로 해당 속성 프록시 클래스에 있습니다. 이러한 속성은 기본 전송의 요청 동작을 제어 하는 데 유용 합니다. 예를 들어, 사용 된 <xref:System.Web.Services.Protocols.HttpWebClientProtocol.Proxy%2A>방화벽을 통해 XML 웹 서비스 호출에 대 한 속성.</xref:System.Web.Services.Protocols.HttpWebClientProtocol.Proxy%2A> 초기화에 사용 되는 이러한 속성 중 상당수는 <xref:System.Net.HttpWebRequest>하는 웹 요청을 보냅니다.</xref:System.Net.HttpWebRequest>       <xref:System.Web.Services.Protocols.SoapHttpClientProtocol><xref:System.Web.Services.Protocols.HttpGetClientProtocol>, 및 <xref:System.Web.Services.Protocols.HttpPostClientProtocol>SOAP에 대 한 지원을 제공 하기 위해 HttpWebClientProtocol에서 직접 또는 간접적으로 파생 HTTP-GET 및 HTTP-POST 각각.</xref:System.Web.Services.Protocols.HttpPostClientProtocol> </xref:System.Web.Services.Protocols.HttpGetClientProtocol></xref:System.Web.Services.Protocols.SoapHttpClientProtocol>"
   example:
   - "The following example is an ASP.NET Web Form, which calls an XML Web service named `Math`. Within the `EnterBtn_Click` function, the Web Form allows the server to automatically redirect the client to other sites. It also sets client authentication credentials, proxy settings, the request encoding and the time out for the request before calling the XML Web service method.  \n  \n [!code-cs[Classic HttpWebClientProtocol Example#1](~/add/codesnippet/csharp/t-system.web.services.pr_9_1.aspx)]\n [!code-vb[Classic HttpWebClientProtocol Example#1](~/add/codesnippet/visualbasic/t-system.web.services.pr_9_1.aspx)]"
   syntax:
@@ -77,7 +77,7 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;> </xref> 클래스입니다."
   syntax:
     content: protected HttpWebClientProtocol ();
     parameters: []
@@ -97,18 +97,18 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets whether the client automatically follows server redirects."
-  remarks: "If a client sends authentication information, such as a user name and password, you do not want to enable the server to redirect, because this can compromise security.       A <xref:System.Net.WebException> is thrown if the AllowAutoRedirect property is `false` and the Web server attempts to redirect the request. The <xref:System.Net.WebException.Response%2A> property contains an <xref:System.Net.HttpWebResponse> object, where both the <xref:System.Net.HttpWebResponse.StatusCode%2A> and <xref:System.Net.HttpWebResponse.Headers%2A> properties reflect details regarding the attempted redirect. The <xref:System.Net.HttpWebResponse.StatusCode%2A> property contains an <xref:System.Net.HttpStatusCode> equivalent to one of the HTTP redirect status codes (301, 302, and 307) and the `Location` header within the <xref:System.Net.HttpWebResponse.Headers%2A> collection points to the URI that the request attempted to be redirected to."
+  summary: "클라이언트에 서버 리디렉션 자동으로 수행 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "클라이언트가 사용자 이름 및 암호와 같은 인증 정보를 보내는 경우 보안 문제가 발생할 수 있으므로 리디렉션할 서버를 사용 하도록 설정 하지 않을 수 있습니다.       A <xref:System.Net.WebException>AllowAutoRedirect 속성은 경우에 throw 되 `false` 하 고 웹 서버 요청 리디렉션할 하려고 합니다.</xref:System.Net.WebException> <xref:System.Net.WebException.Response%2A>속성 포함는 <xref:System.Net.HttpWebResponse>개체, 여기서 모두는 <xref:System.Net.HttpWebResponse.StatusCode%2A>및 <xref:System.Net.HttpWebResponse.Headers%2A>속성 시도 된 리디렉션에 관한 세부 정보를 반영 합니다.</xref:System.Net.HttpWebResponse.Headers%2A> </xref:System.Net.HttpWebResponse.StatusCode%2A> </xref:System.Net.HttpWebResponse> </xref:System.Net.WebException.Response%2A> <xref:System.Net.HttpWebResponse.StatusCode%2A>속성 포함는 <xref:System.Net.HttpStatusCode>HTTP 리디렉션 상태 코드 (301, 302, 및 307) 중 하나에 해당 및 `Location` 내에서 헤더는 <xref:System.Net.HttpWebResponse.Headers%2A>컬렉션 리디렉션되어야 요청으로 시도 하는 URI를 가리키는.</xref:System.Net.HttpWebResponse.Headers%2A> </xref:System.Net.HttpStatusCode> </xref:System.Net.HttpWebResponse.StatusCode%2A>"
   syntax:
     content: public bool AllowAutoRedirect { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to automatically redirect the client to follow server redirects; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>서버 리디렉션; 따라 클라이언트를 자동으로 리디렉션하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.AllowAutoRedirect*
   exceptions:
   - type: System.Net.WebException
     commentId: T:System.Net.WebException
-    description: "The AllowAutoRedirect property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> and the Web server attempts to redirect the request."
+    description: "AllowAutoRedirect 속성은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 웹 서버 요청 리디렉션할 하려고 합니다."
   platform:
   - net462
 - uid: System.Web.Services.Protocols.HttpWebClientProtocol.CancelAsync(System.Object)
@@ -123,13 +123,13 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Cancels an asynchronous call to an XML Web service method, unless the call has already completed."
+  summary: "호출이 완료 하지 않으면 XML 웹 서비스 메서드에 대 한 비동기 호출을 취소 합니다."
   syntax:
     content: protected void CancelAsync (object userState);
     parameters:
     - id: userState
       type: System.Object
-      description: "The object provided in the last parameter to the asynchronous call of the <xref uid=&quot;langword_csharp_Begin&quot; name=&quot;Begin&quot; href=&quot;&quot;></xref> method."
+      description: "비동기 호출의 마지막 매개 변수에서 제공 되는 개체는 <xref uid=&quot;langword_csharp_Begin&quot; name=&quot;Begin&quot; href=&quot;&quot;> </xref> 메서드."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.CancelAsync*
   exceptions: []
   platform:
@@ -146,15 +146,15 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets the collection of client certificates."
-  remarks: "This property allows a client to pass one or more client certificates, also known as Authenticode X.509 v.3 certificates, when calling an XML Web service method. If the XML Web service method has been configured to use client certificates, a client certificate can be used as one mechanism for authenticating a client. For details on setting up client certificates, see the Internet Information Services (IIS) documentation."
+  summary: "클라이언트 인증서의 컬렉션을 가져옵니다."
+  remarks: "이 속성에는 클라이언트가 XML 웹 서비스 메서드를 호출할 때 하나 이상의 클라이언트 인증서로도 알려져 Authenticode X.509 v.3 인증서를 전달 하는 데 사용 합니다. 클라이언트 인증서를 사용 하도록 XML 웹 서비스 메서드를 구성한 경우 클라이언트 인증서는 클라이언트를 인증 하기 위한 메커니즘으로 사용할 수 있습니다. 클라이언트 인증서를 설정에 대 한 자세한 내용은 인터넷 정보 서비스 (IIS) 설명서를 참조 합니다."
   example:
   - "The following code example demonstrates how to load in a client certificate from a file and then add it to the ClientCertificates property for calling an XML Web service method that uses client certificates for authentication.  \n  \n [!code-cs[HttpWebClientProtocol.ClientCertificates#1](~/add/codesnippet/csharp/p-system.web.services.pr_6_1.aspx)]\n [!code-vb[HttpWebClientProtocol.ClientCertificates#1](~/add/codesnippet/visualbasic/p-system.web.services.pr_6_1.aspx)]"
   syntax:
     content: public System.Security.Cryptography.X509Certificates.X509CertificateCollection ClientCertificates { get; }
     return:
       type: System.Security.Cryptography.X509Certificates.X509CertificateCollection
-      description: "An <xref href=&quot;System.Security.Cryptography.X509Certificates.X509CertificateCollection&quot;></xref> that represents the client certificates."
+      description: "<xref href=&quot;System.Security.Cryptography.X509Certificates.X509CertificateCollection&quot;> </xref> 클라이언트 인증서를 나타내는입니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.ClientCertificates*
   exceptions: []
   platform:
@@ -171,15 +171,15 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets the collection of cookies."
-  remarks: "If an XML Web service method uses session state, then a cookie is passed back in the response headers to the XML Web service client that uniquely identifies the session for that XML Web service client. In order for an XML Web service to maintain session state for a client, the client must store the cookie. Clients receive the HTTP cookie by creating a new instance of <xref:System.Net.CookieContainer> and assigning that to the CookieContainer property of the proxy class before calling the XML Web service method. If you need to maintain session state beyond when the proxy class instance goes out of scope, the client must store the HTTP cookie between calls to the XML Web service. For instance, a Web Forms client can store the HTTP cookie by saving the <xref:System.Net.CookieContainer> in its own session state. Because not all XML Web services use session state and thus clients are not always required to use the CookieContainer property of a client proxy, the documentation for the XML Web service must state whether session state is used."
+  summary: "쿠키의 컬렉션을 가져오거나 설정 합니다."
+  remarks: "XML 웹 서비스 메서드에서 세션 상태를 사용 하는 경우 다음 쿠키에 전달 됩니다 응답 헤더에 다시 해당 XML 웹 서비스 클라이언트에 대 한 세션을 고유 하 게 식별 하는 XML 웹 서비스 클라이언트. 클라이언트에 대 한 세션 상태를 유지 관리 하는 XML 웹 서비스에 대 한 순서로 클라이언트가 쿠키를 저장 해야 합니다. 클라이언트의 새 인스턴스를 만들어 HTTP 쿠키를 받을 <xref:System.Net.CookieContainer>및 할당 하는 XML 웹 호출 하기 전에 프록시 클래스의 CookieContainer 속성 서비스 메서드가.</xref:System.Net.CookieContainer> 프록시 클래스 인스턴스 범위를 벗어나면 다음 세션 상태를 유지 해야 하는 경우 클라이언트는 XML 웹 서비스에 대 한 호출 사이 HTTP 쿠키를 저장 해야 합니다. 예를 들어, Web Forms 클라이언트 HTTP 쿠키 절약을 저장할 수는 <xref:System.Net.CookieContainer>세션 상태에서.</xref:System.Net.CookieContainer> 세션 상태를 사용 하는 일부 XML 웹 서비스 이므로 따라서 클라이언트는 항상 않아도 클라이언트 프록시의 CookieContainer 속성을 사용 하는 XML 웹 서비스에 대 한 설명서 세션 상태가 사용 여부를 명시 해야 합니다."
   example:
   - "The following code example is a Web Forms client of an XML Web service that uses session state. The client stores the HTTP cookie that uniquely identifies the session by storing it in the client's session state.  \n  \n [!code-vb[HttpWebClientProtocol.CookieContainer#1](~/add/codesnippet/visualbasic/p-system.web.services.pr_14_1.aspx)]\n [!code-cs[HttpWebClientProtocol.CookieContainer#1](~/add/codesnippet/csharp/p-system.web.services.pr_14_1.aspx)]"
   syntax:
     content: public System.Net.CookieContainer CookieContainer { get; set; }
     return:
       type: System.Net.CookieContainer
-      description: "A <xref:System.Net.CookieContainer> that represents the cookies for a Web Services client."
+      description: "A <xref:System.Net.CookieContainer>웹 서비스 클라이언트에 대 한 쿠키를 나타내는입니다.</xref:System.Net.CookieContainer>"
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.CookieContainer*
   exceptions: []
   platform:
@@ -196,12 +196,12 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets a value that indicates whether decompression is enabled for this <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;></xref>."
+  summary: "이 대 한 압축 풀기 기능을 사용할지 여부를 나타내는 값을 가져오거나 설정 합니다. <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;> </xref>합니다."
   syntax:
     content: public bool EnableDecompression { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if decompression is enabled for this <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>압축 해제 시 사용할 수 있는 경우이 <xref href=&quot;System.Web.Services.Protocols.HttpWebClientProtocol&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.EnableDecompression*
   exceptions: []
   platform:
@@ -218,19 +218,19 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets the <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;></xref> for each XML Web service method exposed by the specified type, and stores the mappings in the specified <xref href=&quot;System.Collections.ArrayList&quot;></xref>."
+  summary: "가져옵니다는 <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;> </xref> 각 XML 웹 서비스 메서드를 지정된 된 형식으로 노출 하 고 지정 된 매핑을 저장 <xref href=&quot;System.Collections.ArrayList&quot;> </xref>합니다."
   syntax:
     content: public static bool GenerateXmlMappings (Type type, System.Collections.ArrayList mappings);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> that exposes the XML Web service methods."
+      description: "<xref:System.Type>XML 웹 서비스 메서드를 노출 하는.</xref:System.Type>"
     - id: mappings
       type: System.Collections.ArrayList
-      description: "A <xref href=&quot;System.Collections.ArrayList&quot;></xref> that is used to store the mappings."
+      description: "A <xref href=&quot;System.Collections.ArrayList&quot;> </xref> 매핑을 저장 하는 데 사용 되는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>type</code> can be assigned to a <xref href=&quot;System.Web.Services.Protocols.SoapHttpClientProtocol&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if <code>type</code> can be assigned to a <xref href=&quot;System.Web.Services.Protocols.SoapHttpClientProtocol&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.GenerateXmlMappings*
   exceptions: []
   platform:
@@ -247,19 +247,19 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets the <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;></xref> for each XML Web service method exposed by the specified types, and stores the mappings in the specified <xref href=&quot;System.Collections.ArrayList&quot;></xref>, as well as in a <xref href=&quot;System.Collections.Hashtable&quot;></xref> that this method returns."
+  summary: "가져옵니다는 <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;> </xref> 각 XML 웹 서비스의 지정 된 유형에 서 노출 된 메서드 및 지정 된 매핑을 저장 <xref href=&quot;System.Collections.ArrayList&quot;> </xref>와 같이 <xref href=&quot;System.Collections.Hashtable&quot;> </xref> 이 메서드가 반환 하는 합니다."
   syntax:
     content: public static System.Collections.Hashtable GenerateXmlMappings (Type[] types, System.Collections.ArrayList mappings);
     parameters:
     - id: types
       type: System.Type[]
-      description: "An array of type <xref:System.Type> that contains the types that expose the XML Web service methods."
+      description: "형식의 배열 <xref:System.Type>XML 웹 서비스 메서드를 노출 하는 형식이 포함 된.</xref:System.Type>"
     - id: mappings
       type: System.Collections.ArrayList
-      description: "A <xref href=&quot;System.Collections.ArrayList&quot;></xref> that is used to store the mappings."
+      description: "A <xref href=&quot;System.Collections.ArrayList&quot;> </xref> 매핑을 저장 하는 데 사용 되는 합니다."
     return:
       type: System.Collections.Hashtable
-      description: "A <xref href=&quot;System.Collections.Hashtable&quot;></xref> that contains the <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;></xref> for each XML Web service method exposed by the specified types. The types contained in <code>types</code> are used as keys."
+      description: "A <xref href=&quot;System.Collections.Hashtable&quot;> </xref> 를 포함 하는 <xref href=&quot;System.Xml.Serialization.XmlMembersMapping&quot;> </xref> 지정된 된 형식에 의해 노출 된 각 XML 웹 서비스 메서드에 대 한 합니다. 에 포함 된 형식은 <code> types </code> 키로 사용 됩니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.GenerateXmlMappings*
   exceptions: []
   platform:
@@ -276,16 +276,16 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Creates a <xref:System.Net.WebRequest> for the specified URI."
+  summary: "만듭니다는 <xref:System.Net.WebRequest>지정된 된 URI에 대 한.</xref:System.Net.WebRequest>"
   syntax:
     content: protected override System.Net.WebRequest GetWebRequest (Uri uri);
     parameters:
     - id: uri
       type: System.Uri
-      description: "The <xref:System.Uri> for creating the <xref:System.Net.WebRequest>."
+      description: "<xref:System.Uri> <xref:System.Net.WebRequest>.</xref:System.Net.WebRequest> 작성용</xref:System.Uri>"
     return:
       type: System.Net.WebRequest
-      description: "The created <xref:System.Net.WebRequest>."
+      description: "만든된 <xref:System.Net.WebRequest>.</xref:System.Net.WebRequest>"
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.GetWebRequest*
   exceptions:
   - type: System.InvalidOperationException
@@ -305,16 +305,16 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Returns a response from a synchronous request to an XML Web service method."
+  summary: "XML 웹 서비스 메서드에 동기 요청에서 응답을 반환합니다."
   syntax:
     content: protected override System.Net.WebResponse GetWebResponse (System.Net.WebRequest request);
     parameters:
     - id: request
       type: System.Net.WebRequest
-      description: "The <xref:System.Net.WebRequest> from which to get the response."
+      description: "<xref:System.Net.WebRequest>응답을 얻을 수 있는.</xref:System.Net.WebRequest>"
     return:
       type: System.Net.WebResponse
-      description: "A response from a synchronous request to an XML Web service method."
+      description: "XML 웹 서비스 메서드에 동기 요청에서 응답입니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse*
   exceptions: []
   platform:
@@ -331,19 +331,19 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Returns a response from an asynchronous request to an XML Web service method."
+  summary: "XML 웹 서비스 메서드에 대 한 비동기 요청에서 응답을 반환합니다."
   syntax:
     content: protected override System.Net.WebResponse GetWebResponse (System.Net.WebRequest request, IAsyncResult result);
     parameters:
     - id: request
       type: System.Net.WebRequest
-      description: "The <xref:System.Net.WebRequest> from which to get the response."
+      description: "<xref:System.Net.WebRequest>응답을 얻을 수 있는.</xref:System.Net.WebRequest>"
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> to pass to <xref:System.Net.HttpWebRequest.EndGetResponse*> when the response has completed."
+      description: "<xref:System.IAsyncResult>에 전달할 <xref:System.Net.HttpWebRequest.EndGetResponse*>응답 완료 되 면.</xref:System.Net.HttpWebRequest.EndGetResponse*> </xref:System.IAsyncResult>"
     return:
       type: System.Net.WebResponse
-      description: "A response from an asynchronous request to an XML Web service method."
+      description: "XML 웹 서비스 메서드에 대 한 비동기 요청에서 응답 합니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.GetWebResponse*
   exceptions: []
   platform:
@@ -360,15 +360,15 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets proxy information for making an XML Web service request through a firewall."
-  remarks: "Use the Proxy property if a client needs to use different proxy settings than those in the system settings. Use the <xref:System.Net.WebProxy> class to set the proxy settings, because it implements <xref:System.Net.IWebProxy>.       Default proxy settings can be set in a configuration file. For details, see [Configuring Internet Applications](~/add/includes/ajax-current-ext-md.md)."
+  summary: "방화벽을 통해 XML 웹 서비스 요청을 만드는 중에 대 한 프록시 정보를 가져오거나 설정 합니다."
+  remarks: "클라이언트의 시스템 설정에서 하는 것 보다 다른 프록시 설정을 사용 하도록 설정 해야 하는 경우 프록시 속성을 사용 합니다. <xref:System.Net.WebProxy> <xref:System.Net.IWebProxy>.</xref:System.Net.IWebProxy> 구현 하기 때문에 프록시 설정을 설정 하는 클래스</xref:System.Net.WebProxy> 를 사용 하 여       기본 프록시 설정이 구성 파일에서 설정할 수 있습니다. 자세한 내용은 참조 [Configuring Internet Applications](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example sets the following proxy settings prior to invoking the `Math` XML Web service: the proxy server to http://proxyserver, the proxy port to 80 and the bypass to the proxy server for local addresses.  \n  \n [!code-cpp[Classic HttpWebClientProtocol.Proxy Example#1](~/add/codesnippet/cpp/p-system.web.services.pr_56_1.cpp)]\n [!code-vb[Classic HttpWebClientProtocol.Proxy Example#1](~/add/codesnippet/visualbasic/p-system.web.services.pr_56_1.vb)]\n [!code-cs[Classic HttpWebClientProtocol.Proxy Example#1](~/add/codesnippet/csharp/p-system.web.services.pr_56_1.cs)]"
   syntax:
     content: public System.Net.IWebProxy Proxy { get; set; }
     return:
       type: System.Net.IWebProxy
-      description: "An <xref:System.Net.IWebProxy> that contains the proxy information for making requests through a firewall. The default value is the operating system proxy settings."
+      description: "<xref:System.Net.IWebProxy>방화벽을 통해 요청을 만들기 위한 프록시 정보를 포함 하는.</xref:System.Net.IWebProxy> 기본값은 운영 체제 프록시 설정 합니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.Proxy*
   exceptions: []
   platform:
@@ -385,13 +385,13 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets a value that indicates whether connection sharing is enabled when the client uses NTLM authentication to connect to the Web server that hosts the XML Web service."
-  remarks: "This property sets the value of the <xref:System.Net.HttpWebRequest.UnsafeAuthenticatedConnectionSharing%2A> property of the <xref:System.Net.HttpWebRequest> used to communicate with the Web server."
+  summary: "클라이언트가 NTLM 인증 호스팅하는 웹 서버에 연결 하는 XML 웹 서비스를 사용 하는 경우 공유 연결 사용 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "이 속성의 값을 설정는 <xref:System.Net.HttpWebRequest.UnsafeAuthenticatedConnectionSharing%2A>의 속성은 <xref:System.Net.HttpWebRequest>웹 서버와 통신 하는 데 사용 합니다.</xref:System.Net.HttpWebRequest> </xref:System.Net.HttpWebRequest.UnsafeAuthenticatedConnectionSharing%2A>"
   syntax:
     content: public bool UnsafeAuthenticatedConnectionSharing { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if connection sharing is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>연결 공유를 사용 하면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.UnsafeAuthenticatedConnectionSharing*
   exceptions: []
   platform:
@@ -408,8 +408,8 @@ items:
   assemblies:
   - System.Web.Services
   namespace: System.Web.Services.Protocols
-  summary: "Gets or sets the value for the user agent header that is sent with each request."
-  remarks: "The user agent string allows a Web server to identify the client."
+  summary: "각 요청과 함께 전송 되는 사용자 에이전트 헤더에 대 한 값을 가져오거나 설정 합니다."
+  remarks: "사용자 에이전트 문자열에는 클라이언트를 식별 하는 웹 서버를 수 있습니다."
   example:
   - >-
     [!code-cs[HttpWebClientProtocol_UserAgent#1](~/add/codesnippet/csharp/p-system.web.services.pr_74_1.cs)]
@@ -419,7 +419,7 @@ items:
     content: public string UserAgent { get; set; }
     return:
       type: System.String
-      description: "The value of the HTTP protocol user agent header. The default is &quot;MS Web Services Client Protocol <code>number</code> &quot;, where <code>number</code> is the version of the common language runtime (for example, 1.0.3705.0)."
+      description: "HTTP 프로토콜 사용자 에이전트 헤더의 값입니다. 기본값은 &quot;MS 웹 서비스 클라이언트 프로토콜 <code> number </code> &quot; 여기서 <code> number </code> 공용 언어 런타임 (예를 들어 1.0.3705.0)의 버전입니다."
   overload: System.Web.Services.Protocols.HttpWebClientProtocol.UserAgent*
   exceptions: []
   platform:

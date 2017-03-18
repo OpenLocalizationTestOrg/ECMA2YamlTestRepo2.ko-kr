@@ -11,8 +11,8 @@ items:
   nameWithType: AuthenticationServiceManager
   fullName: System.Web.UI.AuthenticationServiceManager
   type: Class
-  summary: "Configures the location of a custom implementation of the authentication service."
-  remarks: "The AuthenticationServiceManager class corresponds to the <xref:System.Web.UI.ScriptManager.AuthenticationService%2A> property of the <xref:System.Web.UI.ScriptManager> or <xref:System.Web.UI.ScriptManagerProxy> control.       The authentication Web service is used by AJAX-enabled applications to log on and log off from client script. You can use AuthenticationServiceManager to provide the path of an alternative implementation of the authentication Web service instead of using the built-in Web service that is provided by the AJAX features of ASP.NET.       To use the authentication service in your application, you must enable it in the configuration file. If you use the built-in authentication Web service, you do not have to explicitly declare the authentication service manager on the page.       To create your own authentication service, you must implement a Web service that has two methods: `Login` and `Logout`. In addition, these methods require the same signature of the built-in authentication Web service.       The following example shows the basic class structure that must be implemented in a custom authentication Web service class.       [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]       To use a custom authentication Web service, you can add the service declaratively in markup by including an `<AuthenticationService>` element inside the `<asp:ScriptManager>` element on the page, as shown in the following example.      ```   <asp:ScriptManager ID=&quot;SM1&quot; runat=&quot;server&quot;>     <AuthenticationService Path=&quot;MyAuthenticationService.asmx&quot; />   </asp:ScriptManager>   ```       You can also programmatically configure <xref:System.Web.UI.AuthenticationServiceManager.Path%2A> to use a custom authentication Web service.       Regardless of whether the declarative section for the authentication service is on the page, if the authentication service is enabled in the configuration file, then AJAX-enabled applications will include an ECMAScript (JavaScript) variable in the rendered page. This allows client script to determine whether the current user is authenticated."
+  summary: "인증 서비스의 사용자 지정 구현의 위치를 구성 합니다."
+  remarks: "AuthenticationServiceManager 클래스에 해당 하는 <xref:System.Web.UI.ScriptManager.AuthenticationService%2A>의 속성은 <xref:System.Web.UI.ScriptManager>또는 <xref:System.Web.UI.ScriptManagerProxy>컨트롤.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> </xref:System.Web.UI.ScriptManager.AuthenticationService%2A>       인증 웹 서비스에 로그온 하 고 클라이언트 스크립트에서 로그 오프 AJAX 사용 응용 프로그램에서 사용 됩니다. 인증의 ASP.NET AJAX 기능에서 제공 되는 기본 제공 웹 서비스를 사용 하는 대신 웹 서비스의 대체 구현의 경로 제공 하려면 AuthenticationServiceManager를 사용할 수 있습니다.       응용 프로그램에서 인증 서비스를 사용 하려면 구성 파일에 설정 해야 합니다. 기본 제공 인증 웹 서비스를 사용 하는 경우에 페이지에서 인증 서비스 관리자를 명시적으로 선언할 필요가 없습니다.       사용자 고유의 인증 서비스를 만들려면 두 메서드가 있는 웹 서비스를 구현 해야 합니다: `Login` 및 `Logout`합니다. 또한 이러한 메서드는 기본 제공 인증 웹 서비스의 동일한 서명이 필요합니다.       다음 예제에서는 사용자 지정 인증 웹 서비스 클래스에서에서 구현 해야 하는 기본 클래스 구조를 보여 줍니다.       [!code-cs[XpsCreate #XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent) ] 인증을 사용 하는 사용자 지정 웹 서비스를 추가할 수 있습니다 서비스 선언적으로 태그에서를 포함 하 여는 `<AuthenticationService>` 요소 안에 `<asp:ScriptManager>` 페이지에서 다음 예제 에서처럼 요소입니다.      ```   <asp:ScriptManager ID=&quot;SM1&quot; runat=&quot;server&quot;>     <AuthenticationService Path=&quot;MyAuthenticationService.asmx&quot; />   </asp:ScriptManager>   ```또한 프로그래밍 방식으로 구성할 수 있습니다 <xref:System.Web.UI.AuthenticationServiceManager.Path%2A>웹 서비스는 사용자 지정 인증을 사용 하도록 합니다.</xref:System.Web.UI.AuthenticationServiceManager.Path%2A>       에 관계 없이 인증 서비스에 대 한 선언적 섹션 인지 페이지에서 인증 서비스는 사용 하도록 설정한 경우 구성 파일에서 AJAX 사용 응용 프로그램은 렌더링된 된 페이지에는 ECMAScript (JavaScript) 변수를 포함 합니다. 따라서 클라이언트 스크립트를를 현재 사용자가 인증 여부를 확인할 수 있습니다."
   syntax:
     content: >-
       [System.ComponentModel.DefaultProperty("Path")]
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.AuthenticationServiceManager&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.AuthenticationServiceManager&quot;> </xref> 클래스입니다."
   syntax:
     content: public AuthenticationServiceManager ();
     parameters: []
@@ -58,18 +58,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the path of the authentication service."
-  remarks: "If the Path property is not set, then the return value is <xref:System.String?displayProperty=fullName>. In this case, the AJAX functionality in ASP.NET will then use the built-in authentication Web service that corresponds to the following internal default path: ~/ScriptServices_AuthenticationService.asmx. The same behavior occurs if you set Path to an empty value or `null`.       Path can be specified in the <xref:System.Web.UI.ScriptManager> control or in an associated <xref:System.Web.UI.ScriptManagerProxy> control. When Path is set at the <xref:System.Web.UI.ScriptManagerProxy> level, the following caveats apply:      -   If there are multiple proxies in the control hierarchy, Path does not have to be set on each proxy instance.      -   If Path is explicitly set on a proxy instance, the value must be the same for all other proxies on which this property is explicitly set."
+  summary: "인증 서비스의 경로 가져오거나 설정 합니다."
+  remarks: "Path 속성을 설정 하지 않으면 반환 값은 <xref:System.String?displayProperty=fullName>.</xref:System.String?displayProperty=fullName> 이러한 경우 asp.net에서 AJAX 기능 기본 인증 다음 내부 기본 경로에 해당 하는 웹 서비스 사용 다음 합니다: ~ / ScriptServices_AuthenticationService.asmx 합니다. 경로 빈 값으로 설정한 경우 같은 문제가 발생 하거나 `null`합니다.       에 경로 지정할 수 있습니다는 <xref:System.Web.UI.ScriptManager>제어 나 관련 <xref:System.Web.UI.ScriptManagerProxy>컨트롤.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> 경로에 설정 된 경우는 <xref:System.Web.UI.ScriptManagerProxy>수준으로 다음과 같은 제한 사항이 적용 됩니다:-경로 컨트롤 계층 구조에서 여러 프록시가 있는 경우 각 프록시 인스턴스에서 설정할 필요가 없습니다.</xref:System.Web.UI.ScriptManagerProxy>      -경로가 프록시 인스턴스에서 명시적으로 설정 하는 경우이 속성은 명시적으로 설정 하는 다른 모든 프록시에 대해 동일한 값 이어야 합니다."
   syntax:
     content: public string Path { get; set; }
     return:
       type: System.String
-      description: "The path of the custom authentication Web service."
+      description: "사용자 지정 인증 웹 서비스의 경로입니다."
   overload: System.Web.UI.AuthenticationServiceManager.Path*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "More than one unique path was set in the control hierarchy."
+    description: "둘 이상의 고유 경로 컨트롤 계층 구조에 설정 되었습니다."
   platform:
   - net462
 references:

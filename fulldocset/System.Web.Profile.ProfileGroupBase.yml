@@ -14,8 +14,8 @@ items:
   nameWithType: ProfileGroupBase
   fullName: System.Web.Profile.ProfileGroupBase
   type: Class
-  summary: "Provides untyped access to grouped ASP.NET profile property values."
-  remarks: "The ProfileGroupBase class is used by ASP.NET to create grouped properties in the <xref:System.Web.HttpContext.Profile%2A> property for the current <xref:System.Web.HttpContext>. When properties are specified as a group of properties using the [group Element for properties for profile (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b4e3672f-9653-4034-a178-fb358b02730e), ASP.NET creates a new class with strongly typed accessors for each property in the group. The new class inherits the ProfileGroupBase base class. The strongly typed accessors of the new class call the <xref:System.Web.Profile.ProfileGroupBase.GetPropertyValue%2A> and <xref:System.Web.Profile.ProfileGroupBase.SetPropertyValue%2A> methods of the ProfileGroupBase base class to retrieve and set profile property values, respectively.       The ProfileGroupBase passes calls to get and set property values to the class that inherits the <xref:System.Web.Profile.ProfileBase> class that is supplied to the <xref:System.Web.Profile.ProfileGroupBase.Init%2A> method of the ProfileGroupBase class. See the <xref:System.Web.Profile.ProfileBase> class for more information on behaviors, exceptions, and so on.       This class is not intended to be created from your code."
+  summary: "그룹화 된 ASP.NET 프로필 속성 값에 대 한 형식화 되지 않은 액세스를 제공합니다."
+  remarks: "ProfileGroupBase 클래스 <xref:System.Web.HttpContext.Profile%2A> <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> current에 대 한 속성</xref:System.Web.HttpContext.Profile%2A> 에서 그룹화 된 속성을 만드는 ASP.NET에서 사용 됩니다. 속성은 사용 하 여 속성의 그룹으로 지정 하는 경우는 [요소 (ASP.NET 설정 스키마) 프로필에 대 한 속성에 대 한 그룹](http://msdn.microsoft.com/en-us/b4e3672f-9653-4034-a178-fb358b02730e), ASP.NET 그룹의 각 속성에 대 한 강력한 형식의 접근자는 새 클래스를 만듭니다. 새 클래스 ProfileGroupBase 기본 클래스를 상속합니다. 새 클래스 호출의 강력한 형식의 접근자는 <xref:System.Web.Profile.ProfileGroupBase.GetPropertyValue%2A>및 <xref:System.Web.Profile.ProfileGroupBase.SetPropertyValue%2A>메서드는 ProfileGroupBase의 기본 클래스 검색 하 고 각각 프로필 속성 값을 설정 합니다.</xref:System.Web.Profile.ProfileGroupBase.SetPropertyValue%2A> </xref:System.Web.Profile.ProfileGroupBase.GetPropertyValue%2A>       ProfileGroupBase 가져오고 <xref:System.Web.Profile.ProfileBase> <xref:System.Web.Profile.ProfileGroupBase.Init%2A>ProfileGroupBase 클래스의 메서드</xref:System.Web.Profile.ProfileGroupBase.Init%2A> 를 제공 하는 클래스</xref:System.Web.Profile.ProfileBase> 를 상속 하는 클래스에 속성 값을 설정 하는 호출을 전달 참조는 <xref:System.Web.Profile.ProfileBase>동작, 예외, 등에 대 한 자세한 내용은 클래스.</xref:System.Web.Profile.ProfileBase>       이 클래스는 사용자 코드에서 만들 수 없습니다."
   example:
   - "The following Web.config file specifies a user profile that contains a group of properties with a group name of `Address`. The grouped properties generated for the <xref:System.Web.HttpContext.Profile%2A> property of the current <xref:System.Web.HttpContext> will be preceded by the group name, for example, `Profile.Address.Street`. The second example shows an ASP.NET page that stores and retrieves the configured profile properties.  \n  \n```  \n<configuration>  \n  <connectionStrings>  \n    <add name=\"SqlServices\" connectionString=  \n      \"Data Source=localhost;Integrated Security=SSPI;Initial Catalog=aspnetdb;\" />  \n  </connectionStrings>  \n  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\"  \n        name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <authorization>  \n      <deny users=\"?\" />  \n    </authorization>  \n  \n    <membership defaultProvider=\"SqlProvider\"   \n      userIsOnlineTimeWindow=\"15\">  \n      <providers>  \n        <clear />  \n        <add   \n          name=\"SqlProvider\"   \n          type=\"System.Web.Security.SqlMembershipProvider\"   \n          connectionStringName=\"SqlServices\"  \n          enablePasswordRetrieval=\"false\"  \n          enablePasswordReset=\"true\"  \n          requiresQuestionAndAnswer=\"true\"   \n          requiresUniqueEmail=\"false\"  \n          passwordFormat=\"Hashed\"  \n          applicationName=\"MyApplication\" />  \n      </providers>  \n    </membership>  \n  \n    <profile enabled=\"true\" defaultProvider=\"SqlProvider\">  \n      <providers>  \n        <add  \n          name=\"SqlProvider\"  \n          connectionStringName=\"SqlServices\"  \n          applicationName=\"MyApplication\"  \n          type=\"System.Web.Profile.SqlProfileProvider\" />  \n      </providers>  \n  \n      <properties>  \n        <add name=\"ZipCode\" />  \n        <group name=\"Address\">  \n          <add name=\"Street\" />  \n          <add name=\"City\" />  \n          <add name=\"State\" />  \n          <add name=\"CountryOrRegion\" />  \n        </group>  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```  \n  \n The following code example shows an ASP.NET page that reads and sets the grouped properties specified for the user profile.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/csharp/t-system.web.profile.pro_11_1.aspx)]\n [!code-vb[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/visualbasic/t-system.web.profile.pro_11_1.aspx)]"
   syntax:
@@ -38,8 +38,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Profile.ProfileGroupBase&quot;></xref> class."
-  remarks: "ASP.NET uses the <xref:System.Web.Profile.ProfileGroupBase> class to create grouped properties in the <xref:System.Web.HttpContext.Profile%2A> property for the current <xref:System.Web.HttpContext>. When properties are specified as a group of properties using the [group Element for properties for profile (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b4e3672f-9653-4034-a178-fb358b02730e) element, ASP.NET creates a new class with strongly typed accessors for each property in the group. The new class inherits the <xref:System.Web.Profile.ProfileGroupBase> base class.       This class is not intended to be created from your code."
+  summary: "인스턴스를 만듭니다는 <xref href=&quot;System.Web.Profile.ProfileGroupBase&quot;> </xref> 클래스입니다."
+  remarks: "ASP.NET <xref:System.Web.Profile.ProfileGroupBase> <xref:System.Web.HttpContext.Profile%2A> <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> current에 대 한 속성</xref:System.Web.HttpContext.Profile%2A> 에 그룹화 된 속성을 만드는 클래스</xref:System.Web.Profile.ProfileGroupBase> 를 사용합니다. 속성은 사용 하 여 속성의 그룹으로 지정 하는 경우는 [요소 (ASP.NET 설정 스키마) 프로필에 대 한 속성에 대 한 그룹](http://msdn.microsoft.com/en-us/b4e3672f-9653-4034-a178-fb358b02730e) 요소, ASP.NET 새 클래스 그룹의 각 속성에 대 한 강력한 형식의 접근자를 만듭니다. 새 클래스가 <xref:System.Web.Profile.ProfileGroupBase>기본 클래스</xref:System.Web.Profile.ProfileGroupBase> 를 상속합니다.       이 클래스는 사용자 코드에서 만들 수 없습니다."
   example:
   - "The following Web.config file specifies a user profile that contains a group of properties with a group name of `Address`. The grouped properties generated for the <xref:System.Web.HttpContext.Profile%2A> property of the current <xref:System.Web.HttpContext> will be preceded by the group name, for example, `Profile.Address.Street`.  \n  \n```  \n<configuration>  \n  <connectionStrings>  \n    <add name=\"SqlServices\" connectionString=\"Data Source=localhost;Integrated Security=SSPI;Initial Catalog=aspnetdb;\" />  \n  </connectionStrings>  \n  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\"  \n             name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <authorization>  \n      <deny users=\"?\" />  \n    </authorization>  \n  \n    <membership defaultProvider=\"SqlProvider\"  \n                userIsOnlineTimeWindow=\"15\">  \n      <providers>  \n        <clear />  \n        <add   \n          name=\"SqlProvider\"   \n          type=\"System.Web.Security.SqlMembershipProvider\"   \n          connectionStringName=\"SqlServices\"  \n          enablePasswordRetrieval=\"false\"  \n          enablePasswordReset=\"true\"  \n          requiresQuestionAndAnswer=\"true\"   \n          requiresUniqueEmail=\"false\"  \n          passwordFormat=\"Hashed\"  \n          applicationName=\"MyApplication\" />  \n      </providers>  \n    </membership>  \n  \n    <profile enabled=\"true\" defaultProvider=\"SqlProvider\">  \n      <providers>  \n        <add  \n          name=\"SqlProvider\"  \n          connectionStringName=\"SqlServices\"  \n          applicationName=\"MyApplication\"  \n          type=\"System.Web.Profile.SqlProfileProvider\" />  \n      </providers>  \n  \n      <properties>  \n        <add name=\"ZipCode\" />  \n        <group name=\"Address\">  \n          <add name=\"Street\" />  \n          <add name=\"City\" />  \n          <add name=\"State\" />  \n          <add name=\"CountryOrRegion\" />  \n        </group>  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```  \n  \n The following ASP.NET page reads and sets the grouped properties specified for the user profile.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/csharp/m-system.web.profile.pro_6_1.aspx)]\n [!code-vb[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/visualbasic/m-system.web.profile.pro_6_1.aspx)]"
   syntax:
@@ -61,8 +61,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets the value of a grouped profile property."
-  remarks: "ASP.NET uses the <xref:System.Web.Profile.ProfileBase> class to create the class for the user profile. When an application that has the user profile enabled is started, ASP.NET creates a new class of type `ProfileCommon`, which inherits from the <xref:System.Web.Profile.ProfileBase> class. Strongly typed accessors are added to the `ProfileCommon` class for each group and property defined in the [profile Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/ccb9bf3a-a044-464d-b89b-5cb5a3d389dd) configuration section. The strongly typed accessors of the `ProfileCommon` class call the GetPropertyValue method to retrieve untyped values from the <xref:System.Web.Profile.ProfileProvider> that the generated accessor then casts as the specified type and returns as the grouped property value.       You can use the GetPropertyValue method to retrieve grouped property values of the user profile for your application by name. Returned values are typed as `object` and must be cast as the specific object type when retrieved. For strongly typed access to profile property values, you can access the grouped property by name as a member of a group of the <xref:System.Web.HttpContext.Profile%2A> property, for example, `Profile.Address.City`."
+  summary: "그룹화 된 프로필 속성의 값을 가져옵니다."
+  remarks: "ASP.NET을 사용 하는 <xref:System.Web.Profile.ProfileBase>사용자 프로필에 대 한 클래스를 만드는 클래스입니다.</xref:System.Web.Profile.ProfileBase> 사용자 프로필을 사용 하는 응용 프로그램이 시작 되 면 ASP.NET 형식의 새 클래스를 만듭니다 `ProfileCommon`, <xref:System.Web.Profile.ProfileBase>클래스</xref:System.Web.Profile.ProfileBase> 에서 상속 강력한 형식의 접근자에 추가 되는 `ProfileCommon` 각 그룹과에 정의 된 속성에 대 한 클래스는 [요소 (ASP.NET 설정 스키마)을 프로 파일링](http://msdn.microsoft.com/en-us/ccb9bf3a-a044-464d-b89b-5cb5a3d389dd) 구성 섹션입니다. 강력한 형식의 접근자는 `ProfileCommon` 에서 형식화 되지 않은 값을 검색 하려면 GetPropertyValue 메서드를 호출 하는 클래스는 <xref:System.Web.Profile.ProfileProvider>접근자 생성 된 다음 지정된 된 형식으로 캐스팅 하 고 그룹화 된 속성 값으로 반환 하는.</xref:System.Web.Profile.ProfileProvider>       그룹화 된 속성의 값을 검색할 사용자 프로필은 응용 프로그램에 대 한 이름으로 GetPropertyValue 메서드를 사용할 수 있습니다. 반환 된 값은로 형식화 `object` 이며 검색 될 때 특정 개체 유형으로 캐스팅 되어야 합니다. 프로필 속성 값에 대 한 강력한 형식의 액세스를 액세스할 수 있습니다는 그룹화 된 속성 이름으로 그룹의 구성원으로는 <xref:System.Web.HttpContext.Profile%2A>예를 들어, 속성을 `Profile.Address.City`.</xref:System.Web.HttpContext.Profile%2A>"
   example:
   - "The following code example shows an ASP.NET page that reads and sets the grouped properties specified for the user profile. For an example of a Web.config file that specifies grouped properties for the user profile, see the example provided for the <xref:System.Web.Profile.ProfileGroupBase> class.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/csharp/m-system.web.profile.pro_7_1.aspx)]\n [!code-vb[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/visualbasic/m-system.web.profile.pro_7_1.aspx)]"
   syntax:
@@ -70,10 +70,10 @@ items:
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the grouped profile property."
+      description: "그룹화 된 프로필 속성의 이름입니다."
     return:
       type: System.Object
-      description: "The value of the grouped profile property typed as <xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;></xref>."
+      description: "로 형식화 된 그룹화 된 프로필 속성의 값 <xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Profile.ProfileGroupBase.GetPropertyValue*
   exceptions: []
   platform:
@@ -90,17 +90,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Used by ASP.NET to initialize the grouped profile property values and information."
-  remarks: "This method is not intended to be used from your code."
+  summary: "ASP.NET에서 사용 하 여 그룹화 된 프로필 속성 값과 정보를 초기화 합니다."
+  remarks: "이 메서드는 사용자 코드에서 사용할 수 없습니다."
   syntax:
     content: public void Init (System.Web.Profile.ProfileBase parent, string myName);
     parameters:
     - id: parent
       type: System.Web.Profile.ProfileBase
-      description: "The class that inherits <xref href=&quot;System.Web.Profile.ProfileBase&quot;></xref> that is assigned to the <xref:System.Web.HttpContext.Profile*> property."
+      description: "상속 된 클래스 <xref href=&quot;System.Web.Profile.ProfileBase&quot;> </xref> 에 할당 되는 <xref:System.Web.HttpContext.Profile*>속성.</xref:System.Web.HttpContext.Profile*>"
     - id: myName
       type: System.String
-      description: "The name of the profile property group."
+      description: "프로필 속성 그룹의 이름입니다."
   overload: System.Web.Profile.ProfileGroupBase.Init*
   exceptions: []
   platform:
@@ -117,8 +117,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets or sets a grouped profile property value indexed by the property name."
-  remarks: "You can use this property to retrieve or set grouped property values of the user profile for your application. Returned values are typed as <xref:System.Object> and must be cast as the specific object type when retrieved. For strongly typed access to profile property values, you can access the property by name as a member of a group of the <xref:System.Web.HttpContext.Profile%2A?displayProperty=fullName> property, for example, `Profile.Address.City`."
+  summary: "속성 이름으로 인덱싱된 그룹화 된 프로필 속성 값을 가져오거나 설정 합니다."
+  remarks: "이 속성을 사용 하 여를 검색 하거나 응용 프로그램에 대 한 사용자 프로필의 그룹화 된 속성 값을 설정할 수 있습니다. 반환 된 값은로 형식화 <xref:System.Object>이며 검색 될 때 특정 개체 유형으로 캐스팅 되어야 합니다.</xref:System.Object> 프로필 속성 값에 대 한 강력한 형식의 액세스를 액세스할 수 있습니다는 속성 이름으로 그룹의 구성원으로는 <xref:System.Web.HttpContext.Profile%2A?displayProperty=fullName>예를 들어, 속성을 `Profile.Address.City`.</xref:System.Web.HttpContext.Profile%2A?displayProperty=fullName>"
   example:
   - "The following code example shows an ASP.NET page that reads and sets the grouped properties specified for the user profile. For an example of a Web.config file that specifies a group of properties in the profile, see the example provided for the <xref:System.Web.Profile.ProfileGroupBase> class.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/csharp/p-system.web.profile.pro_7_1.aspx)]\n [!code-vb[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/visualbasic/p-system.web.profile.pro_7_1.aspx)]"
   syntax:
@@ -126,10 +126,10 @@ items:
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the grouped profile property."
+      description: "그룹화 된 프로필 속성의 이름입니다."
     return:
       type: System.Object
-      description: "The value of the specified grouped profile property."
+      description: "지정된 된 그룹화 된 프로필 속성의 값입니다."
   overload: System.Web.Profile.ProfileGroupBase.Item*
   exceptions: []
   platform:
@@ -146,8 +146,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Sets the value of a grouped profile property."
-  remarks: "ASP.NET uses the <xref:System.Web.Profile.ProfileBase> class to create the class used for the user profile. When an application that has the user profile enabled is started, ASP.NET creates a new class of type `ProfileCommon`, which inherits from the <xref:System.Web.Profile.ProfileBase> class. Strongly typed accessors are added to the `ProfileCommon` class for each group and property defined in the [profile Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/ccb9bf3a-a044-464d-b89b-5cb5a3d389dd) configuration section. The strongly typed accessors of the `ProfileCommon` class call the SetPropertyValue method to pass grouped property values to the <xref:System.Web.Profile.ProfileProvider> to be stored at the data source.       You can use the SetPropertyValue method to assign values to grouped properties of the user profile for your application by name. Values are typed as `object,` and type checking will be done at run time, not compile time. For strongly typed access to profile property values, you can access the grouped property by name as a member of a group of the <xref:System.Web.HttpContext.Profile%2A> property, for example, `Profile.Address.City`."
+  summary: "그룹화 된 프로필 속성의 값을 설정 합니다."
+  remarks: "ASP.NET을 사용 하는 <xref:System.Web.Profile.ProfileBase>사용자 프로필에 사용 되는 클래스를 만드는 클래스입니다.</xref:System.Web.Profile.ProfileBase> 사용자 프로필을 사용 하는 응용 프로그램이 시작 되 면 ASP.NET 형식의 새 클래스를 만듭니다 `ProfileCommon`, <xref:System.Web.Profile.ProfileBase>클래스</xref:System.Web.Profile.ProfileBase> 에서 상속 강력한 형식의 접근자에 추가 되는 `ProfileCommon` 각 그룹과에 정의 된 속성에 대 한 클래스는 [요소 (ASP.NET 설정 스키마)을 프로 파일링](http://msdn.microsoft.com/en-us/ccb9bf3a-a044-464d-b89b-5cb5a3d389dd) 구성 섹션입니다. 강력한 형식의 접근자는 `ProfileCommon` 그룹화 된 속성 값을 전달 하려면 SetPropertyValue 메서드를 호출 하는 클래스는 <xref:System.Web.Profile.ProfileProvider>데이터 원본에 저장 된 것입니다.</xref:System.Web.Profile.ProfileProvider>       이름으로 응용 프로그램에 대 한 사용자 프로필의 그룹화 된 속성에 값을 할당 하려면 SetPropertyValue 메서드를 사용할 수 있습니다. 값은로 형식화 `object,` 및 실행 시 수행 됩니다, 하지 컴파일 타임 형식 검사 합니다. 프로필 속성 값에 대 한 강력한 형식의 액세스를 액세스할 수 있습니다는 그룹화 된 속성 이름으로 그룹의 구성원으로는 <xref:System.Web.HttpContext.Profile%2A>예를 들어, 속성을 `Profile.Address.City`.</xref:System.Web.HttpContext.Profile%2A>"
   example:
   - "The following ASP.NET page reads and sets the grouped properties specified for the user profile. For an example of a Web.config file that specifies grouped properties for the user profile, see the example provided for the <xref:System.Web.Profile.ProfileGroupBase> class.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/csharp/21e1205e-df6e-4cc9-a5fd-_1.aspx)]\n [!code-vb[System.Web.Profile.HttpProfileGroupBase#1](~/add/codesnippet/visualbasic/21e1205e-df6e-4cc9-a5fd-_1.aspx)]"
   syntax:
@@ -155,10 +155,10 @@ items:
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the grouped property to set."
+      description: "그룹화 된 속성을 설정의 이름입니다."
     - id: propertyValue
       type: System.Object
-      description: "The value to assign to the grouped property."
+      description: "그룹화 된 속성에 할당할 값입니다."
   overload: System.Web.Profile.ProfileGroupBase.SetPropertyValue*
   exceptions: []
   platform:
