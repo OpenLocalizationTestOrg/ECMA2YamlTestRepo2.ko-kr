@@ -11,8 +11,8 @@ items:
   nameWithType: IMemoryCacheManager
   fullName: System.Runtime.Caching.Hosting.IMemoryCacheManager
   type: Interface
-  summary: "Defines an interface that a cache uses in order to communicate cache memory usage to a host environment."
-  remarks: "The IMemoryCacheManager interface is implemented by host environments such as ASP.NET, and is consumed by <xref:System.Runtime.Caching.ObjectCache> implementations that must interact with the host environment to determine memory usage. Because caches often consume significant quantities of memory, the IMemoryCacheManager interface helps host environments manage memory usage.       Typically, only <xref:System.Runtime.Caching.ObjectCache> implementations that manage cache objects in memory would use this interface."
+  summary: "호스트 환경에 캐시 메모리 사용을 알리기 위해 사용 하는 캐시 하는 인터페이스를 정의 합니다."
+  remarks: "IMemoryCacheManager 인터페이스 ASP.NET과 같은 호스트 환경에 의해 구현 되 고 사용 되 <xref:System.Runtime.Caching.ObjectCache>메모리 사용량을 확인 하 고 호스트 환경 상호 작용 해야 하는 구현.</xref:System.Runtime.Caching.ObjectCache> 캐시에서 자주 상당한 양의 메모리를 소비 하므로 IMemoryCacheManager 인터페이스 호스트 환경 메모리 사용량을 관리할 수 있습니다.       일반적으로 <xref:System.Runtime.Caching.ObjectCache>구현 메모리에 있는 캐시 개체를 관리 하는 것이 인터페이스를 사용 하 여.</xref:System.Runtime.Caching.ObjectCache>"
   syntax:
     content: public interface IMemoryCacheManager
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Removes all references to a cache in the host environment."
-  remarks: "If a cache has previously registered itself with the host environment, the cache can call the ReleaseCache method to release the reference. When a cache is being disposed, it should call the ReleaseCache method to make sure that no reference to the cache is held on the host."
+  summary: "호스트 환경에서 캐시에 대 한 모든 참조를 제거합니다."
+  remarks: "캐시 이전에 등록 된 호스트 환경, 캐시 참조를 해제 ReleaseCache 메서드를 호출할 수 있습니다. 캐시 삭제 될 때 캐시에 대 한 참조는 호스트에서 유지 되 고 있는지 확인 하려면 ReleaseCache 메서드를 호출 해야 합니다."
   syntax:
     content: public void ReleaseCache (System.Runtime.Caching.MemoryCache cache);
     parameters:
     - id: cache
       type: System.Runtime.Caching.MemoryCache
-      description: "A reference to the cache."
+      description: "캐시에 대 한 참조입니다."
   overload: System.Runtime.Caching.Hosting.IMemoryCacheManager.ReleaseCache*
   exceptions: []
   platform:
@@ -54,17 +54,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Reports the size of the current cache."
-  remarks: "A well-behaved cache implementation should use the UpdateCacheSize method to periodically report the size of the cache&quot;s memory footprint to the host environment.       The cache implementation that reports the size also passes a reference to itself as a parameter. This enables the host environment to perform the following tasks:      -   Maintain a list of known object caches.      -   Call the cache and request that the cache trim a percentage of cache items based on the reported size, if it is required."
+  summary: "현재 캐시의 크기를 보고합니다."
+  remarks: "올바르게 동작 캐시 구현을 호스트 환경에는 캐시의 메모리 사용 공간의 크기를 주기적으로 보고 UpdateCacheSize 메서드를 사용 해야 합니다.       또한 크기를 보고 하는 캐시 구현 매개 변수로 자체에 대 한 참조를 전달 합니다. 이렇게 하면 다음 작업을 수행할 호스트 환경:-알려진된 개체 캐시의 목록을 유지 관리 합니다.      -캐시를 호출 하 고 필요한 경우 캐시 보고 된 크기에 따라 캐시 항목의 비율을 자르는 요청 합니다."
   syntax:
     content: public void UpdateCacheSize (long size, System.Runtime.Caching.MemoryCache cache);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the memory, in bytes, that the cache consumes."
+      description: "메모리 캐시를 사용 하는 바이트의 크기입니다."
     - id: cache
       type: System.Runtime.Caching.MemoryCache
-      description: "A reference to the cache."
+      description: "캐시에 대 한 참조입니다."
   overload: System.Runtime.Caching.Hosting.IMemoryCacheManager.UpdateCacheSize*
   exceptions: []
   platform:

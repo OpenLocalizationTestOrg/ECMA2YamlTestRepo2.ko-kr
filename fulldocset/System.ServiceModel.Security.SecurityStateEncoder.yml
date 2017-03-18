@@ -12,8 +12,8 @@ items:
   nameWithType: SecurityStateEncoder
   fullName: System.ServiceModel.Security.SecurityStateEncoder
   type: Class
-  summary: "An abstract class that can be implemented to encode the security state."
-  remarks: "This class is used to encode and decode the content of the security context token when a binding with message security that uses a stateful security context token is used. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] stateful security context tokens, see [How to: Create a Security Context Token for a Secure Session](~/add/includes/ajax-current-ext-md.md) topic.       Microsoft’s version of SecurityStateEncoder is <xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder>. It uses Microsoft’s [Windows Data Protection (DPAPI)](http://go.microsoft.com/fwlink/?LinkId=96704) technology to encrypt/decrypt the cookie. You can plug in a different mechanism for encrypting and decrypting cookies by implementing this class.       The encoding of the security state must ensure that the state is signed and encrypted for the service.       This class is used by the server when sending the security state as a cookie in the `SecurityContextToken` issued to the client.       An example implementation of this class is an `X509CertificateSecurityStateEncoder` that uses the service&quot;s certificate to sign and encrypt the security state."
+  summary: "보안 상태를 인코딩하기 위해 구현할 수 있는 추상 클래스입니다."
+  remarks: "이 클래스는 인코딩 및 상태 저장 보안 컨텍스트 토큰을 사용 하는 메시지 보안과 함께 바인딩이 사용 될 때 보안 컨텍스트 토큰의 콘텐츠를 디코딩하는 데 사용 됩니다. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)]상태 저장 보안 컨텍스트 토큰 참조 [하는 방법: 보안 세션에 대 한 보안 컨텍스트 토큰 만들기](~/add/includes/ajax-current-ext-md.md) 항목입니다.       Microsoft의 SecurityStateEncoder 버전이 <xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder>.</xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder> Microsoft의 사용 하 여 [Windows DPAPI (데이터 보호)](http://go.microsoft.com/fwlink/?LinkId=96704) 암호화/암호 해독 쿠키를 기술 합니다. 암호화 및이 클래스를 구현 하 여 쿠키를 암호 해독에 대 한 다른 메커니즘을 연결할 수 있습니다.       보안 상태의 인코딩을 상태 서명 되 고 서비스에 대 한 암호화 되어 있는지 확인 해야 합니다.       이 클래스는 보안 상태에 쿠키로 보낼 때 서버에서 사용 되는 `SecurityContextToken` 클라이언트에 발급 합니다.       이 클래스의 구현 예제가는 `X509CertificateSecurityStateEncoder` 서비스의 인증서 서명 및 암호화 보안 상태를 사용 하 여 합니다."
   syntax:
     content: public abstract class SecurityStateEncoder
   inheritance:
@@ -34,7 +34,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Security.SecurityStateEncoder&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Security.SecurityStateEncoder&quot;> </xref> 클래스입니다."
   syntax:
     content: protected SecurityStateEncoder ();
     parameters: []
@@ -54,16 +54,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Decodes the security state."
+  summary: "보안 상태를 디코딩합니다."
   syntax:
     content: protected abstract byte[] DecodeSecurityState (byte[] data);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "Security data."
+      description: "보안 데이터입니다."
     return:
       type: System.Byte[]
-      description: "A byte array that represents the security state."
+      description: "보안 상태를 나타내는 바이트 배열입니다."
   overload: System.ServiceModel.Security.SecurityStateEncoder.DecodeSecurityState*
   exceptions: []
   platform:
@@ -80,16 +80,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Encodes the security state."
+  summary: "보안 상태를 인코딩합니다."
   syntax:
     content: protected abstract byte[] EncodeSecurityState (byte[] data);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "The security state data."
+      description: "보안 상태 데이터입니다."
     return:
       type: System.Byte[]
-      description: "A byte array that results from encoding the security state."
+      description: "보안 상태를 인코딩하고의 결과로 생성 되는 바이트 배열입니다."
   overload: System.ServiceModel.Security.SecurityStateEncoder.EncodeSecurityState*
   exceptions: []
   platform:
