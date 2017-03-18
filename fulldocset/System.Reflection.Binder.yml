@@ -16,8 +16,8 @@ items:
   nameWithType: Binder
   fullName: System.Reflection.Binder
   type: Class
-  summary: "Selects a member from a list of candidates, and performs type conversion from actual argument type to formal argument type."
-  remarks: "Implementations of the Binder class are used by methods such as <xref:System.Type.InvokeMember%2A?displayProperty=fullName>, which selects from a set of possible members to execute, based on a set of parameter types and argument values; <xref:System.Type.GetMethod%2A?displayProperty=fullName>, which selects a method based on parameter types; and so on.       A default implementation of the Binder class is provided by the <xref:System.Type.DefaultBinder%2A?displayProperty=fullName> property."
+  summary: "후보 목록에서 구성원을 선택 하 고 정식 인수 형식으로 실제 인수 형식을 형식 변환을 수행 합니다."
+  remarks: "바인더 클래스의 구현 <xref:System.Type.InvokeMember%2A?displayProperty=fullName>, 같은 매개 변수 형식 및 인수 값의 집합에 따라를 실행 하려면 가능한 멤버의 집합에서 선택 하는 방법에서 사용 <xref:System.Type.GetMethod%2A?displayProperty=fullName>, 매개 변수 형식 및 등을 기반으로 하는 메서드를 선택 하는.</xref:System.Type.GetMethod%2A?displayProperty=fullName> </xref:System.Type.InvokeMember%2A?displayProperty=fullName>       바인더 클래스의 기본 구현에서 제공 되는 <xref:System.Type.DefaultBinder%2A?displayProperty=fullName>속성.</xref:System.Type.DefaultBinder%2A?displayProperty=fullName>"
   example:
   - "The following example implements and demonstrates all members of the `Binder` class. The private method `CanConvertFrom` finds compatible types for a given type.  \n  \n [!code-cpp[Binder_1#1](~/add/codesnippet/cpp/t-system.reflection.binder_1.cpp)]\n [!code-vb[Binder_1#1](~/add/codesnippet/visualbasic/t-system.reflection.binder_1.vb)]\n [!code-cs[Binder_1#1](~/add/codesnippet/csharp/t-system.reflection.binder_1.cs)]"
   syntax:
@@ -45,8 +45,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Initializes a new instance of the <xref href=&quot;System.Reflection.Binder&quot;></xref> class."
-  remarks: "This constructor is called by the constructors of derived classes, to initialize state in this type."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Reflection.Binder&quot;> </xref> 클래스입니다."
+  remarks: "이 생성자는이 형식에 상태를 초기화 하려면 파생된 클래스의 생성자에 의해 호출 됩니다."
   syntax:
     content: protected Binder ();
     parameters: []
@@ -66,37 +66,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a field from the given set of fields, based on the specified criteria."
-  remarks: "If `bindingAttr` does not include <xref:System.Reflection.BindingFlags?displayProperty=fullName>, the default binder implementation provided by <xref:System.Type.DefaultBinder%2A?displayProperty=fullName> simply returns the first element of `match`. No selection is done.       This method controls the binding provided by <xref:System.Type.InvokeMember%2A?displayProperty=fullName>."
+  summary: "지정된 된 조건에 따라 필드가 지정 된 집합에서 필드를 선택 합니다."
+  remarks: "경우 `bindingAttr` 는 <xref:System.Reflection.BindingFlags?displayProperty=fullName>에서 제공 하는 기본 바인더 구현 <xref:System.Type.DefaultBinder%2A?displayProperty=fullName>의 첫 번째 요소를 반환 `match`.</xref:System.Type.DefaultBinder%2A?displayProperty=fullName> </xref:System.Reflection.BindingFlags?displayProperty=fullName> 선택 영역이 없는 수행 됩니다.       이 방법은 <xref:System.Type.InvokeMember%2A?displayProperty=fullName>.</xref:System.Type.InvokeMember%2A?displayProperty=fullName> 에서 제공 하는 바인딩이 제어 합니다."
   syntax:
     content: public abstract System.Reflection.FieldInfo BindToField (System.Reflection.BindingFlags bindingAttr, System.Reflection.FieldInfo[] match, object value, System.Globalization.CultureInfo culture);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "비트 조합 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> 값입니다."
     - id: match
       type: System.Reflection.FieldInfo[]
-      description: "The set of fields that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of fields that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "집합에 일치 하는 필드입니다. 예를 들어, 한 <xref href=&quot;System.Reflection.Binder&quot;> </xref> 개체에서 사용 됩니다 &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, 리플렉션에서 확인 가능한 필드 집합이 일치 하는 일반적으로 올바른 멤버 이름을 했기 때문에이 매개 변수를 지정 합니다. 제공 하는 기본 구현을 &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; 이 배열 순서를 변경 합니다."
     - id: value
       type: System.Object
-      description: "The field value used to locate a matching field."
+      description: "일치 하는 필드를 찾는 데 필드 값입니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "인스턴스 <xref:System.Globalization.CultureInfo>형식 강제 변환 하는 바인더 구현에서 데이터 형식의 강제 변환을 제어 하는 데 사용 되는.</xref:System.Globalization.CultureInfo> 경우 `culture` 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, <xref:System.Globalization.CultureInfo>현재 스레드가 사용 됩니다.</xref:System.Globalization.CultureInfo>       예를 들어, 바인더 구현에는 문자열 값을 숫자 형식 강제 변환 허용 하는 경우이 매개 변수는 변환 하는 데 필요한는 <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> 1, 000을 나타내는 한 <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;> </xref> 값을 1, 000은 각 문화권 마다 다르게 표현 합니다. 기본 바인더에는 이러한 문자열 강제 변환을 수행 하지 않습니다."
     return:
       type: System.Reflection.FieldInfo
-      description: "The matching field."
+      description: "일치 하는 필드입니다."
   overload: System.Reflection.Binder.BindToField*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> contains multiple fields that are equally good matches for <code>value</code>. For example, <code>value</code> contains a `MyClass` object that implements the `IMyClass` interface, and <code>match</code> contains a field of type `MyClass` and a field of type `IMyClass`."
+    description: "기본 바인더에 대 한 <code> bindingAttr </code> 포함 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>, 및 <code> match </code> 동등 하 게 일치에 대 한 여러 필드가 포함 된 <code> value </code>합니다. 예를 들어 <code> value </code> 포함는 `MyClass` 구현 하는 개체는 `IMyClass` 인터페이스 및 <code> match </code> 형식의 필드를 포함 `MyClass` 형식의 필드 및 `IMyClass`합니다."
   - type: System.MissingFieldException
     commentId: T:System.MissingFieldException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> contains no fields that can accept <code>value</code>."
+    description: "기본 바인더에 대 한 <code> bindingAttr </code> 포함 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>, 및 <code> match </code> 수락할 수 있는 필드가 없는 <code> value </code>합니다."
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "For the default binder, <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array.       -or-       <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "기본 바인더에 대 한 <code> bindingAttr </code> 포함 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref>, 및 <code> match </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 빈 배열입니다.       -or-       <code>bindingAttr</code> includes <xref href=&quot;System.Reflection.BindingFlags&quot;></xref>, and <code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Reflection.Binder.BindToMethod(System.Reflection.BindingFlags,System.Reflection.MethodBase[],System.Object[]@,System.Reflection.ParameterModifier[],System.Globalization.CultureInfo,System.String[],System.Object@)
@@ -111,46 +111,46 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a method to invoke from the given set of methods, based on the supplied arguments."
-  remarks: "The default binder takes into account both parameters that have values and `params` arrays (`ParamArray` arrays in Visual Basic). Thus, it is possible to find a match in cases where `args` and `match` do not contain the same number of elements.       The binder enables a client to map the array of arguments back to its original form if the argument array has been manipulated by BindToMethod. Use this remap capability to get back by-reference arguments when such arguments are present. When you pass arguments by name, the binder reorders the argument array. The `state` parameter keeps track of argument reordering, thus enabling the binder&quot;s <xref:System.Reflection.Binder.ReorderArgumentArray%2A> method to reorder the argument array to its original form.       The BindToMethod method is used by the <xref:System.Type.InvokeMember%2A?displayProperty=fullName> method."
+  summary: "메서드를 제공 된 인수에 따라의 지정된 된 집합에서 호출할 메서드를 선택 합니다."
+  remarks: "기본 바인더는 고려 값이 있는 매개 변수가 모두 및 `params` 배열 (`ParamArray` Visual Basic의 배열)입니다. 즉, 일치 하는 경우에도 찾을 수 있는 `args` 및 `match` 동일한 요소 수를 포함 하지 않습니다.       바인더 클라이언트를 BindToMethod에서 인수 배열 조작 된 경우 인수 배열을 다시 원래 형식으로 매핑할 수 있습니다. 이러한 인수가 있을 때 참조로 인수 प र이 다시 매핑 기능을 사용 합니다. 이름으로 인수를 전달 하는 경우 바인더 인수 배열 다시 정렬 합니다. `state` 매개 변수 인수 순서 변경을 바인더의 사용할 수 있게 하는 추적 <xref:System.Reflection.Binder.ReorderArgumentArray%2A>원래 형태로 인수 배열 순서를 변경 하려면 메서드.</xref:System.Reflection.Binder.ReorderArgumentArray%2A>       BindToMethod 메서드를 사용 하 여는 <xref:System.Type.InvokeMember%2A?displayProperty=fullName>메서드.</xref:System.Type.InvokeMember%2A?displayProperty=fullName>"
   syntax:
     content: public abstract System.Reflection.MethodBase BindToMethod (System.Reflection.BindingFlags bindingAttr, System.Reflection.MethodBase[] match, ref object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] names, out object state);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "비트 조합 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> 값입니다."
     - id: match
       type: System.Reflection.MethodBase[]
-      description: "The set of methods that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of methods that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "집합에 일치 하는 방법입니다. 예를 들어, 한 <xref href=&quot;System.Reflection.Binder&quot;> </xref> 개체에서 사용 됩니다 &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, 리플렉션에서 확인 가능한 메서드 집합을 일치 하는 일반적으로 올바른 멤버 이름을 했기 때문에이 매개 변수를 지정 합니다. 제공 하는 기본 구현을 &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; 이 배열 순서를 변경 합니다."
     - id: args
       type: System.Object[]
-      description: "The arguments that are passed in. The binder can change the order of the arguments in this array; for example, the default binder changes the order of arguments if the `names` parameter is used to specify an order other than positional order. If a binder implementation coerces argument types, the types and values of the arguments can be changed as well."
+      description: "에 전달 되는 인수입니다. 바인더;이 배열에 있는 인수의 순서를 변경할 수 있습니다. 경우 기본 바인더 인수의 순서를 변경 하는 예를 들어는 `names` 위치 순서 외의 순서를 지정 하려면 매개 변수를 사용 합니다. 바인더 구현 인수 형식의 강제 변환, 형식 및 인수 값을도 변경할 수 있습니다."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified. The default binder implementation does not use this parameter."
+      description: "배열 형식이 수정 된 매개 변수 서명과 함께 작동 하도록 바인딩을 사용 하는 매개 변수 한정자입니다. 기본 바인더 구현에서이 매개 변수를 사용 하지 않습니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types, in binder implementations that coerce types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, if a binder implementation allows coercion of string values to numeric types, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures. The default binder does not do such string coercions."
+      description: "인스턴스 <xref:System.Globalization.CultureInfo>형식 강제 변환 하는 바인더 구현에서 데이터 형식의 강제 변환을 제어 하는 데 사용 되는.</xref:System.Globalization.CultureInfo> 경우 `culture` 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, <xref:System.Globalization.CultureInfo>현재 스레드가 사용 됩니다.</xref:System.Globalization.CultureInfo>       예를 들어, 바인더 구현에는 문자열 값을 숫자 형식 강제 변환 허용 하는 경우이 매개 변수는 변환 하는 데 필요한는 <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> 1, 000을 나타내는 한 <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;> </xref> 값을 1, 000은 각 문화권 마다 다르게 표현 합니다. 기본 바인더에는 이러한 문자열 강제 변환을 수행 하지 않습니다."
     - id: names
       type: System.String[]
-      description: "The parameter names, if parameter names are to be considered when matching, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if arguments are to be treated as purely positional. For example, parameter names must be used if arguments are not supplied in positional order."
+      description: "매개 변수 이름은 일치 시 고려해 야 할 경우 매개 변수 이름이 나 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 인수 위치로 처리 되는 경우. 예를 들어, 매개 변수 이름은 위치 순서에 인수를 제공 하지 않는 경우 사용할 수 해야 합니다."
     - id: state
       type: System.Object
-      description: "After the method returns, `state` contains a binder-provided object that keeps track of argument reordering. The binder creates this object, and the binder is the sole consumer of this object. If `state` is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> when <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;></xref> returns, you must pass `state` to the <xref:System.Reflection.Binder.ReorderArgumentArray*> method if you want to restore `args` to its original order, for example, so that you can retrieve the values of <xref uid=&quot;langword_csharp_ref&quot; name=&quot;ref&quot; href=&quot;&quot;></xref> parameters (<xref uid=&quot;langword_csharp_ByRef&quot; name=&quot;ByRef&quot; href=&quot;&quot;></xref> parameters in Visual Basic)."
+      description: "메서드가 반환 된 후 `state` 바인더 제공 개체는 인수 순서 변경을 추적를 포함 합니다. 바인더가이 개체를 만들고이 개체의 유일한 소비자는 합니다. 경우 `state` 않습니다 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 때 <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;> </xref> 반환 전달 해야 `state` 에 <xref:System.Reflection.Binder.ReorderArgumentArray*>메서드 복원 하려는 경우 `args` 를 원래의 값을 검색할 수 있도록 예를 들어 순서 <xref uid=&quot;langword_csharp_ref&quot; name=&quot;ref&quot; href=&quot;&quot;> </xref> 매개 변수 (<xref uid=&quot;langword_csharp_ByRef&quot; name=&quot;ByRef&quot; href=&quot;&quot;> </xref> Visual Basic에서 매개 변수).</xref:System.Reflection.Binder.ReorderArgumentArray*>"
     return:
       type: System.Reflection.MethodBase
-      description: "The matching method."
+      description: "일치 하는 메서드."
   overload: System.Reflection.Binder.BindToMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple methods that are equally good matches for <code>args</code>. For example, <code>args</code> contains a `MyClass` object that implements the `IMyClass` interface, and <code>match</code> contains a method that takes `MyClass` and a method that takes `IMyClass`."
+    description: "기본 바인더에 대 한 <code> match </code> 와 동등 하 게 일치 하는 여러 메서드가 포함 된 <code> args </code>합니다. 예를 들어 <code> args </code> 포함는 `MyClass` 구현 하는 개체는 `IMyClass` 인터페이스 및 <code> match </code> 사용 하는 메서드를 포함 `MyClass` 사용 하는 메서드 및 `IMyClass`합니다."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: "For the default binder, <code>match</code> contains no methods that can accept the arguments supplied in <code>args</code>."
+    description: "기본 바인더에 대 한 <code> match </code> 메서드가 포함 되지 않은에 제공 된 인수를 수락할 수 있는 <code> args </code>합니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array."
+    description: "기본 바인더에 대 한 <code> match </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 빈 배열입니다."
   platform:
   - net462
 - uid: System.Reflection.Binder.ChangeType(System.Object,System.Type,System.Globalization.CultureInfo)
@@ -165,23 +165,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Changes the type of the given <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;></xref> to the given <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref>."
-  remarks: "Reflection models the accessibility rules of the common type system. For example, if the caller is in the same assembly, the caller does not need special permissions for internal members. Otherwise, the caller needs <xref:System.Security.Permissions.ReflectionPermission>. This is consistent with lookup of members that are protected, private, and so on.       The general principle is that `ChangeType` should perform only widening coercions, which never lose data. An example of a widening coercion is coercing a value that is a 32-bit signed integer to a value that is a 64-bit signed integer. This is distinguished from a narrowing coercion, which may lose data. An example of a narrowing coercion is coercing a 64-bit signed integer to a 32-bit signed integer.       The following table lists the coercions performed by the default `ChangeType`.      |Source type|Target type|   |-----------------|-----------------|   |Any type|Its base type.|   |Any type|The interface it implements.|   |Char|UInt16, UInt32, Int32, UInt64, Int64, Single, Double|   |Byte|Char, UInt16, Int16, UInt32, Int32, UInt64, Int64, Single, Double|   |SByte|Int16, Int32, Int64, Single, Double|   |UInt16|UInt32, Int32, UInt64, Int64, Single, Double|   |Int16|Int32, Int64, Single, Double|   |UInt32|UInt64, Int64, Single, Double|   |Int32|Int64, Single, Double|   |UInt64|Single, Double|   |Int64|Single, Double|   |Single|Double|   |Non-reference|By-reference.|"
+  summary: "종류를 변경 하는 지정 <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;> </xref> 에 주어진 <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref>합니다."
+  remarks: "리플렉션 공용 형식 시스템의 액세스 가능성 규칙을 모델링합니다. 예를 들어 호출자에 게 동일한 어셈블리에 포함 된 경우 호출자에 게 필요는 없습니다 특별 한 권한이 내부 멤버에 대 한. 그렇지 않은 경우 호출자가 <xref:System.Security.Permissions.ReflectionPermission>.</xref:System.Security.Permissions.ReflectionPermission> 이것은 보호 되는 멤버 조회 일치, private, 및 등입니다.       일반적으로 `ChangeType` 없는 데이터 손실이 없는 확장을 수행 해야 합니다. 확장 강제 변환의 예로 64 비트 부호 있는 정수 값으로 사용 되는 32 비트 부호 있는 정수 값 강제 변환 됩니다. 이 데이터가 손실 될 수 있는 축소 변환에서 구분 됩니다. 축소 변환의 예로 64 비트 부호 있는 정수는 32 비트 부호 있는 정수를 강제 변환 됩니다.       다음 표에서 기본적으로 수행 된 변환이 `ChangeType`합니다.      | 소스 형식 | 대상 유형 |   |-----------------|-----------------|   | 모든 형식 | 기본 형식입니다. |   | 모든 형식 | 구현 하는 인터페이스입니다. |   | Char | UInt16, UInt32, Int32, UInt64, Int64, Single, Double |   | 바이트 | Char, UInt16, Int16, UInt32, Int32, UInt64, Int64, Single, Double |   | SByte | Int16, Int32, Int64, Single, Double |   | UInt16 | UInt32, Int32, UInt64, Int64, Single, Double |   | Int16 | Int32, Int64, Single, Double |   | UInt32 | UInt64, Int64, Single, Double |   | Int32 | Int64, 단방향, 이중 |   | UInt64 | Single, Double |   | Int64 | Single, Double |   | 단일 | 이중 |   | 비참조 형식 | 참조로 전달 합니다. |"
   syntax:
     content: public abstract object ChangeType (object value, Type type, System.Globalization.CultureInfo culture);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to change into a new <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref>."
+      description: "새 변경 하려면 개체 <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref>합니다."
     - id: type
       type: System.Type
-      description: "The new <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;></xref> that `value` will become."
+      description: "새 <xref uid=&quot;langword_csharp_Type&quot; name=&quot;Type&quot; href=&quot;&quot;> </xref> 하 `value` 됩니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> that is used to control the coercion of data types. If `culture` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used.       Note   For example, this parameter is necessary to convert a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, because 1000 is represented differently by different cultures."
+      description: "인스턴스 <xref:System.Globalization.CultureInfo>데이터 형식의 강제 변환을 제어 하는 데 사용 되는.</xref:System.Globalization.CultureInfo> 경우 `culture` 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, <xref:System.Globalization.CultureInfo>현재 스레드가 사용 됩니다.</xref:System.Globalization.CultureInfo>       예를 들어,이 매개 변수는 변환 하는 데 필요한는 <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> 1, 000을 나타내는 한 <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;> </xref> 값을 1, 000은 각 문화권 마다 다르게 표현 합니다."
     return:
       type: System.Object
-      description: "An object that contains the given value as the new type."
+      description: "새 형식으로 지정 된 값을 포함 하는 개체입니다."
   overload: System.Reflection.Binder.ChangeType*
   exceptions: []
   platform:
@@ -198,17 +198,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Upon returning from <xref:System.Reflection.Binder.BindToMethod*>, restores the <code>args</code> argument to what it was when it came from <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;></xref>."
-  remarks: "The common language runtime calls this method if `state` is not `null` after a return from `BindToMethod`."
+  summary: "반환 하면 <xref:System.Reflection.Binder.BindToMethod*>, 복원 된 <code> args </code> 인수에서 제공 하는 때를 <xref uid=&quot;langword_csharp_BindToMethod&quot; name=&quot;BindToMethod&quot; href=&quot;&quot;> </xref>.</xref:System.Reflection.Binder.BindToMethod*>"
+  remarks: "공용 언어 런타임에서이 메서드를 호출 하는 경우 `state` 않습니다 `null` 에서 반환 된 후 `BindToMethod`합니다."
   syntax:
     content: public abstract void ReorderArgumentArray (ref object[] args, object state);
     parameters:
     - id: args
       type: System.Object[]
-      description: "The actual arguments that are passed in. Both the types and values of the arguments can be changed."
+      description: "에 전달 되는 실제 인수입니다. 형식과 인수의 값을 변경할 수 있습니다."
     - id: state
       type: System.Object
-      description: "A binder-provided object that keeps track of argument reordering."
+      description: "바인더 제공 개체는 인수 순서 변경을 추적 합니다."
   overload: System.Reflection.Binder.ReorderArgumentArray*
   exceptions: []
   platform:
@@ -225,34 +225,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a method from the given set of methods, based on the argument type."
-  remarks: "This method should return `null` if no method matches the criteria. This method controls the selection provided by the `GetConstructor` and `GetMethod` methods on `Type`."
+  summary: "방법, 인수 종류에 따라의 지정된 된 집합에서 메서드를 선택 합니다."
+  remarks: "이 메서드를 반환 하도록 `null` 메서드가 없는 조건과 일치 하는 경우. 이 메서드를 제공 하는 선택을 제어는 `GetConstructor` 및 `GetMethod` 에 대 한 메서드 `Type`합니다."
   syntax:
     content: public abstract System.Reflection.MethodBase SelectMethod (System.Reflection.BindingFlags bindingAttr, System.Reflection.MethodBase[] match, Type[] types, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "비트 조합 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> 값입니다."
     - id: match
       type: System.Reflection.MethodBase[]
-      description: "The set of methods that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of methods that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "집합에 일치 하는 방법입니다. 예를 들어, 한 <xref href=&quot;System.Reflection.Binder&quot;> </xref> 개체에서 사용 됩니다 &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, 리플렉션에서 확인 가능한 메서드 집합을 일치 하는 일반적으로 올바른 멤버 이름을 했기 때문에이 매개 변수를 지정 합니다. 제공 하는 기본 구현을 &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; 이 배열 순서를 변경 합니다."
     - id: types
       type: System.Type[]
-      description: "The parameter types used to locate a matching method."
+      description: "일치 하는 메서드를 찾는 데 매개 변수 형식."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified."
+      description: "배열 형식이 수정 된 매개 변수 서명과 함께 작동 하도록 바인딩을 사용 하는 매개 변수 한정자입니다."
     return:
       type: System.Reflection.MethodBase
-      description: "The matching method, if found; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "일치 하는 경우 메서드를 찾았습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Reflection.Binder.SelectMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple methods that are equally good matches for the parameter types described by <code>types</code>. For example, the array in <code>types</code> contains a <xref:System.Type> object for `MyClass` and the array in <code>match</code> contains a method that takes a base class of `MyClass` and a method that takes an interface that `MyClass` implements."
+    description: "기본 바인더에 대 한 <code> match </code> 하 게 하 여 설명 하는 매개 변수 형식에 대 한 동일 하 게 일치 하는 여러 메서드가 포함 <code> types </code>합니다. 예를 들어 배열 <code> types </code> 포함는 <xref:System.Type>개체에 대 한 `MyClass` 및 배열에 <code> match </code> 의 기본 클래스를 사용 하는 메서드가 들어 `MyClass` 및 인터페이스를 사용 하는 메서드 `MyClass` 구현.</xref:System.Type>"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array.       -or-       An element of <code>types</code> derives from <xref:System.Type>, but is not of type <xref uid=&quot;langword_csharp_RuntimeType&quot; name=&quot;RuntimeType&quot; href=&quot;&quot;></xref>."
+    description: "기본 바인더에 대 한 <code> match </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 빈 배열입니다.       -또는-요소가 <code> types </code> 에서 파생 <xref:System.Type>, 있지만 유형이 <xref uid=&quot;langword_csharp_RuntimeType&quot; name=&quot;RuntimeType&quot; href=&quot;&quot;> </xref>.</xref:System.Type>"
   platform:
   - net462
 - uid: System.Reflection.Binder.SelectProperty(System.Reflection.BindingFlags,System.Reflection.PropertyInfo[],System.Type,System.Type[],System.Reflection.ParameterModifier[])
@@ -267,37 +267,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Selects a property from the given set of properties, based on the specified criteria."
-  remarks: "This method controls the selection provided by the `GetProperty` method on `Type`."
+  summary: "속성을 지정된 된 조건에 따라의 지정된 된 집합에서 속성을 선택 합니다."
+  remarks: "이 메서드를 제공 하는 선택을 제어는 `GetProperty` 메서드를 `Type`합니다."
   syntax:
     content: public abstract System.Reflection.PropertyInfo SelectProperty (System.Reflection.BindingFlags bindingAttr, System.Reflection.PropertyInfo[] match, Type returnType, Type[] indexes, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "A bitwise combination of <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> values."
+      description: "비트 조합 <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> 값입니다."
     - id: match
       type: System.Reflection.PropertyInfo[]
-      description: "The set of properties that are candidates for matching. For example, when a <xref href=&quot;System.Reflection.Binder&quot;></xref> object is used by &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, this parameter specifies the set of properties that reflection has determined to be possible matches, typically because they have the correct member name. The default implementation provided by &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; changes the order of this array."
+      description: "집합에 일치 하는 속성입니다. 예를 들어는 <xref href=&quot;System.Reflection.Binder&quot;> </xref> 개체에서 사용 됩니다 &lt;xref:System.Type.InvokeMember%2A?displayProperty=fullName&gt;, reflection에서 확인 가능 하는 속성 집합이 일치 하는 일반적으로 올바른 멤버 이름을 했기 때문에이 매개 변수를 지정 합니다. 제공 하는 기본 구현을 &lt;xref:System.Type.DefaultBinder%2A?displayProperty=fullName&gt; 이 배열 순서를 변경 합니다."
     - id: returnType
       type: System.Type
-      description: "The return value the matching property must have."
+      description: "일치 하는 속성이 반환 값이 있어야 합니다."
     - id: indexes
       type: System.Type[]
-      description: "The index types of the property being searched for. Used for index properties such as the indexer for a class."
+      description: "인덱스 형식에 대 한 검색 중인 속성입니다. 클래스에 대 한 인덱서 같은 인덱스 속성에 사용 합니다."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers that enable binding to work with parameter signatures in which the types have been modified."
+      description: "배열 형식이 수정 된 매개 변수 서명과 함께 작동 하도록 바인딩을 사용 하는 매개 변수 한정자입니다."
     return:
       type: System.Reflection.PropertyInfo
-      description: "The matching property."
+      description: "일치 하는 속성입니다."
   overload: System.Reflection.Binder.SelectProperty*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "For the default binder, <code>match</code> contains multiple properties that are equally good matches for <code>returnType</code> and <code>indexes</code>."
+    description: "기본 바인더에 대 한 <code> match </code> 동등 하 게 일치에 대 한 여러 속성이 포함 된 <code> returnType </code> 및 <code> indexes </code>합니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "For the default binder, <code>match</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty array."
+    description: "기본 바인더에 대 한 <code> match </code> 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 빈 배열입니다."
   platform:
   - net462
 references:

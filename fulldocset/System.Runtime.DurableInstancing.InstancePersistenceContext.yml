@@ -39,8 +39,8 @@ items:
   nameWithType: InstancePersistenceContext
   fullName: System.Runtime.DurableInstancing.InstancePersistenceContext
   type: Class
-  summary: "Represents execution state information while a persistence command is being executed."
-  remarks: "An instance of this class is passed to the TryCommand method of persistence provider implementations. Persistence providers use this class to inspect the in-memory view of the instance as well as indicate the results of operations on the external store which may affect the view or other in-memory context."
+  summary: "지 속성 명령을 실행 하는 동안 실행 상태 정보를 나타냅니다."
+  remarks: "이 클래스의 인스턴스는 지 속성 공급자 구현의 TryCommand 메서드로 전달 됩니다. 지 속성 공급자 인스턴스의 메모리 내 뷰를 검사 하는 뷰 또는 기타 메모리 내 컨텍스트에 영향을 줄 수 있는 외부 저장소에 대 한 작업의 결과 나타내는이 클래스를 사용 합니다."
   syntax:
     content: public sealed class InstancePersistenceContext
   inheritance:
@@ -61,14 +61,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully associated a key to the current instance in the instance store. The identifier of the key is specified as a parameter."
-  remarks: "The instance key must be unassociated. The current instance handle must be bound to an instance as well as a lock on that instance."
+  summary: "지 속성 공급자는 인스턴스 저장소에서 현재 인스턴스에 키를 성공적으로 연결 되어 있다는 것을 나타냅니다. 키의 식별자를 매개 변수로 지정 됩니다."
+  remarks: "인스턴스 키는 연결 되어야 합니다. 해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다."
   syntax:
     content: public void AssociatedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier  for the key that has been associated. Must not be Guid.Empty."
+      description: "연결 된 키에 대 한 인스턴스 키 식별자입니다. Guid.empty가 아니어야 합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.AssociatedInstanceKey*
   exceptions: []
   platform:
@@ -85,26 +85,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begin an asynchronous operation to bind an existing lock on an instance to the current instance handle. The version of the existing lock is passed as a parameter."
-  remarks: "When attempting to acquire a lock, the persistence provider may decide that the current instance is already locked in the current store. If the lock token matches the current handle’s lock token, then the persistence provider can attempt to reclaim the lock by inspecting its version and passing it to BeginBindReclaimedLock. The persistence provider must not make changes to the instance until the lock is successfully reclaimed. If no other handle is bound to the lock, then the BeginBindReclaimedLock operation succeeds and the current handle becomes bound to the lock. Otherwise, BeginBindReclaimedLock or EndBindReclaimedLock throws InstanceHandleConflictException. If commands are in progress on other handles, the operation may not complete while waiting for the outcome of those commands to decide whether the lock can be reclaimed.       The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock.       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "기존 잠금을 현재 인스턴스 핸들에 인스턴스에서 바인딩할는 비동기 작업을 시작 합니다. 기존 잠금의 버전은 매개 변수로 전달 됩니다."
+  remarks: "잠금을 획득을 시도할 때 지 속성 공급자는 현재 인스턴스가 현재 저장소에서 이미 잠겨 있다고 결정할 수 있습니다. 잠금 토큰이 현재 핸들의 잠금 토큰과 일치 하는 경우 지 속성 공급자는 해당 버전을 검사 BeginBindReclaimedLock으로 전달 하 여 잠금을 회수할 시도할 수 있습니다. 지 속성 공급자는 잠금이 회수가 될 때까지 인스턴스를 변경 하면 안 합니다. 없는 다른 핸들이 잠금에 바인딩되어 않으면 BeginBindReclaimedLock 작업이 성공 하 고 현재 핸들이 잠금에 바인딩됩니다 됩니다. 그렇지 않으면 BeginBindReclaimedLock 또는 EndBindReclaimedLock이 InstanceHandleConflictException을 throw 합니다. 에서 명령이 진행 중이면 다른 핸들, 잠금을 다시 사용할 수 있는지 여부를 결정 하려면 해당 명령의 결과 기다리는 동안 작업이 완료 되지 않을 합니다.       현재 인스턴스 핸들이 인스턴스와 잠금 소유자에 바인딩되어 있어야 합니다. 인스턴스가 완료 되어야 합니다. 잠금 소유자와 연결 된 잠금 토큰은 잠금의 소유자를 식별 하 사용 됩니다.       잠금이 핸들에 바인딩되면 핸들의 수명 동안 바인딩 유지 됩니다. 잠금 토큰이 나 인스턴스 버전을 변경할 수 있습니다."
   syntax:
     content: public IAsyncResult BeginBindReclaimedLock (long instanceVersion, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "The version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "지 속성 공급자는 잠금 버전을 구현 하지 않는 경우 인스턴스나&0; 보유 잠금의 버전입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout period for the asynchronous operation."
+      description: "비동기 작업에 대 한 제한 시간을 지정 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "작업이 완료 될 때 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "비동기 작업과 연결 된 상태 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "비동기 작업의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*
   exceptions: []
   platform:
@@ -121,26 +121,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begins executing a persistence command asynchronously."
-  remarks: "A persistence provider can use this method to execute sub-commands as part of a command. The sub-command will be executed using BeginTryCommand, similar to commands passed to InstanceStore.BeginExecute. Commands can be nested, but a command must not execute more than one sub-command at a time."
+  summary: "지 속성 명령을 비동기적으로 실행을 시작 합니다."
+  remarks: "지 속성 공급자는이 메서드를 사용 하위 명령을 명령의 일부로 실행할 수 있습니다. BeginTryCommand를 사용 하 여 하위 명령이 실행 되며, InstanceStore.BeginExecute로 전달 된 명령과 유사 합니다. 명령을 중첩 시킬 수 있지만 명령을 한 번에 둘 이상의 하위 명령을 실행 해서는 안 됩니다."
   syntax:
     content: public IAsyncResult BeginExecute (System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "실행할 지 속성 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "작업에 대 한 제한 시간 값입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification of the asynchronous receive that a request operation completes."
+      description: "비동기에 대 한 알림을 수신 하는 대리자 수신 요청 작업을 완료 합니다."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "상태 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "비동기 작업의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BeginExecute*
   exceptions: []
   platform:
@@ -157,14 +157,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds a newly acquired lock on an instance to the current instance handle. The version of the acquired lock is passed as a parameter."
-  remarks: "If a persistence provider implements lock versioning, then each time a lock is acquired on the instance, the version must be incremented by one in the external store. The first time the instance is locked, the version should be 1. Each lock acquisition invalidates the previous lock. The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "현재 인스턴스 핸들에 인스턴스에서 새로 획득 한 잠금에 바인딩합니다. 획득 한 잠금의 버전은 매개 변수로 전달 됩니다."
+  remarks: "지 속성 공급자가 잠금 버전 관리를 구현 하는 경우 다음 인스턴스의 잠금이 획득 될 때마다 버전 해야&1; 씩 증가 외부 저장소에서 합니다. 인스턴스를 잠갔기 처음으로 버전 1 이어야 합니다. 잠금을 획득할 때마다 이전 잠금이 무효화 합니다. 현재 인스턴스 핸들이 인스턴스와 잠금 소유자에 바인딩되어 있어야 합니다. 인스턴스가 완료 되어야 합니다. 잠금 소유자와 연결 된 잠금 토큰은 잠금이 핸들에 바인딩되면 잠금의 소유자를 식별 하는 데, 핸들의 수명 동안 바인딩 상태가 유지 됩니다. 잠금 토큰이 나 인스턴스 버전을 변경할 수 있습니다."
   syntax:
     content: public void BindAcquiredLock (long instanceVersion);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "Version of the lock acquired on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "지 속성 공급자는 잠금 버전을 구현 하지 않는 경우 인스턴스나&0; 획득 한 잠금의 버전입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindAcquiredLock*
   exceptions: []
   platform:
@@ -181,13 +181,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> to an instance handle."
+  summary: "바인딩하는 <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> 인스턴스 핸들에 있습니다."
   syntax:
     content: public void BindEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> object containing information about the event."
+      description: "<xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> 이벤트에 대 한 정보가 들어 있는 개체입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindEvent*
   exceptions: []
   platform:
@@ -204,14 +204,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an instance whose identifier is specified as a parameter to the current instance handle."
-  remarks: "Once an instance is bound to a handle, it remains bound for the lifetime of the handle. No other instance can ever be bound to the handle."
+  summary: "현재 인스턴스 핸들에 대 한 매개 변수로 해당 식별자가 지정 하는 인스턴스를 바인딩합니다."
+  remarks: "인스턴스 핸들에 바인딩되면 핸들의 수명 동안 바인딩 유지 됩니다. 다른 인스턴스에서 수 절대이 핸들에 바인딩될 수 있습니다."
   syntax:
     content: public void BindInstance (Guid instanceId);
     parameters:
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "인스턴스 식별자입니다. Guid.empty가 아니어야 합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstance*
   exceptions: []
   platform:
@@ -228,17 +228,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an instance owner to the current instance handle."
-  remarks: "Once an instance owner is bound to a handle, it remains bound for the lifetime of the handle. No other instance owner can ever be bound to the handle."
+  summary: "인스턴스 소유자를 현재 인스턴스 핸들에 바인딩합니다."
+  remarks: "인스턴스 소유자 핸들에 바인딩되면 핸들의 수명 동안 바인딩 유지 됩니다. 다른 인스턴스 소유자 수 절대이 핸들에 바인딩될 수 있습니다."
   syntax:
     content: public void BindInstanceOwner (Guid instanceOwnerId, Guid lockToken);
     parameters:
     - id: instanceOwnerId
       type: System.Guid
-      description: "The identifier for the instance owner."
+      description: "인스턴스 소유자에 대 한 식별자입니다."
     - id: lockToken
       type: System.Guid
-      description: "The lock token of the instance owner. A persistence provider may choose to use the same value for the instance owner identifier and the owner’s lock token."
+      description: "인스턴스 소유자의 잠금 토큰입니다. 지 속성 공급자는 인스턴스 소유자 식별자와 소유자의 잠금 토큰에 대 한 동일한 값을 사용 하도록 선택할 수 있습니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstanceOwner*
   exceptions: []
   platform:
@@ -255,17 +255,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an existing lock on an instance to the current instance handle. The version of the existing lock is passed as a parameter."
-  remarks: "When attempting to acquire a lock, the persistence provider may decide that the current instance is already locked in the current store. If the lock token matches the current handle’s lock token, then the persistence provider can attempt to reclaim the lock by inspecting its version and passing it to BindReclaimedLock. The persistence provider must not make changes to the instance until the lock is successfully reclaimed. If no other handle is bound to the lock, then BindReclaimedLock succeeds and the current handle becomes bound to the lock. Otherwise, BindReclaimedLock throws InstanceHandleConflictException. If commands are in progress on other handles, BindReclaimedLock may block waiting for the outcome of those commands before deciding whether the lock can be reclaimed.       The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock.       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "기존 잠금을 현재 인스턴스 핸들에 인스턴스에 바인딩합니다. 기존 잠금의 버전은 매개 변수로 전달 됩니다."
+  remarks: "잠금을 획득을 시도할 때 지 속성 공급자는 현재 인스턴스가 현재 저장소에서 이미 잠겨 있다고 결정할 수 있습니다. 잠금 토큰이 현재 핸들의 잠금 토큰과 일치 하는 경우 지 속성 공급자는 해당 버전을 검사 BindReclaimedLock으로 전달 하 여 잠금을 회수할 시도할 수 있습니다. 지 속성 공급자는 잠금이 회수가 될 때까지 인스턴스를 변경 하면 안 합니다. 없는 다른 핸들이 잠금에 바인딩되어, 않으면 BindReclaimedLock이 성공 하 고 현재 핸들이 잠금에 바인딩됩니다. 그렇지 않으면 BindReclaimedLock이 InstanceHandleConflictException을 throw 합니다. 에서 명령이 진행 중이면 다른 핸들, BindReclaimedLock 잠금을 다시 사용할 수 있는지 여부를 결정 하기 전에 해당 명령의 결과 대 한 대기를 차단할 수 있습니다.       현재 인스턴스 핸들이 인스턴스와 잠금 소유자에 바인딩되어 있어야 합니다. 인스턴스가 완료 되어야 합니다. 잠금 소유자와 연결 된 잠금 토큰은 잠금의 소유자를 식별 하 사용 됩니다.       잠금이 핸들에 바인딩되면 핸들의 수명 동안 바인딩 유지 됩니다. 잠금 토큰이 나 인스턴스 버전을 변경할 수 있습니다."
   syntax:
     content: public void BindReclaimedLock (long instanceVersion, TimeSpan timeout);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "Version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "지 속성 공급자는 잠금 버전을 구현 하지 않는 경우 인스턴스나&0; 보유 잠금의 버전입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "작업에 대 한 제한 시간 값입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindReclaimedLock*
   exceptions: []
   platform:
@@ -282,8 +282,8 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully marked the current instance as complete in the instance store."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance must be initialized and not be already completed. (An instance is initialized if a set of instance data has ever been persisted to it.) All of the keys associated to the instance must be completed."
+  summary: "지 속성 공급자가 인스턴스 저장소에서 현재 인스턴스가 완료로 표시 했음을 나타냅니다."
+  remarks: "해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다. 인스턴스를 초기화 하 고 이미을 완료할 수 있습니다. (인스턴스는 초기화 인스턴스 데이터 집합을 지속 된 적이 있는 경우.) 인스턴스에 연결 된 키를 모두 완료 되어야 합니다."
   syntax:
     content: public void CompletedInstance ();
     parameters: []
@@ -303,14 +303,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully marked a key as complete in the external store. The identifier of the key is specified as a parameter."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated to the current instance and not be already completed."
+  summary: "지 속성 공급자가 외부 저장소에서 키를 완료로 표시 했음을 나타냅니다. 키의 식별자를 매개 변수로 지정 됩니다."
+  remarks: "해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다. 인스턴스 키는 현재 인스턴스에 연결 되어 있어야 하며 이미 완료 하지 합니다."
   syntax:
     content: public void CompletedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key that has been completed. Must not be Guid.Empty."
+      description: "완료 된 키에 대 한 인스턴스 키 식별자입니다. Guid.empty가 아니어야 합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.CompletedInstanceKey*
   exceptions: []
   platform:
@@ -327,17 +327,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance of an exception which can be thrown from TryCommand to trigger BindReclaimedLock behavior."
-  remarks: "Sample code:      ```      protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       throw context.CreateBindReclaimedLockException(5);   }   is equivalent to   protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       context.BindReclaimedLock(5, timeout);       throw new OperationCanceledException();   }      ```"
+  summary: "BindReclaimedLock 동작을 트리거하기 위해 TryCommand에서 throw 될 수 있는 예외 인스턴스를 만듭니다."
+  remarks: "샘플 코드:```      protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       throw context.CreateBindReclaimedLockException(5);   }   is equivalent to   protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       context.BindReclaimedLock(5, timeout);       throw new OperationCanceledException();   }      ```"
   syntax:
     content: public Exception CreateBindReclaimedLockException (long instanceVersion);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "The version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "지 속성 공급자는 잠금 버전을 구현 하지 않는 경우 인스턴스나&0; 보유 잠금의 버전입니다."
     return:
       type: System.Exception
-      description: "An exception."
+      description: "예외입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.CreateBindReclaimedLockException*
   exceptions: []
   platform:
@@ -354,13 +354,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation started by the <xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*> method."
+  summary: "에 의해 시작 비동기 작업을 종료 하는 <xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*>메서드.</xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*>"
   syntax:
     content: public void EndBindReclaimedLock (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous operation."
+      description: "비동기 작업의 결과입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.EndBindReclaimedLock*
   exceptions: []
   platform:
@@ -377,13 +377,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation."
+  summary: "비동기 작업을 종료 합니다."
   syntax:
     content: public void EndExecute (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "비동기 작업의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.EndExecute*
   exceptions: []
   platform:
@@ -400,17 +400,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Executes a persistence command."
-  remarks: "A persistence provider can use this method to execute sub-commands as part of a command. The sub-command will be executed using TryCommand, similar to commands passed to InstanceStore.Execute. Commands can be nested, but a command must not execute more than one sub-command at a time."
+  summary: "지 속성 명령을 실행합니다."
+  remarks: "지 속성 공급자는이 메서드를 사용 하위 명령을 명령의 일부로 실행할 수 있습니다. InstanceStore.Execute로 전달 된 명령과 유사를 TryCommand를 사용 하 여 하위 명령을 실행 됩니다. 명령을 중첩 시킬 수 있지만 명령을 한 번에 둘 이상의 하위 명령을 실행 해서는 안 됩니다."
   syntax:
     content: public void Execute (System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "실행할 지 속성 명령입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "작업에 대 한 제한 시간 값입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.Execute*
   exceptions: []
   platform:
@@ -427,12 +427,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the current instance handle."
+  summary: "현재 인스턴스 핸들을 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle InstanceHandle { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The current instance handle."
+      description: "현재 인스턴스 핸들입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceHandle*
   exceptions: []
   platform:
@@ -449,13 +449,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the version of the lock held on the current instance by the current instance handle."
-  remarks: "The persistence provider should check this value against the lock version of the lock held on an instance in the instance store when performing an operation that requires a lock (such as persisting instance data) using a handle bound to the lock. If the lock version doesn’t match, the command should fail with InstanceLockLostException."
+  summary: "현재 인스턴스 핸들이 현재 인스턴스에서 보유 한 잠금의 버전을 가져옵니다."
+  remarks: "지 속성 공급자는 잠금에 바인딩됩니다 (예: 인스턴스 데이터 지속) 핸들을 사용 하 여 잠금이 필요로 하는 작업을 수행 하는 경우 인스턴스 저장소에서 인스턴스가 보유 하는 잠금의 잠금 버전과이 값을 확인 해야 합니다. 잠금 버전이 일치 하지 않으면 명령이 실패 하며 instancelocklostexception 합니다."
   syntax:
     content: public long InstanceVersion { get; }
     return:
       type: System.Int64
-      description: "The version of the instance lock bound to the current instance handle, or -1 if the handle isn’t bound to a lock."
+      description: "인스턴스 잠금 버전 핸들이 잠금에 바인딩되어 있지 않은 경우 현재 인스턴스 핸들이 나-1에 바인딩됩니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceVersion*
   exceptions: []
   platform:
@@ -472,12 +472,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the instance view object that represents the in-memory state of the current instance. This view reflects updates as they are made by the command in progress."
+  summary: "현재 인스턴스의 메모리 내 상태를 나타내는 인스턴스 뷰 개체를 가져옵니다. 이 뷰는 진행 중인 명령을 통해 적용 된 업데이트를 반영 합니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView InstanceView { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "The instance view object."
+      description: "인스턴스 뷰 개체입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceView*
   exceptions: []
   platform:
@@ -494,26 +494,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully retrieved the current instance from the instance store."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the loaded instance is marked as complete, the loaded data is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "지 속성 공급자를 인스턴스 저장소에서 현재 인스턴스를 검색에 성공적으로 나타냅니다."
+  remarks: "현재 인스턴스 핸들이 인스턴스에 바인딩해야 합니다. 인스턴스 핸들이 잠금에 바인딩되어 또는 로드 된 인스턴스가 완료로 표시 되어, 로드 된 데이터 일관성이;으로 간주 됩니다. 그렇지 않으면 불확실 한 상태에 있는 것으로 간주 됩니다."
   syntax:
     content: public void LoadedInstance (System.Runtime.DurableInstancing.InstanceState state, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> instanceData, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> instanceMetadata, System.Collections.Generic.IDictionary<Guid,System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue>> associatedInstanceKeyMetadata, System.Collections.Generic.IDictionary<Guid,System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue>> completedInstanceKeyMetadata);
     parameters:
     - id: state
       type: System.Runtime.DurableInstancing.InstanceState
-      description: "The instance state information."
+      description: "인스턴스 상태 정보입니다."
     - id: instanceData
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The instance data as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "사전으로 인스턴스 데이터 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: instanceMetadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "Instance metadata as a collection of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "인스턴스 메타 데이터의 컬렉션으로 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: associatedInstanceKeyMetadata
       type: System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}}
-      description: "Associated instance key metadata as a dictionary of instance identifier and instance key metadata, which is a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "인스턴스 식별자 및 인스턴스 키 메타 데이터의 사전으로 연결 된 인스턴스 키 메타 데이터의 사전 인 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: completedInstanceKeyMetadata
       type: System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}}
-      description: "Completed instance metadata as a dictionary of instance identifier and instance key metadata, which is a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "인스턴스 식별자 및 인스턴스 키 메타 데이터의 사전으로 인스턴스 메타 데이터를 완료 하는의 사전 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.LoadedInstance*
   exceptions: []
   platform:
@@ -530,13 +530,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the lock token of the instance owner bound to the current instance handle."
-  remarks: "The persistence provider should check this value against the lock token of the lock held on an instance in the instance store when performing an operation that requires a lock (such as persisting instance data) using a handle bound to the lock. If the lock token doesn’t match, the command should fail with InstanceLockLostException.       The persistence provider should use this value as the lock token when acquiring a new lock on an instance (such as persisting instance data using a handle not already bound to a lock). If the instance is already locked in the instance store and the lock token matches this lock token, the persistence provider can attempt to reclaim the instance using BindReclaimedLock."
+  summary: "잠금을 현재 인스턴스 핸들에 바인딩된 인스턴스 소유자의 토큰을 가져옵니다."
+  remarks: "지 속성 공급자는 잠금에 바인딩됩니다 (예: 인스턴스 데이터 지속) 핸들을 사용 하 여 잠금이 필요로 하는 작업을 수행 하는 경우 인스턴스 저장소에서 인스턴스가 보유 하는 잠금의 잠금 토큰과이 값을 확인 해야 합니다. 잠금 토큰이 일치 하지 않으면 명령이 실패 하며 instancelocklostexception 합니다.       지 속성 공급자 (예: 아직 바인딩되어 있지 않은 잠금에 대 한 핸들을 사용 하 여 인스턴스 데이터 지속) 인스턴스에서 새 잠금을 획득할 때 잠금 토큰으로이 값을 사용 해야 합니다. 인스턴스가 인스턴스 저장소에서 이미 잠겨 잠금 토큰이이 잠금 토큰과 일치 하는 경우 지 속성 공급자 BindReclaimedLock을 사용 하 여 인스턴스를 다시 시도할 수 있습니다."
   syntax:
     content: public Guid LockToken { get; }
     return:
       type: System.Guid
-      description: "The lock token bound to the current instance handle, or Guid.Empty if the handle isn’t bound to an instance owner."
+      description: "핸들이 인스턴스 소유자에 바인딩되어 있지 않은 경우 Guid.Empty는 현재 인스턴스 핸들에 바인딩되어 있는 잠금 토큰입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.LockToken*
   exceptions: []
   platform:
@@ -553,14 +553,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully persisted a set of instance data to the instance store. This has the effect of initializing the instance if it wasn’t already."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. Each set of instance data completely replaces the previous set. The set of instance data may be null – this is the same as empty. Persisting a null set of instance data deletes the existing set of instance data. (Persisting a set of instance data has no effect on instance metadata.)"
+  summary: "지 속성 공급자가 성공적으로 인스턴스 저장소에 인스턴스 데이터 집합이 한 레코드가 있는지를 나타냅니다. 이미 되지 않은 경우 인스턴스를 초기화 것과 효과가 있습니다."
+  remarks: "해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다. 각 인스턴스 데이터 집합이 이전 집합을 완전히 바꿉니다. 인스턴스 데이터 집합이 null 이며 비어 있는 것과 같습니다. 기존 인스턴스 데이터 집합이 삭제 null 집합을 인스턴스 데이터 지속 합니다. 있습니다 (집합을 인스턴스 데이터 지속의 인스턴스 메타 데이터에 영향을 주지 않습니다.)"
   syntax:
     content: public void PersistedInstance (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> data);
     parameters:
     - id: data
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "Instance data as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "인스턴스 데이터의 사전으로 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.PersistedInstance*
   exceptions: []
   platform:
@@ -577,13 +577,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Adds the <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> passed as a parameter to a list of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects in an <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;></xref>."
+  summary: "추가 <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> 의 목록에 매개 변수로 전달 <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> 개체에 <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;> </xref>합니다."
   syntax:
     content: public void QueriedInstanceStore (System.Runtime.DurableInstancing.InstanceStoreQueryResult queryResult);
     parameters:
     - id: queryResult
       type: System.Runtime.DurableInstancing.InstanceStoreQueryResult
-      description: "The results of a query against an instance store."
+      description: "인스턴스 저장소에 대 한 쿼리의 결과입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.QueriedInstanceStore*
   exceptions: []
   platform:
@@ -600,20 +600,20 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully read some instance key metadata for a key associated to the current instance from the instance store."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the current instance is marked as complete, the metadata is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "지 속성 공급자가 인스턴스 저장소에서 현재 인스턴스에 연결 된 키에 대 한 일부 인스턴스 키 메타 데이터 읽었음을 나타냅니다."
+  remarks: "현재 인스턴스 핸들이 인스턴스에 바인딩해야 합니다. 메타 데이터; 일관 된 것으로 간주 됩니다 인스턴스 핸들이 잠금에 바인딩되어 않거나 현재 인스턴스가 완료로 표시 되어, 그렇지 않으면 불확실 한 상태에 있는 것으로 간주 됩니다."
   syntax:
     content: public void ReadInstanceKeyMetadata (Guid key, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key whose metadata was read. Must not be Guid.Empty."
+      description: "해당 메타 데이터를 읽은 키에 대 한 인스턴스 키 식별자입니다. Guid.empty가 아니어야 합니다."
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "메타 데이터의 사전으로 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the metadata represents all of the metadata associated to the instance key, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>그렇지 않으면 인스턴스 키에 연결 된 메타 데이터의 모든 메타 데이터 나타내면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceKeyMetadata*
   exceptions: []
   platform:
@@ -630,16 +630,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully read some instance metadata for the current instance from the instance store."
+  summary: "지 속성 공급자가 인스턴스 저장소에서 현재 인스턴스에 대 한 인스턴스 메타 데이터 일부를 읽을 성공적으로 나타냅니다."
   syntax:
     content: public void ReadInstanceMetadata (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "메타 데이터의 사전으로 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the metadata represents all of the metadata associated to the instance, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>메타 데이터 모든 인스턴스에, 그렇지 않으면 연결 된 메타 데이터를 나타내는 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceMetadata*
   exceptions: []
   platform:
@@ -656,17 +656,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Sets the instance owner metadata using the data passed in the parameter."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the current instance is marked as complete, the metadata is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "매개 변수에 전달 되는 데이터를 사용 하 여 인스턴스 소유자 메타 데이터를 설정 합니다."
+  remarks: "현재 인스턴스 핸들이 인스턴스에 바인딩해야 합니다. 메타 데이터; 일관 된 것으로 간주 됩니다 인스턴스 핸들이 잠금에 바인딩되어 않거나 현재 인스턴스가 완료로 표시 되어, 그렇지 않으면 불확실 한 상태에 있는 것으로 간주 됩니다."
   syntax:
     content: public void ReadInstanceOwnerMetadata (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "사전 <xref:System.Xml.Linq.XName>및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "The value to specify whether the consistency to be set to <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;></xref> or <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;></xref>."
+      description: "지정할 값 여부를 설정할 수 일관성 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;> </xref> 또는 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceOwnerMetadata*
   exceptions: []
   platform:
@@ -683,14 +683,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Sets the cancellation handler to be called when the cancel of an operation is requested."
-  remarks: "If the cancellation handler is called, the persistence provider should cancel all pending operations and throw OperationCanceledException from TryCommand to indicate that the persistence command was interrupted before it could be completed."
+  summary: "작업의 취소가 요청 될 때 호출 될 취소 처리기를 설정 합니다."
+  remarks: "취소 처리기가 호출 되는 경우 지 속성 공급자는 보류 중인 모든 작업을 취소 하 고 완료 되기 전에 지 속성 명령이 중단 되었습니다 나타내기 위해 TryCommand에서 OperationCanceledException을 throw 해야 합니다."
   syntax:
     content: public void SetCancellationHandler (Action<System.Runtime.DurableInstancing.InstancePersistenceContext> cancellationHandler);
     parameters:
     - id: cancellationHandler
       type: System.Action{System.Runtime.DurableInstancing.InstancePersistenceContext}
-      description: "The reference to a function to be called."
+      description: "함수를 호출할 수에 대 한 참조입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.SetCancellationHandler*
   exceptions: []
   platform:
@@ -707,14 +707,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully disassociated a key from the current instance in the instance store. The identifier of the key is specified as a parameter."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated to the current instance and must be marked complete. The current instance must not be marked complete."
+  summary: "지 속성 공급자가 인스턴스 저장소에 현재 인스턴스에서 키와 분리 성공적으로 나타냅니다. 키의 식별자를 매개 변수로 지정 됩니다."
+  remarks: "해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다. 인스턴스 키는 현재 인스턴스에 연결 되어 있어야 하며 완료로 표시 되어야 합니다. 현재 인스턴스가 표시 되 면 안 완료 합니다."
   syntax:
     content: public void UnassociatedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key that has been unassociated. Must not be Guid.Empty."
+      description: "연결 된 키에 대 한 인스턴스 키 식별자입니다. Guid.empty가 아니어야 합니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.UnassociatedInstanceKey*
   exceptions: []
   platform:
@@ -731,13 +731,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the user context information attached to the current instance handle."
-  remarks: "The object is the one that is returned from InstanceStore.OnNewInstanceHandle for the current instance handle."
+  summary: "현재 인스턴스 핸들에 연결 된 사용자 컨텍스트 정보를 가져옵니다."
+  remarks: "개체는 현재 인스턴스 핸들의 InstanceStore.OnNewInstanceHandle에서 반환 된 것입니다."
   syntax:
     content: public object UserContext { get; }
     return:
       type: System.Object
-      description: "The user context information."
+      description: "사용자 컨텍스트 정보입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.UserContext*
   exceptions: []
   platform:
@@ -754,20 +754,20 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for an instance key that is associated with the current instance to the instance store"
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated with the current instance and must not be completed."
+  summary: "지 속성 공급자가 인스턴스 저장소에 현재 인스턴스와 연결 된 인스턴스 키에 대 한 메타 데이터 값을 기록 했음을 나타냅니다."
+  remarks: "해당 인스턴스에서 현재 인스턴스 핸들이 인스턴스 잠금에 바인딩되어야 합니다. 인스턴스 키는 현재 인스턴스에 연결 되어야 합니다 하며 완료 해야 합니다."
   syntax:
     content: public void WroteInstanceKeyMetadataValue (Guid key, System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key. Must not be Guid.Empty."
+      description: "키에 대 한 인스턴스 키 식별자입니다. Guid.empty가 아니어야 합니다."
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "메타 데이터 속성의 이름입니다."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "메타 데이터 속성의 값입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceKeyMetadataValue*
   exceptions: []
   platform:
@@ -784,17 +784,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for the current instance to the external instance store."
-  remarks: "The current instance handle must be bound to an instance as well as has a lock on that instance. The instance must not be completed."
+  summary: "지 속성 공급자가 외부 인스턴스 저장소에 현재 인스턴스에 대 한 메타 데이터 값을 기록 했음을 나타냅니다."
+  remarks: "현재 인스턴스 핸들이 인스턴스에 바인딩되어 있어야 뿐만 아니라 해당 인스턴스에 대 한 잠금을 보유 합니다. 인스턴스가 완료 되어야 합니다."
   syntax:
     content: public void WroteInstanceMetadataValue (System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "메타 데이터 속성의 이름입니다."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "메타 데이터 속성의 값입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceMetadataValue*
   exceptions: []
   platform:
@@ -811,17 +811,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for the current instance owner to the instance store."
-  remarks: "The current instance handle must be bound to an instance owner."
+  summary: "지 속성 공급자가 성공적으로 작성 된 메타 데이터 값을 현재 인스턴스 소유자에 대 한 인스턴스 저장소에 나타냅니다."
+  remarks: "현재 인스턴스 핸들이 인스턴스 소유자에 바인딩해야 합니다."
   syntax:
     content: public void WroteInstanceOwnerMetadataValue (System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "메타 데이터 속성의 이름입니다."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "메타 데이터 속성의 값입니다."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceOwnerMetadataValue*
   exceptions: []
   platform:
