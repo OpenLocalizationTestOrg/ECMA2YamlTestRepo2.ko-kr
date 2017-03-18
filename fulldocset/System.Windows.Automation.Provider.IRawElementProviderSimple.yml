@@ -13,8 +13,8 @@ items:
   nameWithType: IRawElementProviderSimple
   fullName: System.Windows.Automation.Provider.IRawElementProviderSimple
   type: Interface
-  summary: "Provides methods and properties that expose basic information about a UI element."
-  remarks: "This interface can be implemented on UI Automation providers for simple elements such as buttons. It can also be implemented on providers that contribute additional properties or control patterns, or override existing properties or control patterns, on an element that already has a default provider.       Providers for complex elements must implement <xref:System.Windows.Automation.Provider.IRawElementProviderFragment> or <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>."
+  summary: "UI 요소에 대 한 기본 정보를 노출 하는 메서드와 속성을 제공 합니다."
+  remarks: "단추와 같은 단순 요소에 대 한 UI 자동화 공급자에서이 인터페이스를 구현할 수 있습니다. 추가 속성 또는 컨트롤 패턴을 하거나 기존 속성 또는 이미 기본 공급자가 있는 요소에서 컨트롤 패턴, 재정의 하는 공급자에는 구현할 수도 있습니다.       복잡 한 요소에 대 한 공급자 <xref:System.Windows.Automation.Provider.IRawElementProviderFragment>또는 <xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot>.</xref:System.Windows.Automation.Provider.IRawElementProviderFragmentRoot> </xref:System.Windows.Automation.Provider.IRawElementProviderFragment> 구현 해야 합니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -39,7 +39,7 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves an object that provides support for a control pattern on a [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element."
+  summary: "에 대 한 컨트롤 패턴에 대 한 지원을 제공 하는 개체를 검색 한 [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] 요소입니다."
   remarks: ''
   example:
   - "The following example shows an implementation of GetPatternProvider for a provider that supports only <xref:System.Windows.Automation.InvokePattern>.  \n  \n [!code-cs[UIAProvider_snip#101](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#101)]\n [!code-vb[UIAProvider_snip#101](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#101)]"
@@ -48,10 +48,10 @@ items:
     parameters:
     - id: patternId
       type: System.Int32
-      description: "Identifier of the pattern."
+      description: "패턴의 식별자입니다."
     return:
       type: System.Object
-      description: "Object that implements the pattern interface, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the pattern is not supported."
+      description: "패턴 인터페이스를 구현 하는 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 패턴이 지원 되지 않는 경우."
   overload: System.Windows.Automation.Provider.IRawElementProviderSimple.GetPatternProvider*
   exceptions: []
   platform:
@@ -68,8 +68,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the value of a property supported by the UI Automation provider."
-  remarks: "A provider should return <xref:System.Windows.Automation.AutomationElementIdentifiers.NotSupported> only if it is explicitly hiding the property value and the request is not to be passed through to other providers."
+  summary: "UI 자동화 공급자가 지 원하는 속성의 값을 검색 합니다."
+  remarks: "공급자를 반환 해야 <xref:System.Windows.Automation.AutomationElementIdentifiers.NotSupported>속성 값이 명시적으로 숨겨져 요청 하지 않는 다른 공급자에 게 전달 될 경우에.</xref:System.Windows.Automation.AutomationElementIdentifiers.NotSupported>"
   example:
   - "The following code example shows an implementation of GetPropertyValue for a custom button control.  \n  \n [!code-cs[UIAProvider_snip#102](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#102)]\n [!code-vb[UIAProvider_snip#102](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#102)]"
   syntax:
@@ -77,10 +77,10 @@ items:
     parameters:
     - id: propertyId
       type: System.Int32
-      description: "The property identifier."
+      description: "속성 식별자입니다."
     return:
       type: System.Object
-      description: "The property value, or a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the property is not supported by this provider, or <xref href=&quot;System.Windows.Automation.AutomationElementIdentifiers.NotSupported&quot;></xref> if it is not supported at all."
+      description: "속성 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 속성이이 공급자에서 지원 되지 않는 경우 또는 <xref href=&quot;System.Windows.Automation.AutomationElementIdentifiers.NotSupported&quot;> </xref> 전혀 지원 되지 않는 경우."
   overload: System.Windows.Automation.Provider.IRawElementProviderSimple.GetPropertyValue*
   exceptions: []
   platform:
@@ -97,15 +97,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets a base provider for this element."
-  remarks: "This property is the UI Automation provider for the window of a custom control. [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] uses this provider in combination with your provider implementation for a control hosted in a window. For example, the run-time identifier of the element is obtained from the host provider.       A host provider must be returned in any of the following cases:      -   This element is the root of a fragment.      -   The element is a simple element such as a pushbutton.      -   The provider is a repositioning placeholder.       In other cases, the property should return `null`."
+  summary: "이 요소에 대 한 기본 공급자를 가져옵니다."
+  remarks: "이 속성은 사용자 지정 컨트롤의 창에 대 한 UI 자동화 공급자입니다. [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]창에서에서 호스트 컨트롤에 대 한 공급자 구현과 함께에서이 공급자를 사용 합니다. 예를 들어 호스트 공급자에서 요소의 런타임 식별자를 가져옵니다.       호스트 공급자는 다음과 같은 경우에 반환 되어야 합니다.-이 요소는 조각 루트입니다.      -누름 단추 등 단순 요소가입니다.      -공급자가 재배치 자리 표시자입니다.       다른 경우에는 속성을 반환 해야 `null`합니다."
   example:
   - "The following example code shows an implementation of HostRawElementProvider for a fragment root that is hosted in a Windows form.  \n  \n [!code-cs[UIAProvider_snip#103](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#103)]\n [!code-vb[UIAProvider_snip#103](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#103)]"
   syntax:
     content: public System.Windows.Automation.Provider.IRawElementProviderSimple HostRawElementProvider { get; }
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple
-      description: "The base provider, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "기본 공급자 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Automation.Provider.IRawElementProviderSimple.HostRawElementProvider*
   exceptions: []
   platform:
@@ -122,8 +122,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets a value that specifies characteristics of the UI Automation provider; for example, whether it is a client-side or server-side provider."
-  remarks: '[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] treats different types of providers differently. For example, events from server-side providers are broadcast to all listening UI Automation client processes, but events from client-side providers remain in that client process.'
+  summary: "UI 자동화 공급자;의 특성을 지정 하는 값을 가져옵니다. 예를 들어 인지 클라이언트 또는 서버 쪽 공급자입니다."
+  remarks: '[!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)]다양 한 유형의 공급자에서는 다르게 처리 합니다. 예를 들어 서버 쪽 공급자의 이벤트 모두 수신 대기 하는 UI 자동화 클라이언트 프로세스에 브로드캐스트되지만 클라이언트 쪽 공급자의 이벤트는 해당 클라이언트 프로세스에 남아 있습니다.'
   example:
   - "The following example code shows an implementation of ProviderOptions for a server-side UI Automation provider.  \n  \n [!code-cs[UIAProvider_snip#104](~/add/codesnippet/csharp/UIAProvider/FragmentRoot.cs#104)]\n [!code-vb[UIAProvider_snip#104](~/add/codesnippet/visualbasic/UIAProviderVB/FragmentRoot.vb#104)]"
   syntax:

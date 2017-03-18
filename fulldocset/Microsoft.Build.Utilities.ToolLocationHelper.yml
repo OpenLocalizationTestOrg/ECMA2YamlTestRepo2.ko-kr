@@ -60,7 +60,7 @@ items:
   nameWithType: ToolLocationHelper
   fullName: Microsoft.Build.Utilities.ToolLocationHelper
   type: Class
-  summary: "Provides utility methods for locating [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] and [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK files and directories."
+  summary: "찾기 위한 유틸리티 메서드를 제공 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 및 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK 파일 및 디렉터리입니다."
   remarks: ''
   example:
   - "The following example creates a <xref:Microsoft.Build.Utilities.ToolTask> that runs [Ilasm.exe (IL Assembler)](~/add/includes/ajax-current-ext-md.md). The <xref:Microsoft.Build.Utilities.CommandLineBuilder>, ToolLocationHelper, and <xref:Microsoft.Build.Utilities.TaskLoggingHelper> classes are used to generate the information needed to run the task.  \n  \n [!code-cs[msbuild_ToolTask#1](~/add/codesnippet/csharp/ILAsm/ILAsm.cs#1)]\n [!code-vb[msbuild_ToolTask#1](~/add/codesnippet/visualbasic/ILAsmVB/ILAsm.vb#1)]"
@@ -84,7 +84,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Clears the appDomain wide cache of platform and extension SDKs."
+  summary: "플랫폼 및 확장 Sdk의 appDomain 넓은 캐시를 지웁니다."
   syntax:
     content: public static void ClearSDKStaticCache ();
     parameters: []
@@ -104,32 +104,32 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a sorted list of <xref href=&quot;Microsoft.Build.Utilities.AssemblyFoldersExInfo&quot;></xref> objects which contain information about the directories in which the third party assemblies are registered. This information is used at build and design time."
-  remarks: "This method enumerates the `AssemblyFoldersEx` registry location and returns the list of `AssemblyFoldersExInfo`in the same order that they are searched for reference assemblies at design and build time.       On a 64-bit operating system, if targeting 64-bit, add in the 64-bit hive then the 32-bit hive; if targeting 32-bit, add in the 32-bit hive then the 64-bit hive. On 32-bit machine only add in the 32-bit hive."
+  summary: "정렬된 된 목록을 가져옵니다 <xref href=&quot;Microsoft.Build.Utilities.AssemblyFoldersExInfo&quot;> </xref> 타사 어셈블리 등록 된 디렉터리에 대 한 정보를 포함 하는 개체입니다. 이 정보는 빌드 및 디자인 타임에 사용 됩니다."
+  remarks: "이 메서드는 열거는 `AssemblyFoldersEx` 레지스트리 위치 목록을 반환 하 고 `AssemblyFoldersExInfo`디자인에서 참조 어셈블리를 검색 하 고 빌드 시간 순서입니다.       64 비트 운영 체제에서 64 비트를 대상으로 하는 경우, 추가 64 비트 하이브에 다음 32 비트 하이브; 32 비트를 대상으로 하는 경우 추가 32 비트 하이브에서 다음 64 비트 하이브 합니다. 32 비트 시스템 에서만 32 비트 하이브에 추가 합니다."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.AssemblyFoldersExInfo> GetAssemblyFoldersExInfo (string registryRoot, string targetFrameworkVersion, string registryKeySuffix, string osVersion, string platform, System.Reflection.ProcessorArchitecture targetProcessorArchitecture);
     parameters:
     - id: registryRoot
       type: System.String
-      description: "The root registry location for the targeted framework. For .NET this is SOFTWARE\\MICROSOFT\\\\.NETFramework."
+      description: "대상된 프레임 워크에 대 한 루트 레지스트리 위치입니다. 이것이 SOFTWARE\\MICROSOFT for.net\\\\합니다. NETFramework 합니다."
     - id: targetFrameworkVersion
       type: System.String
-      description: "The targeted framework version (2.0, 3.0, 3.5, 4.0, ….)."
+      description: "대상된 프레임 워크 버전 (2.0, 3.0, 3.5, 4.0,...)입니다."
     - id: registryKeySuffix
       type: System.String
-      description: "The name of the folder, (AssemblyFoldersEx) could also be PocketPC\\AssemblyFoldersEx, or others."
+      description: "PocketPC\\AssemblyFoldersEx, 사용자 또는 다른 사용자 (AssemblyFoldersEx) 폴더의 이름을 수도 있습니다."
     - id: osVersion
       type: System.String
-      description: "The targeted minimum and maximum OS versions in the registry. These values are used to return only directories for OS versions between the declared minimum and maximum. If this value is blank or null, no filtering is done."
+      description: "대상된 최소 및 최대 OS 버전 레지스트리에입니다. 이러한 값은 최소값과 최대값 사이 선언 된 OS 버전에 대 한 디렉터리에만 반환 하는 데 사용 됩니다. 이 값이 비어 있거나 null 이면 필터링을 하지 않고 수행 됩니다."
     - id: platform
       type: System.String
-      description: "The targeted platform GUIDs. Used to return only directories which have a matching platform GUID. If this value is blank or null no filtering is done."
+      description: "대상된 플랫폼 Guid입니다. 일치 하는 플랫폼 GUID를 포함 하는 디렉터리를 반환 하는 데 사용 합니다. 이 값이 비어 있거나 null 필터링을 하지 않고 수행 됩니다."
     - id: targetProcessorArchitecture
       type: System.Reflection.ProcessorArchitecture
-      description: "The targeted processor architecture. This determines which registry hives are searched and in which order."
+      description: "대상된 프로세서 아키텍처입니다. 검색 되는 레지스트리 하이브를 결정 및 순서입니다."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.AssemblyFoldersExInfo}
-      description: "Returns list of <xref uid=&quot;langword_csharp_AssemblyFoldersExInfo&quot; name=&quot;AssemblyFoldersExInfo&quot; href=&quot;&quot;></xref>."
+      description: "반환 목록 <xref uid=&quot;langword_csharp_AssemblyFoldersExInfo&quot; name=&quot;AssemblyFoldersExInfo&quot; href=&quot;&quot;> </xref>합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetAssemblyFoldersExInfo*
   exceptions: []
   platform:
@@ -146,20 +146,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Creates a display name given the target framework details."
-  remarks: "This is the equivalent of the target framework moniker, but for display.       If one cannot be found from the redist list file, a synthesized one is returned, so there is always a display name."
+  summary: "표시 이름이 지정 된 대상 프레임 워크 세부 정보를 만듭니다."
+  remarks: "대상 프레임 워크 모니커의 하지만 표시에 대 한에 해당 하는 이것이입니다.       반환 되는 합성된 재배포 목록 파일에서 하나를 찾을 수 없습니다 하므로 있는지 항상 표시 이름입니다."
   syntax:
     content: public static string GetDisplayNameForTargetFrameworkDirectory (string targetFrameworkDirectory, System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: targetFrameworkDirectory
       type: System.String
-      description: "The target framework directory."
+      description: "대상 프레임 워크 디렉터리입니다."
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "The framework name."
+      description: "프레임 워크 이름입니다."
     return:
       type: System.String
-      description: "Returns a display name given the target framework details."
+      description: "표시 이름이 지정 된 대상 프레임 워크 세부 정보를 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDisplayNameForTargetFrameworkDirectory*
   exceptions: []
   platform:
@@ -176,16 +176,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the full name of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root registry key."
+  summary: "전체 이름을 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 루트 레지스트리 키입니다."
   syntax:
     content: public static string GetDotNetFrameworkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "A string containing the full name of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root registry key."
+      description: "전체 이름을 포함 하는 문자열은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 루트 레지스트리 키입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*
   exceptions: []
   platform:
@@ -202,16 +202,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the name of the value under the <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*> that contains the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK installation path."
+  summary: "아래에 있는 값의 이름을 가져옵니다는 <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>를 포함 하는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK 설치 경로</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>"
   syntax:
     content: public static string GetDotNetFrameworkSdkInstallKeyValue (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "Returns a string containing the name of the registry key value under the <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*> that contains the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK installation path."
+      description: "아래에 레지스트리 키 값의 이름을 포함 하는 문자열을 반환 된 <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>를 포함 하는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK 설치 경로</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkInstallKeyValue*
   exceptions: []
   platform:
@@ -228,19 +228,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Name of the value of GetDotNetFrameworkRootRegistryKey that contains the SDK install root path"
+  summary: "루트 경로 설치 하는 SDK를 포함 하는 GetDotNetFrameworkRootRegistryKey 값의 이름"
   syntax:
     content: public static string GetDotNetFrameworkSdkInstallKeyValue (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "연결 된 버전의 Visual Studio는 요청 된 SDK"
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "<xref:System.String>입니다.</xref:System.String> 반환"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkInstallKeyValue*
   exceptions: []
   platform:
@@ -257,16 +257,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the full name of the .NET Framework SDK root registry key."
+  summary: ".NET Framework SDK 루트 레지스트리 키의 전체 이름을 반환합니다."
   syntax:
     content: public static string GetDotNetFrameworkSdkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     return:
       type: System.String
-      description: "Returns a string representation of the registry key root which indicates where to find the .NETFramework sdk."
+      description: "찾을 위치를 나타내는 레지스트리 키 루트의 문자열 표현을 반환는 합니다. NETFramework sdk입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkRootRegistryKey*
   exceptions: []
   platform:
@@ -283,19 +283,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the full name of the .NET Framework SDK root registry key"
+  summary: ".NET Framework SDK 루트 레지스트리 키의 전체 이름을 반환합니다."
   syntax:
     content: public static string GetDotNetFrameworkSdkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "연결 된 버전의 Visual Studio는 요청 된 SDK"
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "<xref:System.String>입니다.</xref:System.String> 반환"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkRootRegistryKey*
   exceptions: []
   platform:
@@ -312,17 +312,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the prefix of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] folder."
-  remarks: "An example of the value returned is the string &quot;v2.0&quot;."
+  summary: "접두사를 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 폴더입니다."
+  remarks: "반환 값의 예는 문자열 &quot;v2.0&quot;입니다."
   syntax:
     content: public static string GetDotNetFrameworkVersionFolderPrefix (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "Returns the prefix of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] folder."
+      description: "접두사를 반환 된 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 폴더입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkVersionFolderPrefix*
   exceptions: []
   platform:
@@ -339,16 +339,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root directory."
+  summary: "정규화 된 경로를 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 루트 디렉터리입니다."
   syntax:
     content: public static string GetPathToDotNetFramework (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root directory, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] is not installed."
+      description: "정규화 된 경로를 포함 하는 문자열은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 루트 디렉터리 또는 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> 에 [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) 하는 경우 대상된 버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 설치 되어 있지 않습니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFramework*
   exceptions: []
   platform:
@@ -365,19 +365,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to the framework&quot;s root directory."
+  summary: "프레임 워크의 루트 디렉터리를 정규화 된 경로 가져옵니다."
   syntax:
     content: public static string GetPathToDotNetFramework (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture, or DotNetFrameworkArchitecture.Current for the architecture this process is currently running under."
+      description: "이 프로세스에서 현재 실행 중인 아키텍처에 대 한 아키텍처 또는 DotNetFrameworkArchitecture.Current 원하는입니다."
     return:
       type: System.String
-      description: "Returns a fully qualified path to the framework&quot;s root directory."
+      description: "프레임 워크의 루트 디렉터리에는 정규화 된 경로 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFramework*
   exceptions: []
   platform:
@@ -394,7 +394,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] directory."
+  summary: "파일의 정규화 된 경로 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 디렉터리입니다."
   remarks: ''
   example:
   - "The following example creates a <xref:Microsoft.Build.Utilities.ToolTask> that runs [Ilasm.exe (IL Assembler)](~/add/includes/ajax-current-ext-md.md). The <xref:Microsoft.Build.Utilities.CommandLineBuilder>, <xref:Microsoft.Build.Utilities.ToolLocationHelper>, and <xref:Microsoft.Build.Utilities.TaskLoggingHelper> classes are used to generate the information needed to run the task.  \n  \n [!code-cs[msbuild_ToolTask#1](~/add/codesnippet/csharp/ILAsm/ILAsm.cs#1)]\n [!code-vb[msbuild_ToolTask#1](~/add/codesnippet/visualbasic/ILAsmVB/ILAsm.vb#1)]"
@@ -403,13 +403,13 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] directory."
+      description: "찾을 파일은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 디렉터리입니다."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the specified file, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] is not installed."
+      description: "지정된 된 파일 또는 null 참조를 정규화 된 경로 포함 하는 문자열 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> 에 [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) 하는 경우 대상된 버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 설치 되어 있지 않습니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile*
   exceptions: []
   platform:
@@ -426,22 +426,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the frameworks root directory for the specified architecture."
+  summary: "지정된 된 아키텍처에 대 한 프레임 워크 루트 디렉터리에 파일을 정규화 된 경로 가져옵니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework directory"
+      description: ".NET Framework 디렉터리에서 찾을 수 있도록 파일 이름"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture, or DotNetFrameworkArchitecture.Current for the architecture this process is currently running under."
+      description: "이 프로세스에서 현재 실행 중인 아키텍처에 대 한 아키텍처 또는 DotNetFrameworkArchitecture.Current 원하는입니다."
     return:
       type: System.String
-      description: "Returns a fully qualified path to a file in the frameworks root directory."
+      description: "프레임 워크 루트 디렉터리에 파일에는 정규화 된 경로 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile*
   exceptions: []
   platform:
@@ -458,16 +458,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the reference assemblies location for the given framework version."
+  summary: "에 지정 된 프레임 워크 버전에 대 한 참조 어셈블리 위치의 경로 반환합니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkReferenceAssemblies (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     return:
       type: System.String
-      description: "Returns a string containing the fully qualified path to the Reference Assemblies folder, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework is not installed."
+      description: ".NET Framework의 대상된 버전이 설치 되지 않은 경우 null 참조 (Visual Basic에서는 Nothing) 또는 참조 어셈블리 폴더의 정규화 된 경로 포함 하는 문자열을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkReferenceAssemblies*
   exceptions: []
   platform:
@@ -484,16 +484,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
+  summary: "\\bin 디렉터리에 정규화 된 경로 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK입니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK is not installed."
+      description: "\\bin 디렉터리에 정규화 된 경로 포함 하는 문자열은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> 에 [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) 하는 경우 대상된 버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK 설치 되어 있지 않습니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdk*
   exceptions: []
   platform:
@@ -510,19 +510,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the &quot;bin&quot; directory of the .NET Framework SDK."
+  summary: ".NET Framework SDK의 &quot;bin&quot; 디렉터리에 경로 반환합니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "연결 된 버전의 Visual Studio는 요청 된 SDK"
     return:
       type: System.String
-      description: "Path string."
+      description: "경로 문자열입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdk*
   exceptions: []
   platform:
@@ -539,20 +539,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path to a file in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
-  remarks: "The path for the SDK takes in consideration the processor architecture environment information for the calling process, so it might end up being &quot;.../bin/i64&quot;, for example.       Unlike <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A> and <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A> this method checks for the existence of the file, so that an invalid `fileName` returns null."
+  summary: "파일의 정규화 된 경로 가져옵니다는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK입니다."
+  remarks: "SDK에 대 한 경로 고려 사항에서 호출 하는 프로세스에 대 한 프로세서 아키텍처 환경 정보 되도록 예를 들어 &quot;.../bin/i64&quot; 되 고 생길 수 있습니다.       와 달리 <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A>및 <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A>이 메서드는 파일의 존재 여부 확인 되도록 잘못 된 `fileName` null을 반환 합니다.</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A> </xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A>"
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
+      description: "찾을 파일은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK입니다."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] 대상으로 합니다."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK is not installed."
+      description: "\\bin 디렉터리에 정규화 된 경로 포함 하는 문자열은 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> 에 [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) 하는 경우 대상된 버전의는 [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK 설치 되어 있지 않습니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -569,22 +569,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the .NET Framework SDK."
+  summary: ".NET Framework SDK에서 파일의 정규화 된 경로 가져옵니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: ".NET Framework SDK 디렉터리에서 찾을 수 있도록 파일 이름"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "The required architecture of the requested file."
+      description: "요청된 된 파일의 필수 아키텍처입니다."
     return:
       type: System.String
-      description: "Returns a fully qualified path to a file in the .NET Framework SDK. Throws an error if the .NET Framework SDK can&quot;t be found."
+      description: ".NET Framework SDK에서 파일의 정규화 된 경로 반환합니다. .NET Framework SDK를 찾을 수 없는 경우 오류를 throw 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -601,22 +601,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a fully qualified path to a file in the .NET Framework SDK. Error if the .NET Framework SDK can&quot;t be found."
+  summary: ".NET Framework SDK에서 파일의 정규화 된 경로 가져옵니다. .NET Framework SDK를 찾을 수 없는 경우 오류가 발생 했습니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: ".NET Framework SDK 디렉터리에서 찾을 수 있도록 파일 이름"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "요청한 SDK와 연결 된 Visual Studio의 버전입니다."
     return:
       type: System.String
-      description: "Path string."
+      description: "경로 문자열입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -633,25 +633,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a fully qualified path to a file in the .NET Framework SDK. Error if the .NET Framework SDK can&quot;t be found."
+  summary: ".NET Framework SDK에서 파일의 정규화 된 경로 가져옵니다. .NET Framework SDK를 찾을 수 없는 경우 오류가 발생 했습니다."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: ".NET Framework SDK 디렉터리에서 찾을 수 있도록 파일 이름"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "대상된.NET Framework의 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "요청한 SDK와 연결 된 Visual Studio의 버전입니다."
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "The required architecture of the requested file."
+      description: "요청된 된 파일의 필수 아키텍처입니다."
     return:
       type: System.String
-      description: "Path string."
+      description: "경로 문자열입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -668,22 +668,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the paths to the reference assemblies location for the given target framework."
-  remarks: "This method assumes that the requested ReferenceAssemblyRoot path will be the ProgramFiles directory that is specified by Environment.SpecialFolder.ProgramFiles. In addition, when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5, or 4, the correctly chained reference assembly paths for the legacy .NET Framework versions will be returned. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "지정 된 대상 프레임 워크에 대 한 참조 어셈블리 위치의 경로 가져옵니다."
+  remarks: "이 메서드는 요청 된 ReferenceAssemblyRoot 경로 Environment.SpecialFolder.ProgramFiles 하 여 지정 된 ProgramFiles 디렉터리 된다는 가정 합니다. 또한,는 합니다. NETFramework 또는.NET Framework targetFrameworkIdentifiers 표시 되 고 targetFrameworkVersion 2.0, 3.0, 3.5 또는 4 이면 올바르게 연결 된 참조 어셈블리 경로 기존.NET Framework 버전에 대 한 반환 됩니다. 이 체인의 참조 어셈블리 경로 목록 커진 기존 GetPathToDotNetFrameworkReferenceAssemblies 사용 합니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "The framework name."
+      description: "프레임 워크 이름입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the paths to the reference assemblies location."
+      description: "참조 어셈블리 위치에 경로 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "frameworkName null 인 경우"
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies(System.String,System.Runtime.Versioning.FrameworkName)
@@ -698,20 +698,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the paths to the reference assemblies location for the given framework version relative to a given targetFrameworkRoot."
-  remarks: "This method does not check to see if the path exists or not."
+  summary: "경로 주어진된 targetFrameworkRoot 기준으로 해당된 프레임 워크 버전에 대 한 참조 어셈블리 위치를 가져옵니다."
+  remarks: "이 메서드는 경로 있는지 여부를 확인 하지 않습니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (string targetFrameworkRootPath, System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: targetFrameworkRootPath
       type: System.String
-      description: "Root directory which will be used to calculate the reference assembly path. The references assembies will be generated in the following way TargetFrameworkRootPath\\TargetFrameworkIdentifier\\TargetFrameworkVersion\\SubType\\TargetFrameworkSubType."
+      description: "참조 어셈블리 경로 계산 하는 사용할 수 있는 루트 디렉터리입니다. 참조 assembies TargetFrameworkRootPath\\TargetFrameworkIdentifier\\TargetFrameworkVersion\\SubType\\TargetFrameworkSubType 다음과 같은 방법으로 생성 됩니다."
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "A frameworkName class which represents a TargetFrameworkMoniker. This cannot be null."
+      description: "TargetFrameworkMoniker 나타내는 frameworkName 클래스입니다. Null 일 수 없습니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the paths to the reference assemblies location."
+      description: "참조 어셈블리 위치에 경로 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions: []
   platform:
@@ -728,27 +728,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the paths to the reference assemblies location for the given target framework. This method will assume the requested ReferenceAssemblyRoot path will be the ProgramFiles directory specified by Environment.SpecialFolder.ProgramFiles In additon when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5 or 4.0 we will return the correctly chained reference assembly paths for the legacy .NET Framework versions. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "에 지정 된 대상 프레임 워크에 대 한 참조 어셈블리 위치의 경로 반환합니다. 이 메서드는 요청 된 ReferenceAssemblyRoot 경로 Environment.SpecialFolder.ProgramFiles에 additon로 지정 된 ProgramFiles 디렉터리를 있을 것으로 가정 됩니다 때는 합니다. NETFramework 또는.NET Framework targetFrameworkIdentifiers 표시 되 고 targetFrameworkVersion은 2.0, 3.0, 3.5 또는 4.0에서는 기존.NET Framework 버전에 올바르게 연결 된 참조 어셈블리 경로 반환 합니다. 이 체인의 참조 어셈블리 경로 목록 커진 기존 GetPathToDotNetFrameworkReferenceAssemblies 사용 합니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "대상 식별자입니다."
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "대상 버전입니다."
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "대상 프로필입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Collection of reference assembly locations."
+      description: "참조 어셈블리 위치의 컬렉션입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "frameworkName null 인 경우"
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries(System.String,System.String,System.String)
@@ -763,27 +763,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the reference assemblies location for the given target framework&quot;s standard libraries (i.e. mscorlib). This method will assume the requested ReferenceAssemblyRoot path will be the ProgramFiles directory specified by Environment.SpecialFolder.ProgramFiles In additon when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5 or 4.0 we will return the correctly chained reference assembly paths for the legacy .NET Framework versions. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "경로 지정한 대상 프레임 워크의 표준 라이브러리 (예: mscorlib)에 대 한 참조 어셈블리 위치를 반환 합니다. 이 메서드는 요청 된 ReferenceAssemblyRoot 경로 Environment.SpecialFolder.ProgramFiles에 additon로 지정 된 ProgramFiles 디렉터리를 있을 것으로 가정 됩니다 때는 합니다. NETFramework 또는.NET Framework targetFrameworkIdentifiers 표시 되 고 targetFrameworkVersion은 2.0, 3.0, 3.5 또는 4.0에서는 기존.NET Framework 버전에 올바르게 연결 된 참조 어셈블리 경로 반환 합니다. 이 체인의 참조 어셈블리 경로 목록 커진 기존 GetPathToDotNetFrameworkReferenceAssemblies 사용 합니다."
   syntax:
     content: public static string GetPathToStandardLibraries (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "대상 식별자입니다."
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "대상 버전입니다."
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "대상 프로필입니다."
     return:
       type: System.String
-      description: "Collection of reference assembly locations."
+      description: "참조 어셈블리 위치의 컬렉션입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "frameworkName null 인 경우"
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries(System.String,System.String,System.String,System.String)
@@ -798,30 +798,30 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to mscorlib and system.dll"
+  summary: "Mscorlib 및 system.dll에 경로 반환합니다."
   syntax:
     content: public static string GetPathToStandardLibraries (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile, string platformTarget);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "대상 식별자입니다."
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "대상 버전입니다."
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "대상 프로필입니다."
     - id: platformTarget
       type: System.String
-      description: "This is used to determine where we should look for the standard libraries. Note, this parameter is only used for .NET Framework 3.5 or less."
+      description: "표준 라이브러리에 대 한 확인 해야 것을 확인 하는이 사용 됩니다. 단,이 매개 변수는 사용 하는.NET Framework 3.5 이하로 됩니다."
     return:
       type: System.String
-      description: "Collection of reference assembly locations."
+      description: "참조 어셈블리 위치의 컬렉션입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "frameworkName null 인 경우"
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile(System.String)
@@ -836,17 +836,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the system directory."
-  remarks: "This API builds the full path plus filename for a file in the System folder. It doesn&quot;t check for the existence of the file prior to returning."
+  summary: "파일 시스템 디렉터리에 정규화 된 경로 가져옵니다."
+  remarks: "이 API는 전체 경로 및 파일 시스템 폴더에 대 한 이름을 작성합니다. 반환 하기 전에 파일의 존재 여부 검사 하지 않습니다."
   syntax:
     content: public static string GetPathToSystemFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the System folder."
+      description: "시스템 폴더에서 찾을 파일입니다."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the the file in the system directory."
+      description: "정규화 된 경로를 포함 하는 문자열은 파일 시스템 디렉터리에 있습니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile*
   exceptions: []
   platform:
@@ -863,19 +863,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the Windows SDK for the desired .NET Framework and Visual Studio version. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "원하는.NET Framework 및 Visual Studio 버전에 대 한 Windows sdk의 경로 반환합니다. Note이 대상.NET Framework 버전 4.5 이상 에서만 지원 됩니다."
   syntax:
     content: public static string GetPathToWindowsSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version"
+      description: "대상.NET Framework 버전"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the SDK."
+      description: "SDK와 연결 된 Visual Studio의 버전입니다."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK location"
+      description: "적절 한 Windows SDK 위치에 대 한 경로"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdk*
   exceptions: []
   platform:
@@ -892,22 +892,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to a file in the Windows SDK for the desired .NET Framework and Visual Studio version. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "원하는.NET Framework 및 Visual Studio 버전에 대 한 Windows SDK의 파일 경로 반환 합니다. Note이 대상.NET Framework 버전 4.5 이상 에서만 지원 됩니다."
   syntax:
     content: public static string GetPathToWindowsSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file being requested."
+      description: "요청 된 파일의 이름입니다."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version."
+      description: "대상.NET Framework 버전입니다."
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the SDK."
+      description: "SDK와 연결 된 Visual Studio의 버전입니다."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK file"
+      description: "적절 한 Windows SDK 파일에 대 한 경로"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdkFile*
   exceptions: []
   platform:
@@ -924,25 +924,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to a file in the Windows SDK for the desired .NET Framework and Visual Studio version and the desired architecture. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "원하는.NET Framework 및 Visual Studio 버전 및 원하는 아키텍처에 대 한 Windows SDK의 파일 경로 반환 합니다. Note이 대상.NET Framework 버전 4.5 이상 에서만 지원 됩니다."
   syntax:
     content: public static string GetPathToWindowsSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file being requested."
+      description: "요청 된 파일의 이름입니다."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version."
+      description: "대상.NET Framework 버전입니다."
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "요청한 SDK와 연결 된 Visual Studio의 버전입니다."
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture of the resultant file."
+      description: "결과 파일의 아키텍처를 권장합니다."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK file"
+      description: "적절 한 Windows SDK 파일에 대 한 경로"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdkFile*
   exceptions: []
   platform:
@@ -959,22 +959,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDK moniker and the targeted platform get the path to the SDK root if it exists."
+  summary: "있는 경우 SDK 루트에 SDK 모니커 및 대상된 플랫폼 get 경로 지정 합니다."
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, string targetPlatformVersion);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Moniker for the sdk"
+      description: "Sdk에 대 한 모니커"
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Identifier for the platform"
+      description: "플랫폼에 대 한 식별자"
     - id: targetPlatformVersion
       type: System.String
-      description: "Version of the platform"
+      description: "플랫폼 버전"
     return:
       type: System.String
-      description: "A full path to the sdk root if the sdk exists in the targeted platform or an empty string if it does not exist."
+      description: "존재 하지 않는 경우 sdk 대상된 플랫폼 또는 빈 문자열에 있는 경우 sdk 루트에 대 한 전체 경로."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -991,22 +991,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "SDKName 들어 targetPlatformIdentifier 및 TargetPlatformVersion 검색 기본 sdk 위치 전달 된 항목에 대 한 sdk 이름이 며에 합니다.       Sdk 모니커 형식이 SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "설치 위치를 확인 하려면 SDK의 이름입니다."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "대상된 플랫폼에 대 한 Sdk를 찾을 수"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "대상된 플랫폼 버전에 대 한 Sdk를 찾을 수"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "SDK의 위치를 찾으면 빈 문자열 찾을 수 없는 경우"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1023,28 +1023,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "SDKName 들어 targetPlatformIdentifier 및 TargetPlatformVersion 검색 기본 sdk 위치 전달 된 항목에 대 한 sdk 이름이 며에 합니다.       Sdk 모니커 형식이 SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, string targetPlatformVersion, string diskRoots, string registryRoot);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "설치 위치를 확인 하려면 SDK의 이름입니다."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "대상된 플랫폼에 대 한 Sdk를 찾을 수"
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version to find SDKs for"
+      description: "대상된 플랫폼 버전에 대 한 Sdk를 찾을 수"
     - id: diskRoots
       type: System.String
-      description: "List of disk roots to search for sdks within"
+      description: "내에서 sdk에 대 한 검색 하려면 디스크 루트 목록"
     - id: registryRoot
       type: System.String
-      description: "Registry root to look for sdks within"
+      description: "Sdk 내에서 검색할 레지스트리 루트"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "SDK의 위치를 찾으면 빈 문자열 찾을 수 없는 경우"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1061,28 +1061,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "SDKName 들어 targetPlatformIdentifier 및 TargetPlatformVersion 검색 기본 sdk 위치 전달 된 항목에 대 한 sdk 이름이 며에 합니다.       Sdk 모니커 형식이 SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, Version targetPlatformVersion, string[] diskRoots, string registryRoot);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "설치 위치를 확인 하려면 SDK의 이름입니다."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "대상된 플랫폼에 대 한 Sdk를 찾을 수"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "대상된 플랫폼 버전에 대 한 Sdk를 찾을 수"
     - id: diskRoots
       type: System.String[]
-      description: "List of disk roots to search for sdks within"
+      description: "내에서 sdk에 대 한 검색 하려면 디스크 루트 목록"
     - id: registryRoot
       type: System.String
-      description: "Registry root to look for sdks within"
+      description: "Sdk 내에서 검색할 레지스트리 루트"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "SDK의 위치를 찾으면 빈 문자열 찾을 수 없는 경우"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1099,19 +1099,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of SDK&quot;s installed on the machine for a given target platform"
+  summary: "지정한 대상 플랫폼에 대 한 컴퓨터에 설치 된 SDK의 목록 가져오기"
   syntax:
     content: public static System.Collections.Generic.IDictionary<string,string> GetPlatformExtensionSDKLocations (string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "대상된 플랫폼에 대 한 Sdk를 찾을 수"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "대상된 플랫폼 버전에 대 한 Sdk를 찾을 수"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "IDictionary of installed SDKS and their location. K:SDKName V:SDK installation location"
+      description: "설치 된 SDK와 그 위치의 IDictionary입니다. K:SDKName V:SDK 설치 위치"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocations*
   exceptions: []
   platform:
@@ -1128,25 +1128,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of SDK&quot;s installed on the machine for a given target platform"
+  summary: "지정한 대상 플랫폼에 대 한 컴퓨터에 설치 된 SDK의 목록 가져오기"
   syntax:
     content: public static System.Collections.Generic.IDictionary<string,string> GetPlatformExtensionSDKLocations (string[] diskRoots, string registryRoot, string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: diskRoots
       type: System.String[]
-      description: "Array of disk locations to search for sdks"
+      description: "Sdk에 대 한 검색 하려면 디스크 위치의 배열"
     - id: registryRoot
       type: System.String
-      description: "Root registry location to look for sdks"
+      description: "찾을 sdk 루트 레지스트리 위치"
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "대상된 플랫폼에 대 한 Sdk를 찾을 수"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "대상된 플랫폼 버전에 대 한 Sdk를 찾을 수"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "IDictionary of installed SDKS and their location. K:SDKName V:SDK installation location"
+      description: "설치 된 SDK와 그 위치의 IDictionary입니다. K:SDKName V:SDK 설치 위치"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocations*
   exceptions: []
   platform:
@@ -1163,19 +1163,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "대상 플랫폼 식별자와 대상 플랫폼 버전 given을 해당 대상 플랫폼에 대 한 플랫폼 SDK에 대 한 기본 SDK 위치를 검색 합니다."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, string targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "대상된 플랫폼 SDK를 찾을 수입니다."
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version for which to find SDK."
+      description: "찾을 SDK에 대 한 대상된 플랫폼 버전입니다."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "SDK의 위치를 찾으면, 그렇지 않으면 빈 문자열을 반환 SDK를 찾을 수 없는 경우 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1192,19 +1192,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "대상 플랫폼 식별자와 대상 플랫폼 버전 given을 해당 대상 플랫폼에 대 한 플랫폼 SDK에 대 한 기본 SDK 위치를 검색 합니다."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "대상된 플랫폼 SDK를 찾을 수입니다."
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version for which to find SDK."
+      description: "찾을 SDK에 대 한 대상된 플랫폼 버전입니다."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "SDK의 위치를 찾으면, 그렇지 않으면 빈 문자열을 반환 SDK를 찾을 수 없는 경우 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1221,25 +1221,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "대상 플랫폼 식별자와 대상 플랫폼 버전 given을 해당 대상 플랫폼에 대 한 플랫폼 SDK에 대 한 기본 SDK 위치를 검색 합니다."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, string targetPlatformVersion, string diskRoots, string registryRoot);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "대상된 플랫폼 SDK를 찾을 수입니다."
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version for which to find SDK."
+      description: "찾을 SDK에 대 한 대상된 플랫폼 버전입니다."
     - id: diskRoots
       type: System.String
-      description: "Array of disk roots within which to search for SDK."
+      description: "SDK에 대 한 검색할 디스크 루트의 배열입니다."
     - id: registryRoot
       type: System.String
-      description: "Registry root within which to search for SDK."
+      description: "SDK에 대 한 검색할 레지스트리 루트입니다."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "SDK의 위치를 찾으면, 그렇지 않으면 빈 문자열을 반환 SDK를 찾을 수 없는 경우 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1256,25 +1256,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "대상 플랫폼 식별자와 대상 플랫폼 버전 given을 해당 대상 플랫폼에 대 한 플랫폼 SDK에 대 한 기본 SDK 위치를 검색 합니다."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, Version targetPlatformVersion, string[] diskRoots, string registryRoot);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "대상된 플랫폼 SDK를 찾을 수입니다."
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version for which to find SDK."
+      description: "찾을 SDK에 대 한 대상된 플랫폼 버전입니다."
     - id: diskRoots
       type: System.String[]
-      description: "Array of disk roots within which to search for SDK."
+      description: "SDK에 대 한 검색할 디스크 루트의 배열입니다."
     - id: registryRoot
       type: System.String
-      description: "Registry root within which to search for SDK."
+      description: "SDK에 대 한 검색할 레지스트리 루트입니다."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "SDK의 위치를 찾으면, 그렇지 않으면 빈 문자열을 반환 SDK를 찾을 수 없는 경우 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1291,13 +1291,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the root location for the reference assembly directory under the program files directory."
+  summary: "프로그램 파일 디렉터리에서 참조 어셈블리 디렉터리에 대 한 루트 위치를 가져옵니다."
   syntax:
     content: public static string GetProgramFilesReferenceAssemblyRoot ();
     parameters: []
     return:
       type: System.String
-      description: "Returns the root location for the reference assembly directory."
+      description: "참조 어셈블리 디렉터리에 대 한 루트 위치를 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetProgramFilesReferenceAssemblyRoot*
   exceptions: []
   platform:
@@ -1314,16 +1314,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the design-time files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 디자인 타임 파일이 들어 있는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKDesignTimeFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a design-time folder."
+      description: "루트 폴더는 SDK에 대 한 디자인 타임 폴더를 포함 해야 합니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for design-time files in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 SDK의 디자인 타임 파일을 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKDesignTimeFolders*
   exceptions: []
   platform:
@@ -1340,22 +1340,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the design-time files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 디자인 타임 파일이 들어 있는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKDesignTimeFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a design-time folder."
+      description: "루트 폴더는 SDK에 대 한 디자인 타임 폴더를 포함 해야 합니다."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "SDK를 대상으로 하는 구성입니다. &quot;Debug&quot; 또는 &quot;Retail&quot;입니다."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "SDK의 대상 아키텍처입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for design-time files in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 SDK의 디자인 타임 파일을 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKDesignTimeFolders*
   exceptions: []
   platform:
@@ -1372,16 +1372,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the redist files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 재배포 가능 패키지 파일이 들어 있는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKRedistFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a redist folder."
+      description: "SDK에 대 한 루트 폴더 redist 폴더를 포함 해야 합니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for redist files in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 sdk 재배포 파일을 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKRedistFolders*
   exceptions: []
   platform:
@@ -1398,22 +1398,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the redist files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 재배포 가능 패키지 파일이 들어 있는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKRedistFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a redist folder."
+      description: "SDK에 대 한 루트 폴더 redist 폴더를 포함 해야 합니다."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "SDK를 대상으로 하는 구성입니다. &quot;Debug&quot; 또는 &quot;Retail&quot;입니다."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "SDK의 대상 아키텍처입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for redist files in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 sdk 재배포 파일을 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKRedistFolders*
   exceptions: []
   platform:
@@ -1430,16 +1430,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the references for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 참조를 포함 하는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKReferenceFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK."
+      description: "SDK에 대 한 루트 폴더입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for references in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 SDK에 대 한 참조를 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKReferenceFolders*
   exceptions: []
   platform:
@@ -1456,22 +1456,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the references for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "지정된 된 SDK 루트에서 SDK에 대 한 참조를 포함 하는 SDK 폴더의 목록을 가져옵니다. 목록은 참조에 대 한 검색에 사용 되는 순서입니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKReferenceFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK."
+      description: "SDK에 대 한 루트 폴더입니다."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "SDK를 대상으로 하는 구성입니다. &quot;Debug&quot; 또는 &quot;Retail&quot;입니다."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "SDK의 대상 아키텍처입니다."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for references in the SDK, in the order that must be used for the search."
+      description: "검색에 사용 해야 하는 순서로 SDK에 대 한 참조를 검색 하는 데 사용할 폴더의 목록을 반환 합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKReferenceFolders*
   exceptions: []
   platform:
@@ -1488,13 +1488,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a list of supported target framework monikers."
+  summary: "지원 되는 대상 프레임 워크 모니커 목록을 가져옵니다."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSupportedTargetFrameworks ();
     parameters: []
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "list of supported target framework monikers"
+      description: "지원 되는 대상 프레임 워크 모니커 목록"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSupportedTargetFrameworks*
   exceptions: []
   platform:
@@ -1511,13 +1511,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of target platform SDKs on the machine."
+  summary: "컴퓨터에서 대상 플랫폼 Sdk의 목록을 가져옵니다."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.TargetPlatformSDK> GetTargetPlatformSdks ();
     parameters: []
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.TargetPlatformSDK}
-      description: 'List of Target Platform SDKs, Item1: TargetPlatformName Item2: Version of SDK Item3: Path to sdk root'
+      description: '대상 플랫폼 Sdk Item1 목록이: TargetPlatformName Item2: 버전의 SDK Item3: sdk 루트 경로'
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetTargetPlatformSdks*
   exceptions: []
   platform:
@@ -1534,19 +1534,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of target platform SDKs on the machine."
+  summary: "컴퓨터에서 대상 플랫폼 Sdk의 목록을 가져옵니다."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.TargetPlatformSDK> GetTargetPlatformSdks (string[] diskRoots, string registryRoot);
     parameters:
     - id: diskRoots
       type: System.String[]
-      description: "List of disk locations to search for platform SDKs."
+      description: "플랫폼 Sdk에 대 한 검색 하려면 디스크 위치의 목록입니다."
     - id: registryRoot
       type: System.String
-      description: "Registry root location to look for platform SDKs."
+      description: "레지스트리 루트 위치를 플랫폼 Sdk 찾아보십시오입니다."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.TargetPlatformSDK}
-      description: "Returns a list of target platform SDKs."
+      description: "대상 플랫폼 Sdk의 목록을 반환합니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetTargetPlatformSdks*
   exceptions: []
   platform:
@@ -1563,19 +1563,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the highest version of a target framework moniker based on the identifier."
+  summary: "식별자에 따라 대상 프레임 워크 모니커의 가장 높은 버전을 가져옵니다."
   syntax:
     content: public static System.Runtime.Versioning.FrameworkName HighestVersionOfTargetFrameworkIdentifier (string targetFrameworkRootDirectory, string frameworkIdentifier);
     parameters:
     - id: targetFrameworkRootDirectory
       type: System.String
-      description: "Target framework root directory."
+      description: "대상 프레임 워크 루트 디렉터리입니다."
     - id: frameworkIdentifier
       type: System.String
-      description: "Framework identifier."
+      description: "프레임 워크 식별자입니다."
     return:
       type: System.Runtime.Versioning.FrameworkName
-      description: "Returns the highest version of a target framework moniker based on the identifier. This method will only find full frameworks; no profiles will be returned."
+      description: "식별자에 따라 대상 프레임 워크 모니커의 가장 높은 버전을 반환 합니다. 이 메서드는 전체 프레임 워크; 찾을 프로필이 없음이 반환 됩니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.HighestVersionOfTargetFrameworkIdentifier*
   exceptions: []
   platform:
@@ -1592,13 +1592,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path of the system directory."
-  remarks: "An example of the value returned is the string &quot;C:\\WinNT\\System32&quot;."
+  summary: "시스템 디렉터리의 정규화 된 경로 가져옵니다."
+  remarks: "반환 값의 예는 &quot;C:\\WinNT\\System32&quot; 문자열입니다."
   syntax:
     content: public static string PathToSystem { get; }
     return:
       type: System.String
-      description: "A string containing a directory path to the system directory."
+      description: "시스템 디렉터리에 디렉터리 경로가 포함 된 문자열입니다."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.PathToSystem*
   exceptions: []
   platform:
