@@ -11,8 +11,8 @@ items:
   nameWithType: TransactionMessageProperty
   fullName: System.ServiceModel.Channels.TransactionMessageProperty
   type: Class
-  summary: "Allows a custom channel, which uses a proprietary transaction flow mechanism, to inject its transaction into the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] framework. This class cannot be inherited."
-  remarks: "This class allows third-party channel developers who use a proprietary transaction flow mechanism for their channel, to introduce their transaction into the ServiceModel framework. The transaction is then used when executing the service method. This mechanism cannot be used in conjunction with the <xref:System.ServiceModel.TransactionFlowAttribute>."
+  summary: "비공개 트랜잭션 흐름 메커니즘을 사용 하 여 해당 트랜잭션을에 삽입 하려고 하는 사용자 지정 채널을 허용는 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] 프레임 워크입니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "이 클래스를 사용 하면 비공개 트랜잭션 흐름 메커니즘을 채널을 사용 하 여 해당 트랜잭션을 ServiceModel 프레임 워크에 소개 하는 타사 채널 개발자가 있습니다. 서비스 메서드를 실행할 때 해당 트랜잭션이 사용 됩니다. 이 메커니즘 <xref:System.ServiceModel.TransactionFlowAttribute>.</xref:System.ServiceModel.TransactionFlowAttribute> 와 함께에서 사용할 수 없습니다."
   syntax:
     content: public sealed class TransactionMessageProperty
   inheritance:
@@ -33,25 +33,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Sets the transaction that will be used when executing the service method."
-  remarks: "A custom incoming channel (which is part of a service’s channel stack) can call this method to add a <xref:System.ServiceModel.Channels.TransactionMessageProperty>, containing the `transaction` parameter, to the `Properties` collection of the `message` parameter. This prompts the infrastructure to create a <xref:System.Transactions.TransactionScope> instance using the transaction passed in, before calling the service method requested in the incoming message. The service method must have the <xref:System.ServiceModel.OperationBehaviorAttribute.TransactionScopeRequired%2A> property set to `true`."
+  summary: "서비스 메서드를 실행할 때 사용할 트랜잭션을 설정 합니다."
+  remarks: "(즉, 서비스의 채널 스택의 일부인)는 사용자 지정 들어오는 채널을 추가 하려면이 메서드를 호출할 수는 <xref:System.ServiceModel.Channels.TransactionMessageProperty>, 포함 하는 `transaction` 매개 변수를는 `Properties` 의 컬렉션은 `message` 매개 변수.</xref:System.ServiceModel.Channels.TransactionMessageProperty> 만들려는 인프라 라는 메시지를 표시 한 <xref:System.Transactions.TransactionScope>들어오는 메시지에서 요청 된 서비스 메서드를 호출 하기 전에, 전달 된 트랜잭션을 사용 하 여 인스턴스.</xref:System.Transactions.TransactionScope> 서비스 메서드에 <xref:System.ServiceModel.OperationBehaviorAttribute.TransactionScopeRequired%2A>속성이로 설정 `true`.</xref:System.ServiceModel.OperationBehaviorAttribute.TransactionScopeRequired%2A>"
   syntax:
     content: public static void Set (System.Transactions.Transaction transaction, System.ServiceModel.Channels.Message message);
     parameters:
     - id: transaction
       type: System.Transactions.Transaction
-      description: "The transaction that will be used when executing the service method."
+      description: "서비스 메서드를 실행할 때 사용할 트랜잭션."
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The incoming message that results in calling the service method."
+      description: "서비스 메서드를 호출 하는 들어오는 메시지입니다."
   overload: System.ServiceModel.Channels.TransactionMessageProperty.Set*
   exceptions:
   - type: System.ServiceModel.FaultException
     commentId: T:System.ServiceModel.FaultException
-    description: "The property has already been set on <code>message</code>."
+    description: "속성이 이미 설정 되어 <code> message </code>합니다."
   - type: System.Transactions.TransactionException
     commentId: T:System.Transactions.TransactionException
-    description: "<code>transaction</code> needs to be unmarshaled, and that operation fails."
+    description: "<code>transaction</code>마샬링해야 할 요구 사항 및 작업이 실패 하면 합니다."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.TransactionMessageProperty.Transaction
@@ -66,12 +66,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the transaction that will be used when executing the service method."
+  summary: "서비스 메서드를 실행할 때 사용할 트랜잭션을 가져옵니다."
   syntax:
     content: public System.Transactions.Transaction Transaction { get; }
     return:
       type: System.Transactions.Transaction
-      description: "A <xref href=&quot;System.Transactions.Transaction&quot;></xref> instance that will be used when executing the service method."
+      description: "A <xref href=&quot;System.Transactions.Transaction&quot;> </xref> 인스턴스를 서비스 메서드를 실행할 때 사용 됩니다."
   overload: System.ServiceModel.Channels.TransactionMessageProperty.Transaction*
   exceptions: []
   platform:
