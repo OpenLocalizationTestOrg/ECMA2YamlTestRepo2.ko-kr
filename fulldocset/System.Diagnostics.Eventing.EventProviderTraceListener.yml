@@ -26,8 +26,8 @@ items:
   nameWithType: EventProviderTraceListener
   fullName: System.Diagnostics.Eventing.EventProviderTraceListener
   type: Class
-  summary: "A listener for <xref href=&quot;System.Diagnostics.TraceSource&quot;></xref> that writes events to the ETW subsytem."
-  remarks: "All event data (trace or debug) from the source event is written to the ETW subsystem as a string. The data elements are delimited using a comma. To specify a different delimiter, use the <xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter%2A> property.       Adding the listener to <xref:System.Diagnostics.TraceSource?displayProperty=fullName> registers the provider with the ETW subsystem. You must create an ETW trace session using the Logman.exe executable program (or something similar) to write the events to a log file.       You do not need a manifest to consume events from the listener because the event data is a single string.       When you call the <xref:System.Diagnostics.TraceSource?displayProperty=fullName> methods to write events, you pass a <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> enumeration value. The enumeration contains both level and keyword values. When you enable a trace listener provider from an ETW session, the level value that you specify can be the value associated with one of the following <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> enumeration values:      -   Critical (value is 1)      -   Error (value is 2)      -   Information (value is 8)      -   Verbose (value is 16)      -   Warning (value is 4)       The keyword value that you specify for the session can be the value associated with one of the following <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> enumeration values:      -   Resume (value is 2,048)      -   Start (value is 256)      -   Stop (value is 512)      -   Suspend (value is 1,024)      -   Transfer (value is 4,096)"
+  summary: "에 대 한 수신기 <xref href=&quot;System.Diagnostics.TraceSource&quot;> </xref> ETW 하위 시스템에 이벤트를 기록 하는 합니다."
+  remarks: "원본 이벤트에서 모든 이벤트 데이터 (trace 또는 debug)을 문자열로 ETW 하위 시스템에 기록 됩니다. 쉼표를 사용 하 여 데이터 요소 구분 됩니다. 서로 다른 구분 기호를 지정 하려면 사용 된 <xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter%2A>속성.</xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter%2A>       수신기를 추가 <xref:System.Diagnostics.TraceSource?displayProperty=fullName>ETW 하위 시스템 공급자를 등록 합니다.</xref:System.Diagnostics.TraceSource?displayProperty=fullName> ETW 추적 세션을 로그 파일에는 이벤트를 쓸 Logman.exe 실행 가능한 프로그램 (또는 이와 유사한)를 사용 하 여 만들어야 합니다.       이벤트 데이터는 단일 문자열 때문에 이벤트 수신기를 사용 하 여 매니페스트가 필요가 없습니다.       호출 하는 경우는 <xref:System.Diagnostics.TraceSource?displayProperty=fullName>전달 하면 이벤트를 기록 하는 메서드는 <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>열거형 값입니다.</xref:System.Diagnostics.TraceEventType?displayProperty=fullName> </xref:System.Diagnostics.TraceSource?displayProperty=fullName> 열거형에는 수준과 키워드 값을 포함 합니다. ETW 세션에서 추적 수신기 공급자를 사용 하도록 설정 하면 사용자가 지정한 수준 값 값일 수는 다음 <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>열거형 값 중 하 나와 연관:-위험 (값 = 1)-오류 (값은 2)-정보 (값은 8)-자세한 정보 (값은 16)-경고 (값은 4) 세션에는 다음 <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>열거형 값 중 하 나와 연결 된 값 수에 대해 지정 하는 키워드 값 :-다시 시작 (값은 2, 048)-(값이 256) 시작-중지 (값은 512)-일시 중단 (값은 1024)-(값은 4, 096) 전송</xref:System.Diagnostics.TraceEventType?displayProperty=fullName> </xref:System.Diagnostics.TraceEventType?displayProperty=fullName>"
   example:
   - "```  \nprivate static Guid providerId = new Guid(\"{B3F0C8FC-E8A8-4868-8901-1465E8A2F41B}\");  \n  \n    EventProviderTraceListener listener = new EventProviderTraceListener(providerId.ToString(), \"Test Listener\", \"::\");  \n  \n    // You should use the All default level and control the level using the  \n    // ETW session; otherwise, you may not log all the events requested by the  \n    // session.  \n    TraceSource source = new TraceSource(\"MyProvider\", SourceLevels.All);  \n  \n    source.Listeners.Add(listener);  \n  \n    source.TraceData(TraceEventType.Warning | TraceEventType.Start, 2, new object[] { \"abc\", \"def\", true, 123 });  \n  \n    source.TraceEvent(TraceEventType.Warning, 12, \"Provider guid: {0}\", new object[] { providerId });  \n  \n    source.TraceInformation(\"string {0}, bool {1}, int {2}, ushort {3}\", new object[] { \"abc\", false, 123, (UInt32)5 });  \n```"
   syntax:
@@ -73,13 +73,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;></xref> class using the specified provider identifier."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;> </xref> 클래스 지정된 된 공급자 식별자를 사용 합니다."
   syntax:
     content: public EventProviderTraceListener (string providerId);
     parameters:
     - id: providerId
       type: System.String
-      description: "A unique string <xref:System.Guid> that identifies the provider."
+      description: "고유 문자열 <xref:System.Guid>공급자 식별 합니다.</xref:System.Guid>"
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.#ctor*
   exceptions: []
   platform:
@@ -96,16 +96,16 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;></xref> class using the specified provider identifier and name of the listener."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;> </xref> 클래스 된 지정 된 공급자 식별자와 수신기의 이름을 사용 합니다."
   syntax:
     content: public EventProviderTraceListener (string providerId, string name);
     parameters:
     - id: providerId
       type: System.String
-      description: "A unique string <xref:System.Guid> that identifies the provider."
+      description: "고유 문자열 <xref:System.Guid>공급자 식별 합니다.</xref:System.Guid>"
     - id: name
       type: System.String
-      description: "Name of the listener."
+      description: "수신기의 이름입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.#ctor*
   exceptions: []
   platform:
@@ -122,20 +122,20 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;></xref> class using the specified provider identifier, name of the listener, and delimiter."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Diagnostics.Eventing.EventProviderTraceListener&quot;> </xref> 클래스 지정된 된 공급자 식별자, 이름, 수신기 및 구분 기호를 사용 합니다."
   remarks: '-'
   syntax:
     content: public EventProviderTraceListener (string providerId, string name, string delimiter);
     parameters:
     - id: providerId
       type: System.String
-      description: "A unique string <xref:System.Guid> that identifies the provider."
+      description: "고유 문자열 <xref:System.Guid>공급자 식별 합니다.</xref:System.Guid>"
     - id: name
       type: System.String
-      description: "Name of the listener."
+      description: "수신기의 이름입니다."
     - id: delimiter
       type: System.String
-      description: "Delimiter used to delimit the event data. (For more details, see the <xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter*> property.)"
+      description: "이벤트 데이터를 구분 하는 데 사용 하는 구분 기호입니다. (자세한 내용은 참조는 <xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter*>속성입니다.)</xref:System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter*>"
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.#ctor*
   exceptions: []
   platform:
@@ -152,7 +152,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Closes the output stream so it no longer receives tracing or debugging output."
+  summary: "더 이상 추적 또는 디버깅 출력을 받지 않도록 출력 스트림을 닫습니다."
   syntax:
     content: public override void Close ();
     parameters: []
@@ -172,13 +172,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Gets and sets the delimiter used to delimit the event data that is written to the ETW subsystem."
-  remarks: "The listener converts the data elements to strings and then concatenates the strings together, using the specified delimiter to delimit each data element in the string. The string is then written as the event data in the ETW subsystem.       To successfully parse the string, the consumer must know the delimiter that was used.       If the data contains a string that may contain a comma, specify an appropriate delimiter, so that the event data can be correctly parsed.       You do not need a manifest to consume events from the listener because the event data is a single string.       The delimiter applies to event data written using the <xref:System.Diagnostics.TraceSource.TraceData%2A?displayProperty=fullName> method."
+  summary: "가져오고 ETW 하위 시스템에 기록 된 이벤트 데이터를 구분 하는 데 사용 되는 구분 기호를 설정 합니다."
+  remarks: "수신기는 데이터 요소를 문자열로 변환한 다음 연결 문자열을 지정된 된 구분 기호를 사용 하 여 문자열의 각 데이터 요소 구분 합니다. 그런 다음 문자열은 ETW 하위 시스템의 이벤트 데이터를로 기록 됩니다.       문자열을 성공적으로 구문 분석 하려면 소비자는 데 사용 된 구분 기호를 알고 있어야 합니다.       포함 되 면 데이터는 다음에 쉼표를 포함할 수 있는 이벤트 데이터를 올바르게 구문 분석할 수 있도록 적절 한 구분 기호를 지정 합니다.       이벤트 데이터는 단일 문자열 때문에 이벤트 수신기를 사용 하 여 매니페스트가 필요가 없습니다.       구분 기호를 사용 하 여 기록 된 이벤트 데이터에 적용 된 <xref:System.Diagnostics.TraceSource.TraceData%2A?displayProperty=fullName>메서드.</xref:System.Diagnostics.TraceSource.TraceData%2A?displayProperty=fullName>"
   syntax:
     content: public string Delimiter { get; set; }
     return:
       type: System.String
-      description: "The delimiter used to delimit the event data. The default delimiter is a comma."
+      description: "이벤트 데이터를 구분 하는 데 사용 하는 구분 기호입니다. 기본 구분 기호는 쉼표 합니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.Delimiter*
   exceptions: []
   platform:
@@ -195,16 +195,16 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Emits an error message and a detailed error message to the listener you create when you implement the <xref href=&quot;System.Diagnostics.TraceListener&quot;></xref> class."
+  summary: "오류를 내보냅니다 구현할 때 만든 수신기에 자세한 오류 메시지 및 메시지는 <xref href=&quot;System.Diagnostics.TraceListener&quot;> </xref> 클래스입니다."
   syntax:
     content: public override void Fail (string message, string detailMessage);
     parameters:
     - id: message
       type: System.String
-      description: "A message to emit."
+      description: "내보낼 메시지입니다."
     - id: detailMessage
       type: System.String
-      description: "A detailed message to emit."
+      description: "내보낼 자세한 메시지입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.Fail*
   exceptions: []
   platform:
@@ -221,7 +221,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Flushes the output buffer."
+  summary: "출력 버퍼를 플러시합니다."
   syntax:
     content: public override sealed void Flush ();
     parameters: []
@@ -241,13 +241,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Gets the custom attributes supported by the trace listener."
+  summary: "추적 수신기에서 지 원하는 사용자 지정 특성을 가져옵니다."
   syntax:
     content: protected override string[] GetSupportedAttributes ();
     parameters: []
     return:
       type: System.String[]
-      description: "A string array naming the custom attributes supported by the trace listener, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no custom attributes."
+      description: "추적 수신기에서 지 원하는 사용자 지정 특성 이름을 지정 하는 문자열 배열을 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 사용자 지정 특성이 없는 경우."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.GetSupportedAttributes*
   exceptions: []
   platform:
@@ -264,12 +264,12 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Gets a value indicating whether the trace listener is thread safe."
+  summary: "안전한 추적 수신기가 스레드로부터 있는지 여부를 나타내는 값을 가져옵니다."
   syntax:
     content: public override sealed bool IsThreadSafe { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the trace listener is thread safe; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>추적 수신기가 스레드로부터 안전 합니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.IsThreadSafe*
   exceptions: []
   platform:
@@ -286,25 +286,25 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace information, a data object and event information to the listener specific output."
+  summary: "추적을 기록 정보, 데이터 개체 및 이벤트 정보를 수신기 별 출력 합니다."
   syntax:
     content: public override sealed void TraceData (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object data);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values specifying the type of event that has caused the trace."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> 추적을 발생 시킨 이벤트의 유형을 지정 하는 값입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
     - id: data
       type: System.Object
-      description: "The trace data to emit."
+      description: "내보낼 추적 데이터입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceData*
   exceptions: []
   platform:
@@ -321,25 +321,25 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace information, a data object and event information to the listener specific output."
+  summary: "추적을 기록 정보, 데이터 개체 및 이벤트 정보를 수신기 별 출력 합니다."
   syntax:
     content: public override sealed void TraceData (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, object[] data);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values specifying the type of event that has caused the trace."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> 추적을 발생 시킨 이벤트의 유형을 지정 하는 값입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
     - id: data
       type: System.Object[]
-      description: "An array of objects to emit as data."
+      description: "데이터로 내보낼 개체의 배열입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceData*
   exceptions: []
   platform:
@@ -356,22 +356,22 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace and event information to the listener specific output."
+  summary: "쓰기 추적 및 이벤트 정보를 수신기 별 출력 합니다."
   syntax:
     content: public override sealed void TraceEvent (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values specifying the type of event that has caused the trace."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> 추적을 발생 시킨 이벤트의 유형을 지정 하는 값입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceEvent*
   exceptions: []
   platform:
@@ -388,25 +388,25 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace information, a message, and event information to the listener specific output."
+  summary: "추적 정보, 메시지 및 이벤트 정보를 수신기 별 출력에 씁니다."
   syntax:
     content: public override sealed void TraceEvent (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string message);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values specifying the type of event that has caused the trace."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> 추적을 발생 시킨 이벤트의 유형을 지정 하는 값입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
     - id: message
       type: System.String
-      description: "A message to write."
+      description: "쓸 메시지입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceEvent*
   exceptions: []
   platform:
@@ -423,28 +423,28 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace information, a formatted array of objects and event information to the listener specific output."
+  summary: "추적 정보, 형식이 지정 된 배열 개체 및 이벤트 정보를 수신기 별 출력에 씁니다."
   syntax:
     content: public override sealed void TraceEvent (System.Diagnostics.TraceEventCache eventCache, string source, System.Diagnostics.TraceEventType eventType, int id, string format, object[] args);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values specifying the type of event that has caused the trace."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> 추적을 발생 시킨 이벤트의 유형을 지정 하는 값입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
     - id: format
       type: System.String
-      description: "A format string that contains zero or more format items, which correspond to objects in the `args` array."
+      description: "개체에 해당 하는&0; 개 이상의 서식 항목이 포함 된 형식 문자열은 `args` 배열입니다."
     - id: args
       type: System.Object[]
-      description: "An <xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;></xref> array containing zero or more objects to format."
+      description: "<xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;> </xref> 형식을 지정할 개체가&0; 개 이상 포함 된 배열입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceEvent*
   exceptions: []
   platform:
@@ -461,25 +461,25 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes trace information, a message, a related activity identity and event information to the listener specific output."
+  summary: "추적 정보, 메시지, 관련된 작업 id 및 이벤트 정보를 수신기 별 출력에 씁니다."
   syntax:
     content: public override sealed void TraceTransfer (System.Diagnostics.TraceEventCache eventCache, string source, int id, string message, Guid relatedActivityId);
     parameters:
     - id: eventCache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> object that contains the current process ID, thread ID, and stack trace information."
+      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> 프로세스 ID, 스레드 ID 및 스택 추적 정보가 현재 포함 된 개체입니다."
     - id: source
       type: System.String
-      description: "A name used to identify the output, typically the name of the application that generated the trace event."
+      description: "일반적으로 추적 이벤트를 생성 하는 응용 프로그램의 이름을 출력을 식별 하는 데 사용 되는 이름입니다."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "이벤트에 대 한 숫자 식별자입니다."
     - id: message
       type: System.String
-      description: "A message to write."
+      description: "쓸 메시지입니다."
     - id: relatedActivityId
       type: System.Guid
-      description: "A <xref:System.Guid> object identifying a related activity."
+      description: "A <xref:System.Guid>관련된 작업을 식별 하는 개체입니다.</xref:System.Guid>"
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.TraceTransfer*
   exceptions: []
   platform:
@@ -496,13 +496,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "When overridden in a derived class, writes the specified message to the listener you create in the derived class."
+  summary: "파생된 클래스에서 재정의 하는 경우 지정된 된 메시지를 씁니다 파생된 클래스에서 만든 수신기에 있습니다."
   syntax:
     content: public override sealed void Write (string message);
     parameters:
     - id: message
       type: System.String
-      description: "A message to write."
+      description: "쓸 메시지입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.Write*
   exceptions: []
   platform:
@@ -519,13 +519,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "When overridden in a derived class, writes a message to the listener you create in the derived class, followed by a line terminator."
+  summary: "파생된 클래스에서 재정의 되 면 수신기에 메시지를 만든 씁니다 줄 종결자 파생된 클래스에 있습니다."
   syntax:
     content: public override sealed void WriteLine (string message);
     parameters:
     - id: message
       type: System.String
-      description: "A message to write."
+      description: "쓸 메시지입니다."
   overload: System.Diagnostics.Eventing.EventProviderTraceListener.WriteLine*
   exceptions: []
   platform:
