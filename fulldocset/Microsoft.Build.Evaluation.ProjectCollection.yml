@@ -59,8 +59,8 @@ items:
   nameWithType: ProjectCollection
   fullName: Microsoft.Build.Evaluation.ProjectCollection
   type: Class
-  summary: "Encapsulates a set of related projects, their toolsets, a default set of global properties, and the loggers that should be used to build them. A global version of this class acts as the default project collection."
-  remarks: "Multiple project collections can exist within an app domain. However, these must not build concurrently."
+  summary: "관련 된 프로젝트 집합, 해당 도구 집합, 전역 속성의 기본 집합 및 빌드하는 데 사용 해야 하는 거를 캡슐화 합니다. 이 클래스의 전역 버전은 기본 프로젝트 컬렉션으로 사용 합니다."
+  remarks: "앱 도메인 내에서 여러 프로젝트 컬렉션 존재할 수 있습니다. 그러나 빌드되지 않아야 동시에 합니다."
   syntax:
     content: 'public class ProjectCollection : IDisposable'
   inheritance:
@@ -82,7 +82,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Creates a project collection with no global properties or loggers. The project collection toolset is initialized from the configuration file and registry."
+  summary: "전역 속성이 나로 거 없이 프로젝트 컬렉션을 만듭니다. 프로젝트 컬렉션 도구 집합은 구성 파일 및 레지스트리에서 초기화 됩니다."
   syntax:
     content: public ProjectCollection ();
     parameters: []
@@ -102,13 +102,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Creates a project collection with no global properties or loggers. The project collection toolset is initialized from toolsets in the given locations."
+  summary: "전역 속성이 나로 거 없이 프로젝트 컬렉션을 만듭니다. 프로젝트 컬렉션 도구 집합은 지정 된 위치의 도구 집합에서 초기화 됩니다."
   syntax:
     content: public ProjectCollection (Microsoft.Build.Evaluation.ToolsetDefinitionLocations toolsetLocations);
     parameters:
     - id: toolsetLocations
       type: Microsoft.Build.Evaluation.ToolsetDefinitionLocations
-      description: "The locations from which to load toolsets."
+      description: "도구 집합을 로드할 위치입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.#ctor*
   exceptions: []
   platform:
@@ -125,14 +125,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Instantiates a project collection with specified global properties, no loggers, and that reads toolset information from the configuration file and registry."
-  remarks: "May throw InvalidToolsetDefinitionException."
+  summary: "지정 된 전역 속성이 있고 로거가 없으며 구성 파일 및 레지스트리에서 도구 집합 정보를 읽는 된 프로젝트 컬렉션을 인스턴스화합니다."
+  remarks: "InvalidToolsetDefinitionException throw 될 수 있습니다."
   syntax:
     content: public ProjectCollection (System.Collections.Generic.IDictionary<string,string> globalProperties);
     parameters:
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The default global properties to use. May be null."
+      description: "사용할 기본 전역 속성입니다. Null 일 수 있습니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.#ctor*
   exceptions: []
   platform:
@@ -149,20 +149,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Instantiates a project collection with specified global properties and loggers and using the specified toolset locations."
-  remarks: "May throw InvalidToolsetDefinitionException."
+  summary: "지정 된 전역 속성 및 로거가 있으며 지정 된 도구 집합 위치를 사용 하 여 프로젝트 컬렉션을 인스턴스화합니다."
+  remarks: "InvalidToolsetDefinitionException throw 될 수 있습니다."
   syntax:
     content: public ProjectCollection (System.Collections.Generic.IDictionary<string,string> globalProperties, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, Microsoft.Build.Evaluation.ToolsetDefinitionLocations toolsetDefinitionLocations);
     parameters:
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The default global properties to use. May be null."
+      description: "사용할 기본 전역 속성입니다. Null 일 수 있습니다."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to register. May be null."
+      description: "등록할 로거입니다. Null 일 수 있습니다."
     - id: toolsetDefinitionLocations
       type: Microsoft.Build.Evaluation.ToolsetDefinitionLocations
-      description: "The locations from which to load toolsets."
+      description: "도구 집합을 로드할 위치입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.#ctor*
   exceptions: []
   platform:
@@ -179,29 +179,29 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Creates a project collection with specified global properties, loggers, node count, and onlyLogCriticalEvents value. The project collection toolset is initialized from toolsets in the given locations."
-  remarks: "Throws InvalidProjectFileException if any of the global properties are reserved."
+  summary: "지정 된 전역 속성로 거, 노드 수 및 onlyLogCriticalEvents 값 프로젝트 컬렉션을 만듭니다. 프로젝트 컬렉션 도구 집합은 지정 된 위치의 도구 집합에서 초기화 됩니다."
+  remarks: "예약 된 전역 속성 중 하나라도 InvalidProjectFileException을 throw 합니다."
   syntax:
     content: public ProjectCollection (System.Collections.Generic.IDictionary<string,string> globalProperties, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers, Microsoft.Build.Evaluation.ToolsetDefinitionLocations toolsetDefinitionLocations, int maxNodeCount, bool onlyLogCriticalEvents);
     parameters:
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The default global properties to use. May be null."
+      description: "사용할 기본 전역 속성입니다. Null 일 수 있습니다."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to register. May be null and specified to any build instead."
+      description: "등록할 로거입니다. Null 일 수 모든 빌드에 지정 된 대신 합니다."
     - id: remoteLoggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Logging.ForwardingLoggerRecord}
-      description: "Any remote loggers to register. May be null and specified to any build instead."
+      description: "모든 원격 등록할 로거입니다. Null 일 수 모든 빌드에 지정 된 대신 합니다."
     - id: toolsetDefinitionLocations
       type: Microsoft.Build.Evaluation.ToolsetDefinitionLocations
-      description: "The locations from which to load toolsets."
+      description: "도구 집합을 로드할 위치입니다."
     - id: maxNodeCount
       type: System.Int32
-      description: "The maximum number of nodes to use for building."
+      description: "빌드에 사용할 노드의 최대 수입니다."
     - id: onlyLogCriticalEvents
       type: System.Boolean
-      description: "If set to true, only critical events will be logged."
+      description: "경우 true이 고, 중요 한 이벤트에 집합 기록 됩니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.#ctor*
   exceptions: []
   platform:
@@ -218,13 +218,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds a new toolset to the project collection. Replaces any existing toolset with the same tools version."
+  summary: "프로젝트 컬렉션에 새 도구 집합을 추가합니다. 기존 도구 집합을 동일한 도구 버전으로 바꿉니다."
   syntax:
     content: public void AddToolset (Microsoft.Build.Evaluation.Toolset toolset);
     parameters:
     - id: toolset
       type: Microsoft.Build.Evaluation.Toolset
-      description: "The toolset to be added."
+      description: "도구 집합을 추가할 수입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.AddToolset*
   exceptions: []
   platform:
@@ -241,16 +241,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Determines whether a toolset is defined for the given tools version."
+  summary: "지정된 된 도구 버전에 대 한 도구 집합이 정의 되어 있는지 여부를 결정 합니다."
   syntax:
     content: public bool ContainsToolset (string toolsVersion);
     parameters:
     - id: toolsVersion
       type: System.String
-      description: "The tools version to search for."
+      description: "검색할 도구 버전입니다."
     return:
       type: System.Boolean
-      description: "Returns true if there is a toolset defined for the given tools version; false otherwise."
+      description: "지정 된 도구 버전;에 대해 정의 된 도구 집합이 있으면 true를 반환 false 그렇지 않은 경우."
   overload: Microsoft.Build.Evaluation.ProjectCollection.ContainsToolset*
   exceptions: []
   platform:
@@ -267,12 +267,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the number of projects currently loaded into this collection."
+  summary: "이 컬렉션에 현재 로드 되는 프로젝트 수를 가져옵니다."
   syntax:
     content: public int Count { get; }
     return:
       type: System.Int32
-      description: "Returns the number of projects currently loaded into this collection."
+      description: "이 컬렉션에 현재 로드 되는 프로젝트 수를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Count*
   exceptions: []
   platform:
@@ -289,13 +289,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the default tools version of this project collection."
-  remarks: "This default value is obtained from the .exe.config file, from the system registry, or if neither is present, from the hard-coded tools version &quot;2.0&quot;.       The set method throws InvalidOperationException if a toolset with the provided tools version has not been defined."
+  summary: "이 프로젝트 컬렉션의 기본 도구 버전을 가져옵니다."
+  remarks: "이 기본값에서 가져온는. 시스템 레지스트리에서.exe.config 파일은 &quot;2.0&quot; 하드 코드 된 도구 버전에서 제공 하는 경우 또는 합니다.       Set 메서드가 throw 하는 경우 제공 된 도구 버전을 가진 도구 집합 InvalidOperationException 정의 되지 않았습니다."
   syntax:
     content: public string DefaultToolsVersion { get; set; }
     return:
       type: System.String
-      description: "Returns the default tools version of this project collection, which is always defined."
+      description: "항상 정의이 프로젝트 컬렉션의 기본 도구 버전을 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.DefaultToolsVersion*
   exceptions: []
   platform:
@@ -312,12 +312,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a flag that determines whether <xref:Microsoft.Build.Evaluation.Project.MarkDirty*> is temporarily disabled on projects in this collection. This allows, for example, a global properties to be set without projects getting marked dirty for reevaluation as a consequence."
+  summary: "결정 하는 플래그를 가져오거나 설정 합니다. 여부 <xref:Microsoft.Build.Evaluation.Project.MarkDirty*>가이 컬렉션의 프로젝트에 대해 일시적으로 해제 합니다.</xref:Microsoft.Build.Evaluation.Project.MarkDirty*> 따라서, 예를 들어 전역 속성을 가져오는 더티로 표시 된 재확인을 위해이 인해 프로젝트 없이 설정할 수 있습니다."
   syntax:
     content: public bool DisableMarkDirty { get; set; }
     return:
       type: System.Boolean
-      description: "Returns a flag that determines whether <xref uid=&quot;langword_csharp_MarkDirty&quot; name=&quot;MarkDirty&quot; href=&quot;&quot;></xref> is temporarily disabled."
+      description: "결정 하는 플래그를 반환 하는지 여부를 <xref uid=&quot;langword_csharp_MarkDirty&quot; name=&quot;MarkDirty&quot; href=&quot;&quot;> </xref> 가 일시적으로 해제 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.DisableMarkDirty*
   exceptions: []
   platform:
@@ -334,8 +334,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Releases both managed and unmanaged resources.  Called when a host no longer needs the project collection."
-  remarks: "In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject() before the ProjectCollection goes out of scope.”"
+  summary: "관리 및 관리 되지 않는 리소스를 해제합니다.  호스트에는 더 이상 프로젝트 컬렉션이 필요 때 호출 됩니다."
+  remarks: ".NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서는 전에 호출 해야 UnloadProject()는 ProjectCollection 범위를 벗어나게 합니다. &quot;"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -355,14 +355,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Releases both managed and unmanaged resources.  Called when a host no longer needs the project collection.. Shuts down any logging services that the project collection owns and releases the logger thread."
-  remarks: "Follows the garbage disposal guidelines of .NET."
+  summary: "관리 및 관리 되지 않는 리소스를 해제합니다.  호스트에는 더 이상 프로젝트 컬렉션이 필요 하면 호출... 프로젝트 컬렉션을 소유 하 고로 거 스레드를 해제 합니다. 모든 로깅 서비스를 종료 합니다."
+  remarks: ".NET 가비지 처리 지침을 따릅니다."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "If true, releases both managed and unmanaged resources; otherwise releases only unmanaged resources.."
+      description: "True 이면 관리 되는 관리 되지 않는 리소스만 해제 그렇지 않으면 관리 되지 않는 리소스만 해제..."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Dispose*
   exceptions: []
   platform:
@@ -379,17 +379,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Converts special characters in a string to MSBuild escape format."
-  remarks: "For example, &quot;%3b&quot; for &quot;;&quot;. Only characters that are especially significant to MSBuild parsing are converted. Callers can use this method to make a string safe to be parsed by other methods that would otherwise expand it. Callers can also use this method to make a string safe to be written to a project file."
+  summary: "MSBuild 이스케이프 서식 문자열의 특수 문자를 변환합니다."
+  remarks: "예를 들어, &quot;%3b&quot; for&quot;;&quot;입니다. 구문 분석 하는 MSBuild에 특히 중요 한 문자만 변환 됩니다. 호출자는 문자열을 확장 하려는 다른 방법으로 구문 분석할 안전 하 게 하려면이 메서드를 사용할 수 있습니다. 또한 호출자 문자열로 안전 하 게 보호 하는 프로젝트 파일에 쓸 수 있도록이 메서드를 사용할 수 있습니다."
   syntax:
     content: public static string Escape (string unescapedString);
     parameters:
     - id: unescapedString
       type: System.String
-      description: "The string to be converted."
+      description: "변환할 문자열입니다."
     return:
       type: System.String
-      description: "Returns the converted string."
+      description: "변환된 된 문자열을 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Escape*
   exceptions: []
   platform:
@@ -406,16 +406,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Get any global property on the project collection that has the specified name."
+  summary: "지정된 된 이름을 가진 하는 프로젝트 컬렉션에 전역 속성을 가져옵니다."
   syntax:
     content: public Microsoft.Build.Execution.ProjectPropertyInstance GetGlobalProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property to be retrieved."
+      description: "검색할 속성의 이름입니다."
     return:
       type: Microsoft.Build.Execution.ProjectPropertyInstance
-      description: "Returns any global property on the project collection that has the specified name; otherwise returns null."
+      description: "지정 된 이름의; 프로젝트 컬렉션에 전역 속성을 반환 합니다. 그렇지 않으면 null을 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.GetGlobalProperty*
   exceptions: []
   platform:
@@ -432,17 +432,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all projects whose project path matches the given path."
-  remarks: "There may be more than one project with the given path because projects are also distinguished by global properties and/or tools version."
+  summary: "프로젝트 경로가 지정 된 경로 일치 하는 모든 프로젝트를 가져옵니다."
+  remarks: "프로젝트는 전역 속성 및/또는 도구 버전으로도 구별 하기 때문에 둘 이상의 프로젝트를 지정 된 경로로 수 있습니다."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Project> GetLoadedProjects (string fullPath);
     parameters:
     - id: fullPath
       type: System.String
-      description: "The path to a project file to be matched."
+      description: "경로 일치 하는지 확인할 프로젝트 파일입니다."
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.Project}
-      description: "Returns all projects whose project path matches the given path."
+      description: "프로젝트 경로가 지정 된 경로 일치 하는 모든 프로젝트를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.GetLoadedProjects*
   exceptions: []
   platform:
@@ -459,16 +459,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Get the toolset with the specified tools version."
+  summary: "지정된 된 도구 버전을 가진 도구 집합을 가져옵니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Toolset GetToolset (string toolsVersion);
     parameters:
     - id: toolsVersion
       type: System.String
-      description: "The tools version to match."
+      description: "와 일치 하도록 도구 버전입니다."
     return:
       type: Microsoft.Build.Evaluation.Toolset
-      description: "Returns the toolset with the specified tools version. Returns null if no toolset matching this tools version exists."
+      description: "지정된 된 도구 버전을 가진 도구 집합을 반환합니다. 도구 버전을이 일치 하는 도구 집합이 없으면 null을 반환 존재 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.GetToolset*
   exceptions: []
   platform:
@@ -485,13 +485,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the global project collection object."
-  remarks: "Thread safe."
+  summary: "전역 프로젝트 컬렉션 개체를 가져옵니다."
+  remarks: "스레드로부터 안전 합니다."
   syntax:
     content: public static Microsoft.Build.Evaluation.ProjectCollection GlobalProjectCollection { get; }
     return:
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "Returns the global project collection object. This is a singleton project collection with no global properties or loggers. Toolset information is obtained from the configuration file and registry."
+      description: "전역 프로젝트 컬렉션 개체를 반환합니다. 이 전역 속성이 나 로거가 없는 singleton 프로젝트 컬렉션입니다. 구성 파일 및 레지스트리에서 도구 집합 정보를 가져옵니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.GlobalProjectCollection*
   exceptions: []
   platform:
@@ -508,13 +508,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the read-only default global properties for all projects in this collection."
-  remarks: "Use <xref:Microsoft.Build.Evaluation.ProjectCollection.SetGlobalProperty%2A> and <xref:Microsoft.Build.Evaluation.ProjectCollection.RemoveGlobalProperty%2A> to add, set, and remove global properties."
+  summary: "이 컬렉션의 모든 프로젝트에 대 한 읽기 전용 기본 전역 속성을 가져옵니다."
+  remarks: "사용 하 여 <xref:Microsoft.Build.Evaluation.ProjectCollection.SetGlobalProperty%2A>및 <xref:Microsoft.Build.Evaluation.ProjectCollection.RemoveGlobalProperty%2A>을 추가, 설정 및 전역 속성을 제거 합니다.</xref:Microsoft.Build.Evaluation.ProjectCollection.RemoveGlobalProperty%2A> </xref:Microsoft.Build.Evaluation.ProjectCollection.SetGlobalProperty%2A>"
   syntax:
     content: public System.Collections.Generic.IDictionary<string,string> GlobalProperties { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Returns the read-only default global properties for all projects in this collection."
+      description: "이 컬렉션의 읽기 전용 기본 모든 프로젝트에 대 한 전역 속성을 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.GlobalProperties*
   exceptions: []
   platform:
@@ -531,13 +531,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets an object that provides host services to tasks during builds of projects contained in the project collection."
-  remarks: "By default, returns HostServices, which may be null."
+  summary: "서비스를 호스트 하는 동안 작업에는 프로젝트 컬렉션에 포함 된 프로젝트의 빌드를 제공 하는 개체를 가져오거나 설정 합니다."
+  remarks: "기본적으로 null 일 수 있는 HostServices를 반환 합니다."
   syntax:
     content: public Microsoft.Build.Execution.HostServices HostServices { get; set; }
     return:
       type: Microsoft.Build.Execution.HostServices
-      description: "Returns the host services object."
+      description: "호스트를 반환 합니다. 서비스 개체입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.HostServices*
   exceptions: []
   platform:
@@ -554,13 +554,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a property that selects by default whether the targets and tasks of projects in the project collection can be built."
-  remarks: "Can be used for security purposes. By default, a new project has the same IsBuildEnabled setting as the parent project collection that contains it. When IsBuildEnabled is false, the Build method on this project fails."
+  summary: "대상 및 프로젝트 컬렉션에 있는 프로젝트의 작업을 빌드할 수 있는지를 기본적으로 선택 하는 속성을 가져오거나 설정 합니다."
+  remarks: "보안을 위해 사용할 수 있습니다. 기본적으로 새 프로젝트에 포함 된 부모 프로젝트 컬렉션으로 동일한 IsBuildEnabled 설정이 있습니다. IsBuildEnabled false 인 경우이 프로젝트에 대 한 빌드 메서드가 실패 합니다."
   syntax:
     content: public bool IsBuildEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "Gets or sets a property that selects by default whether the targets and tasks of projects in this project collection can be built."
+      description: "대상 및이 프로젝트 컬렉션에 있는 프로젝트의 작업을 빌드할 수 있는지를 기본적으로 선택 하는 속성을 가져오거나 설정 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.IsBuildEnabled*
   exceptions: []
   platform:
@@ -577,13 +577,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all the projects currently loaded into this collection."
-  remarks: "Each project has a unique combination of path, global properties, and tools version."
+  summary: "이 컬렉션에 현재 로드 된 모든 프로젝트를 가져옵니다."
+  remarks: "각 프로젝트 경로, 전역 속성 및 도구 버전의 조합은 고유 합니다."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Project> LoadedProjects { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.Project}
-      description: "Returns all the projects currently loaded into this collection."
+      description: "이 컬렉션에 현재 로드 된 모든 프로젝트를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadedProjects*
   exceptions: []
   platform:
@@ -600,17 +600,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code in the given project file. The source code is evaluated with the global properties and tools version of this project collection."
-  remarks: "In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 프로젝트 파일의 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는이 프로젝트 컬렉션의 전역 속성 및 도구 버전으로 확인 됩니다."
+  remarks: ".NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The project file to evaluate."
+      description: "평가할 프로젝트 파일입니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "If an existing project in the collection has already been evaluated from the given project file, the existing project is returned. Otherwise, a new project is created, evaluated, added to the project collection, and returned."
+      description: "지정된 된 프로젝트 파일에서 기존 프로젝트 컬렉션에 이미 확인 된, 하는 경우 기존 프로젝트가 반환 됩니다. 그렇지 않은 경우 새 프로젝트, 평가, 프로젝트 컬렉션에 추가 만들고 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -627,17 +627,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code read from the given XML reader. The source code is evaluated with the global properties and tools version of this project collection."
-  remarks: "The project is added to this project collection when either this project or the given project root is given the full path to a project file.       In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 XML 판독기에서 읽은 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는이 프로젝트 컬렉션의 전역 속성 및 도구 버전으로 확인 됩니다."
+  remarks: "이 프로젝트 또는 지정된 된 프로젝트 루트 경로 지정 하면 전체 프로젝트 파일에는 프로젝트가이 프로젝트 컬렉션에 추가 됩니다.       .NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (System.Xml.XmlReader xmlReader);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "프로젝트 소스 코드를 읽을 Xml 판독기입니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "Returns the new project."
+      description: "새 프로젝트를 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -654,20 +654,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code read from the given project file. The source code is evaluated with the global properties of this project collection and the given tools version."
-  remarks: "In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 프로젝트 파일에서 읽은 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는이 프로젝트 컬렉션 및 지정된 된 도구 버전의 전역 속성으로 확인 됩니다."
+  remarks: ".NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (string fileName, string toolsVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "The project file to evaluate."
+      description: "평가할 프로젝트 파일입니다."
     - id: toolsVersion
       type: System.String
-      description: "The tools version to use. May be null."
+      description: "사용할 도구 버전입니다. Null 일 수 있습니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "If an existing project in the collection has already been evaluated from the given project file, and with the given tools version, then the existing project is returned. Otherwise, a new project is created, evaluated, added to the project collection, and returned."
+      description: "지정된 된 도구 버전과 지정 된 프로젝트 파일에서 기존 프로젝트 컬렉션에 이미 확인 된, 하는 경우 기존 프로젝트가 반환 됩니다. 그렇지 않은 경우 새 프로젝트, 평가, 프로젝트 컬렉션에 추가 만들고 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -684,20 +684,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code read from the given XML reader. The source code is evaluated with the global properties of this project collection and the given tools version."
-  remarks: "The project is added to this project collection when either this project or the given project root is given the full path to a project file.       In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 XML 판독기에서 읽은 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는이 프로젝트 컬렉션 및 지정된 된 도구 버전의 전역 속성으로 확인 됩니다."
+  remarks: "이 프로젝트 또는 지정된 된 프로젝트 루트 경로 지정 하면 전체 프로젝트 파일에는 프로젝트가이 프로젝트 컬렉션에 추가 됩니다.       .NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (System.Xml.XmlReader xmlReader, string toolsVersion);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "프로젝트 소스 코드를 읽을 Xml 판독기입니다."
     - id: toolsVersion
       type: System.String
-      description: "The tools version to use. May be null."
+      description: "사용할 도구 버전입니다. Null 일 수 있습니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "Returns the new project."
+      description: "새 프로젝트를 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -714,23 +714,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code read from the given project file. The source code is evaluated with the given global properties and tools version."
-  remarks: "In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 프로젝트 파일에서 읽은 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는 지정 된 전역 속성 및 도구 버전 확인 됩니다."
+  remarks: ".NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (string fileName, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "The project file to be evaluated."
+      description: "계산 되도록 프로젝트 파일입니다."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The global properties to use. May be null, in which case the containing project collection&quot;s global properties will be used."
+      description: "사용할 전역 속성입니다. Null 일 수를 포함 하는 프로젝트 컬렉션의 전역 속성이 사용 되는 경우."
     - id: toolsVersion
       type: System.String
-      description: "The tools version. May be null."
+      description: "도구 버전입니다. Null 일 수 있습니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "If an existing project in the collection has already been evaluated from the given project file, and with the given global properties and tools version, then the existing project is returned. Otherwise, a new project is created, evaluated, added to the project collection, and returned."
+      description: "지정 된 전역 속성 및 도구 버전과 지정 된 프로젝트 파일에서 기존 프로젝트 컬렉션에 이미 확인 된, 하는 경우 기존 프로젝트가 반환 됩니다. 그렇지 않은 경우 새 프로젝트, 평가, 프로젝트 컬렉션에 추가 만들고 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -747,23 +747,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates a project from the source code read from the given XML reader. The source code is evaluated with the given global properties and tools version."
-  remarks: "The project is added to this project collection when either this project or the given project root is given the full path to a project file.       In the MSBuild versions that were delivered with .Net 4.5 and Visual Studio 12.0, you must call UnloadProject before the ProjectCollection goes out of scope."
+  summary: "지정된 된 XML 판독기에서 읽은 소스 코드에서 프로젝트를 확인 합니다. 소스 코드는 지정 된 전역 속성 및 도구 버전 확인 됩니다."
+  remarks: "이 프로젝트 또는 지정된 된 프로젝트 루트 경로 지정 하면 전체 프로젝트 파일에는 프로젝트가이 프로젝트 컬렉션에 추가 됩니다.       .NET 4.5 및 Visual Studio 12.0으로 배달 된 MSBuild 버전에서 ProjectCollection 범위를 벗어나면 전에 UnloadProject를 호출 해야 합니다."
   syntax:
     content: public Microsoft.Build.Evaluation.Project LoadProject (System.Xml.XmlReader xmlReader, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project from"
+      description: "프로젝트를 읽을 Xml 판독기"
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The global properties to use. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "사용할 전역 속성입니다. 포함 하는 프로젝트 컬렉션의 전역 속성이 사용 되는 경우에서 null 일 수 있습니다."
     - id: toolsVersion
       type: System.String
-      description: "The tools version. May be null."
+      description: "도구 버전입니다. Null 일 수 있습니다."
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "Returns the new project."
+      description: "새 프로젝트를 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.LoadProject*
   exceptions: []
   platform:
@@ -780,13 +780,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all loggers that projects in this collection can use for their builds."
-  remarks: "Loggers are added with the <xref:Microsoft.Build.Evaluation.ProjectCollection.RegisterLogger%2A> method."
+  summary: "이 컬렉션의 프로젝트의 빌드에 사용할 수 있는 모든로 거를 가져옵니다."
+  remarks: "로 거와 추가 되는 <xref:Microsoft.Build.Evaluation.ProjectCollection.RegisterLogger%2A>메서드.</xref:Microsoft.Build.Evaluation.ProjectCollection.RegisterLogger%2A>"
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Framework.ILogger> Loggers { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Framework.ILogger}
-      description: "Returns all loggers that projects in this collection can use for their builds."
+      description: "이 컬렉션의 프로젝트에 있는 모든로 거는 해당 빌드에 사용할 수를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Loggers*
   exceptions: []
   platform:
@@ -803,12 +803,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a switch that determines whether only critical events such as warnings and errors are logged."
+  summary: "경고 및 오류와 같은 중요 이벤트만 기록 되는지 여부를 결정 하는 스위치를 설정 하거나 가져옵니다."
   syntax:
     content: public bool OnlyLogCriticalEvents { get; set; }
     return:
       type: System.Boolean
-      description: "If true, only critical events such as warnings and errors are logged; false otherwise."
+      description: "True 인 경우, 경고 및 오류와 같은 중요 이벤트만 기록 됩니다. false 그렇지 않은 경우."
   overload: Microsoft.Build.Evaluation.ProjectCollection.OnlyLogCriticalEvents*
   exceptions: []
   platform:
@@ -825,12 +825,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Event that is fired when a project is added to the ProjectRootElementCache of this project collection."
+  summary: "프로젝트가이 프로젝트 컬렉션의 ProjectRootElementCache에 추가 될 때 발생 하는 이벤트입니다."
   syntax:
     content: public event Microsoft.Build.Evaluation.ProjectCollection.ProjectAddedEventHandler ProjectAdded;
     return:
       type: Microsoft.Build.Evaluation.ProjectCollection.ProjectAddedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -846,13 +846,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Raised when a <xref href=&quot;Microsoft.Build.Evaluation.Project&quot;></xref> contained by this instance is directly changed."
-  remarks: "This event is NOT raised for direct project XML changes via the construction model."
+  summary: "발생 시기는 <xref href=&quot;Microsoft.Build.Evaluation.Project&quot;> </xref> 이 포함 된 인스턴스가 변경 되는 직접 합니다."
+  remarks: "구성 모델을 통해 직접 프로젝트 XML 변경 내용에 대해이 이벤트가 발생 하지 않습니다."
   syntax:
     content: public event EventHandler<Microsoft.Build.Evaluation.ProjectChangedEventArgs> ProjectChanged;
     return:
       type: System.EventHandler{Microsoft.Build.Evaluation.ProjectChangedEventArgs}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -868,13 +868,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Raised when state is changed on this instance."
-  remarks: "This event is NOT raised for changes in individual projects."
+  summary: "이 인스턴스에서 상태가 변경 될 때 발생 합니다."
+  remarks: "이 이벤트는 개별 프로젝트의 변경 내용을 발생 하지 않습니다."
   syntax:
     content: public event EventHandler<Microsoft.Build.Evaluation.ProjectCollectionChangedEventArgs> ProjectCollectionChanged;
     return:
       type: System.EventHandler{Microsoft.Build.Evaluation.ProjectCollectionChangedEventArgs}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -890,13 +890,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Raised when a <xref href=&quot;Microsoft.Build.Construction.ProjectRootElement&quot;></xref> contained by this instance is changed."
-  remarks: "This event is NOT raised for changes to global properties, or any other change that doesn&quot;t actually dirty the XML."
+  summary: "발생 시기는 <xref href=&quot;Microsoft.Build.Construction.ProjectRootElement&quot;> </xref> 이 포함 된 인스턴스가 변경 됩니다."
+  remarks: "이 이벤트는 전역 속성 변경은 또는 XML 커밋되지 않음 실제로 하지 않는 다른 모든 변경 내용이 발생 하지 않습니다."
   syntax:
     content: public event EventHandler<Microsoft.Build.Evaluation.ProjectXmlChangedEventArgs> ProjectXmlChanged;
     return:
       type: System.EventHandler{Microsoft.Build.Evaluation.ProjectXmlChangedEventArgs}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -912,13 +912,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds the given remote loggers to the collection of remote loggers used for builds of projects in this collection."
+  summary: "이 컬렉션의 프로젝트의 빌드에 사용 되는 원격로 거 컬렉션에 지정된 된 원격로 거를 추가 합니다."
   syntax:
     content: public void RegisterForwardingLoggers (System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers);
     parameters:
     - id: remoteLoggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Logging.ForwardingLoggerRecord}
-      description: "The remote loggers to add. May be null."
+      description: "추가할 원격 로거입니다. Null 일 수 있습니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.RegisterForwardingLoggers*
   exceptions: []
   platform:
@@ -935,14 +935,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds the given logger to the collection of loggers used for builds of projects in this collection."
-  remarks: "If the logger object is already in the collection, does nothing."
+  summary: "이 컬렉션의 프로젝트의 빌드에 사용 되는 거 컬렉션에 지정된 된로 거를 추가 합니다."
+  remarks: "로 거 개체가 이미 컬렉션에 있을 경우 아무 작업도 수행 하지 않습니다."
   syntax:
     content: public void RegisterLogger (Microsoft.Build.Framework.ILogger logger);
     parameters:
     - id: logger
       type: Microsoft.Build.Framework.ILogger
-      description: "The logger to add."
+      description: "추가할 로거입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.RegisterLogger*
   exceptions: []
   platform:
@@ -959,14 +959,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds the given loggers to the collection of loggers used for builds of projects in this collection."
-  remarks: "Skips any logger objects that are already in the collection."
+  summary: "이 컬렉션의 프로젝트의 빌드에 사용 되는 거 컬렉션에 지정된 된로 거를 추가 합니다."
+  remarks: "컬렉션에 이미 있는 모든로 거 개체를 건너뜁니다."
   syntax:
     content: public void RegisterLoggers (System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers);
     parameters:
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be added. May be null."
+      description: "추가할 로거입니다. Null 일 수 있습니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.RegisterLoggers*
   exceptions: []
   platform:
@@ -983,7 +983,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes all toolsets from the project collection."
+  summary: "프로젝트 컬렉션에서 모든 도구 집합을 제거합니다."
   syntax:
     content: public void RemoveAllToolsets ();
     parameters: []
@@ -1003,16 +1003,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes a global property from the set of default global properties."
+  summary: "기본 전역 속성 집합에서 전역 속성을 제거합니다."
   syntax:
     content: public bool RemoveGlobalProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the default global property to remove."
+      description: "제거할 기본 전역 속성의 이름입니다."
     return:
       type: System.Boolean
-      description: "Returns true if the global property is present before removal; false otherwise."
+      description: "제거 하기 전에 전역 속성이 있으면 true를 반환 false 그렇지 않은 경우."
   overload: Microsoft.Build.Evaluation.ProjectCollection.RemoveGlobalProperty*
   exceptions: []
   platform:
@@ -1029,16 +1029,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes a toolset from the project collection."
+  summary: "프로젝트 컬렉션에서 도구 집합을 제거 합니다."
   syntax:
     content: public bool RemoveToolset (string toolsVersion);
     parameters:
     - id: toolsVersion
       type: System.String
-      description: "The toolset to be removed."
+      description: "제거할 도구 집합입니다."
     return:
       type: System.Boolean
-      description: "Returns true if the toolset is present before removal; false otherwise."
+      description: "제거 하기 전에 도구 집합이 있으면 true를 반환 false 그렇지 않은 경우."
   overload: Microsoft.Build.Evaluation.ProjectCollection.RemoveToolset*
   exceptions: []
   platform:
@@ -1055,17 +1055,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Sets the value of a property in the default set of global properties."
-  remarks: "If no matching property is found, the property is created and initialized with the given value."
+  summary: "전역 속성의 기본에서 속성의 값 집합을 설정 합니다."
+  remarks: "일치 하는 속성이 있으면 속성 만들고 지정된 된 값을 사용 하 여 초기화 합니다."
   syntax:
     content: public void SetGlobalProperty (string name, string value);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the default global property to be added or set."
+      description: "추가 하거나 설정할 기본 전역 속성의 이름입니다."
     - id: value
       type: System.String
-      description: "The new value of the default global property."
+      description: "기본 전역 속성의 새 값입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.SetGlobalProperty*
   exceptions: []
   platform:
@@ -1082,12 +1082,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a flag the determines whether ReevaluateIfNecessary is temporarily disabled on projects in this collection. This is useful when the host expects to make a number of reads and writes to projects, and wants to temporarily sacrifice correctness for performance."
+  summary: "플래그를 가져오거나 설정 합니다.는이 컬렉션의 프로젝트에서 ReevaluateIfNecessary가 일시적으로 해제 되었는지를 결정 합니다. 일시적으로 성능에 대 한 정확성을 무시 하려는 한 호스트 읽기 수 있도록 요구 하 고 프로젝트에 기록 하는 경우 유용 합니다."
   syntax:
     content: public bool SkipEvaluation { get; set; }
     return:
       type: System.Boolean
-      description: "Returns a flag the determines whether ReevaluateIfNecessary is temporarily disabled."
+      description: "플래그를 반환 된 ReevaluateIfNecessary가 일시적으로 해제 되어 있는지 여부를 결정 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.SkipEvaluation*
   exceptions: []
   platform:
@@ -1104,12 +1104,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the locations used to find the toolsets."
+  summary: "도구 집합을 찾는 데 사용 되는 위치를 가져옵니다."
   syntax:
     content: public Microsoft.Build.Evaluation.ToolsetDefinitionLocations ToolsetLocations { get; }
     return:
       type: Microsoft.Build.Evaluation.ToolsetDefinitionLocations
-      description: "Returns the locations used to find the toolsets."
+      description: "사용 하는 도구 집합을 찾을 위치를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.ToolsetLocations*
   exceptions: []
   platform:
@@ -1126,12 +1126,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the toolsets available to this project collection."
+  summary: "이 프로젝트 컬렉션에 사용할 수 있는 도구 집합을 가져옵니다."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.Toolset> Toolsets { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.Toolset}
-      description: "Returns the toolsets available to this project collection."
+      description: "이 프로젝트 컬렉션에 사용할 수 있는 도구 집합을 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Toolsets*
   exceptions: []
   platform:
@@ -1148,16 +1148,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Attempts to remove a project from the collection."
+  summary: "컬렉션에서 프로젝트를 제거 하려고 합니다."
   syntax:
     content: public bool TryUnloadProject (Microsoft.Build.Construction.ProjectRootElement projectRootElement);
     parameters:
     - id: projectRootElement
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The root element of the project to unload."
+      description: "언로드할 프로젝트의 루트 요소입니다."
     return:
       type: System.Boolean
-      description: "Returns true if the project was unloaded."
+      description: "프로젝트가 언로드된 true를 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.TryUnloadProject*
   exceptions: []
   platform:
@@ -1174,17 +1174,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Converts escaped characters in a string to MSBuild characters with special meaning."
-  remarks: "For example, &quot;%3b&quot; is converted to &quot;;&quot;."
+  summary: "특별 한 의미가 있는 MSBuild 자로 문자열의 문자를 이스케이프 하는 변환 합니다."
+  remarks: "&quot;%3b&quot; 변환할 예를 들어 &quot;;&quot;입니다."
   syntax:
     content: public static string Unescape (string escapedString);
     parameters:
     - id: escapedString
       type: System.String
-      description: "The string to be converted."
+      description: "변환할 문자열입니다."
     return:
       type: System.String
-      description: "Returns the converted string."
+      description: "변환된 된 문자열을 반환합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Unescape*
   exceptions: []
   platform:
@@ -1201,8 +1201,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes all projects in this project collection."
-  remarks: "The host should call this method when it no longer needs the projects."
+  summary: "이 프로젝트 컬렉션의 모든 프로젝트를 제거합니다."
+  remarks: "프로젝트는 더 이상 경우 호스트에서이 메서드를 호출 해야 합니다."
   syntax:
     content: public void UnloadAllProjects ();
     parameters: []
@@ -1222,19 +1222,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes a project root element from the project root cache."
-  remarks: "This method is useful for the case where the host knows that all projects using this root element have been removed, and that any unsaved changes should be discarded."
+  summary: "프로젝트 루트 캐시에서 프로젝트 루트 요소를 제거합니다."
+  remarks: "이 메서드는이 루트 요소를 사용 하 여 모든 프로젝트 제거 된 하 고 저장 되지 않은 모든 변경 내용이 삭제는 알고 있는 경우에 유용 합니다."
   syntax:
     content: public void UnloadProject (Microsoft.Build.Construction.ProjectRootElement projectRootElement);
     parameters:
     - id: projectRootElement
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The project root element to unload."
+      description: "언로드할 프로젝트 루트 요소입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.UnloadProject*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if the project root element to unload is still in use by a loaded project or its imports."
+    description: "언로드할 프로젝트 루트 요소에서 로드 된 프로젝트 또는 해당 가져오기 사용 중인 경우 발생 합니다."
   platform:
   - net462
 - uid: Microsoft.Build.Evaluation.ProjectCollection.UnloadProject(Microsoft.Build.Evaluation.Project)
@@ -1249,14 +1249,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes the given project from the project collection."
-  remarks: "The host should call this method when it no longer needs the project.       Throws InvalidOperationException if the given project is not present in the project collection."
+  summary: "프로젝트 컬렉션에서 지정된 된 프로젝트를 제거합니다."
+  remarks: "호스트는 더 이상 프로젝트 해야 하는 경우이 메서드를 호출 해야 합니다.       지정된 된 프로젝트는 프로젝트 컬렉션에 없는 경우 InvalidOperationException을 throw 합니다."
   syntax:
     content: public void UnloadProject (Microsoft.Build.Evaluation.Project project);
     parameters:
     - id: project
       type: Microsoft.Build.Evaluation.Project
-      description: "The project to remove."
+      description: "제거할 프로젝트입니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.UnloadProject*
   exceptions: []
   platform:
@@ -1273,7 +1273,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes all loggers from the collection of loggers used by project builds in this collection."
+  summary: "이 컬렉션에 빌드에서 프로젝트에서 사용 하는 거 컬렉션에서 모든로 거를 제거 합니다."
   syntax:
     content: public void UnregisterAllLoggers ();
     parameters: []
@@ -1293,13 +1293,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the file version of the assembly file that contains the MSBuild engine."
-  remarks: "This is the Windows file version (specifically the value of the ProductVersion resource), which is not necessarily the assembly version. To obtain the assembly version, use Constants.AssemblyVersion.       See also the <xref:Microsoft.Build.Evaluation.ProjectCollection.ToolsetsVersion%2A>."
+  summary: "MSBuild 엔진이 포함 된 어셈블리 파일의 파일 버전을 가져옵니다."
+  remarks: "어셈블리 버전 필요가 없는 Windows 파일 버전 (특히: ProductVersion 리소스 값)입니다. 어셈블리 버전을 가져오려면 Constants.AssemblyVersion를 사용 합니다.       <xref:Microsoft.Build.Evaluation.ProjectCollection.ToolsetsVersion%2A>.</xref:Microsoft.Build.Evaluation.ProjectCollection.ToolsetsVersion%2A> 를 참조 하십시오."
   syntax:
     content: public static Version Version { get; }
     return:
       type: System.Version
-      description: "Returns the file version of the assembly file that contains the MSBuild engine."
+      description: "MSBuild 엔진이 포함 된 어셈블리 파일의 파일 버전을 반환 합니다."
   overload: Microsoft.Build.Evaluation.ProjectCollection.Version*
   exceptions: []
   platform:

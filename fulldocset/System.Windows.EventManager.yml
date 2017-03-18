@@ -14,8 +14,8 @@ items:
   nameWithType: EventManager
   fullName: System.Windows.EventManager
   type: Class
-  summary: "Provides event-related utility methods that register routed events for class owners and add class handlers."
-  remarks: "This class is most commonly used to register a new routed event, with <xref:System.Windows.EventManager.RegisterRoutedEvent%2A>.       The second most common [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] usage is <xref:System.Windows.EventManager.RegisterClassHandler%2A>. You use this method to enable class handling of a routed event on the class, or an attached event. For details, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md)."
+  summary: "클래스 소유자에 대 한 라우트된 이벤트를 등록 하 고 클래스 처리기를 추가 하는 이벤트 관련 유틸리티 메서드를 제공 합니다."
+  remarks: "이 클래스는 <xref:System.Windows.EventManager.RegisterRoutedEvent%2A>.</xref:System.Windows.EventManager.RegisterRoutedEvent%2A> 새 라우트된 이벤트를 등록 하는 데 가장 일반적으로 사용 됩니다.       두 번째 가장 일반적인 [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] 사용량이 <xref:System.Windows.EventManager.RegisterClassHandler%2A>.</xref:System.Windows.EventManager.RegisterClassHandler%2A> 이 메서드를 사용 하 여 클래스에 대해 라우트된 이벤트 또는 연결된 된 이벤트를 처리할 수 있습니다. 자세한 내용은 참조 [표시 라우트된 이벤트로 클래스를 처리 하 고,](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example show how to use this class to register a new routed event as a class member, along with the routed event \"wrapper\" technique of overriding the add and remove implementations for a [!INCLUDE[TLA2#tla_clr](~/add/includes/tla2sharptla-clr-md.md)] event.  \n  \n [!code-cs[DPCustom#EventManagerClass](~/add/codesnippet/csharp/DPCustom/default.xaml.cs#eventmanagerclass)]\n [!code-vb[DPCustom#EventManagerClass](~/add/codesnippet/visualbasic/dpcustom/default.xaml.vb#eventmanagerclass)]"
   syntax:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Returns identifiers for routed events that have been registered to the event system."
-  remarks: "More <xref:System.Windows.RoutedEvent> objects can be registered later. This method gets a snapshot and the collection of routed events is writeable throughout an application&quot;s lifetime. The collection returned might be quite large. Even just counting the events that are part of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)], the collection count is in the high hundreds."
+  summary: "이벤트 시스템에 등록 된 라우트된 이벤트에 대 한 식별자를 반환 합니다."
+  remarks: "더 많은 <xref:System.Windows.RoutedEvent>개체를 나중에 등록할 수 있습니다.</xref:System.Windows.RoutedEvent> 이 메서드는 스냅숏 가져오고 라우트된 이벤트의 컬렉션은 응용 프로그램의 수명 주기 동안 쓰기 가능 합니다. 반환 되는 컬렉션은 매우 클 수 있습니다. 이벤트의 일부인 계산 해도 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)], 컬렉션 수는 수백 개에 이릅니다."
   syntax:
     content: public static System.Windows.RoutedEvent[] GetRoutedEvents ();
     parameters: []
     return:
       type: System.Windows.RoutedEvent[]
-      description: "An array of type <xref href=&quot;System.Windows.RoutedEvent&quot;></xref> that contains the registered objects."
+      description: "형식의 배열 <xref href=&quot;System.Windows.RoutedEvent&quot;> </xref> 등록 된 개체가 들어 있는입니다."
   overload: System.Windows.EventManager.GetRoutedEvents*
   exceptions: []
   platform:
@@ -62,16 +62,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Finds all routed event identifiers for events that are registered with the provided owner type."
+  summary: "이벤트에 등록 된 소유자 형식에 대 한 모든 라우트된 이벤트 식별자를 찾습니다."
   syntax:
     content: public static System.Windows.RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
     parameters:
     - id: ownerType
       type: System.Type
-      description: "The type to start the search with. Base classes are included in the search."
+      description: "사용 하 여 검색을 시작 유형입니다. 기본 클래스 검색에 포함 됩니다."
     return:
       type: System.Windows.RoutedEvent[]
-      description: "An array of matching routed event identifiers if any match is found; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "그렇지 않으면 라우트된 이벤트 식별자와 일치 하는 배열 그렇지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.EventManager.GetRoutedEventsForOwner*
   exceptions: []
   platform:
@@ -88,8 +88,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a class handler for a particular routed event."
-  remarks: "Class handling is a feature that is available for routed events, including attached events that are implemented with routed event backing. A class handler is like a static handler that exists for all instances of the class. Because the handler is static, you cannot change instance properties directly with a class handler, but you can access instances through the `sender` parameter and/or the event data.       Class handlers are invoked before instance handlers. You can implement a class handler that has the behavior of marking the event as handled. Therefore, instance handlers for a class-handled event are not invoked unless the instance handlers register specifically for handled events.       Many of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] base element events provide class handling virtual methods. By overriding these methods in classes that inherit the base classes, you can implement class handling without calling RegisterClassHandler in static constructors. These class handling methods typically exist for input events and have names that start with &quot;On&quot; and end with the name of the event being class handled.       For more information about class handling, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md).       Using this signature, class handlers will be registered to invoke only in response to unhandled events. You can also register class handlers to invoke even if the event arguments are marked handled, by using the <xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29> signature, with `handledEventsToo` set to `true`."
+  summary: "특정 라우트된 이벤트에 대 한 클래스 처리기를 등록합니다."
+  remarks: "클래스 처리에 백업 하는 라우트된 이벤트 구현 되는 연결 된 이벤트를 비롯 한 라우트된 이벤트를 사용할 수 있는 기능입니다. 클래스 처리기 클래스의 모든 인스턴스에 대 한 존재 하는 정적 처리기와 비슷합니다. 처리기가 정적, 클래스 처리기를 사용 하 여 직접 인스턴스 속성을 변경할 수 없지만 통해 인스턴스에 액세스할 수 때문에 `sender` 매개 변수 및/또는 이벤트 데이터입니다.       인스턴스 처리기 앞 클래스 처리기가 호출 됩니다. 이벤트 처리로 표시의 동작을 포함 하는 클래스 처리기를 구현할 수 있습니다. 따라서 처리 된 이벤트에 대해 특별히 인스턴스 처리기 등록 하지 않는 한 클래스 처리 이벤트에 대 한 인스턴스 처리기 호출 되지 않습니다.       대부분의 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] 의 이벤트는 가상 메서드를 처리 하는 클래스를 제공 합니다. 기본 클래스를 상속 하는 클래스에서 이러한 메서드를 재정의 하 여 클래스 RegisterClassHandler 정적 생성자에서 호출 하지 않고 처리를 구현할 수 있습니다. 일반적으로 이러한 클래스 처리 메서드는 입력된 이벤트에 대해 존재 하 고 이름이 &quot;On&quot;으로 시작 되 고 클래스에서 처리 되는 이벤트의 이름으로 끝납니다.       클래스 처리에 대 한 자세한 내용은 참조 [표시 라우트된 이벤트로 클래스를 처리 하 고,](~/add/includes/ajax-current-ext-md.md)합니다.       이 서명을 사용 하 여, 처리 되지 않은 이벤트에 대 한 응답에만 호출할 클래스 처리기를 등록 합니다. 이벤트 인수를 사용 하 여 처리, 표시 된 경우에 호출 하는 클래스 처리기를 등록할 수도 있습니다는 <xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29>서명을와 `handledEventsToo` 로 설정 `true`.</xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29>"
   example:
   - "The following example adds a handler for <xref:System.Windows.UIElement.PreviewMouseLeftButtonDown>, calling RegisterClassHandler.  \n  \n [!code-vb[ClassHandling#StaticAndRegisterClassHandler](~/add/codesnippet/visualbasic/ClassHandling.sdksamplelibrary/class1.vb#staticandregisterclasshandler)]\n [!code-cs[ClassHandling#StaticAndRegisterClassHandler](~/add/codesnippet/csharp/ClassHandling/SDKSampleLibrary/class1.cs#staticandregisterclasshandler)]"
   syntax:
@@ -97,13 +97,13 @@ items:
     parameters:
     - id: classType
       type: System.Type
-      description: "The type of the class that is declaring class handling."
+      description: "클래스 처리를 선언 하는 클래스의 형식입니다."
     - id: routedEvent
       type: System.Windows.RoutedEvent
-      description: "The routed event identifier of the event to handle."
+      description: "라우트된 이벤트 식별자를 처리 하는 이벤트입니다."
     - id: handler
       type: System.Delegate
-      description: "A reference to the class handler implementation."
+      description: "클래스 처리기 구현에 대 한 참조입니다."
   overload: System.Windows.EventManager.RegisterClassHandler*
   exceptions: []
   platform:
@@ -120,23 +120,23 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a class handler for a particular routed event, with the option to handle events where event data is already marked handled."
-  remarks: "Class handling is a feature that is available for routed events, including attached events that are implemented with routed event backing. A class handler is like a static handler that exists for all instances of the class. Because the handler is static, you cannot change instance properties directly with a class handler, but you can access instances through the `sender` parameter and/or the event data.       Class handlers are invoked before instance handlers. You can implement a class handler that has the behavior of marking the event as handled. Therefore, instance handlers for a class-handled event are not invoked unless the instance handlers register specifically for handled events.       Many of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] base element events provide class handling virtual methods. By overriding these methods in classes that inherit the base classes, you can implement class handling without calling <xref:System.Windows.EventManager.RegisterClassHandler%2A> in static constructors. These class handling methods typically exist for input events and have names that start with &quot;On&quot; and end with the name of the event being class handled.       For more information about class handling, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md).       Using this signature, class handlers can be registered to invoke upon handled events, by setting `handledEventsToo` set to `true`. Generally, you should do this only if there is a known handling issue you are trying to work around, such as input system handling from mouse or keyboard events."
+  summary: "이벤트 데이터를 표시 이미 처리 된 이벤트를 처리 하는 옵션으로 특정 라우트된 이벤트에 대 한 클래스 처리기를 등록 합니다."
+  remarks: "클래스 처리에 백업 하는 라우트된 이벤트 구현 되는 연결 된 이벤트를 비롯 한 라우트된 이벤트를 사용할 수 있는 기능입니다. 클래스 처리기 클래스의 모든 인스턴스에 대 한 존재 하는 정적 처리기와 비슷합니다. 처리기가 정적, 클래스 처리기를 사용 하 여 직접 인스턴스 속성을 변경할 수 없지만 통해 인스턴스에 액세스할 수 때문에 `sender` 매개 변수 및/또는 이벤트 데이터입니다.       인스턴스 처리기 앞 클래스 처리기가 호출 됩니다. 이벤트 처리로 표시의 동작을 포함 하는 클래스 처리기를 구현할 수 있습니다. 따라서 처리 된 이벤트에 대해 특별히 인스턴스 처리기 등록 하지 않는 한 클래스 처리 이벤트에 대 한 인스턴스 처리기 호출 되지 않습니다.       대부분의 [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] 의 이벤트는 가상 메서드를 처리 하는 클래스를 제공 합니다. 기본 클래스를 상속 하는 클래스에서 이러한 메서드를 재정의 하 여 클래스 호출 하지 않고 처리를 구현할 수 있습니다 <xref:System.Windows.EventManager.RegisterClassHandler%2A>정적 생성자에서.</xref:System.Windows.EventManager.RegisterClassHandler%2A> 일반적으로 이러한 클래스 처리 메서드는 입력된 이벤트에 대해 존재 하 고 이름이 &quot;On&quot;으로 시작 되 고 클래스에서 처리 되는 이벤트의 이름으로 끝납니다.       클래스 처리에 대 한 자세한 내용은 참조 [표시 라우트된 이벤트로 클래스를 처리 하 고,](~/add/includes/ajax-current-ext-md.md)합니다.       이 서명을 사용 하 여, 클래스 처리기 등록할 수를 설정 하 여 이벤트가 처리 시 호출할 `handledEventsToo` 로 설정 `true`합니다. 일반적으로 마우스 또는 키보드 이벤트를 처리 하는 입력된 시스템 등 해결 하려고 하는 알려진된 처리 문제가 있는 경우에이 작업을 수행 해야 있습니다."
   syntax:
     content: public static void RegisterClassHandler (Type classType, System.Windows.RoutedEvent routedEvent, Delegate handler, bool handledEventsToo);
     parameters:
     - id: classType
       type: System.Type
-      description: "The type of the class that is declaring class handling."
+      description: "클래스 처리를 선언 하는 클래스의 형식입니다."
     - id: routedEvent
       type: System.Windows.RoutedEvent
-      description: "The routed event identifier of the event to handle."
+      description: "라우트된 이벤트 식별자를 처리 하는 이벤트입니다."
     - id: handler
       type: System.Delegate
-      description: "A reference to the class handler implementation."
+      description: "클래스 처리기 구현에 대 한 참조입니다."
     - id: handledEventsToo
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to invoke this class handler even if arguments of the routed event have been marked as handled; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to retain the default behavior of not invoking the handler on any marked-handled event."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>라우트된 이벤트의 인수; 처리 된 것으로 표시 된 경우에이 클래스 처리기를 호출 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 모든 표시 된 처리 이벤트 처리기를 호출 하지의 기본 동작을 유지 하도록 합니다."
   overload: System.Windows.EventManager.RegisterClassHandler*
   exceptions: []
   platform:
@@ -153,26 +153,26 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a new routed event with the [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] event system."
-  remarks: "Use the return value of this method to create the static declaration for a unique <xref:System.Windows.RoutedEvent> identifier field. This field should be stored within the owner type.       There are a considerable number of conventions and best practices associated with how routed events should be named, registered, and exposed in a class. For more information, see [Routed Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "새 라우트된 이벤트를 등록 된 [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] 이벤트 시스템입니다."
+  remarks: "이 메서드의 반환 값을 사용 하 여는 고유한에 대 한 정적 선언을 만들려면 <xref:System.Windows.RoutedEvent>식별자 필드입니다.</xref:System.Windows.RoutedEvent> 이 필드는 소유자 형식 내에서 저장 되어야 합니다.       규칙의 상당한 여러 가지 고 라우트된 이벤트와 관련 된 모범 사례 됩니다 라는, 등록, 클래스에 노출 합니다. 자세한 내용은 참조 [라우트된 이벤트 개요](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public static System.Windows.RoutedEvent RegisterRoutedEvent (string name, System.Windows.RoutingStrategy routingStrategy, Type handlerType, Type ownerType);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the routed event. The name must be unique within the owner type and cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+      description: "라우트된 이벤트의 이름입니다. 이름은 소유자 형식 내에서 고유 해야 및 커야 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 빈 문자열입니다."
     - id: routingStrategy
       type: System.Windows.RoutingStrategy
-      description: "The routing strategy of the event as a value of the enumeration."
+      description: "열거형의 값이 이벤트는 라우팅 전략입니다."
     - id: handlerType
       type: System.Type
-      description: "The type of the event handler. This must be a delegate type and cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "이벤트 처리기의 형식입니다. 이 대리자 형식 이어야 및 커야 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
     - id: ownerType
       type: System.Type
-      description: "The owner class type of the routed event. This cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "라우트된 이벤트의 소유자 클래스 형식입니다. 이 될 수 없습니다 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.Windows.RoutedEvent
-      description: "The identifier for the newly registered routed event. This identifier object can now be stored as a static field in a class and then used as a parameter for methods that attach handlers to the event. The routed event identifier is also used for other event system [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)]."
+      description: "새로 등록 된 라우트된 이벤트의 식별자입니다. 이 식별자 개체는 클래스의 정적 필드로 저장 되며이를 이벤트 처리기를 연결 하는 방법에 대 한 매개 변수로 사용 합니다. 라우트된 이벤트 식별자는 다른 이벤트 시스템에도 사용 [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)]합니다."
   overload: System.Windows.EventManager.RegisterRoutedEvent*
   exceptions: []
   platform:
