@@ -20,8 +20,8 @@ items:
   nameWithType: AuthenticationTypes
   fullName: System.DirectoryServices.AuthenticationTypes
   type: Enum
-  summary: "The AuthenticationTypes enumeration specifies the types of authentication used in <xref href=&quot;System.DirectoryServices&quot;></xref>. This enumeration has a <xref:System.FlagsAttribute> attribute that allows a bitwise combination of its member values."
-  remarks: "The Secure flag can be used in combination with other flags such as ReadonlyServer, FastBind.       Serverless binding refers to a process in which a client attempts to bind to an Active Directory Domain Services object without explicitly specifying an Active Directory Domain Services server in the binding string, for example:      ```   LDAP://CN=jsmith,DC=fabrikam,DC=Com   ```       This is possible because the Lightweight Directory Access Protocol (LDAP) provider relies on the locator services of Windows 2000 to find the best domain controller (DC) for the client. However, the client must have an account on the Active Directory Domain Services domain controller to take advantage of the serverless binding feature, and the domain controller that is used by a serverless bind will always be located in the default domain (the domain associated with the current security context of the thread that&quot;s doing the binding).      > [!NOTE] >  None of these options are supported by the Novell Netware Directory Service (NDS) system provider."
+  summary: "AuthenticationTypes 열거형에 사용 되는 인증 유형을 지정 <xref href=&quot;System.DirectoryServices&quot;> </xref>합니다. 이 열거형에는 <xref:System.FlagsAttribute>멤버 값의 비트 조합을 허용 하는 특성.</xref:System.FlagsAttribute>"
+  remarks: "보안 플래그 ReadonlyServer, FastBind 등 다른 플래그와 함께에서 사용할 수 있습니다.       클라이언트를 명시적으로 Active Directory 도메인 서비스 서버 바인딩 문자열의 예를 들어 지정 하지 않고 Active Directory 도메인 서비스 개체에 바인딩하려면 하려고 하는 프로세스를 참조 하지 않는 바인딩을: ```   LDAP://CN=jsmith,DC=fabrikam,DC=Com   ``` 이 없기 때문에 LDAP Lightweight Directory Access Protocol () 공급자는 Windows 2000 클라이언트에 대 한 최상의 도메인 컨트롤러 (DC)을 찾으려고 로케이터 서비스를 사용 합니다. 그러나 클라이언트는 서버가 없는 바인딩 기능을 활용 하기 위해 Active Directory 도메인 서비스 도메인 컨트롤러에서 계정이 있어야 하며 바인딩에 사용 되는 도메인 컨트롤러 항상 기본 도메인 (바인딩을 수행 중인 스레드의 현재 보안 컨텍스트와 연결 된 도메인)에 있어야 합니다.      > [!NOTE] > Novell Netware 디렉터리 서비스 (NDS) 시스템 공급자가 이러한 옵션을 모두 지원 됩니다."
   syntax:
     content: >-
       [System.Flags]
@@ -43,12 +43,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "No authentication is performed."
+  summary: "인증이 수행 되지 않습니다."
   syntax:
     content: Anonymous
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -64,12 +64,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Enables Active Directory Services Interface (ADSI) to delegate the user&quot;s security context, which is necessary for moving objects across domains."
+  summary: "서비스 인터페이스 ADSI (Active Directory) 도메인 간에 개체를 이동에 필요한 사용자의 보안 컨텍스트를 위임할 수 있습니다."
   syntax:
     content: Delegation
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -85,12 +85,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Attaches a cryptographic signature to the message that both identifies the sender and ensures that the message has not been modified in transit."
+  summary: "보낸 사람을 식별 하 고 메시지 전송 중에 수정 되지 않도록 하는 메시지를 암호화 서명을 연결 합니다."
   syntax:
     content: Encryption
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -106,12 +106,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Specifies that ADSI will not attempt to query the Active Directory Domain Services objectClass property.  Therefore, only the base interfaces that are supported by all ADSI objects will be exposed.  Other interfaces that the object supports will not be available. A user can use this option to boost the performance in a series of object manipulations that involve only methods of the base interfaces. However, ADSI does not verify if any of the request objects actually exist on the server. For more information, see the topic &quot;Fast Binding Option for Batch Write/Modify Operations&quot; in the MSDN Library at [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library).  For more information about the objectClass property, see the &quot;Object-Class&quot; topic in the MSDN Library at [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library)."
+  summary: "Active Directory 도메인 서비스 개체 클래스 속성을 쿼리하여 ADSI 시도 하지 않습니다 지정 합니다.  따라서 모든 ADSI 개체에서 지원 되는 기본 인터페이스만 노출 됩니다.  개체가 지 원하는 다른 인터페이스를 사용할 수 없습니다. 사용자는 일련의 기본 인터페이스 메서드만 개체 조작의 성능을 향상 시키기이 옵션을 사용할 수 있습니다. 그러나 ADSI은 서버에 실제로 존재 요청 개체 중 하나가 확인 하지 않습니다. 자세한 내용은 MSDN library에서 &quot;빠른 바인딩 옵션에 대 한 일괄 쓰기/수정&quot; 작업 항목을 참조 [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library)합니다.  개체 클래스 속성에 대 한 자세한 내용은 MSDN library에서 &quot;개체 수준의&quot; 항목을 참조 하십시오. [http://msdn.microsoft.com/library](http://msdn.microsoft.com/library)합니다."
   syntax:
     content: FastBind
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -127,12 +127,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Equates to zero, which means to use basic authentication (simple bind) in the LDAP provider."
+  summary: "0 LDAP 공급자에서 기본 인증 (단순 바인딩)를 사용 하는 것과 같습니다."
   syntax:
     content: None
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -148,12 +148,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "For a WinNT provider, ADSI tries to connect to a domain controller. For Active Directory Domain Services, this flag indicates that a writable server is not required for a serverless binding."
+  summary: "WinNT 공급자에 대 한 ADSI 도메인 컨트롤러에 연결 하려고 시도 합니다. Active Directory 도메인 서비스에 대 한이 플래그는 쓰기 가능한 서버 서버가 없는 바인딩에 대 한 필요 하지 않음을 나타냅니다."
   syntax:
     content: ReadonlyServer
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -169,12 +169,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Encrypts data using Kerberos. The Secure flag must also be set to use sealing."
+  summary: "Kerberos를 사용 하 여 데이터를 암호화 합니다. 보안 플래그 봉인을 사용 하도록 설정 해야 합니다."
   syntax:
     content: Sealing
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -190,12 +190,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Requests secure authentication. When this flag is set, the WinNT provider uses NTLM to authenticate the client. Active Directory Domain Services uses Kerberos, and possibly NTLM, to authenticate the client. When the user name and password are a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic), ADSI binds to the object using the security context of the calling thread, which is either the security context of the user account under which the application is running or of the client user account that the calling thread is impersonating."
+  summary: "보안 인증을 요청 합니다. 이 플래그가 설정 되 면 WinNT 공급자는 클라이언트 인증에 NTLM을 사용 합니다. Active Directory 도메인 서비스 클라이언트 인증에 Kerberos 및 NTLM을 사용 합니다. 사용자 이름 및 암호는 null 참조가 있는 경우 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서), ADSI 호출 스레드가 가장 하는 클라이언트 사용자 계정 또는 응용 프로그램이 실행 되 고 있는 사용자 계정의 보안 컨텍스트를 이거나 호출 스레드의 보안 컨텍스트를 사용 하 여 개체에 바인딩합니다."
   syntax:
     content: Secure
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -211,12 +211,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Attaches a cryptographic signature to the message that both identifies the sender and ensures that the message has not been modified in transit. Active Directory Domain Services requires the Certificate Server be installed to support Secure Sockets Layer (SSL) encryption."
+  summary: "보낸 사람을 식별 하 고 메시지 전송 중에 수정 되지 않도록 하는 메시지를 암호화 서명을 연결 합니다. Active Directory 도메인 서비스의 인증서 서버 (SECURE Sockets Layer) 암호화를 지원 하기 위해 설치 필요 합니다."
   syntax:
     content: SecureSocketsLayer
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -232,12 +232,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "If your ADsPath includes a server name, specify this flag when using the LDAP provider. Do not use this flag for paths that include a domain name or for serverless paths. Specifying a server name without also specifying this flag results in unnecessary network traffic."
+  summary: "서버 이름을 포함 하는 프로그램 ADsPath, LDAP 공급자를 사용 하는 경우이 플래그를 지정 합니다. 도메인 이름이 포함 된 경로 또는 서버 경로 대 한이 플래그를 사용 하지 마십시오. 불필요 한 네트워크 트래픽이 발생도이 플래그를 지정 하지 않고 서버 이름을 지정 합니다."
   syntax:
     content: ServerBind
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -253,12 +253,12 @@ items:
   assemblies:
   - System.DirectoryServices
   namespace: System.DirectoryServices
-  summary: "Verifies data integrity to ensure that the data received is the same as the data sent. The Secure flag must also be set to use signing."
+  summary: "데이터 무결성을 수신 하는 데이터 전송 된 데이터와 동일한 지 확인 합니다. 보안 플래그 서명을 사용 하도록 설정 해야 합니다."
   syntax:
     content: Signing
     return:
       type: System.DirectoryServices.AuthenticationTypes
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

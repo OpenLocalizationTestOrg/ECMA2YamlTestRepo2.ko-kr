@@ -14,8 +14,8 @@ items:
   nameWithType: CompressedStack
   fullName: System.Threading.CompressedStack
   type: Class
-  summary: "Provides methods for setting and capturing the compressed stack on the current thread. This class cannot be inherited."
-  remarks: "The compressed stack is a compact representation of all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The CompressedStackclass is used internally by the <xref:System.Security.SecurityContext> class. For example, the <xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> method captures the compressed stack for the current call stack, along with impersonation and culture information. The <xref:System.Security.SecurityContext> class is used in turn by the <xref:System.Threading.ExecutionContext> class to flow context across threads, for example when scheduling thread pool tasks.       This class is not used in ordinary application programming."
+  summary: "설정 하 고 현재 스레드에서 압축된 스택을 캡처링 메서드를 제공 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "압축 된 스택은 호출 스택의 모든 코드 액세스 보안 정보의 압축 된 표현을 같은 <xref:System.Security.CodeAccessPermission.Deny%2A>및 <xref:System.Security.CodeAccessPermission.Assert%2A>작업.</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> 예를 들어 경우는 <xref:System.Security.CodeAccessPermission.Deny%2A>동작은 두 스택 프레임 현재 프레임에서 보유 한 경우가 코드 액세스 보안 주석 사이 현재 프레임을 압축 된 스택만 해당 정보를 전체 호출 스택을 serialize 하지 않고 기록.</xref:System.Security.CodeAccessPermission.Deny%2A>       <xref:System.Security.SecurityContext>클래스</xref:System.Security.SecurityContext> 는 CompressedStackclass는 내부적으로 사용 예를 들어는 <xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName>메서드는 현재 호출 스택의 가장 및 문화권 정보와 함께 압축된 스택을 캡처합니다.</xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> <xref:System.Security.SecurityContext>클래스에 사용 되는 <xref:System.Threading.ExecutionContext>예를 들어 스레드 풀 작업 일정을 만들 때 스레드 간에 흐름 컨텍스트 클래스.</xref:System.Threading.ExecutionContext> </xref:System.Security.SecurityContext>       이 클래스는 일반적인 응용 프로그램 프로그래밍에 사용 되지 않습니다."
   syntax:
     content: 'public sealed class CompressedStack : System.Runtime.Serialization.ISerializable'
   inheritance:
@@ -37,8 +37,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Captures the compressed stack from the current thread."
-  remarks: "Captures all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions, in a compressed format. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The captured compressed stack can be applied to another thread."
+  summary: "현재 스레드에서 압축된 스택을 캡처합니다."
+  remarks: "와 같은 호출 스택의 모든 코드 액세스 보안 정보를 캡처하여 <xref:System.Security.CodeAccessPermission.Deny%2A>및 <xref:System.Security.CodeAccessPermission.Assert%2A>압축된 된 형식으로 작업 합니다.</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> 예를 들어 경우는 <xref:System.Security.CodeAccessPermission.Deny%2A>동작은 두 스택 프레임 현재 프레임에서 보유 한 경우가 코드 액세스 보안 주석 사이 현재 프레임을 압축 된 스택만 해당 정보를 전체 호출 스택을 serialize 하지 않고 기록.</xref:System.Security.CodeAccessPermission.Deny%2A>       압축된 된 캡처된 스택은 다른 스레드를 적용할 수 있습니다."
   syntax:
     content: public static System.Threading.CompressedStack Capture ();
     parameters: []
@@ -61,14 +61,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Creates a copy of the current compressed stack."
-  remarks: "This method is useful for creating a copy of the current compressed stack to apply to another thread."
+  summary: "현재 스택의 압축 된 복사본을 만듭니다."
+  remarks: "이 메서드는 다른 스레드를 적용 하려면 현재 압축된 스택의 복사본을 만드는 데 유용 합니다."
   syntax:
     content: public System.Threading.CompressedStack CreateCopy ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> object representing the current compressed stack."
+      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;> </xref> 현재 압축된 스택을 나타내는 개체입니다."
   overload: System.Threading.CompressedStack.CreateCopy*
   exceptions: []
   platform:
@@ -85,19 +85,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Gets the compressed stack for the current thread."
-  remarks: "If security is enabled, the current compressed stack is returned. If security is disabled, GetCompressedStack returns an empty <xref:System.Threading.CompressedStack> object.      > [!NOTE] >  This method uses <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> to prevent it from being called from untrusted code; only the immediate caller is required to have <xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> permission. For important limitations on using the `LinkDemand` member, see [Demand vs. LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5).      > [!NOTE] >  This member also makes a link demand for the ECMA public key, which is not a valid cryptographic key but a pseudo key. Within the .NET Framework the link demand for the ECMA pseudo key is automatically converted to a link demand for the Microsoft public key. The security exception is based on the Microsoft public key, not the ECMA pseudo key."
+  summary: "현재 스레드에 대 한 압축된 스택을 가져옵니다."
+  remarks: "보안을 사용 하는 경우 현재 압축된 스택을 반환 됩니다. 보안을 해제 하면 GetCompressedStack 빈 반환 <xref:System.Threading.CompressedStack>개체입니다.</xref:System.Threading.CompressedStack>      > [!NOTE] >이 방법은 사용 하 여 <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>신뢰할 수 없는 코드에서 호출 되 고 하지 못하도록; 직접 실행 호출자만 포함 해야 합니다. <xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName>권한.</xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> 사용 하는 중요 한 제한에 대 한는 `LinkDemand` 멤버 참조 [Demand 합니다. LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5)합니다.      > [!NOTE] >이 멤버에는 또한는 올바른 암호화 키가 아니라 의사 키 있는 ECMA 공개 키에 대 한 링크 요청을 만듭니다. .NET Framework 내에서 링크 요청 ECMA 의사 키에 대 한 자동으로 Microsoft 공개 키에 대 한 링크 요청으로 변환 됩니다. 보안 예외가 ECMA 의사 키가 아니라 Microsoft 공개 키를 기반으로 합니다."
   syntax:
     content: public static System.Threading.CompressedStack GetCompressedStack ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> for the current thread."
+      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;> </xref> 현재 스레드에 대 한 합니다."
   overload: System.Threading.CompressedStack.GetCompressedStack*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A caller in the call chain does not have permission to access unmanaged code.       -or-       The request for <xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;></xref> failed."
+    description: "호출 체인에 호출자에 비관리 코드에 액세스할 수 있는 권한이 없는 합니다.       -또는-에 대 한 요청 <xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;> </xref> 실패 했습니다."
   platform:
   - net462
 - uid: System.Threading.CompressedStack.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -112,22 +112,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Sets the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object with the logical context information needed to recreate an instance of this execution context."
-  remarks: "GetObjectData sets a <xref:System.Runtime.Serialization.SerializationInfo> with the logical call context information. During deserialization, the execution context object is reconstituted from the <xref:System.Runtime.Serialization.SerializationInfo> transmitted over the stream.       For more information, see <xref:System.Runtime.Serialization.SerializationInfo>."
+  summary: "설정의 <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> 이 실행 컨텍스트의 인스턴스를 다시 만드는 데 필요한 논리 컨텍스트 정보가 포함 된 개체입니다."
+  remarks: "GetObjectData 집합은 <xref:System.Runtime.Serialization.SerializationInfo>논리적 컨텍스트 정보를 호출 합니다.</xref:System.Runtime.Serialization.SerializationInfo> 역직렬화 하는 동안 실행 컨텍스트 개체에서 다시 구성 되는 <xref:System.Runtime.Serialization.SerializationInfo>스트림을 통해 전송 된.</xref:System.Runtime.Serialization.SerializationInfo>       자세한 내용은 <xref:System.Runtime.Serialization.SerializationInfo>.</xref:System.Runtime.Serialization.SerializationInfo> 을 참조 하십시오."
   syntax:
     content: public void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object to be populated with serialization information."
+      description: "<xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> serialization 정보로 채울 개체입니다."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The <xref:System.Runtime.Serialization.StreamingContext> structure representing the destination context of the serialization."
+      description: "<xref:System.Runtime.Serialization.StreamingContext>serialization의 대상 컨텍스트를 나타내는 구조입니다.</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Threading.CompressedStack.GetObjectData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>info</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>info</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.CompressedStack.Run(System.Threading.CompressedStack,System.Threading.ContextCallback,System.Object)
@@ -142,8 +142,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Runs a method in the specified compressed stack on the current thread."
-  remarks: "The compressed stack is returned to its previous state when the method completes."
+  summary: "압축된 된 지정 된 스택을에서 현재 스레드에 대 한 메서드를 실행합니다."
+  remarks: "압축 된 스택 메서드가 완료를 이전 상태로 반환 됩니다."
   syntax:
     content: public static void Run (System.Threading.CompressedStack compressedStack, System.Threading.ContextCallback callback, object state);
     parameters:
@@ -152,15 +152,15 @@ items:
       description: "The <xref href=&quot;System.Threading.CompressedStack&quot;></xref> to set."
     - id: callback
       type: System.Threading.ContextCallback
-      description: "A <xref:System.Threading.ContextCallback> that represents the method to be run in the specified security context."
+      description: "A <xref:System.Threading.ContextCallback>나타내는 메서드를 지정 된 보안 컨텍스트에서 실행 되도록 합니다.</xref:System.Threading.ContextCallback>"
     - id: state
       type: System.Object
-      description: "The object to be passed to the callback method."
+      description: "콜백 메서드로 전달 될 개체입니다."
   overload: System.Threading.CompressedStack.Run*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>compressedStack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>compressedStack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

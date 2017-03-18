@@ -38,8 +38,8 @@ items:
   nameWithType: TextPointer
   fullName: System.Windows.Documents.TextPointer
   type: Class
-  summary: "Represents a position within a <xref href=&quot;System.Windows.Documents.FlowDocument&quot;></xref> or <xref href=&quot;System.Windows.Controls.TextBlock&quot;></xref>."
-  remarks: "The TextPointer class introduces the following terminology:      -   Position - Inherently, a TextPointer always points to a *position* in content.  Such positions either fall between characters in the content, or between flow content element tags that define structure for the content.      -   Current Position - Because a TextPointer always indicates a position, and because many of the operations that can be performed through a TextPointer are relative to the position currently pointed to by the TextPointer, it makes sense to simply refer to the position indicated by a TextPointer as the *current position*.      -   Insertion Position - An *insertion position* is a position where new content may be added without breaking any semantic rules for the associated content.  In practice, an insertion position is anywhere in content where a caret may be positioned.  An example of a valid TextPointer position that is not an insertion position is the position between two adjacent <xref:System.Windows.Documents.Paragraph> tags (that is, between the closing tag of the preceding paragraph and the opening tag of the next paragraph).      -   Symbol - For the purposes of TextPointer operations that involve symbols, any of the following is considered to be a *symbol*:          -   An opening or closing tag for a <xref:System.Windows.Documents.TextElement> element.          -   A <xref:System.Windows.UIElement> element contained within an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.          -   Each 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element.      -   Text Container - A *text container* is the element that forms the ultimate border for the flow content at hand; the position indicated by a TextPointer always falls within a text container.  Currently, a text container must be either a <xref:System.Windows.Documents.FlowDocument> or a <xref:System.Windows.Controls.TextBlock>.  Generally speaking, operations between TextPointer instances in different text containers are not supported.      -   Document - The content in a text container is referred to as a *document*, as in the <xref:System.Windows.Documents.TextPointer.IsInSameDocument%2A> method and the <xref:System.Windows.Documents.TextPointer.DocumentStart%2A> and <xref:System.Windows.Documents.TextPointer.DocumentEnd%2A> properties.       The TextPointer class is intended to facilitate traversal and manipulation of content that is represented by [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] flow content elements; in general, such elements derive from <xref:System.Windows.Documents.TextElement>.  Some of the operations that TextPointer facilitates include the following:      -   Perform an ordinal comparison of the current position with a second specified position.  See the <xref:System.Windows.Documents.TextPointer.CompareTo%2A> method.      -   Determine the type of content adjacent to the current position in a specified direction.  See the <xref:System.Windows.Documents.TextPointer.GetPointerContext%2A> method and <xref:System.Windows.Documents.TextPointerContext> enumeration.      -   Get the <xref:System.Windows.Documents.TextElement> that scopes or is adjacent to the current position.  See <xref:System.Windows.Documents.Paragraph> and the <xref:System.Windows.Documents.TextPointer.GetAdjacentElement%2A> method.      -   Get the text container that scopes the current document.  See the <xref:System.Windows.Documents.TextPointer.Parent%2A> property.      -   Get a specified number of characters preceding or following the current position.  See the <xref:System.Windows.Documents.TextPointer.GetTextInRun%2A> method.      -   Insert a string of characters at the current position.  See the <xref:System.Windows.Documents.TextPointer.InsertTextInRun%2A> method.      -   Find line boundaries in content.  See the <xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A> method and <xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A> property.      -   Translate between TextPointer positions and symbol offsets into content.  See the <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A> and <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A> methods.      -   Perform visual hit testing by translating between a TextPointer position and a <xref:System.Windows.Point> representing relative coordinates.      -   Find a nearby insertion position, or check whether the current position is an insertion position.  See the <xref:System.Windows.Documents.TextPointer.GetInsertionPosition%2A> and <xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A> methods and the <xref:System.Windows.Documents.TextPointer.IsAtInsertionPosition%2A> property.       The position and <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> indicated by a TextPointer object are immutable.  When content is edited or modified, the position indicated by a TextPointer does not change relative to the surrounding text; rather the offset of that position from the beginning of content is adjusted correspondingly to reflect the new relative position in content.  For example, a TextPointer that indicates a position at the beginning of a given paragraph continues to point to the beginning of that paragraph even when content is inserted or deleted before or after the paragraph.       The TextPointer class does not provide any public constructors.  An instance of TextPointer is created by using properties or methods of other objects (including other TextPointer objects). The following list provides a few examples of methods and properties that create and return a TextPointer.  This list is not exhaustive:      -   From a <xref:System.Windows.Documents.TextRange>: <xref:System.Windows.Documents.TextRange.Start%2A> and <xref:System.Windows.Documents.TextRange.End%2A>.      -   From a <xref:System.Windows.Documents.TextElement>:  <xref:System.Windows.Documents.TextElement.ContentStart%2A>, <xref:System.Windows.Documents.TextElement.ContentEnd%2A>, <xref:System.Windows.Documents.TextElement.ElementStart%2A>, and <xref:System.Windows.Documents.TextElement.ElementEnd%2A>.      -   From a <xref:System.Windows.Controls.TextBlock> (text container): <xref:System.Windows.Controls.TextBlock.ContentStart%2A>, <xref:System.Windows.Controls.TextBlock.ContentEnd%2A>, and <xref:System.Windows.Controls.TextBlock.GetPositionFromPoint%2A>.      -   From a <xref:System.Windows.Documents.FlowDocument> (text container): <xref:System.Windows.Documents.FlowDocument.ContentStart%2A>, and <xref:System.Windows.Documents.FlowDocument.ContentEnd%2A>      -   From an existing TextPointer: <xref:System.Windows.Documents.TextPointer.DocumentStart%2A>, <xref:System.Windows.Documents.TextPointer.DocumentEnd%2A>, <xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A>, and <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A>."
+  summary: "내에서 위치를 나타내는 <xref href=&quot;System.Windows.Documents.FlowDocument&quot;> </xref> 또는 <xref href=&quot;System.Windows.Controls.TextBlock&quot;> </xref>합니다."
+  remarks: "TextPointer 클래스에서는 다음 용어를 소개:-위치-기본적으로, 한 TextPointer 항상 가리키는 *위치* 콘텐츠에 합니다.  이러한 위치 또는 흐름의 콘텐츠를 문자 간에 콘텐츠 요소 태그를 삽입 하는 콘텐츠에 대 한 구조를 정의 합니다.      -현재 위치-는 TextPointer 항상는 위치를 나타내며으로 TextPointer 변수로 지정 된 위치를 참조 하는 TextPointer을 통해 수행할 수 있는 작업의 대부분은 현재는 TextPointer가 가리키는 위치를 기준으로 이기 때문에 적합 하기 때문에 *현재 위치*합니다.      -삽입 위치-는 *삽입 위치* 연결된 콘텐츠에 대 한 의미 체계 규칙을 위반 하지 않고 새 콘텐츠를 추가할 수 있는 위치입니다.  실제로, 삽입 위치는 콘텐츠 내에 캐럿 위치 지정할 수 있습니다.  TextPointer의 올바른 위치 삽입 위치를의 예로 인접 한 두 사이의 위치 <xref:System.Windows.Documents.Paragraph>태그 (즉, 이전 단락의 닫는 태그와 여는 태그 다음 단락의 사이).</xref:System.Windows.Documents.Paragraph>      -기호-기호는 다음을 포함 하 여 TextPointer 작업의 목적에 대 한 것으로 간주 됩니다는 *기호*:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>          - <xref:System.Windows.UIElement>요소가 포함 되어 있는 <xref:System.Windows.Documents.InlineUIContainer>나 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>          -각 16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>      텍스트 컨테이너-A *텍스트 컨테이너* 최종 테두리에 유동 콘텐츠를 구성 하는 요소 않으면는 TextPointer 나타내는 항상 대체 텍스트 컨테이너 내의 위치입니다.  현재 텍스트 컨테이너 중 하나는 여야 <xref:System.Windows.Documents.FlowDocument>나 <xref:System.Windows.Controls.TextBlock>.</xref:System.Windows.Controls.TextBlock> </xref:System.Windows.Documents.FlowDocument>  일반적으로 다양 한 텍스트 컨테이너의 TextPointer 인스턴스 간 작업은 지원 되지 않습니다.      -문서-텍스트의 콘텐츠를 컨테이너 라고는 *문서*에서 같이 <xref:System.Windows.Documents.TextPointer.IsInSameDocument%2A>메서드 및 <xref:System.Windows.Documents.TextPointer.DocumentStart%2A>및 <xref:System.Windows.Documents.TextPointer.DocumentEnd%2A>속성.</xref:System.Windows.Documents.TextPointer.DocumentEnd%2A> </xref:System.Windows.Documents.TextPointer.DocumentStart%2A> </xref:System.Windows.Documents.TextPointer.IsInSameDocument%2A>       TextPointer 클래스 쉽게 탐색 하 고 막대로 콘텐츠의 조작 하기 위한 용도가 [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] 유동 콘텐츠 요소; 등의 요소 <xref:System.Windows.Documents.TextElement>.</xref:System.Windows.Documents.TextElement> 에서 파생 되는 일반적으로  TextPointer 용이 하 게 되는 작업의 일부는 다음과 같습니다.-두 번째 지정 된 위치와 현재 위치 하는 서 수 비교를 수행 합니다.  참조는 <xref:System.Windows.Documents.TextPointer.CompareTo%2A>메서드.</xref:System.Windows.Documents.TextPointer.CompareTo%2A>      -지정 된 방향으로 현재 위치에 인접 한 콘텐츠의 형식을 결정 합니다.  참조는 <xref:System.Windows.Documents.TextPointer.GetPointerContext%2A>메서드 및 <xref:System.Windows.Documents.TextPointerContext>열거형.</xref:System.Windows.Documents.TextPointerContext> </xref:System.Windows.Documents.TextPointer.GetPointerContext%2A>      -가져오기는 <xref:System.Windows.Documents.TextElement>하는 범위를 지정 하거나 현재 위치에 인접 한.</xref:System.Windows.Documents.TextElement>  참조 <xref:System.Windows.Documents.Paragraph>및 <xref:System.Windows.Documents.TextPointer.GetAdjacentElement%2A>메서드.</xref:System.Windows.Documents.TextPointer.GetAdjacentElement%2A> </xref:System.Windows.Documents.Paragraph>      현재 문서의 범위를 지정 하는 텍스트 컨테이너를 가져옵니다.  참조는 <xref:System.Windows.Documents.TextPointer.Parent%2A>속성.</xref:System.Windows.Documents.TextPointer.Parent%2A>      -지정된 된 수를의 문자 앞 또는 뒤의 현재 위치를 가져옵니다.  참조는 <xref:System.Windows.Documents.TextPointer.GetTextInRun%2A>메서드.</xref:System.Windows.Documents.TextPointer.GetTextInRun%2A>      -현재 위치에 문자열을 삽입 합니다.  참조는 <xref:System.Windows.Documents.TextPointer.InsertTextInRun%2A>메서드.</xref:System.Windows.Documents.TextPointer.InsertTextInRun%2A>      -줄 경계를 콘텐츠를 찾습니다.  참조는 <xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A>메서드 및 <xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A>속성.</xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A> </xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A>      -TextPointer 위치 사이 변환 및 기호 콘텐츠로 만큼 오프셋 합니다.  참조는 <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A>및 <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A>메서드.</xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A> </xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A>      -TextPointer 위치 간에 변환 하 여 시각적 적중 테스트 수행 및 <xref:System.Windows.Point>상대 좌표를 나타내는.</xref:System.Windows.Point>      -근접 한 삽입 위치를 찾거나 삽입 위치 현재 위치 인지 확인 하십시오.  참조는 <xref:System.Windows.Documents.TextPointer.GetInsertionPosition%2A>및 <xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A>메서드 및 <xref:System.Windows.Documents.TextPointer.IsAtInsertionPosition%2A>속성.</xref:System.Windows.Documents.TextPointer.IsAtInsertionPosition%2A> </xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A> </xref:System.Windows.Documents.TextPointer.GetInsertionPosition%2A>       위치 및 <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A>TextPointer 개체에서 지정 하는 변경할 수 없습니다.</xref:System.Windows.Documents.TextPointer.LogicalDirection%2A>  콘텐츠 편집 하거나 수정 하는 경우는 TextPointer 나타내는 위치; 주변 텍스트를 기준으로 변경 되지 않습니다. 대신 내용에서 새 상대 위치를 반영 하도록 콘텐츠의 시작 부분에서 해당 위치의 오프셋 알맞게 조정 됩니다.  예를 들어, 특정된 단락의 시작 부분에 위치를 나타내는 TextPointer 콘텐츠를 삽입 하거나 앞 이나 뒤 단락을 삭제할 경우에 해당 단락 시작 부분을 가리키도록 계속 합니다.       TextPointer 클래스는 공용 생성자를 제공 하지 않습니다.  TextPointer의 인스턴스는 다른 개체 (다른 TextPointer 개체 포함)의 속성이 나 메서드를 사용 하 여 생성 됩니다. 다음 목록에는 메서드 및 속성을 만들고 반환 된 TextPointer의 몇 가지 예제를 제공 합니다.  이 목록은 완벽 하지는:-에서 <xref:System.Windows.Documents.TextRange>: <xref:System.Windows.Documents.TextRange.Start%2A>및 <xref:System.Windows.Documents.TextRange.End%2A>.</xref:System.Windows.Documents.TextRange.End%2A> </xref:System.Windows.Documents.TextRange.Start%2A> </xref:System.Windows.Documents.TextRange>      -   From a <xref:System.Windows.Documents.TextElement>:  <xref:System.Windows.Documents.TextElement.ContentStart%2A>, <xref:System.Windows.Documents.TextElement.ContentEnd%2A>, <xref:System.Windows.Documents.TextElement.ElementStart%2A>, and <xref:System.Windows.Documents.TextElement.ElementEnd%2A>.</xref:System.Windows.Documents.TextElement.ElementEnd%2A></xref:System.Windows.Documents.TextElement.ElementStart%2A></xref:System.Windows.Documents.TextElement.ContentEnd%2A></xref:System.Windows.Documents.TextElement.ContentStart%2A></xref:System.Windows.Documents.TextElement>      <xref:System.Windows.Controls.TextBlock>(텍스트 컨테이너): <xref:System.Windows.Controls.TextBlock.ContentStart%2A>, <xref:System.Windows.Controls.TextBlock.ContentEnd%2A>, 및 <xref:System.Windows.Controls.TextBlock.GetPositionFromPoint%2A>.</xref:System.Windows.Controls.TextBlock.GetPositionFromPoint%2A> </xref:System.Windows.Controls.TextBlock.ContentEnd%2A> </xref:System.Windows.Controls.TextBlock.ContentStart%2A> </xref:System.Windows.Controls.TextBlock>      <xref:System.Windows.Documents.FlowDocument>(텍스트 컨테이너): <xref:System.Windows.Documents.FlowDocument.ContentStart%2A>, 및 <xref:System.Windows.Documents.FlowDocument.ContentEnd%2A>-기존 TextPointer에서: <xref:System.Windows.Documents.TextPointer.DocumentStart%2A>, <xref:System.Windows.Documents.TextPointer.DocumentEnd%2A>, <xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A>, 및 <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A>.</xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A> </xref:System.Windows.Documents.TextPointer.GetNextInsertionPosition%2A> </xref:System.Windows.Documents.TextPointer.DocumentEnd%2A> </xref:System.Windows.Documents.TextPointer.DocumentStart%2A> </xref:System.Windows.Documents.FlowDocument.ContentEnd%2A> </xref:System.Windows.Documents.FlowDocument.ContentStart%2A> </xref:System.Windows.Documents.FlowDocument>"
   example:
   - "The following example demonstrates how to use a TextPointer to find a position just inside of the first <xref:System.Windows.Documents.Run> element in a specified text container.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_TextPointer1](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_textpointer1)]\n [!code-vb[TextPointer_Snippets#_TextPointer_TextPointer1](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_textpointer1)]  \n  \n The following example implements a simplistic find algorithm using TextPointer facilities.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_TextPointer2](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_textpointer2)]\n [!code-vb[TextPointer_Snippets#_TextPointer_TextPointer2](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_textpointer2)]"
   syntax:
@@ -64,8 +64,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Performs an ordinal comparison between the positions specified by the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and a second specified <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
-  remarks: "A value of –1 indicates that the position specified by the current <xref:System.Windows.Documents.TextPointer> precedes the position specified by `position`.  A value of 0 indicates that the indicated positions are equal.  A value of positive +1 indicates that the position specified by the current <xref:System.Windows.Documents.TextPointer> follows the position specified by `position`."
+  summary: "현재 지정 된 위치 사이의 서 수 비교를 수행 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정 된 두 번째 및 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
+  remarks: "-1 값을 현재 지정 된 위치가 <xref:System.Windows.Documents.TextPointer>로 지정 된 위치를 앞에 오는 `position`.</xref:System.Windows.Documents.TextPointer>  0 값 표시 되는 위치가 같음을 나타냅니다.  값이 양의 +&1; 이면 현재 지정 된 위치가 <xref:System.Windows.Documents.TextPointer>로 지정 된 위치 뒤에 오는 `position`.</xref:System.Windows.Documents.TextPointer>"
   example:
   - "The following example demonstrates a use for this method.  In the example, the CompareTo method is used in conjunction with the <xref:System.Windows.Documents.TextPointer.GetInsertionPosition%2A> method to test whether a specified <xref:System.Windows.Documents.TextElement> is empty.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetInsertionPosition](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getinsertionposition)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetInsertionPosition](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getinsertionposition)]"
   syntax:
@@ -73,15 +73,15 @@ items:
     parameters:
     - id: position
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> that specifies a position to compare to the current position."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 위치를 비교 하는 위치를 지정 하는 합니다."
     return:
       type: System.Int32
-      description: "–1 if the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> precedes <code>position</code>; 0 if the locations are the same; +1 if the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> follows <code>position</code>."
+      description: "-이면 1 현재 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 앞에 오는 <code> position </code>; 위치는 동일한 경우 0, + 1 이면 현재 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 뒤에 오는 <code> position </code>합니다."
   overload: System.Windows.Documents.TextPointer.CompareTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>position</code> specifies a position outside of the text container associated with the current position."
+    description: "<code>position</code>현재 위치와 연결 된 텍스트 컨테이너의 외부 위치를 지정 합니다."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.DeleteTextInRun(System.Int32)
@@ -96,22 +96,22 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Deletes the specified number of characters from the position indicated by the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
-  remarks: "Specify a positive value to delete characters that follow the current position (as in <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>); specify a negative value to delete characters that precede the current position (as in <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>).       The number of characters actually deleted may be less than the number specified by `count`.  This happens in cases where `count` specifies more characters than exist to be deleted."
+  summary: "현재 지정 된 위치에서 지정한 개수의 문자를 삭제 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
+  remarks: "현재 위치 뒤에 있는 문자를 삭제 하려면 양수 값을 지정 (에서 같이 <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>); 문자 앞에 현재 위치를 삭제 하려면 음수 값을 지정 (에서 같이 <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>).</xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName> </xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>       실제로 삭제 되는 문자 수로 지정 된 수보다 작을 수도 있습니다 `count`합니다.  경우에 이런 여기서 `count` 삭제할 존재 하는 보다 많은 문자를 지정 합니다."
   syntax:
     content: public int DeleteTextInRun (int count);
     parameters:
     - id: count
       type: System.Int32
-      description: "The number of characters to delete, starting at the current position. Specify a positive value to delete characters that follow the current position; specify a negative value to delete characters that precede the current position."
+      description: "삭제할 문자의 수 현재 위치부터 시작 합니다. 현재 위치; 뒤에 있는 문자를 삭제 하려면 양수 값을 지정 현재 위치를 앞에 있는 문자를 삭제 하려면 음수 값을 지정 합니다."
     return:
       type: System.Int32
-      description: "The number of characters actually deleted."
+      description: "실제로 삭제 되는 문자의 수입니다."
   overload: System.Windows.Documents.TextPointer.DeleteTextInRun*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method is called at a position where text is not allowed."
+    description: "메서드는 텍스트는 허용 되지 않는 위치에 있습니다."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.DocumentEnd
@@ -126,13 +126,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> at the end of content in the text container associated with the current position."
-  remarks: "The <xref:System.Windows.Documents.TextPointer.Parent%2A> for the returned <xref:System.Windows.Documents.TextPointer> is always a text container (<xref:System.Windows.Controls.TextBlock> or <xref:System.Windows.Documents.FlowDocument>), rather than a <xref:System.Windows.Documents.TextElement>."
+  summary: "가져옵니다는 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 위치와 연결 된 텍스트 컨테이너의 콘텐츠 끝에 있습니다."
+  remarks: "<xref:System.Windows.Documents.TextPointer.Parent%2A>반환 된 작업에 대 한 <xref:System.Windows.Documents.TextPointer>은 항상 텍스트 컨테이너 (<xref:System.Windows.Controls.TextBlock> 또는 <xref:System.Windows.Documents.FlowDocument>), <xref:System.Windows.Documents.TextElement>.</xref:System.Windows.Documents.TextElement> 대신</xref:System.Windows.Documents.FlowDocument> </xref:System.Windows.Controls.TextBlock> </xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer.Parent%2A>"
   syntax:
     content: public System.Windows.Documents.TextPointer DocumentEnd { get; }
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> at the end of content in the text container associated with the current position."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 위치와 연결 된 텍스트 컨테이너의 콘텐츠 끝에 있습니다."
   overload: System.Windows.Documents.TextPointer.DocumentEnd*
   exceptions: []
   platform:
@@ -149,13 +149,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> at the beginning of content in the text container associated with the current position."
-  remarks: "Use the position returned by this property as a baseline position from which to work with relative offsets to other positions.  The <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A> and <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A> methods provide a way to translate between positions and position offsets.       The <xref:System.Windows.Documents.TextPointer.Parent%2A> for the returned <xref:System.Windows.Documents.TextPointer> is always a text container (<xref:System.Windows.Controls.TextBlock> or <xref:System.Windows.Documents.FlowDocument>), rather than a <xref:System.Windows.Documents.TextElement>."
+  summary: "가져옵니다는 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 내용 현재 위치와 연결 된 텍스트 컨테이너의 맨 앞에 있습니다."
+  remarks: "다른 위치에 상대적인 오프셋으로를 기본 위치로이 속성에서 반환 되는 위치를 사용 합니다.  <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A>및 <xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A>메서드는 위치와 위치 사이 변환 하는 방법을 제공 만큼 오프셋 합니다.</xref:System.Windows.Documents.TextPointer.GetPositionAtOffset%2A> </xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A>       <xref:System.Windows.Documents.TextPointer.Parent%2A>반환 된 작업에 대 한 <xref:System.Windows.Documents.TextPointer>은 항상 텍스트 컨테이너 (<xref:System.Windows.Controls.TextBlock> 또는 <xref:System.Windows.Documents.FlowDocument>), <xref:System.Windows.Documents.TextElement>.</xref:System.Windows.Documents.TextElement> 대신</xref:System.Windows.Documents.FlowDocument> </xref:System.Windows.Controls.TextBlock> </xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer.Parent%2A>"
   syntax:
     content: public System.Windows.Documents.TextPointer DocumentStart { get; }
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> at the beginning of content in the text container associated with the current position."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 내용 현재 위치와 연결 된 텍스트 컨테이너의 맨 앞에 있습니다."
   overload: System.Windows.Documents.TextPointer.DocumentStart*
   exceptions: []
   platform:
@@ -172,17 +172,17 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns the element, if any, that borders the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> in the specified logical direction."
-  remarks: "The returned element is typically a <xref:System.Windows.Documents.TextElement>.  A <xref:System.Windows.UIElement> can be returned when the <xref:System.Windows.Documents.TextPointer> indicates a position inside a <xref:System.Windows.Documents.BlockUIContainer> element or an <xref:System.Windows.Documents.InlineUIContainer> element."
+  summary: "있는 경우 현재 테두리는 요소를 반환 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 에 지정 합니다."
+  remarks: "반환 된 요소는 일반적으로 <xref:System.Windows.Documents.TextElement>.</xref:System.Windows.Documents.TextElement>  A <xref:System.Windows.UIElement>반환 될 수는 <xref:System.Windows.Documents.TextPointer>내부 위치를 나타내는 <xref:System.Windows.Documents.BlockUIContainer>요소 또는 <xref:System.Windows.Documents.InlineUIContainer>요소.</xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.TextPointer> </xref:System.Windows.UIElement>"
   syntax:
     content: public System.Windows.DependencyObject GetAdjacentElement (System.Windows.Documents.LogicalDirection direction);
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to search for an adjacent element."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 인접 한 요소를 검색 하려면 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.DependencyObject
-      description: "The adjacent element in the specified <code>direction</code>, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no adjacent element exists."
+      description: "지정 된 인접 한 요소 <code> direction </code>, 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 인접 한 요소가 없는 경우."
   overload: System.Windows.Documents.TextPointer.GetAdjacentElement*
   exceptions: []
   platform:
@@ -199,17 +199,17 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a bounding box (<xref href=&quot;System.Windows.Rect&quot;></xref>) for content that borders the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> in the specified logical direction."
-  remarks: "<xref:System.Windows.Documents.TextElement> edges are not considered content for the purposes of this method.  If the <xref:System.Windows.Documents.TextPointer> is positioned before a <xref:System.Windows.Documents.TextElement> edge, the return value is a bounding box for the next non-<xref:System.Windows.Documents.TextElement> content in the specified direction.  If there is no content in the specified direction, a zero-width <xref:System.Windows.Rect> is returned with a height matching the height of any preceding content.       The operation performed by this method depends on a valid layout.  When necessary, this method attempts to automatically regenerate a valid layout before proceeding with the operation.  Regenerating a layout can be a relatively expensive operation.  Use the <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A> property to check for a valid layout before performing operations that may regenerate the layout.  For more information, see [Layout](~/add/includes/ajax-current-ext-md.md)."
+  summary: "경계 상자를 반환 (<xref href=&quot;System.Windows.Rect&quot;></xref>) 현재 인접 한 콘텐츠의 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 에 지정 합니다."
+  remarks: "<xref:System.Windows.Documents.TextElement>가장자리는이 방법의 목적에 대 한 콘텐츠를 고려 하지 않습니다.</xref:System.Windows.Documents.TextElement>  경우는 <xref:System.Windows.Documents.TextPointer>앞에 배치 되는 <xref:System.Windows.Documents.TextElement>경계 면 반환 값은 다음에 대 한 경계 상자 비-<xref:System.Windows.Documents.TextElement> 지정된 된 방향으로 콘텐츠.</xref:System.Windows.Documents.TextElement> </xref:System.Windows.Documents.TextElement> </xref:System.Windows.Documents.TextPointer>  너비가&0; 인 지정된 된 방향으로 콘텐츠가 없는 경우 <xref:System.Windows.Rect>높이 이전 콘텐츠를 일치 하는 높이 함께 반환 됩니다.</xref:System.Windows.Rect>       이 메서드에 의해 수행 되는 작업은 올바른 레이아웃에 따라 달라 집니다.  필요한 경우이 메서드는 작업을 진행 하기 전에 유효한 레이아웃을 자동으로 다시 생성 하려고 합니다.  레이아웃을 다시 생성 하는 작업 상대적으로 비용이 많이 들 수 있습니다.  사용 하 여는 <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>레이아웃을 다시 생성 될 수도 있는 작업을 수행 하기 전에 유효한 레이아웃에 대해 확인할 속성입니다.</xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>  자세한 내용은 참조 [레이아웃](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public System.Windows.Rect GetCharacterRect (System.Windows.Documents.LogicalDirection direction);
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to find a content bounding box."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 경계 상자 콘텐츠를 찾을 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.Rect
-      description: "A bounding box for content that borders the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> in the specified direction, or &lt;xref:System.Windows.Rect.Empty%2A?displayProperty=fullName&gt; if current, valid layout information is unavailable."
+      description: "현재 인접 한 콘텐츠의 경계 상자 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 방향으로 또는 &lt;xref:System.Windows.Rect.Empty%2A?displayProperty=fullName&gt; , 현재 유효한 레이아웃 정보가 사용할 수 없습니다."
   overload: System.Windows.Documents.TextPointer.GetCharacterRect*
   exceptions: []
   platform:
@@ -226,8 +226,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the closest insertion position in the specified logical direction."
-  remarks: "An insertion position is a position where new content may be added without breaking any semantic rules for the associated content.  In practice, an insertion position is anywhere in content where a caret may be positioned.  An example of a valid <xref:System.Windows.Documents.TextPointer> position that is not an insertion position is the position between two adjacent <xref:System.Windows.Documents.Paragraph> tags (that is, between the closing tag of the preceding paragraph and the opening tag of the next paragraph).       If the <xref:System.Windows.Documents.TextPointer> already points to a valid insertion position, but the closing tag for a non-empty formatting sequence directly follows that position in the given direction, then the <xref:System.Windows.Documents.TextPointer> returned by this method is adjusted to point to the insertion position just after the close of the formatting sequence.    For example, consider the markup sequence `<Bold>``a``</Bold>``b`.  Note that there are two insertion positions between the letters `a` and `b`—one that precedes the closing `Bold` tag, and one directly following the closing `Bold` tag.  If GetInsertionPosition is called on a <xref:System.Windows.Documents.TextPointer> to the position directly after the letter `a` and before of the closing `Bold` tag, and with a `direction` of <xref:System.Windows.Documents.LogicalDirection>, the returned <xref:System.Windows.Documents.TextPointer> is adjusted to point to the position just before the letter `b`, after the closing `Bold` tag.  A similar adjustment is made for opening formatting tags when working in the opposite logical direction.  This method is intended to provide a means of disambiguation between insertion positions in similar cases.       This method can also be used to be selective about insertion points when a sequence of structural tags is involved. For example, when at a position between closing and opening paragraph tags, the direction parameter can be used to select the closest insertion point at the beginning of the following paragraph (by specifying <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>) or at the end of the preceding paragraph (by specifying <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>).       If the pointer is already at insertion position, and there are no adjacent formatting tags in the specified `direction`, the returned <xref:System.Windows.Documents.TextPointer> points to the same position as the calling <xref:System.Windows.Documents.TextPointer>.       It is possible that no valid insertion position exists relative to the position pointed to by a <xref:System.Windows.Documents.TextPointer>.  This can happen if the referenced content is structurally incomplete, as in an empty table or list.  In such cases, this method simply returns a <xref:System.Windows.Documents.TextPointer> to the same position as the <xref:System.Windows.Documents.TextPointer> from which this method was called.  This method always returns a valid <xref:System.Windows.Documents.TextPointer>."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 에 가까운 삽입 위치 지정에 있습니다."
+  remarks: "삽입 위치는 연결된 된 콘텐츠에 대 한 의미 체계 규칙을 위반 하지 않고 새 콘텐츠를 추가할 수 있는 위치입니다.  실제로, 삽입 위치는 콘텐츠 내에 캐럿 위치 지정할 수 있습니다.  유효한의 예로 <xref:System.Windows.Documents.TextPointer>삽입 위치 하지 않은 위치는 인접 한 두 사이의 위치 <xref:System.Windows.Documents.Paragraph>태그 (즉, 이전 단락의 닫는 태그와 여는 태그 다음 단락의 사이).</xref:System.Windows.Documents.Paragraph> </xref:System.Windows.Documents.TextPointer>       경우는 <xref:System.Windows.Documents.TextPointer>이미 비어 있지 않은 서식 시퀀스에 지정된 된 방향으로의 해당 위치 바로 뒤에 대 한 올바른 삽입 위치를 있지만 닫는 태그를 가리키는 경우 <xref:System.Windows.Documents.TextPointer>이 속성에서 반환 메서드는 서식 시퀀스 닫기 바로 뒤 삽입 위치를 가리키도록 조정 됩니다.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer>    예를 들어 태그 시퀀스 `<Bold>``a``</Bold>``b`합니다.  문자 간 두 개의 삽입 위치는 `a` 및 `b`-뒤에 닫는 하나 `Bold` 태그 및 닫는 바로 뒤 하나 `Bold` 태그입니다.  GetInsertionPosition에서 호출 되는 <xref:System.Windows.Documents.TextPointer>문자 바로 다음 위치에 `a` 하기 전에 닫기를 `Bold` 태그와는 `direction` 의 <xref:System.Windows.Documents.LogicalDirection>, 반환 된 <xref:System.Windows.Documents.TextPointer>문자 바로 앞의 위치를 가리키도록 조정 `b`, 닫은 후 `Bold` 태그.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.LogicalDirection> </xref:System.Windows.Documents.TextPointer>  논리적 반대 방향으로 작업 하는 경우 서식 지정 태그를 열기 위한는 비슷한 조정이 이루어집니다.  이 메서드는 비슷한 경우의 삽입 위치 간에 명확성 수단을 제공 하는 데 사용 됩니다.       이 메서드는 구조적 태그 시퀀스 관련 된 경우 삽입 지점을 선택 되도록 데도 사용할 수 있습니다. 예를 들어 때에 결산 잔액과 개시 단락 태그 사이의 위치, 방향 매개 변수 수 데 사용 될 다음 단락 시작 부분에 가장 가까운 삽입 지점을 선택 (지정 하 여 <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>) 아니면 이전 단락의 끝 (지정 하 여 <xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>).</xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName> </xref:System.Windows.Documents.LogicalDirection?displayProperty=fullName>       포인터가 삽입 위치에 이미 있고 인접 한 서식 지정 태그 없음에 지정 된 경우 `direction`, <xref:System.Windows.Documents.TextPointer> <xref:System.Windows.Documents.TextPointer>.</xref:System.Windows.Documents.TextPointer> 호출할 때와 같은 위치에 요소</xref:System.Windows.Documents.TextPointer> 를 반환 합니다.       올바른 삽입 지점이 없을 <xref:System.Windows.Documents.TextPointer>.</xref:System.Windows.Documents.TextPointer> 가 가리키는 위치를 기준으로 존재 하는지 수  참조 된 콘텐츠가 빈 테이블 또는 목록에서와 같이 구조적으로 완료 되지 않은 경우 발생할 수 있습니다.  이러한 경우이 메서드가 반환 된 <xref:System.Windows.Documents.TextPointer>와 같은 위치에는 <xref:System.Windows.Documents.TextPointer>이 메서드가 호출 된에서.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer>  이 메서드는 항상 유효한 <xref:System.Windows.Documents.TextPointer>.</xref:System.Windows.Documents.TextPointer> 반환"
   example:
   - "This example shows how to use the GetInsertionPosition method to check whether a specified <xref:System.Windows.Documents.TextElement> is empty of printable content.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetInsertionPosition](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getinsertionposition)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetInsertionPosition](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getinsertionposition)]"
   syntax:
@@ -235,10 +235,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to search for the closest insertion position."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 가장 가까운 삽입 위치 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the closest insertion position in the specified direction."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 방향에서 가장 가까운 삽입 위치에 있습니다."
   overload: System.Windows.Documents.TextPointer.GetInsertionPosition*
   exceptions: []
   platform:
@@ -255,17 +255,17 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the beginning of a line that is specified relative to the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
-  remarks: "If the <xref:System.Windows.Documents.TextPointer> points to an ambiguous position, for example, between two lines, the line in the direction specified by <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> is selected as the relative starting line.       The operation performed by this method depends on a valid layout.  When necessary, this method attempts to automatically regenerate a valid layout before proceeding with the operation.  Regenerating a layout can be a relatively expensive operation.  Use <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A> to check for a valid layout before performing operations that may regenerate the layout.  For more information, see [Layout](~/add/includes/ajax-current-ext-md.md)."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 상대적으로 지정 된 줄의 시작 부분에 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
+  remarks: "경우는 <xref:System.Windows.Documents.TextPointer>는 모호한 위치를 가리키는 예를 들어 두 줄 사이의 줄에 지정 된 방향의 <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A>상대 시작 줄으로 선택 됩니다.</xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> </xref:System.Windows.Documents.TextPointer>       이 메서드에 의해 수행 되는 작업은 올바른 레이아웃에 따라 달라 집니다.  필요한 경우이 메서드는 작업을 진행 하기 전에 유효한 레이아웃을 자동으로 다시 생성 하려고 합니다.  레이아웃을 다시 생성 하는 작업 상대적으로 비용이 많이 들 수 있습니다.  사용 하 여 <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>레이아웃을 다시 생성 될 수도 있는 작업을 수행 하기 전에 유효한 레이아웃을 확인 하려면.</xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>  자세한 내용은 참조 [레이아웃](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public System.Windows.Documents.TextPointer GetLineStartPosition (int count);
     parameters:
     - id: count
       type: System.Int32
-      description: "The number of start-of-line markers to skip when determining the line for which to return the starting position. Negative values specify preceding lines, 0 specifies the current line, and positive values specify following lines."
+      description: "시작 줄의 표식 줄 시작 위치를 반환할을 결정할 때 건너뛸 수입니다. 음수 이전 줄을 지정 하는 값 0은 현재 줄을 지정 하 고 다음 줄 양수 값을 지정 합니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> pointing to the beginning of the specified line (with the <xref:System.Windows.Documents.TextPointer.LogicalDirection*> set to <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref>), or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the specified line is out of range or otherwise cannot be located."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 줄의 시작 부분을 가리키는 (으로 <xref:System.Windows.Documents.TextPointer.LogicalDirection*>로 설정 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref>), 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 지정된 된 줄 범위를 벗어나거나 그렇지 않으면 찾을 수 없는 경우.</xref:System.Windows.Documents.TextPointer.LogicalDirection*>"
   overload: System.Windows.Documents.TextPointer.GetLineStartPosition*
   exceptions: []
   platform:
@@ -282,20 +282,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the beginning of a line that is specified relative to the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>, and reports how many lines were skipped."
-  remarks: "If the <xref:System.Windows.Documents.TextPointer> points to an ambiguous position, for example, between two lines, the line in the direction specified by the <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> property is selected as the relative starting line."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 상대적으로 지정 된 줄의 시작 부분에 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>, 해당 주소는 선의 개수를 보고 합니다."
+  remarks: "경우는 <xref:System.Windows.Documents.TextPointer>는 모호한 위치를 가리키는 예를 들어 두 줄 사이의 줄에 지정 된 방향의 <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A>상대 시작 줄으로 속성을 선택 합니다.</xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> </xref:System.Windows.Documents.TextPointer>"
   syntax:
     content: public System.Windows.Documents.TextPointer GetLineStartPosition (int count, out int actualCount);
     parameters:
     - id: count
       type: System.Int32
-      description: "The number of start-of-line markers to skip when determining the line for which to return the starting position. Negative values specify preceding lines, 0 specifies the current line, and positive values specify following lines."
+      description: "시작 줄의 표식 줄 시작 위치를 반환할을 결정할 때 건너뛸 수입니다. 음수 이전 줄을 지정 하는 값 0은 현재 줄을 지정 하 고 다음 줄 양수 값을 지정 합니다."
     - id: actualCount
       type: System.Int32
-      description: "When this method returns, contains the actual number of start-of-line markers that were skipped when determining the line for which to return the starting position.  This value may be less than `count` if the beginning or end of content is encountered before the specified number of lines are skipped. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때 해당 주소 줄의 시작 위치 반환 될 결정할 때 줄의 시작 표식의 실제 수를 포함 합니다.  이 값 보다 작은 `count` 시작 또는 끝의 콘텐츠 지정한 개수의 줄을 건너뛰기 전에 발견 되는 경우. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> pointing to the beginning of the specified line (with the <xref:System.Windows.Documents.TextPointer.LogicalDirection*> set to <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref>), or to the beginning of the line closest to the specified line if the specified line is out of range."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 줄의 시작 부분을 가리키는 (으로 <xref:System.Windows.Documents.TextPointer.LogicalDirection*>로 설정 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref>), 또는 지정 된 줄 범위를 벗어났습니다.이 경우 지정된 된 줄에 가장 가까운 줄의 시작 부분에.</xref:System.Windows.Documents.TextPointer.LogicalDirection*>"
   overload: System.Windows.Documents.TextPointer.GetLineStartPosition*
   exceptions: []
   platform:
@@ -312,8 +312,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a pointer to the next symbol in the specified logical direction."
-  remarks: "Any of the following is considered to be a symbol:      -   An opening or closing tag for a <xref:System.Windows.Documents.TextElement> element.      -   A <xref:System.Windows.UIElement> element contained in an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.      -   A 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element.       If the next symbol is categorized as <xref:System.Windows.Documents.TextPointerContext>, <xref:System.Windows.Documents.TextPointerContext>, or <xref:System.Windows.Documents.TextPointerContext> (as identified by the <xref:System.Windows.Documents.TextPointer.GetPointerContext%2A> method), then the <xref:System.Windows.Documents.TextPointer> returned by this method is advanced by exactly one symbol from the current position.       If the next symbol is categorized as <xref:System.Windows.Documents.TextPointerContext>, then the <xref:System.Windows.Documents.TextPointer> returned by this method is advanced past the text to the next non-text symbol (that is, the next position where the <xref:System.Windows.Documents.TextPointerContext> is not <xref:System.Windows.Documents.TextPointerContext>).  The exact symbol count crossed can be calculated in advance by calling the <xref:System.Windows.Documents.TextPointer.GetTextRunLength%2A> method."
+  summary: "지정된 된 논리적 방향에서 다음 기호에 대 한 포인터를 반환합니다."
+  remarks: "다음과 같은 기호로 간주 됩니다:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>      - <xref:System.Windows.UIElement>요소에 포함 된 프로그램 <xref:System.Windows.Documents.InlineUIContainer>또는 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>      -16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>       다음 기호 분류 되는지 경우 <xref:System.Windows.Documents.TextPointerContext>, <xref:System.Windows.Documents.TextPointerContext>, 또는 <xref:System.Windows.Documents.TextPointerContext>(으로 식별 되는 <xref:System.Windows.Documents.TextPointer.GetPointerContext%2A>메서드), 그런 다음 <xref:System.Windows.Documents.TextPointer>이 속성에서 반환 메서드는 현재 위치에서 정확히 하나의 기호로 앞.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer.GetPointerContext%2A> </xref:System.Windows.Documents.TextPointerContext> </xref:System.Windows.Documents.TextPointerContext> </xref:System.Windows.Documents.TextPointerContext>       다음 기호 분류 되는지 경우 <xref:System.Windows.Documents.TextPointerContext>, 그런 다음 <xref:System.Windows.Documents.TextPointer>이 속성에서 반환 메서드에서 텍스트 뒤로 다음 텍스트가 아닌 기호 (즉, 다음 위치의 <xref:System.Windows.Documents.TextPointerContext>않습니다 <xref:System.Windows.Documents.TextPointerContext>).</xref:System.Windows.Documents.TextPointerContext> </xref:System.Windows.Documents.TextPointerContext> </xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointerContext>  호출 하 여 교차 기호 정확한 개수를 미리 계산할 수 있습니다는 <xref:System.Windows.Documents.TextPointer.GetTextRunLength%2A>메서드.</xref:System.Windows.Documents.TextPointer.GetTextRunLength%2A>"
   example:
   - "The following example demonstrates a use for this method.  The example uses the GetNextContextPosition method in conjunction with the <xref:System.Windows.Documents.TextPointer.GetPointerContext%2A> method to traverse and extract the symbols in a specified <xref:System.Windows.Documents.TextElement>.  \n  \n While the example can be used to extract a [!INCLUDE[TLA#tla_titlexaml](~/add/includes/ajax-current-ext-md.md)] structure for the contents of a given <xref:System.Windows.Documents.TextElement>, it is intended for illustrative purposes only, and should not be used in production code.  See the <xref:System.Xml> namespace for a rich set of types designed for working with and processing XML.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetNextContextPosition](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getnextcontextposition)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetNextContextPosition](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getnextcontextposition)]"
   syntax:
@@ -321,10 +321,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to search for the next symbol."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 다음 기호에 대 한 검색 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the next symbol in the requested direction, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> borders the start or end of content."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 요청한 방향으로 다음 기호 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 현재 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 시작 또는 끝 콘텐츠의 테두리입니다."
   overload: System.Windows.Documents.TextPointer.GetNextContextPosition*
   exceptions: []
   platform:
@@ -341,8 +341,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the next insertion position in the specified logical direction."
-  remarks: "An *insertion position* is a position where new content may be added without breaking any semantic rules for the associated content.  In practice, an insertion position is anywhere in content where a caret may be positioned.  An example of a valid <xref:System.Windows.Documents.TextPointer> position that is not an insertion position is the position between two adjacent <xref:System.Windows.Documents.Paragraph> tags (that is, between the closing tag of the preceding paragraph and the opening tag of the next paragraph)."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정은 다음 삽입 위치로 합니다."
+  remarks: "*삽입 위치* 연결된 콘텐츠에 대 한 의미 체계 규칙을 위반 하지 않고 새 콘텐츠를 추가할 수 있는 위치입니다.  실제로, 삽입 위치는 콘텐츠 내에 캐럿 위치 지정할 수 있습니다.  유효한의 예로 <xref:System.Windows.Documents.TextPointer>삽입 위치 하지 않은 위치는 인접 한 두 사이의 위치 <xref:System.Windows.Documents.Paragraph>태그 (즉, 이전 단락의 닫는 태그와 여는 태그 다음 단락의 사이).</xref:System.Windows.Documents.Paragraph> </xref:System.Windows.Documents.TextPointer>"
   example:
   - "The following example demonstrates a use for this method. The example uses the GetNextInsertionPosition method to traverse content element boundaries in order to count the number of <xref:System.Windows.Documents.Paragraph> elements present between two specified <xref:System.Windows.Documents.TextPointer> instances.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetNextInsertionPosition](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getnextinsertionposition)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetNextInsertionPosition](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getnextinsertionposition)]"
   syntax:
@@ -350,10 +350,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to search for the next insertion position."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 다음 삽입 위치에 대 한 검색 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> that identifies the next insertion position in the requested direction, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no next insertion position can be found."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 요청한 방향으로 다음 삽입 위치를 식별 하는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 없는 다음 삽입 위치를 찾을 수 있습니다."
   overload: System.Windows.Documents.TextPointer.GetNextInsertionPosition*
   exceptions: []
   platform:
@@ -370,8 +370,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns the count of symbols between the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and a second specified <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
-  remarks: "Any of the following is considered to be a symbol:      -   An opening or closing tag for a <xref:System.Windows.Documents.TextElement> element.      -   A <xref:System.Windows.UIElement> element contained in an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.      -   A 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element."
+  summary: "현재 사이의 기호 수를 반환 합니다. <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정 된 두 번째 및 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
+  remarks: "다음과 같은 기호로 간주 됩니다:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>      - <xref:System.Windows.UIElement>요소에 포함 된 프로그램 <xref:System.Windows.Documents.InlineUIContainer>또는 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>      -16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>"
   example:
   - "The following example demonstrates a use for this method. The example uses the GetOffsetToPosition method to find the offsets for two <xref:System.Windows.Documents.TextPointer> instances, and then uses this information to save and restore the selection in a <xref:System.Windows.Controls.RichTextBox>.  The example assumes that the contents of the <xref:System.Windows.Controls.RichTextBox> have not changed between a selection save and a selection restore.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetOffsetToPosition](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getoffsettoposition)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetOffsetToPosition](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getoffsettoposition)]"
   syntax:
@@ -379,15 +379,15 @@ items:
     parameters:
     - id: position
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> that specifies a position to find the distance (in symbols) to."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 거리 (기호)을 찾을 위치를 지정 하는 합니다."
     return:
       type: System.Int32
-      description: "The relative number of symbols between the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and <code>position</code>.  A negative value indicates that the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> follows the position specified by <code>position</code>, 0 indicates that the positions are equal, and a positive value indicates that the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> precedes the position specified by <code>position</code>."
+      description: "현재 간의 기호 상대 수 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 및 <code> position </code>합니다.  값이 음수 이면 현재 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 로 지정 된 위치 뒤에 오는 <code> position </code>, 0은 위치가 동일 하 고 값이 양수 이면 나타냅니다 현재 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 로 지정 된 위치를 앞 <code> position </code>합니다."
   overload: System.Windows.Documents.TextPointer.GetOffsetToPosition*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>position</code> specifies a position outside of the text container associated with the current position."
+    description: "<code>position</code>현재 위치와 연결 된 텍스트 컨테이너의 외부 위치를 지정 합니다."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.GetPointerContext(System.Windows.Documents.LogicalDirection)
@@ -402,7 +402,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a category indicator for the content adjacent to the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> in the specified logical direction."
+  summary: "콘텐츠에 대 한 범주 표시기를 현재 인접 반환 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 에 지정 합니다."
   remarks: ''
   example:
   - "The following example demonstrates a use for this method. The example uses the GetPointerContext method to implement an algorithm for calculating the balance of opening and closing element tags between two specified <xref:System.Windows.Documents.TextPointer> positions.  Each opening element tag is counted as +1, and each closing element tag is counted as –1.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetOffsetToPosition2](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getoffsettoposition2)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetOffsetToPosition2](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getoffsettoposition2)]"
@@ -411,10 +411,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to determine the category for adjacent content."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 인접 한 콘텐츠에 대 한 범주를 결정 하는 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Windows.Documents.TextPointerContext
-      description: "One of the <xref href=&quot;System.Windows.Documents.TextPointerContext&quot;></xref> values that indicates the category for adjacent content in the specified logical direction."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.TextPointerContext&quot;> </xref> 지정의 인접 한 콘텐츠에 대 한 범주를 나타내는 값입니다."
   overload: System.Windows.Documents.TextPointer.GetPointerContext*
   exceptions: []
   platform:
@@ -431,8 +431,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the position indicated by the specified offset, in symbols, from the beginning of the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
-  remarks: "Any of the following is considered to be a symbol:      -   An opening or closing tag for the <xref:System.Windows.Documents.TextElement> element.      -   A <xref:System.Windows.UIElement> element contained in an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.      -   A 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재의 시작 부분에서 기호에 지정된 된 오프셋으로 지정 된 위치에 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
+  remarks: "다음과 같은 기호로 간주 됩니다:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>      - <xref:System.Windows.UIElement>요소에 포함 된 프로그램 <xref:System.Windows.Documents.InlineUIContainer>또는 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>      -16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>"
   example:
   - "The following example demonstrates a use for this method. The example uses the GetPositionAtOffset method to implement a pair of methods, one to calculate the offset to a specified position relative to any hosting paragraph, and the other to return a <xref:System.Windows.Documents.TextPointer> to a specified offset in a specified paragraph.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetPositionAtOffset](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_getpositionatoffset)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetPositionAtOffset](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_getpositionatoffset)]"
   syntax:
@@ -440,10 +440,10 @@ items:
     parameters:
     - id: offset
       type: System.Int32
-      description: "An offset, in symbols, for which to calculate and return the position.  If the offset is negative, the position is calculated in the logical direction opposite of that indicated by the <xref:System.Windows.Documents.TextPointer.LogicalDirection*> property."
+      description: "오프셋, 기호를 계산 하 고 위치를 반환 합니다.  반대 논리 방향으로 표시 되는 위치가 계산 오프셋 음수 이면는 <xref:System.Windows.Documents.TextPointer.LogicalDirection*>속성.</xref:System.Windows.Documents.TextPointer.LogicalDirection*>"
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the position indicated by the specified offset, or<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>if no corresponding position can be found."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 오프셋으로 표시 되는 위치 또는<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>가 없으면 해당 위치가 없습니다."
   overload: System.Windows.Documents.TextPointer.GetPositionAtOffset*
   exceptions: []
   platform:
@@ -460,20 +460,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the position indicated by the specified offset, in symbols, from the beginning of the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and in the specified direction."
-  remarks: "Any of the following is considered to be a symbol:      -   An opening or closing tag for the <xref:System.Windows.Documents.TextElement> element.      -   A <xref:System.Windows.UIElement> element contained in an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.      -   A 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element."
+  summary: "반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재의 시작 부분에서 기호에 지정된 된 오프셋으로 지정 된 위치에 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 및 지정된 된 방향으로 합니다."
+  remarks: "다음과 같은 기호로 간주 됩니다:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>      - <xref:System.Windows.UIElement>요소에 포함 된 프로그램 <xref:System.Windows.Documents.InlineUIContainer>또는 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>      -16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>"
   syntax:
     content: public System.Windows.Documents.TextPointer GetPositionAtOffset (int offset, System.Windows.Documents.LogicalDirection direction);
     parameters:
     - id: offset
       type: System.Int32
-      description: "An offset, in symbols, for which to calculate and return the position.  If the offset is negative, the returned <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> precedes the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>; otherwise, it follows."
+      description: "오프셋, 기호를 계산 하 고 위치를 반환 합니다.  오프셋이 음수 이면 반환 된 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 앞에 오는 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>, 그렇지 않으면 따릅니다."
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction of the returned <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 반환 된 논리 방향을 지정 하는 값 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref>합니다."
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the position indicated by the specified offset, or<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>if the offset extends past the end of the content."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 지정된 된 오프셋으로 표시 되는 위치 또는<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>오프셋 콘텐츠 끝을 넘어 확장 하는 경우."
   overload: System.Windows.Documents.TextPointer.GetPositionAtOffset*
   exceptions: []
   platform:
@@ -490,8 +490,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns a string containing any text adjacent to the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> in the specified logical direction."
-  remarks: "This method returns only uninterrupted runs of text.  Nothing is returned if any symbol type other than <xref:System.Windows.Documents.TextPointerContext> is adjacent to the current <xref:System.Windows.Documents.TextPointer> in the specified direction.  Similarly, text is returned only up to the next non-text symbol."
+  summary: "현재 인접 한 텍스트를 포함 하는 문자열 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 에 지정 합니다."
+  remarks: "이 메서드는 텍스트의 중단 없이 실행만을 반환합니다.  아무 것도 반환 이외의 모든 기호 형식을 경우 <xref:System.Windows.Documents.TextPointerContext>현재에 인접 한 <xref:System.Windows.Documents.TextPointer>지정 된 방향의.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointerContext>  마찬가지로, 다음 텍스트가 아닌 기호 까지만 텍스트가 반환 됩니다."
   example:
   - "The following example demonstrates a use for this method. The example uses the GetTextInRun method to implement a simple text extractor.  The method returns a string concatenation of all text between two specified <xref:System.Windows.Documents.TextPointer> instances.  \n  \n While the example can be used to extract any text between two <xref:System.Windows.Documents.TextPointer> instances, it is intended for illustrative purposes only, and should not be used in production code.  Use the <xref:System.Windows.Documents.TextRange.Text%2A?displayProperty=fullName> property instead.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_GetTextInRun](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_gettextinrun)]\n [!code-vb[TextPointer_Snippets#_TextPointer_GetTextInRun](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_gettextinrun)]"
   syntax:
@@ -499,10 +499,10 @@ items:
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to find and return any adjacent text."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 찾아 인접 한 텍스트를 반환 합니다. 논리 방향을 지정 하는 값입니다."
     return:
       type: System.String
-      description: "A string containing any adjacent text in the specified logical direction, or &lt;xref:System.String?displayProperty=fullName&gt; if no adjacent text can be found."
+      description: "지정된 된 논리적 방향으로 인접 한 텍스트를 포함 하는 문자열 또는 &lt;xref:System.String?displayProperty=fullName&gt; 없는 인접 한 텍스트를 찾을 수 있는 합니다."
   overload: System.Windows.Documents.TextPointer.GetTextInRun*
   exceptions: []
   platform:
@@ -519,31 +519,31 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Copies the specified maximum number of characters from any adjacent text in the specified direction into a caller-supplied character array."
-  remarks: "This method returns only uninterrupted runs of text.  Nothing is returned if any symbol type other than <xref:System.Windows.Documents.TextPointerContext> is adjacent to the current <xref:System.Windows.Documents.TextPointer> in the specified direction.  Similarly, text is returned only up to the next non-text symbol."
+  summary: "호출자가 제공한 문자 배열에 지정된 된 방향으로 인접 한 텍스트에서 지정 된 최대 문자 수를 복사합니다."
+  remarks: "이 메서드는 텍스트의 중단 없이 실행만을 반환합니다.  아무 것도 반환 이외의 모든 기호 형식을 경우 <xref:System.Windows.Documents.TextPointerContext>현재에 인접 한 <xref:System.Windows.Documents.TextPointer>지정 된 방향의.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointerContext>  마찬가지로, 다음 텍스트가 아닌 기호 까지만 텍스트가 반환 됩니다."
   syntax:
     content: public int GetTextInRun (System.Windows.Documents.LogicalDirection direction, char[] textBuffer, int startIndex, int count);
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to find and copy any adjacent text."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 찾고 인접 한 텍스트를 복사 하는 논리 방향을 지정 하는 값입니다."
     - id: textBuffer
       type: System.Char[]
-      description: "A buffer into which any text is copied."
+      description: "텍스트를 복사할 버퍼입니다."
     - id: startIndex
       type: System.Int32
-      description: "An index into `textBuffer` at which to begin writing copied text."
+      description: "에 대 한 인덱스 `textBuffer` 쓰기 복사한 텍스트를 시작 하는 합니다."
     - id: count
       type: System.Int32
-      description: "The maximum number of characters to copy."
+      description: "복사할 문자의 최대 수입니다."
     return:
       type: System.Int32
-      description: "The number of characters actually copied into <code>textBuffer</code>."
+      description: "실제로에 복사 하는 문자 수가 <code> textBuffer </code>합니다."
   overload: System.Windows.Documents.TextPointer.GetTextInRun*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>startIndex</code> is less than 0 or greater than the <xref:System.Array.Length*> property of <code>textBuffer</code>.       -or-       <code>count</code> is less than 0 or greater than the remaining space in <code>textBuffer</code> (<code>textBuffer</code>.<xref:System.Array.Length*> minus <code>startIndex</code>)."
+    description: "<code>startIndex</code>가 0 보다 작거나 보다는 <xref:System.Array.Length*> 속성 <code>textBuffer</code>합니다.       -또는- <code>count</code> 가 0 보다 작은에서 남은 공간 보다 큰 <code>textBuffer</code> (<code>textBuffer</code>합니다.<xref:System.Array.Length*> 빼기 <code>startIndex</code>)."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.GetTextRunLength(System.Windows.Documents.LogicalDirection)
@@ -558,17 +558,17 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Returns the number of Unicode characters between the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and the next non-text symbol, in the specified logical direction."
-  remarks: "Any of the following is considered to be a symbol:      -   An opening or closing tag for the <xref:System.Windows.Documents.TextElement> element.      -   A <xref:System.Windows.UIElement> element contained in an <xref:System.Windows.Documents.InlineUIContainer> or <xref:System.Windows.Documents.BlockUIContainer>.  Note that such a <xref:System.Windows.UIElement> is always counted as exactly one symbol; any additional content or elements contained by the <xref:System.Windows.UIElement> are not counted as symbols.      -   A 16-bit [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] character inside of a text <xref:System.Windows.Documents.Run> element."
+  summary: "현재 사이의 유니코드 문자 수를 반환 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 와 다음 텍스트가 아닌 기호에서 지정 합니다."
+  remarks: "다음과 같은 기호로 간주 됩니다:-여 닫는 태그를 또는 <xref:System.Windows.Documents.TextElement>요소.</xref:System.Windows.Documents.TextElement>      - <xref:System.Windows.UIElement>요소에 포함 된 프로그램 <xref:System.Windows.Documents.InlineUIContainer>또는 <xref:System.Windows.Documents.BlockUIContainer>.</xref:System.Windows.Documents.BlockUIContainer> </xref:System.Windows.Documents.InlineUIContainer> </xref:System.Windows.UIElement> A  이러한은 <xref:System.Windows.UIElement>항상 정확히 하나의 기호; 추가 내용 또는 요소에 포함 된 것으로 간주 됩니다는 <xref:System.Windows.UIElement>기호로 계산 되지 않습니다.</xref:System.Windows.UIElement> </xref:System.Windows.UIElement>      -16 비트 [!INCLUDE[TLA#tla_unicode](~/add/includes/ajax-current-ext-md.md)] 텍스트 내부에서 문자 <xref:System.Windows.Documents.Run>요소.</xref:System.Windows.Documents.Run>"
   syntax:
     content: public int GetTextRunLength (System.Windows.Documents.LogicalDirection direction);
     parameters:
     - id: direction
       type: System.Windows.Documents.LogicalDirection
-      description: "One of the <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> values that specifies the logical direction in which to count the number of characters."
+      description: "중 하나는 <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 문자의 수를 계산 하는 논리 방향을 지정 하는 값입니다."
     return:
       type: System.Int32
-      description: "The number of Unicode characters between the current <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> and the next non-text symbol.  This number may be 0 if there is no adjacent text."
+      description: "현재 사이의 유니코드 문자 수가 <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 와 다음 아닌 텍스트 기호.  이 수는 인접 한 텍스트가 없는 경우 0을 수 있습니다."
   overload: System.Windows.Documents.TextPointer.GetTextRunLength*
   exceptions: []
   platform:
@@ -585,13 +585,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets a value that indicates whether the text container associated with the current position has a valid (up-to-date) layout."
-  remarks: "When necessary, operations that depend on a valid layout (such as the <xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A> method, <xref:System.Windows.Documents.TextPointer.GetCharacterRect%2A> method, and <xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A> property) attempt to automatically regenerate a valid layout before proceeding with the operation.  Regenerating a layout can be a relatively expensive operation.  Use this property to check for a valid layout before performing operations that may regenerate the layout.  For more information, see [Layout](~/add/includes/ajax-current-ext-md.md)."
+  summary: "현재 위치와 연결 된 텍스트 컨테이너에 올바른 (최신) 레이아웃에 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "필요한 경우 올바른 레이아웃에 종속 된 작업 (같은 <xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A>메서드를 <xref:System.Windows.Documents.TextPointer.GetCharacterRect%2A>메서드를 및 <xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A>속성) 작업을 진행 하기 전에 유효한 레이아웃을 자동으로 다시 생성 하려고 합니다.</xref:System.Windows.Documents.TextPointer.IsAtLineStartPosition%2A> </xref:System.Windows.Documents.TextPointer.GetCharacterRect%2A> </xref:System.Windows.Documents.TextPointer.GetLineStartPosition%2A>  레이아웃을 다시 생성 하는 작업 상대적으로 비용이 많이 들 수 있습니다.  이 속성을 사용 하 여 레이아웃을 다시 생성 될 수도 있는 작업을 수행 하기 전에 유효한 레이아웃에 대 한 확인 하도록 합니다.  자세한 내용은 참조 [레이아웃](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public bool HasValidLayout { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the layout is current and valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>레이아웃 현재 있고 잘못 되었습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Documents.TextPointer.HasValidLayout*
   exceptions: []
   platform:
@@ -608,13 +608,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Inserts a line break at the current position."
+  summary: "현재 위치에 줄 바꿈을 삽입합니다."
   syntax:
     content: public System.Windows.Documents.TextPointer InsertLineBreak ();
     parameters: []
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> positioned immediately after the <xref href=&quot;System.Windows.Documents.LineBreak&quot;></xref> element inserted by this method."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 직후에 배치 되는 <xref href=&quot;System.Windows.Documents.LineBreak&quot;> </xref> 요소를이 방법으로 삽입 합니다."
   overload: System.Windows.Documents.TextPointer.InsertLineBreak*
   exceptions: []
   platform:
@@ -631,19 +631,19 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Inserts a paragraph break at the current position."
-  remarks: "If this method is called when the current position is inside of an existing <xref:System.Windows.Documents.Paragraph> element, the existing paragraph and any content it contains are split into two paragraphs at the current position.  If this method is called when the current position is not inside of an existing paragraph, a new, empty paragraph is inserted.  If this method is called at a position unsuitable for splitting or inserting a paragraph (for example, if the current position is inside of a <xref:System.Windows.Documents.Hyperlink> element), an exception is thrown."
+  summary: "단락 구분선을 현재 위치에 삽입합니다."
+  remarks: "기존의 내부에서 현재 위치 하는 경우이 메서드를 호출 하면 <xref:System.Windows.Documents.Paragraph>요소, 기존 단락 및 포함 된 콘텐츠는 현재 위치에 두 단락으로 분할 됩니다.</xref:System.Windows.Documents.Paragraph>  현재 위치를 기존 단락 내에서 없을 때이 메서드가 호출 되는 새로 만든 빈 단락 삽입 됩니다.  이 메서드는 위치에 분할 하거나 단락 삽입 사용할 수 없는 경우 (예를 들어 현재 위치가 내부에 하는 경우는 <xref:System.Windows.Documents.Hyperlink>요소), 예외가 throw 됩니다.</xref:System.Windows.Documents.Hyperlink>"
   syntax:
     content: public System.Windows.Documents.TextPointer InsertParagraphBreak ();
     parameters: []
     return:
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> to the beginning (<xref:System.Windows.Documents.TextElement.ContentStart*>) of the new paragraph."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 시작 부분에 (<xref:System.Windows.Documents.TextElement.ContentStart*>) 새 단락.</xref:System.Windows.Documents.TextElement.ContentStart*>"
   overload: System.Windows.Documents.TextPointer.InsertParagraphBreak*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This method is called on a position that cannot be split to accommodate a new paragraph, such as in the scope of a <xref href=&quot;System.Windows.Documents.Hyperlink&quot;></xref> or <xref href=&quot;System.Windows.Documents.InlineUIContainer&quot;></xref>."
+    description: "와 같은 범위에 새 단락을 수용 하기 위해 분할할 수 없는 위치에이 메서드는 한 <xref href=&quot;System.Windows.Documents.Hyperlink&quot;> </xref> 또는 <xref href=&quot;System.Windows.Documents.InlineUIContainer&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.InsertTextInRun(System.String)
@@ -658,22 +658,22 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Inserts the specified text into the text <xref href=&quot;System.Windows.Documents.Run&quot;></xref> at the current position."
-  remarks: "If the <xref:System.Windows.Documents.TextPointer> is not scoped by a <xref:System.Windows.Documents.Run> element, a <xref:System.Windows.Documents.Run> is inserted along with the `textData`."
+  summary: "지정된 된 텍스트를 텍스트 삽입 <xref href=&quot;System.Windows.Documents.Run&quot;> </xref> 현재 위치에 있습니다."
+  remarks: "경우는 <xref:System.Windows.Documents.TextPointer>여 범위로 지정 되지 않은 한 <xref:System.Windows.Documents.Run>요소는 <xref:System.Windows.Documents.Run>와 함께 삽입 됩니다는 `textData`.</xref:System.Windows.Documents.Run> </xref:System.Windows.Documents.Run> </xref:System.Windows.Documents.TextPointer>"
   syntax:
     content: public void InsertTextInRun (string textData);
     parameters:
     - id: textData
       type: System.String
-      description: "The text to insert."
+      description: "삽입할 텍스트입니다."
   overload: System.Windows.Documents.TextPointer.InsertTextInRun*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current position is not within a <xref href=&quot;System.Windows.Documents.Run&quot;></xref> element."
+    description: "현재 위치 내에 없는 한 <xref href=&quot;System.Windows.Documents.Run&quot;> </xref> 요소입니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>textData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.IsAtInsertionPosition
@@ -688,13 +688,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets a value that indicates whether the current position is an insertion position."
-  remarks: "An insertion position is a position where new content may be added without breaking any semantic rules for the associated content.  In practice, an insertion position is anywhere in content where a caret may be positioned.  An example of a valid <xref:System.Windows.Documents.TextPointer> position that is not an insertion position is the position between two adjacent <xref:System.Windows.Documents.Paragraph> tags (that is, between the closing tag of the preceding paragraph and the opening tag of the next paragraph)."
+  summary: "현재 위치에 삽입 위치 인지 여부를 나타내는 값을 가져옵니다."
+  remarks: "삽입 위치는 연결된 된 콘텐츠에 대 한 의미 체계 규칙을 위반 하지 않고 새 콘텐츠를 추가할 수 있는 위치입니다.  실제로, 삽입 위치는 콘텐츠 내에 캐럿 위치 지정할 수 있습니다.  유효한의 예로 <xref:System.Windows.Documents.TextPointer>삽입 위치 하지 않은 위치는 인접 한 두 사이의 위치 <xref:System.Windows.Documents.Paragraph>태그 (즉, 이전 단락의 닫는 태그와 여는 태그 다음 단락의 사이).</xref:System.Windows.Documents.Paragraph> </xref:System.Windows.Documents.TextPointer>"
   syntax:
     content: public bool IsAtInsertionPosition { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current position is an insertion position; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>삽입 위치; 현재 위치 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Documents.TextPointer.IsAtInsertionPosition*
   exceptions: []
   platform:
@@ -711,13 +711,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets a value that indicates whether the current position is at the beginning of a line."
-  remarks: "If the <xref:System.Windows.Documents.TextPointer> points to an ambiguous position, for example, between two lines, the line in the direction specified by the <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> property is selected as the relative starting line.       The operation performed by this property depends on a valid layout.  When necessary, this method attempts to automatically regenerate a valid layout before proceeding with the operation.  Regenerating a layout can be a relatively expensive operation.  Use the <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A> property to check for a valid layout before performing operations that may regenerate the layout.  For more information, see [Layout](~/add/includes/ajax-current-ext-md.md)."
+  summary: "현재 위치가 줄의 시작 부분에 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "경우는 <xref:System.Windows.Documents.TextPointer>는 모호한 위치를 가리키는 예를 들어 두 줄 사이의 줄에 지정 된 방향의 <xref:System.Windows.Documents.TextPointer.LogicalDirection%2A>상대 시작 줄으로 속성을 선택 합니다.</xref:System.Windows.Documents.TextPointer.LogicalDirection%2A> </xref:System.Windows.Documents.TextPointer>       이 속성에 의해 수행 되는 작업은 올바른 레이아웃에 따라 달라 집니다.  필요한 경우이 메서드는 작업을 진행 하기 전에 유효한 레이아웃을 자동으로 다시 생성 하려고 합니다.  레이아웃을 다시 생성 하는 작업 상대적으로 비용이 많이 들 수 있습니다.  사용 하 여는 <xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>레이아웃을 다시 생성 될 수도 있는 작업을 수행 하기 전에 유효한 레이아웃에 대해 확인할 속성입니다.</xref:System.Windows.Documents.TextPointer.HasValidLayout%2A>  자세한 내용은 참조 [레이아웃](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public bool IsAtLineStartPosition { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current position is at the beginning of a line; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>현재 위치가 줄의 시작 부분에 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Documents.TextPointer.IsAtLineStartPosition*
   exceptions: []
   platform:
@@ -734,8 +734,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Indicates whether the specified position is in the same text container as the current position."
-  remarks: "Most operations that involve multiple <xref:System.Windows.Documents.TextPointer> instances are only valid if the instances in question indicate positions that are in the same text container scope.  For example the <xref:System.Windows.Documents.TextPointer.CompareTo%2A> and <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A> methods cannot be used with a <xref:System.Windows.Documents.TextPointer> to a position outside of the text container associated with the current position.  Use this method to verify that a specified <xref:System.Windows.Documents.TextPointer> is compatible with the current position for such operations."
+  summary: "현재 위치와 같은 텍스트 컨테이너에 지정된 된 위치 인지를 나타냅니다."
+  remarks: "여러를 포함 하는 대부분 작업 <xref:System.Windows.Documents.TextPointer>문제의 인스턴스는 동일한 텍스트 컨테이너 범위에 있는 위치를 가리킬 경우에 인스턴스는 유효만.</xref:System.Windows.Documents.TextPointer>  예를 들어는 <xref:System.Windows.Documents.TextPointer.CompareTo%2A>및 <xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A>메서드를 함께 사용할 수 없습니다는 <xref:System.Windows.Documents.TextPointer>현재 위치와 연결 된 텍스트 컨테이너의 외부 위치에.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.TextPointer.GetOffsetToPosition%2A> </xref:System.Windows.Documents.TextPointer.CompareTo%2A>  지정 된 되어 있는지 확인 하려면이 메서드를 사용 <xref:System.Windows.Documents.TextPointer>등의 작업에 대 한 현재 위치와 호환 됩니다.</xref:System.Windows.Documents.TextPointer>"
   example:
   - "The following example demonstrates a use for this method.  The example uses the IsInSameDocument method to check whether a specified <xref:System.Windows.Documents.TextPointer> is positioned between two other specified <xref:System.Windows.Documents.TextPointer> instances in a situation when there is no guarantee that all three positions belong to the same text container.  \n  \n [!code-cs[TextPointer_Snippets#_TextPointer_IsInSameDocument](~/add/codesnippet/csharp/TextPointer_Snippets/Window1.xaml.cs#_textpointer_isinsamedocument)]\n [!code-vb[TextPointer_Snippets#_TextPointer_IsInSameDocument](~/add/codesnippet/visualbasic/textpointer_snippets/window1.xaml.vb#_textpointer_isinsamedocument)]"
   syntax:
@@ -743,15 +743,15 @@ items:
     parameters:
     - id: textPosition
       type: System.Windows.Documents.TextPointer
-      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;></xref> that specifies a position to compare to the current position."
+      description: "A <xref href=&quot;System.Windows.Documents.TextPointer&quot;> </xref> 현재 위치를 비교 하는 위치를 지정 하는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>textPosition</code> indicates a position that is in the same text container as the current position; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> textPosition </code> ; 현재 위치와 같은 텍스트 컨테이너에 있는 위치를 나타내며, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Documents.TextPointer.IsInSameDocument*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textPosition</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>textPosition</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Documents.TextPointer.LogicalDirection
@@ -766,13 +766,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets the logical direction associated with the current position which is used to disambiguate content associated with the current position."
-  remarks: "As an example of how this property is used, the <xref:System.Windows.Documents.LogicalDirection> of the <xref:System.Windows.Documents.TextPointer> returned by a hit test method gives a hit that is between two characters of text. The logical direction specifies which of the two characters was actually hit—the left or the right."
+  summary: "현재 위치와 연결 된 콘텐츠를 구분 하는 데 사용 되는 현재 위치와 연결 된 논리 방향을 가져옵니다."
+  remarks: "이 속성을 사용 하는 방법의 예로 <xref:System.Windows.Documents.LogicalDirection>의 <xref:System.Windows.Documents.TextPointer>반환 된 적중된 테스트에서 메서드는 텍스트의 두 문자 사이 있는 적중 횟수를 제공 합니다.</xref:System.Windows.Documents.TextPointer> </xref:System.Windows.Documents.LogicalDirection> 두 문자 중에 도달한 실제로 논리 방향을 지정-왼쪽 이나 오른쪽입니다."
   syntax:
     content: public System.Windows.Documents.LogicalDirection LogicalDirection { get; }
     return:
       type: System.Windows.Documents.LogicalDirection
-      description: "The <xref href=&quot;System.Windows.Documents.LogicalDirection&quot;></xref> value that is associated with the current position."
+      description: "<xref href=&quot;System.Windows.Documents.LogicalDirection&quot;> </xref> 현재 위치와 연결 된 값입니다."
   overload: System.Windows.Documents.TextPointer.LogicalDirection*
   exceptions: []
   platform:
@@ -789,12 +789,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets the paragraph that scopes the current position, if any."
+  summary: "있는 경우 현재 위치를 범위로 지정 하는 단락을 가져옵니다."
   syntax:
     content: public System.Windows.Documents.Paragraph Paragraph { get; }
     return:
       type: System.Windows.Documents.Paragraph
-      description: "The <xref href=&quot;System.Windows.Documents.Paragraph&quot;></xref> that scopes the current position, or<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>if no such paragraph exists."
+      description: "<xref href=&quot;System.Windows.Documents.Paragraph&quot;> </xref> 범위로 지정 하는 현재 위치 또는<xref uid=&quot;langword_csharp_ null &quot; name=&quot; null &quot; href=&quot;&quot;></xref>이러한 단락이 없는 존재 하는 경우."
   overload: System.Windows.Documents.TextPointer.Paragraph*
   exceptions: []
   platform:
@@ -811,12 +811,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "Gets the logical parent that scopes the current position."
+  summary: "현재 위치의 범위 논리 부모를 가져옵니다."
   syntax:
     content: public System.Windows.DependencyObject Parent { get; }
     return:
       type: System.Windows.DependencyObject
-      description: "The logical parent that scopes the current position."
+      description: "현재 위치가 범위를 지정 하는 논리적 부모입니다."
   overload: System.Windows.Documents.TextPointer.Parent*
   exceptions: []
   platform:
@@ -833,13 +833,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Documents
-  summary: "This type or member supports the [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] infrastructure and is not intended to be used directly from your code."
+  summary: "이 형식 또는 멤버 지원는 [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] 인프라 하며 사용자 코드에서 직접 사용할 수 없습니다."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The string that represents the object."
+      description: "개체를 나타내는 문자열입니다."
   overload: System.Windows.Documents.TextPointer.ToString*
   exceptions: []
   platform:

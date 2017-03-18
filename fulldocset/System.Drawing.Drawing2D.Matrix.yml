@@ -42,8 +42,8 @@ items:
   nameWithType: Matrix
   fullName: System.Drawing.Drawing2D.Matrix
   type: Class
-  summary: "Encapsulates a 3-by-3 affine matrix that represents a geometric transform. This class cannot be inherited."
-  remarks: "In [!INCLUDE[ndptecgdiplus](~/add/includes/ndptecgdiplus-md.md)] you can store an affine transformation in a Matrix object. Because the third column of a matrix that represents an affine transformation is always (0, 0, 1), you specify only the six numbers in the first two columns when you construct a Matrix object. The statement `Matrix myMatrix = new Matrix(0, 1, -1, 0, 3, 4)` constructs the matrix shown in the following figure.       ![Transformations](~/add/media/aboutgdip05-art10.gif &quot;Transformations&quot;)      ## Composite Transformations    A composite transformation is a sequence of transformations, one followed by the other. Consider the matrices and transformations in the following list:      |||   |-|-|   |Matrix A|Rotate 90 degrees|   |Matrix B|Scale by a factor of 2 in the x direction|   |Matrix C|Translate 3 units in the y direction|       If we start with the point (2, 1) — represented by the matrix [2 1 1] — and multiply by A, then B, then C, the point (2, 1) will undergo the three transformations in the order listed.       [2 1 1]ABC = [-2 5 1]       Rather than store the three parts of the composite transformation in three separate matrices, you can multiply A, B, and C together to get a single 3×3 matrix that stores the entire composite transformation. Suppose ABC = D. Then a point multiplied by D gives the same result as a point multiplied by A, then B, then C.       [2 1 1]D = [-2 5 1]       The following illustration shows the matrices A, B, C, and D.       ![Transformations](~/add/media/aboutgdip05-art12.gif &quot;Transformations&quot;)       The fact that the matrix of a composite transformation can be formed by multiplying the individual transformation matrices means that any sequence of affine transformations can be stored in a single Matrix object.      > [!CAUTION] >  The order of a composite transformation is important. In general, rotate, then scale, then translate is not the same as scale, then rotate, then translate. Similarly, the order of matrix multiplication is important. In general, ABC is not the same as BAC.       The Matrix class provides several methods for building a composite transformation: <xref:System.Drawing.Drawing2D.Matrix.Multiply%2A>, <xref:System.Drawing.Drawing2D.Matrix.Rotate%2A>, <xref:System.Drawing.Drawing2D.Matrix.RotateAt%2A>, <xref:System.Drawing.Drawing2D.Matrix.Scale%2A>, <xref:System.Drawing.Drawing2D.Matrix.Shear%2A>, and <xref:System.Drawing.Drawing2D.Matrix.Translate%2A>. The following example creates the matrix of a composite transformation that first rotates 30 degrees, then scales by a factor of 2 in the y direction, and then translates 5 units in the x direction:       [!code-vb[System.Drawing.CoordinateSystems#11](~/add/codesnippet/visualbasic/t-system.drawing.drawing_10_1.vb)]  [!code-cs[System.Drawing.CoordinateSystems#11](~/add/codesnippet/csharp/t-system.drawing.drawing_10_1.cs)]"
+  summary: "기하학적 변형을 나타내는 3-3 유사 매트릭스를 캡슐화 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "[!INCLUDE[ndptecgdiplus](~/add/includes/ndptecgdiplus-md.md)]&3;x3 유사 변형 매트릭스 개체를 저장할 수 있습니다. 나타내는 3x3 유사 변형 매트릭스의 세 번째 열은 항상 때문에 (0, 0, 1) 행렬 개체를 생성할 때 처음 두 열에 있는 6 개의 숫자만 지정 합니다. 문이 `Matrix myMatrix = new Matrix(0, 1, -1, 0, 3, 4)` 다음 그림에 표시 된 매트릭스를 구성 합니다.       ![변환](~/add/media/aboutgdip05-art10.gif &quot;변환&quot;) # # 복합 변환 합성 변형 A 차례 대로 다른 변환의 시퀀스입니다. 매트릭스 및 다음 목록에는 변환을 고려: | | |   |-|-|   | 매트릭스 A | 90도 회전 |   | 매트릭스 B | X 방향으로 2 배 별 크기 조정 |   | 행렬 C | Y 방향의 3 단위 |       점 (2, 1)으로 시작 하는 경우-행렬 [2 1 1]로 표시-A, B, C, 점 (2, 1)에 나열 된 순서로 세 가지 변환 될 예정 다음 곱하면 합니다.       [2 1 1] ABC = [-2 5 1] 대신 세 개의 별도 행렬에 복합 변환의 세 부분을 저장, A, 곱하기 수 B 및 C 함께 전체 복합 변환을 저장 하는 단일 3 × 3 행렬을 가져옵니다. ABC 가정 = D D를 곱하면 A, B, C 곱하면와 동일한 결과 제공 하는 다음       [2 1 1] D = [-2 5 1] 다음 그림 A &quot;,&quot; B &quot;,&quot; C &quot;및&quot; 4. 매트릭스를 보여 줍니다.       ![변환](~/add/media/aboutgdip05-art12.gif &quot;변환&quot;) 개별 변형 매트릭스를 곱하여 복합 변환 매트릭스를 만들 수 있습니다 것은 의미 관계 변환 시퀀스는 단일 매트릭스 개체에 저장할 수 있습니다.      > [!CAUTION] > 복합 변환의 순서는 중요 합니다. 일반적으로, 다음 크기 조정, 이동을 차례로 동일 하지는 않습니다 눈금으로 한 후를 회전 하 고 변환 합니다. 마찬가지로, 매트릭스 곱의 순서는 중요 합니다. 일반적으로 ABC는 하지 하기와 동일 합니다.       행렬 클래스 복합 변환을 구성 하는 여러 가지 방법을 제공: <xref:System.Drawing.Drawing2D.Matrix.Multiply%2A>, <xref:System.Drawing.Drawing2D.Matrix.Rotate%2A>, <xref:System.Drawing.Drawing2D.Matrix.RotateAt%2A>, <xref:System.Drawing.Drawing2D.Matrix.Scale%2A>, <xref:System.Drawing.Drawing2D.Matrix.Shear%2A>, 및 <xref:System.Drawing.Drawing2D.Matrix.Translate%2A>.</xref:System.Drawing.Drawing2D.Matrix.Translate%2A> </xref:System.Drawing.Drawing2D.Matrix.Shear%2A> </xref:System.Drawing.Drawing2D.Matrix.Scale%2A> </xref:System.Drawing.Drawing2D.Matrix.RotateAt%2A> </xref:System.Drawing.Drawing2D.Matrix.Rotate%2A> </xref:System.Drawing.Drawing2D.Matrix.Multiply%2A> 다음 예제에서는 30도 회전 다음 y 방향으로 2 배 하 여 확장 한 다음 x 방향의 5 단위를 변환 하는 복합 변환의 행렬을 만듭니다: [!code-vb [System.Drawing.CoordinateSystems#11](~/add/codesnippet/visualbasic/t-system.drawing.drawing_10_1.vb)][!code-cs[System.Drawing.CoordinateSystems#11  ](~/add/codesnippet/csharp/t-system.drawing.drawing_10_1.cs)]"
   syntax:
     content: 'public sealed class Matrix : MarshalByRefObject, IDisposable'
   inheritance:
@@ -70,7 +70,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Initializes a new instance of the <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> class as the identity matrix."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 항등 매트릭스로 클래스입니다."
   syntax:
     content: public Matrix ();
     parameters: []
@@ -90,17 +90,17 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Initializes a new instance of the <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> class to the geometric transform defined by the specified rectangle and array of points."
-  remarks: "This method initializes the new Matrix such that it represents the geometric transform that maps the rectangle specified by the `rect` parameter to the parallelogram defined by the three points in the `plgpts` parameter. The upper-left corner of the rectangle is mapped to the first point in the `plgpts` array, the upper-right corner is mapped to the second point, and the lower-left corner is mapped to the third point. The lower-right point of the parallelogram is implied by the first three."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 클래스를 지정 된 사각형 및 지점의 배열에 의해 정의 된 기하학적 변형 합니다."
+  remarks: "기하학적 변환을 지정 된 영역을 매핑하는 나타낼 수 있도록이 메서드는 새 Matrix를 초기화는 `rect` 에서&3; 개의 점으로 정의 된 평행 사변형에 매개 변수는 `plgpts` 매개 변수입니다. 사각형의 왼쪽 위 모서리에서 첫 번째 요소와 매핑됩니다는 `plgpts` 배열 오른쪽 위의 두 번째 요소와 매핑됩니다 및 왼쪽 아래 모서리 세 번째 요소와 매핑됩니다. 처음&3; 개는 평행 사변형의 오른쪽 아래 지점이 포함 됩니다."
   syntax:
     content: public Matrix (System.Drawing.Rectangle rect, System.Drawing.Point[] plgpts);
     parameters:
     - id: rect
       type: System.Drawing.Rectangle
-      description: "A <xref href=&quot;System.Drawing.Rectangle&quot;></xref> structure that represents the rectangle to be transformed."
+      description: "A <xref href=&quot;System.Drawing.Rectangle&quot;> </xref> 변환할 사각형을 나타내는 구조입니다."
     - id: plgpts
       type: System.Drawing.Point[]
-      description: "An array of three <xref href=&quot;System.Drawing.Point&quot;></xref> structures that represents the points of a parallelogram to which the upper-left, upper-right, and lower-left corners of the rectangle is to be transformed. The lower-right corner of the parallelogram is implied by the first three corners."
+      description: "세 개인 배열 <xref href=&quot;System.Drawing.Point&quot;> </xref> 은 사각형의 왼쪽 위, 오른쪽 위 및 왼쪽 아래 모퉁이 변환 될 평행 사변형의 지점을 나타내는 구조입니다. 처음 세 모퉁이 평행 사변형의 오른쪽 아래 모서리 포함 됩니다."
   overload: System.Drawing.Drawing2D.Matrix.#ctor*
   exceptions: []
   platform:
@@ -117,17 +117,17 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Initializes a new instance of the <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> class to the geometric transform defined by the specified rectangle and array of points."
-  remarks: "This method initializes the new <xref:System.Drawing.Drawing2D.Matrix> such that it represents the geometric transform that maps the rectangle specified by the `rect` parameter to the parallelogram defined by the three points in the `plgpts` parameter. The upper-left corner of the rectangle is mapped to the first point in the `plgpts` array, the upper-right corner is mapped to the second point, and the lower-left corner is mapped to the third point. The lower-right point of the parallelogram is implied by the first three."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 클래스를 지정 된 사각형 및 지점의 배열에 의해 정의 된 기하학적 변형 합니다."
+  remarks: "이 메서드는 새로운 초기화 <xref:System.Drawing.Drawing2D.Matrix>기하학적 변환을 지정 된 영역을 매핑하는 나타낼 수 있도록는 `rect` 에서&3; 개의 점으로 정의 된 평행 사변형에 매개 변수는 `plgpts` 매개 변수.</xref:System.Drawing.Drawing2D.Matrix> 사각형의 왼쪽 위 모서리에서 첫 번째 요소와 매핑됩니다는 `plgpts` 배열 오른쪽 위의 두 번째 요소와 매핑됩니다 및 왼쪽 아래 모서리 세 번째 요소와 매핑됩니다. 처음&3; 개는 평행 사변형의 오른쪽 아래 지점이 포함 됩니다."
   syntax:
     content: public Matrix (System.Drawing.RectangleF rect, System.Drawing.PointF[] plgpts);
     parameters:
     - id: rect
       type: System.Drawing.RectangleF
-      description: "A <xref href=&quot;System.Drawing.RectangleF&quot;></xref> structure that represents the rectangle to be transformed."
+      description: "A <xref href=&quot;System.Drawing.RectangleF&quot;> </xref> 변환할 사각형을 나타내는 구조입니다."
     - id: plgpts
       type: System.Drawing.PointF[]
-      description: "An array of three <xref href=&quot;System.Drawing.PointF&quot;></xref> structures that represents the points of a parallelogram to which the upper-left, upper-right, and lower-left corners of the rectangle is to be transformed. The lower-right corner of the parallelogram is implied by the first three corners."
+      description: "세 개인 배열 <xref href=&quot;System.Drawing.PointF&quot;> </xref> 은 사각형의 왼쪽 위, 오른쪽 위 및 왼쪽 아래 모퉁이 변환 될 평행 사변형의 지점을 나타내는 구조입니다. 처음 세 모퉁이 평행 사변형의 오른쪽 아래 모서리 포함 됩니다."
   overload: System.Drawing.Drawing2D.Matrix.#ctor*
   exceptions: []
   platform:
@@ -144,28 +144,28 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Initializes a new instance of the <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> class with the specified elements."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 지정된 된 요소를 사용 하 여 클래스입니다."
   syntax:
     content: public Matrix (float m11, float m12, float m21, float m22, float dx, float dy);
     parameters:
     - id: m11
       type: System.Single
-      description: "The value in the first row and first column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "첫 번째 행과 새의 첫 번째 열 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: m12
       type: System.Single
-      description: "The value in the first row and second column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "새 첫 번째 행과 둘째 열에서 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: m21
       type: System.Single
-      description: "The value in the second row and first column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "두 번째 행과 새의 첫 번째 열 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: m22
       type: System.Single
-      description: "The value in the second row and second column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "새 두 번째 행과 둘째 열에서 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: dx
       type: System.Single
-      description: "The value in the third row and first column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "세 번째 행과 새의 첫 번째 열 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: dy
       type: System.Single
-      description: "The value in the third row and second column of the new <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "새 세 번째 행과 둘째 열에 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.#ctor*
   exceptions: []
   platform:
@@ -182,13 +182,13 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Creates an exact copy of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "이 항목의 정확한 복사본을 만듭니다 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   syntax:
     content: public System.Drawing.Drawing2D.Matrix Clone ();
     parameters: []
     return:
       type: System.Drawing.Drawing2D.Matrix
-      description: "The <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> that this method creates."
+      description: "<xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 이 메서드가 만드는 합니다."
   overload: System.Drawing.Drawing2D.Matrix.Clone*
   exceptions: []
   platform:
@@ -205,8 +205,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Releases all resources used by this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
-  remarks: "Calling `Dispose` allows the resources used by this <xref:System.Drawing.Drawing2D.Matrix> object to be reallocated for other purposes."
+  summary: "사용 하는 모든 리소스를 해제 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
+  remarks: "호출 `Dispose` 이 사용 하는 리소스 <xref:System.Drawing.Drawing2D.Matrix>개체 다른 용도에 다시 할당 됩니다.</xref:System.Drawing.Drawing2D.Matrix>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -226,13 +226,13 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Gets an array of floating-point values that represents the elements of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
-  remarks: "The elements m11, m12, m21, m22, dx, and dy of the <xref:System.Drawing.Drawing2D.Matrix> are represented by the values in the array in that order."
+  summary: "이 요소를 나타내는 부동 소수점 값의 배열을 가져옵니다 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
+  remarks: "요소 m11, m12, m21, m22, dx와 dy는 <xref:System.Drawing.Drawing2D.Matrix>해당 순서로 배열의 값으로 표시 됩니다.</xref:System.Drawing.Drawing2D.Matrix>"
   syntax:
     content: public float[] Elements { get; }
     return:
       type: System.Single[]
-      description: "An array of floating-point values that represents the elements of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이 요소를 나타내는 부동 소수점 값의 배열을 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Elements*
   exceptions: []
   platform:
@@ -249,16 +249,16 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Tests whether the specified object is a <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> and is identical to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "지정 된 개체가 있는지 여부를 테스트 한 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 와이 동일한 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to test."
+      description: "테스트할 개체입니다."
     return:
       type: System.Boolean
-      description: "This method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>obj</code> is the specified <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> identical to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "이 메서드가 반환 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 경우 <code> obj </code> 는 지정 된 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 동일 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Equals*
   exceptions: []
   platform:
@@ -275,7 +275,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection."
+  summary: "개체가를 리소스를 해제 하 고 가비지 수집에서 회수 하기 전에 다른 정리 작업을 수행할 수 있습니다."
   syntax:
     content: ~Matrix ();
     parameters: []
@@ -295,13 +295,13 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Returns a hash code."
+  summary: "해시 코드를 반환 합니다."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The hash code for this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이 대 한 해시 코드 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.GetHashCode*
   exceptions: []
   platform:
@@ -318,7 +318,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Inverts this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>, if it is invertible."
+  summary: "이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>반전할 수 있으면, 합니다."
   remarks: ''
   example:
   - "The following code example creates a matrix and inverts it:  \n  \n```c#  \nMatrix myMatrix = new Matrix(3, 5, 1, 2, 2, 4);  \n myMatrix.Invert();  \n```"
@@ -341,12 +341,12 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Gets a value indicating whether this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is the identity matrix."
+  summary: "나타내는 값을 가져옵니다 여부이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> id 행렬 인지 합니다."
   syntax:
     content: public bool IsIdentity { get; }
     return:
       type: System.Boolean
-      description: "This property is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is identity; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "이 속성은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 은 id, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.IsIdentity*
   exceptions: []
   platform:
@@ -363,12 +363,12 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Gets a value indicating whether this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is invertible."
+  summary: "나타내는 값을 가져옵니다 여부이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 를 반전할 수 있습니다."
   syntax:
     content: public bool IsInvertible { get; }
     return:
       type: System.Boolean
-      description: "This property is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is invertible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "이 속성은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 반전할 수 없으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.IsInvertible*
   exceptions: []
   platform:
@@ -385,7 +385,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Multiplies this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by the matrix specified in the <code>matrix</code> parameter, by prepending the specified <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "일수로 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 에 지정 된 매트릭스는 <code> matrix </code> 매개 변수를 지정 된 앞에 추가 하 여 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   remarks: ''
   example:
   - For an example, see <xref:System.Drawing.Drawing2D.Matrix.Multiply%2A>.
@@ -394,7 +394,7 @@ items:
     parameters:
     - id: matrix
       type: System.Drawing.Drawing2D.Matrix
-      description: "The <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by which this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is to be multiplied."
+      description: "<xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 곱할 하는 것입니다."
   overload: System.Drawing.Drawing2D.Matrix.Multiply*
   exceptions: []
   platform:
@@ -411,8 +411,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Multiplies this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by the matrix specified in the <code>matrix</code> parameter, and in the order specified in the <code>order</code> parameter."
-  remarks: "If the specified order is <xref:System.Drawing.Drawing2D.MatrixOrder>, this <xref:System.Drawing.Drawing2D.Matrix> is multiplied by the specified matrix in a prepended order. If the specified order is <xref:System.Drawing.Drawing2D.MatrixOrder>, this <xref:System.Drawing.Drawing2D.Matrix> is multiplied by the specified matrix in an appended order."
+  summary: "일수로 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 에 지정 된 매트릭스는 <code> matrix </code> 매개 변수를에 지정 된 순서에 따라는 <code> order </code> 매개 변수입니다."
+  remarks: "지정 된 순서가 경우 <xref:System.Drawing.Drawing2D.MatrixOrder>,이 <xref:System.Drawing.Drawing2D.Matrix>앞에 추가 된 순서 대로 지정된 된 매트릭스를 곱합니다.</xref:System.Drawing.Drawing2D.Matrix> </xref:System.Drawing.Drawing2D.MatrixOrder> 지정 된 순서가 경우 <xref:System.Drawing.Drawing2D.MatrixOrder>,이 <xref:System.Drawing.Drawing2D.Matrix>추가 된 순서로 지정된 된 매트릭스를 곱합니다.</xref:System.Drawing.Drawing2D.Matrix> </xref:System.Drawing.Drawing2D.MatrixOrder>"
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Creates three matrices.  \n  \n-   Lists the contents of matrix 1 to the screen.  \n  \n-   Multiplies matrix 1 by matrix 2 and stores the result in matrix 1.  \n  \n-   Lists the contents of matrix 1 to the screen.  \n  \n-   Multiplies the result stored in matrix 1 by matrix 3, and again stores the result in matrix 1.  \n  \n-   Lists the contents of matrix 1 to the screen.  \n  \n-   Draws a rectangle to the screen prior to applying the matrix 1 transform (the blue rectangle).  \n  \n-   Applies the transform to the rectangle.  \n  \n-   Draws the transformed rectangle to the screen (the red rectangle), using the same coordinates as the previous rectangle.  \n  \n Notice that the red rectangle has been scaled by a factor of two in the horizontal direction, then rotated 90 degrees, and then moved (translated) 250 points in the x direction and 50 points in the y direction.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#1](~/add/codesnippet/cpp/8671b24d-b76c-4435-bbb4-_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#1](~/add/codesnippet/visualbasic/8671b24d-b76c-4435-bbb4-_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#1](~/add/codesnippet/csharp/8671b24d-b76c-4435-bbb4-_1.cs)]"
   syntax:
@@ -420,10 +420,10 @@ items:
     parameters:
     - id: matrix
       type: System.Drawing.Drawing2D.Matrix
-      description: "The <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by which this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> is to be multiplied."
+      description: "<xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 곱할 하는 것입니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "The <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that represents the order of the multiplication."
+      description: "<xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 곱하기의 순서를 나타내는입니다."
   overload: System.Drawing.Drawing2D.Matrix.Multiply*
   exceptions: []
   platform:
@@ -440,12 +440,12 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Gets the x translation value (the dx value, or the element in the third row and first column) of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "X 이동 값 (dx 값 또는 셋째 행과 첫째 열에 있는 요소)이 가져옵니다 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   syntax:
     content: public float OffsetX { get; }
     return:
       type: System.Single
-      description: "The x translation value of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이의 x 이동 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.OffsetX*
   exceptions: []
   platform:
@@ -462,12 +462,12 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Gets the y translation value (the dy value, or the element in the third row and second column) of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "Y 이동 값 (dy 값 또는 셋째 행과 둘째 열에 있는 요소)이 가져옵니다 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   syntax:
     content: public float OffsetY { get; }
     return:
       type: System.Single
-      description: "The y translation value of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이의 y 이동 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.OffsetY*
   exceptions: []
   platform:
@@ -484,8 +484,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Resets this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> to have the elements of the identity matrix."
-  remarks: "The elements on the main diagonal of the identity matrix are 1. All other elements of the identity matrix are 0."
+  summary: "이 다시 설정 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 항등 매트릭스의 요소가 있어야 합니다."
+  remarks: "요소를 항등 매트릭스의 주요 대각선은 1입니다. 항등 매트릭스의 다른 모든 요소는 0입니다."
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Creates a scaling matrix.  \n  \n-   Lists the matrix elements to the screen.  \n  \n-   Resets the matrix to identity.  \n  \n-   Lists the elements to the screen.  \n  \n-   Translates the matrix by 50 points in the x-axis and 40 points in the y-axis.  \n  \n-   Lists the elements of the translated matrix to the screen.  \n  \n-   Draws a rectangle is drawn to the screen prior to applying the matrix transform (the blue rectangle).  \n  \n-   Applies the transform to the rectangle.  \n  \n-   Draws the transformed rectangle is drawn to the screen (the red rectangle), using the same coordinates as the previous rectangle.  \n  \n Notice that the red rectangle was not scaled (because of the reset) but was translated in the x-axis and y-axis.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#2](~/add/codesnippet/cpp/m-system.drawing.drawing_5_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#2](~/add/codesnippet/visualbasic/m-system.drawing.drawing_5_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#2](~/add/codesnippet/csharp/m-system.drawing.drawing_5_1.cs)]"
   syntax:
@@ -507,7 +507,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Prepend to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> a clockwise rotation, around the origin and by the specified angle."
+  summary: "이를 앞에 추가 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 원점 및 지정 된 각도 시계 방향 회전 합니다."
   remarks: ''
   example:
   - For an example, see <xref:System.Drawing.Drawing2D.Matrix.Rotate%28System.Single%2CSystem.Drawing.Drawing2D.MatrixOrder%29>.
@@ -516,7 +516,7 @@ items:
     parameters:
     - id: angle
       type: System.Single
-      description: "The angle of the rotation, in degrees."
+      description: "회전 각도의 각도입니다."
   overload: System.Drawing.Drawing2D.Matrix.Rotate*
   exceptions: []
   platform:
@@ -533,7 +533,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies a clockwise rotation of an amount specified in the <code>angle</code> parameter, around the origin (zero x and y coordinates) for this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+  summary: "에 지정 된 각도의 시계 방향 회전을 적용 된 <code> angle </code> 원점 매개 변수 (0 x 및 y 좌표)이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Draws a rectangle to the screen prior to applying a rotation transform (the blue rectangle).  \n  \n-   Creates a matrix and rotates it 45 degrees.  \n  \n-   Applies this matrix transform to the rectangle.  \n  \n-   Draws the transformed rectangle to the screen (the red rectangle).  \n  \n Notice that the red rectangle has been rotated around the 0, 0 screen coordinates.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#3](~/add/codesnippet/cpp/4dc64a49-8a71-40e5-a40b-_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#3](~/add/codesnippet/visualbasic/4dc64a49-8a71-40e5-a40b-_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#3](~/add/codesnippet/csharp/4dc64a49-8a71-40e5-a40b-_1.cs)]"
@@ -542,10 +542,10 @@ items:
     parameters:
     - id: angle
       type: System.Single
-      description: "The angle (extent) of the rotation, in degrees."
+      description: "회전 각도는 각도 (도)입니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that specifies the order (append or prepend) in which the rotation is applied to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 순서를 지정 하는 (추가 또는 앞)이 적용 되는 회전에 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Rotate*
   exceptions: []
   platform:
@@ -562,7 +562,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies a clockwise rotation to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> around the point specified in the <code>point</code> parameter, and by prepending the rotation."
+  summary: "이에 시계 방향 회전을 적용 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 주위에 지정 된 지점에서 <code> point </code> 매개 변수를 회전을 앞에 추가 하 여 합니다."
   remarks: ''
   example:
   - "The following code example demonstrates using a <xref:System.Drawing.Drawing2D.Matrix> and the <xref:System.Drawing.Drawing2D.GraphicsPath.Transform%2A> method to rotate a string. This example is designed to be used with Windows Forms. Create a form and paste the following code into it. Call the `DrawVerticalStringFromBottomUp` method in the form's <xref:System.Windows.Forms.Control.Paint> event handler, passing `e` as <xref:System.Windows.Forms.PaintEventArgs>.  \n  \n [!code-cs[System.Drawing.MiscExamples#5](~/add/codesnippet/csharp/m-system.drawing.drawing_11_1.cs)]\n [!code-cpp[System.Drawing.MiscExamples#5](~/add/codesnippet/cpp/m-system.drawing.drawing_11_1.cpp)]\n [!code-vb[System.Drawing.MiscExamples#5](~/add/codesnippet/visualbasic/m-system.drawing.drawing_11_1.vb)]"
@@ -571,10 +571,10 @@ items:
     parameters:
     - id: angle
       type: System.Single
-      description: "The angle (extent) of the rotation, in degrees."
+      description: "회전 각도는 각도 (도)입니다."
     - id: point
       type: System.Drawing.PointF
-      description: "A <xref href=&quot;System.Drawing.PointF&quot;></xref> that represents the center of the rotation."
+      description: "A <xref href=&quot;System.Drawing.PointF&quot;> </xref> 회전의 중심을 나타내는입니다."
   overload: System.Drawing.Drawing2D.Matrix.RotateAt*
   exceptions: []
   platform:
@@ -591,7 +591,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies a clockwise rotation about the specified point to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the specified order."
+  summary: "이 지정된 된 지점에 대 한 시계 방향 회전을 적용 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 지정 된 순서로 합니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Draws a rectangle to the screen prior to applying a rotation transform (the blue rectangle).  \n  \n-   Creates a matrix and rotates it 45 degrees around a specified point.  \n  \n-   Applies this matrix transform is to the rectangle.  \n  \n-   Draws the transformed rectangle to the screen (the red rectangle).  \n  \n Notice that the red rectangle has been rotated around the upper left-hand corner of the rectangle (the rotation point specified the RotateAt method).  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#4](~/add/codesnippet/cpp/fc8aec2b-1f13-41da-9f14-_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#4](~/add/codesnippet/visualbasic/fc8aec2b-1f13-41da-9f14-_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#4](~/add/codesnippet/csharp/fc8aec2b-1f13-41da-9f14-_1.cs)]"
@@ -600,13 +600,13 @@ items:
     parameters:
     - id: angle
       type: System.Single
-      description: "The angle of the rotation, in degrees."
+      description: "회전 각도의 각도입니다."
     - id: point
       type: System.Drawing.PointF
-      description: "A <xref href=&quot;System.Drawing.PointF&quot;></xref> that represents the center of the rotation."
+      description: "A <xref href=&quot;System.Drawing.PointF&quot;> </xref> 회전의 중심을 나타내는입니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that specifies the order (append or prepend) in which the rotation is applied."
+      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 순서를 지정 하 (추가 또는 앞)에 적용 되는 회전 합니다."
   overload: System.Drawing.Drawing2D.Matrix.RotateAt*
   exceptions: []
   platform:
@@ -623,7 +623,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified scale vector to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by prepending the scale vector."
+  summary: "지정 된 크기 조정 벡터를이 적용 됩니다. <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 크기 조정 벡터를 앞으로 추가 합니다."
   remarks: ''
   example:
   - For an example, see <xref:System.Drawing.Drawing2D.Matrix.Scale%28System.Single%2CSystem.Single%2CSystem.Drawing.Drawing2D.MatrixOrder%29>.
@@ -632,10 +632,10 @@ items:
     parameters:
     - id: scaleX
       type: System.Single
-      description: "The value by which to scale this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the x-axis direction."
+      description: "이 크기를 조정 하는 기준인 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> x-축 방향으로 합니다."
     - id: scaleY
       type: System.Single
-      description: "The value by which to scale this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the y-axis direction."
+      description: "이 크기를 조정 하는 기준인 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> y 축 방향으로 합니다."
   overload: System.Drawing.Drawing2D.Matrix.Scale*
   exceptions: []
   platform:
@@ -652,7 +652,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified scale vector (<code>scaleX</code> and <code>scaleY</code>) to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> using the specified order."
+  summary: "지정 된 크기 조정 벡터 적용 됩니다 (<code> scaleX </code> 및 <code> scaleY </code>)이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 지정된 된 순서를 사용 하 여 합니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Draws a rectangle to the screen prior to applying a scaling transform (the blue rectangle).  \n  \n-   Creates a matrix and scales it by 3 in the x-axis and 2 in the y-axis.  \n  \n-   Applies this matrix transform to the rectangle.  \n  \n-   Draws the transformed rectangle to the screen (the red rectangle).  \n  \n Notice that the red rectangle has been scaled by a factor of 3 in the x-axis and by 2 in the y-axis, including the upper left-hand corner of the rectangle (the beginning point of the rectangle).  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#5](~/add/codesnippet/cpp/05985bb7-69b2-4fd4-9c7f-_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#5](~/add/codesnippet/visualbasic/05985bb7-69b2-4fd4-9c7f-_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#5](~/add/codesnippet/csharp/05985bb7-69b2-4fd4-9c7f-_1.cs)]"
@@ -661,13 +661,13 @@ items:
     parameters:
     - id: scaleX
       type: System.Single
-      description: "The value by which to scale this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the x-axis direction."
+      description: "이 크기를 조정 하는 기준인 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> x-축 방향으로 합니다."
     - id: scaleY
       type: System.Single
-      description: "The value by which to scale this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the y-axis direction."
+      description: "이 크기를 조정 하는 기준인 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> y 축 방향으로 합니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that specifies the order (append or prepend) in which the scale vector is applied to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 순서를 지정 하는 (추가 또는 앞)이 적용 되는 크기 조정 벡터에 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Scale*
   exceptions: []
   platform:
@@ -684,8 +684,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified shear vector to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by prepending the shear transformation."
-  remarks: "The transformation applied in this method is a pure shear only if one of the parameters is 0. Applied to a rectangle at the origin, when the `shearY` factor is 0, the transformation moves the bottom edge horizontally by `shearX` times the height of the rectangle. When the `shearX` factor is 0, it moves the right edge vertically by `shearY` times the width of the rectangle. Caution is in order when both parameters are nonzero, because the results are hard to predict. For example, if both factors are 1, the transformation is singular (hence noninvertible), squeezing the entire plane to a single line."
+  summary: "지정된 된 기울이기 벡터를이 적용 됩니다. <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 기울이기 변형을 앞에 추가 합니다."
+  remarks: "이 메서드에 적용 되는 변환 매개 변수 중 하나가 0 인 경우에 순수 개체 기울이기 됩니다. 원점에서 사각형에 적용 때는 `shearY` 요소가 0 일 변환 아래쪽 가장자리를 가로 방향으로 이동 `shearX` 시간이 사각형의 높이입니다. 경우는 `shearX` 요소가 0 일 오른쪽 가장자리 세로 방향으로 이동 `shearY` 시간이 사각형의 너비입니다. 결과 예측 하기 때문에 매개 변수가 모두&0;이 아니면이 주의 순서로 표시 됩니다. 예를 들어 두 요소 모두 1 이면 이면 변환을 (따라서 배율이)를 한 줄으로 전체 평면이 합니다."
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following action:  \n  \n-   Draws a rectangle to the screen, using a green pen, prior to applying a scaling transform.  \n  \n-   Creates a <xref:System.Drawing.Drawing2D.Matrix> and uses it to set a world-coordinate transform for the <xref:System.Drawing.Graphics>.  \n  \n-   Draws another rectangle using a red pen.  \n  \n-   Draws an ellipse using a blue pen.  \n  \n The result is a green rectangle, a red parallelogram and a transformed, blue ellipse. Notice that the green rectangle (drawn prior to setting the transform) directly uses the coordinates supplied in the <xref:System.Drawing.Graphics.DrawRectangle%2A> call. The other two figures are transformed prior to drawing. The rectangle is transformed to a parallelogram (red), and the ellipse (blue) is transformed to fit into the transformed parallelogram. Notice the bottom of the rectangle is moved (sheared) in the x-axis by a factor of two times the height of the rectangle, thus forming the parallelogram.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#6](~/add/codesnippet/cpp/m-system.drawing.drawing_3_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#6](~/add/codesnippet/visualbasic/m-system.drawing.drawing_3_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#6](~/add/codesnippet/csharp/m-system.drawing.drawing_3_1.cs)]"
   syntax:
@@ -693,10 +693,10 @@ items:
     parameters:
     - id: shearX
       type: System.Single
-      description: "The horizontal shear factor."
+      description: "수평 기울이기 비율입니다."
     - id: shearY
       type: System.Single
-      description: "The vertical shear factor."
+      description: "수직 기울이기 비율입니다."
   overload: System.Drawing.Drawing2D.Matrix.Shear*
   exceptions: []
   platform:
@@ -713,8 +713,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified shear vector to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the specified order."
-  remarks: "The transformation applied in this method is a pure shear only if one of the parameters is 0. Applied to a rectangle at the origin, when the `shearY` factor is 0, the transformation moves the bottom edge horizontally by `shearX` times the height of the rectangle. When the `shearX` factor is 0, it moves the right edge vertically by `shearY` times the width of the rectangle. Caution is in order when both parameters are nonzero, because the results are hard to predict. For example, if both factors are 1, the transformation is singular (hence noninvertible), squeezing the entire plane to a single line."
+  summary: "지정된 된 기울이기 벡터를이 적용 됩니다. <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 지정 된 순서로 합니다."
+  remarks: "이 메서드에 적용 되는 변환 매개 변수 중 하나가 0 인 경우에 순수 개체 기울이기 됩니다. 원점에서 사각형에 적용 때는 `shearY` 요소가 0 일 변환 아래쪽 가장자리를 가로 방향으로 이동 `shearX` 시간이 사각형의 높이입니다. 경우는 `shearX` 요소가 0 일 오른쪽 가장자리 세로 방향으로 이동 `shearY` 시간이 사각형의 너비입니다. 결과 예측 하기 때문에 매개 변수가 모두&0;이 아니면이 주의 순서로 표시 됩니다. 예를 들어 두 요소 모두 1 이면 이면 변환을 (따라서 배율이)를 한 줄으로 전체 평면이 합니다."
   example:
   - For an example, see <xref:System.Drawing.Drawing2D.Matrix.Shear%28System.Single%2CSystem.Single%29>.
   syntax:
@@ -722,13 +722,13 @@ items:
     parameters:
     - id: shearX
       type: System.Single
-      description: "The horizontal shear factor."
+      description: "수평 기울이기 비율입니다."
     - id: shearY
       type: System.Single
-      description: "The vertical shear factor."
+      description: "수직 기울이기 비율입니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that specifies the order (append or prepend) in which the shear is applied."
+      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 순서를 지정 하는 (추가 또는 앞)에 기울이기가 적용 되는 합니다."
   overload: System.Drawing.Drawing2D.Matrix.Shear*
   exceptions: []
   platform:
@@ -745,7 +745,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the geometric transform represented by this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> to a specified array of points."
+  summary: "이 나타내는 기하학적 변환을 적용 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 포인트를 지정 된 배열입니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Creates an array of points that form a rectangle.  \n  \n-   Draws this array of points (to the screen prior to applying a scaling transform (the blue rectangle).  \n  \n-   Creates a matrix and scales it by 3 in the x-axis and 2 in the y-axis.  \n  \n-   Applies this matrix transform to the array of points.  \n  \n-   Draws the transformed array to the screen (the red rectangle).  \n  \n Notice that the red rectangle has been scaled by a factor of 3 in the x-axis and by 2 in the y-axis, including the upper left-hand corner of the rectangle (the beginning point of the rectangle).  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#7](~/add/codesnippet/cpp/m-system.drawing.drawing_1_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#7](~/add/codesnippet/visualbasic/m-system.drawing.drawing_1_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#7](~/add/codesnippet/csharp/m-system.drawing.drawing_1_1.cs)]"
@@ -754,7 +754,7 @@ items:
     parameters:
     - id: pts
       type: System.Drawing.Point[]
-      description: "An array of <xref href=&quot;System.Drawing.Point&quot;></xref> structures that represents the points to transform."
+      description: "배열을 <xref href=&quot;System.Drawing.Point&quot;> </xref> 변형할 점을 나타내는 구조입니다."
   overload: System.Drawing.Drawing2D.Matrix.TransformPoints*
   exceptions: []
   platform:
@@ -771,7 +771,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the geometric transform represented by this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> to a specified array of points."
+  summary: "이 나타내는 기하학적 변환을 적용 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 포인트를 지정 된 배열입니다."
   remarks: ''
   example:
   - For an example, see [TransformPoints(Point\[\])](assetId:///M:System.Drawing.Drawing2D.Matrix.TransformPoints(System.Drawing.Point[])?qualifyHint=False&autoUpgrade=False).
@@ -780,7 +780,7 @@ items:
     parameters:
     - id: pts
       type: System.Drawing.PointF[]
-      description: "An array of <xref href=&quot;System.Drawing.PointF&quot;></xref> structures that represents the points to transform."
+      description: "배열을 <xref href=&quot;System.Drawing.PointF&quot;> </xref> 변형할 점을 나타내는 구조입니다."
   overload: System.Drawing.Drawing2D.Matrix.TransformPoints*
   exceptions: []
   platform:
@@ -797,7 +797,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies only the scale and rotate components of this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> to the specified array of points."
+  summary: "배율 및 회전 구성이 적용 됩니다. <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 요소의 지정 된 배열입니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Creates an array of points that form a rectangle.  \n  \n-   Draws this array of points to the screen prior to applying a scaling transform (the blue rectangle).  \n  \n-   Creates a matrix and scales it by 3 in the x-axis and 2 in the y-axis, and translates it by 100 in both axes.  \n  \n-   Lists the matrix elements to the screen.  \n  \n-   Applies this matrix transform to the array of points.  \n  \n-   Draws the transformed array to the screen (the red rectangle).  \n  \n Notice that the red rectangle has been scaled by a factor of 3 in the x-axis and by 2 in the y-axis, including the upper left-hand corner of the rectangle (the beginning point of the rectangle) but the translation vector (the last two elements of the matrix) is ignored.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#8](~/add/codesnippet/cpp/m-system.drawing.drawing_12_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#8](~/add/codesnippet/visualbasic/m-system.drawing.drawing_12_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#8](~/add/codesnippet/csharp/m-system.drawing.drawing_12_1.cs)]"
@@ -806,7 +806,7 @@ items:
     parameters:
     - id: pts
       type: System.Drawing.Point[]
-      description: "An array of <xref href=&quot;System.Drawing.Point&quot;></xref> structures that represents the points to transform."
+      description: "배열을 <xref href=&quot;System.Drawing.Point&quot;> </xref> 변형할 점을 나타내는 구조입니다."
   overload: System.Drawing.Drawing2D.Matrix.TransformVectors*
   exceptions: []
   platform:
@@ -823,7 +823,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Multiplies each vector in an array by the matrix. The translation elements of this matrix (third row) are ignored."
+  summary: "각 배열의 벡터에 매트릭스를 곱합니다. 이 매트릭스의 이동 요소 (셋째 행)는 무시 됩니다."
   remarks: ''
   example:
   - For an example, see [TransformVectors(Point\[\])](assetId:///M:System.Drawing.Drawing2D.Matrix.TransformVectors(System.Drawing.Point[])?qualifyHint=False&autoUpgrade=False).
@@ -832,7 +832,7 @@ items:
     parameters:
     - id: pts
       type: System.Drawing.PointF[]
-      description: "An array of <xref href=&quot;System.Drawing.Point&quot;></xref> structures that represents the points to transform."
+      description: "배열을 <xref href=&quot;System.Drawing.Point&quot;> </xref> 변형할 점을 나타내는 구조입니다."
   overload: System.Drawing.Drawing2D.Matrix.TransformVectors*
   exceptions: []
   platform:
@@ -849,7 +849,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified translation vector (<code>offsetX</code> and <code>offsetY</code>) to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> by prepending the translation vector."
+  summary: "지정 된 이동 벡터 적용 됩니다 (<code> offsetX </code> 및 <code> offsetY </code>)이 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 이동 벡터를 앞으로 추가 합니다."
   remarks: ''
   example:
   - For an example, see <xref:System.Drawing.Drawing2D.Matrix.Translate%28System.Single%2CSystem.Single%2CSystem.Drawing.Drawing2D.MatrixOrder%29>.
@@ -858,10 +858,10 @@ items:
     parameters:
     - id: offsetX
       type: System.Single
-      description: "The x value by which to translate this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "X 값이 변환 하는 기준인 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: offsetY
       type: System.Single
-      description: "The y value by which to translate this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이 변환에 사용 되는 y 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Translate*
   exceptions: []
   platform:
@@ -878,7 +878,7 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Applies the specified translation vector to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref> in the specified order."
+  summary: "지정 된 이동 벡터를이 적용 됩니다. <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref> 지정 된 순서로 합니다."
   remarks: ''
   example:
   - "The following code example is designed for use with Windows Forms, and it requires <xref:System.Windows.Forms.PaintEventArgs>`e`, an <xref:System.Windows.Forms.Control.Paint> event object. The code performs the following actions:  \n  \n-   Draws a rectangle to the screen prior to applying a translate transform (the blue rectangle).  \n  \n-   Creates a matrix and translates it by 100 in both axes.  \n  \n-   Applies this matrix transform to the rectangle,  \n  \n-   Draws the transformed rectangle to the screen (the red rectangle).  \n  \n Notice that the beginning of the red rectangle is located 100 points in both axes from the beginning of the blue triangle.  \n  \n [!code-cpp[System.Drawing.Drawing2D.ClassicMatrixExamples#9](~/add/codesnippet/cpp/48411d65-00d9-48ff-a809-_1.cpp)]\n [!code-vb[System.Drawing.Drawing2D.ClassicMatrixExamples#9](~/add/codesnippet/visualbasic/48411d65-00d9-48ff-a809-_1.vb)]\n [!code-cs[System.Drawing.Drawing2D.ClassicMatrixExamples#9](~/add/codesnippet/csharp/48411d65-00d9-48ff-a809-_1.cs)]"
@@ -887,13 +887,13 @@ items:
     parameters:
     - id: offsetX
       type: System.Single
-      description: "The x value by which to translate this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "X 값이 변환 하는 기준인 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: offsetY
       type: System.Single
-      description: "The y value by which to translate this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "이 변환에 사용 되는 y 값 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
     - id: order
       type: System.Drawing.Drawing2D.MatrixOrder
-      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;></xref> that specifies the order (append or prepend) in which the translation is applied to this <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;></xref>."
+      description: "A <xref href=&quot;System.Drawing.Drawing2D.MatrixOrder&quot;> </xref> 순서를 지정 하는 (추가 또는 앞)이 적용 되는 변환에서 <xref href=&quot;System.Drawing.Drawing2D.Matrix&quot;> </xref>합니다."
   overload: System.Drawing.Drawing2D.Matrix.Translate*
   exceptions: []
   platform:
@@ -910,13 +910,13 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Drawing2D
-  summary: "Multiplies each vector in an array by the matrix. The translation elements of this matrix (third row) are ignored."
+  summary: "각 배열의 벡터에 매트릭스를 곱합니다. 이 매트릭스의 이동 요소 (셋째 행)는 무시 됩니다."
   syntax:
     content: public void VectorTransformPoints (System.Drawing.Point[] pts);
     parameters:
     - id: pts
       type: System.Drawing.Point[]
-      description: "An array of <xref href=&quot;System.Drawing.Point&quot;></xref> structures that represents the points to transform."
+      description: "배열을 <xref href=&quot;System.Drawing.Point&quot;> </xref> 변형할 점을 나타내는 구조입니다."
   overload: System.Drawing.Drawing2D.Matrix.VectorTransformPoints*
   exceptions: []
   platform:

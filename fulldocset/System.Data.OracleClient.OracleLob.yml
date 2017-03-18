@@ -39,8 +39,8 @@ items:
   nameWithType: OracleLob
   fullName: System.Data.OracleClient.OracleLob
   type: Class
-  summary: "Represents a large object binary (<xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref>) data type stored on an Oracle server. This class cannot be inherited."
-  remarks: "An OracleLob differs from an <xref:System.Data.OracleClient.OracleBFile> in that the data is stored on the server instead of in a physical file in the operating system. It can also be a read-write object, unlike an <xref:System.Data.OracleClient.OracleBFile>, which is always read-only.       An OracleLob may be one of these <xref:System.Data.OracleClient.OracleType> data types.      |OracleType data type|Description|   |--------------------------|-----------------|   |`Blob`|An Oracle `BLOB` data type that contains binary data with a maximum size of 4 gigabytes (GB). This maps to an <xref:System.Array> of type <xref:System.Byte>.|   |`Clob`|An Oracle `CLOB` data type that contains character data, based on the default character set on the server, with a maximum size of 4 GB. This maps to <xref:System.String>.|   |`NClob`|An Oracle `NCLOB` data type that contains character data, based on the national character set on the server with a maximum size of 4 GB. This maps to <xref:System.String>.|       A .NET application developer can retrieve the Oracle `LOB` values into basic .NET data types, such as <xref:System.Array> of type <xref:System.Byte> and <xref:System.String>, or the specialized OracleLob data type. The OracleLob class supports reading data from and writing to the Oracle `LOB` in the Oracle database.       The following are the main characteristics of an OracleLob data type that distinguish it from basic .NET data types:      -   After you retrieve the Oracle `LOB` value from the Oracle database into the OracleLob class, you can change the `LOB` data in an open transaction and your changes are directly reflected to the database. If you retrieve the Oracle `LOB` value into an <xref:System.Array> of type <xref:System.Byte> or <xref:System.String> and update these arrays, your changes are not reflected to the database.      -   When you use the OracleLob class to access a chunk of a `LOB` value, only that chunk is passed from the Oracle database to the client. When you use the <xref:System.Data.OracleClient.OracleDataReader.GetChars%2A> method to access a chunk of a `LOB` value, the entire contents of the value are passed from the Oracle database to the client.       To obtain an OracleLob object, call the <xref:System.Data.OracleClient.OracleDataReader.GetOracleLob%2A> method.       You can construct an OracleLob that is NULL using this format:      ```   OracleLob myLob = OracleLob.Null;   ```       This technique is used primarily to test whether a `LOB` returned from the server is NULL, as this example illustrates:      ```   If(myLob == OracleLob.Null)   ```       A NULL `LOB` behaves similarly to a zero-byte `LOB` in that <xref:System.Data.OracleClient.OracleLob.Read%2A> succeeds and always returns zero bytes.       Selecting a `LOB` column that contains a null value returns <xref:System.Data.OracleClient.OracleLob.Null>.       You must begin a transaction before obtaining a temporary `LOB`. Otherwise, the <xref:System.Data.OracleClient.OracleDataReader> may fail to obtain data later.       You can also open a temporary `LOB` in Oracle by calling the DBMS_LOB.CREATETEMPORARY system stored procedure and binding a `LOB` output parameter. On the client side, a temporary `LOB` behaves like a table-based `LOB`. For example, to update the temporary `LOB`, it must be enclosed in a transaction.       The following C# example demonstrates how to open a temporary `LOB`.      ```   OracleConnection connection = new OracleConnection(&quot;server=MyServer; integrated security=yes;&quot;);   connection.Open();   OracleTransaction transaction = connection.BeginTransaction();   OracleCommand command = connection.CreateCommand();   command.Transaction = transaction;   command.CommandText = &quot;declare xx blob; begin dbms_lob.createtemporary(xx, false, 0); :tempblob := xx; end;&quot;;   command.Parameters.Add(new OracleParameter(&quot;tempblob&quot;, OracleType.Blob)).Direction = ParameterDirection.Output;   command.ExecuteNonQuery();   OracleLob tempLob = (OracleLob)command.Parameters[0].Value;   byte[] tempbuff = new byte[10000];   tempLob.BeginBatch(OracleLobOpenMode.ReadWrite);   tempLob.Write(tempbuff,0,tempbuff.Length);   tempLob.EndBatch();   command.Parameters.Clear();   command.CommandText = &quot;MyTable.MyProc&quot;;   command.CommandType = CommandType.StoredProcedure;     command.Parameters.Add(new OracleParameter(&quot;ImportDoc&quot;, OracleType.Blob)).Value = tempLob;   command.ExecuteNonQuery();   transaction.Commit();   connection.Close   ```      > [!NOTE] >  The inherited <xref:System.IO.Stream.WriteByte%2A> method fails if used with character data, and an <xref:System.InvalidOperationException> is thrown. Use the <xref:System.Data.OracleClient.OracleLob.Write%2A> method instead.   >    >  Temporary `LOB`s are only closed when the connection is closed, but with pooling and under load, temporary `LOB`s do not close. This can be resolved by disposing the temporary `LOB`, by invoking `tempLob.Dispose()`."
+  summary: "이진 대형 개체를 나타냅니다 (<xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref>) Oracle 서버에 저장 된 데이터 형식입니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "와 다른 한 OracleLob는 <xref:System.Data.OracleClient.OracleBFile>데이터는 운영 체제의 물리적 파일이 아닌 서버에 저장 된다는 점에서.</xref:System.Data.OracleClient.OracleBFile> 와 달리 읽기 / 쓰기 개체 일 수도 있습니다는 <xref:System.Data.OracleClient.OracleBFile>는 항상 읽기 전용입니다.</xref:System.Data.OracleClient.OracleBFile>       OracleLob는 다음 중 하나일 수 있습니다 <xref:System.Data.OracleClient.OracleType>데이터 형식.</xref:System.Data.OracleClient.OracleType>      | OracleType 데이터 형식 | 설명 |   |--------------------------|-----------------|   | `Blob`| Oracle `BLOB` 4 기가바이트 (GB)의 최대 크기를 사용 하 여 이진 데이터를 포함 하는 데이터 형식입니다. <xref:System.Byte>형식의 <xref:System.Array>에 매핑됩니다. |   | `Clob`| Oracle `CLOB` 데이터 형식은 기본 문자에 따라 문자 데이터를 포함 하는 최대 크기가 4GB의 서버에 설정 합니다. </xref:System.Array></xref:System.Byte> <xref:System.String>에 매핑됩니다. |   | `NClob`| Oracle `NCLOB` 국가별 문자 집합에 4GB의 최대 크기를 사용 하 여 서버를 기반으로 문자 데이터를 포함 하는 데이터 형식.</xref:System.String> <xref:System.String>에 매핑됩니다. |       .NET 응용 프로그램 개발자는 Oracle을 검색할 수 `LOB` 와 같은 기본.NET 데이터 형식으로 값 <xref:System.Array>형식의 <xref:System.Byte>및 <xref:System.String>, 또는 특수 OracleLob 데이터 형식.</xref:System.String> </xref:System.Byte> </xref:System.Array> </xref:System.String> 데이터를 읽고 쓰는 Oracle OracleLob 클래스 지원 `LOB` Oracle 데이터베이스에 있습니다.       OracleLob 데이터 형식의 기본.NET 데이터 형식을 구분 되는 주요 특성은: Oracle 검색 한 후- `LOB` 값 OracleLob 클래스에는 Oracle 데이터베이스에서 변경할 수 있습니다는 `LOB` 열려 있는 트랜잭션이 및 변경 내용을 데이터를 데이터베이스에 직접 반영 됩니다. Oracle을 검색 하는 경우 `LOB` 값에 <xref:System.Array>형식의 <xref:System.Byte>또는 <xref:System.String>이러한 배열을 업데이트 변경 내용을 데이터베이스에 반영 되지 않습니다.</xref:System.String> </xref:System.Byte> </xref:System.Array>      청크를 액세스 하려면 OracleLob 클래스를 사용-는 `LOB` 값을 해당 청크만는 Oracle 데이터베이스에서 클라이언트에 전달 합니다. 사용 하는 경우는 <xref:System.Data.OracleClient.OracleDataReader.GetChars%2A>의 청크를 액세스 하는 메서드는 `LOB` 값을 값의 전체 내용을 Oracle 데이터베이스에서 클라이언트에 전달 합니다.</xref:System.Data.OracleClient.OracleDataReader.GetChars%2A>       OracleLob 개체를 가져오려면 호출는 <xref:System.Data.OracleClient.OracleDataReader.GetOracleLob%2A>메서드.</xref:System.Data.OracleClient.OracleDataReader.GetOracleLob%2A>       이 형식을 사용 하 여 null는 OracleLob를 생성할 수 있습니다: ```   OracleLob myLob = OracleLob.Null;   ``` 이 방법을 테스트 하는 데 주로 사용 됩니다 있는지 여부를 `LOB` 서버에서 반환이 NULL 이면이 예제와 같이: ```   If(myLob == OracleLob.Null)   ``` A NULL `LOB`&0; 바이트 비슷하게 `LOB` 한다는 점에서 <xref:System.Data.OracleClient.OracleLob.Read%2A>성공 하 고 항상&0; 바이트를 반환 합니다.</xref:System.Data.OracleClient.OracleLob.Read%2A>       선택 하는 `LOB` null 값이 포함 된 열 <xref:System.Data.OracleClient.OracleLob.Null>.</xref:System.Data.OracleClient.OracleLob.Null> 을 반환 합니다.       임시 얻기 전에 트랜잭션을 시작 해야 `LOB`합니다. 그렇지 않은 경우는 <xref:System.Data.OracleClient.OracleDataReader>주소를 나중에 데이터를 가져오지 못할 수 있습니다.</xref:System.Data.OracleClient.OracleDataReader>       임시를 열 수도 있습니다 `LOB` 는 DBMS_LOB를 호출 하 여 Oracle에서 합니다. CREATETEMPORARY 시스템 저장 프로시저 및 바인딩은 `LOB` 출력 매개 변수입니다. 클라이언트 쪽에서는 임시 `LOB` 테이블 기반 처럼 동작 `LOB`합니다. 예를 들어, 임시 업데이트할 `LOB`, 트랜잭션에 포함 해야 합니다.       다음 C# 예제에서는 임시를 여는 방법을 보여 줍니다 `LOB`합니다.      ```   OracleConnection connection = new OracleConnection(&quot;server=MyServer; integrated security=yes;&quot;);   connection.Open();   OracleTransaction transaction = connection.BeginTransaction();   OracleCommand command = connection.CreateCommand();   command.Transaction = transaction;   command.CommandText = &quot;declare xx blob; begin dbms_lob.createtemporary(xx, false, 0); :tempblob := xx; end;&quot;;   command.Parameters.Add(new OracleParameter(&quot;tempblob&quot;, OracleType.Blob)).Direction = ParameterDirection.Output;   command.ExecuteNonQuery();   OracleLob tempLob = (OracleLob)command.Parameters[0].Value;   byte[] tempbuff = new byte[10000];   tempLob.BeginBatch(OracleLobOpenMode.ReadWrite);   tempLob.Write(tempbuff,0,tempbuff.Length);   tempLob.EndBatch();   command.Parameters.Clear();   command.CommandText = &quot;MyTable.MyProc&quot;;   command.CommandType = CommandType.StoredProcedure;     command.Parameters.Add(new OracleParameter(&quot;ImportDoc&quot;, OracleType.Blob)).Value = tempLob;   command.ExecuteNonQuery();   transaction.Commit();   connection.Close   ```      > [!NOTE]>은 상속 된 <xref:System.IO.Stream.WriteByte%2A>문자 데이터와 함께 사용 하는 경우 메서드가 실패 및 <xref:System.InvalidOperationException>throw 됩니다.</xref:System.InvalidOperationException> </xref:System.IO.Stream.WriteByte%2A> 사용 하 여 <xref:System.Data.OracleClient.OracleLob.Write%2A>메서드 대신.</xref:System.Data.OracleClient.OracleLob.Write%2A>   >> 임시 `LOB`연결이 종료 되 면 닫힌 닫히지만 풀링 사용 하며 부하에서는 임시 `LOB`않습니다. 임시 삭제 하 여이 해결할 수 있습니다 `LOB`를 호출 하 여 `tempLob.Dispose()`합니다."
   syntax:
     content: 'public sealed class OracleLob : System.IO.Stream, ICloneable, System.Data.SqlTypes.INullable'
   inheritance:
@@ -63,28 +63,28 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Appends data from the specified <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> to the current <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref>."
-  remarks: "To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.       All data from the source `LOB` is appended to the end of the current `LOB`. The position of neither `LOB` is evaluated or changed during this process.       The underlying data types must always be the same. For example, if you are appending from an <xref:System.Data.OracleClient.OracleType>, the destination <xref:System.Data.OracleClient.OracleLob> must also be an <xref:System.Data.OracleClient.OracleType>.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "지정 된 위치에서 데이터 추가 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 현재 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref>합니다."
+  remarks: "에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.       모든 데이터 소스에서 `LOB` 현재 끝에 추가 `LOB`합니다. 둘 다의 위치 `LOB` 을 평가 하거나이 프로세스 중에 변경 합니다.       기본 데이터 형식이 항상 같아야 합니다. 예를 들어 한 <xref:System.Data.OracleClient.OracleType> <xref:System.Data.OracleClient.OracleLob> <xref:System.Data.OracleClient.OracleType>.</xref:System.Data.OracleClient.OracleType> 수도 있어야</xref:System.Data.OracleClient.OracleLob> 대상</xref:System.Data.OracleClient.OracleType> 에서 추가 하는 경우      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public void Append (System.Data.OracleClient.OracleLob source);
     parameters:
     - id: source
       type: System.Data.OracleClient.OracleLob
-      description: "The <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> from which to append data."
+      description: "<xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 를 추가할 데이터 원본입니다."
   overload: System.Data.OracleClient.OracleLob.Append*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The source <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is null."
+    description: "소스 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> null입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The source <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is null, or the connection is closed."
+    description: "소스 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 매개 변수가 null 이면 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The source <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object was closed or disposed."
+    description: "소스 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.BeginBatch
@@ -99,8 +99,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Prevents server-side triggers from firing while performing multiple read operations."
-  remarks: "Opens the `LOB` in <xref:System.Data.OracleClient.OracleLobOpenMode> mode; therefore, the `LOB` can only be read from, not written to, until the corresponding call to <xref:System.Data.OracleClient.OracleLob.EndBatch%2A>. To perform batch writes to the `LOB`, call <xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> with <xref:System.Data.OracleClient.OracleLobOpenMode>.       Calling BeginBatch more than one time within the same transaction currently throws the Oracle &quot;ORA-22293: LOB already opened in the same transaction&quot; error. In addition, if you obtain the `LOB` using another <xref:System.Data.OracleClient.OracleDataReader>, and the original caller has not called the <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> method, the same error is generated. Therefore, you must call the <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> method when you are finished using the <xref:System.Data.OracleClient.OracleLob>."
+  summary: "서버 쪽 트리거 다중 읽기 작업을 수행 하는 동안 실행에서 되지 않도록 합니다."
+  remarks: "열립니다는 `LOB` 에 <xref:System.Data.OracleClient.OracleLobOpenMode>모드 이므로는 `LOB` 읽을 수만 있고, 해당 <xref:System.Data.OracleClient.OracleLob.EndBatch%2A>.</xref:System.Data.OracleClient.OracleLob.EndBatch%2A> 호출 될 때까지,에 기록 되지</xref:System.Data.OracleClient.OracleLobOpenMode> 일괄 처리에 대 한 쓰기를 수행 하는 `LOB`, <xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> <xref:System.Data.OracleClient.OracleLobOpenMode>.</xref:System.Data.OracleClient.OracleLobOpenMode> </xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> 호출       Oracle throw BeginBatch 현재 동일한 트랜잭션 내에서 한 번 호출 &quot;또는&22293;: 동일한 트랜잭션 내에서 이미 열려 LOB&quot; 오류입니다. 또한 가져와야 하는 경우는 `LOB` 다른를 사용 하 여 <xref:System.Data.OracleClient.OracleDataReader>, 원래 호출자가 호출 하 고는 <xref:System.Data.OracleClient.OracleLob.EndBatch%2A>메서드를 같은 오류가 생성 됩니다.</xref:System.Data.OracleClient.OracleLob.EndBatch%2A> </xref:System.Data.OracleClient.OracleDataReader> <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> <xref:System.Data.OracleClient.OracleLob>.</xref:System.Data.OracleClient.OracleLob> 를 사용 하 여 작업을 마쳤으면 메서드</xref:System.Data.OracleClient.OracleLob.EndBatch%2A> 를 호출 해야 따라서"
   syntax:
     content: public void BeginBatch ();
     parameters: []
@@ -108,13 +108,13 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.BeginBatch(System.Data.OracleClient.OracleLobOpenMode)
@@ -129,25 +129,25 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Prevents server-side triggers from firing while performing multiple read and write operations in the specified access mode."
-  remarks: "To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.       Calling <xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> more than one time within the same transaction currently throws the Oracle &quot;ORA-22293: LOB already opened in the same transaction&quot; error. In addition, if you obtain the `LOB` using another <xref:System.Data.OracleClient.OracleDataReader>, and the original caller has not called the <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> method, the same error is generated. Therefore, you must call the <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> method when you are finished using the <xref:System.Data.OracleClient.OracleLob>."
+  summary: "읽기가 여러 개 수행 하는 동안 발생 하 고 지정된 된 액세스 모드의 쓰기 작업에서 서버 쪽 트리거를 방지 합니다."
+  remarks: "에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.       호출 <xref:System.Data.OracleClient.OracleLob.BeginBatch%2A>동일한 트랜잭션 내에서 한 번 현재 throw Oracle &quot;또는&22293;: 동일한 트랜잭션 내에서 이미 열려 LOB&quot; 오류.</xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> 또한 가져와야 하는 경우는 `LOB` 다른를 사용 하 여 <xref:System.Data.OracleClient.OracleDataReader>, 원래 호출자가 호출 하 고는 <xref:System.Data.OracleClient.OracleLob.EndBatch%2A>메서드를 같은 오류가 생성 됩니다.</xref:System.Data.OracleClient.OracleLob.EndBatch%2A> </xref:System.Data.OracleClient.OracleDataReader> <xref:System.Data.OracleClient.OracleLob.EndBatch%2A> <xref:System.Data.OracleClient.OracleLob>.</xref:System.Data.OracleClient.OracleLob> 를 사용 하 여 작업을 마쳤으면 메서드</xref:System.Data.OracleClient.OracleLob.EndBatch%2A> 를 호출 해야 따라서"
   syntax:
     content: public void BeginBatch (System.Data.OracleClient.OracleLobOpenMode mode);
     parameters:
     - id: mode
       type: System.Data.OracleClient.OracleLobOpenMode
-      description: "Mode (one of the <xref href=&quot;System.Data.OracleClient.OracleLobOpenMode&quot;></xref> values) in which the <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> can be accessed between this BeginBatch call and the corresponding <xref:System.Data.OracleClient.OracleLob.EndBatch*> call."
+      description: "모드 (중 하나는 <xref href=&quot;System.Data.OracleClient.OracleLobOpenMode&quot;> </xref> 값)는는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 이 BeginBatch 호출과 해당 사이 액세스할 수 <xref:System.Data.OracleClient.OracleLob.EndBatch*>호출.</xref:System.Data.OracleClient.OracleLob.EndBatch*>"
   overload: System.Data.OracleClient.OracleLob.BeginBatch*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.CanRead
@@ -162,12 +162,12 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value indicating whether the <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> stream can be read."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 스트림은 읽을 수 있습니다."
   syntax:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> stream supports reading, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if a <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> is closed or disposed."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 스트림이 읽기를를 그렇지 않으면 지원 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 닫히거나 삭제 합니다."
   overload: System.Data.OracleClient.OracleLob.CanRead*
   exceptions: []
   platform:
@@ -184,12 +184,12 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value indicating whether forward and backward seek operations can be performed."
+  summary: "앞으로 및 뒤로 검색 작업이 있는지 여부를 나타내는 값을 가져옵니다를 수행할 수 있습니다."
   syntax:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if a <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> is closed or disposed, otherwise <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>. Always <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> for <xref href=&quot;System.Data.OracleClient.OracleLob.Null&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>경우는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 닫히거나 삭제, 그렇지 않으면 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다. Always <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> for <xref href=&quot;System.Data.OracleClient.OracleLob.Null&quot;></xref>."
   overload: System.Data.OracleClient.OracleLob.CanSeek*
   exceptions: []
   platform:
@@ -206,13 +206,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Always returns true, regardless of whether the <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> supports writing or not."
-  remarks: "To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have started a local transaction."
+  summary: "항상 여부에 관계 없이 true를 반환 된 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 쓰기를 지원 합니다."
+  remarks: "에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 해야 로컬 트랜잭션을 합니다."
   syntax:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: "Always returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, regardless of whether an opened or undisposed <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> supports writing or not, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if a <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> is closed or disposed."
+      description: "항상 반환 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>여부에 관계 없이 열리지 않았거나 삭제 되지 않은 프로그램 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 쓰기를 지원, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 닫히거나 삭제 합니다."
   overload: System.Data.OracleClient.OracleLob.CanWrite*
   exceptions: []
   platform:
@@ -229,24 +229,24 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value indicating the minimum number of bytes to retrieve from or send to the server during a read/write operation."
-  remarks: "The value returned by the ChunkSize property is not a setting of the .NET Framework Data Provider for Oracle. Instead, it is the value that the Oracle Call Interface (OCI) uses when communicating with the server. Use ChunkSize to ensure that client-side chunks are the same size. Reading or writing in smaller chunks does not cache data, and causes a less-optimized round trip to the server, because a full packet is not received or sent."
+  summary: "최소 서버에서 받거나 읽기/쓰기 작업 중 서버에 보낼 바이트 수를 나타내는 값을 가져옵니다."
+  remarks: "ChunkSize 속성에서 반환 된 값이.NET Framework Data Provider for Oracle의 설정. 대신, 호출 인터페이스 OCI (Oracle) 서버와 통신할 때 사용 하는 값입니다. ChunkSize를 사용 하 여 클라이언트 쪽 청크 크기가 있는지 확인 합니다. 읽기 또는 쓰기를 더 작은 청크로 데이터를 캐시 하지 않습니다 및 전체 패킷은 연결이 수신 되거나 전송 되지 때문에 서버에 없는 액세스에 최적화 된 왕복이 발생 합니다."
   syntax:
     content: public int ChunkSize { get; }
     return:
       type: System.Int32
-      description: "The minimum number of bytes to retrieve or send."
+      description: "최소를 검색 하거나 보낼 바이트 수입니다."
   overload: System.Data.OracleClient.OracleLob.ChunkSize*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Clone
@@ -261,22 +261,22 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Creates a new <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object that references the same Oracle <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> as the original <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object."
-  remarks: "The properties of the new <xref:System.Data.OracleClient.OracleLob> object initially have the same values as those of the original object. However, after the Clone is complete, each <xref:System.Data.OracleClient.OracleLob> object is independent from the other. For example, changing the value of the <xref:System.Data.OracleClient.OracleLob.Position%2A> property on the original <xref:System.Data.OracleClient.OracleLob> does not change the value of <xref:System.Data.OracleClient.OracleLob.Position%2A> on the copy."
+  summary: "새 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 같은 Oracle 참조 하는 개체 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 원래 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체입니다."
+  remarks: "새 속성 <xref:System.Data.OracleClient.OracleLob>개체는 처음 원래 개체의 하는 것과 동일한 값을 포함 합니다.</xref:System.Data.OracleClient.OracleLob> 그러나 각 복제를 완료 한 후 <xref:System.Data.OracleClient.OracleLob>개체와는 다른 독립적인.</xref:System.Data.OracleClient.OracleLob> 예를 들어, 값을 변경는 <xref:System.Data.OracleClient.OracleLob.Position%2A>속성을 원래 <xref:System.Data.OracleClient.OracleLob>의 값을 변경 하지 않는 <xref:System.Data.OracleClient.OracleLob.Position%2A>복사본에 대해.</xref:System.Data.OracleClient.OracleLob.Position%2A> </xref:System.Data.OracleClient.OracleLob> </xref:System.Data.OracleClient.OracleLob.Position%2A>"
   syntax:
     content: public object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "A new <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object that references the same Oracle <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> as the original <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object."
+      description: "새 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 같은 Oracle 참조 하는 개체 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 원래 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체입니다."
   overload: System.Data.OracleClient.OracleLob.Clone*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Connection
@@ -291,17 +291,17 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets the <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;></xref> used by this instance of the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
+  summary: "가져옵니다는 <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;> </xref> 의이 인스턴스에서 사용 되는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
   syntax:
     content: public System.Data.OracleClient.OracleConnection Connection { get; }
     return:
       type: System.Data.OracleClient.OracleConnection
-      description: "The connection to a data source."
+      description: "데이터 원본에 연결 합니다."
   overload: System.Data.OracleClient.OracleLob.Connection*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.CopyTo(System.Data.OracleClient.OracleLob)
@@ -316,28 +316,28 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Copies from this <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> to a destination <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
-  remarks: "The underlying data types must always be the same. For example, if you are copying from an <xref:System.Data.OracleClient.OracleType>, the destination <xref:System.Data.OracleClient.OracleLob> must also be an <xref:System.Data.OracleClient.OracleType>.       If the destination offset is beyond the end of destination `LOB`, the `LOB` to which the data is being copied is extended. The space between the end of the `LOB` and the destination offset beyond the end is padded with zeros for `BLOB` data types and spaces for `CLOB` and `NCLOB` data types.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but not update the `LOB` on the server. In this case, however, the local copy of the `LOB` will be updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation.   >    >  The `CopyTo` method does not clear the contents of the destination `OracleLob` before performing the copy operation."
+  summary: "이 복사본 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 대상 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
+  remarks: "기본 데이터 형식이 항상 같아야 합니다. 예를 들어 한 <xref:System.Data.OracleClient.OracleType> <xref:System.Data.OracleClient.OracleLob> <xref:System.Data.OracleClient.OracleType>.</xref:System.Data.OracleClient.OracleType> 수도 있어야</xref:System.Data.OracleClient.OracleLob> 대상</xref:System.Data.OracleClient.OracleType> 에서 복사 하는 경우       대상 오프셋은 대상의 끝을 넘어 `LOB`, `LOB` 데이터가 복사 되는 확장 되었습니다. 끝 사이 공백을 `LOB` 대상 오프셋 끝 다음에 대 한&0;으로 채워서 및 `BLOB` 데이터 형식 및에 대 한 공간 `CLOB` 및 `NCLOB` 데이터 형식입니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수도 있지만 업데이트할는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>   >>는 `CopyTo` 메서드는 대상의 내용을 지우지 않습니다 `OracleLob` 복사 작업을 수행 하기 전에."
   syntax:
     content: public long CopyTo (System.Data.OracleClient.OracleLob destination);
     parameters:
     - id: destination
       type: System.Data.OracleClient.OracleLob
-      description: "The destination <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
+      description: "대상 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
     return:
       type: System.Int64
-      description: "The number of bytes copied. This excludes any padded bytes."
+      description: "복사한 바이트 수입니다. 채워진된 모든 바이트를 제외합니다."
   overload: System.Data.OracleClient.OracleLob.CopyTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> specified in the <code>destination</code> parameter is null."
+    description: "<xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 에 지정 된 된 <code> destination </code> 매개 변수가 null입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.CopyTo(System.Data.OracleClient.OracleLob,System.Int64)
@@ -352,34 +352,34 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Copies from this <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> to a destination <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> with the specified amount of data."
-  remarks: "The underlying data types must always be the same. For example, if you are copying from an <xref:System.Data.OracleClient.OracleType>, the destination <xref:System.Data.OracleClient.OracleLob> must also be an <xref:System.Data.OracleClient.OracleType>.       If the destination offset is beyond the end of destination `LOB`, the `LOB` to which the data is being copied is extended. The space between the end of `LOB` and destination offset beyond the end is padded with zeros for `BLOB` data types and spaces for `CLOB` and `NCLOB` data types.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation.   >    >  The `CopyTo` method does not clear the contents of the destination `OracleLob` before performing the copy operation."
+  summary: "이 복사본 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 대상 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 는 지정 된 크기의 데이터입니다."
+  remarks: "기본 데이터 형식이 항상 같아야 합니다. 예를 들어 한 <xref:System.Data.OracleClient.OracleType> <xref:System.Data.OracleClient.OracleLob> <xref:System.Data.OracleClient.OracleType>.</xref:System.Data.OracleClient.OracleType> 수도 있어야</xref:System.Data.OracleClient.OracleLob> 대상</xref:System.Data.OracleClient.OracleType> 에서 복사 하는 경우       대상 오프셋은 대상의 끝을 넘어 `LOB`, `LOB` 데이터가 복사 되는 확장 되었습니다. 끝 사이 공백을 `LOB` 대상 오프셋 끝 다음에 대 한&0;으로 채워서 및 `BLOB` 데이터 형식 및에 대 한 공간 `CLOB` 및 `NCLOB` 데이터 형식입니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>   >>는 `CopyTo` 메서드는 대상의 내용을 지우지 않습니다 `OracleLob` 복사 작업을 수행 하기 전에."
   syntax:
     content: public long CopyTo (System.Data.OracleClient.OracleLob destination, long destinationOffset);
     parameters:
     - id: destination
       type: System.Data.OracleClient.OracleLob
-      description: "The destination <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>"
+      description: "대상<xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>"
     - id: destinationOffset
       type: System.Int64
-      description: "The offset to which to copy. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number of bytes."
+      description: "복사할 대상 오프셋입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 바이트 수는 짝수 여야 합니다."
     return:
       type: System.Int64
-      description: "The number of bytes copied. This excludes any padded bytes."
+      description: "복사한 바이트 수입니다. 채워진된 모든 바이트를 제외합니다."
   overload: System.Data.OracleClient.OracleLob.CopyTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> specified in the <code>destination</code> parameter is full."
+    description: "<xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 에 지정 된 된 <code> destination </code> 매개 변수는 전체."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value specified in the <code>destinationOffset</code> parameter is less than zero or greater than 4 gigabytes.       -or-       A value specified in the <code>destinationOffset</code> parameter for a <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data type is not even.       -or-       You must specify <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types as an even number of bytes."
+    description: "에 지정 된 값의 <code> destinationOffset </code> 매개 변수는 0 보다 작거나 4gb 보다 큰 합니다.       -또는-에 지정 된 값의 <code> destinationOffset </code> 에 대 한 매개 변수는 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식을 않습니다.       -또는-지정 해야 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 짝수 바이트 데이터 형식입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.CopyTo(System.Int64,System.Data.OracleClient.OracleLob,System.Int64,System.Int64)
@@ -394,40 +394,40 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Copies from this <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> to a destination <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> with the specified amount of data, and the source offset."
-  remarks: "The underlying data types must always be the same. For example, if you are copying from an <xref:System.Data.OracleClient.OracleType>, the destination <xref:System.Data.OracleClient.OracleLob> must also be an <xref:System.Data.OracleClient.OracleType>.       If the destination offset is beyond the end of destination `LOB`, the `LOB` to which the data is being copied is extended. The space between the end of `LOB` and destination offset beyond the end is padded with zeros for `BLOB` data types and spaces for `CLOB` and `NCLOB` data types.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation.   >    >  The `CopyTo` method does not clear the contents of the destination `OracleLob` before performing the copy operation."
+  summary: "이 복사본 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 대상 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> , 데이터 소스 오프셋의 지정 된 크기를 포함 합니다."
+  remarks: "기본 데이터 형식이 항상 같아야 합니다. 예를 들어 한 <xref:System.Data.OracleClient.OracleType> <xref:System.Data.OracleClient.OracleLob> <xref:System.Data.OracleClient.OracleType>.</xref:System.Data.OracleClient.OracleType> 수도 있어야</xref:System.Data.OracleClient.OracleLob> 대상</xref:System.Data.OracleClient.OracleType> 에서 복사 하는 경우       대상 오프셋은 대상의 끝을 넘어 `LOB`, `LOB` 데이터가 복사 되는 확장 되었습니다. 끝 사이 공백을 `LOB` 대상 오프셋 끝 다음에 대 한&0;으로 채워서 및 `BLOB` 데이터 형식 및에 대 한 공간 `CLOB` 및 `NCLOB` 데이터 형식입니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>   >>는 `CopyTo` 메서드는 대상의 내용을 지우지 않습니다 `OracleLob` 복사 작업을 수행 하기 전에."
   syntax:
     content: public long CopyTo (long sourceOffset, System.Data.OracleClient.OracleLob destination, long destinationOffset, long amount);
     parameters:
     - id: sourceOffset
       type: System.Int64
-      description: "The offset from which to copy. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "복사할 내용이 있는 오프셋입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     - id: destination
       type: System.Data.OracleClient.OracleLob
       description: "The destination <xref uid=&quot;langword_csharp_OracleLob&quot; name=&quot;OracleLob&quot; href=&quot;&quot;></xref><xref href=&quot;System.Data.OracleClient&quot;></xref>."
     - id: destinationOffset
       type: System.Int64
-      description: "The destination offset to which to copy. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "복사할 대상 대상 오프셋입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     - id: amount
       type: System.Int64
-      description: "The quantity of data, in bytes, to copy. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "복사할 바이트의 데이터 양입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     return:
       type: System.Int64
-      description: "The number of bytes copied. This excludes any padded bytes."
+      description: "복사한 바이트 수입니다. 채워진된 모든 바이트를 제외합니다."
   overload: System.Data.OracleClient.OracleLob.CopyTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> specified in the <code>destination</code> parameter is full."
+    description: "<xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 에 지정 된 된 <code> destination </code> 매개 변수는 전체."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value specified in the <code>amount</code>, <code>sourceOffset</code>, or <code>destinationOffset</code> parameter is less than zero or greater than 4 gigabytes.       -or-       A value specified in the <code>amount</code>, <code>sourceOffset</code>, or <code>destinationOffset</code> parameter for a <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data type is not even."
+    description: "에 지정 된 값의 <code> amount </code>, <code> sourceOffset </code>, 또는 <code> destinationOffset </code> 매개 변수는 0 보다 작거나 4gb 보다 큰 합니다.       -or-       A value specified in the <code>amount</code>, <code>sourceOffset</code>, or <code>destinationOffset</code> parameter for a <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data type is not even."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Dispose(System.Boolean)
@@ -447,7 +447,7 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Data.OracleClient.OracleLob.Dispose*
   exceptions: []
   platform:
@@ -464,8 +464,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Allows server-side triggers to resume firing after performing multiple write operations."
-  remarks: "Call the <xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> method before you begin performing write operations on the <xref:System.Data.OracleClient.OracleLob>."
+  summary: "서버 쪽 트리거 다시 여러 쓰기 작업을 수행한 후 발생 하 게 허용 합니다."
+  remarks: "<xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> <xref:System.Data.OracleClient.OracleLob>.</xref:System.Data.OracleClient.OracleLob> 쓰기 작업을 수행 하기 전에 메서드</xref:System.Data.OracleClient.OracleLob.BeginBatch%2A> 를 호출 합니다."
   syntax:
     content: public void EndBatch ();
     parameters: []
@@ -473,13 +473,13 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Erase
@@ -494,25 +494,25 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Erases all data from this <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
-  remarks: "Erase does not truncate data. The `LOB` length remains the same for a `BLOB` data type, and the erased data is replaced by 0x00. `CLOB` and `NCLOB` data types are replaced by spaces.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "이 모든 데이터가 삭제 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
+  remarks: "지우기 데이터를 잘라내지 않습니다. `LOB` 길이 대 한 동일 하 게 유지는 `BLOB` 데이터 형식, 삭제 된 데이터는 0x00 대체 합니다. `CLOB`및 `NCLOB` 데이터 형식은 공백으로 대체 합니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public long Erase ();
     parameters: []
     return:
       type: System.Int64
-      description: "The number of bytes erased."
+      description: "삭제 하는 바이트 수입니다."
   overload: System.Data.OracleClient.OracleLob.Erase*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Erase(System.Int64,System.Int64)
@@ -527,31 +527,31 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Erases the specified amount of data from this <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
-  remarks: "The sum of the values in the `offset` and `amount` parameters can be greater than that of the size of the <xref:System.Data.OracleClient.OracleLob>. Therefore, specifying a value greater than that returned by the <xref:System.Data.OracleClient.OracleLob.Length%2A> property succeeds; however <xref:System.Data.OracleClient.OracleLob.Erase%2A> only erases to the end of the <xref:System.Data.OracleClient.OracleLob>. (Similarly, if a negative value is passed to `offset`, <xref:System.Data.OracleClient.OracleLob.Erase%2A> will succeed, but only erase starting from the beginning of the <xref:System.Data.OracleClient.OracleLob>.) This behavior is different from that of the <xref:System.Data.OracleClient.OracleLob.Read%2A> and <xref:System.Data.OracleClient.OracleLob.Write%2A> methods, and offers the advantage of being able to erase all data from the value specified by `offset` without making an additional roundtrip to the server to verify the actual size.       <xref:System.Data.OracleClient.OracleLob.Erase%2A> does not truncate data. The `LOB` length remains the same for a `BLOB` data type, and the erased data is replaced by 0x00. `CLOB` and `NCLOB` data types are replaced by spaces.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  In this release, a write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "지정된 된 양의 데이터를이 지웁니다 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
+  remarks: "에 있는 값의 합계는 `offset` 및 `amount` 매개 변수는 <xref:System.Data.OracleClient.OracleLob>.</xref:System.Data.OracleClient.OracleLob> 의 크기 보다 클 수 있습니다 하지만 따라서 반환한 보다 큰 값을 지정 하는 <xref:System.Data.OracleClient.OracleLob.Length%2A>속성 성공 <xref:System.Data.OracleClient.OracleLob.Erase%2A> <xref:System.Data.OracleClient.OracleLob>.</xref:System.Data.OracleClient.OracleLob> 의 끝에만 지웁니다</xref:System.Data.OracleClient.OracleLob.Erase%2A> </xref:System.Data.OracleClient.OracleLob.Length%2A> (음수 값이 전달 하는 경우에 이와 비슷하게 `offset`, <xref:System.Data.OracleClient.OracleLob.Erase%2A>성공 하지만의 시작 부분부터만 지웁니다 됩니다는 <xref:System.Data.OracleClient.OracleLob>.)</xref:System.Data.OracleClient.OracleLob> </xref:System.Data.OracleClient.OracleLob.Erase%2A> 이 동작은 다른는 <xref:System.Data.OracleClient.OracleLob.Read%2A>및 <xref:System.Data.OracleClient.OracleLob.Write%2A>메서드 및 지정 된 값에서 모든 데이터를 지울 수 있다는 이점이 제공 `offset` 실제 크기를 확인 하려면 서버에 추가 왕복을 수행 하지 않고.</xref:System.Data.OracleClient.OracleLob.Write%2A> </xref:System.Data.OracleClient.OracleLob.Read%2A>       <xref:System.Data.OracleClient.OracleLob.Erase%2A>데이터를 잘라내지 않습니다.</xref:System.Data.OracleClient.OracleLob.Erase%2A> `LOB` 길이 대 한 동일 하 게 유지는 `BLOB` 데이터 형식, 삭제 된 데이터는 0x00 대체 합니다. `CLOB`및 `NCLOB` 데이터 형식은 공백으로 대체 합니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] >이 릴리스에서 읽기 전용에 쓰기 작업 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public long Erase (long offset, long amount);
     parameters:
     - id: offset
       type: System.Int64
-      description: "The offset from which to erase. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "지울 오프셋입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     - id: amount
       type: System.Int64
-      description: "The quantity of data, in bytes, to erase. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "데이터 지우기 바이트의 양입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     return:
       type: System.Int64
-      description: "The number of bytes erased."
+      description: "삭제 하는 바이트 수입니다."
   overload: System.Data.OracleClient.OracleLob.Erase*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Flush
@@ -566,8 +566,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Not currently supported."
-  remarks: "In this release, this method is not functional."
+  summary: "현재 지원 되지 않습니다."
+  remarks: "이 릴리스에서이 메서드가 작동 하지 않습니다."
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -587,18 +587,18 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value indicating whether an application called the <xref:System.Data.OracleClient.OracleLob.BeginBatch*> method."
-  remarks: 'When using an Oracle 8.0.5 server, an Oracle &quot;ORA-00600: internal error code&quot; exception is thrown.'
+  summary: "응용 프로그램 호출 여부를 나타내는 값을 가져옵니다는 <xref:System.Data.OracleClient.OracleLob.BeginBatch*>메서드.</xref:System.Data.OracleClient.OracleLob.BeginBatch*>"
+  remarks: 'Oracle 8.0.5 Oracle 서버를 사용 하는 경우 &quot;또는 00600: 내부 오류 코드&quot; 예외가 throw 됩니다.'
   syntax:
     content: public bool IsBatched { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if application called the <xref:System.Data.OracleClient.OracleLob.BeginBatch*> method, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>응용 프로그램이 호출 하는 경우는 <xref:System.Data.OracleClient.OracleLob.BeginBatch*>메서드, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Data.OracleClient.OracleLob.BeginBatch*>"
   overload: System.Data.OracleClient.OracleLob.IsBatched*
   exceptions:
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.IsNull
@@ -613,12 +613,12 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is a <xref href=&quot;System.Data.OracleClient.OracleBFile.Null&quot;></xref> stream."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 는 <xref href=&quot;System.Data.OracleClient.OracleBFile.Null&quot;> </xref> 스트림 합니다."
   syntax:
     content: public bool IsNull { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is a <xref href=&quot;System.Data.OracleClient.OracleBFile.Null&quot;></xref> stream, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is a <xref href=&quot;System.Data.OracleClient.OracleBFile.Null&quot;></xref> stream, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Data.OracleClient.OracleLob.IsNull*
   exceptions: []
   platform:
@@ -635,24 +635,24 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value indicating whether the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is a temporary <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref>."
-  remarks: "The following example demonstrates how to create a temporary `LOB`.      ```   OracleConnection connection = new OracleConnection(&quot;server=MyServer; integrated security=yes;&quot;);   connection.Open();   OracleTransaction transaction = connection.BeginTransaction();   OracleCommand command = connection.CreateCommand();   command.Transaction = transaction;   command.CommandText = &quot;declare xx blob; begin dbms_lob.createtemporary(xx, false, 0); :tempblob := xx; end;&quot;;   command.Parameters.Add(new OracleParameter(&quot;tempblob&quot;, OracleType.Blob)).Direction = ParameterDirection.Output;   command.ExecuteNonQuery();   OracleLob tempLob = (OracleLob)command.Parameters[0].Value;   tempLob.BeginBatch(OracleLobOpenMode.ReadWrite);   tempLob.Write(tempbuff,0,tempbuff.Length);   tempLob.EndBatch();   command.Parameters.Clear();   command.CommandText = &quot;MyTable.MyProc&quot;;   command.CommandType = CommandType.StoredProcedure;     command.Parameters.Add(new OracleParameter(&quot;ImportDoc&quot;, OracleType.Blob)).Value = tempLob;   command.ExecuteNonQuery();   transaction.Commit();   connection.Close   ```"
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 임시 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref>합니다."
+  remarks: "다음 예제에서는 임시 하 `LOB`합니다.      ```   OracleConnection connection = new OracleConnection(&quot;server=MyServer; integrated security=yes;&quot;);   connection.Open();   OracleTransaction transaction = connection.BeginTransaction();   OracleCommand command = connection.CreateCommand();   command.Transaction = transaction;   command.CommandText = &quot;declare xx blob; begin dbms_lob.createtemporary(xx, false, 0); :tempblob := xx; end;&quot;;   command.Parameters.Add(new OracleParameter(&quot;tempblob&quot;, OracleType.Blob)).Direction = ParameterDirection.Output;   command.ExecuteNonQuery();   OracleLob tempLob = (OracleLob)command.Parameters[0].Value;   tempLob.BeginBatch(OracleLobOpenMode.ReadWrite);   tempLob.Write(tempbuff,0,tempbuff.Length);   tempLob.EndBatch();   command.Parameters.Clear();   command.CommandText = &quot;MyTable.MyProc&quot;;   command.CommandType = CommandType.StoredProcedure;     command.Parameters.Add(new OracleParameter(&quot;ImportDoc&quot;, OracleType.Blob)).Value = tempLob;   command.ExecuteNonQuery();   transaction.Commit();   connection.Close   ```"
   syntax:
     content: public bool IsTemporary { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> is a temporary <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref>, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 임시 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.OracleClient.OracleLob.IsTemporary*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Length
@@ -667,24 +667,24 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value that returns the size of the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref>."
-  remarks: "The size of the <xref:System.Data.OracleClient.OracleLob> is always returned in bytes for all data types."
+  summary: "크기를 반환 하는 값을 가져옵니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref>합니다."
+  remarks: "크기는 <xref:System.Data.OracleClient.OracleLob>항상 모든 데이터 형식에 대 한 바이트 단위로 반환 됩니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public override long Length { get; }
     return:
       type: System.Int64
-      description: "The size of the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> in bytes."
+      description: "크기는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> (바이트)에서입니다."
   overload: System.Data.OracleClient.OracleLob.Length*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.LobType
@@ -699,13 +699,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets a value that returns the <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> data type."
-  remarks: "An <xref:System.Data.OracleClient.OracleLob> may be one of the following <xref:System.Data.OracleClient.OracleType> data types.      |OracleType data type|Description|   |--------------------------|-----------------|   |`Blob`|An Oracle `BLOB` data type that contains binary data with a maximum size of 4 gigabytes. This maps to an <xref:System.Array> of type <xref:System.Byte>.|   |`Clob`|An Oracle `CLOB` data type that contains character data, based on the default character set on the server, with a maximum size of 4 gigabytes. This maps to <xref:System.String>.|   |`NClob`|An Oracle `NCLOB` data type that contains character data, based on the national character set on the server with a maximum size of 4 gigabytes. This maps to <xref:System.String>.|"
+  summary: "반환 하는 값을 가져옵니다는 <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 데이터 형식입니다."
+  remarks: "<xref:System.Data.OracleClient.OracleLob>다음 중 하나일 수 있습니다 <xref:System.Data.OracleClient.OracleType>데이터 형식.</xref:System.Data.OracleClient.OracleType> </xref:System.Data.OracleClient.OracleLob>      | OracleType 데이터 형식 | 설명 |   |--------------------------|-----------------|   | `Blob`| Oracle `BLOB` 최대 크기가 4gb의 이진 데이터를 포함 하는 데이터 형식입니다. <xref:System.Byte>형식의 <xref:System.Array>에 매핑됩니다. |   | `Clob`| Oracle `CLOB` 데이터 형식은 기본 문자에 따라 문자 데이터를 포함 하는 최대 크기가 4gb의 서버에 설정 합니다. </xref:System.Array></xref:System.Byte> <xref:System.String>에 매핑됩니다. |   | `NClob`| Oracle `NCLOB` 국가별 문자 집합에 4gb의 최대 크기를 사용 하 여 서버를 기반으로 문자 데이터를 포함 하는 데이터 형식.</xref:System.String> 에 매핑됩니다 <xref:System.String>. |</xref:System.String>"
   syntax:
     content: public System.Data.OracleClient.OracleType LobType { get; }
     return:
       type: System.Data.OracleClient.OracleType
-      description: "One of the <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref><xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;></xref> data types."
+      description: "중 하나는 <xref href=&quot;System.Data.OracleClient.OracleType&quot;> </xref> <xref uid=&quot;langword_csharp_LOB&quot; name=&quot;LOB&quot; href=&quot;&quot;> </xref> 데이터 형식입니다."
   overload: System.Data.OracleClient.OracleLob.LobType*
   exceptions: []
   platform:
@@ -722,13 +722,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Represents a null <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object."
-  remarks: "You can construct an <xref:System.Data.OracleClient.OracleLob> that is NULL using this format:      ```   OracleLob myLob = OracleLOB.Null;   ```       This technique is used primarily to test whether a `LOB` returned from the server is NULL, as this example illustrates:      ```   If(myLob == OracleLob.Null)   ```       A NULL `LOB` behaves similarly to a zero byte `LOB` in that <xref:System.Data.OracleClient.OracleLob.Read%2A> succeeds and always returns zero bytes."
+  summary: "Null 나타냅니다 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체입니다."
+  remarks: "생성할 수 있습니다는 <xref:System.Data.OracleClient.OracleLob>이 형식을 사용 하 여 NULL입니다: ```   OracleLob myLob = OracleLOB.Null;   ``` 이 방법을 테스트 하는 데 주로 사용 됩니다 있는지 여부를 `LOB` 서버에서 반환이 NULL 이면이 예제와 같이: ```   If(myLob == OracleLob.Null)   ``` A NULL `LOB`&0; 바이트 비슷하게 `LOB` 한다는 점에서 <xref:System.Data.OracleClient.OracleLob.Read%2A>성공 하 고 항상&0; 바이트를 반환 합니다.</xref:System.Data.OracleClient.OracleLob.Read%2A> </xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public static readonly System.Data.OracleClient.OracleLob Null;
     return:
       type: System.Data.OracleClient.OracleLob
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -744,21 +744,21 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets the current read position in the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream."
-  remarks: "The stream must support seeking to get or set the position. Use the <xref:System.Data.OracleClient.OracleLob.CanSeek%2A> property to determine whether the stream supports seeking.       Seeking to any location beyond the length of the stream is supported. Seeking to an odd position for `CLOB` and `NCLOB` data types is also supported. For more information, see the Remarks section of the <xref:System.Data.OracleClient.OracleLob.Read%2A> property.       The Position property does not keep track of the number of bytes from the stream that have been consumed, skipped, or both."
+  summary: "현재 읽기 위치를 가져옵니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림 합니다."
+  remarks: "스트림이 가져오거나 위치를 설정 하려면 검색을 지원 해야 합니다. 사용 하 여는 <xref:System.Data.OracleClient.OracleLob.CanSeek%2A>스트림이 검색을 지원 하는지 여부를 결정 하는 속성.</xref:System.Data.OracleClient.OracleLob.CanSeek%2A>       스트림의 길이 초과 하는 위치에 검색을 지원 됩니다. 에 대 한 홀수 위치까지 검색할 `CLOB` 및 `NCLOB` 데이터 형식이 지원 됩니다. 자세한 내용은 설명 부분을 참조 하십시오.는 <xref:System.Data.OracleClient.OracleLob.Read%2A>속성.</xref:System.Data.OracleClient.OracleLob.Read%2A>       Position 속성 않습니다를 추적 하지 소비 된 생략 되었거나 하는 스트림 또는 둘 다에서 바이트 수입니다."
   syntax:
     content: public override long Position { get; set; }
     return:
       type: System.Int64
-      description: "The current position within the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream."
+      description: "내의 현재 위치에서 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림 합니다."
   overload: System.Data.OracleClient.OracleLob.Position*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection is closed."
+    description: "연결이 닫혀 있습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Read(System.Byte[],System.Int32,System.Int32)
@@ -773,40 +773,40 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Reads a sequence of bytes from the current <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream and advances the position within the stream by the number of bytes read."
-  remarks: "The Read method reads a maximum of `count` bytes from the current stream and stores them in `buffer` beginning at `offset`. The current position within the stream is advanced by the number of bytes read; however, if an exception occurs, the current position within the stream remains unchanged. Read returns the number of bytes read. The return value is zero only if the position is currently at the end of the stream. Read will block until at least one byte of data can be read, in the event that no data is available.Read returns 0 if you attempt to read from a `LOB` when the current position is at the end of `LOB`. Read can return fewer bytes than requested even if the end of the stream has not been reached.       The .NET Framework Data Provider for Oracle handles all `CLOB` and `NCLOB` data as Unicode. Therefore, when accessing `CLOB` and `NCLOB` data types, you are always dealing with the number of bytes, where each character is 2 bytes. For example, if a string of text containing three characters is saved as an `NCLOB` on an Oracle server where the character set is 4 bytes per character, and you perform a `Read` operation, you specify the length of the string as 6 bytes, although it is stored as 12 bytes on the server.       The following C# example demonstrates how to read <xref:System.Data.OracleClient.OracleLob> objects.      ```   public static void ReadLobExample(OracleCommand command)   {      int actual = 0;         //Select some data.      // Table Schema:      //  &quot;CREATE TABLE TableWithLobs (a int, b BLOB, c CLOB, d NCLOB)&quot;;      //  &quot;INSERT INTO TableWithLobs values (1, &quot;AA&quot;, &quot;AAA&quot;, N&quot;AAAA&quot;)&quot;;      command.CommandText = &quot;SELECT * FROM TableWithLobs&quot;;      OracleDataReader reader = command.ExecuteReader();      using(reader)      {         //Obtain the first row of data.         reader.Read();         //Obtain the LOBs (all 3 varieties).         OracleLob BLOB = reader.GetOracleLob(1);         OracleLob CLOB  = reader.GetOracleLob(2);         OracleLob NCLOB = reader.GetOracleLob(3);            //Example - Reading binary data (in chunks).         byte[] buffer = new byte[100];         while((actual = BLOB.Read(buffer, 0, buffer.Length)) >0)            Console.WriteLine(BLOB.LobType + &quot;.Read(&quot; + buffer + &quot;, &quot; + buffer.Length + &quot;) => &quot; + actual);            //Example - Reading CLOB/NCLOB data (in chunks).         //Note: You can read character data as raw Unicode bytes (using OracleLob.Read as in the above example).         //However, because the OracleLob object inherits directly from the.NET stream object,          //all the existing classes that manipluate streams can also be used. For example, the          //.NET StreamReader makes converting the raw bytes into actual characters easier.         StreamReader streamreader = new StreamReader(CLOB, Encoding.Unicode);         char[] cbuffer = new char[100];         while((actual = streamreader.Read(cbuffer, 0, cbuffer.Length)) >0)            Console.WriteLine(CLOB.LobType + &quot;.Read(&quot; + new string(cbuffer, 0, actual) + &quot;, &quot; + cbuffer.Length + &quot;) => &quot; + actual);            //Example - Reading data (all at once).         //You could use StreamReader.ReadToEnd to obtain all the string data,or simply         //call OracleLob.Value to obtain a contiguous allocation of all the data.         Console.WriteLine(NCLOB.LobType + &quot;.Value => &quot; + NCLOB.Value);      }   }   ```       You can construct an <xref:System.Data.OracleClient.OracleLob> that is NULL using this format:      ```   OracleLob myLob = OracleLob.Null;   ```       This technique is used primarily to test whether a `LOB` returned from the server is NULL, as the following example illustrates.      ```   If(myLob == OracleLob.Null)   ```       A NULL `LOB` behaves similarly to a zero byte `LOB` in that Read succeeds and always returns zero bytes."
+  summary: "현재에서 바이트의 시퀀스를 읽고 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 바이트 수 만큼 스트림 내에서 읽은 스트림에서 합니다."
+  remarks: "Read 메서드 읽고 최대 `count` 바이트 스트림에에 저장 하 고 `buffer` 에서 시작 `offset`합니다. 스트림 내의 현재 위치는; 읽은 바이트 수로 앞에 그러나 예외가 발생할 경우 스트림 내의 현재 위치 변경 되지 않습니다. 읽기 읽은 바이트 수를 반환 합니다. 위치가 스트림의 끝에 현재 있는 경우에 반환 값은&0;입니다. 읽기에 데이터가 없는 적어도 1 바이트의 데이터를 읽을 수 있고 때까지 차단 됩니다. 읽을 하려고 하면 0이 반환 읽기는 `LOB` 끝날 때 현재 위치가 표시 되는 경우 `LOB`합니다. 스트림의 끝에 도달 하지 하는 경우에 읽기 요청 된 것 보다 적은 바이트를 반환할 수 있습니다.       모든.NET Framework Data Provider for Oracle 처리 `CLOB` 및 `NCLOB` 유니코드 데이터입니다. 따라서에 액세스할 때 `CLOB` 및 `NCLOB` 데이터 형식, 항상 처리할 각 문자는 2 바이트 바이트 수입니다. 예를 들어 3 개의 문자가 포함 된 텍스트 문자열으로 저장 됩니다는 `NCLOB` 문자 집합은 4 바이트 문자 당 하 고 사용자가 수행할 수 있는 Oracle 서버에는 `Read` 작업을 서버에서 12 바이트로 저장 되더라도 6 바이트로 문자열의 길이 지정 합니다.       다음 C# 예제 읽는 방법을 보여 줍니다. <xref:System.Data.OracleClient.OracleLob>개체입니다.</xref:System.Data.OracleClient.OracleLob>      ```   public static void ReadLobExample(OracleCommand command)   {      int actual = 0;         //Select some data.      // Table Schema:      //  &quot;CREATE TABLE TableWithLobs (a int, b BLOB, c CLOB, d NCLOB)&quot;;      //  &quot;INSERT INTO TableWithLobs values (1, &quot;AA&quot;, &quot;AAA&quot;, N&quot;AAAA&quot;)&quot;;      command.CommandText = &quot;SELECT * FROM TableWithLobs&quot;;      OracleDataReader reader = command.ExecuteReader();      using(reader)      {         //Obtain the first row of data.         reader.Read();         //Obtain the LOBs (all 3 varieties).         OracleLob BLOB = reader.GetOracleLob(1);         OracleLob CLOB  = reader.GetOracleLob(2);         OracleLob NCLOB = reader.GetOracleLob(3);            //Example - Reading binary data (in chunks).         byte[] buffer = new byte[100];         while((actual = BLOB.Read(buffer, 0, buffer.Length)) >0)            Console.WriteLine(BLOB.LobType + &quot;.Read(&quot; + buffer + &quot;, &quot; + buffer.Length + &quot;) => &quot; + actual);            //Example - Reading CLOB/NCLOB data (in chunks).         //Note: You can read character data as raw Unicode bytes (using OracleLob.Read as in the above example).         //However, because the OracleLob object inherits directly from the.NET stream object,          //all the existing classes that manipluate streams can also be used. For example, the          //.NET StreamReader makes converting the raw bytes into actual characters easier.         StreamReader streamreader = new StreamReader(CLOB, Encoding.Unicode);         char[] cbuffer = new char[100];         while((actual = streamreader.Read(cbuffer, 0, cbuffer.Length)) >0)            Console.WriteLine(CLOB.LobType + &quot;.Read(&quot; + new string(cbuffer, 0, actual) + &quot;, &quot; + cbuffer.Length + &quot;) => &quot; + actual);            //Example - Reading data (all at once).         //You could use StreamReader.ReadToEnd to obtain all the string data,or simply         //call OracleLob.Value to obtain a contiguous allocation of all the data.         Console.WriteLine(NCLOB.LobType + &quot;.Value => &quot; + NCLOB.Value);      }   }   ```생성할 수 있습니다는 <xref:System.Data.OracleClient.OracleLob>이 형식을 사용 하 여 NULL입니다: ```   OracleLob myLob = OracleLob.Null;   ``` 이 방법을 테스트 하는 데 주로 사용 됩니다 여부는 `LOB` 서버에서 반환이 NULL 이면 다음 예제와 같이.</xref:System.Data.OracleClient.OracleLob>      ```   If(myLob == OracleLob.Null)   ```NULL `LOB`&0; 바이트 비슷하게 `LOB` 한다는 점에서 읽기에 성공 하 고 항상 바이트&0;을 반환 합니다."
   syntax:
     content: public override int Read (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. When this method returns, the buffer contains the specified byte array with the values between `offset` and (`offset` + `count`) replaced by the bytes read from the current source."
+      description: "바이트 배열입니다. 이 메서드가 반환 될 때 버퍼 사이의 값을 가진 지정 된 바이트 배열을 포함 하는 `offset` 및 (`offset` + `count`)에서 현재 원본 으로부터 읽어온 바이트로 교체 합니다."
     - id: offset
       type: System.Int32
-      description: "The zero-based byte offset in `buffer` at which to begin storing the data read from the current stream. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "0부터 시작 하는 바이트 오프셋 `buffer` 현재 스트림에서 읽은 데이터를 저장 하기 시작 하는 합니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to be read from the current stream. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "현재 스트림에서 읽을 바이트의 최대 수입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     return:
       type: System.Int32
-      description: "The total number of bytes read into the buffer. This may be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached."
+      description: "바이트은 버퍼 안으로 읽어들인 총 수입니다. 이 바이트 수가 요청 된 수보다 작을 경우 바이트 수를 현재 사용할 수 없는 또는 스트림의 끝에 도달 하면 (0) 수 있습니다."
   overload: System.Data.OracleClient.OracleLob.Read*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>buffer</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code> buffer </code> 가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value in the <code>offset</code> or <code>count</code> parameter is not positive.       -or-       The sum of the offset and count parameters is larger than the buffer length.       -or-       A value specified in the <code>amount</code> or <code>offset</code> parameter is less than zero or greater than 4 gigabytes."
+    description: "값은 <code> offset </code> 또는 <code> count </code> 매개 변수가 양의 하지 않습니다.       -또는-오프셋 및 카운트 매개 변수의 합계는 버퍼 길이 보다 큽니다.       -또는-에 지정 된 값의 <code> amount </code> 또는 <code> offset </code> 매개 변수는 0 보다 작거나 4gb 보다 큰 합니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Seek(System.Int64,System.IO.SeekOrigin)
@@ -821,34 +821,34 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Sets the position on the current <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream."
-  remarks: "If `offset` is negative, the new position must precede the position specified by `origin` by the number of bytes specified by `offset`. If `offset` is zero, the new position must be the position specified by `origin`. If `offset` is positive, the new position must follow the position specified by `origin` by the number of bytes specified by `offset`.       Seeking to any location beyond the length of the stream is supported. Seeking to an odd position for `CLOB` and `NCLOB` data types is also supported. For more information, see the Remarks section of the <xref:System.Data.OracleClient.OracleLob.Read%2A> property."
+  summary: "현재 위치를 설정 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림 합니다."
+  remarks: "경우 `offset` 가 음수 이면 새 위치 앞에 야로 지정 된 위치 `origin` 에 지정 된 바이트 수로 `offset`합니다. 경우 `offset`&0; 이면 새 위치에 지정 된 위치 해야 합니다. `origin`합니다. 경우 `offset` 가 새 위치에 지정 된 위치 따라야 합니다. 양수 `origin` 에 지정 된 바이트 수로 `offset`합니다.       스트림의 길이 초과 하는 위치에 검색을 지원 됩니다. 에 대 한 홀수 위치까지 검색할 `CLOB` 및 `NCLOB` 데이터 형식이 지원 됩니다. 자세한 내용은 설명 부분을 참조 하십시오.는 <xref:System.Data.OracleClient.OracleLob.Read%2A>속성.</xref:System.Data.OracleClient.OracleLob.Read%2A>"
   syntax:
     content: public override long Seek (long offset, System.IO.SeekOrigin origin);
     parameters:
     - id: offset
       type: System.Int64
-      description: "A byte offset relative to origin. If `offset` is negative, the new position precedes the position specified by `origin` by the number of bytes specified by `offset`. If `offset` is zero, the new position is the position specified by `origin`. If `offset` is positive, the new position follows the position specified by `origin` by the number of bytes specified by `offset`."
+      description: "원본에 상대적인 바이트 오프셋입니다. 경우 `offset` 가 음수 이면 새 위치 앞에 지정 된 위치 `origin` 에 지정 된 바이트 수로 `offset`합니다. 경우 `offset`&0; 이면 새 위치에 지정 된 위치는 `origin`합니다. 경우 `offset` 이 양수인 경우에 지정 된 위치 뒤에 새 위치가 `origin` 에 지정 된 바이트 수로 `offset`합니다."
     - id: origin
       type: System.IO.SeekOrigin
-      description: "A value of type <xref:System.IO.SeekOrigin> indicating the reference point used to obtain the new position."
+      description: "형식의 값 <xref:System.IO.SeekOrigin>새 위치를 가져오는 데 참조 지점을 나타내는.</xref:System.IO.SeekOrigin>"
     return:
       type: System.Int64
-      description: "The new position within the current stream."
+      description: "현재 스트림 내의 새 위치입니다."
   overload: System.Data.OracleClient.OracleLob.Seek*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>origin</code> parameter does not contain a valid value."
+    description: "<code> origin </code> 매개 변수에 올바른 값이 포함 되지 않습니다."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The resulting position is beyond the length of the value."
+    description: "결과 위치 값의 길이 벗어납니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object was closed or disposed."
+    description: "<xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.SetLength(System.Int64)
@@ -863,28 +863,28 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Sets the length of the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream to a value less than the current length."
-  remarks: "An attempt to increase the length of the <xref:System.Data.OracleClient.OracleLob> stream fails, and returns &quot;Message: ORA-22926: specified trim length is greater than current LOB value&quot;s length&quot; from the Oracle server.       A stream must support both writing and seeking for SetLength to function.       The .NET Framework Data Provider for Oracle handles all `CLOB` and `NCLOB` data as Unicode. Therefore, when accessing `CLOB` and `NCLOB` data types, you are always dealing with the number of bytes, where each character is 2 bytes. For example, if a string of text containing three characters is saved as an `NCLOB` on an Oracle server where the character set is 4 bytes per character, and you perform a `SetLength` operation, you specify the length of the string as 6 bytes, although it is stored as 12 bytes on the server.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  A write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "길이 설정 하는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림을 현재 길이 보다 작은 값입니다."
+  remarks: "길이 높이기 위해는 <xref:System.Data.OracleClient.OracleLob>스트림 실패 하 고 반환 &quot;메시지: 또는&22926;: 트림 길이가 현재 LOB 값의 길이 보다 큽니다. 지정 된&quot; Oracle 서버에서.</xref:System.Data.OracleClient.OracleLob>       스트림이 쓰기와 함수에 SetLength 검색을 모두 지원 해야 합니다.       모든.NET Framework Data Provider for Oracle 처리 `CLOB` 및 `NCLOB` 유니코드 데이터입니다. 따라서에 액세스할 때 `CLOB` 및 `NCLOB` 데이터 형식, 항상 처리할 각 문자는 2 바이트 바이트 수입니다. 예를 들어 3 개의 문자가 포함 된 텍스트 문자열으로 저장 됩니다는 `NCLOB` 문자 집합은 4 바이트 문자 당 하 고 사용자가 수행할 수 있는 Oracle 서버에는 `SetLength` 작업을 서버에서 12 바이트로 저장 되더라도 6 바이트로 문자열의 길이 지정 합니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] > 한 쓰기 작업에는 읽기 전용 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public override void SetLength (long value);
     parameters:
     - id: value
       type: System.Int64
-      description: "The desired length of the current <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream in bytes. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "현재의 원하는 길이 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림 (바이트)에서입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
   overload: System.Data.OracleClient.OracleLob.SetLength*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value specified in the <code>value</code> parameter for a <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data type is not even.       -or-       A value specified in the <code>value</code> parameter is less than zero or greater than 4 gigabytes."
+    description: "에 지정 된 값의 <code> value </code> 에 대 한 매개 변수는 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식을 않습니다.       -또는-에 지정 된 값의 <code> value </code> 매개 변수는 0 보다 작거나 4gb 보다 큰 합니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Value
@@ -899,21 +899,21 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets the common language runtime stream value equivalent of the underlying value."
-  remarks: "For <xref:System.Data.OracleClient.OracleType> data types, Value returns the entire underlying data as a contiguous array of type `Byte[]`. For <xref:System.Data.OracleClient.OracleType> and <xref:System.Data.OracleClient.OracleType> data types, Value returns all the data as a `String` data type. For null data, Value returns <xref:System.DBNull>. By comparing the returned values, you can distinguish among empty data, null data, and data.      > [!NOTE] >  A benefit of using `LOB` data types is the capability to retrieve large amounts of data in chunks at the client. However, when you use Value, you obtain all the data for the `LOB` column as one contiguous chunk, which can significantly increase application overhead."
+  summary: "내부 값의 해당 하는 공용 언어 런타임 스트림 값을 가져옵니다."
+  remarks: "에 대 한 <xref:System.Data.OracleClient.OracleType>데이터 형식, 값 전체 기본 데이터를 연속 배열로 반환 형식의 `Byte[]`.</xref:System.Data.OracleClient.OracleType> 에 대 한 <xref:System.Data.OracleClient.OracleType>및 <xref:System.Data.OracleClient.OracleType>데이터 형식 값으로 모든 데이터를 반환 합니다는 `String` 데이터 형식.</xref:System.Data.OracleClient.OracleType> </xref:System.Data.OracleClient.OracleType> Null 데이터 값 반환 <xref:System.DBNull>.</xref:System.DBNull> 반환 된 값을 비교 하 여 구분할 수 있습니다 빈 데이터 간에 데이터 및 데이터는 null입니다.      > [!NOTE] >를 사용 하는 이점은 `LOB` 데이터 형식의 많은 양의 데이터를 청크로 클라이언트에서 검색할 수 있는 기능입니다. 그러나 값을 사용 하면 가져와야에 대 한 모든 데이터는 `LOB` 열으로 응용 프로그램 오버 헤드를 크게 높일 수 있는 하나의 연속 된 청크입니다."
   syntax:
     content: public object Value { get; }
     return:
       type: System.Object
-      description: "For <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref>, an array of type <xref uid=&quot;langword_csharp_Byte[]&quot; name=&quot;Byte[]&quot; href=&quot;&quot;></xref>. For <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref> and <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref>, a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>. For null data, <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "For <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref>, an array of type <xref uid=&quot;langword_csharp_Byte[]&quot; name=&quot;Byte[]&quot; href=&quot;&quot;></xref>. For <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref> and <xref href=&quot;System.Data.OracleClient.OracleType&quot;></xref>, a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>. Null 데이터에 대 한 <xref href=&quot;System.DBNull&quot;> </xref>합니다."
   overload: System.Data.OracleClient.OracleLob.Value*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.Write(System.Byte[],System.Int32,System.Int32)
@@ -928,37 +928,37 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Writes a sequence of bytes to the current <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream, and advances the current position within this stream by the number of bytes written."
-  remarks: "If the write operation is successful, the position within the stream advances by the number of bytes written. If an exception occurs, the position within the stream remains unchanged.       Writing beyond the end of `LOB` is allowed and enlarges the `LOB` by the number of bytes written.       The .NET Framework Data Provider for Oracle handles all `CLOB` and `NCLOB` data as Unicode. Therefore, when accessing `CLOB` and `NCLOB` data types, you are always dealing with the number of bytes, where each character is 2 bytes. For example, if a string of text containing three characters is saved as an `NCLOB` on an Oracle server where the character set is 4 bytes per character, and you perform a `Write` operation, you specify the length of the string as 6 bytes, although it is stored as 12 bytes on the server.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.       The following C# example demonstrates how to write to <xref:System.Data.OracleClient.OracleLob> objects.      ```   public static void WriteLobExample(OracleCommand command)   {      //Note: Updating LOB data requires a transaction.      command.Transaction = command.Connection.BeginTransaction();      //Select some data.      //    Table Schema:      //        &quot;CREATE TABLE tablewithlobs (a int, b BLOB, c BLOB)&quot;;      //        &quot;INSERT INTO tablewithlobs values (1, &quot;AA&quot;, &quot;AAA&quot;)&quot;;      command.CommandText = &quot;SELECT * FROM TableWithLobs FOR UPDATE&quot;;      OracleDataReader reader = command.ExecuteReader();      using(reader)      {         //Obtain the first row of data.         reader.Read();         //Obtain both LOBs.         OracleLob BLOB1    = reader.GetOracleLob(1);         OracleLob BLOB2    = reader.GetOracleLob(2);         //Perform any desired operations on the LOB, (read, position, and so on).         //...         //Example - Writing binary data (directly to the backend).         //To write, you can use any of the stream classes, or write raw binary data using          //the OracleLob write method. Writing character vs. binary is the same;         //however note that character is always in terms of Unicode byte counts         //(for example: even number of bytes - 2 bytes for every Unicode character).         byte[] buffer = new byte[100];         buffer[0] = 0xCC;         buffer[1] = 0xDD;         BLOB1.Write(buffer, 0, 2);         BLOB1.Position = 0;         Console.WriteLine(BLOB1.LobType + &quot;.Write(&quot; + buffer + &quot;, 0, 2) => &quot; + BLOB1.Value);            //Example - Copying data into another LOB.         long actual = BLOB1.CopyTo(BLOB2);         Console.WriteLine(BLOB1.LobType + &quot;.CopyTo(&quot; + BLOB2.Value + &quot;) => &quot; + actual);            //Commit the transaction now that everything succeeded.         //Note: On error, Transaction.Dispose is called (from the using statement)         //and will automatically roll-back the pending transaction.         command.Transaction.Commit();      }   }   ```      > [!NOTE] >  A write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "현재 바이트 시퀀스를 쓰고 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림, 및 쓴 바이트 수 만큼이 스트림 내의 현재 위치를 앞으로 이동 합니다."
+  remarks: "쓰기 작업을 완료 하는 경우 쓴 바이트 수 만큼 스트림 내 위치 이동 합니다. 예외가 발생 하면 스트림 내의 위치 변경 되지 않습니다.       끝을 넘어 작성 `LOB` 있으며 확장에서 `LOB` 쓴 바이트 수입니다.       모든.NET Framework Data Provider for Oracle 처리 `CLOB` 및 `NCLOB` 유니코드 데이터입니다. 따라서에 액세스할 때 `CLOB` 및 `NCLOB` 데이터 형식, 항상 처리할 각 문자는 2 바이트 바이트 수입니다. 예를 들어 3 개의 문자가 포함 된 텍스트 문자열으로 저장 됩니다는 `NCLOB` 문자 집합은 4 바이트 문자 당 하 고 사용자가 수행할 수 있는 Oracle 서버에는 `Write` 작업을 서버에서 12 바이트로 저장 되더라도 6 바이트로 문자열의 길이 지정 합니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.       다음 C# 예제를 작성 하는 방법을 보여 줍니다 <xref:System.Data.OracleClient.OracleLob>개체입니다.</xref:System.Data.OracleClient.OracleLob>      ```   public static void WriteLobExample(OracleCommand command)   {      //Note: Updating LOB data requires a transaction.      command.Transaction = command.Connection.BeginTransaction();      //Select some data.      //    Table Schema:      //        &quot;CREATE TABLE tablewithlobs (a int, b BLOB, c BLOB)&quot;;      //        &quot;INSERT INTO tablewithlobs values (1, &quot;AA&quot;, &quot;AAA&quot;)&quot;;      command.CommandText = &quot;SELECT * FROM TableWithLobs FOR UPDATE&quot;;      OracleDataReader reader = command.ExecuteReader();      using(reader)      {         //Obtain the first row of data.         reader.Read();         //Obtain both LOBs.         OracleLob BLOB1    = reader.GetOracleLob(1);         OracleLob BLOB2    = reader.GetOracleLob(2);         //Perform any desired operations on the LOB, (read, position, and so on).         //...         //Example - Writing binary data (directly to the backend).         //To write, you can use any of the stream classes, or write raw binary data using          //the OracleLob write method. Writing character vs. binary is the same;         //however note that character is always in terms of Unicode byte counts         //(for example: even number of bytes - 2 bytes for every Unicode character).         byte[] buffer = new byte[100];         buffer[0] = 0xCC;         buffer[1] = 0xDD;         BLOB1.Write(buffer, 0, 2);         BLOB1.Position = 0;         Console.WriteLine(BLOB1.LobType + &quot;.Write(&quot; + buffer + &quot;, 0, 2) => &quot; + BLOB1.Value);            //Example - Copying data into another LOB.         long actual = BLOB1.CopyTo(BLOB2);         Console.WriteLine(BLOB1.LobType + &quot;.CopyTo(&quot; + BLOB2.Value + &quot;) => &quot; + actual);            //Commit the transaction now that everything succeeded.         //Note: On error, Transaction.Dispose is called (from the using statement)         //and will automatically roll-back the pending transaction.         command.Transaction.Commit();      }   }   ```      > [!NOTE]> 한 쓰기 작업에는 읽기 전용 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public override void Write (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. This method copies the number of bytes specified in `count` from `buffer` to the current stream."
+      description: "바이트 배열입니다. 이 메서드는에 지정 된 바이트 수를 복사 `count` 에서 `buffer` 현재 스트림에 합니다."
     - id: offset
       type: System.Int32
-      description: "The zero-based byte offset in `buffer` at which to begin copying bytes to the current stream. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "0부터 시작 하는 바이트 오프셋 `buffer` 를 현재 스트림에 바이트 복사를 시작 하는 합니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
     - id: count
       type: System.Int32
-      description: "The number of bytes to be written to the current stream. For <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types, this must be an even number."
+      description: "현재 스트림에 쓸 바이트의 수입니다. 에 대 한 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 데이터 형식의 경우이 수는 짝수 여야 합니다."
   overload: System.Data.OracleClient.OracleLob.Write*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>buffer</code> parameter is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code> buffer </code> 매개 변수는 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value in the <code>offset</code> or <code>count</code> parameter is not positive.       -or-       The sum of the <code>offset</code> and <code>count</code> parameters is larger than the <code>buffer</code> length.       -or-       A value specified in the <code>count</code> or <code>offset</code> parameter is less than zero or greater than 4 gigabytes.       -or-       You must specify <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;></xref> and <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;></xref> data types as an even number of bytes."
+    description: "값은 <code> offset </code> 또는 <code> count </code> 매개 변수가 양의 하지 않습니다.       -또는-의 합계는 <code> offset </code> 및 <code> count </code> 매개 변수 보다 크면는 <code> buffer </code> 길이입니다.       -또는-에 지정 된 값의 <code> count </code> 또는 <code> offset </code> 매개 변수는 0 보다 작거나 4gb 보다 큰 합니다.       -또는-지정 해야 <xref uid=&quot;langword_csharp_CLOB&quot; name=&quot;CLOB&quot; href=&quot;&quot;> </xref> 및 <xref uid=&quot;langword_csharp_NCLOB&quot; name=&quot;NCLOB&quot; href=&quot;&quot;> </xref> 짝수 바이트 데이터 형식입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is not within a transaction, the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> object is null, or the connection is closed."
+    description: "작업이 트랜잭션 내 않습니다는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 개체가 null 인 경우 또는 연결이 닫힙니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was closed or disposed."
+    description: "개체가 닫히거나 삭제 되었습니다."
   - type: System.Data.OracleClient.OracleException
     commentId: T:System.Data.OracleClient.OracleException
-    description: "An Oracle error has occurred."
+    description: "Oracle 오류가 발생 했습니다."
   platform:
   - net462
 - uid: System.Data.OracleClient.OracleLob.WriteByte(System.Byte)
@@ -973,14 +973,14 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Writes a byte to the current position in the <xref href=&quot;System.Data.OracleClient.OracleLob&quot;></xref> stream, and advances the position within the stream by one byte."
-  remarks: "If the write operation is successful, the position within the stream advances by one byte. If an exception occurs, the position within the stream remains unchanged.       Writing beyond the end of the `LOB` is allowed and enlarges the `LOB` by one byte.       To write to the `LOB`, you must have retrieved the `LOB` using the FOR UPDATE clause in the SQL SELECT statement, and you must have a local transaction started.      > [!NOTE] >  A write operation to a read-only `LOB` might succeed, but does not update the `LOB` on the server. In this case, however, the local copy of the `LOB` is updated. Therefore, later read operations on the <xref:System.Data.OracleClient.OracleLob> object might return the results of the write operation."
+  summary: "현재 위치에 바이트를 쓰고는 <xref href=&quot;System.Data.OracleClient.OracleLob&quot;> </xref> 스트림, 및 스트림 내의 위치를&1; 바이트씩 합니다."
+  remarks: "쓰기 작업이 성공적 이면 스트림 내의 위치&1; 바이트씩 합니다. 예외가 발생 하면 스트림 내의 위치 변경 되지 않습니다.       끝을 넘어 쓰기는 `LOB` 있으며 확장에서 `LOB` 가&1; 바이트입니다.       에 쓸 수는 `LOB`를 검색 해야 합니다는 `LOB` 에서 SQL SELECT 문에 FOR UPDATE 절을 사용 하 여 시작 된 로컬 트랜잭션 있어야 합니다.      > [!NOTE] > 한 쓰기 작업에는 읽기 전용 `LOB` 성공할 수 있지만 업데이트 되지 않는 `LOB` 서버에 있습니다. 그러나이 경우의 로컬 복사본이 `LOB` 업데이트 됩니다. 따라서 나중에 읽기 작업에는 <xref:System.Data.OracleClient.OracleLob>개체 쓰기 작업의 결과 반환할 수 있습니다.</xref:System.Data.OracleClient.OracleLob>"
   syntax:
     content: public override void WriteByte (byte value);
     parameters:
     - id: value
       type: System.Byte
-      description: "The byte to write to the stream."
+      description: "스트림에 쓸 바이트입니다."
   overload: System.Data.OracleClient.OracleLob.WriteByte*
   exceptions: []
   platform:

@@ -10,8 +10,8 @@ items:
   nameWithType: IAsyncErrorNotify
   fullName: System.EnterpriseServices.IAsyncErrorNotify
   type: Interface
-  summary: "Implements error trapping on the asynchronous batch work that is submitted by the <xref href=&quot;System.EnterpriseServices.Activity&quot;></xref> object."
-  remarks: "IAsyncErrorNotify is used to implement error trapping on the asynchronous batch work that is submitted by the <xref:System.EnterpriseServices.Activity> object. Implement this interface on the object that is passed in the call to <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> on the <xref:System.EnterpriseServices.Activity> object. <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> determines if an error occurred in batch work that is running asynchronously. This interface enables you to be informed of errors that occur in asynchronous batch work, and the process will terminate (failfast) on any unrecoverable error.       For information about failfast, see the &quot;Fault Isolation and Failfast Policy&quot; topic in the Platform SDK in MSDN."
+  summary: "에 의해 전송 되는 비동기 일괄 작업에서 오류 트래핑을 구현 하는 <xref href=&quot;System.EnterpriseServices.Activity&quot;> </xref> 개체입니다."
+  remarks: "IAsyncErrorNotify은에 의해 전송 되는 비동기 일괄 작업에서 오류 트래핑을 구현 하는 데는 <xref:System.EnterpriseServices.Activity>개체입니다.</xref:System.EnterpriseServices.Activity> 호출에 전달 되는 개체에서이 인터페이스를 구현 <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>에 <xref:System.EnterpriseServices.Activity>개체입니다.</xref:System.EnterpriseServices.Activity> </xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>비동기적으로 실행 되는 일괄 처리 작업에서 오류가 발생 하는 경우를 결정 합니다.</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> 이 인터페이스를 사용 하면 비동기 일괄 작업에서 발생 하는 오류에 대 한 안내 하 고 프로세스 (failfast)를 복구할 수 없는 모든 오류에 대해 종료 됩니다.       Failfast에 대 한 내용은 MSDN에 플랫폼 SDK의 &quot;오류 격리 및 Failfast 정책&quot; 항목을 참조 합니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.Guid("FE6777FB-A674-4177-8F32-6D707E113484")]
@@ -34,14 +34,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Handles errors for asynchronous batch work."
-  remarks: "This method should be implemented to gracefully handle errors that occur when batch work is running asynchronously. Because the process terminates (failfast) on any unrecoverable error, without this method there is no way of knowing when errors occur in asynchronous batch work. The process also terminates when this method returns an error as its return value. The batch work itself is implemented in <xref:System.EnterpriseServices.IServiceCall.OnCall%2A>, and it is run asynchronously by calling <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.       This method supports the standard return values `E_FAIL`, `E_INVALIDARG`, and `E_OUTOFMEMORY`, as well as `S_OK`, which indicates the method call returned successfully."
+  summary: "비동기 일괄 작업에 대 한 오류를 처리합니다."
+  remarks: "일괄 처리 작업이 비동기로 실행 될 때 발생 하는 오류를 적절히 처리 하려면이 메서드를 구현 해야 합니다. 복구할 수 없는 오류 (failfast)를 종료 하는 프로세스를 하기 때문에이 메서드가 없으면 비동기 일괄 작업에서 오류가 발생 한 경우 알 수 없습니다. 이 메서드가 반환 값으로 오류를 반환 하는 경우 프로세스가 종료 됩니다. 일괄 작업 자체에서 구현 된 <xref:System.EnterpriseServices.IServiceCall.OnCall%2A>, <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> 를 호출 하 여 비동기적으로 실행 되 고</xref:System.EnterpriseServices.IServiceCall.OnCall%2A>       이 메서드는 표준 반환 값을 지원 `E_FAIL`, `E_INVALIDARG`, 및 `E_OUTOFMEMORY`,으로 `S_OK`, 메서드 호출에서 성공적으로 반환 나타냅니다."
   syntax:
     content: public void OnError (int hresult);
     parameters:
     - id: hresult
       type: System.Int32
-      description: "The HRESULT of the error that occurred while the batch work was running asynchronously."
+      description: "일괄 처리 작업을 비동기적으로 실행 되는 동안 발생 한 오류의 HRESULT입니다."
   overload: System.EnterpriseServices.IAsyncErrorNotify.OnError*
   exceptions: []
   platform:

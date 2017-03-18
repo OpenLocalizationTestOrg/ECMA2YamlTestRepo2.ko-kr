@@ -15,8 +15,8 @@ items:
   nameWithType: IContract
   fullName: System.AddIn.Contract.IContract
   type: Interface
-  summary: "Represents the base interface for all contracts that are used for communication between components that are updated independently."
-  remarks: "The IContract interface defines a contract that independently updated components, such as an application and an add-in, can use to communicate. Components can use IContract to communicate across process or application domain boundaries, or to communicate with other components in the same process or application domain. IContract serves a similar purpose for components created using the .NET Framework as the `IUnknown` interface serves for components created using COM. To determine whether an object implements a particular contract, use the <xref:System.AddIn.Contract.IContract.QueryContract%2A> method."
+  summary: "독립적으로 업데이트 되는 구성 요소 간의 통신에 사용 되는 모든 계약에 대 한 기본 인터페이스를 나타냅니다."
+  remarks: "IContract 인터페이스와 통신 하는 응용 프로그램 및의 추가 기능을 사용할 수 같은 구성 요소를 독립적으로 업데이트 하는 계약을 정의 합니다. 구성 요소 IContract를 사용 하 여 프로세스를 통해 통신할 수 있습니다 또는 응용 프로그램 도메인 경계를 하거나 동일한 프로세스 또는 응용 프로그램 도메인의 다른 구성 요소와 통신할 수 있습니다. IContract으로.NET Framework를 사용 하 여 만든 구성 요소에 대 한 유사한 용도로 사용 되는 `IUnknown` 인터페이스 COM.를 사용 하 여 만든 구성 요소에 대 한 역할 개체는 특정 계약을 구현 하는지 여부를 확인 하려면는 <xref:System.AddIn.Contract.IContract.QueryContract%2A>메서드.</xref:System.AddIn.Contract.IContract.QueryContract%2A>"
   syntax:
     content: public interface IContract
   implements: []
@@ -34,14 +34,14 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Specifies that the contract is accessible to a client until the client revokes the contract."
-  remarks: "Clients of an object that implements <xref:System.AddIn.Contract.IContract> call the AcquireLifetimeToken method to notify the object that the client requires access to the contract. An <xref:System.AddIn.Contract.IContract> is guaranteed to be usable as long as at least one lifetime token that it passed to a client has not been revoked.       To revoke a contract, clients call the <xref:System.AddIn.Contract.IContract.RevokeLifetimeToken%2A> method."
+  summary: "클라이언트 계약 취소 될 때까지 계약에는 클라이언트에 액세스할 수 있는지를 지정 합니다."
+  remarks: "구현 하는 개체의 클라이언트 <xref:System.AddIn.Contract.IContract>개체에 알리기 위해 AcquireLifetimeToken 메서드를 호출할 클라이언트 계약에 대 한 액세스를 해야 한다는.</xref:System.AddIn.Contract.IContract> <xref:System.AddIn.Contract.IContract>클라이언트에 전달 된 하나 이상의 수명 토큰 취소 되지 않았는지으로 사용 가능 하도록 보장 됩니다.</xref:System.AddIn.Contract.IContract>       계약, 클라이언트 호출을 취소 하 고 <xref:System.AddIn.Contract.IContract.RevokeLifetimeToken%2A>메서드.</xref:System.AddIn.Contract.IContract.RevokeLifetimeToken%2A>"
   syntax:
     content: public int AcquireLifetimeToken ();
     parameters: []
     return:
       type: System.Int32
-      description: "A value, also known as a lifetime token, that identifies the client that has acquired the contract."
+      description: "계약을 획득 한 클라이언트를 식별 하는 수명이 토큰이 라고도 하는 값입니다."
   overload: System.AddIn.Contract.IContract.AcquireLifetimeToken*
   exceptions: []
   platform:
@@ -58,13 +58,13 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Returns a hash code for the <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+  summary: "에 대 한 해시 코드를 반환 하는 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   syntax:
     content: public int GetRemoteHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+      description: "에 대 한 해시 코드는 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   overload: System.AddIn.Contract.IContract.GetRemoteHashCode*
   exceptions: []
   platform:
@@ -81,17 +81,17 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Returns a contract that is implemented by this contract."
-  remarks: "The QueryContract method enables <xref:System.AddIn.Contract.IContract> objects to expose other contracts. QueryContract serves a purpose similar to that of the `IUnknown.QueryInterface` method in COM.       The format of the strings used to identify contracts is defined by the <xref:System.AddIn.Contract.IContract> implementation. It is recommended that you use the <xref:System.Type.AssemblyQualifiedName%2A> of the contract that is being queried."
+  summary: "이 계약에서 구현 하는 계약을 반환 합니다."
+  remarks: "QueryContract 메서드를 사용 하면 <xref:System.AddIn.Contract.IContract>다른 계약을 노출 하는 개체입니다.</xref:System.AddIn.Contract.IContract> QueryContract 용도로 사용 되는 비슷합니다는 `IUnknown.QueryInterface` COM.에서 메서드       계약을 식별 하는 데 사용 하는 문자열의 형식은 의해 정의 되는 <xref:System.AddIn.Contract.IContract>구현.</xref:System.AddIn.Contract.IContract> 사용 하는 것이 좋습니다.는 <xref:System.Type.AssemblyQualifiedName%2A>쿼리 되는 계약의.</xref:System.Type.AssemblyQualifiedName%2A>"
   syntax:
     content: public System.AddIn.Contract.IContract QueryContract (string contractIdentifier);
     parameters:
     - id: contractIdentifier
       type: System.String
-      description: "A string that identifies the contract that is being requested."
+      description: "요청 하는 계약을 식별 하는 문자열입니다."
     return:
       type: System.AddIn.Contract.IContract
-      description: "An <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref> that represents a contract that a client is requesting from the current contract; <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the current contract does not support the contract that is requested."
+      description: "<xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref> 현재 계약;에서 클라이언트가 요청 하는 계약을 나타내는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 현재 계약에 요청 하는 계약을 지원 하지 않는 경우."
   overload: System.AddIn.Contract.IContract.QueryContract*
   exceptions: []
   platform:
@@ -108,16 +108,16 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Indicates whether the specified contract is equal to this <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+  summary: "지정된 된 계약을이 같은지 여부를 나타냅니다 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   syntax:
     content: public bool RemoteEquals (System.AddIn.Contract.IContract contract);
     parameters:
     - id: contract
       type: System.AddIn.Contract.IContract
-      description: "The contract to compare with this <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+      description: "와 비교할 계약 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>contract</code> is equal to this <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if <code>contract</code> is equal to this <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.AddIn.Contract.IContract.RemoteEquals*
   exceptions: []
   platform:
@@ -134,13 +134,13 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Returns a string representation of the current <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+  summary: "현재 문자열 표현을 반환 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   syntax:
     content: public string RemoteToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representation of the current <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+      description: "현재의 문자열 표현을 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   overload: System.AddIn.Contract.IContract.RemoteToString*
   exceptions: []
   platform:
@@ -157,14 +157,14 @@ items:
   assemblies:
   - System.AddIn.Contract
   namespace: System.AddIn.Contract
-  summary: "Specifies that the contract is no longer accessible to a client."
-  remarks: "Clients of an object that implements <xref:System.AddIn.Contract.IContract> call the RevokeLifetimeToken method to notify the object that the client no longer needs the contract. An <xref:System.AddIn.Contract.IContract> is guaranteed to be usable as long as at least one lifetime token that it passed to a client has not been revoked.       To acquire a contract, clients call the <xref:System.AddIn.Contract.IContract.AcquireLifetimeToken%2A> method."
+  summary: "계약에 더 이상 클라이언트에 액세스할 수 있는지를 지정 합니다."
+  remarks: "구현 하는 개체의 클라이언트 <xref:System.AddIn.Contract.IContract>개체에 알리기 위해 RevokeLifetimeToken 메서드를 호출 하는 클라이언트는 계약을 더 이상.</xref:System.AddIn.Contract.IContract> <xref:System.AddIn.Contract.IContract>클라이언트에 전달 된 하나 이상의 수명 토큰 취소 되지 않았는지으로 사용 가능 하도록 보장 됩니다.</xref:System.AddIn.Contract.IContract>       클라이언트가 호출에서 계약을 획득 하는 <xref:System.AddIn.Contract.IContract.AcquireLifetimeToken%2A>메서드.</xref:System.AddIn.Contract.IContract.AcquireLifetimeToken%2A>"
   syntax:
     content: public void RevokeLifetimeToken (int token);
     parameters:
     - id: token
       type: System.Int32
-      description: "A value, also known as a lifetime token, that identifies the client that is revoking the contract."
+      description: "계약을 해지 하는 클라이언트를 식별 하는 수명 토큰이 라고도 하는 값입니다."
   overload: System.AddIn.Contract.IContract.RevokeLifetimeToken*
   exceptions: []
   platform:

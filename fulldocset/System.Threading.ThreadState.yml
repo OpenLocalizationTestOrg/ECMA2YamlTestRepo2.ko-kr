@@ -19,8 +19,8 @@ items:
   nameWithType: ThreadState
   fullName: System.Threading.ThreadState
   type: Enum
-  summary: "Specifies the execution states of a <xref href=&quot;System.Threading.Thread&quot;></xref>."
-  remarks: "The ThreadState enumeration is of interest only in a few debugging scenarios. Your code should never use the thread state to synchronize the activities of threads.       ThreadState defines a set of all possible execution states for threads. Once a thread is created, it is in at least one of the states until it terminates. Threads created within the common language runtime are initially in the `Unstarted` state, while external threads that come into the runtime are already in the `Running` state. An `Unstarted` thread is transitioned into the `Running` state by calling <xref:System.Threading.Thread.Start%2A>. Not all combinations of `ThreadState` values are valid; for example, a thread cannot be in both the `Aborted` and `Unstarted` states.      > [!IMPORTANT] >  There are two thread state enumerations,ThreadState and <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.       The following table shows the actions that cause a change of state.      |Action|ThreadState|   |------------|-----------------|   |A thread is created within the common language runtime.|Unstarted|   |Another thread calls the <xref:System.Threading.Thread.Start%2A?displayProperty=fullName> method on the new thread, and the call returns.<br /><br /> The <xref:System.Threading.Thread.Start%2A> method does not return until the new thread has started running. There is no way to know at what point the new thread will start running, during the call to <xref:System.Threading.Thread.Start%2A>.|Running|   |The thread calls <xref:System.Threading.Thread.Sleep%2A>|WaitSleepJoin|   |The thread calls <xref:System.Threading.Monitor.Wait%2A> on another object.|WaitSleepJoin|   |The thread calls <xref:System.Threading.Thread.Join%2A> on another thread.|WaitSleepJoin|   |Another thread calls <xref:System.Threading.Thread.Interrupt%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Suspend%2A>|SuspendRequested|   |The thread responds to a <xref:System.Threading.Thread.Suspend%2A> request.|Suspended|   |Another thread calls <xref:System.Threading.Thread.Resume%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Abort%2A>|AbortRequested|   |The thread responds to a <xref:System.Threading.Thread.Abort%2A> request.|Stopped|   |A thread is terminated.|Stopped|       In addition to the states noted above, there is also the `Background` state, which indicates whether the thread is running in the background or foreground.       A thread can be in more than one state at a given time. For example, if a thread is blocked on a call to <xref:System.Threading.Monitor.Wait%2A>, and another thread calls <xref:System.Threading.Thread.Abort%2A> on the blocked thread, the blocked thread will be in both the `WaitSleepJoin` and the `AbortRequested` states at the same time. In this case, as soon as the thread returns from the call to <xref:System.Threading.Monitor.Wait%2A> or is interrupted, it will receive the <xref:System.Threading.ThreadAbortException> to begin aborting.       The <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> property of a thread provides the current state of a thread. Applications must use a bitmask to determine whether a thread is running. Since the value for `Running` is zero (0), test whether a thread is running by using C# code such as `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` or Visual Basic code such as `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`."
+  summary: "실행 상태를 지정 된 <xref href=&quot;System.Threading.Thread&quot;> </xref>합니다."
+  remarks: "몇 가지에만 관심 ThreadState 열거형은 디버깅 시나리오입니다. 코드 스레드 활동을 동기화 할 스레드 상태를 사용해 해야 합니다.       ThreadState 일련의 스레드에 대 한 모든 가능한 실행 상태를 정의합니다. 만든 스레드는 종료 될 때까지 상태 중 하나 이상에 있습니다. 공용 언어 런타임 내에서 만들어진 스레드는 초기는 `Unstarted` 상태인을 런타임에 제공 되는 외부 스레드에 이미 있는 반면는 `Running` 상태입니다. `Unstarted` 스레드를 전환 되 고 `Running` <xref:System.Threading.Thread.Start%2A>.</xref:System.Threading.Thread.Start%2A> 를 호출 하 여 상태 모든 조합의 `ThreadState` 유효한 값은; 모두에 스레드 수 없습니다. 예를 들어는 `Aborted` 및 `Unstarted` 상태입니다.      > [!IMPORTANT] > 두 스레드 상태 열거형, ThreadState 및 <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.</xref:System.Diagnostics.ThreadState?displayProperty=fullName> 없는       다음 표에서 상태 변경이 발생 하는 작업을 보여 줍니다.      | 작업 | ThreadState |   |------------|-----------------|   | 공용 언어 런타임 내에서 스레드가 생성 됩니다. | 시작 되지 않은 |   | 다른 스레드 호출에서 <xref:System.Threading.Thread.Start%2A?displayProperty=fullName>새 스레드 및 호출에 메서드를 반환 합니다.</xref:System.Threading.Thread.Start%2A?displayProperty=fullName><br /><br /> <xref:System.Threading.Thread.Start%2A>새 스레드가 실행을 시작할 때까지 메서드는 반환 하지 않습니다.</xref:System.Threading.Thread.Start%2A> 어느 시점에서 새 스레드 실행을 시작 합니다, <xref:System.Threading.Thread.Start%2A>호출 하는 동안 알 수 있는 방법이 있습니다. | 실행 |   | 스레드 호출 <xref:System.Threading.Thread.Sleep%2A>| WaitSleepJoin |   | 다른 개체에 스레드 호출 <xref:System.Threading.Monitor.Wait%2A>. | WaitSleepJoin |   | 다른 스레드의 스레드 호출 <xref:System.Threading.Thread.Join%2A>. | WaitSleepJoin |   | 다른 스레드 호출 <xref:System.Threading.Thread.Interrupt%2A>| 실행 |   | 다른 스레드 호출 <xref:System.Threading.Thread.Suspend%2A>| SuspendRequested |   | 스레드가 <xref:System.Threading.Thread.Suspend%2A>요청에 응답 합니다. | 일시 중단 |   | 다른 스레드 호출 <xref:System.Threading.Thread.Resume%2A>| 실행 |   | 다른 스레드 호출 <xref:System.Threading.Thread.Abort%2A>| AbortRequested |   | 스레드가 <xref:System.Threading.Thread.Abort%2A>요청에 응답 합니다. | 중지 |   | 스레드가 종료 됩니다. | 중지 |       위에서 설명한 상태 외에 `Background` 를 배경이 나 전경에서 스레드가 실행 되 고 있는지 여부를 나타내는 상태.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Resume%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Interrupt%2A> </xref:System.Threading.Thread.Join%2A> </xref:System.Threading.Monitor.Wait%2A> </xref:System.Threading.Thread.Sleep%2A> </xref:System.Threading.Thread.Start%2A>       스레드는 한 번에 둘 이상의 상태일 수 있습니다. 예를 들어에 대 한 호출에서 스레드가 차단 되 면 <xref:System.Threading.Monitor.Wait%2A>, 및 다른 스레드 호출 <xref:System.Threading.Thread.Abort%2A>에 차단 된 스레드는 차단 된 스레드가 모두 됩니다는 `WaitSleepJoin` 및 `AbortRequested` 동시에 상태.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Monitor.Wait%2A> 이 경우 스레드가에 대 한 호출에서 반환 되는 즉시 <xref:System.Threading.Monitor.Wait%2A>아니거나 중단 되 면 수신는 <xref:System.Threading.ThreadAbortException>중단 하려면.</xref:System.Threading.ThreadAbortException> </xref:System.Threading.Monitor.Wait%2A>       <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName>스레드 속성은 스레드의 현재 상태를 제공 합니다.</xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> 응용 프로그램 스레드가 실행 되 고 있는지 확인 하는 비트 마스크를 사용 해야 합니다. 에 대 한 값이 이후 `Running` 영 (0), 스레드가 같은 C# 코드를 사용 하 여 실행 중인지 여부를 테스트 `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` 또는 Visual Basic 코드와 같은 `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`합니다."
   syntax:
     content: >-
       [System.Flags]
@@ -44,12 +44,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread state includes AbortRequested and the thread is now dead, but its state has not yet changed to Stopped."
+  summary: "스레드 상태 AbortRequested를 포함 하 고, 이제는 스레드가 되지만 상태로 아직 중지 됨으로 변경 되지 않은."
   syntax:
     content: Aborted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -65,12 +65,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; method has been invoked on the thread, but the thread has not yet received the pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref> that will attempt to terminate it."
+  summary: "&lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; 스레드에서 메서드를 호출 하지만 스레드가 아직 받지 못한는 보류 중인 <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref> 를 종료 하려고 합니다."
   syntax:
     content: AbortRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -86,12 +86,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being executed as a background thread, as opposed to a foreground thread. This state is controlled by setting the &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; property."
+  summary: "포그라운드 스레드 달리 백그라운드 스레드로 스레드가 실행 중입니다. 이 상태를 설정 하 여 제어 되는 &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; 속성입니다."
   syntax:
     content: Background
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -107,12 +107,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been started, it is not blocked, and there is no pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref>."
+  summary: "스레드가 시작 하 고 차단 되지 않습니다는 보류 중인 더 <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref>합니다."
   syntax:
     content: Running
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -128,12 +128,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has stopped."
+  summary: "스레드가 중지 되었습니다."
   syntax:
     content: Stopped
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -149,12 +149,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to stop. This is for internal use only."
+  summary: "스레드 중지 요청 되 고 됩니다. 내부 전용입니다."
   syntax:
     content: StopRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -170,12 +170,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been suspended."
+  summary: "스레드가 일시 중단 되었습니다."
   syntax:
     content: Suspended
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -191,12 +191,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to suspend."
+  summary: "스레드를 일시 중단 요청 되 고 됩니다."
   syntax:
     content: SuspendRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -212,12 +212,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; method has not been invoked on the thread."
+  summary: "&lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; 스레드에서 메서드를 호출 되지 않았습니다."
   syntax:
     content: Unstarted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -233,12 +233,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is blocked. This could be the result of calling &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, of requesting a lock — for example, by calling &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; — or of waiting on a thread synchronization object such as <xref:System.Threading.ManualResetEvent>."
+  summary: "스레드가 차단 됩니다. 이 호출의 결과 수 &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; 또는 &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, 잠금을 요청-호출 하 여 예를 들어 &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; 또는 &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; -또는 <xref:System.Threading.ManualResetEvent>.</xref:System.Threading.ManualResetEvent> 같은 스레드 동기화 개체에 대해 대기 중"
   syntax:
     content: WaitSleepJoin
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

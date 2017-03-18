@@ -31,14 +31,14 @@ items:
   - System.Windows.Interop.D3DImage.Width
   langs:
   - csharp
-  name: "D3DImage"
+  name: D3DImage
   nameWithType: D3DImage
   fullName: System.Windows.Interop.D3DImage
   type: Class
-  summary: An <see cref="T:System.Windows.Media.ImageSource"></see> that displays a user-created Direct3D surface.
-  remarks: "Use the D3DImage class to host Direct3D content in a Windows Presentation Foundation (WPF) application.  \n  \n Call the <xref:System.Windows.Interop.D3DImage.Lock%2A> method to change the Direct3D content displayed by the D3DImage. Call the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method to assign a Direct3D surface to a D3DImage. Call the <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> method to track updates to the Direct3D surface. Call the <xref:System.Windows.Interop.D3DImage.Unlock%2A> method to display the changed areas.  \n  \n The D3DImage class manages two display buffers, which are called the *back buffer* and the *front buffer*. The back buffer is your Direct3D surface.  Changes to the back buffer are copied forward to the front buffer when you call the <xref:System.Windows.Interop.D3DImage.Unlock%2A> method, where it is displayed on the hardware. Occasionally, the front buffer becomes unavailable. This lack of availability can be caused by screen locking, full-screen exclusive Direct3D applications, user-switching, or other system activities. When this occurs, your WPF application is notified by handling the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event.  How your application responds to the front buffer becoming unavailable depends on whether WPF is enabled to fall back to software rendering. The <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method has an overload that takes a parameter that specifies whether WPF falls back to software rendering.  \n  \n## Responding to an Unavailable Front Buffer when WPF Does not Fall Back to Software Rendering  \n When you call the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29> overload or call the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> overload with the `enableSoftwareFallback` parameter set to `false`, the rendering system releases its reference to the back buffer when the front buffer becomes unavailable and nothing is displayed. When the front buffer is available again, the rendering system raises the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to notify your WPF application.  You can create an event handler for the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to restart rendering again with a valid Direct3D surface. To restart rendering, you must call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>.  \n  \n## Responding to an Unavailable Front Buffer when WPF Falls Back to Software Rendering  \n When you call the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> overload with the `enableSoftwareFallback` parameter set to `true`, the rendering system retains its reference to the back buffer when the front buffer becomes unavailable, so there is no need to call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> when the front buffer is available again.  There may be situations where the user’s device becomes unavailable.  When that occurs, call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> to release WPF’s reference to the back buffer.  If you need to reset your device, call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> with the `backBuffer` parameter set to `null`, and then call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> again with `backBuffer` set to a valid Direct3D surface.  \n  \n> [!NOTE]\n>  Performance depends greatly on the settings of the Direct3D surface. For more information, see [Performance Considerations for Direct3D9 and WPF Interoperability](../Topic/Performance%20Considerations%20for%20Direct3D9%20and%20WPF%20Interoperability.md).  \n  \n> [!NOTE]\n>  The D3DImage class does not display Direct3D content when WPF renders in software, such as over a Remote Desktop connection, unless you call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> and specify `true` for the `enableSoftwareFallback` parameter."
+  summary: "<xref href=&quot;System.Windows.Media.ImageSource&quot;> </xref> 사용자가 만든 Direct3D 화면을 표시 하는 합니다."
+  remarks: "D3DImage 클래스를 사용 하 여 Windows Presentation Foundation (WPF) 응용 프로그램에서 Direct3D 콘텐츠를 호스트 합니다.       호출 된 <xref:System.Windows.Interop.D3DImage.Lock%2A>는 D3DImage에 표시 된 Direct3D 내용을 변경 하려면 메서드.</xref:System.Windows.Interop.D3DImage.Lock%2A> 호출 된 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드는 D3DImage Direct3D 화면을 할당할 수 있습니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> 호출 된 <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A>Direct3D 화면에 업데이트를 추적 하는 메서드.</xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> 호출 된 <xref:System.Windows.Interop.D3DImage.Unlock%2A>변경 된 영역을 표시 하는 메서드.</xref:System.Windows.Interop.D3DImage.Unlock%2A>       D3DImage 클래스 라고 하는 두 디스플레이 버퍼를 관리 하는 *백 버퍼* 및 *프런트 버퍼*합니다. 백 버퍼가 Direct3D 화면을 보여 줍니다.  백 버퍼에 대 한 변경에 복사 됩니다 프런트 버퍼 호출 하는 경우는 <xref:System.Windows.Interop.D3DImage.Unlock%2A>메서드를 하드웨어에 표시 됩니다.</xref:System.Windows.Interop.D3DImage.Unlock%2A> 경우에 따라서는 프런트 버퍼 수 없게 됩니다. 이 처럼 가용성 화면 잠금, 전체 화면 전용 Direct3D 응용 프로그램, 사용자 전환 또는 기타 시스템 작업에 의해 발생할 수 있습니다. WPF 응용 프로그램 처리를 통해 알림을 이러한 경우는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>이벤트.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>  사용 하지 못하게 될 프런트 버퍼에 응용 프로그램의 응답으로 소프트웨어 렌더링 대체 WPF 사용 여부에 따라 달라 집니다. <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드에 WPF 소프트웨어 렌더링으로 다시 속하는지 여부를 지정 하는 매개 변수를 사용 하는 오버 로드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>      ## 소프트웨어 렌더링 호출 하는 경우에 대체 되지 않고 WPF 응답을 사용할 수 없는 프런트 버퍼에는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29>오버 로드 또는 호출의 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>오버 로드는 `enableSoftwareFallback` 매개 변수 설정 `false`, 렌더링 시스템 프런트 버퍼를 사용할 수 없게 되며 아무 것도 표시 하는 경우 백 버퍼에 대 한 참조를 해제 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> </xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29> 프런트 버퍼를 사용할 수 있는 다시 렌더링 발생는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>WPF 응용 프로그램에 알리는 이벤트를.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>  에 대 한 이벤트 처리기를 만들 수는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>유효한 Direct3D 화면을 사용 하 여 다시 렌더링을 다시 시작 하는 이벤트입니다.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> 렌더링을 다시 시작 하려면 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> 를 호출 해야 합니다.      ## WPF 대체 다시 때 소프트웨어 렌더링을 호출 하는 경우 사용할 수 없는 프런트 버퍼에 응답는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>오버 로드는 `enableSoftwareFallback` 매개 변수 설정 `true`, 렌더링 시스템을 호출할 필요가 없습니다 이므로 프런트 버퍼를 사용할 수 없을 때 백 버퍼에 대 한 참조를 유지 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>때 프런트 버퍼를 다시 사용할 수 있습니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> </xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>  사용자의 장치 사용할 수 없게 되는 경우가 있을 수 있습니다.  이 경우 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>백 버퍼에 대 한 WPF의 참조를 해제 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>  장치를 재설정 해야 할 경우 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>와 `backBuffer` 매개 변수 설정 `null`, 한 다음 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>사용 하 여 다시 `backBuffer` 유효한 Direct3D 화면으로 설정 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> </xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>      > [!NOTE] > 성능은 Direct3D 화면 설정에 따라 크게 다릅니다. 자세한 내용은 참조 [Direct3D9 및 WPF 상호 운용성에 대 한 성능 고려 사항](~/add/includes/ajax-current-ext-md.md)합니다.      > [!NOTE] > The D3DImage 클래스 면 표시 되지 않습니다 Direct3D 콘텐츠 WPF 소프트웨어에서 렌더링와 같은 원격 데스크톱 연결을 통해 호출 하지 않으면 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>지정 `true` 에 대 한는 `enableSoftwareFallback` 매개 변수.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>"
   example:
-  - "The following code example shows how to declare a D3DImage in XAML. You must map the <xref:System.Windows.Interop> namespace, because it is not included in the default XAML namespaces. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-xml[System.Windows.Interop.D3DImage#10](~/add/codesnippet/Xaml/d3dhost/window1.xaml#10)]"
+  - "The following code example shows how to declare a D3DImage in XAML. You must map the <xref:System.Windows.Interop> namespace, because it is not included in the default XAML namespaces. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-xml[System.Windows.Interop.D3DImage#10](~/add/codesnippet/xaml/d3dhost/window1.xaml#10)]"
   syntax:
     content: 'public class D3DImage : System.Windows.Media.ImageSource'
   inheritance:
@@ -95,462 +95,433 @@ items:
   - System.Windows.Threading.DispatcherObject.Dispatcher
   - System.Windows.Threading.DispatcherObject.VerifyAccess
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.#ctor
   id: '#ctor'
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "D3DImage()"
+  name: D3DImage()
   nameWithType: D3DImage.D3DImage()
   fullName: System.Windows.Interop.D3DImage.D3DImage()
   type: Constructor
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Initializes a new instance of the <see cref="T:System.Windows.Interop.D3DImage"></see> class.
-  remarks: The default display resolution is 1/96th inch.
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 클래스입니다."
+  remarks: "기본 디스플레이 해상도 1/96 인치입니다."
   syntax:
     content: public D3DImage ();
     parameters: []
   overload: System.Windows.Interop.D3DImage.#ctor*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.#ctor(System.Double,System.Double)
   id: '#ctor(System.Double,System.Double)'
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "D3DImage(Double,Double)"
+  name: D3DImage(Double,Double)
   nameWithType: D3DImage.D3DImage(Double,Double)
   fullName: System.Windows.Interop.D3DImage.D3DImage(Double,Double)
   type: Constructor
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Initializes a new instance of the <see cref="T:System.Windows.Interop.D3DImage"></see> class with the specified display resolution.
-  remarks: The default display resolution is 1/96th inch.
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 지정한 디스플레이 해상도 사용 하 여 클래스입니다."
+  remarks: "기본 디스플레이 해상도 1/96 인치입니다."
   syntax:
     content: public D3DImage (double dpiX, double dpiY);
     parameters:
     - id: dpiX
       type: System.Double
-      description: "The display resolution on the x-axis."
+      description: "X 축에 대 한 디스플레이 해상도입니다."
     - id: dpiY
       type: System.Double
-      description: "The display resolution on the y-axis."
+      description: "Y 축에 대 한 디스플레이 해상도입니다."
   overload: System.Windows.Interop.D3DImage.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    dpiX or dpiY is less than zero."
+    description: "<code>dpiX</code>또는 <code>dpiY</code> 가&0; 보다 작습니다."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.AddDirtyRect(System.Windows.Int32Rect)
   id: AddDirtyRect(System.Windows.Int32Rect)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "AddDirtyRect(Int32Rect)"
+  name: AddDirtyRect(Int32Rect)
   nameWithType: D3DImage.AddDirtyRect(Int32Rect)
   fullName: System.Windows.Interop.D3DImage.AddDirtyRect(Int32Rect)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
+  summary: "변경 된 백 버퍼의 영역을 지정 합니다."
+  remarks: "백 버퍼에 호출을 나타내는 AddDirtyRect 메서드 코드를 변경 했습니다. 변경된 된 영역 백 버퍼에 있는 <xref:System.Windows.Interop.D3DImage>.</xref:System.Windows.Interop.D3DImage> 변경 된 해당 영역이를 렌더링할 수 있어야 합니다.       호출 된 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>및 <xref:System.Windows.Interop.D3DImage.Lock%2A>AddDirtyRect 메서드를 호출 하기 전에.</xref:System.Windows.Interop.D3DImage.Lock%2A> </xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>       호출 된 <xref:System.Windows.Interop.D3DImage.Unlock%2A>프런트 버퍼에 변경된 된 영역을 복사 하려면.</xref:System.Windows.Interop.D3DImage.Unlock%2A>      > [!NOTE] > 단일 영역으로 병합 하는 변경된 된 영역 AddDirtyRect 메서드를 몇 번 호출 합니다. 이 변경된 된 영역 외부 유효한 데이터가 있어야 의미 합니다."
+  example:
+  - "The following code example shows how to call the AddDirtyRect method to specify the changed region in the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public void AddDirtyRect (System.Windows.Int32Rect dirtyRect);
     parameters:
     - id: dirtyRect
       type: System.Windows.Int32Rect
-      description: "An  that represents the area that changed."
+      description: "<xref href=&quot;System.Windows.Int32Rect&quot;> </xref> 변경 된 영역을 나타내는입니다."
   overload: System.Windows.Interop.D3DImage.AddDirtyRect*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The bitmap has not been locked by a call to the <xref:System.Windows.Interop.D3DImage.Lock%2A> or <xref:System.Windows.Interop.D3DImage.TryLock%2A> methods.       -or-       The back buffer has not been assigned by a call to the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method."
+    description: "비트맵에 대 한 호출에 의해 잠기지 않은 <> </> *> 또는 <> </> *> 메서드.       -또는-백 버퍼를 호출 하 여 할당 되지 않은 <xref:System.Windows.Interop.D3DImage.SetBackBuffer*>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer*>"
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: "다음 조건 중 하나 이상이 true입니다.       <code>dirtyRect.X</code>&lt; 0       <code>dirtyRect.Y</code> &lt; 0       <code>dirtyRect.Width</code> &lt; 0 or <code>dirtyRect.Width</code> &gt; <>*>       <code>dirtyRect.Height</code> &lt; 0 or <code>dirtyRect.Height</code> &gt;<>*>"
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Clone
   id: Clone
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Clone()"
+  name: Clone()
   nameWithType: D3DImage.Clone()
   fullName: System.Windows.Interop.D3DImage.Clone()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Creates a modifiable clone of this <see cref="T:System.Windows.Interop.D3DImage"></see> object, making deep copies of this object's values. When copying dependency properties, this method copies resource references and data bindings (which may no longer resolve), but not animations or their current values.
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.  \n  \n For more information, see <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>."
+  summary: "수정 가능한 복제본을 만듭니다 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 개체를이 개체 값의 전체 복사본입니다. 종속성 속성을 복사 하는 경우이 메서드는 리소스 참조와 데이터 바인딩이 없습니다 더 이상 확인 있는 하지만 애니메이션 말거나의 현재 값은 복사 합니다."
+  remarks: "수정 가능한 복사본을 생성 하기 위해이 메서드는 고정 된 <xref:System.Windows.Freezable>개체 (또는 모든 <xref:System.Windows.Freezable>개체).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 편의 위해이 메서드는 강력한 형식의 구현이 포함 된 상속 된 버전을 숨깁니다.       자세한 내용은 <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName> 을 참조 하십시오."
   syntax:
     content: public System.Windows.Interop.D3DImage Clone ();
     parameters: []
     return:
       type: System.Windows.Interop.D3DImage
-      description: "To be added."
+      description: "현재 개체의 수정 가능한 복제본입니다. 복제 된 개체의 <> </> *> 속성은 됩니다 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우에 원본의 <> </> *> 속성은<xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
   overload: System.Windows.Interop.D3DImage.Clone*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.CloneCore(System.Windows.Freezable)
   id: CloneCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "CloneCore(Freezable)"
+  name: CloneCore(Freezable)
   nameWithType: D3DImage.CloneCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.CloneCore(Freezable)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Makes the instance a clone (deep copy) of the specified <see cref="T:System.Windows.Freezable"></see> using base (non-animated) property values.
+  summary: "인스턴스는 지정 된 복제본 (전체 복사본)으로 만듭니다 <xref href=&quot;System.Windows.Freezable&quot;> </xref> 기본 (애니메이션이 적용 되지 않은) 속성 값을 사용 하 여 합니다."
   syntax:
     content: protected override void CloneCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The object to clone."
+      description: "복제할 개체입니다."
   overload: System.Windows.Interop.D3DImage.CloneCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValue
   id: CloneCurrentValue
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "CloneCurrentValue()"
+  name: CloneCurrentValue()
   nameWithType: D3DImage.CloneCurrentValue()
   fullName: System.Windows.Interop.D3DImage.CloneCurrentValue()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Creates a modifiable clone of this <see cref="T:System.Windows.Interop.D3DImage"></see> object, making deep copies of this object's current values. Resource references, data bindings, and animations are not copied, but their current values are copied.
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.  \n  \n For more information, see <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>."
+  summary: "수정 가능한 복제본을 만듭니다 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 개체를이 개체의 현재 값의 전체 복사본입니다. 리소스 참조, 데이터 바인딩 및 애니메이션은 복사 되지 않지만 이러한 요소의 현재 값은 복사 합니다."
+  remarks: "수정 가능한 복사본을 생성 하기 위해이 메서드는 고정 된 <xref:System.Windows.Freezable>개체 (또는 모든 <xref:System.Windows.Freezable>개체).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> 편의 위해이 메서드는 강력한 형식의 구현이 포함 된 상속 된 버전을 숨깁니다.       자세한 내용은 <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName> 을 참조 하십시오."
   syntax:
     content: public System.Windows.Interop.D3DImage CloneCurrentValue ();
     parameters: []
     return:
       type: System.Windows.Interop.D3DImage
-      description: "To be added."
+      description: "현재 개체의 수정 가능한 복제본입니다. 복제 된 개체의 <> </> *> 속성은 됩니다 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 경우에 원본의 <> </> *> 속성은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Interop.D3DImage.CloneCurrentValue*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValueCore(System.Windows.Freezable)
   id: CloneCurrentValueCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "CloneCurrentValueCore(Freezable)"
+  name: CloneCurrentValueCore(Freezable)
   nameWithType: D3DImage.CloneCurrentValueCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.CloneCurrentValueCore(Freezable)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Makes the instance a modifiable clone (deep copy) of the specified <see cref="T:System.Windows.Freezable"></see> using current property values.
+  summary: "인스턴스는 지정 된 수정 가능한 복제본 (전체 복사본)으로 만듭니다 <xref href=&quot;System.Windows.Freezable&quot;> </xref> 현재 속성 값을 사용 하 여 합니다."
   syntax:
     content: protected override void CloneCurrentValueCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The  to be cloned."
+      description: "<xref href=&quot;System.Windows.Freezable&quot;> </xref> 복제 되도록 합니다."
   overload: System.Windows.Interop.D3DImage.CloneCurrentValueCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.CopyBackBuffer
   id: CopyBackBuffer
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "CopyBackBuffer()"
+  name: CopyBackBuffer()
   nameWithType: D3DImage.CopyBackBuffer()
   fullName: System.Windows.Interop.D3DImage.CopyBackBuffer()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Creates a software copy of the <see cref="T:System.Windows.Interop.D3DImage"></see>.
-  remarks: "The CopyBackBuffer method is called by clients such as the printing system and the <xref:System.Windows.Media.Imaging.RenderTargetBitmap> class.  \n  \n Optionally override the CopyBackBuffer method to implement custom logic and return a different <xref:System.Windows.Media.Imaging.BitmapSource>. For example, you can return a placeholder <xref:System.Windows.Media.Imaging.BitmapSource> if the default CopyBackBuffer implementation returns `null`."
+  summary: "소프트웨어 복사본을 만듭니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>합니다."
+  remarks: "인쇄 시스템, <xref:System.Windows.Media.Imaging.RenderTargetBitmap>클래스</xref:System.Windows.Media.Imaging.RenderTargetBitmap> 등의 클라이언트 CopyBackBuffer 메서드를 호출       필요에 따라 사용자 지정 논리를 구현 하 고 다른 <xref:System.Windows.Media.Imaging.BitmapSource>.</xref:System.Windows.Media.Imaging.BitmapSource> 반환 하려면 CopyBackBuffer 메서드를 재정의 예를 들어 자리 표시자를 반환할 수 있습니다 <xref:System.Windows.Media.Imaging.BitmapSource>기본 CopyBackBuffer 구현은 반환 하는 경우 `null`.</xref:System.Windows.Media.Imaging.BitmapSource>"
   syntax:
     content: protected virtual System.Windows.Media.Imaging.BitmapSource CopyBackBuffer ();
     parameters: []
     return:
       type: System.Windows.Media.Imaging.BitmapSource
-      description: "To be added."
+      description: "A <xref href=&quot;System.Windows.Media.Imaging.BitmapSource&quot;> </xref> 의 소프트웨어 복사본 즉 백 버퍼의 상태가 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 백 버퍼를 읽을 수 없는 경우."
   overload: System.Windows.Interop.D3DImage.CopyBackBuffer*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.CreateInstanceCore
   id: CreateInstanceCore
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "CreateInstanceCore()"
+  name: CreateInstanceCore()
   nameWithType: D3DImage.CreateInstanceCore()
   fullName: System.Windows.Interop.D3DImage.CreateInstanceCore()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: When implemented in a derived class, creates a new instance of the <see cref="T:System.Windows.Interop.D3DImage"></see> derived class.
-  remarks: If you derive from the <xref:System.Windows.Interop.D3DImage> class, you must override the CreateInstanceCore method to enable correct cloning. The default implementation performs a `return new D3DImage()`, which will not be correct if the instance is a different class.
+  summary: "파생된 클래스에서 구현 된 경우의 새 인스턴스를 만듭니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 클래스를 파생 합니다."
+  remarks: "파생 하는 경우는 <xref:System.Windows.Interop.D3DImage>클래스 올바른 복제를 활성화 CreateInstanceCore 메서드를 재정의 해야 합니다.</xref:System.Windows.Interop.D3DImage> 수행 하지 않습니다는 `return new D3DImage()`, 다른 클래스 인스턴스가 올바른 되지 것입니다."
   syntax:
     content: protected override System.Windows.Freezable CreateInstanceCore ();
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: "To be added."
+      description: "새 인스턴스입니다."
   overload: System.Windows.Interop.D3DImage.CreateInstanceCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Finalize
   id: Finalize
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Finalize()"
+  name: Finalize()
   nameWithType: D3DImage.Finalize()
   fullName: System.Windows.Interop.D3DImage.Finalize()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Frees resources and performs other cleanup operations before the <see cref="T:System.Windows.Interop.D3DImage"></see> is reclaimed by garbage collection.
-  remarks: "This method overrides <xref:System.Object.Finalize%2A>. Application code should not call this method; an object's `Finalize` method is automatically invoked during garbage collection, unless finalization by the garbage collector has been disabled by a call to the <xref:System.GC.SuppressFinalize%2A> method.  \n  \n For more information, see [Finalize Methods and Destructors](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [Cleaning Up Unmanaged Resources](../Topic/Cleaning%20Up%20Unmanaged%20Resources.md), and [Overriding the Finalize Method](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)."
+  summary: "리소스를 해제 하 고 기타 정리 작업 하기 전에 수행 된 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 가비지 수집에서 회수 합니다."
+  remarks: "이 메서드를 재정의 <xref:System.Object.Finalize%2A>.</xref:System.Object.Finalize%2A> 응용 프로그램 코드,이 메서드를 호출 하지 않아야 개체의 `Finalize` 메서드를 호출 하 여 가비지 수집기의 종료를 사용 하지 않도록 설정 된 경우가 아니면 자동으로 가비지 수집 중 호출 됩니다는 <xref:System.GC.SuppressFinalize%2A>메서드.</xref:System.GC.SuppressFinalize%2A>       자세한 내용은 참조 [Finalize 메서드 및 소멸자](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [관리 되지 않는 리소스 정리](~/add/includes/ajax-current-ext-md.md), 및 [Finalize 메서드를 재정의](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)합니다."
   syntax:
     content: ~D3DImage ();
     parameters: []
   overload: System.Windows.Interop.D3DImage.Finalize*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.FreezeCore(System.Boolean)
   id: FreezeCore(System.Boolean)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "FreezeCore(Boolean)"
+  name: FreezeCore(Boolean)
   nameWithType: D3DImage.FreezeCore(Boolean)
   fullName: System.Windows.Interop.D3DImage.FreezeCore(Boolean)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Makes the <see cref="T:System.Windows.Interop.D3DImage"></see> unmodifiable or determines whether it can be made unmodifiable.
-  remarks: The <xref:System.Windows.Interop.D3DImage> class does not allow freezing because changes are always possible due to front buffer availability.
+  summary: "만듭니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 수정할 수 없게 하거나 설정할 수 있는지 여부를 결정 합니다."
+  remarks: "<xref:System.Windows.Interop.D3DImage>클래스 프런트 버퍼 가용성으로 인해 가능한 변경 내용이 항상 있으므로 고정을 허용 하지 않습니다.</xref:System.Windows.Interop.D3DImage>"
   syntax:
     content: protected override sealed bool FreezeCore (bool isChecking);
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: "Has no effect."
+      description: "아무런 영향이 없습니다."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>모든 경우"
   overload: System.Windows.Interop.D3DImage.FreezeCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.GetAsFrozenCore(System.Windows.Freezable)
   id: GetAsFrozenCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "GetAsFrozenCore(Freezable)"
+  name: GetAsFrozenCore(Freezable)
   nameWithType: D3DImage.GetAsFrozenCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.GetAsFrozenCore(Freezable)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Makes the instance a frozen clone of the specified <see cref="T:System.Windows.Freezable"></see> using base (non-animated) property values.
+  summary: "인스턴스는 지정 된 고정된 복제본으로 만듭니다 <xref href=&quot;System.Windows.Freezable&quot;> </xref> 기본 (애니메이션이 적용 되지 않은) 속성 값을 사용 하 여 합니다."
   syntax:
     content: protected override void GetAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The instance to copy."
+      description: "복사할 인스턴스입니다."
   overload: System.Windows.Interop.D3DImage.GetAsFrozenCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore(System.Windows.Freezable)
   id: GetCurrentValueAsFrozenCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "GetCurrentValueAsFrozenCore(Freezable)"
+  name: GetCurrentValueAsFrozenCore(Freezable)
   nameWithType: D3DImage.GetCurrentValueAsFrozenCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore(Freezable)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Makes the current instance a frozen clone of the specified <see cref="T:System.Windows.Freezable"></see>. If the object has animated dependency properties, their current animated values are copied.
+  summary: "현재 인스턴스가 지정 된의 고정된 복제본으로 만듭니다 <xref href=&quot;System.Windows.Freezable&quot;> </xref>합니다. 개체에 애니메이션 효과 준된 종속성 속성이 애니메이션된의 현재 값은 복사 됩니다."
   syntax:
     content: protected override void GetCurrentValueAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The  to copy and freeze."
+      description: "<xref href=&quot;System.Windows.Freezable&quot;> </xref> 복사 및 고정할 합니다."
   overload: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Height
   id: Height
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Height"
+  name: Height
   nameWithType: D3DImage.Height
   fullName: System.Windows.Interop.D3DImage.Height
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets the height of the <see cref="T:System.Windows.Interop.D3DImage"></see>.
-  remarks: The value of Height can change when a new back buffer is assigned by a call to the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method.
+  summary: "높이 가져옵니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>합니다."
+  remarks: "높이 값은 새 백 버퍼에 대 한 호출에 의해 할당 된 경우 변경할 수는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>"
   syntax:
     content: public override sealed double Height { get; }
     return:
       type: System.Double
-      description: "The height of the <see cref=&quot;T:System.Windows.Interop.D3DImage&quot;></see>, in measure units. A measure unit is 1/96th inch."
+      description: "높이 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>의 측정 단위입니다. 측정 단위는 1/96 인치입니다."
   overload: System.Windows.Interop.D3DImage.Height*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailable
   id: IsFrontBufferAvailable
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "IsFrontBufferAvailable"
+  name: IsFrontBufferAvailable
   nameWithType: D3DImage.IsFrontBufferAvailable
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailable
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets a value that indicates whether a front buffer exists.
-  remarks: "Occasionally, the front buffer becomes unavailable. This lack of availability can be caused by screen locking, full-screen exclusive Direct3D applications, user-switching, or other system activities. When this occurs, your WPF application is notified by handling the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event.  How your application responds to the front buffer becoming unavailable depends on whether WPF is enabled to fall back to software rendering. The <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method has an overload that takes a parameter that specifies whether WPF falls back to software rendering. For more information, see the remarks in the <xref:System.Windows.Interop.D3DImage> class.  \n  \n<a name=\"dependencyPropertyInfo_IsFrontBufferAvailable\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty>|  \n|Metadata properties set to `true`|None|"
+  summary: "프런트 버퍼 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "경우에 따라서는 프런트 버퍼 수 없게 됩니다. 이 처럼 가용성 화면 잠금, 전체 화면 전용 Direct3D 응용 프로그램, 사용자 전환 또는 기타 시스템 작업에 의해 발생할 수 있습니다. WPF 응용 프로그램 처리를 통해 알림을 이러한 경우는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>이벤트.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>  사용 하지 못하게 될 프런트 버퍼에 응용 프로그램의 응답으로 소프트웨어 렌더링 대체 WPF 사용 여부에 따라 달라 집니다. <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드에 WPF 소프트웨어 렌더링으로 다시 속하는지 여부를 지정 하는 매개 변수를 사용 하는 오버 로드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> 자세한 내용은 <xref:System.Windows.Interop.D3DImage>클래스</xref:System.Windows.Interop.D3DImage> 의 설명 부분을 참조 하십시오.      <a name=&quot;dependencyPropertyInfo_IsFrontBufferAvailable&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty>|   | 메타 데이터 속성이 `true`| None |</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty>"
   example:
-  - "The following code example shows how to check the IsFrontBufferAvailable property when rendering the composition target. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#2](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#2)]"
+  - "The following code example shows how to check the IsFrontBufferAvailable property when rendering the composition target. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#2](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#2)]"
   syntax:
     content: public bool IsFrontBufferAvailable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a front buffer exists; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>프런트 버퍼 있으면; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Interop.D3DImage.IsFrontBufferAvailable*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged
   id: IsFrontBufferAvailableChanged
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "IsFrontBufferAvailableChanged"
+  name: IsFrontBufferAvailableChanged
   nameWithType: D3DImage.IsFrontBufferAvailableChanged
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged
   type: Event
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Occurs when the &lt;xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable%2A&gt; property changes.
-  remarks: Handle the IsFrontBufferAvailableChanged to be notified when the status of the front buffer changes. How your application responds to the front buffer becoming unavailable depends on whether WPF is enabled to fall back to software rendering. The <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method has an overload that takes a parameter that specifies whether WPF falls back to software rendering. For more information, see the remarks in the <xref:System.Windows.Interop.D3DImage> class.
+  summary: "발생 경우는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable*>속성 변경.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable*>"
+  remarks: "전면 버퍼의 상태가 변경 될 때 알림을 받으려면 IsFrontBufferAvailableChanged 처리 합니다. 사용 하지 못하게 될 프런트 버퍼에 응용 프로그램의 응답으로 소프트웨어 렌더링 대체 WPF 사용 여부에 따라 달라 집니다. <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드에 WPF 소프트웨어 렌더링으로 다시 속하는지 여부를 지정 하는 매개 변수를 사용 하는 오버 로드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> 자세한 내용은 <xref:System.Windows.Interop.D3DImage>클래스</xref:System.Windows.Interop.D3DImage> 의 설명 부분을 참조 하십시오."
   syntax:
     content: public event System.Windows.DependencyPropertyChangedEventHandler IsFrontBufferAvailableChanged;
     return:
       type: System.Windows.DependencyPropertyChangedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty
   id: IsFrontBufferAvailableProperty
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "IsFrontBufferAvailableProperty"
+  name: IsFrontBufferAvailableProperty
   nameWithType: D3DImage.IsFrontBufferAvailableProperty
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty
   type: Field
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Identifies the &lt;xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable%2A&gt; dependency property.
+  summary: "식별 된 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable*>종속성 속성입니다.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailable*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty IsFrontBufferAvailableProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Lock
   id: Lock
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Lock()"
+  name: Lock()
   nameWithType: D3DImage.Lock()
   fullName: System.Windows.Interop.D3DImage.Lock()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Locks the <see cref="T:System.Windows.Interop.D3DImage"></see> and enables operations on the back buffer.
-  remarks: "Call the Lock method to change the back buffer by calling the <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> and <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> methods. While the <xref:System.Windows.Interop.D3DImage> is locked, your application can also render to the Direct3D surface assigned to the back buffer.  \n  \n> [!NOTE]\n>  The Lock method blocks when the rendering system is reading the back buffer to update the front buffer. Use the <xref:System.Windows.Interop.D3DImage.TryLock%2A> method to avoid blocking indefinitely."
+  summary: "잠급니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 백 버퍼에 대 한 작업을 수 있습니다."
+  remarks: "Lock 메서드를 호출 하 여 백 버퍼를 변경 하려면 호출 하는 <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A>및 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> </xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> 반면는 <xref:System.Windows.Interop.D3DImage>은 잠겨 있고 응용 프로그램에 렌더링할 수도 있습니다 백 버퍼에 할당 된 Direct3D 화면.</xref:System.Windows.Interop.D3DImage>      > [!NOTE] > Lock 메서드가 차단 렌더링 시스템 백 버퍼 업데이트 프런트 버퍼를 읽는 중입니다. 사용 된 <xref:System.Windows.Interop.D3DImage.TryLock%2A>메서드를 무기한으로 차단 되지 않도록 합니다.</xref:System.Windows.Interop.D3DImage.TryLock%2A>"
   example:
-  - "The following code example shows how to call the Lock method to enable updates to the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#3)]"
+  - "The following code example shows how to call the Lock method to enable updates to the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public void Lock ();
     parameters: []
@@ -558,590 +529,581 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The lock count equals <xref:System.UInt32.MaxValue>."
+    description: "잠금 횟수가 <xref:System.UInt32.MaxValue>.</xref:System.UInt32.MaxValue>"
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Metadata
   id: Metadata
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Metadata"
+  name: Metadata
   nameWithType: D3DImage.Metadata
   fullName: System.Windows.Interop.D3DImage.Metadata
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets the metadata associated with the image source.
+  summary: "이미지 원본 연관 된 메타 데이터를 가져옵니다."
   syntax:
     content: public override sealed System.Windows.Media.ImageMetadata Metadata { get; }
     return:
       type: System.Windows.Media.ImageMetadata
-      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> in all cases."
+      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>모든 경우"
   overload: System.Windows.Interop.D3DImage.Metadata*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.PixelHeight
   id: PixelHeight
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "PixelHeight"
+  name: PixelHeight
   nameWithType: D3DImage.PixelHeight
   fullName: System.Windows.Interop.D3DImage.PixelHeight
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets the height of the <see cref="T:System.Windows.Interop.D3DImage"></see>, in pixels.
-  remarks: The value of PixelHeight can change when a new back buffer is assigned by a call to the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method.
+  summary: "높이 가져옵니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>, (픽셀)에서입니다."
+  remarks: "PixelHeight의 값은 새 백 버퍼에 대 한 호출에 의해 할당 된 경우 변경할 수는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>"
   example:
-  - "The following code example shows how to use the PixelHeight property to specify the changed region in the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#3)]"
+  - "The following code example shows how to use the PixelHeight property to specify the changed region in the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public int PixelHeight { get; }
     return:
       type: System.Int32
-      description: "The height of the <see cref=&quot;T:System.Windows.Interop.D3DImage&quot;></see>, in pixels."
+      description: "높이 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>, (픽셀)에서입니다."
   overload: System.Windows.Interop.D3DImage.PixelHeight*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.PixelWidth
   id: PixelWidth
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "PixelWidth"
+  name: PixelWidth
   nameWithType: D3DImage.PixelWidth
   fullName: System.Windows.Interop.D3DImage.PixelWidth
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets the width of the <see cref="T:System.Windows.Interop.D3DImage"></see>, in pixels.
-  remarks: The value of PixelWidth can change when a new back buffer is assigned by a call to the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method.
+  summary: "너비를 가져옵니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>, (픽셀)에서입니다."
+  remarks: "PixelWidth의 값은 새 백 버퍼에 대 한 호출에 의해 할당 된 경우 변경할 수는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>"
   example:
-  - "The following code example shows how to use the PixelWidth property to specify the changed region in the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#3)]"
+  - "The following code example shows how to use the PixelWidth property to specify the changed region in the back buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public int PixelWidth { get; }
     return:
       type: System.Int32
-      description: "The width of the <see cref=&quot;T:System.Windows.Interop.D3DImage&quot;></see>, in pixels."
+      description: "너비는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>, (픽셀)에서입니다."
   overload: System.Windows.Interop.D3DImage.PixelWidth*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr)
   id: SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "SetBackBuffer(D3DResourceType,IntPtr)"
+  name: SetBackBuffer(D3DResourceType,IntPtr)
   nameWithType: D3DImage.SetBackBuffer(D3DResourceType,IntPtr)
   fullName: System.Windows.Interop.D3DImage.SetBackBuffer(D3DResourceType,IntPtr)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Assigns a Direct3D surface as the source of the back buffer.
-  remarks: "Call the SetBackBuffer method to assign a Direct3D surface to the back buffer.  \n  \n> [!NOTE]\n>  Performance depends greatly on the settings of the Direct3D surface. For more information, see [Performance Considerations for Direct3D9 and WPF Interoperability](../Topic/Performance%20Considerations%20for%20Direct3D9%20and%20WPF%20Interoperability.md).  \n  \n Calling the SetBackBuffer overload is identical to calling the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> overload with the `enableSoftwareFallback` parameter set to `false`. When you call SetBackBuffer or call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> with the `enableSoftwareFallback` parameter set to `false`, the rendering system releases its reference to the back buffer when front buffer becomes unavailable and nothing is displayed. When the front buffer is available again, the rendering system raises the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to notify your WPF application.  You can create an event handler for the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to restart rendering again with a valid Direct3D surface. To restart rendering, you must call SetBackBuffer.  \n  \n The following list shows the required back buffer settings for the `IDirect3DSurface9` type.  \n  \n-   `D3DFMT_A8R8G8B8` or `D3DFMT_X8R8G8B8`  \n  \n-   `D3DUSAGE_RENDERTARGET`  \n  \n-   `D3DPOOL_DEFAULT`  \n  \n Multisampling is allowed on `IDirect3DSurface9Ex` surfaces only."
+  summary: "백 버퍼의 원본으로 하는 Direct3D 표면에 할당합니다."
+  remarks: "Direct3D 화면 백 버퍼를 할당 하려면 SetBackBuffer 메서드를 호출 합니다.      > [!NOTE] > 성능은 Direct3D 화면 설정에 따라 크게 다릅니다. 자세한 내용은 참조 [Direct3D9 및 WPF 상호 운용성에 대 한 성능 고려 사항](~/add/includes/ajax-current-ext-md.md)합니다.       SetBackBuffer 오버 로드는 동일한 호출 하는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>오버 로드는 `enableSoftwareFallback` 매개 변수 설정 `false`.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> SetBackBuffer 또는 호출을 호출 하면 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29>와 `enableSoftwareFallback` 매개 변수 설정 `false`, 렌더링 시스템 프런트 버퍼를 사용할 수 없게 되며 아무 것도 표시 하는 경우 백 버퍼에 대 한 참조를 해제 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%2CSystem.Boolean%29> 프런트 버퍼를 사용할 수 있는 다시 렌더링 발생는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>WPF 응용 프로그램에 알리는 이벤트를.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>  에 대 한 이벤트 처리기를 만들 수는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>유효한 Direct3D 화면을 사용 하 여 다시 렌더링을 다시 시작 하는 이벤트입니다.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> 렌더링을 다시 시작 하려면 SetBackBuffer 호출 해야 합니다.       다음 목록에 대 한 필요한 백 버퍼 설정을 표시는 `IDirect3DSurface9` 유형입니다.      - `D3DFMT_A8R8G8B8` 또는 `D3DFMT_X8R8G8B8`       -    `D3DUSAGE_RENDERTARGET`       -    `D3DPOOL_DEFAULT` 샘플링에 사용할 수는 `IDirect3DSurface9Ex` 만 표시 합니다."
   example:
-  - "The following code example shows how to call the SetBackBuffer method to assign a Direct3D surface. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#3)]"
+  - "The following code example shows how to call the SetBackBuffer method to assign a Direct3D surface. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public void SetBackBuffer (System.Windows.Interop.D3DResourceType backBufferType, IntPtr backBuffer);
     parameters:
     - id: backBufferType
       type: System.Windows.Interop.D3DResourceType
-      description: "The type of Direct3D surface. Must be a valid ."
+      description: "Direct3D 화면의 형식입니다. 유효한 <xref href=&quot;System.Windows.Interop.D3DResourceType&quot;> </xref>합니다."
     - id: backBuffer
       type: System.IntPtr
-      description: "The Direct3D surface to assign as the back buffer."
+      description: "백 버퍼를 할당 하는 Direct3D 화면입니다."
   overload: System.Windows.Interop.D3DImage.SetBackBuffer*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The  has not been locked by a call to the <xref:System.Windows.Interop.D3DImage.Lock%2A> or <xref:System.Windows.Interop.D3DImage.TryLock%2A> methods."
+    description: "<xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 에 대 한 호출에 의해 잠기지 않은 <> </> *> 또는 <> </> *> 메서드."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    backBufferType is not a valid ."
+    description: "<code>backBufferType</code>유효 하지 않거나 <xref href=&quot;System.Windows.Interop.D3DResourceType&quot;> </xref>합니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The creation parameters for backBuffer do not meet the requirements for the backBufferType-or-The backBuffer device is not valid."
+    description: "생성 매개 변수를 <code> backBuffer </code> 에 대 한 요구 사항을 충족 하지 않는 <code> backBufferType </code>-또는-는 <code> backBuffer </code> 장치가 유효 하지 않습니다."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr,System.Boolean)
   id: SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr,System.Boolean)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "SetBackBuffer(D3DResourceType,IntPtr,Boolean)"
+  name: SetBackBuffer(D3DResourceType,IntPtr,Boolean)
   nameWithType: D3DImage.SetBackBuffer(D3DResourceType,IntPtr,Boolean)
   fullName: System.Windows.Interop.D3DImage.SetBackBuffer(D3DResourceType,IntPtr,Boolean)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Assigns a Direct3D surface as the source of the back buffer.
-  remarks: "When you call the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29> overload or call the SetBackBuffer overload with the `enableSoftwareFallback` parameter set to `false`, the rendering system releases its reference to the back buffer when the front buffer becomes unavailable and nothing is displayed. When the front buffer is available again, the rendering system raises the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to notify your WPF application.  You can create an event handler for the <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> event to restart rendering again with a valid Direct3D surface. To restart rendering, you must call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>.  \n  \n When you call SetBackBuffer with the `enableSoftwareFallback` parameter set to `true`, the rendering system retains its reference to the back buffer when the front buffer becomes unavailable, so there is no need to call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> when the front buffer is available again.  There may be situations where the user’s device becomes unavailable.  When that occurs, call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> to release WPF’s reference to the back buffer.  If you need to reset your device, call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> with `backBuffer` set to `null`, and then call <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> again with `backBuffer` set to a valid Direct3D surface.  \n  \n The following list shows the required back buffer settings for the `IDirect3DSurface9` type.  \n  \n-   `D3DFMT_A8R8G8B8` or `D3DFMT_X8R8G8B8`  \n  \n-   `D3DUSAGE_RENDERTARGET`  \n  \n-   `D3DPOOL_DEFAULT`  \n  \n Multisampling is allowed on `IDirect3DSurface9Ex` surfaces only."
+  summary: "백 버퍼의 원본으로 하는 Direct3D 표면에 할당합니다."
+  remarks: "호출 하는 경우는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29>오버 로드 또는 SetBackBuffer 오버 로드를 호출는 `enableSoftwareFallback` 매개 변수 설정 `false`, 렌더링 시스템 프런트 버퍼를 사용할 수 없게 되며 아무 것도 표시 하는 경우 백 버퍼에 대 한 참조를 해제 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%28System.Windows.Interop.D3DResourceType%2CSystem.IntPtr%29> 프런트 버퍼를 사용할 수 있는 다시 렌더링 발생는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>WPF 응용 프로그램에 알리는 이벤트를.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>  에 대 한 이벤트 처리기를 만들 수는 <xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged>유효한 Direct3D 화면을 사용 하 여 다시 렌더링을 다시 시작 하는 이벤트입니다.</xref:System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged> 렌더링을 다시 시작 하려면 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> 를 호출 해야 합니다.       와 SetBackBuffer를 호출 하는 경우는 `enableSoftwareFallback` 매개 변수 설정 `true`, 렌더링 시스템을 호출할 필요가 없습니다 이므로 프런트 버퍼를 사용할 수 없을 때 백 버퍼에 대 한 참조를 유지 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>때 프런트 버퍼를 다시 사용할 수 있습니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>  사용자의 장치 사용할 수 없게 되는 경우가 있을 수 있습니다.  이 경우 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>백 버퍼에 대 한 WPF의 참조를 해제 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>  장치를 재설정 해야 할 경우 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>와 `backBuffer` 로 설정 `null`, 한 다음 호출 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>사용 하 여 다시 `backBuffer` 유효한 Direct3D 화면으로 설정 합니다.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> </xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>       다음 목록에 대 한 필요한 백 버퍼 설정을 표시는 `IDirect3DSurface9` 유형입니다.      - `D3DFMT_A8R8G8B8` 또는 `D3DFMT_X8R8G8B8`       -    `D3DUSAGE_RENDERTARGET`       -    `D3DPOOL_DEFAULT` 샘플링에 사용할 수는 `IDirect3DSurface9Ex` 만 표시 합니다."
   syntax:
     content: public void SetBackBuffer (System.Windows.Interop.D3DResourceType backBufferType, IntPtr backBuffer, bool enableSoftwareFallback);
     parameters:
     - id: backBufferType
       type: System.Windows.Interop.D3DResourceType
-      description: "The type of Direct3D surface. Must be a valid ."
+      description: "Direct3D 화면의 형식입니다. 유효한 <xref href=&quot;System.Windows.Interop.D3DResourceType&quot;> </xref>합니다."
     - id: backBuffer
       type: System.IntPtr
-      description: "The Direct3D surface to assign as the back buffer."
+      description: "백 버퍼를 할당 하는 Direct3D 화면입니다."
     - id: enableSoftwareFallback
       type: System.Boolean
-      description: "\n     to fall back on software rendering; otherwise, ."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>소프트웨어 렌더링;으로 변경 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Interop.D3DImage.SetBackBuffer*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.TryLock(System.Windows.Duration)
   id: TryLock(System.Windows.Duration)
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "TryLock(Duration)"
+  name: TryLock(Duration)
   nameWithType: D3DImage.TryLock(Duration)
   fullName: System.Windows.Interop.D3DImage.TryLock(Duration)
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Attempts to lock the <see cref="T:System.Windows.Interop.D3DImage"></see> and waits for the specified duration.
+  summary: "잠그려고 시도 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref> 하 고 지정 된 기간에 대 한 대기 합니다."
   syntax:
     content: public bool TryLock (System.Windows.Duration timeout);
     parameters:
     - id: timeout
       type: System.Windows.Duration
-      description: "The duration to wait for the lock to be acquired."
+      description: "잠금을 얻기 위해 대기 기간입니다."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>잠금을 획득; 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Interop.D3DImage.TryLock*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    timeout is set to <xref:System.Windows.Duration.Automatic%2A>."
+    description: "<code>timeout</code>로 설정 된 <xref:System.Windows.Duration.Automatic*>합니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The lock count equals <xref:System.UInt32.MaxValue>."
+    description: "잠금 횟수가 <xref:System.UInt32.MaxValue>.</xref:System.UInt32.MaxValue>"
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Unlock
   id: Unlock
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Unlock()"
+  name: Unlock()
   nameWithType: D3DImage.Unlock()
   fullName: System.Windows.Interop.D3DImage.Unlock()
   type: Method
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Decrements the lock count for the <see cref="T:System.Windows.Interop.D3DImage"></see>.
-  remarks: "When the lock count for the <xref:System.Windows.Interop.D3DImage> reaches zero, the <xref:System.Windows.Interop.D3DImage> is fully unlocked. The <xref:System.Windows.Interop.D3DImage> is marked for rendering if the image has changed areas that were specified by previous calls to the <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> method.  \n  \n When the changes are committed and rendering occurs, additional calls to the <xref:System.Windows.Interop.D3DImage.Lock%2A> method block until the render thread has copied the contents of the back buffer to the front buffer. This synchronization avoids display artifacts, such as tearing.  \n  \n> [!NOTE]\n>  Do not update the Direct3D surface while the <xref:System.Windows.Interop.D3DImage> is unlocked."
+  summary: "에 대 한 잠금 횟수를 감소는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>합니다."
+  remarks: "잠금 횟수를 <xref:System.Windows.Interop.D3DImage>0는 <xref:System.Windows.Interop.D3DImage>완전히 잠금 해제 되어 있습니다.</xref:System.Windows.Interop.D3DImage> </xref:System.Windows.Interop.D3DImage> <xref:System.Windows.Interop.D3DImage>이미지에 대 한 이전 호출에 지정 된 영역 변경 된 경우 렌더링에 대 한 표시는 <xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A>메서드.</xref:System.Windows.Interop.D3DImage.AddDirtyRect%2A> </xref:System.Windows.Interop.D3DImage>       변경 내용이 커밋되고 시점과 렌더링이 발생 대 한 추가 호출이 <xref:System.Windows.Interop.D3DImage.Lock%2A>렌더링 스레드에 백 버퍼의 내용을 프런트 버퍼에 복사 될 때까지 메서드 블록.</xref:System.Windows.Interop.D3DImage.Lock%2A> 이 동기화 하는 데 필요한 같은 디스플레이 아티팩트를 방지할 수 있습니다.      > [!NOTE] > 동안 Direct3D 화면을 업데이트 하지 않으면는 <xref:System.Windows.Interop.D3DImage>잠금 해제 되어 있습니다.</xref:System.Windows.Interop.D3DImage>"
   example:
-  - "The following code example shows how to call the Unlock method to copy the updated back buffer to the front buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](../Topic/Walkthrough:%20Hosting%20Direct3D9%20Content%20in%20WPF.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/CSharp/d3dhost/window1.xaml.cs#3)]"
+  - "The following code example shows how to call the Unlock method to copy the updated back buffer to the front buffer. For more information, see [Walkthrough: Hosting Direct3D9 Content in WPF](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Windows.Interop.D3DImage#3](~/add/codesnippet/csharp/d3dhost/window1.xaml.cs#3)]"
   syntax:
     content: public void Unlock ();
     parameters: []
   overload: System.Windows.Interop.D3DImage.Unlock*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.D3DImage.Width
   id: Width
   parent: System.Windows.Interop.D3DImage
   langs:
   - csharp
-  name: "Width"
+  name: Width
   nameWithType: D3DImage.Width
   fullName: System.Windows.Interop.D3DImage.Width
   type: Property
   assemblies:
   - PresentationCore
   namespace: System.Windows.Interop
-  summary: Gets the width of the <see cref="T:System.Windows.Interop.D3DImage"></see>.
-  remarks: The value of Width can change when a new back buffer is assigned by a call to the <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A> method.
+  summary: "너비를 가져옵니다는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>합니다."
+  remarks: "너비 값은 새 백 버퍼에 대 한 호출에 의해 할당 된 경우 변경할 수는 <xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>메서드.</xref:System.Windows.Interop.D3DImage.SetBackBuffer%2A>"
   syntax:
     content: public override sealed double Width { get; }
     return:
       type: System.Double
-      description: "The width of the <see cref=&quot;T:System.Windows.Interop.D3DImage&quot;></see>, in measure units. A measure unit is 1/96th inch."
+      description: "너비는 <xref href=&quot;System.Windows.Interop.D3DImage&quot;> </xref>의 측정 단위입니다. 측정 단위는 1/96 인치입니다."
   overload: System.Windows.Interop.D3DImage.Width*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Windows.Media.ImageSource
   isExternal: false
-  name: "System.Windows.Media.ImageSource"
+  name: System.Windows.Media.ImageSource
+- uid: System.ArgumentOutOfRangeException
+  isExternal: true
+  name: System.ArgumentOutOfRangeException
+- uid: System.InvalidOperationException
+  isExternal: true
+  name: System.InvalidOperationException
+- uid: System.ArgumentException
+  isExternal: true
+  name: System.ArgumentException
 - uid: System.Windows.Interop.D3DImage.#ctor
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "D3DImage()"
+  name: D3DImage()
   nameWithType: D3DImage.D3DImage()
   fullName: System.Windows.Interop.D3DImage.D3DImage()
 - uid: System.Windows.Interop.D3DImage.#ctor(System.Double,System.Double)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "D3DImage(Double,Double)"
+  name: D3DImage(Double,Double)
   nameWithType: D3DImage.D3DImage(Double,Double)
   fullName: System.Windows.Interop.D3DImage.D3DImage(Double,Double)
 - uid: System.Double
   parent: System
   isExternal: true
-  name: "Double"
+  name: Double
   nameWithType: Double
   fullName: System.Double
 - uid: System.Windows.Interop.D3DImage.AddDirtyRect(System.Windows.Int32Rect)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "AddDirtyRect(Int32Rect)"
+  name: AddDirtyRect(Int32Rect)
   nameWithType: D3DImage.AddDirtyRect(Int32Rect)
   fullName: System.Windows.Interop.D3DImage.AddDirtyRect(Int32Rect)
 - uid: System.Windows.Int32Rect
   parent: System.Windows
   isExternal: false
-  name: "Int32Rect"
+  name: Int32Rect
   nameWithType: Int32Rect
   fullName: System.Windows.Int32Rect
 - uid: System.Windows.Interop.D3DImage.Clone
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Clone()"
+  name: Clone()
   nameWithType: D3DImage.Clone()
   fullName: System.Windows.Interop.D3DImage.Clone()
 - uid: System.Windows.Interop.D3DImage
   parent: System.Windows.Interop
   isExternal: false
-  name: "D3DImage"
+  name: D3DImage
   nameWithType: D3DImage
   fullName: System.Windows.Interop.D3DImage
 - uid: System.Windows.Interop.D3DImage.CloneCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCore(Freezable)"
+  name: CloneCore(Freezable)
   nameWithType: D3DImage.CloneCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.CloneCore(Freezable)
 - uid: System.Windows.Freezable
   parent: System.Windows
   isExternal: false
-  name: "Freezable"
+  name: Freezable
   nameWithType: Freezable
   fullName: System.Windows.Freezable
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValue
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCurrentValue()"
+  name: CloneCurrentValue()
   nameWithType: D3DImage.CloneCurrentValue()
   fullName: System.Windows.Interop.D3DImage.CloneCurrentValue()
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValueCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCurrentValueCore(Freezable)"
+  name: CloneCurrentValueCore(Freezable)
   nameWithType: D3DImage.CloneCurrentValueCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.CloneCurrentValueCore(Freezable)
 - uid: System.Windows.Interop.D3DImage.CopyBackBuffer
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CopyBackBuffer()"
+  name: CopyBackBuffer()
   nameWithType: D3DImage.CopyBackBuffer()
   fullName: System.Windows.Interop.D3DImage.CopyBackBuffer()
 - uid: System.Windows.Media.Imaging.BitmapSource
   parent: System.Windows.Media.Imaging
   isExternal: false
-  name: "BitmapSource"
+  name: BitmapSource
   nameWithType: BitmapSource
   fullName: System.Windows.Media.Imaging.BitmapSource
 - uid: System.Windows.Interop.D3DImage.CreateInstanceCore
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CreateInstanceCore()"
+  name: CreateInstanceCore()
   nameWithType: D3DImage.CreateInstanceCore()
   fullName: System.Windows.Interop.D3DImage.CreateInstanceCore()
 - uid: System.Windows.Interop.D3DImage.Finalize
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Finalize()"
+  name: Finalize()
   nameWithType: D3DImage.Finalize()
   fullName: System.Windows.Interop.D3DImage.Finalize()
 - uid: System.Windows.Interop.D3DImage.FreezeCore(System.Boolean)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "FreezeCore(Boolean)"
+  name: FreezeCore(Boolean)
   nameWithType: D3DImage.FreezeCore(Boolean)
   fullName: System.Windows.Interop.D3DImage.FreezeCore(Boolean)
 - uid: System.Boolean
   parent: System
   isExternal: true
-  name: "Boolean"
+  name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
 - uid: System.Windows.Interop.D3DImage.GetAsFrozenCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "GetAsFrozenCore(Freezable)"
+  name: GetAsFrozenCore(Freezable)
   nameWithType: D3DImage.GetAsFrozenCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.GetAsFrozenCore(Freezable)
 - uid: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore(System.Windows.Freezable)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "GetCurrentValueAsFrozenCore(Freezable)"
+  name: GetCurrentValueAsFrozenCore(Freezable)
   nameWithType: D3DImage.GetCurrentValueAsFrozenCore(Freezable)
   fullName: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore(Freezable)
 - uid: System.Windows.Interop.D3DImage.Height
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Height"
+  name: Height
   nameWithType: D3DImage.Height
   fullName: System.Windows.Interop.D3DImage.Height
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailable
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "IsFrontBufferAvailable"
+  name: IsFrontBufferAvailable
   nameWithType: D3DImage.IsFrontBufferAvailable
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailable
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "IsFrontBufferAvailableChanged"
+  name: IsFrontBufferAvailableChanged
   nameWithType: D3DImage.IsFrontBufferAvailableChanged
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailableChanged
 - uid: System.Windows.DependencyPropertyChangedEventHandler
   parent: System.Windows
   isExternal: false
-  name: "DependencyPropertyChangedEventHandler"
+  name: DependencyPropertyChangedEventHandler
   nameWithType: DependencyPropertyChangedEventHandler
   fullName: System.Windows.DependencyPropertyChangedEventHandler
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "IsFrontBufferAvailableProperty"
+  name: IsFrontBufferAvailableProperty
   nameWithType: D3DImage.IsFrontBufferAvailableProperty
   fullName: System.Windows.Interop.D3DImage.IsFrontBufferAvailableProperty
 - uid: System.Windows.DependencyProperty
   parent: System.Windows
   isExternal: false
-  name: "DependencyProperty"
+  name: DependencyProperty
   nameWithType: DependencyProperty
   fullName: System.Windows.DependencyProperty
 - uid: System.Windows.Interop.D3DImage.Lock
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Lock()"
+  name: Lock()
   nameWithType: D3DImage.Lock()
   fullName: System.Windows.Interop.D3DImage.Lock()
 - uid: System.Windows.Interop.D3DImage.Metadata
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Metadata"
+  name: Metadata
   nameWithType: D3DImage.Metadata
   fullName: System.Windows.Interop.D3DImage.Metadata
 - uid: System.Windows.Media.ImageMetadata
   parent: System.Windows.Media
   isExternal: false
-  name: "ImageMetadata"
+  name: ImageMetadata
   nameWithType: ImageMetadata
   fullName: System.Windows.Media.ImageMetadata
 - uid: System.Windows.Interop.D3DImage.PixelHeight
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "PixelHeight"
+  name: PixelHeight
   nameWithType: D3DImage.PixelHeight
   fullName: System.Windows.Interop.D3DImage.PixelHeight
 - uid: System.Int32
   parent: System
   isExternal: true
-  name: "Int32"
+  name: Int32
   nameWithType: Int32
   fullName: System.Int32
 - uid: System.Windows.Interop.D3DImage.PixelWidth
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "PixelWidth"
+  name: PixelWidth
   nameWithType: D3DImage.PixelWidth
   fullName: System.Windows.Interop.D3DImage.PixelWidth
 - uid: System.Windows.Interop.D3DImage.SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "SetBackBuffer(D3DResourceType,IntPtr)"
+  name: SetBackBuffer(D3DResourceType,IntPtr)
   nameWithType: D3DImage.SetBackBuffer(D3DResourceType,IntPtr)
   fullName: System.Windows.Interop.D3DImage.SetBackBuffer(D3DResourceType,IntPtr)
 - uid: System.Windows.Interop.D3DResourceType
   parent: System.Windows.Interop
   isExternal: false
-  name: "D3DResourceType"
+  name: D3DResourceType
   nameWithType: D3DResourceType
   fullName: System.Windows.Interop.D3DResourceType
 - uid: System.IntPtr
   parent: System
   isExternal: true
-  name: "IntPtr"
+  name: IntPtr
   nameWithType: IntPtr
   fullName: System.IntPtr
 - uid: System.Windows.Interop.D3DImage.SetBackBuffer(System.Windows.Interop.D3DResourceType,System.IntPtr,System.Boolean)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "SetBackBuffer(D3DResourceType,IntPtr,Boolean)"
+  name: SetBackBuffer(D3DResourceType,IntPtr,Boolean)
   nameWithType: D3DImage.SetBackBuffer(D3DResourceType,IntPtr,Boolean)
   fullName: System.Windows.Interop.D3DImage.SetBackBuffer(D3DResourceType,IntPtr,Boolean)
 - uid: System.Windows.Interop.D3DImage.TryLock(System.Windows.Duration)
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "TryLock(Duration)"
+  name: TryLock(Duration)
   nameWithType: D3DImage.TryLock(Duration)
   fullName: System.Windows.Interop.D3DImage.TryLock(Duration)
 - uid: System.Windows.Duration
   parent: System.Windows
   isExternal: false
-  name: "Duration"
+  name: Duration
   nameWithType: Duration
   fullName: System.Windows.Duration
 - uid: System.Windows.Interop.D3DImage.Unlock
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Unlock()"
+  name: Unlock()
   nameWithType: D3DImage.Unlock()
   fullName: System.Windows.Interop.D3DImage.Unlock()
 - uid: System.Windows.Interop.D3DImage.Width
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Width"
+  name: Width
   nameWithType: D3DImage.Width
   fullName: System.Windows.Interop.D3DImage.Width
 - uid: System.Windows.Interop.D3DImage.#ctor*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "D3DImage"
+  name: D3DImage
   nameWithType: D3DImage.D3DImage
 - uid: System.Windows.Interop.D3DImage.AddDirtyRect*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "AddDirtyRect"
+  name: AddDirtyRect
   nameWithType: D3DImage.AddDirtyRect
 - uid: System.Windows.Interop.D3DImage.Clone*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Clone"
+  name: Clone
   nameWithType: D3DImage.Clone
 - uid: System.Windows.Interop.D3DImage.CloneCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCore"
+  name: CloneCore
   nameWithType: D3DImage.CloneCore
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValue*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCurrentValue"
+  name: CloneCurrentValue
   nameWithType: D3DImage.CloneCurrentValue
 - uid: System.Windows.Interop.D3DImage.CloneCurrentValueCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CloneCurrentValueCore"
+  name: CloneCurrentValueCore
   nameWithType: D3DImage.CloneCurrentValueCore
 - uid: System.Windows.Interop.D3DImage.CopyBackBuffer*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CopyBackBuffer"
+  name: CopyBackBuffer
   nameWithType: D3DImage.CopyBackBuffer
 - uid: System.Windows.Interop.D3DImage.CreateInstanceCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "CreateInstanceCore"
+  name: CreateInstanceCore
   nameWithType: D3DImage.CreateInstanceCore
 - uid: System.Windows.Interop.D3DImage.Finalize*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Finalize"
+  name: Finalize
   nameWithType: D3DImage.Finalize
 - uid: System.Windows.Interop.D3DImage.FreezeCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "FreezeCore"
+  name: FreezeCore
   nameWithType: D3DImage.FreezeCore
 - uid: System.Windows.Interop.D3DImage.GetAsFrozenCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "GetAsFrozenCore"
+  name: GetAsFrozenCore
   nameWithType: D3DImage.GetAsFrozenCore
 - uid: System.Windows.Interop.D3DImage.GetCurrentValueAsFrozenCore*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "GetCurrentValueAsFrozenCore"
+  name: GetCurrentValueAsFrozenCore
   nameWithType: D3DImage.GetCurrentValueAsFrozenCore
 - uid: System.Windows.Interop.D3DImage.Height*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Height"
+  name: Height
   nameWithType: D3DImage.Height
 - uid: System.Windows.Interop.D3DImage.IsFrontBufferAvailable*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "IsFrontBufferAvailable"
+  name: IsFrontBufferAvailable
   nameWithType: D3DImage.IsFrontBufferAvailable
 - uid: System.Windows.Interop.D3DImage.Lock*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Lock"
+  name: Lock
   nameWithType: D3DImage.Lock
 - uid: System.Windows.Interop.D3DImage.Metadata*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Metadata"
+  name: Metadata
   nameWithType: D3DImage.Metadata
 - uid: System.Windows.Interop.D3DImage.PixelHeight*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "PixelHeight"
+  name: PixelHeight
   nameWithType: D3DImage.PixelHeight
 - uid: System.Windows.Interop.D3DImage.PixelWidth*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "PixelWidth"
+  name: PixelWidth
   nameWithType: D3DImage.PixelWidth
 - uid: System.Windows.Interop.D3DImage.SetBackBuffer*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "SetBackBuffer"
+  name: SetBackBuffer
   nameWithType: D3DImage.SetBackBuffer
 - uid: System.Windows.Interop.D3DImage.TryLock*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "TryLock"
+  name: TryLock
   nameWithType: D3DImage.TryLock
 - uid: System.Windows.Interop.D3DImage.Unlock*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Unlock"
+  name: Unlock
   nameWithType: D3DImage.Unlock
 - uid: System.Windows.Interop.D3DImage.Width*
   parent: System.Windows.Interop.D3DImage
   isExternal: false
-  name: "Width"
+  name: Width
   nameWithType: D3DImage.Width

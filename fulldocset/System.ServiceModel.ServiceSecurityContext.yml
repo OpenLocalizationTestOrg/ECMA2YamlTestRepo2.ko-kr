@@ -19,7 +19,7 @@ items:
   nameWithType: ServiceSecurityContext
   fullName: System.ServiceModel.ServiceSecurityContext
   type: Class
-  summary: "Represents the security context of a remote party. On the client, represents the service identity and, on the service, represents the client identity."
+  summary: "원격 상대방의 보안 컨텍스트를 나타냅니다. 클라이언트에서 서비스 id를 나타내고, 서비스에서 클라이언트 id를 나타냅니다."
   remarks: "The data is part of the <xref:System.ServiceModel.Security.SecurityMessageProperty> for a message.  \n  \n Use this class to obtain information about a remote *security context* at runtime. A security context is created when a client is successfully authenticated and authorized to access a method. When a message is successfully authenticated and authorized, the security information from the client and for the current service instance can be obtained from an instance of this class.  \n  \n You can retrieve an instance of the ServiceSecurityContext from the <xref:System.ServiceModel.OperationContext.Current%2A> property of the <xref:System.ServiceModel.OperationContext> class, or use it from within a service operation method, as shown in the following example.  \n  \n## Parsing a ClaimSet  \n A common use of the class is to retrieve the current set of claims for the purpose of identifying or authorizing a client when accessing a method. The <xref:System.IdentityModel.Claims.ClaimSet> class contains a collection of <xref:System.IdentityModel.Claims.Claim> objects, and each can be parsed to determine whether a specific claim is present. If the specified claim is provided, authorization can be granted. This functionality is provided by overriding the <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> method of the <xref:System.ServiceModel.ServiceAuthorizationManager> class.  For a complete example, see the [Authorization Policy](~/add/includes/ajax-current-ext-md.md).  \n  \n## Cookie Mode and IsAuthenticated  \n Note that under some circumstances, the <xref:System.Security.Principal.IIdentity.IsAuthenticated%2A> property of the <xref:System.Security.Principal.IIdentity> interface returns `true` even if the remote client is authenticated as an anonymous user. (The <xref:System.ServiceModel.ServiceSecurityContext.PrimaryIdentity%2A> property returns an implementation of the <xref:System.Security.Principal.IIdentity> interface.) The following circumstances must be true for this to occur:  \n  \n-   The service uses Windows authentication.  \n  \n-   The service allows anonymous logons.  \n  \n-   The binding is a [\\&lt;customBinding\\&gt;](../Topic/%3CcustomBinding%3E.md).  \n  \n-   The custom binding includes a `<security>` element.  \n  \n-   The `<security>` element includes a [\\&lt;secureConversationBootstrap\\&gt;](../Topic/%3CsecureConversationBootstrap%3E.md) with the `requireSecurityContextCancellation` attribute set to `false`."
   example:
   - "The following example uses the ServiceSecurityContext class to provide information about the current security context. The code creates an instance of the <xref:System.IO.StreamWriter> class to write the information to a file.  \n  \n [!code-vb[ServiceSecurityContext#1](~/add/codesnippet/visualbasic/t-system.servicemodel.se_2_1.vb)]\n [!code-cs[ServiceSecurityContext#1](~/add/codesnippet/csharp/t-system.servicemodel.se_2_1.cs)]  \n  \n The following example shows an implementation of the <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> method that uses the ServiceSecurityContext to parse a set of claims.  \n  \n [!code-vb[ServiceSecurityContext#2](~/add/codesnippet/visualbasic/t-system.servicemodel.se_2_2.vb)]\n [!code-cs[ServiceSecurityContext#2](~/add/codesnippet/csharp/t-system.servicemodel.se_2_2.cs)]"
@@ -43,14 +43,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref> class with the collection of policies object."
-  remarks: "This constructor uses the default policy-chaining engine."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref> 정책 개체의 컬렉션을 사용 하 여 클래스입니다."
+  remarks: "이 생성자는 기본 정책 연결 엔진을 사용합니다."
   syntax:
     content: public ServiceSecurityContext (System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies);
     parameters:
     - id: authorizationPolicies
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;></xref> that contains the authorization policies."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; 형식의 <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;> </xref> 권한 부여 정책에 들어 있는입니다."
   overload: System.ServiceModel.ServiceSecurityContext.#ctor*
   exceptions: []
   platform:
@@ -67,14 +67,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref> class with the specified authorization parameters."
-  remarks: "This constructor is typically used in scenarios where an application runs its own policy-chaining engine, which results in an <xref:System.IdentityModel.Policy.AuthorizationContext>. For the default policy engine, use the constructors that take a collection of <xref:System.IdentityModel.Policy.IAuthorizationPolicy> as parameter."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref> 클래스 지정 된 인증 매개 변수를 사용 합니다."
+  remarks: "이 생성자는 일반적으로 사용 시나리오에서 응용 프로그램 <xref:System.IdentityModel.Policy.AuthorizationContext>.</xref:System.IdentityModel.Policy.AuthorizationContext> 결과 고유한 정책 연결 엔진을 실행 하는 위치 기본 정책 엔진에 대 한 컬렉션을 사용 하는 생성자를 사용 하 여 <xref:System.IdentityModel.Policy.IAuthorizationPolicy>매개 변수로.</xref:System.IdentityModel.Policy.IAuthorizationPolicy>"
   syntax:
     content: public ServiceSecurityContext (System.IdentityModel.Policy.AuthorizationContext authorizationContext);
     parameters:
     - id: authorizationContext
       type: System.IdentityModel.Policy.AuthorizationContext
-      description: "An <xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;></xref> that contains authorization information."
+      description: "<xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;> </xref> 인증 정보를 포함 하는 합니다."
   overload: System.ServiceModel.ServiceSecurityContext.#ctor*
   exceptions: []
   platform:
@@ -91,16 +91,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref> class with the specified authorization parameters and collection of policies."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref> 지정 된 인증 매개 변수 및 정책 컬렉션을 사용 하 여 클래스입니다."
   syntax:
     content: public ServiceSecurityContext (System.IdentityModel.Policy.AuthorizationContext authorizationContext, System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> authorizationPolicies);
     parameters:
     - id: authorizationContext
       type: System.IdentityModel.Policy.AuthorizationContext
-      description: "An <xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;></xref> that contains authorization settings."
+      description: "<xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;> </xref> 권한 부여 설정을 포함 하 합니다."
     - id: authorizationPolicies
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;></xref> that contains the authorization policies."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; 형식의 <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;> </xref> 권한 부여 정책에 들어 있는입니다."
   overload: System.ServiceModel.ServiceSecurityContext.#ctor*
   exceptions: []
   platform:
@@ -117,12 +117,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Returns an instance of the <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref> class that contains an empty collection of claims, identities, and other context data that is usually used to represent an anonymous party."
+  summary: "인스턴스를 반환 된 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref> 클레임, id 및 기타 컨텍스트 데이터가 일반적으로 익명의 상대방을 나타내는 데 사용 되는 빈 컬렉션을 포함 하는 클래스입니다."
   syntax:
     content: public static System.ServiceModel.ServiceSecurityContext Anonymous { get; }
     return:
       type: System.ServiceModel.ServiceSecurityContext
-      description: "An empty instance of the <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref>."
+      description: "빈 인스턴스는 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref>합니다."
   overload: System.ServiceModel.ServiceSecurityContext.Anonymous*
   exceptions: []
   platform:
@@ -139,12 +139,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the authorization information for an instance of this class.  The <xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;></xref> contains a collection of <xref href=&quot;System.IdentityModel.Claims.ClaimSet&quot;></xref> that the application can interrogate and retrieve the information of the party."
+  summary: "이 클래스의 인스턴스에 대 한 인증 정보를 가져옵니다.  <xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;> </xref> 의 컬렉션을 포함 <xref href=&quot;System.IdentityModel.Claims.ClaimSet&quot;> </xref> 응용 프로그램 조사 하 고 파티의 정보를 검색할 수 있습니다."
   syntax:
     content: public System.IdentityModel.Policy.AuthorizationContext AuthorizationContext { get; }
     return:
       type: System.IdentityModel.Policy.AuthorizationContext
-      description: "An <xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;></xref> that contains the authorization settings."
+      description: "<xref href=&quot;System.IdentityModel.Policy.AuthorizationContext&quot;> </xref> 권한 부여 설정이 들어 있는입니다."
   overload: System.ServiceModel.ServiceSecurityContext.AuthorizationContext*
   exceptions: []
   platform:
@@ -161,7 +161,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the collection of policies associated with an instance of this class."
+  summary: "이 클래스의 인스턴스에 연결 된 정책의 컬렉션을 가져옵니다."
   remarks: ''
   example:
   - '[Managing Claims and Authorization with the Identity Model](~/add/includes/ajax-current-ext-md.md)'
@@ -169,7 +169,7 @@ items:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> AuthorizationPolicies { get; set; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;></xref> that contains the policies."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; 형식의 <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;> </xref> 정책이 들어 있는입니다."
   overload: System.ServiceModel.ServiceSecurityContext.AuthorizationPolicies*
   exceptions: []
   platform:
@@ -186,12 +186,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the current <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref>."
+  summary: "현재 가져옵니다 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref>합니다."
   syntax:
     content: public static System.ServiceModel.ServiceSecurityContext Current { get; }
     return:
       type: System.ServiceModel.ServiceSecurityContext
-      description: "The current <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;></xref>."
+      description: "현재 <xref href=&quot;System.ServiceModel.ServiceSecurityContext&quot;> </xref>합니다."
   overload: System.ServiceModel.ServiceSecurityContext.Current*
   exceptions: []
   platform:
@@ -208,12 +208,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets a value that indicates whether the current client has provided credentials to the service."
+  summary: "현재 클라이언트에서 서비스에 대 한 자격 증명을 제공 하는지 여부를 나타내는 값을 가져옵니다."
   syntax:
     content: public bool IsAnonymous { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the client has provided credentials; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클라이언트에서; 자격 증명을 제공 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.ServiceSecurityContext.IsAnonymous*
   exceptions: []
   platform:
@@ -230,15 +230,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the primary identity associated with the current setting."
-  remarks: "The primary identity is obtained from the credentials used to authenticate the current user. If the credential is an X.509 certificate, the identity is a concatenation of the subject name and the thumbprint (in that order). The subject name is separated from the thumbprint with a semicolon and a space. If the subject field of the certificate is `null`, the primary identity includes just a semicolon, a space, and the thumbprint.       When a duplex message exchange pattern is used with Kerberos direct authentication, this property becomes empty on the callback and the claimset is also empty. This does not happen when *SspiNegotiated* is used instead of Kerberos.       The Kerberos Requester Token is used only on the client to represent the service. The authorization policy that it generates contains one claim, an SPN; hence, no identity in the claim. In most cases there is no problem, because <xref:System.ServiceModel.ServiceSecurityContext> is not used on the client. In a duplex scenario during callback, if the callback inspects this property, it gets an anonymous identity."
+  summary: "현재 설정과 연결 된 기본 id를 가져옵니다."
+  remarks: "주 id는 현재 사용자를 인증 하는 데 사용 된 자격 증명에서 가져옵니다. X.509 인증서 자격 증명을 사용 하는 경우 id는 주체 이름과 지문을 순서 대로) (에서 연결입니다. 주체 이름에서 지문을 세미콜론와 공백으로 구분 됩니다. 인증서의 주체 필드 이면 `null`, 주 id만 세미콜론, 공백 및 지문을 포함 합니다.       Kerberos 직접 인증과 함께 이중 메시지 교환 패턴을 사용이 속성은 콜백 시 비어 있고 claimset도 비어 있습니다. 이 문제가 발생 하지 때 *SspiNegotiated* Kerberos 대신 사용 됩니다.       Kerberos Requester Token은에 사용 클라이언트는 서비스를 나타내기 위해. 권한 부여 정책을 생성 하는 SPN 클레임 하나만 포함 따라서 클레임에 id가 없습니다. 대부분의 경우는 아무런 문제가 있으므로 <xref:System.ServiceModel.ServiceSecurityContext>클라이언트에서 사용 되지 않습니다.</xref:System.ServiceModel.ServiceSecurityContext> 콜백 하는 동안 이중 시나리오에서이 속성을 검사 하는 경우 익명 id를 가져옵니다."
   example:
   - 'For an example of using the `PrimaryIdentity` property to authorize a client using a certificate, see [How to: Examine the Security Context](~/add/includes/ajax-current-ext-md.md).'
   syntax:
     content: public System.Security.Principal.IIdentity PrimaryIdentity { get; }
     return:
       type: System.Security.Principal.IIdentity
-      description: "An <xref:System.Security.Principal.IIdentity> associated with the current setting."
+      description: "<xref:System.Security.Principal.IIdentity>현재 설정과 연결 된.</xref:System.Security.Principal.IIdentity>"
   overload: System.ServiceModel.ServiceSecurityContext.PrimaryIdentity*
   exceptions: []
   platform:
@@ -255,15 +255,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the Windows identity of the current setting."
-  remarks: "If the remote party cannot be associated with a Windows account, the <xref:System.Security.Principal.WindowsIdentity.IsAnonymous%2A> property is set to `true`."
+  summary: "현재 설정의 Windows id를 가져옵니다."
+  remarks: "원격 당사자 Windows 계정에 연결할 수 없는 경우는 <xref:System.Security.Principal.WindowsIdentity.IsAnonymous%2A>속성이 `true`.</xref:System.Security.Principal.WindowsIdentity.IsAnonymous%2A>"
   example:
   - "<xref:System.Security.Permissions.PrincipalPermissionAttribute>  \n  \n <xref:System.Security.Principal.IPrincipal>"
   syntax:
     content: public System.Security.Principal.WindowsIdentity WindowsIdentity { get; }
     return:
       type: System.Security.Principal.WindowsIdentity
-      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> that represents the Windows domain user."
+      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> Windows 도메인 사용자를 나타내는입니다."
   overload: System.ServiceModel.ServiceSecurityContext.WindowsIdentity*
   exceptions: []
   platform:

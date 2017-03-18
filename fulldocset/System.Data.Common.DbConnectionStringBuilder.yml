@@ -52,8 +52,8 @@ items:
   nameWithType: DbConnectionStringBuilder
   fullName: System.Data.Common.DbConnectionStringBuilder
   type: Class
-  summary: "Provides a base class for strongly typed connection string builders."
-  remarks: "The DbConnectionStringBuilder class provides the base class from which the strongly typed connection string builders (<xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OleDb.OleDbConnectionStringBuilder>, and so on) derive. The connection string builders let developers programmatically create syntactically correct connection strings, and parse and rebuild existing connection strings.       The DbConnectionStringBuilder has been defined in a database-agnostic manner. Because of the addition of the <xref:System.Data.Common> namespace, developers require a base class against which they can program in order to build connection strings that can work against an arbitrary database. Therefore, the DbConnectionStringBuilder class lets users assign arbitrary key/value pairs and pass the resulting connection string to a strongly typed provider. All the data providers that are included as part of the .NET Framework provide a strongly typed class that inherits from DbConnectionStringBuilder: <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OracleClient.OracleConnectionStringBuilder>, <xref:System.Data.Odbc.OdbcConnectionStringBuilder>, and <xref:System.Data.OleDb.OleDbConnectionStringBuilder>.       The developer can build, assign, and edit connection strings for any arbitrary provider. For providers that support specific key/value pairs, the connection string builder provides strongly typed properties corresponding to the known pairs. In order to support providers that require the ability to support unknown values, developers can also supply arbitrary key/value pairs.       The DbConnectionStringBuilder class implements the <xref:System.ComponentModel.ICustomTypeDescriptor> interface. This means that the class works with Visual Studio designers at design time. When developers use the designer to build strongly typed DataSets and strongly typed connections within Visual Studio, the strongly typed connection string builder class will display the properties associated with its type and will also have converters that can map common values for known keys.       Developers needing to create connection strings as part of applications can use the DbConnectionStringBuilder class or one of its strongly typed derivatives to build and modify connection strings. The DbConnectionStringBuilder class also makes it easy to manage connection strings stored in an application configuration file.       Developers can create connection strings using either a strongly typed connection string builder class, or they can use the DbConnectionStringBuilder class. The DbConnectionStringBuilder performs no checks for valid key/value pairs. Therefore, it is possible using this class to create invalid connection strings. The <xref:System.Data.SqlClient.SqlConnectionStringBuilder> supports only key/value pairs that are supported by SQL Server; trying to add invalid pairs will throw an exception.       Both the <xref:System.Data.Common.DbConnectionStringBuilder.Add%2A> method and <xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> property handle tries to insert malicious entries. For example, the following code correctly escapes the nested key/value pair:       [Visual Basic]      ```   Dim builder As New System.Data.Common.DbConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;integrated sSecurity&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   ```       [C#]      ```   System.Data.Common.DbConnectionStringBuilder builder =        new System.Data.Common.DbConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   ```       The result is the following connection string that handles the invalid value in a safe manner:      ```   data source=(local);integrated security=True;   initial catalog=&quot;AdventureWorks;NewValue=Bad&quot;   ```"
+  summary: "강력한 형식의 연결 문자열 작성기는 기본 클래스를 제공합니다."
+  remarks: "기본 클래스를 강력한 형식의 연결 문자열 작성기를 제공 하는 DbConnectionStringBuilder 클래스 (<xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OleDb.OleDbConnectionStringBuilder>등) 파생.</xref:System.Data.OleDb.OleDbConnectionStringBuilder> </xref:System.Data.SqlClient.SqlConnectionStringBuilder> 연결 문자열 작성기에는 개발자 프로그래밍 방식으로 올바른 구문의 연결 문자열을 만들고 및 구문 분석 하 고 기존 연결 문자열을 다시 작성할 수 있습니다.       DbConnectionStringBuilder 데이터베이스를 알 수 없는 방식으로 정의 되었습니다. 추가 <xref:System.Data.Common>네임 스페이스, 개발자는 임의의 데이터베이스에 대해 작동할 수 있는 연결 문자열을 작성 하기 위해 프로그래밍할 수 있는 기본 클래스를 필요로 합니다.</xref:System.Data.Common> 따라서 DbConnectionStringBuilder 클래스에는 사용자를 임의의 키/값 쌍을 지정 하 고 강력한 형식의 공급자에 게 결과 연결 문자열을 전달할 수 있습니다. .NET Framework의 일부분으로 포함 된 모든 데이터 공급자는 DbConnectionStringBuilder에서 상속 되는 강력한 형식의 클래스를 제공: <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, <xref:System.Data.OracleClient.OracleConnectionStringBuilder>, <xref:System.Data.Odbc.OdbcConnectionStringBuilder>, 및 <xref:System.Data.OleDb.OleDbConnectionStringBuilder>.</xref:System.Data.OleDb.OleDbConnectionStringBuilder> </xref:System.Data.Odbc.OdbcConnectionStringBuilder> </xref:System.Data.OracleClient.OracleConnectionStringBuilder> </xref:System.Data.SqlClient.SqlConnectionStringBuilder>       개발자 작성 하 고 할당 하 고 임의의 공급자에 대 한 연결 문자열을 편집할 수 있습니다. 특정 키/값 쌍을 지 원하는 공급자에 대 한 연결 문자열 작성기 알려진된 쌍에 해당 하는 강력한 형식의 속성을 제공 합니다. 알 수 없는 값을 지원할 수 있어야 하는 공급자를 지원 하기 위해 개발자는 임의 키/값 쌍을 제공할 수도 있습니다.       DbConnectionStringBuilder 클래스가 구현 하는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> 이 클래스는 디자인 타임에 Visual Studio 디자이너에 작동 한다는 것을 의미 합니다. 개발자는 디자이너를 사용 하 여 강력한 형식의 데이터 집합 및 Visual Studio 내에서 강력한 형식의 연결을 만들려는, 강력한 형식의 연결 문자열 작성기 클래스는은 형식과 연결 된 속성을 표시 하 고 알려진된 키에 대 한 공통 값을 매핑할 수 있는 변환기를 가집니다.       응용 프로그램의 일부분으로 연결 문자열을 만들어야 하 개발자는 연결 문자열을 작성 및 수정할 DbConnectionStringBuilder 클래스 또는 해당 강력한 형식의 파생 항목 중 하나를 사용할 수 있습니다. 또한 DbConnectionStringBuilder 클래스에서는 응용 프로그램 구성 파일에 저장 된 연결 문자열을 관리 하기가 쉽습니다.       개발자는 강력한 형식의 연결 문자열 작성기 클래스를 사용 하 여 연결 문자열을 만들 수 있습니다 또는 DbConnectionStringBuilder 클래스를 사용할 수 있습니다. DbConnectionStringBuilder 유효한 키/값 쌍에 대 한 검사를 수행합니다. 따라서이 클래스를 사용 하 여 잘못 된 연결 문자열을 만드는 것이 있습니다. <xref:System.Data.SqlClient.SqlConnectionStringBuilder>지원만 키/값 쌍 SQL Server에서 지 원하는; 잘못 된 쌍을 추가 하려고 하면 예외가 throw 됩니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder>       둘 다는 <xref:System.Data.Common.DbConnectionStringBuilder.Add%2A>메서드 및 <xref:System.Data.Common.DbConnectionStringBuilder.Item%2A>속성 핸들 악의적인 항목을 삽입 하려고 합니다.</xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> </xref:System.Data.Common.DbConnectionStringBuilder.Add%2A> 예를 들어 다음 코드는 중첩 된 키/값 쌍을 올바르게 이스케이프: [Visual Basic] ```   Dim builder As New System.Data.Common.DbConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;integrated sSecurity&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   ``` [C#] ```   System.Data.Common.DbConnectionStringBuilder builder =        new System.Data.Common.DbConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   ``` 결과 안전한 방법으로 잘못 된 값을 처리 하는 다음 연결 문자열:```   data source=(local);integrated security=True;   initial catalog=&quot;AdventureWorks;NewValue=Bad&quot;   ```"
   example:
   - "The following console application builds two connection strings, one for a Microsoft Jet database, and one for a [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] database. In each case, the code uses a generic DbConnectionStringBuilder class to create the connection string, and then passes the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property of the DbConnectionStringBuilder instance to the constructor of the strongly type connection class. This is not required; the code could also have created individual strongly typed connection string builder instances. The example also parses an existing connection string, and demonstrates various ways of manipulating the connection string's contents.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder#1](~/add/codesnippet/visualbasic/t-system.data.common.dbc_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder#1](~/add/codesnippet/csharp/t-system.data.common.dbc_1.cs)]"
   syntax:
@@ -78,7 +78,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 클래스입니다."
   syntax:
     content: public DbConnectionStringBuilder ();
     parameters: []
@@ -98,14 +98,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> class, optionally using ODBC rules for quoting values."
-  remarks: "If `useOdbcRules` is `true`, this <xref:System.Data.Common.DbConnectionStringBuilder> uses ODBC rules for quoting values (surrounding values with curly braces ({})). If `useOdbcRules` is `false`, this <xref:System.Data.Common.DbConnectionStringBuilder> uses quotation mark character (&quot;&quot;) to delimit values."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 클래스, 필요에 따라 값을 따옴표로 ODBC 규칙을 사용 합니다."
+  remarks: "경우 `useOdbcRules` 은 `true`,이 <xref:System.Data.Common.DbConnectionStringBuilder>ODBC 규칙을 사용 하 여 값 (중괄호 ({})를 사용 하 여 값을 둘러싼) 따옴표로.</xref:System.Data.Common.DbConnectionStringBuilder> 경우 `useOdbcRules` 은 `false`,이 <xref:System.Data.Common.DbConnectionStringBuilder>인용 부호 문자를 사용 하 여 (&quot;&quot;)를 값을 구분 합니다.</xref:System.Data.Common.DbConnectionStringBuilder>"
   syntax:
     content: public DbConnectionStringBuilder (bool useOdbcRules);
     parameters:
     - id: useOdbcRules
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use {} to delimit fields; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to use quotation marks."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>{}; 필드를 구분 하는 데 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 따옴표를 사용 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.#ctor*
   exceptions: []
   platform:
@@ -122,8 +122,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Adds an entry with the specified key and value into the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The <xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> property can also be used to add new elements by setting the value of a key that does not exist in the dictionary. For example: `myCollection[&quot;myNonexistentKey&quot;] = myValue`.       Calling the Add method by passing a null (`Nothing` in Visual Basic) key throws an <xref:System.ArgumentNullException>. However, calling the Add method by passing a null value removes the key/value pair."
+  summary: "지정 된 키와 값에 항목을 추가 하는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "<xref:System.Data.Common.DbConnectionStringBuilder.Item%2A>속성 사전에 존재 하지 않는 키의 값을 설정 하 여 새 요소를 추가 하려면 사용할 수도 있습니다.</xref:System.Data.Common.DbConnectionStringBuilder.Item%2A> 예: `myCollection[&quot;myNonexistentKey&quot;] = myValue`.       Null을 전달 하 여 Add 메서드를 호출 (`Nothing` Visual basic에서) 키 <xref:System.ArgumentNullException>.</xref:System.ArgumentNullException> 를 throw 합니다. 그러나 null 값을 전달 하 여 Add 메서드를 호출 합니다. 키/값 쌍을 제거 합니다."
   example:
   - "The following example creates a new <xref:System.Data.Common.DbConnectionStringBuilder> and adds items. The code also demonstrates overwriting an existing item using the Add method, and includes a commented block that would throw an <xref:System.ArgumentNullException>.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Add#1](~/add/codesnippet/csharp/m-system.data.common.dbc_2_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Add#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_2_1.vb)]"
   syntax:
@@ -131,18 +131,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to add to the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "추가할 키는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
     - id: value
       type: System.Object
-      description: "The value for the specified key."
+      description: "지정된 된 키에 대 한 값입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.Add*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only.       -or-       The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 읽기 전용입니다.       -또는- <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 크기가 고정된 되어 있습니다."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair(System.Text.StringBuilder,System.String,System.String)
@@ -157,8 +157,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Provides an efficient and safe way to append a key and value to an existing <xref:System.Text.StringBuilder> object."
-  remarks: "This method allows developers using a <xref:System.Text.StringBuilder> to create a collection of key/value pairs to be able to take advantage of the features included in the <xref:System.Data.Common.DbConnectionStringBuilder> class when you add key/value pairs, without having to incur the overhead of creating and maintaining a <xref:System.Data.Common.DbConnectionStringBuilder> instance. The `AppendKeyValuePair` method formats the key and value correctly and adds the new string to the supplied <xref:System.Text.StringBuilder>."
+  summary: "기존 키와 값을 추가 하는 효율적이 고 안전한 방법을 제공 <xref:System.Text.StringBuilder>개체입니다.</xref:System.Text.StringBuilder>"
+  remarks: "이 메서드를 사용 하면 사용 하는 개발자는 <xref:System.Text.StringBuilder>에 포함 된 기능을 활용할 수 있는 키/값 쌍의 컬렉션을 만들 수는 <xref:System.Data.Common.DbConnectionStringBuilder>만들고 유지 관리 오버 헤드를 발생 시 키 지 않고도 키/값 쌍을 추가 하면 클래스는 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스.</xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Text.StringBuilder> `AppendKeyValuePair` 메서드 키와 값의 서식을 올바르게 지정 하 고 <xref:System.Text.StringBuilder>.</xref:System.Text.StringBuilder> 제공 된 새 문자열을 추가 합니다."
   example:
   - "If some process has created a connection string, but now an application must perform a simple modification to that connection string, it may be more efficient to just add the key/value pair using a <xref:System.Text.StringBuilder> object. Instead of creating a new <xref:System.Data.Common.DbConnectionStringBuilder>, developers can call the `AppendKeyValuePair` method, passing in a <xref:System.Text.StringBuilder> that contains the supplied connection string. The following procedure shows a simple example of this technique.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/visualbasic/e421ac0e-e4f4-4507-b485-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/csharp/e421ac0e-e4f4-4507-b485-_1.cs)]"
   syntax:
@@ -166,13 +166,13 @@ items:
     parameters:
     - id: builder
       type: System.Text.StringBuilder
-      description: "The <xref:System.Text.StringBuilder> to which to add the key/value pair."
+      description: "<xref:System.Text.StringBuilder>를 키/값 쌍을 추가할.</xref:System.Text.StringBuilder>"
     - id: keyword
       type: System.String
-      description: "The key to be added."
+      description: "키를 추가 해야 합니다."
     - id: value
       type: System.String
-      description: "The value for the supplied key."
+      description: "제공된 된 키에 대 한 값입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair*
   exceptions: []
   platform:
@@ -189,8 +189,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Provides an efficient and safe way to append a key and value to an existing <xref:System.Text.StringBuilder> object."
-  remarks: "This method allows developers using a <xref:System.Text.StringBuilder> to create a collection of key/value pairs to be able to take advantage of the features included in the <xref:System.Data.Common.DbConnectionStringBuilder> class when adding key/value pairs, without having to incur the overhead of creating and maintaining a <xref:System.Data.Common.DbConnectionStringBuilder> instance. The `AppendKeyValuePair` method formats the key and value correctly and adds the new string to the supplied <xref:System.Text.StringBuilder>.       Although most data sources let you delimit fields by using quotation marks, ODBC does not--for ODBC connection strings, you must use curly braces ({}). In order to have the <xref:System.Data.Common.DbConnectionStringBuilder> use ODBC rules for delimiting fields, set the `useOdbcRules` parameter to `true`."
+  summary: "기존 키와 값을 추가 하는 효율적이 고 안전한 방법을 제공 <xref:System.Text.StringBuilder>개체입니다.</xref:System.Text.StringBuilder>"
+  remarks: "이 메서드를 사용 하면 사용 하는 개발자는 <xref:System.Text.StringBuilder>에 포함 된 기능을 활용할 수 있는 키/값 쌍의 컬렉션을 만들 수는 <xref:System.Data.Common.DbConnectionStringBuilder>만들고 유지 관리 오버 헤드를 발생 시 키 지 않고도 키/값 쌍을 추가 하는 경우 클래스는 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스.</xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Data.Common.DbConnectionStringBuilder> </xref:System.Text.StringBuilder> `AppendKeyValuePair` 메서드 키와 값의 서식을 올바르게 지정 하 고 <xref:System.Text.StringBuilder>.</xref:System.Text.StringBuilder> 제공 된 새 문자열을 추가 합니다.       하지만 대부분의 데이터 원본 인용 부호를 사용 하 여 필드를 구분할 수 있도록, ODBC는 그렇지 않습니다-ODBC 연결 문자열에 대 한 중괄호 ({})을 사용 해야 합니다. 가지려면는 <xref:System.Data.Common.DbConnectionStringBuilder>ODBC 규칙을 사용 하 여 필드를 구분 하기 위해, 설정 된 `useOdbcRules` 매개 변수를 `true`.</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "If some process has created a connection string, but now an application must perform a simple modification to that connection string, it might be more efficient to just add the key/value pair using a <xref:System.Text.StringBuilder> object. Instead of creating a new <xref:System.Data.Common.DbConnectionStringBuilder>, developers can call the `AppendKeyValuePair` method, passing in a <xref:System.Text.StringBuilder> that contains the supplied connection string. The following procedure shows a simple example of this technique, using ODBC rules for quoting values.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/visualbasic/31ca61c1-3423-442a-ba0e-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.AppendKeyValuePair#1](~/add/codesnippet/csharp/31ca61c1-3423-442a-ba0e-_1.cs)]"
   syntax:
@@ -198,16 +198,16 @@ items:
     parameters:
     - id: builder
       type: System.Text.StringBuilder
-      description: "The <xref:System.Text.StringBuilder> to which to add the key/value pair."
+      description: "<xref:System.Text.StringBuilder>를 키/값 쌍을 추가할.</xref:System.Text.StringBuilder>"
     - id: keyword
       type: System.String
-      description: "The key to be added."
+      description: "키를 추가 해야 합니다."
     - id: value
       type: System.String
-      description: "The value for the supplied key."
+      description: "제공된 된 키에 대 한 값입니다."
     - id: useOdbcRules
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use {} to delimit fields, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to use quotation marks."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>{}를 사용 하 여 필드를 구분 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 따옴표를 사용 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.AppendKeyValuePair*
   exceptions: []
   platform:
@@ -224,13 +224,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets a value that indicates whether the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property is visible in Visual Studio designers."
-  remarks: "Developers creating designers that take advantage of the <xref:System.Data.Common.DbConnectionStringBuilder> class must be able to make the connection string visible or invisible within the designer&quot;s property grid. The BrowsableConnectionString property lets developers indicate that the property should be invisible by setting the property to `false`."
+  summary: "표시 하는 값을 가져오거나 설정 합니다. 여부는 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>속성은 Visual Studio 디자이너에 표시 됩니다.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
+  remarks: "사용 하는 디자이너를 만드는 개발자는 <xref:System.Data.Common.DbConnectionStringBuilder>클래스 표시 되거나 숨겨지도록 디자이너의 속성 표 내에서 연결 문자열을 만들 수 있어야 합니다.</xref:System.Data.Common.DbConnectionStringBuilder> BrowsableConnectionString 속성 통해 개발자는 속성이 표시 되지 않아야는 속성을 설정 하 여 나타낼 `false`합니다."
   syntax:
     content: public bool BrowsableConnectionString { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection string is visible within designers; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>연결 문자열이 디자이너에 표시 되는 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 그렇지 않은 경우. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.BrowsableConnectionString*
   exceptions: []
   platform:
@@ -247,8 +247,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Clears the contents of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "The Clear method removes all key/value pairs from the <xref:System.Data.Common.DbConnectionStringBuilder> and resets all corresponding properties. This includes setting the <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A> property to 0 and the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property to an empty string."
+  summary: "내용을 지웁니다는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "모든 키/값 쌍을 제거 하는 Clear 메서드는 <xref:System.Data.Common.DbConnectionStringBuilder>하 고 해당 속성을 모두 다시 설정 합니다.</xref:System.Data.Common.DbConnectionStringBuilder> 설정을 여기에 <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>속성을 0 및 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A>속성을 빈 문자열로.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> </xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>"
   syntax:
     content: public virtual void Clear ();
     parameters: []
@@ -256,7 +256,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 읽기 전용입니다."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ClearPropertyDescriptors
@@ -271,8 +271,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Clears the collection of <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> objects on the associated <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "This method is used by designers to clear all associated property descriptors on the <xref:System.Data.Common.DbConnectionStringBuilder>."
+  summary: "컬렉션을 지웁니다 <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> 개체에 연결 된 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "이 메서드는 디자이너에 의해 <xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder> 모든 연결 된 속성 설명자를 지우는 데 사용 됩니다."
   syntax:
     content: protected void ClearPropertyDescriptors ();
     parameters: []
@@ -292,20 +292,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the connection string associated with the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "This property returns a semicolon-delimited list of key/value pairs stored within the collection maintained by the <xref:System.Data.Common.DbConnectionStringBuilder>. Each pair contains the key and value, separated by an equal sign. The following example illustrates a typical connection string.      ```   &quot;Persist Security Info=False;Integrated Security=SSPI;Initial Catalog=AdventureWorks;Data Source=(local)&quot;   ```       Data providers may expect specific keys and values for each connection string property. , These values are documented individually. The <xref:System.Data.Common.DbConnectionStringBuilder> class does not validate the key/value pairs associated with its connection string, although classes that inherit from it can.       The ConnectionString property of the <xref:System.Data.Common.DbConnectionStringBuilder> class acts generally as a mechanism for creating and parsing semicolon-delimited lists of key/value pairs separated with equal signs. It provides no validation or other support specific to connection strings. If you add items to the <xref:System.Data.Common.DbConnectionStringBuilder> collection, the ConnectionString property will reflect the changes. If you assign a value to the ConnectionString property, the <xref:System.Data.Common.DbConnectionStringBuilder> will try to parse the value, using the semicolon and equal-sign delimiters."
+  summary: "관련 된 연결 문자열을 가져오거나 설정 합니다.는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "이 속성에 <xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder> 유지 하는 컬렉션 내에 저장 된 키/값 쌍의 세미콜론으로 구분 된 목록을 반환합니다 키와 값으로 등호로 구분 된 각 쌍에 포함 되어 있습니다. 다음 예제에서는 일반적인 연결 문자열을 보여 줍니다.      ```   &quot;Persist Security Info=False;Integrated Security=SSPI;Initial Catalog=AdventureWorks;Data Source=(local)&quot;   ```데이터 공급자는 특정 키와 각 연결 문자열 속성에 대 한 값으로 예상할 수 있습니다. 이러한 값을 개별적으로 문서화 됩니다. <xref:System.Data.Common.DbConnectionStringBuilder>클래스에서 상속 하는 클래스 있지만 해당 연결 문자열과 관련 된 키/값 쌍을 확인 하지 않습니다 가능한</xref:System.Data.Common.DbConnectionStringBuilder>       ConnectionString 속성의 <xref:System.Data.Common.DbConnectionStringBuilder>클래스 역할을 만들기 위한 메커니즘을 일반적으로 및 등호로 구분 된 키/값 쌍의 세미콜론으로 구분 된 목록을 구문 분석 합니다.</xref:System.Data.Common.DbConnectionStringBuilder> 유효성을 검사 하지 또는 연결 문자열에 특정 기타 지원을 제공합니다. 항목을 추가 하는 경우는 <xref:System.Data.Common.DbConnectionStringBuilder>컬렉션 ConnectionString 속성에는 변경 내용이 반영 됩니다.</xref:System.Data.Common.DbConnectionStringBuilder> ConnectionString 속성에 값을 할당 하는 경우는 <xref:System.Data.Common.DbConnectionStringBuilder>세미콜론 및 등호 구분 기호를 사용 하 여 값을 구문 분석 하려고 합니다.</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "The following example demonstrates possible behaviors of the ConnectionString property. The example:  \n  \n-   Creates a connection string by adding key/value pairs, one at a time, to an empty <xref:System.Data.Common.DbConnectionStringBuilder>.  \n  \n-   Assigns a complete connection string to the ConnectionString property of the <xref:System.Data.Common.DbConnectionStringBuilder> instance, and modifies a single key/value pair within the string.  \n  \n-   Assigns an arbitrary set of key/value pairs to the ConnectionString property (that is, a string that is not anything remotely like a connection string), and modifies one of the values.  \n  \n-   Assigns an invalid connection string to the ConnectionString property, demonstrating the exception that is thrown.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.ConnectionString#1](~/add/codesnippet/csharp/p-system.data.common.dbc_4_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.ConnectionString#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_4_1.vb)]"
   syntax:
     content: public string ConnectionString { get; set; }
     return:
       type: System.String
-      description: "The current connection string, created from the key/value pairs that are contained within the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>. The default value is an empty string."
+      description: "에 포함 된 키/값 쌍에서 만든 현재 연결 문자열에서 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다. 기본값은 빈 문자열입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.ConnectionString*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An invalid connection string argument has been supplied."
+    description: "잘못 된 연결 문자열 인수가 제공 되었습니다."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ContainsKey(System.String)
@@ -320,7 +320,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Determines whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains a specific key."
+  summary: "결정 여부는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 특정 키가 들어 있습니다."
   remarks: ''
   example:
   - "[!code-vb[DataWorks DbConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_1_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/csharp/m-system.data.common.dbc_1_1.cs)]  \n  \n This code produces the following output:  \n  \n```  \nContents of the DbConnectionStringBuilder:  \nprovider=\"Provider=Microsoft.Jet.OLEDB.4.0\";data   \nsource=C:\\MyExcel.xls;extended  \nproperties=\"Excel 8.0;HDR=Yes;IMEX=1\"  \nThe collection contains the key \"Data Source\".  \n```"
@@ -329,15 +329,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "찾을 수 있는 키의 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains an entry with the specified key; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 지정 된 항목이 고, 그렇지 않으면 키 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Count
@@ -352,7 +352,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets the current number of keys that are contained within the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property."
+  summary: "에 포함 된 키의 현재 수를 가져옵니다는 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>속성.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
   remarks: ''
   example:
   - "The following example demonstrates the Count property both before and after you modify the contents of the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Count#1](~/add/codesnippet/csharp/p-system.data.common.dbc_3_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Count#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_3_1.vb)]"
@@ -360,7 +360,7 @@ items:
     content: public virtual int Count { get; }
     return:
       type: System.Int32
-      description: "The number of keys that are contained within the connection string maintained by the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
+      description: "유지 관리 하는 연결 문자열에 포함 된 키의 수는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 인스턴스."
   overload: System.Data.Common.DbConnectionStringBuilder.Count*
   exceptions: []
   platform:
@@ -377,8 +377,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Compares the connection information in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> object with the connection information in the supplied object."
-  remarks: "Comparisons on key names are case insensitive; value comparisons are case sensitive.       The EquivalentTo method returns `true` if the key/value pairs are equal, regardless of their order. The connection behavior of the two connection strings are equivalent, because order is never significant within connection strings. However, different order may affect connection pooling behavior of connections based on these connection strings."
+  summary: "이 연결 정보를 비교 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 제공된 된 개체에 연결 정보를 포함 하는 개체입니다."
+  remarks: "키 이름에는 비교는 대/소문자를 구분 합니다. 값 비교는 대/소문자 구분.       EquivalentTo 메서드 반환 `true` 경우 키/값 쌍은 순서에 관계 없이 같지 않습니다. 순서는 연결 문자열 내에서 중요 하지 때문에 두 개의 연결 문자열의 연결 동작은 동일 합니다. 그러나 다른 순서로이 연결 문자열에 따라 연결의 연결 풀링 동작에 영향을 줄 수 있습니다."
   example:
   - "[!code-cs[DataWorks DbConnectionStringBuilder.EquivalentTo#1](~/add/codesnippet/csharp/ba55717a-b396-4bcd-8bca-_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.EquivalentTo#1](~/add/codesnippet/visualbasic/ba55717a-b396-4bcd-8bca-_1.vb)]  \n  \n This sample displays the following output:  \n  \n```  \nbuilder1 = value1=SomeValue;value2=20;value3=30;value4=40  \nbuilder2 = value2=20;value3=30;value4=40;value1=SomeValue  \nbuilder3 = value2=20;value3=30;value4=40;value1=SOMEVALUE  \nbuilder1.EquivalentTo(builder2) = True  \nbuilder2.EquivalentTo(builder3) = False  \n```"
   syntax:
@@ -386,10 +386,10 @@ items:
     parameters:
     - id: connectionStringBuilder
       type: System.Data.Common.DbConnectionStringBuilder
-      description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> to be compared with this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> object."
+      description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 이과 비교 하기 위해 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 개체입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection information in both of the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> objects causes an equivalent connection string; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 모두에서 연결 정보는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 개체는 동일한 연결 문자열을 사용 하면 고, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.EquivalentTo*
   exceptions: []
   platform:
@@ -406,13 +406,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Fills a supplied <xref href=&quot;System.Collections.Hashtable&quot;></xref> with information about all the properties of this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+  summary: "제공 된 채웁니다 <xref href=&quot;System.Collections.Hashtable&quot;> </xref> 이의 모든 속성에 대 한 정보로 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
   syntax:
     content: protected virtual void GetProperties (System.Collections.Hashtable propertyDescriptors);
     parameters:
     - id: propertyDescriptors
       type: System.Collections.Hashtable
-      description: "The <xref href=&quot;System.Collections.Hashtable&quot;></xref> to be filled with information about this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref href=&quot;System.Collections.Hashtable&quot;> </xref> 이 대 한 정보로 채울 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.GetProperties*
   exceptions: []
   platform:
@@ -429,13 +429,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
-  remarks: "A fixed-size collection does not allow adding or removing elements after the collection is created, but it does allow modifying existing elements.       A fixed-size collection is just a collection with a wrapper that prevents adding and removing elements; therefore, if changes are made to the underlying collection, including adding or removing elements, the fixed-size collection reflects those changes."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 크기가 고정된 되어 있습니다."
+  remarks: "고정 크기 컬렉션 추가 또는 컬렉션을 만든 후 기존 요소를 수정할 수는 요소를 제거할 수 없습니다.       크기가 고정 된 컬렉션은 요소; 추가 및 제거를 방지 하는 래퍼가 있는 컬렉션 따라서 추가 또는 제거 하는 요소를 포함 하 여 내부 컬렉션을 변경 하는 경우 고정 크기 컬렉션에 해당 변경 내용을 반영 합니다."
   syntax:
     content: public virtual bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 고정 크기, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.IsFixedSize*
   exceptions: []
   platform:
@@ -452,13 +452,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only."
-  remarks: "A read-only collection does not allow adding, removing, or modifying elements after the collection is created.       A read-only collection is just a collection with a wrapper that prevents modifying the collection; therefore, if changes are made to the underlying collection, the read-only collection reflects those changes."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 읽기 전용입니다."
+  remarks: "읽기 전용 컬렉션 추가, 제거 또는 컬렉션을 만든 다음 요소를 수정할 수 없습니다.       읽기 전용 컬렉션은 컬렉션; 수정을 방지 하는 래퍼를 있는 컬렉션 따라서 기본 컬렉션이 변경 될 경우 읽기 전용 컬렉션 해당 변경 내용을 반영 합니다."
   syntax:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 읽기 전용이 아니면이 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.IsReadOnly*
   exceptions: []
   platform:
@@ -475,8 +475,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the value associated with the specified key."
-  remarks: "When you set this property, if the specified key already exists in the dictionary, the value is replaced; otherwise, a new element is created."
+  summary: "지정된 된 키와 연결 된 값을 가져오거나 설정 합니다."
+  remarks: "지정된 된 키가 사전에 이미 있는 경우이 속성을 설정 하면 해당 값이 바뀝니다. 그렇지 않으면 새 요소가 만들어집니다."
   example:
   - "The following console application creates a new <xref:System.Data.Common.DbConnectionStringBuilder> and adds key/value pairs to its connection string, using the Item property.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Item#1](~/add/codesnippet/csharp/p-system.data.common.dbc_0_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Item#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_0_1.vb)]"
   syntax:
@@ -484,18 +484,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to get or set."
+      description: "가져오거나 설정할 항목의 키입니다."
     return:
       type: System.Object
-      description: "The value associated with the specified key. If the specified key is not found, trying to get it returns a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic), and trying to set it creates a new element using the specified key.       Passing a null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic) key throws an <xref:System.ArgumentNullException>. Assigning a null value removes the key/value pair."
+      description: "지정된 된 키와 연결 된 값입니다. 지정된 된 키가 없는 경우 null 참조를 반환을 가져오는 것 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서), 지정된 된 키를 사용 하 여 새 요소를 만듭니다 설정 하려고 합니다.       Null을 전달 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서) 키 <xref:System.ArgumentNullException>.</xref:System.ArgumentNullException> 를 throw 합니다. Null 값을 지정 된 키/값 쌍을 제거 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The property is set, and the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only.       -or-       The property is set, <code>keyword</code> does not exist in the collection, and the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "속성이 설정 되어 및 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 읽기 전용입니다.       -또는-속성이 설정 되어, <code> keyword </code> 컬렉션에 존재 하지 않는 및 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 크기가 고정된 되어 있습니다."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Keys
@@ -510,15 +510,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated values in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> property.       The returned <xref:System.Collections.ICollection> is not a static copy; instead, the <xref:System.Collections.ICollection> refers back to the keys in the original <xref:System.Data.Common.DbConnectionStringBuilder>. Therefore, changes to the <xref:System.Data.Common.DbConnectionStringBuilder> are reflected in the <xref:System.Collections.ICollection>."
+  summary: "가져옵니다는 <xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
+  remarks: "에 있는 값의 순서는 <xref:System.Collections.ICollection>지정 되어 있지에 연결 된 값과 순서가 동일 하지만 <xref:System.Collections.ICollection>에서 반환 되는 <xref:System.Data.Common.DbConnectionStringBuilder.Values%2A>속성.</xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>       반환 된 <xref:System.Collections.ICollection>정적 복사 하지 않습니다; 대신 <xref:System.Collections.ICollection>원래 <xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder> 의 키를 다시 참조할</xref:System.Collections.ICollection> </xref:System.Collections.ICollection> 따라서 <xref:System.Data.Common.DbConnectionStringBuilder> <xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> 에 반영 된</xref:System.Data.Common.DbConnectionStringBuilder> 변경"
   example:
   - "The following console application example creates a new <xref:System.Data.Common.DbConnectionStringBuilder>, and adds some keys. The code loops through the <xref:System.Collections.ICollection> returned by the Keys property displaying the key/value pairs, and then adds a new key. Because the Keys property returns a dynamic <xref:System.Collections.ICollection>, the second loop displays all the key/value pairs, including the newest item.  \n  \n [!code-cs[DataWorks DbConnectionStringBuilder.Keys#1](~/add/codesnippet/csharp/p-system.data.common.dbc_2_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Keys#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_2_1.vb)]"
   syntax:
     content: public virtual System.Collections.ICollection Keys { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.Keys*
   exceptions: []
   platform:
@@ -535,8 +535,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Removes the entry with the specified key from the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "Because the Remove method returns a value that indicates its success, it is not required to look for the key before trying to remove the key/value pair from the <xref:System.Data.Common.DbConnectionStringBuilder> instance."
+  summary: "지정된 된 키를 가지는 엔트리를 제거는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "Remove 메서드 성공 여부를 나타내는 값을 반환 하기 때문에 필요는 없습니다 키/값 쌍을 제거 하려고 하기 전에 키에 대 한 조회 하는 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스.</xref:System.Data.Common.DbConnectionStringBuilder>"
   example:
   - "[!code-cs[DataWorks DbConnectionStringBuilder.Remove#1](~/add/codesnippet/csharp/m-system.data.common.dbc_0_1.cs)]\n [!code-vb[DataWorks DbConnectionStringBuilder.Remove#1](~/add/codesnippet/visualbasic/m-system.data.common.dbc_0_1.vb)]  \n  \n This sample displays the following output:  \n  \n```  \nRemoved 'Provider'  \ndata source=C:\\Demo.mdb;jet oledb:system database=system.mdw  \nUnable to remove 'User ID'  \ndata source=C:\\Demo.mdb;jet oledb:system database=system.mdw  \nRemoved 'DATA SOURCE'  \njet oledb:system database=system.mdw  \n```"
   syntax:
@@ -544,18 +544,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the key/value pair to be removed from the connection string in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "이 연결 문자열에서 제거할 키/값 쌍의 키 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the key existed within the connection string and was removed; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the key did not exist."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>키 연결 문자열 내에 존재 하 고 제거 되었습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 존재 하지 않았습니다."
   overload: System.Data.Common.DbConnectionStringBuilder.Remove*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)"
+    description: "<code>keyword</code>null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)"
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> is read-only, or the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> has a fixed size."
+    description: "<xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 는 읽기 전용 또는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 크기가 고정된 되어 있습니다."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.ShouldSerialize(System.String)
@@ -570,17 +570,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Indicates whether the specified key exists in this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> instance."
-  remarks: "This method behaves identically to the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method."
+  summary: "이 지정된 된 키가 있는지 여부를 나타냅니다. <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "이 메서드는 동일 하 게 동작의 <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>메서드.</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>"
   syntax:
     content: public virtual bool ShouldSerialize (string keyword);
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "찾을 수 있는 키의 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref> contains an entry with the specified key; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref> 지정 된 항목이 고, 그렇지 않으면 키 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.ShouldSerialize*
   exceptions: []
   platform:
@@ -598,17 +598,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Copies the elements of the <xref:System.Collections.ICollection> to an <xref:System.Array>, starting at a particular <xref:System.Array> index."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For a description of this member, see <xref:System.Collections.ICollection.CopyTo%2A>."
+  summary: "요소에 복사는 <xref:System.Collections.ICollection>에 <xref:System.Array>특정에서 시작 하는 <xref:System.Array>인덱스.</xref:System.Array> </xref:System.Array> </xref:System.Collections.ICollection>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.ICollection>인터페이스.</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.Collections.ICollection.CopyTo%2A>.</xref:System.Collections.ICollection.CopyTo%2A>"
   syntax:
     content: void ICollection.CopyTo (Array array, int index);
     parameters:
     - id: array
       type: System.Array
-      description: "The one-dimensional <xref:System.Array> that is the destination of the elements copied from <xref:System.Collections.ICollection>. The <xref:System.Array> must have zero-based indexing."
+      description: "<xref:System.Array> <xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> 에서 복사한 요소의 대상인</xref:System.Array>&1; 차원 <xref:System.Array>0부터 시작 하는 인덱스가 있어야 합니다.</xref:System.Array>"
     - id: index
       type: System.Int32
-      description: "The zero-based index in `array` at which copying begins."
+      description: "인덱스는&0;부터 시작 `array` 복사가 시작 되는 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#CopyTo*
   exceptions: []
   platform:
@@ -626,13 +626,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a value indicating whether access to the <xref:System.Collections.ICollection> is synchronized (thread safe)."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For more information, see <xref:System.Collections.ICollection.IsSynchronized%2A>."
+  summary: "에 대 한 액세스 여부를 나타내는 값을 가져옵니다는 <xref:System.Collections.ICollection>이 동기화 되었으면 (스레드로부터 안전 하 게 보호).</xref:System.Collections.ICollection>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.ICollection>인터페이스.</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.Collections.ICollection.IsSynchronized%2A>.</xref:System.Collections.ICollection.IsSynchronized%2A> 을 참조 하십시오."
   syntax:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if access to the <xref:System.Collections.ICollection> is synchronized (thread safe); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우에 대 한 액세스는 <xref:System.Collections.ICollection>은 동기화 (스레드로부터 안전함); 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#IsSynchronized*
   exceptions: []
   platform:
@@ -650,13 +650,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an object that can be used to synchronize access to the <xref:System.Collections.ICollection>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.ICollection> interface.       For more information, see <xref:System.Collections.ICollection.SyncRoot%2A>."
+  summary: "<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> 에 대 한 액세스를 동기화 하는 데 사용할 수 있는 개체를 가져옵니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.ICollection>인터페이스.</xref:System.Collections.ICollection> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.Collections.ICollection.SyncRoot%2A>.</xref:System.Collections.ICollection.SyncRoot%2A> 을 참조 하십시오."
   syntax:
     content: object System.Collections.ICollection.SyncRoot { get; }
     return:
       type: System.Object
-      description: "An object that can be used to synchronize access to the <xref:System.Collections.ICollection>."
+      description: "<xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> 에 대 한 액세스를 동기화 하는 데 사용할 수 있는 개체"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#ICollection#SyncRoot*
   exceptions: []
   platform:
@@ -674,17 +674,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Adds an element with the provided key and value to the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.Add%2A>."
+  summary: "제공 된 키와 값을 가진 요소에 추가 <xref:System.Collections.IDictionary>개체입니다.</xref:System.Collections.IDictionary>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IDictionary>인터페이스.</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.Collections.IDictionary.Add%2A>.</xref:System.Collections.IDictionary.Add%2A>"
   syntax:
     content: void IDictionary.Add (object keyword, object value);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The <xref:System.Object> to use as the key of the element to add."
+      description: "<xref:System.Object>추가할 요소의 키로 사용 하려면</xref:System.Object>"
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to use as the value of the element to add."
+      description: "<xref:System.Object>추가할 요소의 값으로 사용 하려면</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Add*
   exceptions: []
   platform:
@@ -702,17 +702,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Determines whether the <xref:System.Collections.IDictionary> object contains an element with the specified key."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For more information, see <xref:System.Collections.IDictionary.Contains%2A>."
+  summary: "결정 여부는 <xref:System.Collections.IDictionary>개체에 지정한 키가 있는 요소가 포함 되어 있습니다.</xref:System.Collections.IDictionary>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IDictionary>인터페이스.</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.Collections.IDictionary.Contains%2A>.</xref:System.Collections.IDictionary.Contains%2A> 을 참조 하십시오."
   syntax:
     content: bool IDictionary.Contains (object keyword);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key to locate in the <xref:System.Collections.IDictionary> object."
+      description: "찾을 수 있는 키의 <xref:System.Collections.IDictionary>개체입니다.</xref:System.Collections.IDictionary>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.Collections.IDictionary> contains an element with the key; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref:System.Collections.IDictionary>; 키가 있는 요소가 포함 그렇지 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Collections.IDictionary>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Contains*
   exceptions: []
   platform:
@@ -730,14 +730,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an <xref:System.Collections.IDictionaryEnumerator> object for the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.GetEnumerator%2A>."
+  summary: "반환 된 <xref:System.Collections.IDictionaryEnumerator>개체에 대 한는 <xref:System.Collections.IDictionary>개체입니다.</xref:System.Collections.IDictionary> </xref:System.Collections.IDictionaryEnumerator>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IDictionary>인터페이스.</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.Collections.IDictionary.GetEnumerator%2A>.</xref:System.Collections.IDictionary.GetEnumerator%2A>"
   syntax:
     content: System.Collections.IDictionaryEnumerator IDictionary.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IDictionaryEnumerator
-      description: "An <xref:System.Collections.IDictionaryEnumerator> object for the <xref:System.Collections.IDictionary> object."
+      description: "<xref:System.Collections.IDictionaryEnumerator>개체에 대 한는 <xref:System.Collections.IDictionary>개체입니다.</xref:System.Collections.IDictionary> </xref:System.Collections.IDictionaryEnumerator>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#GetEnumerator*
   exceptions: []
   platform:
@@ -755,17 +755,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the element with the specified key."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For more information, see <xref:System.Collections.IDictionary.Item%2A>."
+  summary: "지정한 키를 가진 요소를 가져오거나 설정 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IDictionary>인터페이스.</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.Collections.IDictionary.Item%2A>.</xref:System.Collections.IDictionary.Item%2A> 을 참조 하십시오."
   syntax:
     content: object System.Collections.IDictionary.Item[object keyword] { get; set; }
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key of the element to get or set."
+      description: "가져오거나 설정할 요소의 키입니다."
     return:
       type: System.Object
-      description: "The element with the specified key."
+      description: "지정한 키를 가진 요소입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Item*
   exceptions: []
   platform:
@@ -783,14 +783,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Removes the element with the specified key from the <xref:System.Collections.IDictionary> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IDictionary> interface.       For a description of this member, see <xref:System.Collections.IDictionary.Remove%2A>."
+  summary: "지정된 된 키를 가진 요소를 제거는 <xref:System.Collections.IDictionary>개체입니다.</xref:System.Collections.IDictionary>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IDictionary>인터페이스.</xref:System.Collections.IDictionary> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.Collections.IDictionary.Remove%2A>.</xref:System.Collections.IDictionary.Remove%2A>"
   syntax:
     content: void IDictionary.Remove (object keyword);
     parameters:
     - id: keyword
       type: System.Object
-      description: "The key of the element to remove."
+      description: "제거할 요소의 키입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IDictionary#Remove*
   exceptions: []
   platform:
@@ -808,14 +808,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an enumerator that iterates through a collection."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.Collections.IEnumerable> interface.       For a description of this member, see <xref:System.Collections.IEnumerable.GetEnumerator%2A>."
+  summary: "컬렉션을 반복 하는 열거자를 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.Collections.IEnumerable>인터페이스.</xref:System.Collections.IEnumerable> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.Collections.IEnumerable.GetEnumerator%2A>.</xref:System.Collections.IEnumerable.GetEnumerator%2A>"
   syntax:
     content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An <xref:System.Collections.IEnumerator> object that can be used to iterate through the collection."
+      description: "<xref:System.Collections.IEnumerator>컬렉션을 반복 하는 데 사용할 수 있습니다.</xref:System.Collections.IEnumerator>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
   platform:
@@ -833,14 +833,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns a collection of custom attributes for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 사용자 지정 특성의 컬렉션을 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetAttributes%2A>"
   syntax:
     content: System.ComponentModel.AttributeCollection ICustomTypeDescriptor.GetAttributes ();
     parameters: []
     return:
       type: System.ComponentModel.AttributeCollection
-      description: "An <xref href=&quot;System.ComponentModel.AttributeCollection&quot;></xref> containing the attributes for this object."
+      description: "<xref href=&quot;System.ComponentModel.AttributeCollection&quot;> </xref> 이 개체에 대 한 특성을 포함 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetAttributes*
   exceptions: []
   platform:
@@ -858,14 +858,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the class name of this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>."
+  summary: "이 인스턴스는 구성 요소의 클래스 이름을 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetClassName%2A>"
   syntax:
     content: string ICustomTypeDescriptor.GetClassName ();
     parameters: []
     return:
       type: System.String
-      description: "The class name of the object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the class does not have a name."
+      description: "개체의 클래스 이름 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 클래스에는 이름이 없는 경우."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetClassName*
   exceptions: []
   platform:
@@ -883,14 +883,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the name of this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A>."
+  summary: "이 인스턴스는 구성 요소의 이름을 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetComponentName%2A> 을 참조 하십시오."
   syntax:
     content: string ICustomTypeDescriptor.GetComponentName ();
     parameters: []
     return:
       type: System.String
-      description: "The name of the object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object does not have a name."
+      description: "개체의 이름 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체에는 이름이 없는 경우."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetComponentName*
   exceptions: []
   platform:
@@ -908,14 +908,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns a type converter for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 형식 변환기를 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetConverter%2A>"
   syntax:
     content: System.ComponentModel.TypeConverter ICustomTypeDescriptor.GetConverter ();
     parameters: []
     return:
       type: System.ComponentModel.TypeConverter
-      description: "A <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> that is the converter for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> for this object."
+      description: "A <xref href=&quot;System.ComponentModel.TypeConverter&quot;> </xref> 이 개체에 대 한 변환기 즉 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 없는 경우 없는 <xref href=&quot;System.ComponentModel.TypeConverter&quot;> </xref> 이 개체에 대 한 합니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetConverter*
   exceptions: []
   platform:
@@ -933,14 +933,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the default event for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 기본 이벤트를 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultEvent%2A>"
   syntax:
     content: System.ComponentModel.EventDescriptor ICustomTypeDescriptor.GetDefaultEvent ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptor
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptor&quot;></xref> that represents the default event for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this object does not have events."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptor&quot;> </xref> 이 개체에 대 한 기본 이벤트를 나타내는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 개체에는 이벤트가 없을 경우."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetDefaultEvent*
   exceptions: []
   platform:
@@ -958,14 +958,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the default property for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For a description of this member, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 기본 속성을 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       이 멤버에 대 한 참조 <xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetDefaultProperty%2A>"
   syntax:
     content: System.ComponentModel.PropertyDescriptor ICustomTypeDescriptor.GetDefaultProperty ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that represents the default property for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this object does not have properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> 이 개체에 대 한 기본 속성을 나타내는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 개체에는 속성이 없을 경우."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetDefaultProperty*
   exceptions: []
   platform:
@@ -983,17 +983,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an editor of the specified type for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 지정 된 형식의 편집기를 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetEditor%2A> 을 참조 하십시오."
   syntax:
     content: object ICustomTypeDescriptor.GetEditor (Type editorBaseType);
     parameters:
     - id: editorBaseType
       type: System.Type
-      description: "A <xref:System.Type> that represents the editor for this object."
+      description: "A <xref:System.Type>이 개체에 대 한 편집기를 나타내는입니다.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> of the specified type that is the editor for this object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the editor cannot be found."
+      description: "<xref:System.Object>이 개체에 대 한 편집기 인 지정 된 형식의 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 편집기를 찾을 수 없는 경우.</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEditor*
   exceptions: []
   platform:
@@ -1011,14 +1011,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the events for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 이벤트를 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A> 을 참조 하십시오."
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents ();
     parameters: []
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the events for this component instance."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref> 이 구성 요소 인스턴스에 대 한 이벤트를 나타내는입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -1036,17 +1036,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the events for this instance of a component using the specified attribute array as a filter."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>."
+  summary: "지정한 특성 배열을 필터로 사용 하는 구성 요소의이 인스턴스에 대 한 이벤트를 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetEvents%2A> 을 참조 하십시오."
   syntax:
     content: System.ComponentModel.EventDescriptorCollection ICustomTypeDescriptor.GetEvents (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "형식의 배열 <xref:System.Attribute>필터로 사용 되는.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.EventDescriptorCollection
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;></xref> that represents the filtered events for this component instance."
+      description: "<xref href=&quot;System.ComponentModel.EventDescriptorCollection&quot;> </xref> 이 구성 요소 인스턴스에 대 한 필터링 된 이벤트를 나타내는입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetEvents*
   exceptions: []
   platform:
@@ -1064,14 +1064,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the properties for this instance of a component."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>."
+  summary: "구성 요소의이 인스턴스에 대 한 속성을 반환합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A> 을 참조 하십시오."
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties ();
     parameters: []
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the properties for this component instance."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 이 구성 요소 인스턴스에 대 한 속성을 나타내는입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -1089,17 +1089,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the properties for this instance of a component using the attribute array as a filter."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>."
+  summary: "특성 배열을 필터로 사용 하는 구성 요소의이 인스턴스에 대 한 속성을 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetProperties%2A> 을 참조 하십시오."
   syntax:
     content: System.ComponentModel.PropertyDescriptorCollection ICustomTypeDescriptor.GetProperties (Attribute[] attributes);
     parameters:
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "형식의 배열 <xref:System.Attribute>필터로 사용 되는.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that represents the filtered properties for this component instance."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 이 구성 요소 인스턴스에 대 한 필터링된 된 속성을 나타내는입니다."
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetProperties*
   exceptions: []
   platform:
@@ -1117,17 +1117,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns an object that contains the property described by the specified property descriptor."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnectionStringBuilder> instance is cast to an <xref:System.ComponentModel.ICustomTypeDescriptor> interface.       For more information, see <xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A>."
+  summary: "지정된 된 속성 설명자가 설명 하는 속성을 포함 하는 개체를 반환 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Data.Common.DbConnectionStringBuilder>인스턴스로 캐스팅 되는 <xref:System.ComponentModel.ICustomTypeDescriptor>인터페이스.</xref:System.ComponentModel.ICustomTypeDescriptor> </xref:System.Data.Common.DbConnectionStringBuilder>       자세한 내용은 <xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A>.</xref:System.ComponentModel.ICustomTypeDescriptor.GetPropertyOwner%2A> 을 참조 하십시오."
   syntax:
     content: object ICustomTypeDescriptor.GetPropertyOwner (System.ComponentModel.PropertyDescriptor pd);
     parameters:
     - id: pd
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that represents the property whose owner is to be found."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> 찾을 소유자가 속성을 나타내는입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the owner of the specified property."
+      description: "<xref:System.Object>지정된 된 속성의 소유자를 나타내는입니다.</xref:System.Object>"
   overload: System.Data.Common.DbConnectionStringBuilder.System#ComponentModel#ICustomTypeDescriptor#GetPropertyOwner*
   exceptions: []
   platform:
@@ -1144,13 +1144,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns the connection string associated with this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+  summary: "이 연결 된 연결 문자열을 반환 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The current <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*> property."
+      description: "현재 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>속성.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString*>"
   overload: System.Data.Common.DbConnectionStringBuilder.ToString*
   exceptions: []
   platform:
@@ -1167,8 +1167,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Retrieves a value corresponding to the supplied key from this <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The TryGetValue method lets developers safely retrieve a value from a <xref:System.Data.Common.DbConnectionStringBuilder> without needing to first call the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method. Because TryGetValue does not raise an exception when you call it, passing in a nonexistent key, you do not have to look for a key before retrieving its value. Calling TryGetValue with a nonexistent key will place the null value (`Nothing` in Visual Basic) in the `value` parameter."
+  summary: "이 제공된 된 키에 해당 하는 값을 검색 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "TryGetValue 메서드 값을 안전 하 게 검색할 수 있습니다는 <xref:System.Data.Common.DbConnectionStringBuilder>먼저 호출 하지 않고도 <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>메서드.</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> </xref:System.Data.Common.DbConnectionStringBuilder> TryGetValue 존재 하지 않는 키를 전달, 호출 하는 경우 예외를 발생 하지 않으므로, 해당 값을 검색 하기 전에 키를 찾이 필요가 없습니다. 존재 하지 않는 키를 가진 TryGetValue 호출에서 null 값을 배치 합니다 (`Nothing` Visual basic에서)에 `value` 매개 변수입니다."
   example:
   - "The following example calls the TryGetValue method, demonstrating several possible outcomes.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/visualbasic/04255a8f-6280-4043-a487-_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/csharp/04255a8f-6280-4043-a487-_1.cs)]  \n  \n The sample displays the following results:  \n  \n```  \nProvider=sqloledb  \nDATA SOURCE=192.168.168.1,1433  \nUnable to retrieve value for //InvalidKey//  \nUnable to retrieve value for null key.  \n```"
   syntax:
@@ -1176,18 +1176,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to retrieve."
+      description: "검색할 항목의 키입니다."
     - id: value
       type: System.Object
-      description: "The value corresponding to the `key`."
+      description: "해당 하는 값은 `key`합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>keyword</code> was found within the connection string, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> keyword </code> 연결 문자열 내 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 그렇지 않은 경우."
   overload: System.Data.Common.DbConnectionStringBuilder.TryGetValue*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> contains a null value (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>에 null 값 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.Common.DbConnectionStringBuilder.Values
@@ -1202,15 +1202,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated keys in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A> method.       The returned <xref:System.Collections.ICollection> is not a static copy; instead, the <xref:System.Collections.ICollection> refers back to the values in the original <xref:System.Data.Common.DbConnectionStringBuilder>. Therefore, changes to the <xref:System.Data.Common.DbConnectionStringBuilder> are reflected in the <xref:System.Collections.ICollection>."
+  summary: "가져옵니다는 <xref:System.Collections.ICollection>값을 포함 하는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
+  remarks: "에 있는 값의 순서는 <xref:System.Collections.ICollection>지정 되어 있지는 연결 된 키와 순서가 동일 하지만 <xref:System.Collections.ICollection>에서 반환 되는 <xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A>메서드.</xref:System.Data.Common.DbConnectionStringBuilder.Keys%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>       반환 된 <xref:System.Collections.ICollection>정적 복사 하지 않습니다; 대신 <xref:System.Collections.ICollection> <xref:System.Data.Common.DbConnectionStringBuilder>.</xref:System.Data.Common.DbConnectionStringBuilder> 원래에서 값을 다시 참조</xref:System.Collections.ICollection> </xref:System.Collections.ICollection> 따라서 <xref:System.Data.Common.DbConnectionStringBuilder> <xref:System.Collections.ICollection>.</xref:System.Collections.ICollection> 에 반영 된</xref:System.Data.Common.DbConnectionStringBuilder> 변경"
   example:
   - "> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Common.DbConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-vb[DataWorks DbConnectionStringBuilder.Values#1](~/add/codesnippet/visualbasic/p-system.data.common.dbc_1_1.vb)]\n [!code-cs[DataWorks DbConnectionStringBuilder.Values#1](~/add/codesnippet/csharp/p-system.data.common.dbc_1_1.cs)]  \n  \n Displays the following output:  \n  \n```  \nMSDataShape.1  \nfalse  \nMSDAORA  \norac  \nusername  \n*******  \n```"
   syntax:
     content: public virtual System.Collections.ICollection Values { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>값을 포함 하는 <xref href=&quot;System.Data.Common.DbConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.Common.DbConnectionStringBuilder.Values*
   exceptions: []
   platform:
