@@ -12,8 +12,8 @@ items:
   nameWithType: IChannel
   fullName: System.Runtime.Remoting.Channels.IChannel
   type: Interface
-  summary: "Provides conduits for messages that cross remoting boundaries."
-  remarks: "Remoting boundaries can be <xref:System.Runtime.Remoting.Contexts.Context>s, <xref:System.AppDomain>s, processes, or computers. An application can cross these boundaries only by using channels. These crossings can be inbound and outbound. A channel can listen on an endpoint for inbound messages, send to an endpoint for outbound messages, or both. This provides an extensibility point in the runtime to plug in a wide range protocols, even though the runtime might not be at the other end of the channel.       Run-time objects can be used to represent a wide and rich set of semantics and entities. The channel provides the extensibility point to convert the messages to and from the specific protocols. If there are runtimes at both ends of the channel, a virtual channel is created between the two ends, in order to connect the client and server sink chains on either side of the boundary.       The client part of the channel is located at the end of a client context sink chain. The server part of the channel is located at the start of the server context sink chain. Messages are delivered to the client channel using the <xref:System.Runtime.Remoting.Messaging.IMessageSink> interface, travel through the channel, and are then received by the server channel. The server channel delivers the message to the first server context sink.       Channels must expose the IChannel interface, which provides informational properties such as the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> and <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> properties. Channels can be registered using the <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName> method."
+  summary: "원격 경계를 교차 하는 메시지에 대 한 통로 제공 합니다."
+  remarks: "원격 경계 수 <xref:System.Runtime.Remoting.Contexts.Context>s, <xref:System.AppDomain>s, 프로세스 또는 컴퓨터.</xref:System.AppDomain> </xref:System.Runtime.Remoting.Contexts.Context> 응용 프로그램 채널을 사용 하 여 이러한 경계를 넘을 수 있습니다. 이러한 점이 인바운드 및 아웃 바운드 될 수 있습니다. 채널은 인바운드 메시지에 대 한 끝점에서 수신, 아웃 바운드 메시지 또는 둘 다에 대 한 끝점으로 보낼 수 있습니다. 이 런타임 채널의 반대쪽 끝에 없을 수 없어도 광범위 한 프로토콜에 연결 하기 위한 확장성 지점을 제공 합니다.       런타임 개체 의미와 엔터티 광범위 하 고 풍부한 집합을 나타내는 데 사용할 수 있습니다. 채널와 특정 프로토콜에서 메시지를 변환 하는 확장성 지점을 제공 합니다. 채널의 양쪽 끝에서 런타임이 있으면 가상 채널 경계의 어느 쪽에 클라이언트와 서버 싱크 체인에 연결 하기 위해 두 개의 끝 사이 만들어집니다.       채널의 클라이언트 부분은 클라이언트 컨텍스트 싱크 체인의 끝에 있습니다. 채널의 서버 부분은 서버 컨텍스트 싱크 체인의 시작 부분에 있습니다. 사용 하 여 클라이언트 채널에 메시지가 배달 되는 <xref:System.Runtime.Remoting.Messaging.IMessageSink>인터페이스는 채널을 통해 이동 하 고 서버 채널에서 수신 합니다.</xref:System.Runtime.Remoting.Messaging.IMessageSink> 서버 채널에서 첫 번째 서버 컨텍스트 싱크에 메시지를 배달 합니다.       채널와 같은 정보 속성을 제공 하는 IChannel 인터페이스를 노출 해야 합니다는 <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A>및 <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A>속성.</xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> </xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> 사용 하 여 채널을 등록할 수 있습니다는 <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>메서드.</xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,7 +34,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the name of the channel."
+  summary: "채널의 이름을 가져옵니다."
   remarks: ''
   example:
   - >-
@@ -45,12 +45,12 @@ items:
     content: public string ChannelName { get; }
     return:
       type: System.String
-      description: "The name of the channel."
+      description: "채널의 이름입니다."
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.ChannelPriority
@@ -65,8 +65,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the priority of the channel."
-  remarks: "Higher numbers indicate higher priority, so a channel with priority of 50 has a higher priority than a channel with priority 25. The cross application domain channel has a priority of 100.       Client channels with higher priority are given the first chance to connect to a remote object specified by a URL or a particular channel data entry from a <xref:System.Runtime.Remoting.ObjRef>.       For server channels, the priority indicates the order in which their channel data will appear in a <xref:System.Runtime.Remoting.ObjRef>, which in turn affects the order in which clients will try to connect to the server object. If the server is listening on an HTTP channel with priority 50 and a TCP channel with priority 25 and the client has registered both an HTTP and TCP channel, then the client will use the HTTP channel to talk to the server."
+  summary: "채널의 우선 순위를 가져옵니다."
+  remarks: "숫자가 클수록 우선 순위 50 사용 하 여 채널의 채널 보다 높은 우선 순위가 높습니다 더 높은 우선 순위를 나타냅니다. 응용 프로그램 간 도메인 채널 100의 우선 순위를 있습니다.       더 높은 우선 순위를 사용 하 여 클라이언트 채널 URL 또는 <xref:System.Runtime.Remoting.ObjRef>.</xref:System.Runtime.Remoting.ObjRef> 에서 특정 채널 데이터 입력으로 지정 된 원격 개체에 연결 하는 첫 번째 기회에 제공 됩니다.       서버 채널에 대 한 우선 순위에 해당 채널 데이터가 나타납니다 순서를 나타내는 <xref:System.Runtime.Remoting.ObjRef>, 클라이언트가 서버 개체에 연결을 시도 하는 순서를 다시 영향을 미칩니다.</xref:System.Runtime.Remoting.ObjRef> 서버는 우선 순위가 50 인 HTTP 채널과 25 순위가 TCP 채널에서 수신 하 고 클라이언트는 HTTP 및 TCP 채널 등록, 아니면 클라이언트 사용 합니다 HTTP 채널 서버와 통신할 수 있습니다."
   example:
   - >-
     [!code-cs[HttpServerChannel_Server_Client#5](~/add/codesnippet/csharp/p-system.runtime.remotin_5_1.cs)]
@@ -76,12 +76,12 @@ items:
     content: public int ChannelPriority { get; }
     return:
       type: System.Int32
-      description: "An integer that indicates the priority of the channel."
+      description: "채널의 우선 순위를 나타내는 정수입니다."
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelPriority*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.Parse(System.String,System.String@)
@@ -96,7 +96,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the object URI as an out parameter, and the URI of the current channel as the return value."
+  summary: "out 매개 변수 및 반환 값으로 현재 채널 URI로 URI 개체를 반환합니다."
   remarks: ''
   example:
   - >-
@@ -108,18 +108,18 @@ items:
     parameters:
     - id: url
       type: System.String
-      description: "The URL of the object."
+      description: "개체의 URL입니다."
     - id: objectURI
       type: System.String
-      description: "When this method returns, contains a <xref:System.String> that holds the object URI. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때를 포함 한 <xref:System.String>URI 개체를 보유 하는.</xref:System.String> 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.String
-      description: "The URI of the current channel, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the URI does not belong to this channel."
+      description: "현재 채널 URI 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> URI이이 채널에 속해 있지 않습니다."
   overload: System.Runtime.Remoting.Channels.IChannel.Parse*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 references:

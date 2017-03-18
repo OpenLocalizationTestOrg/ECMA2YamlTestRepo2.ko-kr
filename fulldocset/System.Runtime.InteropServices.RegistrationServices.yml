@@ -20,7 +20,7 @@ items:
   nameWithType: RegistrationServices
   fullName: System.Runtime.InteropServices.RegistrationServices
   type: Class
-  summary: "Provides a set of services for registering and unregistering managed assemblies for use from COM."
+  summary: "Com에서 관리 되는 사용 하기 위해 어셈블리를 등록 하 고 등록을 취소 하는 서비스 집합을 제공 합니다."
   remarks: "Registration is needed when the objects within an assembly are being used by COM clients. The [Regasm.exe (Assembly Registration Tool)](~/add/includes/ajax-current-ext-md.md) and [!INCLUDE[vsprvsext](~/add/includes/ajax-current-ext-md.md)] use methods exposed by the RegistrationServices class to add or remove COM-enabling registry entries for managed assemblies.  \n  \n You can use the following methods to assist you in preparing a registration file:  \n  \n-   <xref:System.Runtime.InteropServices.RegistrationServices.GetManagedCategoryGuid%2A>  \n  \n-   <xref:System.Runtime.InteropServices.RegistrationServices.GetProgIdForType%2A>  \n  \n-   <xref:System.Runtime.InteropServices.RegistrationServices.GetRegistrableTypesInAssembly%2A>  \n  \n-   <xref:System.Runtime.InteropServices.RegistrationServices.TypeRepresentsComType%2A>  \n  \n Although these methods help in gathering information to be used in a registration file, they do not actually produce a registration file. Instead, you can use the [Regasm.exe (Assembly Registration Tool)](../Topic/Regasm.exe%20\\(Assembly%20Registration%20Tool\\).md) tool with the `/regfile` option to perform this task. RegistrationServices methods cannot export and register a type library. To export and register a type library, you can use the [Regasm.exe (Assembly Registration Tool)](../Topic/Regasm.exe%20\\(Assembly%20Registration%20Tool\\).md) tool and the [Tlbexp.exe (Type Library Exporter)](~/add/includes/ajax-current-ext-md.md) tool."
   syntax:
     content: >-
@@ -50,7 +50,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.RegistrationServices&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Runtime.InteropServices.RegistrationServices&quot;> </xref> 클래스입니다."
   syntax:
     content: public RegistrationServices ();
     parameters: []
@@ -70,13 +70,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the GUID of the COM category that contains the managed classes."
+  summary: "관리 되는 클래스를 포함 하는 COM 범주의 GUID를 반환 합니다."
   syntax:
     content: public virtual Guid GetManagedCategoryGuid ();
     parameters: []
     return:
       type: System.Guid
-      description: "The GUID of the COM category that contains the managed classes."
+      description: "관리 되는 클래스를 포함 하는 COM 범주 GUID입니다."
   overload: System.Runtime.InteropServices.RegistrationServices.GetManagedCategoryGuid*
   exceptions: []
   platform:
@@ -93,16 +93,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves the COM ProgID for the specified type."
+  summary: "지정된 된 형식에 대 한 COM ProgID를 검색합니다."
   syntax:
     content: public virtual string GetProgIdForType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type corresponding to the ProgID that is being requested."
+      description: "요청 중인 ProgID에 해당 하는 형식입니다."
     return:
       type: System.String
-      description: "The ProgID for the specified type."
+      description: "지정 된 형식의 ProgID입니다."
   overload: System.Runtime.InteropServices.RegistrationServices.GetProgIdForType*
   exceptions: []
   platform:
@@ -119,16 +119,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves a list of classes in an assembly that would be registered by a call to <xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly*>."
+  summary: "<xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly*>.</xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly*> 를 호출 하 여 등록 되는 어셈블리의 클래스의 목록을 검색 합니다."
   syntax:
     content: public virtual Type[] GetRegistrableTypesInAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to search for classes."
+      description: "클래스를 검색할 어셈블리입니다."
     return:
       type: System.Type[]
-      description: "A <xref:System.Type> array containing a list of classes in <code>assembly</code>."
+      description: "A <xref:System.Type>의 클래스 목록을 포함 하는 배열 <code> assembly </code>.</xref:System.Type>"
   overload: System.Runtime.InteropServices.RegistrationServices.GetRegistrableTypesInAssembly*
   exceptions:
   - type: System.ArgumentNullException
@@ -148,31 +148,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the classes in a managed assembly to enable creation from COM."
-  remarks: "`RegisterAssembly` adds the appropriate registry entries for the types in the specified assembly. This method also calls any registration functions found in the assembly.       Use <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName> to get an assembly."
+  summary: "Com에서 만들 수 있도록 하려면 관리 되는 어셈블리의 클래스를 등록 합니다."
+  remarks: "`RegisterAssembly`지정된 된 어셈블리의 형식에 대 한 적절 한 레지스트리 항목을 추가합니다. 또한이 메서드는 어셈블리에 있는 모든 등록 함수를 호출 합니다.       사용 하 여 <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>어셈블리를 가져오려는.</xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>"
   syntax:
     content: public virtual bool RegisterAssembly (System.Reflection.Assembly assembly, System.Runtime.InteropServices.AssemblyRegistrationFlags flags);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be registered."
+      description: "어셈블리를 등록 해야 합니다."
     - id: flags
       type: System.Runtime.InteropServices.AssemblyRegistrationFlags
-      description: "An <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;></xref> value indicating any special settings used when registering `assembly`."
+      description: "<xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;> </xref> 등록할 때 사용 되는 특별 한 설정을 나타내는 값 `assembly`합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully registered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> assembly </code> 성공적으로 등록, 그렇지 않으면 유형은 포함 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 적격 형식이 없습니다. 포함 하는 경우."
   overload: System.Runtime.InteropServices.RegistrationServices.RegisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -또는-메서드로 <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> 않습니다 <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>합니다.       -또는-로 표시 하는 둘 이상의 메서드가 없는 <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> 계층의 지정 된 수준입니다.       -또는-로 메서드의 서명을 표시 <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> 올바르지 않습니다."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
-    description: "A user-defined custom registration function (marked with the <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> attribute) throws an exception."
+    description: "사용자 지정 등록 사용자 정의 함수 (으로 표시 된 <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> 특성) 예외를 throw 합니다."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients(System.Type,System.Guid@)
@@ -187,17 +187,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the specified type with COM using the specified GUID."
-  remarks: "This method is equivalent to calling `CoRegisterClassObject` in COM. The RegisterTypeForComClients method is not atomic and can cause unpredictable results when used in a multithreaded context.       In version 2.0 and later, use the <xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A> method to unregister a type in COM.       Note that using platform invoke to call the unmanaged `CoRegisterClassObject` and  `CoDisconnectObject` methods for registration and unregistration of COM objects is not supported."
+  summary: "지정된 된 형식의 지정된 된 GUID를 사용 하 여 COM 등록 합니다."
+  remarks: "이 메서드는 호출에 해당 `CoRegisterClassObject` COM.에 RegisterTypeForComClients 메서드 원자성 아니며 다중 스레드 컨텍스트에서 사용할 경우 예기치 않은 결과가 발생할 수 있습니다.       버전 2.0 이상에서 <xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A>COM.에서 유형을 등록을 취소 하는 메서드</xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A> 를 사용 합니다.       관리 되지 않는 호출 하는 플랫폼을 사용 하 여 호출을 `CoRegisterClassObject` 및 `CoDisconnectObject` 등록 및 COM 개체의 등록 취소에 대 한 메서드는 지원 되지 않습니다."
   syntax:
     content: public virtual void RegisterTypeForComClients (Type type, ref Guid g);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> to be registered for use from COM."
+      description: "<xref:System.Type>Com에서 사용 하도록 등록 하려면</xref:System.Type>"
     - id: g
       type: System.Guid
-      description: "The <xref:System.Guid> used to register the specified type."
+      description: "<xref:System.Guid>지정된 된 형식을 등록 하는 데 사용 합니다.</xref:System.Guid>"
   overload: System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*
   exceptions:
   - type: System.ArgumentException
@@ -205,7 +205,7 @@ items:
     description: "The <code>type</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>type</code> parameter cannot be created."
+    description: "<code> type </code> 매개 변수를 만들 수 없습니다."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients(System.Type,System.Runtime.InteropServices.RegistrationClassContext,System.Runtime.InteropServices.RegistrationConnectionType)
@@ -220,23 +220,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the specified type with COM using the specified execution context and connection type."
-  remarks: "This method is equivalent to calling `CoRegisterClassObject` in COM. The RegisterTypeForComClients method is not atomic and can cause unpredictable results when used in a multithreaded context.       In the .NET Framework version 2.0 and later, use the <xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A> method to unregister a type in COM.       Note that using platform invoke to call the unmanaged `CoRegisterClassObject` and  `CoDisconnectObject` methods for registration and unregistration of COM objects is not supported."
+  summary: "연결 종류와 지정된 된 실행 컨텍스트를 사용 하 여 지정 된 형식을 COM에 등록 합니다."
+  remarks: "이 메서드는 호출에 해당 `CoRegisterClassObject` COM.에 RegisterTypeForComClients 메서드 원자성 아니며 다중 스레드 컨텍스트에서 사용할 경우 예기치 않은 결과가 발생할 수 있습니다.       .NET Framework 버전 2.0 이상에서 <xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A>COM.에서 유형을 등록을 취소 하는 메서드</xref:System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients%2A> 를 사용 합니다.       관리 되지 않는 호출 하는 플랫폼을 사용 하 여 호출을 `CoRegisterClassObject` 및 `CoDisconnectObject` 등록 및 COM 개체의 등록 취소에 대 한 메서드는 지원 되지 않습니다."
   syntax:
     content: public virtual int RegisterTypeForComClients (Type type, System.Runtime.InteropServices.RegistrationClassContext classContext, System.Runtime.InteropServices.RegistrationConnectionType flags);
     parameters:
     - id: type
       type: System.Type
-      description: "The <xref:System.Type> object to register for use from COM."
+      description: "<xref:System.Type>Com에서 사용 하기 위해 등록 하는 개체</xref:System.Type>"
     - id: classContext
       type: System.Runtime.InteropServices.RegistrationClassContext
-      description: "One of the <xref href=&quot;System.Runtime.InteropServices.RegistrationClassContext&quot;></xref> values that indicates the context in which the executable code will be run."
+      description: "중 하나는 <xref href=&quot;System.Runtime.InteropServices.RegistrationClassContext&quot;> </xref> 실행 코드가 실행 될 컨텍스트를 나타내는 값입니다."
     - id: flags
       type: System.Runtime.InteropServices.RegistrationConnectionType
-      description: "One of the <xref href=&quot;System.Runtime.InteropServices.RegistrationConnectionType&quot;></xref> values that specifies how connections are made to the class object."
+      description: "중 하나는 <xref href=&quot;System.Runtime.InteropServices.RegistrationConnectionType&quot;> </xref> 클래스 개체에 따른 연결 방법을 지정 하는 값입니다."
     return:
       type: System.Int32
-      description: "An integer that represents a cookie value."
+      description: "쿠키 값을 나타내는 정수입니다."
   overload: System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*
   exceptions:
   - type: System.ArgumentException
@@ -244,7 +244,7 @@ items:
     description: "The <code>type</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>type</code> parameter cannot be created."
+    description: "<code> type </code> 매개 변수를 만들 수 없습니다."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.RegistrationServices.TypeRepresentsComType(System.Type)
@@ -259,16 +259,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Indicates whether a type is marked with the <xref:System.Runtime.InteropServices.ComImportAttribute>, or derives from a type marked with the <xref:System.Runtime.InteropServices.ComImportAttribute> and shares the same GUID as the parent."
+  summary: "형식이으로 표시 되어 있는지 여부를 나타냅니다는 <xref:System.Runtime.InteropServices.ComImportAttribute>,으로 표시 된 형식에서 파생 되었거나는 <xref:System.Runtime.InteropServices.ComImportAttribute>부모와 동일한 GUID를 공유 합니다.</xref:System.Runtime.InteropServices.ComImportAttribute> </xref:System.Runtime.InteropServices.ComImportAttribute>"
   syntax:
     content: public virtual bool TypeRepresentsComType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to check for being a COM type."
+      description: "COM 형식 인지를 확인 하려면 유형입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a type is marked with the <xref:System.Runtime.InteropServices.ComImportAttribute>, or derives from a type marked with the <xref:System.Runtime.InteropServices.ComImportAttribute> and shares the same GUID as the parent; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>형식으로 표시 되는 <xref:System.Runtime.InteropServices.ComImportAttribute>,으로 표시 된 형식에서 파생 되었거나는 <xref:System.Runtime.InteropServices.ComImportAttribute>; 부모와 동일한 GUID를 공유 하 고 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Runtime.InteropServices.ComImportAttribute> </xref:System.Runtime.InteropServices.ComImportAttribute>"
   overload: System.Runtime.InteropServices.RegistrationServices.TypeRepresentsComType*
   exceptions: []
   platform:
@@ -285,16 +285,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type requires registration."
+  summary: "지정된 된 형식을 등록 해야 하는지 여부를 결정 합니다."
   syntax:
     content: public virtual bool TypeRequiresRegistration (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to check for COM registration requirements."
+      description: "COM 등록 요구 사항을 확인할 형식입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the type must be registered for use from COM; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>COM;에서 사용할 형식을 등록 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.InteropServices.RegistrationServices.TypeRequiresRegistration*
   exceptions: []
   platform:
@@ -311,28 +311,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Unregisters the classes in a managed assembly."
-  remarks: '`UnregisterAssembly` removes the registry entries for the types in the specified assembly previously added by <xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly%2A>. This method also calls any unregistration functions found in the assembly.'
+  summary: "관리 되는 어셈블리의 클래스를 등록 취소합니다."
+  remarks: '`UnregisterAssembly`이전에 추가한 <xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly%2A>.</xref:System.Runtime.InteropServices.RegistrationServices.RegisterAssembly%2A> 지정된 된 어셈블리의 형식에 대 한 레지스트리 항목을 제거 합니다. 또한이 메서드는 어셈블리에 있는 모든 등록 취소 함수를 호출 합니다.'
   syntax:
     content: public virtual bool UnregisterAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be unregistered."
+      description: "등록을 취소할 어셈블리입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully unregistered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> assembly </code> 성공적으로 등록 되지 않은 고, 그렇지 않으면 유형은 포함 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 적격 형식이 없습니다. 포함 하는 경우."
   overload: System.Runtime.InteropServices.RegistrationServices.UnregisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -또는-메서드로 <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> 않습니다 <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>합니다.       -또는-로 표시 하는 둘 이상의 메서드가 없는 <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> 계층의 지정 된 수준입니다.       -또는-로 메서드의 서명을 표시 <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> 올바르지 않습니다."
   - type: System.Reflection.TargetInvocationException
     commentId: T:System.Reflection.TargetInvocationException
-    description: "A user-defined custom unregistration function (marked with the <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> attribute) throws an exception."
+    description: "사용자 정의 사용자 지정 등록 취소 함수 (으로 표시 된 <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> 특성) 예외를 throw 합니다."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients(System.Int32)
@@ -347,14 +347,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Removes references to a type registered with the <xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*> method."
-  remarks: "Note that using platform invoke to call the unmanaged `CoRegisterClassObject` and  `CoDisconnectObject` methods to register and unregister COM objects is not supported."
+  summary: "등록 된 형식에 대 한 참조 제거는 <xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*>메서드.</xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*>"
+  remarks: "관리 되지 않는 호출 하는 플랫폼을 사용 하 여 호출을 `CoRegisterClassObject` 및 `CoDisconnectObject` 등록 및 COM 개체를 등록 취소 하는 메서드를 사용할 수 없습니다."
   syntax:
     content: public virtual void UnregisterTypeForComClients (int cookie);
     parameters:
     - id: cookie
       type: System.Int32
-      description: "The cookie value returned by a previous call to the <xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*> method overload."
+      description: "에 대 한 이전 호출에서 반환 된 쿠키 값의 <xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*>메서드 오버 로드.</xref:System.Runtime.InteropServices.RegistrationServices.RegisterTypeForComClients*>"
   overload: System.Runtime.InteropServices.RegistrationServices.UnregisterTypeForComClients*
   exceptions: []
   platform:

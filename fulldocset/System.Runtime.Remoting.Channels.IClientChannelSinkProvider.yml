@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkProvider
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
   type: Interface
-  summary: "Creates client channel sinks for the client channel through which remoting messages flow."
-  remarks: "Channel sinks are connected to a client channel through implementations of the IClientChannelSinkProvider interface. All the remoting client channels provide constructors that take a IClientChannelSinkProvider as a parameter.       Channel sink providers are stored in a chain, and the user is responsible for chaining all channel sink providers together before passing the outer one to the channel constructor. IClientChannelSinkProvider provides a property called <xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A> for this purpose.       When multiple channel sink providers are specified in a configuration file, the remoting infrastructure will chain them together in the order they are found in the configuration file. The channel sink providers will be created when the channel is created during the <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName> call."
+  summary: "클라이언트는 원격 서비스를 통해 메시지 흐름 클라이언트 채널에 대 한 채널 싱크를 만듭니다."
+  remarks: "채널 싱크 IClientChannelSinkProvider 인터페이스의 구현을 통해 클라이언트 채널에 연결 됩니다. 모든 원격 클라이언트 채널에는 매개 변수로 IClientChannelSinkProvider는 생성자를 제공 합니다.       가 체인에 저장 된 채널 싱크 공급자 및 사용자가 외부 하나 채널 생성자에 전달 하기 전에 모든 채널 싱크 공급자를 함께 연결 해야 합니다. 이라는 속성을 제공 하는 IClientChannelSinkProvider <xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>이 목적을 위해.</xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>       여러 채널 싱크 공급자 구성 파일에 지정 되어 원격 인프라 연결 합니다 구성 파일에서 발견 되는 순서에서입니다. 채널 싱크 공급자 중에서 채널을 만들 때 생성 됩니다는 <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>호출.</xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>"
   example:
   - "The following code example illustrates an implementation of this interface.  \n  \n [!code-cs[Remoting_Sinks#30](~/add/codesnippet/csharp/t-system.runtime.remotin_15_1.cs)]\n [!code-cpp[Remoting_Sinks#30](~/add/codesnippet/cpp/t-system.runtime.remotin_15_1.cpp)]  \n  \n See the <xref:System.Runtime.Remoting.Channels.IClientChannelSink> interface documentation for an example of the corresponding client sink implementation."
   syntax:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Creates a sink chain."
-  remarks: "When the CreateSink method is called, it creates its own channel sink, forwards the CreateSink call to the next sink provider in the chain (if there is one), and ensures that the next sink and the current one are linked together."
+  summary: "싱크 체인을 만듭니다."
+  remarks: "자체 채널 싱크 만듭니다 CreateSink 메서드를 호출 하는 경우, CreateSink 호출 체인 (있는 경우)에 있는 다음 싱크 공급자를 전달 하 고 현재 및 다음 싱크에서 서로 연결 되도록 합니다."
   example:
   - "The following code example illustrates an implementation of this method.  \n  \n [!code-cs[Remoting_Sinks#33](~/add/codesnippet/csharp/09bab0ba-2acd-4d69-ae61-_1.cs)]\n [!code-cpp[Remoting_Sinks#33](~/add/codesnippet/cpp/09bab0ba-2acd-4d69-ae61-_1.cpp)]"
   syntax:
@@ -44,21 +44,21 @@ items:
     parameters:
     - id: channel
       type: System.Runtime.Remoting.Channels.IChannelSender
-      description: "Channel for which the current sink chain is being constructed."
+      description: "생성 되 고 현재 싱크 체인 채널입니다."
     - id: url
       type: System.String
-      description: "The URL of the object to connect to. This parameter can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the connection is based entirely on the information contained in the `remoteChannelData` parameter."
+      description: "에 연결 된 개체의 URL입니다. 이 매개 변수 수 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 연결에 포함 된 정보에 기반 하는 경우는 `remoteChannelData` 매개 변수입니다."
     - id: remoteChannelData
       type: System.Object
-      description: "A channel data object that describes a channel on the remote server."
+      description: "원격 서버에 있는 채널을 설명 하는 채널 데이터 개체입니다."
     return:
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The first sink of the newly formed channel sink chain, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, which indicates that this provider will not or cannot provide a connection for this endpoint."
+      description: "새로 구성 된 채널 싱크 체인의 첫 번째 싱크 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>,이 공급자는 트리거하지 또는이 끝점에 대 한 연결을 제공할 수 없는 나타냅니다."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.CreateSink*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.Next
@@ -73,7 +73,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets or sets the next sink provider in the channel sink provider chain."
+  summary: "채널 싱크 공급자 체인에 있는 다음 싱크 공급자를 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example illustrates an implementation of this property.  \n  \n [!code-cs[Remoting_Sinks#32](~/add/codesnippet/csharp/p-system.runtime.remotin_37_1.cs)]\n [!code-cpp[Remoting_Sinks#32](~/add/codesnippet/cpp/p-system.runtime.remotin_37_1.cpp)]"
@@ -81,12 +81,12 @@ items:
     content: public System.Runtime.Remoting.Channels.IClientChannelSinkProvider Next { get; set; }
     return:
       type: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
-      description: "The next sink provider in the channel sink provider chain."
+      description: "채널 싱크 공급자 체인에 있는 다음 싱크 공급자입니다."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.Next*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 references:

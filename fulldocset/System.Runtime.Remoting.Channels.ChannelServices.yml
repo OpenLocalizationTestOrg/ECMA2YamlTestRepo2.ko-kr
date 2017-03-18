@@ -20,7 +20,7 @@ items:
   nameWithType: ChannelServices
   fullName: System.Runtime.Remoting.Channels.ChannelServices
   type: Class
-  summary: "Provides static methods to aid with remoting channel registration, resolution, and URL discovery. This class cannot be inherited."
+  summary: "원격 채널 등록, 해상도 및 URL 검색을 지원 하려면 정적 메서드를 제공 합니다. 이 클래스는 상속 될 수 없습니다."
   remarks: "Channels transport messages between applications across such remoting boundaries as application domains, processes, and computers. These crossings can be inbound and outbound. A channel can listen on an endpoint for inbound messages, send to an endpoint for outbound messages, or both. This provides an extensibility point in the runtime to plug in a wide range of protocols, even though the runtime might not be at the other end of the channel. Run-time objects can be used to expose a wide range of semantics and entities. The channel provides the extensibility point to convert the messages to and from the specific protocols.  \n  \n Channels must expose the <xref:System.Runtime.Remoting.Channels.IChannel> interface, which provides informational properties such as the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> and <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A>. Channels are registered using the <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName> method. Channels can also be loaded from the remoting configuration. (See [\\<channel> Element (Template)](http://msdn.microsoft.com/en-us/73399d48-f0fd-46e9-828b-6cdafde5ffce) for details.)  \n  \n On the client side, messages are handed off to the client channel sink chain after they traverse the client <xref:System.Runtime.Remoting.Contexts.Context> chain. The first channel sink is typically a <xref:System.Runtime.Remoting.Channels.IClientFormatterSink>, which serializes the message into a stream that is passed down the channel sink chain to the client transport sink. The client transport sink then writes this stream out to the wire.  \n  \n On the server side, the server transport sink reads requests off the wire and passes the request stream to the server channel sink chain. The server formatter sink at the end of this chain will deserialize the request into a message. It will then hand this message off to the remoting infrastructure, which will dispatch it to the server <xref:System.Runtime.Remoting.Contexts.Context> chain."
   syntax:
     content: >-
@@ -45,20 +45,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Asynchronously dispatches the given message to the server-side chain(s) based on the URI embedded in the message."
-  remarks: "The current method returns immediately, whether the server processed the specified message or not."
+  summary: "비동기적으로 디스패치 된 메시지 URI를 기반으로 서버 쪽 디스패치합니다에 메시지에 포함 합니다."
+  remarks: "서버는 지정된 된 메시지 처리 여부 현재 메서드가 즉시 반환 합니다."
   syntax:
     content: public static System.Runtime.Remoting.Messaging.IMessageCtrl AsyncDispatchMessage (System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Messaging.IMessageSink replySink);
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to dispatch."
+      description: "메시지 디스패치입니다."
     - id: replySink
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The sink that will process the return message if it is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "없는 경우 반환 메시지를 처리할 싱크 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.Runtime.Remoting.Messaging.IMessageCtrl
-      description: "A <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;></xref> object used to control the asynchronously dispatched message."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Messaging.IMessageCtrl&quot;> </xref> 비동기적으로 디스패치 된 메시지를 제어 하는 데 사용 되는 개체입니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.AsyncDispatchMessage*
   exceptions:
   - type: System.ArgumentNullException
@@ -66,7 +66,7 @@ items:
     description: "The <code>msg</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.CreateServerChannelSinkChain(System.Runtime.Remoting.Channels.IServerChannelSinkProvider,System.Runtime.Remoting.Channels.IChannelReceiver)
@@ -81,24 +81,24 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Creates a channel sink chain for the specified channel."
+  summary: "지정 된 채널에 대 한 채널 싱크 체인을 만듭니다."
   syntax:
     content: public static System.Runtime.Remoting.Channels.IServerChannelSink CreateServerChannelSinkChain (System.Runtime.Remoting.Channels.IServerChannelSinkProvider provider, System.Runtime.Remoting.Channels.IChannelReceiver channel);
     parameters:
     - id: provider
       type: System.Runtime.Remoting.Channels.IServerChannelSinkProvider
-      description: "The first provider in the chain of sink providers that will create the channel sink chain."
+      description: "싱크 공급자를 만들 채널 싱크 체인의 체인에서 첫 번째 공급자입니다."
     - id: channel
       type: System.Runtime.Remoting.Channels.IChannelReceiver
-      description: "The <xref href=&quot;System.Runtime.Remoting.Channels.IChannelReceiver&quot;></xref> for which to create the channel sink chain."
+      description: "<xref href=&quot;System.Runtime.Remoting.Channels.IChannelReceiver&quot;> </xref> 채널 싱크 체인을 만들입니다."
     return:
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "A new channel sink chain for the specified channel."
+      description: "지정 된 채널에 대 한 새 채널 싱크 체인입니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.CreateServerChannelSinkChain*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.DispatchMessage(System.Runtime.Remoting.Channels.IServerChannelSinkStack,System.Runtime.Remoting.Messaging.IMessage,System.Runtime.Remoting.Messaging.IMessage@)
@@ -113,23 +113,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Dispatches incoming remote calls."
-  remarks: "This method is used by channels to dispatch incoming remote calls."
+  summary: "들어오는 원격 호출을 전달합니다."
+  remarks: "이 메서드는 들어오는 원격 호출을 발송할 채널에서 사용 됩니다."
   syntax:
     content: public static System.Runtime.Remoting.Channels.ServerProcessing DispatchMessage (System.Runtime.Remoting.Channels.IServerChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage msg, out System.Runtime.Remoting.Messaging.IMessage replyMsg);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerChannelSinkStack
-      description: "The stack of server channel sinks that the message already traversed."
+      description: "서버 채널 스택에서 메시지가 이미 통과 싱크에서."
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to dispatch."
+      description: "메시지 디스패치입니다."
     - id: replyMsg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref> that holds the reply from the server to the message that is contained in the `msg` parameter. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때를 포함 한 <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;> </xref> 서버의에 포함 된 메시지에 회신을 보유 하는 `msg` 매개 변수입니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Runtime.Remoting.Channels.ServerProcessing
-      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;></xref> that gives the status of the server message processing."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;> </xref> 서버 메시지 처리의 상태를 제공 하 합니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.DispatchMessage*
   exceptions:
   - type: System.ArgumentNullException
@@ -137,7 +137,7 @@ items:
     description: "The <code>msg</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.GetChannel(System.String)
@@ -152,7 +152,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns a registered channel with the specified name."
+  summary: "지정 된 이름의 등록된 된 채널을 반환합니다."
   remarks: ''
   example:
   - >-
@@ -164,15 +164,15 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The channel name."
+      description: "채널 이름입니다."
     return:
       type: System.Runtime.Remoting.Channels.IChannel
-      description: "An interface to a registered channel, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the channel is not registered."
+      description: "등록된 된 채널에 대 한 인터페이스 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 채널이 등록 되지 않은 경우."
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetChannel*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.GetChannelSinkProperties(System.Object)
@@ -187,7 +187,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns a <xref:System.Collections.IDictionary> of properties for a given proxy."
+  summary: "반환 된 <xref:System.Collections.IDictionary>특정된 프록시에 대 한 속성.</xref:System.Collections.IDictionary>"
   remarks: ''
   example:
   - >-
@@ -199,15 +199,15 @@ items:
     parameters:
     - id: obj
       type: System.Object
-      description: "The proxy to retrieve properties for."
+      description: "에 대 한 속성을 검색 프록시입니다."
     return:
       type: System.Collections.IDictionary
-      description: "An interface to the dictionary of properties, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no properties were found."
+      description: "속성을 사전에 대 한 인터페이스 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 속성이 없는 경우."
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetChannelSinkProperties*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers that is higher in the callstack does not have permission to configure remoting types and channels."
+    description: "원격 형식 및 채널을 구성할 수 있는 권한을는 호출 스택의 상위 호출자 중 하나 이상 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.GetUrlsForObject(System.MarshalByRefObject)
@@ -222,7 +222,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns an array of all the URLs that can be used to reach the specified object."
+  summary: "지정된 된 개체에 도달 하는 데 사용할 수 있는 모든 Url의 배열을 반환 합니다."
   remarks: ''
   example:
   - >-
@@ -234,15 +234,15 @@ items:
     parameters:
     - id: obj
       type: System.MarshalByRefObject
-      description: "The object to retrieve the URL array for."
+      description: "에 대 한 URL 배열을 검색 하는 개체입니다."
     return:
       type: System.String[]
-      description: "An array of strings that contains the URLs that can be used to remotely identify the object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if none were found."
+      description: "원격으로 개체를 식별 하는 데 사용할 수 있는 Url이 포함 된 문자열의 배열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 찾지 못한 경우."
   overload: System.Runtime.Remoting.Channels.ChannelServices.GetUrlsForObject*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel(System.Runtime.Remoting.Channels.IChannel)
@@ -257,7 +257,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Registers a channel with the channel services. RegisterChannel is obsolete. Please use &lt;xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%28System.Runtime.Remoting.Channels.IChannel%2CSystem.Boolean%29&gt; instead."
+  summary: "채널을 채널 서비스에 등록합니다. RegisterChannel 사용 되지 않습니다. 사용 하세요 &lt;xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%28System.Runtime.Remoting.Channels.IChannel%2CSystem.Boolean%29&gt; 대신 합니다."
   remarks: "> [!NOTE]\n>  RegisterChannel is obsolete. Please use <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%28System.Runtime.Remoting.Channels.IChannel%2CSystem.Boolean%29> instead.  \n  \n The RegisterChannel method takes in the <xref:System.Runtime.Remoting.Channels.IChannel> interface from a channel object. The channel's <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> must be unique, or the channel must be anonymous. A channel is anonymous if the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A?displayProperty=fullName> is set to either `null` or <xref:System.String.Empty> by using the `name` configuration property.  \n  \n You cannot register two channels with the same name in a <xref:System.AppDomain>. By default, the name of a <xref:System.Runtime.Remoting.Channels.Http.HttpChannel> is \"http\" and the name of a <xref:System.Runtime.Remoting.Channels.Tcp.TcpChannel> is \"tcp.\" Therefore, if you want to register two channels of the same type, you must specify a different name for one of them through configuration properties.  \n  \n For more information about channel configuration properties, see <xref:System.Runtime.Remoting.Channels.Http.HttpChannel>, and [\\<channel> Element (Template)](http://msdn.microsoft.com/en-us/73399d48-f0fd-46e9-828b-6cdafde5ffce)."
   example:
   - >-
@@ -269,7 +269,7 @@ items:
     parameters:
     - id: chnl
       type: System.Runtime.Remoting.Channels.IChannel
-      description: "The channel to register."
+      description: "채널 등록입니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel*
   exceptions:
   - type: System.ArgumentNullException
@@ -277,10 +277,10 @@ items:
     description: "The <code>chnl</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: "The channel has already been registered."
+    description: "채널이 이미 등록 되었습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels."
+    description: "원격 형식 및 채널을 구성할 수 있는 권한을는 호출 스택의 상위 호출자 중 하나 이상 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel(System.Runtime.Remoting.Channels.IChannel,System.Boolean)
@@ -295,17 +295,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Registers a channel with the channel services."
+  summary: "채널을 채널 서비스에 등록합니다."
   remarks: "The RegisterChannel method receives the <xref:System.Runtime.Remoting.Channels.IChannel> interface from a channel object. The channel's <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> must be unique, or the channel must be anonymous. A channel is anonymous if the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A?displayProperty=fullName> is set to either `null` or <xref:System.String.Empty> by using the `name` configuration property.  \n  \n You cannot register two channels with the same name in a <xref:System.AppDomain>. By default, the name of a <xref:System.Runtime.Remoting.Channels.Http.HttpChannel> is \"http\" and the name of a <xref:System.Runtime.Remoting.Channels.Tcp.TcpChannel> is \"tcp\". Therefore, if you want to register two channels of the same type, you must specify a different name for one of them through configuration properties.  \n  \n For more information about channel configuration properties, see [Channel and Formatter Configuration Properties](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe) and [\\<channel> Element (Template)](http://msdn.microsoft.com/en-us/73399d48-f0fd-46e9-828b-6cdafde5ffce).  \n  \n If the `ensureSecurity` parameter is set to `true`, the remoting system determines whether the channel implements <xref:System.Runtime.Remoting.Channels.ISecurableChannel>, and if so, enables encryption and digital signatures. An exception is thrown if the channel does not implement <xref:System.Runtime.Remoting.Channels.ISecurableChannel>.  \n  \n> [!NOTE]\n>  Setting `ensureSecurity` to `true` throws a <xref:System.Runtime.Remoting.RemotingException> for the <xref:System.Runtime.Remoting.Channels.Tcp.TcpServerChannel> on Windows 98 (Since secure tcp channels are not supported on Windows 9x), and for the <xref:System.Runtime.Remoting.Channels.Http.HttpServerChannel> on all platforms (You must host your service in IIS if you want to use a secure http channel)."
   syntax:
     content: public static void RegisterChannel (System.Runtime.Remoting.Channels.IChannel chnl, bool ensureSecurity);
     parameters:
     - id: chnl
       type: System.Runtime.Remoting.Channels.IChannel
-      description: "The channel to register."
+      description: "채널 등록입니다."
     - id: ensureSecurity
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> ensures that security is enabled; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. Setting the value to <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> does not effect the security setting on the TCP or IPC channel."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>보안, 로깅을 확인합니다 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 값을 설정 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> TCP 또는 IPC 채널의 보안 설정은 영향을 주지 않습니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel*
   exceptions:
   - type: System.ArgumentNullException
@@ -313,13 +313,13 @@ items:
     description: "The <code>chnl</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: "The channel has already been registered."
+    description: "채널이 이미 등록 되었습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the call stack does not have permission to configure remoting types and channels."
+    description: "원격 형식 및 채널을 구성할 수 있는 권한을는 호출 스택의 상위 호출자가 중 하나 이상 없습니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Not supported in Windows 98 for <xref href=&quot;System.Runtime.Remoting.Channels.Tcp.TcpServerChannel&quot;></xref> and on all platforms for <xref href=&quot;System.Runtime.Remoting.Channels.Http.HttpServerChannel&quot;></xref>. Host the service using Internet Information Services (IIS) if you require a secure HTTP channel."
+    description: "에 대 한 Windows 98에서 지원 되지 않습니다. <xref href=&quot;System.Runtime.Remoting.Channels.Tcp.TcpServerChannel&quot;> </xref> 및에 대 한 모든 플랫폼에서 <xref href=&quot;System.Runtime.Remoting.Channels.Http.HttpServerChannel&quot;> </xref>합니다. 보안 HTTP 채널을 요청 하는 경우 인터넷 정보 서비스 (IIS)를 사용 하 여 서비스를 호스팅하십시오."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.RegisteredChannels
@@ -334,7 +334,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets a list of currently registered channels."
+  summary: "현재 등록 된 채널의 목록을 가져옵니다."
   remarks: ''
   example:
   - >-
@@ -345,12 +345,12 @@ items:
     content: public static System.Runtime.Remoting.Channels.IChannel[] RegisteredChannels { get; }
     return:
       type: System.Runtime.Remoting.Channels.IChannel[]
-      description: "An array of all the currently registered channels."
+      description: "현재 등록 된 모든 채널의 배열입니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.RegisteredChannels*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.SyncDispatchMessage(System.Runtime.Remoting.Messaging.IMessage)
@@ -365,7 +365,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Synchronously dispatches the incoming message to the server-side chain(s) based on the URI embedded in the message."
+  summary: "URI를 기반으로 서버 쪽 디스패치합니다로 들어오는 메시지에 포함 된 동기식 메시지에 있습니다."
   remarks: ''
   example:
   - >-
@@ -377,10 +377,10 @@ items:
     parameters:
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message to dispatch."
+      description: "메시지 디스패치입니다."
     return:
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "A reply message is returned by the call to the server-side chain."
+      description: "회신 메시지는 서버 쪽 체인에 대 한 호출에서 반환 됩니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.SyncDispatchMessage*
   exceptions:
   - type: System.ArgumentNullException
@@ -388,7 +388,7 @@ items:
     description: "The <code>msg</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.ChannelServices.UnregisterChannel(System.Runtime.Remoting.Channels.IChannel)
@@ -403,7 +403,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Unregisters a particular channel from the registered channels list."
+  summary: "등록 된 채널로 목록에서 특정 채널을 등록 취소합니다."
   remarks: ''
   example:
   - >-
@@ -415,7 +415,7 @@ items:
     parameters:
     - id: chnl
       type: System.Runtime.Remoting.Channels.IChannel
-      description: "The channel to unregister."
+      description: "등록을 취소 하는 채널입니다."
   overload: System.Runtime.Remoting.Channels.ChannelServices.UnregisterChannel*
   exceptions:
   - type: System.ArgumentNullException
@@ -423,10 +423,10 @@ items:
     description: "The <code>chnl</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The channel is not registered."
+    description: "채널이 등록 되지 않았습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels."
+    description: "원격 형식 및 채널을 구성할 수 있는 권한을는 호출 스택의 상위 호출자 중 하나 이상 없습니다."
   platform:
   - net462
 references:

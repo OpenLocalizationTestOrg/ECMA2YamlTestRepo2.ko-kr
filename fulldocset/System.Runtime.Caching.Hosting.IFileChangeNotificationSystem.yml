@@ -11,8 +11,8 @@ items:
   nameWithType: IFileChangeNotificationSystem
   fullName: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem
   type: Interface
-  summary: "Defines a way to expose a custom <xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;></xref> object to a cache implementation."
-  remarks: "In ASP.NET, the IFileChangeNotificationSystem interface provides access to internal file-change notification management.       The IFileChangeNotificationSystem interface is used internally by the <xref:System.Runtime.Caching.HostFileChangeMonitor> class.       When a cache implementation runs in an ASP.NET application domain, ASP.NET implements an IFileChangeNotificationSystem interface through the <xref:System.Runtime.Caching.ObjectCache.Host%2A> property. The <xref:System.Runtime.Caching.HostFileChangeMonitor> class detects this property and uses the ASP.NET file-change notification system to evict cache entries based on file-change notification.       In non-ASP.NET applications, there is no host environment that implements a custom IFileChangeNotificationSystem interface. As a result, the <xref:System.Runtime.Caching.HostFileChangeMonitor> class uses the <xref:System.IO.FileSystemWatcher> class of the CLR."
+  summary: "사용자 지정을 노출 하는 방법을 정의 <xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;> </xref> 캐시 구현에는 개체입니다."
+  remarks: "ASP.NET, IFileChangeNotificationSystem 인터페이스 내부 파일 변경 알림 관리에 대 한 액세스를 제공합니다.       IFileChangeNotificationSystem 인터페이스 <xref:System.Runtime.Caching.HostFileChangeMonitor>클래스</xref:System.Runtime.Caching.HostFileChangeMonitor> 에서 내부적으로 사용 됩니다.       캐시를 구현 하는 ASP.NET 응용 프로그램 도메인에서 실행 되 면 ASP.NET를 통해 IFileChangeNotificationSystem 인터페이스를 구현 하는 <xref:System.Runtime.Caching.ObjectCache.Host%2A>속성.</xref:System.Runtime.Caching.ObjectCache.Host%2A> <xref:System.Runtime.Caching.HostFileChangeMonitor>이 속성을 검색 하 고 파일 변경 알림에 따라 캐시 항목을 제거 하는 ASP.NET 파일 변경 알림 시스템을 사용 하는 클래스입니다.</xref:System.Runtime.Caching.HostFileChangeMonitor>       ASP.NET 이외의 응용 프로그램에서 사용자 지정 IFileChangeNotificationSystem 인터페이스를 구현 하는 호스트 환경이 있습니다. 결과적으로,는 <xref:System.Runtime.Caching.HostFileChangeMonitor>클래스에서 사용 하 여 <xref:System.IO.FileSystemWatcher>CLR의 클래스.</xref:System.IO.FileSystemWatcher> </xref:System.Runtime.Caching.HostFileChangeMonitor>"
   syntax:
     content: public interface IFileChangeNotificationSystem
   implements: []
@@ -30,26 +30,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Registers a file path to monitor with the host environment."
-  remarks: "This method is used by custom cache objects and custom change monitors that implement the host environment&quot;s <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register file paths for monitoring with the host environment. The StartMonitoring method is called by implementers of the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register a file or directory for change monitoring."
+  summary: "호스트 환경으로 모니터링 하는 파일 경로 등록 합니다."
+  remarks: "이 메서드는 사용자 지정 캐시 개체에 의해 사용 및 사용자 지정 호스트 환경을 구현 하는 모니터 변경 <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>인터페이스를 호스트 환경으로 모니터링할 파일 경로를 등록 합니다.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> StartMonitoring 메서드 구현에서 호출 됩니다는 <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>파일 또는 디렉터리 변경 모니터링을 위해 등록 하기 위해 인터페이스.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>"
   syntax:
     content: public void StartMonitoring (string filePath, System.Runtime.Caching.OnChangedCallback onChangedCallback, out object state, out DateTimeOffset lastWriteTime, out long fileSize);
     parameters:
     - id: filePath
       type: System.String
-      description: "The fully qualified physical path of a directory or file to monitor for changes."
+      description: "변경 내용을 모니터링할 파일의 정규화 된 실제 경로입니다."
     - id: onChangedCallback
       type: System.Runtime.Caching.OnChangedCallback
-      description: "A reference to a method that implements the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> delegate. When the monitored file or directory changes, the host environment&quot;s implementation of the <xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;></xref> interface raises an event by calling the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> class."
+      description: "구현 하는 방법에 대 한 참조는 <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;> </xref> 위임 합니다. 모니터링 되는 파일 또는 디렉터리 변경 되는 경우 호스트 환경의 구현의 <xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;> </xref> 인터페이스를 호출 하 여 이벤트를 발생 시킵니다.는 <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;> </xref> 클래스입니다."
     - id: state
       type: System.Object
-      description: "The state that is supplied by the host environment. Cache implementations and custom change monitors should treat the state value as opaque. However, the state must be stored so that it can be sent to the host environment when the cache implementation calls the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*> method."
+      description: "호스트 환경에서 제공 되는 상태입니다. 캐시 구현 및 사용자 지정 변경 모니터 상태 값 불투명으로 처리 해야 합니다. 그러나 캐시를 구현할 경우 호출 하는 경우 호스트 환경에 전송 될 수 있도록 상태를 저장 해야 합니다는 <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>메서드.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>"
     - id: lastWriteTime
       type: System.DateTimeOffset
-      description: "When this method returns, contains the last date and time that a write operation occurred on `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "이 메서드가 반환 될 때 마지막 날짜와 시간에 발생 한 쓰기 작업이 포함 `filePath`합니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다. 호스트 환경에서이 매개 변수 반환 됩니다."
     - id: fileSize
       type: System.Int64
-      description: "When this method returns, contains the total size of the monitored `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "이 메서드가 반환 될 때 포함 되는 총 크기 `filePath`합니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다. 호스트 환경에서이 매개 변수 반환 됩니다."
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*
   exceptions: []
   platform:
@@ -66,17 +66,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Ends change monitoring."
-  remarks: "The StopMonitoring method must be called by custom caches and custom change monitors that are being disposed by the host environment in order to stop monitoring file paths and directories."
+  summary: "변경 모니터링을 끝냅니다."
+  remarks: "사용자 지정 캐시 및 파일 경로 및 디렉터리를 모니터링을 중지 하기 위해 호스트 환경에서 삭제 되 고 사용자 지정 변경 모니터에서 StopMonitoring 메서드를 호출 해야 합니다."
   syntax:
     content: public void StopMonitoring (string filePath, object state);
     parameters:
     - id: filePath
       type: System.String
-      description: "The path of the file or folder to stop monitoring. This should match a file path value that was passed in an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "파일 또는 모니터링을 중지 하는 폴더의 경로입니다. 에 대 한 이전 호출에서 전달 된 파일 경로 값과 일치 해야이 <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>메서드.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
     - id: state
       type: System.Object
-      description: "The state information that was originally supplied by the host environment during an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "에 대 한 이전 호출 하는 동안 원래 호스트 환경에서 제공 된 상태 정보는 <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>메서드.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*
   exceptions: []
   platform:

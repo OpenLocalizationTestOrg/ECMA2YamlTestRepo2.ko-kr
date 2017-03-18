@@ -11,8 +11,8 @@ items:
   nameWithType: ProfileOptimization
   fullName: System.Runtime.ProfileOptimization
   type: Class
-  summary: "Improves the startup performance of application domains in applications that require the just-in-time (JIT) compiler by performing background compilation of methods that are likely to be executed, based on profiles created during previous compilations."
-  remarks: "> [!IMPORTANT] >  Profile optimization requires a multicore computer. The methods are ignored on other computers.       Each time you initiate profile optimization in an application domain, the profile that was created during the previous use is read. The information in the profile is used to guide background compilation by identifying the methods that are most likely to be executed during startup. On multicore computers, this increases the chances that a method is already compiled by the time it is needed so that the main application thread does not have to call the JIT compiler.       The profile file is overwritten on each use, so it always contains the most recent information about which methods are used during startup.       Optimization profiles are not restricted to application domain startup. They can be used for any activity that will require heavy use of the JIT compiler. You can maintain multiple profiles for an application domain so that each such activity has its own profile.       To use optimization profiles in an application domain, you must call the <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A> method and specify the folder where profiles are stored. The folder must already exist. To begin using a profile, call the <xref:System.Runtime.ProfileOptimization.StartProfile%2A> method and specify the file name of the profile. If the file was not recorded previously, it is created on first use. There is no performance benefit the first time a profile is created.       Profile optimization does not change the order in which methods are executed. Methods are not executed on the background thread; if a method is compiled but never called, it is simply not used. If a profile file is corrupt or cannot be written to the specified folder (for example, because the folder does not exist), program execution continues without optimization profiling."
+  summary: "적시에 (JIT) 컴파일러는 이전 컴파일 중에 만든 프로필에 따라 실행 될 가능성이 있는 메서드의 백그라운드 컴파일 수행 하 여 필요한 응용 프로그램에서 응용 프로그램 도메인의 시작 성능을 향상 시킵니다."
+  remarks: "> [!IMPORTANT]> 프로필 기반 최적화는 다중 코어 컴퓨터가 필요합니다. 메서드는 다른 컴퓨터에서 무시 됩니다.       응용 프로그램 도메인에서 프로필 기반 최적화를 시작 될 때마다 이전 사용 하는 동안 만들어진 프로필은 읽기입니다. 프로필의 정보는 시작 하는 동안 실행 될 가능성이 가장 하는 메서드를 식별 하 여 백그라운드 컴파일 데 사용 됩니다. 다중 코어 컴퓨터에서이 높아집니다. 메서드는 이미 가능성 주 응용 프로그램 스레드는 JIT 컴파일러를 호출 하지 않아도 되도록 필요할 때 컴파일됩니다.       프로필 파일을 사용할 때마다 덮어쓰기에 대 한 메서드를 시작 하는 동안 사용할 가장 최근의 정보가 항상 포함 합니다.       최적화 프로필 응용 프로그램 도메인 시작에 제한 되지 않습니다. JIT 컴파일러를 많이 사용 해야 하는 모든 활동에 대해 사용할 수 있습니다. 이러한 각 활동에는 자체 프로필이 되도록 응용 프로그램 도메인에 대 한 여러 프로필을 유지할 수 있습니다.       응용 프로그램 도메인에서 최적화 프로필을 사용 하려면 호출 해야 합니다는 <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A>메서드 프로필이 저장 된 폴더를 지정 합니다.</xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A> 폴더가 이미 있어야 합니다. 프로필을 사용 하려면 호출 된 <xref:System.Runtime.ProfileOptimization.StartProfile%2A>메서드 프로 파일의 파일 이름을 지정 합니다.</xref:System.Runtime.ProfileOptimization.StartProfile%2A> 파일이 이전에 기록 되지 않았습니다 처음 사용할 때 만들어집니다. 에서는 프로필을 만들 성능 혜택 첫 번째 시간은 없습니다.       프로필 기반 최적화는 메서드가 실행 되는 순서를 변경 하지 않습니다. 메서드는 백그라운드 스레드에서 실행 되지 않습니다. 메서드는 컴파일되지만 호출 되지 것 하기만 하면 사용 되지 않습니다. 프로필 파일을 손상 되었거나 (예를 들어 없기 때문에 폴더)에 지정된 된 폴더에 쓸 수 없는 경우, 최적화 프로 파일링 하지 않고 프로그램 실행이 계속 됩니다."
   syntax:
     content: public static class ProfileOptimization
   inheritance:
@@ -33,14 +33,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime
-  summary: "Enables optimization profiling for the current application domain, and sets the folder where the optimization profile files are stored. On a single-core computer, the method is ignored."
-  remarks: "You must call this method before you call the <xref:System.Runtime.ProfileOptimization.StartProfile%2A> method for the first time in the current application domain. If you call SetProfileRoot more than once in the same application domain, all calls after the first are ignored.       The specified folder must already exist. If it does not exist, calling this method does not create it, and no profiling occurs.       On computers that do not have multiple cores, this method is ignored."
+  summary: "현재 어플리케이션 도메인에 대 한 프로 파일링 최적화를 사용 하 고 최적화 프로필 파일을 저장할 폴더를 설정 합니다. 단일 코어 컴퓨터에서 메서드는 무시 됩니다."
+  remarks: "호출 하기 전에이 메서드를 호출 해야 합니다는 <xref:System.Runtime.ProfileOptimization.StartProfile%2A>현재 응용 프로그램 도메인에서 처음으로 메서드.</xref:System.Runtime.ProfileOptimization.StartProfile%2A> SetProfileRoot 동일한 응용 프로그램 도메인에서 두 번 이상 호출 하는 첫 번째 이후 모든 호출은 무시 됩니다.       지정한 폴더가 이미 있어야 합니다. 존재 하지 않는 경우이 메서드를 호출을 만들지 않고, 발생 하지 프로 파일링 합니다.       여러 코어를 갖지 않는 컴퓨터에서이 메서드는 무시 됩니다."
   syntax:
     content: public static void SetProfileRoot (string directoryPath);
     parameters:
     - id: directoryPath
       type: System.String
-      description: "The full path to the folder where profile files are stored for the current application domain."
+      description: "현재 어플리케이션 도메인에 대 한 프로필 파일이 저장 된 폴더에 대 한 전체 경로입니다."
   overload: System.Runtime.ProfileOptimization.SetProfileRoot*
   exceptions: []
   platform:
@@ -57,14 +57,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime
-  summary: "Starts just-in-time (JIT) compilation of the methods that were previously recorded in the specified profile file, on a background thread. Starts the process of recording current method use, which later overwrites the specified profile file."
-  remarks: "If the specified profile exists in the folder specified by the <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A> method, the information it contains is used to determine the order in which methods are compiled on the background thread. The StartProfile method creates the profile if it does not already exist, and initiates the recording of method use.       Only methods that are actually called are recorded, regardless of whether they were compiled on the background thread or on the main application thread. A method is compiled on the main application thread if the application needs to call it before the background thread has compiled it.       The code that performs the recording tracks the rate at which methods are compiled, including methods that are compiled on both the background thread and on the main thread. When the rate falls below a predetermined level, recording stops. Recording also stops if the rate of JIT compilation exceeds a predetermined upper limit.       If the <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A> method has not been called for the current application domain, or if the computer does not have multiple cores, the StartProfile method has no effect."
+  summary: "백그라운드 스레드에서 지정 된 프로필 파일에서 이전에 기록 된 메서드의 적시에 (JIT) 컴파일을 시작 합니다. 나중에 지정 된 프로필 파일을 덮어써야 현재 메서드 사용을 기록 하는 프로세스를 시작 합니다."
+  remarks: "지정된 된 프로필에서 지정한 폴더에 있는 경우는 <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A>메서드, 포함 된 정보를 사용 하는 백그라운드 스레드 메서드 컴파일됩니다 순서를 결정 합니다.</xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A> 이미 존재 하지 않는 경우 메서드 사용의 기록 시작 StartProfile 메서드는 프로필을 만듭니다.       기본 응용 프로그램 스레드 또는 백그라운드 스레드에서 컴파일할 여부에 관계 없이 실제로 호출 되는 방법에만 기록 됩니다. 메서드는 응용 프로그램의 백그라운드 스레드가 컴파일된가 먼저 호출 해야 하는 경우 기본 응용 프로그램 스레드에서 컴파일됩니다.       녹음/녹화 수행 하는 코드는 메서드에 컴파일된다는 백그라운드 스레드 및 주 스레드의 컴파일되는 메서드를 포함 하는 속도 추적 합니다. 때 속도 미만으로 떨어질 미리 결정 된 수준 녹음 중지 합니다. JIT 컴파일 속도 미리 결정 된 상한을 초과 하는 경우에 기록을 중지 합니다.       경우는 <xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A>은 현재 어플리케이션 도메인에 대 한 메서드가 호출 되지 않은 또는 컴퓨터에 여러 코어 StartProfile 메서드 효과가 없습니다.</xref:System.Runtime.ProfileOptimization.SetProfileRoot%2A>"
   syntax:
     content: public static void StartProfile (string profile);
     parameters:
     - id: profile
       type: System.String
-      description: "The file name of the profile to use."
+      description: "사용할 프로필의 파일 이름입니다."
   overload: System.Runtime.ProfileOptimization.StartProfile*
   exceptions: []
   platform:

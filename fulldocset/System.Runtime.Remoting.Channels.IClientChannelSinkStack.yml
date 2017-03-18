@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkStack
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkStack
   type: Interface
-  summary: "Provides functionality for a stack of client channel sinks that must be invoked during an asynchronous message response decoding."
-  remarks: "The IClientChannelSinkStack is used during processing of responses to asynchronous calls.       During a synchronous call, the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> method is called when a message is outbound to the server. Each sink in the sink chain calls the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> method on the next sink until the call reaches the transport sink at the end of the chain. From there the message is transported to the server.       When the formatter sink is called through the <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> method, it dispatches the call asynchronously by calling <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> on the next channel sink. A stack of reply sinks is needed to process the response. Any sink that wants to process the response needs to push itself to the client channel sink stack inside of <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>."
+  summary: "비동기 메시지 디코딩 응답 하는 동안 호출 해야 하는 채널 싱크 클라이언트 스택에 대 한 기능을 제공 합니다."
+  remarks: "IClientChannelSinkStack 비동기 호출에 대 한 응답을 처리할 때 사용 됩니다.       동기 호출을 사용 하는 동안는 <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName>메서드는 메시지는 서버에 아웃 바운드 때 호출 됩니다.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> 싱크 체인 호출의 각 싱크는 <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>메서드 호출에 전송 싱크 체인의 끝에 도달할 때까지 다음 싱크를.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> 여기에서 서버에는 메시지를 전송 합니다.       포맷터 싱크를 통해 호출 될 때는 <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A>메서드를 호출 하 여 비동기적으로 호출을 발송 것 <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>다음 채널 싱크에서.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> </xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> 응답을 처리 하기 회신 싱크 필요 합니다. 싱크 응답을 처리 하는 자체 <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> 내에서 클라이언트 채널 싱크 스택에 푸시 해야 하는 경우"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,21 +34,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pops the information associated with all the sinks from the sink stack up to and including the specified sink."
+  summary: "지정 된 싱크 및 최대 싱크 스택에서 모든 싱크와 관련 된 정보를 팝 합니다."
   syntax:
     content: public object Pop (System.Runtime.Remoting.Channels.IClientChannelSink sink);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to remove and return from the sink stack."
+      description: "제거 하 고 싱크 스택에서 반환 싱크."
     return:
       type: System.Object
-      description: "Information generated on the request side and associated with the specified sink."
+      description: "요청 측을 생성 하 고 지정된 된 싱크와 관련 된 정보입니다."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Pop*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push(System.Runtime.Remoting.Channels.IClientChannelSink,System.Object)
@@ -63,22 +63,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pushes the specified sink and information associated with it onto the sink stack."
-  remarks: "The information generated on the request side and specified in the `state` parameter is returned in the `state` parameter of the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A> method on the corresponding sink."
+  summary: "지정 된 싱크 및 싱크 스택으로 연관 된 정보를 푸시합니다."
+  remarks: "정보 요청 측을 생성 하 고에 지정 된는 `state` 매개 변수에서 반환 되는 `state` 의 매개 변수는 <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>메서드는 해당 싱크에서.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>"
   syntax:
     content: public void Push (System.Runtime.Remoting.Channels.IClientChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to push onto the sink stack."
+      description: "싱크 스택에서에 적용할 싱크입니다."
     - id: state
       type: System.Object
-      description: "Information generated on the request side that is needed on the response side."
+      description: "응답 측에 필요한 요청 쪽에서 생성 되는 정보입니다."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "직접 실행 호출자를 인프라 수 있는 권한이 없습니다."
   platform:
   - net462
 references:

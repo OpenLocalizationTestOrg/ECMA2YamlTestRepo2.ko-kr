@@ -15,8 +15,8 @@ items:
   nameWithType: EnumerableToDispatchMarshaler
   fullName: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler
   type: Class
-  summary: "Marshals the COM <xref uid=&quot;langword_csharp_IDispatch&quot; name=&quot;IDispatch&quot; href=&quot;&quot;></xref> interface to the .NET Framework <xref:System.Collections.IEnumerable> interface, and vice versa."
-  remarks: "This custom marshaler marshals `IDispatch` to <xref:System.Collections.IEnumerable> and marshals <xref:System.Collections.IEnumerable> to `IDispatch` when a member with a DISPID of -4 exists. When you use the Type Library Importer (Tlbimp.exe) to create a class that implements <xref:System.Collections.IEnumerable> , the CLR uses this custom marshaler automatically to bridge COM enumerators and .NET enumerators. Calling <xref:System.Collections.IEnumerable.GetEnumerator%2A> results in `IDispatch.Invoke` being called with a DISPID of -4, and vice versa."
+  summary: "COM 마샬링 <xref uid=&quot;langword_csharp_IDispatch&quot; name=&quot;IDispatch&quot; href=&quot;&quot;> </xref> 인터페이스는.NET Framework를 <xref:System.Collections.IEnumerable>인터페이스 또는 그 반대로.</xref:System.Collections.IEnumerable>"
+  remarks: "이 사용자 지정 마샬러 마샬링합니다 `IDispatch` 를 <xref:System.Collections.IEnumerable>로 마샬링하고 <xref:System.Collections.IEnumerable>를 `IDispatch` -4 DISPID 멤버가 있는 경우.</xref:System.Collections.IEnumerable> </xref:System.Collections.IEnumerable> 형식 라이브러리 가져오기 (Tlbimp.exe)를 구현 하는 클래스를 만드는 사용 되는 경우 <xref:System.Collections.IEnumerable>, CLR에서는 COM 열거자 및.NET 열거자를 자동으로이 사용자 지정 마샬러를 사용 합니다.</xref:System.Collections.IEnumerable> 호출 <xref:System.Collections.IEnumerable.GetEnumerator%2A>으로 인해 `IDispatch.Invoke` ,-4 DISPID를 사용 하 여 호출 되 고 그 반대의.</xref:System.Collections.IEnumerable.GetEnumerator%2A>"
   syntax:
     content: 'public class EnumerableToDispatchMarshaler : System.Runtime.InteropServices.ICustomMarshaler'
   inheritance:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the managed data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up managed data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged%2A> method."
+  summary: "더 이상 필요 없는 경우 관리 되는 데이터의 필요한 정리를 수행 합니다."
+  remarks: "할당 된 관리 되는 데이터를 정리 하려면이 메서드를 호출 하는 CLR의 <xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged%2A>메서드.</xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged%2A>"
   syntax:
     content: public virtual void CleanUpManagedData (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be destroyed."
+      description: "관리 되는 개체 소멸 될 예정입니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.CleanUpManagedData*
   exceptions: []
   platform:
@@ -62,14 +62,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the unmanaged data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up the unmanaged data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalManagedToNative%2A> method."
+  summary: "더 이상 필요 없는 경우 관리 되지 않는 데이터의 필요한 정리를 수행 합니다."
+  remarks: "할당 된 관리 되지 않는 데이터를 정리 하려면이 메서드를 호출 하는 CLR의 <xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalManagedToNative%2A>메서드.</xref:System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalManagedToNative%2A>"
   syntax:
     content: public virtual void CleanUpNativeData (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged data to be destroyed."
+      description: "소멸 될 예정 관리 되지 않는 데이터에 대 한 포인터입니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.CleanUpNativeData*
   exceptions: []
   platform:
@@ -86,17 +86,17 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns an instance of the custom marshaler."
-  remarks: "All custom marshalers must implement this method, although it is not part of the <xref:System.Runtime.InteropServices.ICustomMarshaler> interface definition."
+  summary: "사용자 지정 마샬러의 인스턴스를 반환합니다."
+  remarks: "모든 사용자 지정 마샬러는 하지는 않지만이 메서드를 구현 해야의 일부가 <xref:System.Runtime.InteropServices.ICustomMarshaler>인터페이스 정의 합니다.</xref:System.Runtime.InteropServices.ICustomMarshaler>"
   syntax:
     content: public static System.Runtime.InteropServices.ICustomMarshaler GetInstance (string pstrCookie);
     parameters:
     - id: pstrCookie
       type: System.String
-      description: "String &quot;cookie&quot; parameter that can be used by the custom marshaler."
+      description: "사용자 지정 마샬러에서 사용할 수 있는 &quot;쿠키&quot; 매개 변수는 문자열입니다."
     return:
       type: System.Runtime.InteropServices.ICustomMarshaler
-      description: "An instance of the custom marshaler."
+      description: "사용자 지정 마샬러의 인스턴스입니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.GetInstance*
   exceptions: []
   platform:
@@ -113,14 +113,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns the size in bytes of the unmanaged data to be marshaled."
-  remarks: "Because custom marshaling of value types is not supported in the .NET Framework, this method always returns -1."
+  summary: "마샬링할 수를 관리 되지 않는 데이터의 바이트 크기를 반환 합니다."
+  remarks: "값 형식의 사용자 지정 마샬링.NET Framework에서 지원 되지 않으므로,이 메서드는 항상-1을 반환 합니다."
   syntax:
     content: public virtual int GetNativeDataSize ();
     parameters: []
     return:
       type: System.Int32
-      description: "-1 to indicate the type this marshaler handles is not a value type."
+      description: "이 마샬러는 처리 유형을 나타내는-1 값 형식이 아닙니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.GetNativeDataSize*
   exceptions: []
   platform:
@@ -137,22 +137,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from managed code to unmanaged code."
-  remarks: "The CLR calls this method with the specified instance of a managed object to convert that object from managed code to unmanaged code, and it returns a pointer to the appropriate unmanaged object, representing the COM view of that object."
+  summary: "개체를 관리 코드에서 비관리 코드로 마샬링합니다."
+  remarks: "CLR 비관리 코드에 관리 코드에서 해당 개체를 변환 하는 관리 되는 개체의 지정 된 인스턴스와이 메서드를 호출 하 고 해당 개체의 COM 보기를 나타내는 적절 한 관리 되지 않는 개체에 대 한 포인터를 반환 합니다."
   syntax:
     content: public virtual IntPtr MarshalManagedToNative (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be converted."
+      description: "변환할 수는 관리 되는 개체입니다."
     return:
       type: System.IntPtr
-      description: "A pointer to the unmanaged object."
+      description: "관리 되지 않는 개체에 대 한 포인터입니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalManagedToNative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pManagedObj</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pManagedObj</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged(System.IntPtr)
@@ -167,22 +167,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from unmanaged code to managed code."
-  remarks: "The CLR calls this method with the specified pointer to an unmanaged object to convert that object from unmanaged code to managed code, and returns a managed object representing the managed view of the unmanaged data."
+  summary: "관리 코드에 비관리 코드에서 개체를 마샬링합니다."
+  remarks: "CLR 비관리 코드에서 관리 코드에 해당 개체를 변환 하는 관리 되지 않는 개체에 지정된 된 포인터를 사용 하 여이 메서드를 호출 하 고 관리 되지 않는 데이터의 관리 되는 보기를 나타내는 관리 되는 개체를 반환 합니다."
   syntax:
     content: public virtual object MarshalNativeToManaged (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged object to be converted."
+      description: "변환할 관리 되지 않는 개체에 대 한 포인터입니다."
     return:
       type: System.Object
-      description: "A managed object."
+      description: "관리 되는 개체입니다."
   overload: System.Runtime.InteropServices.CustomMarshalers.EnumerableToDispatchMarshaler.MarshalNativeToManaged*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pNativeData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pNativeData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

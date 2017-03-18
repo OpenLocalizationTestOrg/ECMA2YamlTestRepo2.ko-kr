@@ -14,8 +14,8 @@ items:
   nameWithType: EventParameterType
   fullName: System.Speech.Synthesis.TtsEngine.EventParameterType
   type: Enum
-  summary: "Enumerates the types of data pointers passed to speech synthesis events."
-  remarks: "EventParameterType is used when constructing a <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo> object. An instance of EventParameterType passed as the `parameterType` argument to the constructor for <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo> specifies how the `param2` argument of the constructor (which must be a `System.IntPtr`) is interpreted.       The choice of EventParameterType is dictated by the type of event being requested, as specified by a member of <xref:System.Speech.Synthesis.TtsEngine.TtsEventId>.       For detailed information on how use EventParameterType, see documentation for <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.EventId%2A>"
+  summary: "음성 합성 이벤트에 전달 된 데이터 포인터의 유형을 열거 합니다."
+  remarks: "EventParameterType를 생성할 때 사용 되는 <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo>개체입니다.</xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo> 변수로 전달 된 EventParameterType의 인스턴스는 `parameterType` 에 대 한 생성자의 인수 <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo>지정 방법을 `param2` 는 생성자의 인수 (이어야는 `System.IntPtr`) 해석 됩니다.</xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo>       EventParameterType 선택 요청 되는 이벤트의 유형에 따라 결정 됩니다 <xref:System.Speech.Synthesis.TtsEngine.TtsEventId>.</xref:System.Speech.Synthesis.TtsEngine.TtsEventId> 의 멤버에 의해 지정 된 대로       방법에 대 한 자세한 내용은 EventParameterType를 사용 하 여에 대 한 설명서를 참조 하세요.<xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.EventId%2A></xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.EventId%2A>"
   example:
   - "The example below is part of a custom speech synthesis implementation inheriting from <xref:System.Speech.Synthesis.TtsEngine.TtsEngineSsml>, and using the use of <xref:System.Speech.Synthesis.TtsEngine.TextFragment>, <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo>, <xref:System.Speech.Synthesis.TtsEngine.FragmentState>, and <xref:System.Speech.Synthesis.TtsEngine.TtsEventId>.  \n  \n The implementation of <xref:System.Speech.Synthesis.TtsEngine.TtsEngineSsml.Speak%2A>  \n  \n1.  Receives an array of <xref:System.Speech.Synthesis.TtsEngine.TextFragment> instances and creates a new array of <xref:System.Speech.Synthesis.TtsEngine.TextFragment> instances to be passed to the `Speak` method on an underlying synthesis engine.  \n  \n2.  If the <xref:System.Speech.Synthesis.TtsEngine.TtsEngineAction> enumeration value by found from the <xref:System.Speech.Synthesis.TtsEngine.FragmentState.Action%2A> property on the <xref:System.Speech.Synthesis.TtsEngine.FragmentState> returned by the <xref:System.Speech.Synthesis.TtsEngine.TextFragment.State%2A> property of each <xref:System.Speech.Synthesis.TtsEngine.TextFragment> instance is <xref:System.Speech.Synthesis.TtsEngine.TtsEngineAction>, the implementation  \n  \n    -   Translates Americanism to Britishisms in the text to be spoken.  \n  \n    -   If the <xref:System.Speech.Synthesis.TtsEngine.ITtsEngineSite.EventInterest%2A> property on the <xref:System.Speech.Synthesis.TtsEngine.ITtsEngineSite> interfaces provided to the implementation support the <xref:System.Speech.Synthesis.TtsEngine.TtsEventId> event type, a <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo> instance is used to create an event to drive a synthesizer progress meter is created.  \n  \n         The parameters on <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo>, including the EventParameterType member value returned by <xref:System.Speech.Synthesis.TtsEngine.SpeechEventInfo.ParameterType%2A>, are used to log the event generated through the `LogSpeechEvent` method.  \n  \n3.  A speech rendering engine is then called with the modified <xref:System.Speech.Synthesis.TtsEngine.TextFragment> array.  \n  \n```  \nprivate const int WordBoundaryFlag = 1 << (int)TtsEventId.WordBoundary;  \nprivate readonly char[] spaces = new char[] { ' ', '\\t', '\\r', '\\n' };  \ninternal struct UsVsUk  \n{  \n  internal string UK;  \n  internal string US;  \n}  \n  \noverride public void Speak (TextFragment [] frags, IntPtr wfx, ITtsEngineSite site)  \n{  \n  TextFragment [] newFrags=new TextFragment[frags.Length];  \n  \n  for (int i=0;i<frags.Length;i++){  \n    newFrags[i].State=frags[i].State;  \n    //truncate  \n    newFrags[i].TextToSpeak = frags[i].TextToSpeak.Substring(frags[i].TextOffset,  \n                               frags[i].TextLength);  \n    newFrags[i].TextLength = newFrags[i].TextToSpeak.Length;  \n    newFrags[i].TextOffset = 0;  \n    if (newFrags[i].State.Action == TtsEngineAction.Speak) {  \n      //Us to UK conversion  \n      foreach (UsVsUk term in TransList) {  \n      newFrags[i].TextToSpeak.Replace(term.US, term.UK);  \n      }  \n      //Generate progress meter events if supported  \n      if ((site.EventInterest & WordBoundaryFlag) != 0) {  \n      string[] subs = newFrags[i].TextToSpeak.Split(spaces);  \n  \n      foreach (string s in subs) {  \n        int offset = newFrags[i].TextOffset;  \n        SpeechEventInfo spEvent = new SpeechEventInfo((Int16)TtsEventId.WordBoundary,   \n                (Int16)EventParameterType.Undefined,   \n                 s.Length, new IntPtr(offset));  \n         LogSpeechEvent(spEvent.EventId,   \n                        spEvent.ParameterType,   \n                        spEvent.Param1,  \n                        spEvent.Param2);  \n        offset += s.Length;  \n        if (s.Trim().Length > 0) {  \n          SpeechEventInfo[] events = new SpeechEventInfo[1];  \n          events[0] = spEvent;  \n          site.AddEvents(events, 1);  \n        }  \n      }  \n      }  \n    }  \n  }  \n  \n  _baseSynthesize.Speak(newFrags, wfx, site);  \n  \n}  \n```"
   syntax:
@@ -36,12 +36,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: "Currently not supported."
+  summary: "현재 지원 되지 않습니다."
   syntax:
     content: Object
     return:
       type: System.Speech.Synthesis.TtsEngine.EventParameterType
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -57,12 +57,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: "Currently not supported."
+  summary: "현재 지원 되지 않습니다."
   syntax:
     content: Pointer
     return:
       type: System.Speech.Synthesis.TtsEngine.EventParameterType
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -78,12 +78,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: "Indicates that the <code>param2</code> argument to the <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;></xref> is a <xref uid=&quot;langword_csharp_System.IntPtr&quot; name=&quot;System.IntPtr&quot; href=&quot;&quot;></xref> created using <xref uid=&quot;langword_csharp_System.Runtime.InteropServices.Marshal.StringToCoTaskMemUni&quot; name=&quot;System.Runtime.InteropServices.Marshal.StringToCoTaskMemUni&quot; href=&quot;&quot;></xref> referencing a <xref uid=&quot;langword_csharp_System.String&quot; name=&quot;System.String&quot; href=&quot;&quot;></xref> object; <code>param1</code> may take on any value."
+  summary: "나타냅니다는 <code> param2 </code> 인수에는 <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;> </xref> 은 <xref uid=&quot;langword_csharp_System.IntPtr&quot; name=&quot;System.IntPtr&quot; href=&quot;&quot;> </xref> 사용 하 여 만든 <xref uid=&quot;langword_csharp_System.Runtime.InteropServices.Marshal.StringToCoTaskMemUni&quot; name=&quot;System.Runtime.InteropServices.Marshal.StringToCoTaskMemUni&quot; href=&quot;&quot;> </xref> 참조 하는 <xref uid=&quot;langword_csharp_System.String&quot; name=&quot;System.String&quot; href=&quot;&quot;> </xref> ; 개체 <code> param1 </code> 모든 값에 대해 걸릴 수 있습니다."
   syntax:
     content: String
     return:
       type: System.Speech.Synthesis.TtsEngine.EventParameterType
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -99,13 +99,13 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: "Indicates that the <code>param2</code> argument to the <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;></xref> is a"
-  remarks: "is a `System.IntPtr` created using `System.Runtime.InteropServices.Marshal.PtrToStructure`       referencing a Windows Desktop Speech Technology token --a Windows Desktop Speech Technology object representing a resource, such as a voice (<xref:System.Speech.Synthesis.VoiceInfo>); `param1` may take on any value.      > [!NOTE] >  Currently instances of a managed synthetic speech engines, written using the members of the <xref:System.Speech.Synthesis> name space, cannot change resources after construction"
+  summary: "나타냅니다는 <code> param2 </code> 인수에는 <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;> </xref> 는"
+  remarks: "이 `System.IntPtr` 사용 하 여 만든 `System.Runtime.InteropServices.Marshal.PtrToStructure` 개체를 참조 하는 Windows 데스크톱 음성 기술 토큰-는 Windows 데스크톱 음성 기술 음성 (<xref:System.Speech.Synthesis.VoiceInfo>); 같은 리소스를 나타내는 `param1` 모든 값을 갖습니다.</xref:System.Speech.Synthesis.VoiceInfo>      > [!NOTE] >에서 <xref:System.Speech.Synthesis>생성 한 후 리소스를 변경할 수 없습니다, 네임 스페이스의</xref:System.Speech.Synthesis> 멤버를 사용 하 여 작성 하는 관리 되는 합성 음성 엔진의 현재 인스턴스"
   syntax:
     content: Token
     return:
       type: System.Speech.Synthesis.TtsEngine.EventParameterType
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -121,13 +121,13 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Synthesis.TtsEngine
-  summary: "Indicates that the <code>param2</code> argument to the <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;></xref> is undefined."
-  remarks: "Generally, `param1` and `param2` are then ignored. However, if<xref:System.Speech.Synthesis.TtsEngine.TtsEventId> is <xref:System.Speech.Synthesis.TtsEngine.TtsEventId.WordBoundary>, a progress meter event can be generated `param1` should be an integer containing the length of the current word, and `param2` a `System.IntPtr` referencing an integer containing the offset of the current word."
+  summary: "나타냅니다는 <code> param2 </code> 인수에는 <xref href=&quot;System.Speech.Synthesis.TtsEngine.SpeechEventInfo&quot;> </xref> 정의 되지 않습니다."
+  remarks: "일반적으로 `param1` 및 `param2` 은 무시 됩니다. 그러나 경우<xref:System.Speech.Synthesis.TtsEngine.TtsEventId> 은 <xref:System.Speech.Synthesis.TtsEngine.TtsEventId.WordBoundary>, 진행률 표시기 이벤트를 생성할 수 `param1` 현재 단어의 길이 포함 하는 정수 여야 합니다 및 `param2` 는 `System.IntPtr` 현재 단어의 오프셋을 포함 하는 정수를 참조 합니다.</xref:System.Speech.Synthesis.TtsEngine.TtsEventId.WordBoundary> </xref:System.Speech.Synthesis.TtsEngine.TtsEventId>"
   syntax:
     content: Undefined
     return:
       type: System.Speech.Synthesis.TtsEngine.EventParameterType
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

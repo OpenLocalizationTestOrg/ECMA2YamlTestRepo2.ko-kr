@@ -10,8 +10,8 @@ items:
   nameWithType: ExtensibleClassFactory
   fullName: System.Runtime.InteropServices.ExtensibleClassFactory
   type: Class
-  summary: "Enables customization of managed objects that extend from unmanaged objects during creation."
-  remarks: "The `ExtensibleClassFactory` allows users to specify a `delegate` that is called during construction of a runtime callable wrapper (RCW) that provides an instance of the underlying COM object. In effect, the callback acts as the class factory for the COM object wrapped by the RCW. Without the callback, the common language runtime creates the underlying COM object by calling `CoCreateInstance`. This callback provides an alternative way of activating the underlying object, such as with a COM moniker or by providing a singleton object. The <xref:System.Runtime.InteropServices.ExtensibleClassFactory.RegisterObjectCreationCallback%2A> method must be called in the `static` initializer of the class that is extending the RCW. Only one object creation callback is permitted per object type. When the extensible RCW is activated, the callback is registered. When the underlying COM object needs to be created, the callback is called to provide a reference to the object. The callback must return an `IUnknown` interface pointer for the base object."
+  summary: "관리 되는 개체를 만드는 동안 관리 되지 않는 개체에서 확장 되는 사용자 지정할을 수 있습니다."
+  remarks: "`ExtensibleClassFactory` 사용 지정할 수 있습니다는 `delegate` 하는 런타임 호출 가능 래퍼 (RCW) 기본 COM 개체의 인스턴스를 제공 하는 생성 하는 동안 호출 되어 합니다. 실제로 콜백 RCW는 래핑된 COM 개체에 대 한 클래스 팩터리로 사용 됩니다. 콜백이 없는 공용 언어 런타임에서 호출 하 여 기본 COM 개체를 만듭니다 `CoCreateInstance`합니다. 이 콜백은 COM 모니커 또는 단일 개체를 제공 하 여과 같은 내부 개체를 활성화 하는 다른 방법을 제공 합니다. <xref:System.Runtime.InteropServices.ExtensibleClassFactory.RegisterObjectCreationCallback%2A>에서 메서드를 호출 해야 합니다는 `static` RCW를 확장 하는 클래스의 이니셜라이저.</xref:System.Runtime.InteropServices.ExtensibleClassFactory.RegisterObjectCreationCallback%2A> 개체 유형별 개체를 하나만 생성 콜백에서 허용 됩니다. 확장 가능한 RCW가 활성화 되는 콜백 등록 됩니다. 기본 COM 개체를 만들 수 해야 하는 경우 개체에 대 한 참조를 제공 하는 콜백이 호출 됩니다. 콜백 반환 해야 합니다는 `IUnknown` 기준 개체에 대 한 인터페이스 포인터입니다."
   example:
   - "Registers a `delegate` that will be called whenever an instance of a managed type that extends from an unmanaged type needs to allocate the aggregated unmanaged object. This `delegate` is expected to allocate and aggregate the unmanaged object and is called in place of a `CoCreateInstance`. This routine must be called in the context of the `static` initializer for the class for which the callbacks will be made.  \n  \n [!code-cs[Classic ExtensibleClassFactory Example#1](~/add/codesnippet/csharp/t-system.runtime.interop_2_1.cs)]\n [!code-cpp[Classic ExtensibleClassFactory Example#1](~/add/codesnippet/cpp/t-system.runtime.interop_2_1.cpp)]\n [!code-vb[Classic ExtensibleClassFactory Example#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_2_1.vb)]"
   syntax:
@@ -37,14 +37,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers a <xref uid=&quot;langword_csharp_delegate&quot; name=&quot;delegate&quot; href=&quot;&quot;></xref> that is called when an instance of a managed type, that extends from an unmanaged type, needs to allocate the aggregated unmanaged object."
-  remarks: "This `delegate` allocates and aggregates the unmanaged object and is called in place of `CoCreateInstance`. This `delegate` must be registered in the context of the `static` class initializer for which the callbacks will be made.       Only one class in an hierarchy should register a `delegate` callback."
+  summary: "등록 된 <xref uid=&quot;langword_csharp_delegate&quot; name=&quot;delegate&quot; href=&quot;&quot;> </xref> 관리 되지 않는 형식에서 확장 하는 관리 되는 형식의 인스턴스를 집계 하는 관리 되지 않는 개체를 할당 해야 할 때 호출 되 합니다."
+  remarks: "이 `delegate` 할당 및 관리 되지 않는 개체를 집계 하 고 대신 호출 `CoCreateInstance`합니다. 이 `delegate` 의 컨텍스트에서 등록 해야 합니다는 `static` 클래스 이니셜라이저가 콜백이 수행 됩니다.       계층 구조에서 클래스가 하나만 등록 해야는 `delegate` 콜백 합니다."
   syntax:
     content: public static void RegisterObjectCreationCallback (System.Runtime.InteropServices.ObjectCreationDelegate callback);
     parameters:
     - id: callback
       type: System.Runtime.InteropServices.ObjectCreationDelegate
-      description: "A <xref uid=&quot;langword_csharp_delegate&quot; name=&quot;delegate&quot; href=&quot;&quot;></xref> that is called in place of <xref uid=&quot;langword_csharp_CoCreateInstance&quot; name=&quot;CoCreateInstance&quot; href=&quot;&quot;></xref>."
+      description: "A <xref uid=&quot;langword_csharp_delegate&quot; name=&quot;delegate&quot; href=&quot;&quot;> </xref> 대신 라고 <xref uid=&quot;langword_csharp_CoCreateInstance&quot; name=&quot;CoCreateInstance&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.InteropServices.ExtensibleClassFactory.RegisterObjectCreationCallback*
   exceptions: []
   platform:

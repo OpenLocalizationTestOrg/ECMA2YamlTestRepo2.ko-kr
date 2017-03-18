@@ -14,8 +14,8 @@ items:
   nameWithType: HandleRef
   fullName: System.Runtime.InteropServices.HandleRef
   type: Struct
-  summary: "Wraps a managed object holding a handle to a resource that is passed to unmanaged code using platform invoke."
-  remarks: "> [!IMPORTANT] >  Starting with the .NET Framework 2.0, the functionality of the HandleRef class has been replaced by the <xref:System.Runtime.InteropServices.SafeHandle> class and its derived classes, as well as by the <xref:System.Runtime.InteropServices.CriticalHandle> class.       If you use platform invoke to call a managed object, and the object is not referenced elsewhere after the platform invoke call, it is possible for the garbage collector to finalize the managed object. This action releases the resource and invalidates the handle, causing the platform invoke call to fail. Wrapping a handle with HandleRef guarantees that the managed object is not garbage collected until the platform invoke call completes. For a description of platform invoke services, see [Consuming Unmanaged DLL Functions](~/add/includes/ajax-current-ext-md.md).       The HandleRef value type, like <xref:System.Runtime.InteropServices.GCHandle>, is a special type recognized by the interop marshaler. A normal, nonpinned <xref:System.Runtime.InteropServices.GCHandle> also prevents untimely garbage collection, yet HandleRef provides better performance. Although using HandleRef to keep an object alive for the duration of a platform invoke call is preferred, you can also use the <xref:System.GC.KeepAlive%2A?displayProperty=fullName> method for the same purpose.       The HandleRef constructor takes two parameters: an <xref:System.Object> representing the wrapper, and an <xref:System.IntPtr> representing the unmanaged handle. The interop marshaler passes only the handle to unmanaged code, and guarantees that the wrapper (passed as the first parameter to the constructor of the `HandleRef`) remains alive for the duration of the call."
+  summary: "플랫폼을 사용 하 여 관리 되지 않는 코드에 전달 되는 리소스에 대 한 핸들을 보유 하는 관리 되는 개체 호출을 래핑합니다."
+  remarks: "> [!IMPORTANT]>로 대체 되었습니다.NET Framework 2.0 HandleRef 클래스의 기능으로 시작 합니다.는 <xref:System.Runtime.InteropServices.SafeHandle>클래스와 해당 파생된 클래스에서도 <xref:System.Runtime.InteropServices.CriticalHandle>클래스</xref:System.Runtime.InteropServices.CriticalHandle> 것으로</xref:System.Runtime.InteropServices.SafeHandle>       플랫폼을 사용 하 여 관리 되는 개체를 호출 하려면 호출할 및 플랫폼 호출 후 개체가 다른 곳에서 참조 되지 않은, 가비지 수집기에서 관리 되는 개체를 종료할 수입니다. 이 작업은 리소스를 해제 하 고 핸들을 무효화 플랫폼 호출이 실패 하도록 합니다. 관리 되는 개체가 가비지 수집의 플랫폼 호출 될 때까지 완료 되지 임을 보장 HandleRef 된 핸들을 배치 합니다. 호출 서비스 플랫폼에 대 한 자세한 내용은 [관리 되지 않는 DLL 함수를 사용해](~/add/includes/ajax-current-ext-md.md)합니다.       HandleRef에는 값 형식, 같은 <xref:System.Runtime.InteropServices.GCHandle>는 interop 마샬러만에서 인식 하는 특수 한 형식입니다.</xref:System.Runtime.InteropServices.GCHandle> 일반, 일어나지 않도록된 <xref:System.Runtime.InteropServices.GCHandle>HandleRef 더 나은 성능을 제공 하면서 또한 가비지 컬렉션을 방지 합니다.</xref:System.Runtime.InteropServices.GCHandle> HandleRef를 사용 하 여 플랫폼의 기간에 대 한 개체를 활성 상태로 유지할지를 호출 하지만 호출 하는 것이 좋습니다, 사용할 수도 있습니다는 <xref:System.GC.KeepAlive%2A?displayProperty=fullName>메서드 같은 목적을 위해.</xref:System.GC.KeepAlive%2A?displayProperty=fullName>       HandleRef 생성자는 두 개의 매개 변수:는 <xref:System.Object>래퍼를 나타내는 및 <xref:System.IntPtr>관리 되지 않는 핸들을 나타내는.</xref:System.IntPtr> </xref:System.Object> Interop 마샬러 비관리 코드에만 핸들을 전달 하 고 래퍼 보장 (생성자의 첫 번째 매개 변수로 전달 되는 `HandleRef`) 호출 기간 동안 활성 상태를 유지 합니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,16 +38,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> class with the object to wrap and a handle to the resource used by unmanaged code."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> 된 래핑할 개체 및 비관리 코드에 의해 사용 되는 리소스에 대 한 핸들입니다."
   syntax:
     content: public HandleRef (object wrapper, IntPtr handle);
     parameters:
     - id: wrapper
       type: System.Object
-      description: "A managed object that should not be finalized until the platform invoke call returns."
+      description: "플랫폼 호출 될 때까지 종료 되지 해야 하는 관리 되는 개체를 반환 합니다."
     - id: handle
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> that indicates a handle to a resource."
+      description: "<xref:System.IntPtr>리소스에 대 한 핸들을 나타내는입니다.</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.#ctor*
   exceptions: []
   platform:
@@ -64,12 +64,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the handle to a resource."
+  summary: "리소스에 대 한 핸들을 가져옵니다."
   syntax:
     content: public IntPtr Handle { get; }
     return:
       type: System.IntPtr
-      description: "The handle to a resource."
+      description: "리소스에 대 한 핸들입니다."
   overload: System.Runtime.InteropServices.HandleRef.Handle*
   exceptions: []
   platform:
@@ -91,10 +91,10 @@ items:
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: System.IntPtr
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Runtime.InteropServices.HandleRef.op_Explicit*
   exceptions: []
   platform:
@@ -111,16 +111,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the internal integer representation of a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+  summary: "내부 정수 표현을 반환는 <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> 개체입니다."
   syntax:
     content: public static IntPtr ToIntPtr (System.Runtime.InteropServices.HandleRef value);
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "A <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object to retrieve an internal integer representation from."
+      description: "A <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> 내부 정수 표현에서 검색할 개체입니다."
     return:
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> object that represents a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+      description: "<xref:System.IntPtr>을 나타내는 개체를 <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> 개체입니다.</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.ToIntPtr*
   exceptions: []
   platform:
@@ -137,12 +137,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the object holding the handle to a resource."
+  summary: "리소스에 핸들을 보유 하는 개체를 가져옵니다."
   syntax:
     content: public object Wrapper { get; }
     return:
       type: System.Object
-      description: "The object holding the handle to a resource."
+      description: "핸들 리소스를 보유 하는 개체입니다."
   overload: System.Runtime.InteropServices.HandleRef.Wrapper*
   exceptions: []
   platform:

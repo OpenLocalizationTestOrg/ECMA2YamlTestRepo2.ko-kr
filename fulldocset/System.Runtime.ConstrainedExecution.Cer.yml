@@ -12,8 +12,8 @@ items:
   nameWithType: Cer
   fullName: System.Runtime.ConstrainedExecution.Cer
   type: Enum
-  summary: "Specifies a method&quot;s behavior when called within a constrained execution region."
-  remarks: "The Cer enumeration specifies the behavior of a method, type, or assembly within a constrained execution region (CER). Use one of the three available values to indicate that the entity will succeed, has no knowledge of a CER, or might (deterministically) be able to report success or failure.       A CER provides guarantees that the region of code will execute uninterrupted even if an asynchronous exception such as an aborted thread out-of-memory exception, or stack overflow is raised."
+  summary: "제약이 있는 실행 영역 내에서 호출 하는 경우 메서드의 동작을 지정 합니다."
+  remarks: "Cer 열거형 메서드, 형식 또는 어셈블리 제약이 있는 실행 영역 (CER) 내에서 동작을 지정 합니다. 엔터티 성공할 지를 나타내기 위해 사용 가능한 세 가지 값 중 하나를 사용 CER를 알지 또는 명확한 성공 또는 실패를 보고 하는 일을 할 수 있습니다.       CER에서는 코드 영역을 실행 하는 중단 없이 중단 된 스레드 메모리 부족 예외 또는 스택 오버플로 같은 비동기 예외가 발생 하는 경우에 합니다."
   example:
   - "The following code example demonstrates the use of the Cer enumeration when specifying a constrained execution region for a method. This code example is part of a larger example provided for the <xref:System.Runtime.ConstrainedExecution.ReliabilityContractAttribute.%23ctor%2A> constructor.  \n  \n [!code-vb[System.Runtime.ConstrainedExecution#3](~/add/codesnippet/visualbasic/t-system.runtime.constra_2_1.vb)]\n [!code-cs[System.Runtime.ConstrainedExecution#3](~/add/codesnippet/csharp/t-system.runtime.constra_2_1.cs)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: "In the face of exceptional conditions, the method might fail. In this case, the method will report back to the calling method whether it succeeded or failed. The method must have a CER around the method body to ensure that it can report the return value."
+  summary: "예외 조건이 발생할 때 메서드가 실패할 수 있습니다. 이 경우 메서드는 다시 보고할 호출 하는 메서드로 성공 또는 실패를 합니다. 메서드 반환 값을 보고할 수 있도록 하려면 메서드 본문 주위에 CER 있어야 합니다."
   syntax:
     content: MayFail
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -55,13 +55,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: 'The method, type, or assembly has no concept of a CER. It does not take advantage of CER guarantees. This implies the following:'
-  remarks: "-   In the face of exceptional conditions the method might fail.      -   The method might or might not report that it failed (it is non-deterministic).      -   The method is not written with CERs in mind (which is the most likely scenario).       If a method, type, or assembly is not explicitly marked to succeed, it is implicitly marked as `Cer.None`."
+  summary: '메서드, 형식 또는 어셈블리에는 CER의 개념이 없습니다. Cer 기능을는 사용 하지 않습니다. 이 의미는 다음과 같습니다.'
+  remarks: "-예외 조건이 발생할 때 메서드가 실패할 수 있습니다.      -메서드 실패를 보고 하지 않을 수도 (이 명확 하지 않은).      -메서드 (즉, 가장 가능성이 높은 시나리오) 염두에서 cer 기록 되지 않습니다.       암시적으로 표시는 메서드, 형식 또는 어셈블리에 성공 하려면 명시적으로 표시 되지 않으면, `Cer.None`합니다."
   syntax:
     content: None
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -77,12 +77,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ConstrainedExecution
-  summary: "In the face of exceptional conditions, the method is guaranteed to succeed. You should always construct a CER around the method that is called, even when it is called from within a non-CER region. A method is successful if it accomplishes what is intended. For example, marking <xref:System.Collections.ArrayList.Count*> with `ReliabilityContractAttribute(Cer.Success)` implies that when it is run under a CER, it always returns a count of the number of elements in the <xref href=&quot;System.Collections.ArrayList&quot;></xref> and it can never leave the internal fields in an undetermined state."
+  summary: "예외 조건이 발생할 때 메서드는 성공 하도록 보장 됩니다. 도를 호출 하면에서 비 CER 지역 내에서 호출 되는 메서드를 포함 하는 CER 구성 해야 합니다. 메서드는 의도 한 대로 작업을 수행 하는 경우에 성공 합니다. 예를 들어 표시 <xref:System.Collections.ArrayList.Count*>와 `ReliabilityContractAttribute(Cer.Success)` CER에서 실행할 때 항상에 있는 요소의 숫자 개수를 반환 하는지 의미는 <xref href=&quot;System.Collections.ArrayList&quot;> </xref> 지정 하지 않은 상태에서 내부 필드를 벗어날 수 및.</xref:System.Collections.ArrayList.Count*>"
   syntax:
     content: Success
     return:
       type: System.Runtime.ConstrainedExecution.Cer
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
