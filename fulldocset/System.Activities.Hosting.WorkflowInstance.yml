@@ -43,8 +43,8 @@ items:
   nameWithType: WorkflowInstance
   fullName: System.Activities.Hosting.WorkflowInstance
   type: Class
-  summary: "WorkflowInstance is a lightweight, per-instance runtime for executing a workflow program. It can be constructed to create a new workflow instance or from existing instance state. The APIs that <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> exposes are the minimal set of runtime controls from which higher level operations can be implemented. This API set represents the entire breadth of functionality of the runtime. WorkflowInstance is an abstract class and relies on a host’s implementation of its abstract methods in order to provide host functionality such as synchronization, persistence, tracking, and extensions."
-  remarks: "WorkflowInstance is single threaded and assumes that the host synchronizes all access to it. An attempt to call multiple APIs simultaneously will result in an <xref:System.InvalidOperationException> being thrown.       Internally, a WorkflowInstance has two states: Running and Paused. The only way to cause the runtime to transition from paused to running is to call <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A>. All actions (except Pause) can only be taken while the runtime is Paused. The runtime will become spontaneously Paused in the following situations:      -   An error fatal to the runtime has occurred. The host will be signaled through <xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A> (which does not signal a transition to Paused) and then notified through <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A>.      -   An exception in the workflow was uncaught and escaped the root. The host will be notified through the <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyUnhandledException%2A> method.      -   The scheduler has run out of work items and is now <xref:System.Activities.Hosting.WorkflowInstanceState>. The host will be notified through the <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A> method. Note that the scheduler could have run out of work items because the instance is idle or because the instance is complete. The <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A> value of the <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> property can be used to differentiate between the two.       The host can request a change from Running to Paused by calling the <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A> or <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.PauseWhenPersistable%2A> methods of the <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> instance returned by the <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> property. This request should not be considered to have a specific response meaning that the host should not attempt to correlate an OnNotify* or <xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A> with a specific call to pause. In response to a pause request, the runtime may transition to Paused and call <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A> while the scheduler still has pending work items. The <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A> value of the <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> property can be used to determine whether the scheduler has no more work or was interrupted by a request to pause.       The <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A> method of the <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> instance returned by the <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> property is the only method which can be called while the WorkflowInstance is in the Running state. All other methods will throw an <xref:System.InvalidOperationException> if called.Given the rules for how WorkflowInstance transitions from one state to another, the public notion of Running and Paused can be defined as follows:      -   Running – The state between a call to <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A> and the next WorkflowInstance.OnNotify*.      -   Paused – The state between the last WorkflowInstance.OnNotify* and the next call to <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A>."
+  summary: "WorkflowInstance는 워크플로 프로그램을 실행 하기 위한 간단한, 인스턴스별 런타임. 새 워크플로 인스턴스를 생성 하기 위해 구성할 수 있습니다 또는 기존 인스턴스 상태입니다. Api는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>은 상위 수준의 작업을 구현할 수 있는 런타임 컨트롤의 최소 집합을 노출 합니다.</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> 이 API 집합은 전체 범위의 런타임 기능을 나타냅니다. WorkflowInstance는 추상 클래스 이며 동기화, 지 속성, 추적 및 확장 같은 호스트 기능을 제공 하기 위해 호스트의 추상 메서드 구현을 사용 합니다."
+  remarks: "WorkflowInstance는 단일 스레드 이며 호스트가 모든 액세스를 동기화 한다고 가정 합니다. 동시에 여러 Api를 호출 하려고 하면는 <xref:System.InvalidOperationException>throw 됩니다.</xref:System.InvalidOperationException>       내부적으로 WorkflowInstance에 두 개의 상태: 실행 중 및 일시 중지 됨입니다. 일시 중지 변환 전의 런타임을 지정 하는 유일한 방법은 실행 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A>.</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A> 를 호출 하는 것 일시 중지를 제외한 모든 동작은 런타임이 일시 중지 된 동안에 가져올 수 있습니다. 런타임에서 될 자발적으로 일시 중지 다음과 같은 경우:-런타임에 치명적인 오류가 발생 했습니다. 통해 호스트가 신호를 받은 됩니다 <xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A>(입니다 일시 중지 됨으로 전환 신호 하지 않는 경우) 다음 <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A>.</xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A> 통해 알림을</xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A>      -워크플로의 예외가 검색 되었습니다 되지 않았고 루트를 이스케이프 합니다. 호스트를 통해 알림이 표시 됩니다는 <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyUnhandledException%2A>메서드.</xref:System.Activities.Hosting.WorkflowInstance.OnNotifyUnhandledException%2A>      -스케줄러 작업 항목이 모두 실행 하 고 이제 <xref:System.Activities.Hosting.WorkflowInstanceState>.</xref:System.Activities.Hosting.WorkflowInstanceState> 호스트를 통해 알림이 표시 됩니다는 <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A>메서드.</xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A> 유휴 상태 이거나 인스턴스가 완료 되어 스케줄러에서 작업 항목이 모두 실행 되었을 수 있는 참고 합니다. <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A>의 값은 <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A>두 구분할 수 속성을 사용할 수 있습니다.</xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A>       호스트의 호출 하 여 실행을 일시 중지 된 변경을 요청할 수는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A>또는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.PauseWhenPersistable%2A>의 메서드는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>에서 반환 된 인스턴스는 <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A>속성.</xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.PauseWhenPersistable%2A> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A> 있어야 호스트는 OnNotify 상관 관계를 시도 하지 않아야 의미 하는 특정 응답이이 요청 간주 되지 않아야* 또는 <xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A>를 특정 일시 중지 호출과.</xref:System.Activities.Hosting.WorkflowInstance.OnRequestAbort%2A> 일시 중지 요청에 대 한 응답으로 런타임이 일시 중지 됨 및 호출 전환 될 수 있습니다 <xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A>스케줄러에 보류 중인 작업 항목이 아직 있는 동안.</xref:System.Activities.Hosting.WorkflowInstance.OnNotifyPaused%2A> <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A>의 값은 <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A>결정 하기 위해 스케줄러에 더 많은 작업을 일시 중지 요청에 의해 중단 되었습니다 속성을 사용할 수 있습니다.</xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.State%2A>       <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A>의 메서드는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>에서 반환 된 인스턴스는 <xref:System.Activities.Hosting.WorkflowInstance.Controller%2A>속성 WorkflowInstance 실행 중 상태인 동안에 호출 될 수 있는 유일한 방법입니다.</xref:System.Activities.Hosting.WorkflowInstance.Controller%2A> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> </xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.RequestPause%2A> 다른 모든 메서드를 호출 하는 경우는 <xref:System.InvalidOperationException>시킵니다. 다른 WorkflowInstance 한 상태에서 변환 하는 방법에 대 한 규칙을 제공, 실행 중 및 일시 중지 됨의 공용 개념 수 다음과 같이 정의할 수:-실행-에 대 한 호출 간의 상태 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A>및 다음 WorkflowInstance.OnNotify*.</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A> </xref:System.InvalidOperationException>      -일시 중지 됨-마지막 workflowinstance.onnotify *와 다음 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A>.</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Run%2A> 호출 간의 상태"
   syntax:
     content: public abstract class WorkflowInstance
   inheritance:
@@ -65,13 +65,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;></xref> class with the specified workflow definition."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;> </xref> 지정한 워크플로 정의 사용 하 여 클래스입니다."
   syntax:
     content: protected WorkflowInstance (System.Activities.Activity workflowDefinition);
     parameters:
     - id: workflowDefinition
       type: System.Activities.Activity
-      description: "The activity that defines the workflow."
+      description: "워크플로 정의 하는 작업입니다."
   overload: System.Activities.Hosting.WorkflowInstance.#ctor*
   exceptions: []
   platform:
@@ -88,16 +88,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;></xref> class with the specified workflow definition and definition identity."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;> </xref> 지정한 워크플로 정 및 정의 id를 사용 하 여 클래스입니다."
   syntax:
     content: protected WorkflowInstance (System.Activities.Activity workflowDefinition, System.Activities.WorkflowIdentity definitionIdentity);
     parameters:
     - id: workflowDefinition
       type: System.Activities.Activity
-      description: "The activity that defines the workflow."
+      description: "워크플로 정의 하는 작업입니다."
     - id: definitionIdentity
       type: System.Activities.WorkflowIdentity
-      description: "The definition identity."
+      description: "정의 id입니다."
   overload: System.Activities.Hosting.WorkflowInstance.#ctor*
   exceptions: []
   platform:
@@ -114,22 +114,22 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to begin sending pending tracking records to tracking participants asynchronously."
+  summary: "보류 중인 추적 레코드를 추적 참가자를 비동기적으로 보내기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected IAsyncResult BeginFlushTrackingRecords (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which to abort the attempt."
+      description: "기간이 지난 후 시도를 중단할입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the track operation has completed."
+      description: "추적 작업이 완료 되었을 때 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "The information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The status of the current track operation."
+      description: "현재 추적 작업의 상태입니다."
   overload: System.Activities.Hosting.WorkflowInstance.BeginFlushTrackingRecords*
   exceptions: []
   platform:
@@ -146,12 +146,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets the <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> instance for this <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;></xref>."
+  summary: "가져옵니다는 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>이 대 한 인스턴스 <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;> </xref>.</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>"
   syntax:
     content: protected System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl Controller { get; }
     return:
       type: System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl
-      description: "The controller instance for this workflow instance."
+      description: "이 워크플로 인스턴스의 컨트롤러 인스턴스입니다."
   overload: System.Activities.Hosting.WorkflowInstance.Controller*
   exceptions: []
   platform:
@@ -168,12 +168,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets or sets the definition identity of <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;></xref>."
+  summary: "정의 id를 가져오거나 설정 합니다. <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;> </xref>합니다."
   syntax:
     content: public System.Activities.WorkflowIdentity DefinitionIdentity { get; }
     return:
       type: System.Activities.WorkflowIdentity
-      description: "The definition identity of <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;></xref>."
+      description: "정의 id <xref href=&quot;System.Activities.Hosting.WorkflowInstance&quot;> </xref>합니다."
   overload: System.Activities.Hosting.WorkflowInstance.DefinitionIdentity*
   exceptions: []
   platform:
@@ -190,7 +190,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Calls <xref:System.Disposable.Dispose*> on all extensions that implement <xref:System.IDisposable>."
+  summary: "<xref:System.Disposable.Dispose*> <xref:System.IDisposable>.</xref:System.IDisposable> 를 구현 하는 모든 확장에 대해</xref:System.Disposable.Dispose*> 호출"
   syntax:
     content: protected void DisposeExtensions ();
     parameters: []
@@ -210,13 +210,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to end the track operation."
+  summary: "추적 작업을 종료 하기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected void EndFlushTrackingRecords (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of the asynchronous track operation."
+      description: "비동기 추적 작업의 상태입니다."
   overload: System.Activities.Hosting.WorkflowInstance.EndFlushTrackingRecords*
   exceptions: []
   platform:
@@ -233,13 +233,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to send pending tracking records to tracking participants."
+  summary: "보류 중인 추적 레코드를 추적 참가자에 게 보내기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected void FlushTrackingRecords (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which to abort the attempt."
+      description: "기간이 지난 후 시도를 중단할입니다."
   overload: System.Activities.Hosting.WorkflowInstance.FlushTrackingRecords*
   exceptions: []
   platform:
@@ -256,19 +256,19 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Retrieves the list of activity that is blocking the update of the workflow."
+  summary: "워크플로 업데이트를 차단 하는 활동의 목록을 검색 합니다."
   syntax:
     content: protected static System.Collections.Generic.IList<System.Activities.DynamicUpdate.ActivityBlockingUpdate> GetActivitiesBlockingUpdate (object deserializedRuntimeState, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap);
     parameters:
     - id: deserializedRuntimeState
       type: System.Object
-      description: "The deserialized runtime state."
+      description: "역직렬화 된 런타임 상태입니다."
     - id: updateMap
       type: System.Activities.DynamicUpdate.DynamicUpdateMap
-      description: "The update map."
+      description: "업데이트 맵을 합니다."
     return:
       type: System.Collections.Generic.IList{System.Activities.DynamicUpdate.ActivityBlockingUpdate}
-      description: "The list of activity that is blocking the update."
+      description: "목록에서 업데이트를 차단 하는 활동입니다."
   overload: System.Activities.Hosting.WorkflowInstance.GetActivitiesBlockingUpdate*
   exceptions: []
   platform:
@@ -290,7 +290,7 @@ items:
     parameters: []
     return:
       type: T
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Activities.Hosting.WorkflowInstance.GetExtension<T>*
   exceptions: []
   platform:
@@ -312,7 +312,7 @@ items:
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{T}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Activities.Hosting.WorkflowInstance.GetExtensions<T>*
   exceptions: []
   platform:
@@ -329,13 +329,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets or sets the root environment for the workflow instance’s arguments and variables."
-  remarks: "If this property is set after the workflow instance is initialized and <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A> returns `true`, an <xref:System.InvalidOperationException> is thrown."
+  summary: "워크플로 인스턴스의 인수 및 변수에 대 한 루트 환경을 가져오거나 설정 합니다."
+  remarks: "워크플로 인스턴스를 초기화 한 후이 속성을 설정 하는 경우 및 <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>반환 `true`, <xref:System.InvalidOperationException>throw 됩니다.</xref:System.InvalidOperationException> </xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>"
   syntax:
     content: public System.Activities.LocationReferenceEnvironment HostEnvironment { get; set; }
     return:
       type: System.Activities.LocationReferenceEnvironment
-      description: "The root environment for the workflow instance’s arguments and variables."
+      description: "워크플로 인스턴스의 인수 및 변수에 대 한 루트 환경입니다."
   overload: System.Activities.Hosting.WorkflowInstance.HostEnvironment*
   exceptions: []
   platform:
@@ -352,12 +352,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets the unique identifier for the workflow instance."
+  summary: "워크플로 인스턴스의 고유 식별자를 가져옵니다."
   syntax:
     content: public abstract Guid Id { get; }
     return:
       type: System.Guid
-      description: "The unique identifier for the workflow instance."
+      description: "워크플로 인스턴스의 고유 식별자입니다."
   overload: System.Activities.Hosting.WorkflowInstance.Id*
   exceptions: []
   platform:
@@ -374,13 +374,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the host to initialize the workflow instance with the workflow run-time state."
+  summary: "워크플로 런타임 상태와 워크플로 인스턴스를 초기화 하기 위해 호스트에 의해 호출 됩니다."
   syntax:
     content: protected void Initialize (object deserializedRuntimeState);
     parameters:
     - id: deserializedRuntimeState
       type: System.Object
-      description: "The run-time state used to execute the workflow."
+      description: "워크플로 실행 하는 데 런타임 상태입니다."
   overload: System.Activities.Hosting.WorkflowInstance.Initialize*
   exceptions: []
   platform:
@@ -397,16 +397,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the host to initialize the workflow instance with the argument values and execution properties."
+  summary: "인수 값과 실행 속성을 사용 하 여 워크플로 인스턴스를 초기화 하기 위해 호스트에서 호출 됩니다."
   syntax:
     content: protected void Initialize (System.Collections.Generic.IDictionary<string,object> workflowArgumentValues, System.Collections.Generic.IList<System.Activities.Handle> workflowExecutionProperties);
     parameters:
     - id: workflowArgumentValues
       type: System.Collections.Generic.IDictionary{System.String,System.Object}
-      description: "The input parameters to the workflow, keyed by argument name."
+      description: "인수 이름으로 키가 지정 된 워크플로 입력된 매개 변수입니다."
     - id: workflowExecutionProperties
       type: System.Collections.Generic.IList{System.Activities.Handle}
-      description: "The list of workflow execution properties."
+      description: "목록 워크플로 실행 속성입니다."
   overload: System.Activities.Hosting.WorkflowInstance.Initialize*
   exceptions: []
   platform:
@@ -423,16 +423,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the host to initialize the workflow instance with the workflow run-time state and update map."
+  summary: "워크플로 런타임 상태와 워크플로 인스턴스를 초기화 하 고 지도 업데이트 하기 위해 호스트에 의해 호출 됩니다."
   syntax:
     content: protected void Initialize (object deserializedRuntimeState, System.Activities.DynamicUpdate.DynamicUpdateMap updateMap);
     parameters:
     - id: deserializedRuntimeState
       type: System.Object
-      description: "The run-time state used to execute the workflow."
+      description: "워크플로 실행 하는 데 런타임 상태입니다."
     - id: updateMap
       type: System.Activities.DynamicUpdate.DynamicUpdateMap
-      description: "The update map."
+      description: "업데이트 맵을 합니다."
   overload: System.Activities.Hosting.WorkflowInstance.Initialize*
   exceptions: []
   platform:
@@ -449,12 +449,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets a value that indicates whether the workflow instance has been initialized."
+  summary: "워크플로 인스턴스가 초기화 되었는지 여부를 나타내는 값을 가져옵니다."
   syntax:
     content: protected bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the workflow instance has been initialized; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>워크플로 인스턴스가 초기화 되었으면; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Activities.Hosting.WorkflowInstance.IsReadOnly*
   exceptions: []
   platform:
@@ -471,22 +471,22 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that new instance keys should be associated with this instance."
+  summary: "새 인스턴스 키를이 인스턴스와 연결 해야 함을 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract IAsyncResult OnBeginAssociateKeys (System.Collections.Generic.ICollection<System.Runtime.DurableInstancing.InstanceKey> keys, AsyncCallback callback, object state);
     parameters:
     - id: keys
       type: System.Collections.Generic.ICollection{System.Runtime.DurableInstancing.InstanceKey}
-      description: "The instance keys to associate with this workflow instance."
+      description: "이 워크플로 인스턴스와 연결할 인스턴스 키입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation completes."
+      description: "작업이 완료 될 때 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보를 포함 하는 선택적 응용 프로그램 관련 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "A reference to the asynchronous associate keys operation."
+      description: "에 대 한 참조는 비동기 연결 키 작업입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnBeginAssociateKeys*
   exceptions: []
   platform:
@@ -503,19 +503,19 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Asynchronous call to ask host to flush pending tracking records to tracking participants."
+  summary: "보류 중인 추적 레코드를 추적 참가자에 게 플러시하도록 호스트에 요청을 비동기 호출입니다."
   syntax:
     content: protected virtual IAsyncResult OnBeginFlushTrackingRecords (AsyncCallback callback, object state);
     parameters:
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the track operation has completed."
+      description: "추적 작업이 완료 되었을 때 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "The information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보입니다."
     return:
       type: System.IAsyncResult
-      description: "The status of the current track operation."
+      description: "현재 추적 작업의 상태입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnBeginFlushTrackingRecords*
   exceptions: []
   platform:
@@ -532,19 +532,19 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Asynchronous call to ask the host to persist the workflow."
+  summary: "호스트에 워크플로 지 속하도록 요청 하는 비동기 호출입니다."
   syntax:
     content: protected abstract IAsyncResult OnBeginPersist (AsyncCallback callback, object state);
     parameters:
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the persist operation has completed."
+      description: "지속 작업이 완료 되었을 때 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보를 포함 하는 선택적 응용 프로그램 관련 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current persist operation."
+      description: "에 대 한 참조를 현재 지속 작업입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnBeginPersist*
   exceptions: []
   platform:
@@ -561,28 +561,28 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that a resume bookmark operation is beginning."
+  summary: "책갈피 다시 시작 작업이 시작 하 고 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract IAsyncResult OnBeginResumeBookmark (System.Activities.Bookmark bookmark, object value, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: bookmark
       type: System.Activities.Bookmark
-      description: "The bookmark to resume."
+      description: "다시 시작 하는 책갈피입니다."
     - id: value
       type: System.Object
-      description: "The data to be passed to the activity that created the <xref href=&quot;System.Activities.Bookmark&quot;></xref>."
+      description: "만든 작업에 전달할 데이터의 <xref href=&quot;System.Activities.Bookmark&quot;> </xref>합니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the resume operation must complete before the operation is canceled and a <xref:System.TimeoutException> is thrown."
+      description: "다시 시작 작업을 완료 해야 작업을 취소 하기 전에 간격 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the resume operation has completed."
+      description: "다시 시작 작업이 완료 되 면 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보를 포함 하는 선택적 응용 프로그램 관련 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "A reference to the asynchronous resume operation."
+      description: "비동기 다시 시작 작업에 대 한 참조입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnBeginResumeBookmark*
   exceptions: []
   platform:
@@ -599,13 +599,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that a certain set of instance keys should no longer be associated with this instance."
+  summary: "특정 인스턴스 키 집합을 더 이상 되도록이 인스턴스에 연결 된 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract void OnDisassociateKeys (System.Collections.Generic.ICollection<System.Runtime.DurableInstancing.InstanceKey> keys);
     parameters:
     - id: keys
       type: System.Collections.Generic.ICollection{System.Runtime.DurableInstancing.InstanceKey}
-      description: "The list of keys to disassociate."
+      description: "연결을 끊을 키의 목록입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnDisassociateKeys*
   exceptions: []
   platform:
@@ -622,13 +622,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that an associate keys operation is complete."
+  summary: "연결 키 작업이 완료 되었음을 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract void OnEndAssociateKeys (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The reference to the asynchronous associate keys operation."
+      description: "연결 키 작업을 비동기 작업에 대 한 참조입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnEndAssociateKeys*
   exceptions: []
   platform:
@@ -645,13 +645,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host when the flush tracking records operation is complete."
+  summary: "추적 레코드 플러시 작업이 완료 되 면 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected virtual void OnEndFlushTrackingRecords (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of the asynchronous flush tracking records operation."
+      description: "비동기 추적 레코드 플러시 작업이의 상태입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnEndFlushTrackingRecords*
   exceptions: []
   platform:
@@ -668,13 +668,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that a persist operation is complete."
+  summary: "지속 작업이 완료 되었음을 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract void OnEndPersist (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The reference to the asynchronous persist operation."
+      description: "비동기에 대 한 참조 지속 작업입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnEndPersist*
   exceptions: []
   platform:
@@ -691,16 +691,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that a resume bookmark operation is complete."
+  summary: "책갈피 다시 시작 작업이 완료 되었음을 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract System.Activities.BookmarkResumptionResult OnEndResumeBookmark (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The reference to the asynchronous resume bookmark operation."
+      description: "책갈피 다시 시작 비동기 작업에 대 한 참조입니다."
     return:
       type: System.Activities.BookmarkResumptionResult
-      description: "One of the enumeration values that indicates the result of a <xref href=&quot;System.Activities.Bookmark&quot;></xref> resume operation."
+      description: "결과 나타내는 열거형 값 중 하나는 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 작업을 다시 시작 합니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnEndResumeBookmark*
   exceptions: []
   platform:
@@ -717,7 +717,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that the workflow instance has transitioned from the running state to the paused state."
+  summary: "워크플로 인스턴스가 실행 중인 상태에서 일시 중지 된 상태로 전환 된 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract void OnNotifyPaused ();
     parameters: []
@@ -737,19 +737,19 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host an unhandled exception has occurred in the workflow instance."
+  summary: "워크플로 인스턴스에서 처리 되지 않은 예외가 발생 했음을 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
   syntax:
     content: protected abstract void OnNotifyUnhandledException (Exception exception, System.Activities.Activity source, string sourceInstanceId);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The unhandled exception."
+      description: "처리 되지 않은 예외입니다."
     - id: source
       type: System.Activities.Activity
-      description: "The activity that threw the exception."
+      description: "예외를 발생 시킨 작업입니다."
     - id: sourceInstanceId
       type: System.String
-      description: "The unique identifier of the <xref href=&quot;System.Activities.ActivityInstance&quot;></xref> representing the activity that threw the exception."
+      description: "고유 식별자는 <xref href=&quot;System.Activities.ActivityInstance&quot;> </xref> 예외를 발생 시킨 활동이 표시 됩니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnNotifyUnhandledException*
   exceptions: []
   platform:
@@ -766,14 +766,14 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the workflow runtime to notify the host that an abort operation has been requested for the workflow instance."
-  remarks: "Once OnRequestAbort is called, most <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> APIs except <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Abort%2A> will throw an <xref:System.InvalidOperationException>. It is expected that after OnRequestAbort is called a host will trend toward a state in which it can satisfy the abort."
+  summary: "워크플로 인스턴스에 대 한 중단 작업이 요청 되었습니다는 호스트에 알리기 위해 워크플로 런타임에 의해 호출 됩니다."
+  remarks: "한 번 OnRequestAbort 라고, 대부분의 <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl>Api <xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Abort%2A> <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> 을 throw 합니다</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl.Abort%2A> 를 제외 하 고</xref:System.Activities.Hosting.WorkflowInstance.WorkflowInstanceControl> OnRequestAbort를 호출한 후 호스트가 중단을 충족 시킬 수 있는 상태로 전환 되어야 합니다 사용할 수 있습니다."
   syntax:
     content: protected abstract void OnRequestAbort (Exception reason);
     parameters:
     - id: reason
       type: System.Exception
-      description: "The reason for aborting the workflow instance."
+      description: "워크플로 인스턴스의 중단에 대 한 설명입니다."
   overload: System.Activities.Hosting.WorkflowInstance.OnRequestAbort*
   exceptions: []
   platform:
@@ -790,14 +790,14 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Called by the host to register the specified extension manager, validate that all required extensions are present, and to initialize the collection of extensions to be used."
-  remarks: "Extensions are keyed by type, and a host provided extension will always be used if provided. Extensions added through <xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A> use the runtime type of the object as the type key. Extensions providers added through <xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A> use the decared type T of the Func\\<T> as the type key. Extension providers contributed by activities through the various *ActivityMetadata.AddDefaultExtensionProvider methods are dropped if a host extension exists for the declared type or if there is a broader type provided through AddDefaultExtensionProvider (ex. if Func\\<StreamWriter> is provided and Func\\<TextWriter> is provided, only Func\\<StreamWriter> will be kept). If an extension does not exist in the collection that is required by an activity (expressed by calling \\*ActivityMetadata.RequireExtension) a <xref:System.Activities.ValidationException> is thrown."
+  summary: "지정한 확장명 관리자에 등록, 필요한 모든 확장이 있는지 확인 하 고 사용할 확장명 컬렉션을 초기화할 수는 호스트에 의해 호출 됩니다."
+  remarks: "형식에 의해 확장 키 사용 및 호스트 제공 확장 제공 하는 경우 항상 사용 됩니다. 통해 추가 된 확장 <xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A>개체의 런타임 형식을 형식 키로 사용 합니다.</xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A> 통해 추가 된 확장 공급자 <xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A>는 f 선언 된 형식 T를 사용 하 여\\<T >를 형식 키로.</xref:System.Activities.Hosting.WorkflowInstanceExtensionManager.Add%2A> 다양 한 * activitymetadata.adddefaultextensionprovider 메서드를 통해 작업에서 제공한 확장 공급자가 선언된 형식에 대 한 호스트 확장이 있는 경우 또는 (예를 들어, 통해 제공 된 보다 광범위 한 형식이 있는 경우 삭제 됩니다. 경우 Func\\<StreamWriter > 제공 및 Func\\<TextWriter > 제공만 Func\\<StreamWriter > 유지). 확장 작업에 필요한 컬렉션에 존재 하지 않는 경우 (호출 하 여 표현 \\*ActivityMetadata.RequireExtension)는 <xref:System.Activities.ValidationException>throw 됩니다.</xref:System.Activities.ValidationException>"
   syntax:
     content: protected void RegisterExtensionManager (System.Activities.Hosting.WorkflowInstanceExtensionManager extensionManager);
     parameters:
     - id: extensionManager
       type: System.Activities.Hosting.WorkflowInstanceExtensionManager
-      description: "The extension manager to register."
+      description: "등록할 확장명 관리자입니다."
   overload: System.Activities.Hosting.WorkflowInstance.RegisterExtensionManager*
   exceptions: []
   platform:
@@ -814,12 +814,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets a value that indicates whether the host supports the association of <xref:System.Runtime.Persistence.InstanceView.InstanceKeys*> with a run-time instance."
+  summary: "호스트의 연결을 지원 하는지 여부를 나타내는 값을 가져옵니다 <xref:System.Runtime.Persistence.InstanceView.InstanceKeys*>런타임에 인스턴스와.</xref:System.Runtime.Persistence.InstanceView.InstanceKeys*>"
   syntax:
     content: protected abstract bool SupportsInstanceKeys { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the host supports the association of <xref:System.Runtime.Persistence.InstanceView.InstanceKeys*> with a workflow instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>호스트의 연결을 지 원하는 경우 <xref:System.Runtime.Persistence.InstanceView.InstanceKeys*>워크플로 인스턴스와; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Runtime.Persistence.InstanceView.InstanceKeys*>"
   overload: System.Activities.Hosting.WorkflowInstance.SupportsInstanceKeys*
   exceptions: []
   platform:
@@ -836,13 +836,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets or sets the <xref:System.Threading.SynchronizationContext> used for scheduling the workflow instance."
-  remarks: "If this property is set after the workflow instance is initialized and <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A> returns `true`, an <xref:System.InvalidOperationException> is thrown."
+  summary: "가져오거나는 <xref:System.Threading.SynchronizationContext>워크플로 인스턴스 예약에 사용 되는.</xref:System.Threading.SynchronizationContext>"
+  remarks: "워크플로 인스턴스를 초기화 한 후이 속성을 설정 하는 경우 및 <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>반환 `true`, <xref:System.InvalidOperationException>throw 됩니다.</xref:System.InvalidOperationException> </xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>"
   syntax:
     content: public System.Threading.SynchronizationContext SynchronizationContext { get; set; }
     return:
       type: System.Threading.SynchronizationContext
-      description: "The synchronization context used for scheduling the workflow instance."
+      description: "워크플로 인스턴스 예약에 사용 되는 동기화 컨텍스트."
   overload: System.Activities.Hosting.WorkflowInstance.SynchronizationContext*
   exceptions: []
   platform:
@@ -859,8 +859,8 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Throws an <xref:System.InvalidOperationException> if the workflow instance has been initialized, as determined by <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly*>."
-  remarks: "If <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A> returns `true`, then an <xref:System.InvalidOperationException> is thrown."
+  summary: "<xref:System.InvalidOperationException>워크플로 인스턴스에 있으면 초기화 된 <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly*>.</xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly*> 기준으로</xref:System.InvalidOperationException> 발생 시킵니다."
+  remarks: "경우 <xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>반환 `true`, 아니라면 <xref:System.InvalidOperationException>throw 됩니다.</xref:System.InvalidOperationException> </xref:System.Activities.Hosting.WorkflowInstance.IsReadOnly%2A>"
   syntax:
     content: protected void ThrowIfReadOnly ();
     parameters: []
@@ -880,12 +880,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Hosting
-  summary: "Gets the workflow definition of the workflow instance."
+  summary: "워크플로 인스턴스의 워크플로 정을 가져옵니다."
   syntax:
     content: public System.Activities.Activity WorkflowDefinition { get; }
     return:
       type: System.Activities.Activity
-      description: "The workflow definition of the workflow instance."
+      description: "워크플로 인스턴스의 워크플로 정의입니다."
   overload: System.Activities.Hosting.WorkflowInstance.WorkflowDefinition*
   exceptions: []
   platform:
