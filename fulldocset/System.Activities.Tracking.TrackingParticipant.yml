@@ -14,8 +14,8 @@ items:
   nameWithType: TrackingParticipant
   fullName: System.Activities.Tracking.TrackingParticipant
   type: Class
-  summary: "The base class for workflow extensions that interact with the workflow tracking infrastructure and access tracking records."
-  remarks: "A tracking participant is registered to receive tracking records. Currently, any class that implements the tracking participant can be registered with the workflow instance to receive tracking records. If the tracking participant is third party code, ensure that this is not malicious code. The tracking participants run in the same process as the workflow instance and in the case of malicious tracking participants, this code could affect the overall workflow execution. The tracking records are delivered to the registered tracking participants as the workflow executes, so the developer should ensure that the tracking participant does not affect the running workflow by performing unintended operations within the track method. Examples of this could be the alteration of workflow variables or operations that take a long time."
+  summary: "워크플로 추적 인프라와 추적 레코드에 액세스 하는 상호 작용 하는 워크플로 확장에 대 한 기본 클래스입니다."
+  remarks: "추적 참가자는 추적 레코드를 받기 등록 됩니다. 현재 워크플로 인스턴스 추적 레코드를 받기에 추적 참가자를 구현 하는 클래스를 등록할 수 있습니다. 추적 참가자가 제&3; 자 코드를 악성 코드가 아닌지 확인 합니다. 추적 참가자가 악성인 경우 워크플로 인스턴스와 동일한 프로세스에서 실행,이 코드 영향을 줄 수 전체 워크플로 실행 합니다. 추적 레코드에 배달 되 등록 된 추적 참석자 워크플로가 실행 될 때 되므로 개발자는 추적 참가자가 영향을 주지 않는지 실행 중인 워크플로 추적 메서드 내에서 의도 하지 않은 작업을 수행 하 여 확인 해야 합니다. 이 예에서는 워크플로 변수 또는 시간이 오래 걸리는 작업 변경을 들 수 있습니다."
   syntax:
     content: public abstract class TrackingParticipant
   inheritance:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, creates a new instance of the derived class."
+  summary: "파생된 클래스에서 구현 된 경우 파생된 클래스의 새 인스턴스를 만듭니다."
   syntax:
     content: protected TrackingParticipant ();
     parameters: []
@@ -56,26 +56,26 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, begins asynchronous processing of the tracking record."
-  remarks: "Participants are expected to begin a job to process the records and return an <xref:System.IAsyncResult> that the workflow runtime uses to wait for completion. The default implementation is to call <xref:System.Activities.Tracking.TrackingParticipant.Track%2A> and return a Completed status."
+  summary: "파생된 클래스에서 구현 된 경우 추적 레코드의 비동기 처리를 시작 합니다."
+  remarks: "참가자는 레코드를 처리 하 고 반환 하는 작업을 시작 하는 <xref:System.IAsyncResult>완료를 기다리는 워크플로 런타임이 사용 하는.</xref:System.IAsyncResult> 기본 구현에서는 호출 하는 것 <xref:System.Activities.Tracking.TrackingParticipant.Track%2A>고 Completed 상태를 반환 합니다.</xref:System.Activities.Tracking.TrackingParticipant.Track%2A>"
   syntax:
     content: protected virtual IAsyncResult BeginTrack (System.Activities.Tracking.TrackingRecord record, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: record
       type: System.Activities.Tracking.TrackingRecord
-      description: "The generated tracking record."
+      description: "생성 된 추적 레코드입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the provider aborts the attempt."
+      description: "공급자는 시도 중단 하는 시간 기간입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called on completion of the operation."
+      description: "작업의 완료 되 면 호출할 메서드."
     - id: state
       type: System.Object
-      description: "A user-defined object that uniquely identifies this asynchronous operation."
+      description: "이 비동기 작업을 고유 하 게 식별 하는 사용자 정의 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "작업의 결과입니다."
   overload: System.Activities.Tracking.TrackingParticipant.BeginTrack*
   exceptions: []
   platform:
@@ -92,14 +92,14 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, represents the end of an asynchronous tracking operation."
-  remarks: "This method is expected to block until the tracking operation is complete."
+  summary: "파생된 클래스에서 구현 하는 경우 비동기 추적 작업의 끝을 나타냅니다."
+  remarks: "이 메서드는 추적 작업이 완료 될 때까지 차단 해야 합니다."
   syntax:
     content: protected virtual void EndTrack (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of the operation."
+      description: "작업의 상태입니다."
   overload: System.Activities.Tracking.TrackingParticipant.EndTrack*
   exceptions: []
   platform:
@@ -116,17 +116,17 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, used to synchronously process the tracking record."
-  remarks: "The track method is called when the workflow instance emits a tracking record."
+  summary: "파생된 클래스에서 구현 된 경우 추적 레코드를 동기적으로 처리 하는 데 사용 합니다."
+  remarks: "추적 메서드는 워크플로 인스턴스 추적 레코드를 내보낼 때 호출 됩니다."
   syntax:
     content: protected abstract void Track (System.Activities.Tracking.TrackingRecord record, TimeSpan timeout);
     parameters:
     - id: record
       type: System.Activities.Tracking.TrackingRecord
-      description: "The generated tracking record."
+      description: "생성 된 추적 레코드입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the provider aborts the attempt."
+      description: "공급자는 시도 중단 하는 시간 기간입니다."
   overload: System.Activities.Tracking.TrackingParticipant.Track*
   exceptions: []
   platform:
@@ -143,13 +143,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "The tracking profile object used by the tracking participant. Before adding the tracking participant to the workflow extensions, the tracking profile is set on the participant."
-  remarks: "The tracking profile defines which tracking events are sent to this tracking participant."
+  summary: "추적 프로필 추적 참가자가 사용 되는 개체입니다. 추적 참가자를 워크플로 확장에 추가 하기 전에 추적 프로필이 참가자에 설정 됩니다."
+  remarks: "추적 프로필 정의이 추적 참가자에는 추적 이벤트가 전송 됩니다."
   syntax:
     content: public virtual System.Activities.Tracking.TrackingProfile TrackingProfile { get; set; }
     return:
       type: System.Activities.Tracking.TrackingProfile
-      description: "The tracking profile."
+      description: "추적 프로필입니다."
   overload: System.Activities.Tracking.TrackingParticipant.TrackingProfile*
   exceptions: []
   platform:
