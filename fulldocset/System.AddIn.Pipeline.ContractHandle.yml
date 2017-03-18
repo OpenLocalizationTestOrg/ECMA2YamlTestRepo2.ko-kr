@@ -16,8 +16,8 @@ items:
   nameWithType: ContractHandle
   fullName: System.AddIn.Pipeline.ContractHandle
   type: Class
-  summary: "Provides methods that control the lifetime of an add-in."
-  remarks: "Because the add-in model provides the ability for add-ins to communicate between application domains and between processes, it cannot rely on the garbage collector to reclaim them. This class provides a reference counting mechanism for the add-in by obtaining a lifetime token to its contract.       When a ContractHandle object is constructed, it calls the <xref:System.AddIn.Pipeline.ContractBase.AcquireLifetimeToken%2A> method on the contract that is passed to the constructor. When the ContractHandle object is disposed or finalized, it calls the <xref:System.AddIn.Pipeline.ContractBase.RevokeLifetimeToken%2A> method on the contract, which removes its hold on the contract.       Adapters implement the contract. The ContractHandle class is designed to be used in a contract-to-view adapter to help pipeline developers manage the lifetime of the contract that is being adapted. Typically, an instance of this class is instantiated during the construction of the adapter class and is stored in an instance field of the adapter. When the adapter class is garbage-collected, the ContractHandle object will also be collected and the ContractHandle object will revoke the lifetime token on the contract.       It is recommended that your view-to-contract adapters inherit from the <xref:System.AddIn.Pipeline.ContractBase> class. You can then use a default implementation for the members of <xref:System.AddIn.Contract.IContract>, which means you need to implement only the members of your specific contract."
+  summary: "추가 기능을 수명을 제어 하는 메서드를 제공 합니다."
+  remarks: "추가 기능 모델은 추가 기능의 응용 프로그램 도메인 간에 프로세스 간에 통신 하는 기능을 제공 하므로를 회수 가비지 수집기에 사용할 수 없습니다. 이 클래스는 참조를 해당 계약 수명 토큰을 확보 하 여 추가 기능에 대 한 메커니즘을 횟수를 제공 합니다.       ContractHandle 개체가 생성 된 경우 호출 하는 <xref:System.AddIn.Pipeline.ContractBase.AcquireLifetimeToken%2A>생성자에 전달 되는 계약에서 메서드가.</xref:System.AddIn.Pipeline.ContractBase.AcquireLifetimeToken%2A> ContractHandle 개체를 삭제 하거나 종료, 호출 된 <xref:System.AddIn.Pipeline.ContractBase.RevokeLifetimeToken%2A>계약에 보유를 제거 되는 계약에서 메서드가.</xref:System.AddIn.Pipeline.ContractBase.RevokeLifetimeToken%2A>       어댑터는 계약을 구현합니다. ContractHandle 클래스 조정 되는 계약의 수명을 관리 하는 파이프라인 개발자가 하는 계약 뷰 어댑터에 사용할 하도록 설계 되었습니다. 일반적으로이 클래스의 인스턴스는 어댑터 클래스를 생성 하는 동안 인스턴스화됩니다 하 고 어댑터의 인스턴스 필드에 저장 됩니다. 어댑터 클래스를 가비지 수집 된 경우 ContractHandle 개체도 수집 되 고 ContractHandle 개체 계약에 대 한 수명 토큰을 취소 됩니다.       보기-계약 어댑터 <xref:System.AddIn.Pipeline.ContractBase>클래스</xref:System.AddIn.Pipeline.ContractBase> 에서 상속 하는 것이 좋습니다. 멤버에 대 한 기본 구현을 사용할 수 있습니다 <xref:System.AddIn.Contract.IContract>, 즉, 특정 계약의 구성원만 구현 해야 합니다.</xref:System.AddIn.Contract.IContract>"
   example:
   - "The following example shows how to set the lifetime token handle in a contract-to-view adapter on the add-in side of a pipeline.  \n  \n [!code-vb[AddinP2HostSideAdapters#2](~/add/codesnippet/visualbasic/Calc2HostSideAdapter/Calc2ContractToViewHostSideAdapter.vb#2)]\n [!code-cs[AddinP2HostSideAdapters#2](~/add/codesnippet/csharp/Calc2HostSideAdapter/Calc2ContractToViewHostSideAdapter.cs#2)]"
   syntax:
@@ -41,18 +41,18 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Initializes a new instance of the <xref href=&quot;System.AddIn.Pipeline.ContractHandle&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.AddIn.Pipeline.ContractHandle&quot;> </xref> 클래스입니다."
   syntax:
     content: public ContractHandle (System.AddIn.Contract.IContract contract);
     parameters:
     - id: contract
       type: System.AddIn.Contract.IContract
-      description: "The contract to use in the pipeline."
+      description: "파이프라인에서 사용 하는 계약입니다."
   overload: System.AddIn.Pipeline.ContractHandle.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>contract</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>contract</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.AddIn.Pipeline.ContractHandle.AppDomainOwner(System.AppDomain)
@@ -67,22 +67,22 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Gets the instance of the add-in-side adapter when the application domain was created."
-  remarks: "The add-in-side adapters are typed as <xref:System.AddIn.Contract.IContract>.       If the application domain was previously created by a user, there is no owner."
+  summary: "응용 프로그램 도메인이 만들어진 경우 추가 기능 측 어댑터의 인스턴스를 가져옵니다."
+  remarks: "추가 기능 측 어댑터 <xref:System.AddIn.Contract.IContract>.</xref:System.AddIn.Contract.IContract> 로 형식화 됩니다.       응용 프로그램 도메인 사용자가 이전에 만든, 소유자가입니다."
   syntax:
     content: public static System.AddIn.Contract.IContract AppDomainOwner (AppDomain domain);
     parameters:
     - id: domain
       type: System.AppDomain
-      description: "The application domain to check."
+      description: "확인 하려면 응용 프로그램 도메인입니다."
     return:
       type: System.AddIn.Contract.IContract
-      description: "An <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref> object that represents the owner of the application domain."
+      description: "<xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref> 응용 프로그램 도메인의 소유자를 나타내는 개체입니다."
   overload: System.AddIn.Pipeline.ContractHandle.AppDomainOwner*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>domain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>domain</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.AddIn.Pipeline.ContractHandle.Contract
@@ -97,12 +97,12 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Gets the contract used by a pipeline."
+  summary: "파이프라인에서 사용 되는 계약을 가져옵니다."
   syntax:
     content: public System.AddIn.Contract.IContract Contract { get; }
     return:
       type: System.AddIn.Contract.IContract
-      description: "The contract, which is derived from <xref href=&quot;System.AddIn.Contract.IContract&quot;></xref>."
+      description: "파생 되는 계약을 <xref href=&quot;System.AddIn.Contract.IContract&quot;> </xref>합니다."
   overload: System.AddIn.Pipeline.ContractHandle.Contract*
   exceptions: []
   platform:
@@ -119,24 +119,24 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Determines whether an application domain is owned by the specified contract."
+  summary: "지정된 된 계약에서 응용 프로그램 도메인은 소유 하는지 여부를 결정 합니다."
   syntax:
     content: public static bool ContractOwnsAppDomain (System.AddIn.Contract.IContract contract, AppDomain domain);
     parameters:
     - id: contract
       type: System.AddIn.Contract.IContract
-      description: "The contract to check."
+      description: "확인 하는 계약입니다."
     - id: domain
       type: System.AppDomain
-      description: "The application domain to check."
+      description: "확인 하려면 응용 프로그램 도메인입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the contract owns the application domain; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>계약; 응용 프로그램 도메인을 소유 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.AddIn.Pipeline.ContractHandle.ContractOwnsAppDomain*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>contract</code> or <code>domain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>contract</code>or <code>domain</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.AddIn.Pipeline.ContractHandle.Dispose
@@ -151,7 +151,7 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Revokes the lifetime token on a contract, regardless of input."
+  summary: "입력에 관계 없이 계약에 대해 수명 토큰을 취소합니다."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -171,13 +171,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Revokes the lifetime token on the contract regardless of input and optionally releases the managed resources."
+  summary: "입력에 관계 없이 계약에 대 한 수명 토큰을 취소 하 고 선택적으로 관리 되는 리소스를 해제 합니다."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>관리 되는 관리 되지 않는 리소스만 해제 하려면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 만 관리 되지 않는 리소스를 해제 합니다."
   overload: System.AddIn.Pipeline.ContractHandle.Dispose*
   exceptions: []
   platform:
@@ -194,8 +194,8 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Pipeline
-  summary: "Releases the resources associated with the <xref href=&quot;System.AddIn.Pipeline.ContractHandle&quot;></xref> instance."
-  remarks: "This method overrides <xref:System.Object.Finalize%2A?displayProperty=fullName>. Application code should not call this method; an object&quot;s Finalize method is automatically invoked during garbage collection, unless finalization by the garbage collector has been disabled by a call to the <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName> method.       When called by the garbage collector, this method calls the <xref:System.AddIn.Pipeline.ContractHandle.Dispose%28System.Boolean%29> method."
+  summary: "와 연결 된 리소스를 해제는 <xref href=&quot;System.AddIn.Pipeline.ContractHandle&quot;> </xref> 인스턴스."
+  remarks: "이 메서드를 재정의 <xref:System.Object.Finalize%2A?displayProperty=fullName>.</xref:System.Object.Finalize%2A?displayProperty=fullName> 응용 프로그램 코드,이 메서드를 호출 하지 않아야 개체의 Finalize 메서드를 호출 하 여 가비지 수집기의 종료를 사용 하지 않도록 설정 된 경우가 아니면 자동으로 가비지 수집 중 호출 됩니다는 <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>메서드.</xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>       이 메서드를 호출 하는 가비지 수집기에서 호출 되 면는 <xref:System.AddIn.Pipeline.ContractHandle.Dispose%28System.Boolean%29>메서드.</xref:System.AddIn.Pipeline.ContractHandle.Dispose%28System.Boolean%29>"
   syntax:
     content: ~ContractHandle ();
     parameters: []

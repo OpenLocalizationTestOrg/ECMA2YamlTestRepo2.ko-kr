@@ -12,8 +12,8 @@ items:
   nameWithType: Format
   fullName: Microsoft.SqlServer.Server.Format
   type: Enum
-  summary: "Used by <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;></xref> to indicate the serialization format of a user-defined type (UDT) or aggregate."
-  remarks: "Used by <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute> and <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> to indicate the serialization format of a user-defined type (UDT) or aggregate."
+  summary: "사용 하는 <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;> </xref> 및 <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;> </xref> 사용자 정의 형식 (UDT) 또는 집계의 serialization 형식을 나타냅니다."
+  remarks: "사용 하는 <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>및 <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute>사용자 정의 형식 (UDT) 또는 집계의 serialization 형식을 나타냅니다.</xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> </xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>"
   example:
   - "The following example shows the `UserDefinedType` attribute of the Point UDT.  The UDT is byte-ordered, is named \"Point\", has a validation method named \"ValidatePoint\", and uses the native serialization format.  \n  \n [!code-cs[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_6_1.cs)]\n [!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_6_1.vb)]"
   syntax:
@@ -34,13 +34,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization format uses a very simple algorithm that enables SQL Server to store an efficient representation of the UDT on disk. Types marked for <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization can only have value types (structs in Microsoft Visual C# and structures in Microsoft Visual Basic .NET) as members. Members of reference types (such as classes in Visual C# and Visual Basic), either user-defined or those existing in the framework (such as <xref:System.String>), are not supported."
-  remarks: "The requirements for this format are:      -   The `StructLayout.LayoutKindSequential` attribute must be applied to the aggregate or UDT if it is defined in a class and not a structure. This controls the physical layout of the data fields, and is used to force the members to be laid out sequentially in the order they appear. SQL Server uses this attribute to determine the field order for UDTs with multiple fields.      -   The type must contain at least one member (serialized values cannot be zero bytes in size).      -   All the fields of the aggregate must be *blittable*, that is, they must have a common representation in both managed and unmanaged memory and not require special handling by the interop marshaler.      -   All the fields of the UDT should be of one of the following types that can be serialized: `bool`, `byte`,`sbyte`,`short`,`ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, <xref:System.Data.SqlTypes.SqlByte>, <xref:System.Data.SqlTypes.SqlInt16>, <xref:System.Data.SqlTypes.SqlInt32>, <xref:System.Data.SqlTypes.SqlInt64>, <xref:System.Data.SqlTypes.SqlDateTime>, <xref:System.Data.SqlTypes.SqlSingle>, <xref:System.Data.SqlTypes.SqlDouble>, <xref:System.Data.SqlTypes.SqlMoney>, or other value types defined by the user that contain fields of one of these types.      -   The aggregate must not specify a value for `MaxByteSize`.      -   The aggregate must not have any [NonSerialized] fields.      -   Fields must not be marked as an explicit layout (<xref:System.Runtime.InteropServices.StructLayoutAttribute>)."
+  summary: "<xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;> </xref> 직렬화 형식은 udt는 효율적인 표현을 디스크에 저장 하도록 SQL Server를 사용 하도록 설정 하는 매우 간단한 알고리즘을 사용 하 여 합니다. 에 대 한 표시 된 형식 <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;> </xref> serialization 구성원으로 값 형식 (구조체의 Microsoft Visual C#) 및 Microsoft Visual Basic.NET의 구조를 하나만 사용할 수 있습니다. 사용자 정의 또는 프레임 워크에 있는 해당 참조의 멤버 유형 (예: 클래스 Visual C# 및 Visual Basic) (예: <xref:System.String>), 지원 되지 않습니다.</xref:System.String>"
+  remarks: "이 형식에 대 한 요구 사항은:- `StructLayout.LayoutKindSequential` 특성 집계에 적용 되어야 합니다 또는 UDT 구조체가 아니라 클래스에 정의 된 경우. 데이터 필드의 실제 레이아웃을 제어 하 고 멤버를 순서 대로 순차적으로 배치 되어야 하는 데 사용 됩니다. SQL Server이이 특성을 사용 하 여 여러 개의 필드가 있는 Udt에 대 한 필드 순서를 결정 합니다.      -형식 구성원을 하나 이상 있어야 합니다. (직렬화 된 값의 크기가&0; 바이트 수 없음).      -집계의 모든 필드가 있어야 *blittable*, 관리 되는 관리 되지 않는 메모리에서 동일 하 게 표시 하 게 하 고 필요 하지는 interop 마샬러만 사용 하 여 되어야 즉, 합니다.      -UDT의 모든 필드가 serialize 할 수 있는 다음 형식 중 하나 여야 합니다: `bool`, `byte`,`sbyte`,`short`,`ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, <xref:System.Data.SqlTypes.SqlByte>, <xref:System.Data.SqlTypes.SqlInt16>, <xref:System.Data.SqlTypes.SqlInt32>, <xref:System.Data.SqlTypes.SqlInt64>, <xref:System.Data.SqlTypes.SqlDateTime>, <xref:System.Data.SqlTypes.SqlSingle>, <xref:System.Data.SqlTypes.SqlDouble>, <xref:System.Data.SqlTypes.SqlMoney>, 또는 사용자가 정의한 다음이 형식 중 하나가 필드가 포함 된 다른 값 형식입니다.</xref:System.Data.SqlTypes.SqlMoney> </xref:System.Data.SqlTypes.SqlDouble> </xref:System.Data.SqlTypes.SqlSingle> </xref:System.Data.SqlTypes.SqlDateTime> </xref:System.Data.SqlTypes.SqlInt64> </xref:System.Data.SqlTypes.SqlInt32> </xref:System.Data.SqlTypes.SqlInt16> </xref:System.Data.SqlTypes.SqlByte>      -집계에 대 한 값을 지정 해서는 안 `MaxByteSize`합니다.      -집계 모든 [NonSerialized] 필드를 사용할 수 없습니다.      -필드 명시적 레이아웃으로 표시 되 면 안 (<xref:System.Runtime.InteropServices.StructLayoutAttribute>).</xref:System.Runtime.InteropServices.StructLayoutAttribute>"
   syntax:
     content: Native
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -56,12 +56,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format is unknown."
+  summary: "Serialization 형식을 알려져 있습니다."
   syntax:
     content: Unknown
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -77,13 +77,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;></xref> serialization format gives the developer full control over the binary format through the <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;></xref> methods."
-  remarks: "The aggregate must specify a value for `MaxByteSize`.       Specify the <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> attribute property. The default value is false.       If you omit any field in the <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A> or <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> methods, the state of that field is not serialized."
+  summary: "<xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;> </xref> 개발자 모든 제어를 통해 이진 형식에 대해 serialization 형식 제공은 <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;> </xref> 및 <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;> </xref> 메서드."
+  remarks: "집계에 대 한 값을 지정 해야 `MaxByteSize`합니다.       지정 된 <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A>특성의 속성입니다.</xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> 기본값은 false입니다.       필드를 생략 하는 경우는 <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>또는 <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>메서드, 해당 필드의 상태에 직렬화 되지 않습니다.</xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> </xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>"
   syntax:
     content: UserDefined
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

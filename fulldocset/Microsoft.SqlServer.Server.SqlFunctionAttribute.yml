@@ -17,7 +17,7 @@ items:
   nameWithType: SqlFunctionAttribute
   fullName: Microsoft.SqlServer.Server.SqlFunctionAttribute
   type: Class
-  summary: "Used to mark a method definition of a user-defined aggregate as a function in SQL Server. The properties on the attribute reflect the physical characteristics used when the type is registered with SQL Server."
+  summary: "SQL Server에서 함수로 메서드 정의의 사용자 정의 집계를 표시 하는 데 사용 합니다. 특성의 속성은 SQL Server에는 형식을 등록할 때 사용 되는 물리적 특성을 반영 합니다."
   remarks: ''
   example:
   - "The following example shows an aggregate function that returns a list of files in the specified directory path.  \n  \n [!code-cs[DataWorks SqlFunctionAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_0_1.cs)]\n [!code-vb[DataWorks SqlFunctionAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_0_1.vb)]"
@@ -44,7 +44,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "An optional attribute on a user-defined aggregate, used to indicate that the method should be registered in SQL Server as a function. Also used to set the <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.Name*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess*>, and <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*> properties of the function attribute."
+  summary: "메서드를 함수로 SQL Server에 등록 해야 함을 나타내기 위해 사용 되는 사용자 정의 집계에는 선택적 특성입니다. 또한 설정 하는 데는 <> </> *>, <> </> *>, <> </> *>, <> </> *>, <> </> *>, <> </> *>, 및 <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*>함수 특성의 속성입니다.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*>"
   syntax:
     content: public SqlFunctionAttribute ();
     parameters: []
@@ -64,13 +64,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function involves access to user data stored in the local instance of SQL Server."
-  remarks: "The default is <xref:Microsoft.SqlServer.Server.DataAccessKind>.DataAccess is also required when connecting to remote servers if transactions integration is required (the default).       If a Transact-SQL query is executed from inside a table-valued function (TVF), the <xref:Microsoft.SqlServer.Server.DataAccessKind>.`Read` property should be set."
+  summary: "함수는 SQL Server의 로컬 인스턴스에 저장 된 사용자 데이터에 대 한 액세스를 수행 하는지 여부를 나타냅니다."
+  remarks: "기본값은 <xref:Microsoft.SqlServer.Server.DataAccessKind>합니다. (기본값) 필요한 트랜잭션 통합이 경우 원격 서버에 연결할 때 데이터 액세스는도 필요 합니다.</xref:Microsoft.SqlServer.Server.DataAccessKind>       Transact SQL 쿼리는 테이블 반환 함수 (TVF) 내에서 실행 되 면는 <xref:Microsoft.SqlServer.Server.DataAccessKind>.`Read` </xref:Microsoft.SqlServer.Server.DataAccessKind> 속성을 설정 해야 합니다."
   syntax:
     content: public Microsoft.SqlServer.Server.DataAccessKind DataAccess { get; set; }
     return:
       type: Microsoft.SqlServer.Server.DataAccessKind
-      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;></xref>: Does not access data. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>: Only reads user data.'
+      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;> </xref>: 데이터에 액세스 하지 않습니다. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>: 사용자 데이터를 읽을 수만 있습니다.'
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name of a method in the same class as the table-valued function (TVF) that is used by the TVF contract."
-  remarks: "For more information, see [CLR Triggers](http://go.microsoft.com/fwlink/?LinkId=128026)."
+  summary: "테이블 반환 함수 (TVF) TVF 계약에서 사용 되는 동일한 클래스에 있는 메서드의 이름입니다."
+  remarks: "자세한 내용은 참조 [CLR 트리거](http://go.microsoft.com/fwlink/?LinkId=128026)합니다."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#10](~/add/codesnippet/csharp/CS/Function1.cs#10)]
@@ -97,7 +97,7 @@ items:
     content: public string FillRowMethodName { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name of a method used by the TVF contract."
+      description: "A <xref:System.String>TVF 계약으로 사용 하는 방법의 이름을 나타내는 값입니다.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName*
   exceptions: []
   platform:
@@ -114,13 +114,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the user-defined function is deterministic."
-  remarks: "A user-defined function is said to be deterministic if it always produces the same output values given the same input values and the same database state.       The IsDeterministic property is also useful for indexing the result of the function in the form of indexed computed columns and indexed views. If this property is not specified, the function is assumed to be non-deterministic.       Functions that access local data can be deterministic. The data access characteristic is captured separately by the <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A> and <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A> properties.       Note that data access to remote servers (for example, using a <xref:System.Data.SqlClient.SqlConnection> to connect to another SQL Server instance) is available in user-defined functions. However, you must still honor the IsDeterministic declaration. If the common language runtime (CLR) function is marked as deterministic, it should not cause side-effects in the remote server. While side-effects against the context connection are restricted, SQL Server will not enforce the restriction for side-effects over remote connections.       The default value of this attribute is `false`.       Do not mark a function as deterministic if the function does not always produce the same output values, given the same input values and the same database state. Marking a function as deterministic when the function is not truly deterministic can result in corrupted indexed views and computed columns."
+  summary: "사용자 정의 함수가 결정적 인지 여부를 나타냅니다."
+  remarks: "사용자 정의 함수를 경우 항상 동일한 출력 값이 동일한 입력된 값과 동일한 데이터베이스 상태가 지정 명확 하 게 컴퓨터 라고 합니다.       IsDeterministic 속성 인덱싱된 계산된 열과 인덱싱된 뷰의 형태로 함수의 결과 인덱싱에 유용 합니다. 이 속성이 지정 되지 않은 함수 명확 하지 않은 것으로 간주 됩니다.       로컬 데이터에 액세스 하는 함수는 결정적 수 있습니다. 데이터 액세스 특성 의해 개별적으로 캡처되는 <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>및 <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A>속성.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A> </xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>       원격 서버에 데이터 액세스 (예를 들어를 사용 하 여는 <xref:System.Data.SqlClient.SqlConnection>다른 SQL Server 인스턴스에 연결 하려면)는 사용자 정의 함수에서 사용할 수 있습니다.</xref:System.Data.SqlClient.SqlConnection> 그러나 선언이 IsDeterministic은 여전히 인식 해야 합니다. 공용 언어 런타임 (CLR) 함수를 결정적 함수로 표시 하는 경우이 발생 하지 않습니다 부작용 원격 서버에서. 컨텍스트 연결에 대 한 부작용은 제한 된, SQL Server는 원격 연결을 통해 의도 대 한 제한을 적용 하지 않습니다.       이 특성의 기본값은 `false`합니다.       표시 하지 마십시오 함수가 동일한 출력 값을 생성 하지 않는 경우 결정적 함수로 함수가 동일한 입력된 값과 동일한 데이터베이스 상태가 지정 합니다. 함수를 결정적인 함수로 표시 하면 함수는 실제로 결정적인 경우 손상 된 인덱싱된 뷰 및 계산된 열에 발생할 수 있습니다."
   syntax:
     content: public bool IsDeterministic { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the function is deterministic; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>함수는 결정적; 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic*
   exceptions: []
   platform:
@@ -137,13 +137,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function involves imprecise computations, such as floating point operations."
-  remarks: "Precision of a function is one of the properties used to determine if computed columns that use this function can be indexed.       The default value of this attribute is `false`."
+  summary: "함수에 부동 소수점 연산과 같은 부정확 한 계산을 수행 하는지 여부를 나타냅니다."
+  remarks: "함수의 전체 자릿수가이 함수를 사용 하는 열을 인덱싱할 수를 계산 하는 경우를 결정 하는 데 사용 하는 속성 중 하나입니다.       이 특성의 기본값은 `false`합니다."
   syntax:
     content: public bool IsPrecise { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the function involves precise computations; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>함수가; 부정확 한 계산을 수행 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise*
   exceptions: []
   platform:
@@ -160,8 +160,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name under which the function should be registered in SQL Server."
-  remarks: "This attribute is used only by Microsoft Visual Studio to automatically register the specified method as a user-defined function. It is not used by SQL Server.       Thee following example specifies that the user-defined function is referenced using the name `sp_scalarFunc`."
+  summary: "SQL Server에서 함수를 등록 하는 이름입니다."
+  remarks: "이 특성은 자동으로 사용자 정의 함수로 지정된 된 메서드를 등록 하려면 Microsoft Visual Studio에 의해서만 사용 됩니다. SQL Server에서 사용 되지 않습니다.       다음 세 예제에서는 지정 된 이름을 사용 하 여 사용자 정의 함수를 참조 `sp_scalarFunc`합니다."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#10](~/add/codesnippet/csharp/CS/Function1.cs#10)]
@@ -170,7 +170,7 @@ items:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name under which the function should be registered."
+      description: "A <xref:System.String>함수 해야 등록 이름을 나타내는 값입니다.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.Name*
   exceptions: []
   platform:
@@ -187,13 +187,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function requires access to data stored in the system catalogs or virtual system tables of SQL Server."
-  remarks: "The default is <xref:Microsoft.SqlServer.Server.SystemDataAccessKind>."
+  summary: "함수는 시스템 카탈로그 또는 SQL Server의 가상 시스템 테이블에 저장 된 데이터에 대 한 액세스 하는지 여부를 나타냅니다."
+  remarks: "기본값은 <xref:Microsoft.SqlServer.Server.SystemDataAccessKind>.</xref:Microsoft.SqlServer.Server.SystemDataAccessKind>"
   syntax:
     content: public Microsoft.SqlServer.Server.SystemDataAccessKind SystemDataAccess { get; set; }
     return:
       type: Microsoft.SqlServer.Server.SystemDataAccessKind
-      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;></xref>: Does not access system data. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>: Only reads system data.'
+      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;> </xref>: 시스템 데이터에 액세스 하지 않습니다. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>: 시스템 데이터를 읽을 수만 있습니다.'
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess*
   exceptions: []
   platform:
@@ -210,8 +210,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "A string that represents the table definition of the results, if the method is used as a table-valued function (TVF)."
-  remarks: "This attribute is used only by Microsoft Visual Studio to automatically register the specified method as a TVF. It is not used by SQL Server.       The following example specifies that the user-defined function is referenced using the name `sp_tableFunc`. The `TableDefinition` property has the value `letter nchar(1)`."
+  summary: "메서드를 테이블 반환 함수 (TVF)로 사용 하는 경우의 결과 테이블 정의 나타내는 문자열입니다."
+  remarks: "이 특성은 TVF로 지정된 된 메서드를 자동으로 등록 하려면 Microsoft Visual Studio에 의해서만 사용 됩니다. SQL Server에서 사용 되지 않습니다.       다음 예에서는 지정 된 이름을 사용 하 여 사용자 정의 함수를 참조 하는지 `sp_tableFunc`합니다. `TableDefinition` 속성 값은 `letter nchar(1)`합니다."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#11](~/add/codesnippet/csharp/CS/Function1.cs#11)]
@@ -220,7 +220,7 @@ items:
     content: public string TableDefinition { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the table definition of the results."
+      description: "A <xref:System.String>결과의 테이블 정의 나타내는 값입니다.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*
   exceptions: []
   platform:
