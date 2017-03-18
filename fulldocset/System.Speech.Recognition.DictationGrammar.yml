@@ -12,8 +12,8 @@ items:
   nameWithType: DictationGrammar
   fullName: System.Speech.Recognition.DictationGrammar
   type: Class
-  summary: "Represents a speech recognition grammar used for free text dictation."
-  remarks: "This class provides applications with a predefined language model that can process spoken user input into text. This class supports both default and custom DictationGrammar objects. For information about selecting a dictation grammar, see the <xref:System.Speech.Recognition.DictationGrammar.%23ctor%28System.String%29> constructor.       By default, the DictationGrammar language model is context free. It does not make use of specific words or word order to identify and interpret audio input. To add context to the dictation grammar, use the <xref:System.Speech.Recognition.DictationGrammar.SetDictationContext%2A> method.      > [!NOTE] >  DictationGrammar objects do not support the <xref:System.Speech.Recognition.Grammar.Priority%2A> property. DictationGrammar throws a <xref:System.NotSupportedException> if <xref:System.Speech.Recognition.Grammar.Priority%2A> is set."
+  summary: "자유 텍스트 받아쓰기에 사용 되는 음성 인식 문법을 나타냅니다."
+  remarks: "이 클래스는 응용 프로그램 텍스트에 대 한 음성된 사용자 입력을 처리할 수 있는 미리 정의 된 언어 모델을 제공 합니다. 이 클래스는 기본 및 사용자 지정 DictationGrammar 개체를 지원합니다. 선택 받아쓰기 문법에 대 한 정보를 참조 하십시오.는 <xref:System.Speech.Recognition.DictationGrammar.%23ctor%28System.String%29>생성자.</xref:System.Speech.Recognition.DictationGrammar.%23ctor%28System.String%29>       기본적으로 DictationGrammar 언어 모델은 무료 컨텍스트입니다. 특정 단어의 사용 하거나 순서를 식별 하 여 오디오 입력 해석 단어 만들지 않습니다. 받아쓰기 문법에 컨텍스트를 추가 하려면 사용 된 <xref:System.Speech.Recognition.DictationGrammar.SetDictationContext%2A>메서드.</xref:System.Speech.Recognition.DictationGrammar.SetDictationContext%2A>      > [!NOTE] > DictationGrammar 개체는 지원 하지는 <xref:System.Speech.Recognition.Grammar.Priority%2A>속성.</xref:System.Speech.Recognition.Grammar.Priority%2A> DictationGrammar throw 한 <xref:System.NotSupportedException>경우 <xref:System.Speech.Recognition.Grammar.Priority%2A>설정 됩니다.</xref:System.Speech.Recognition.Grammar.Priority%2A> </xref:System.NotSupportedException>"
   example:
   - "The following example creates three dictation grammars, adds them to a new <xref:System.Speech.Recognition.SpeechRecognitionEngine> object, and returns the new object. The first grammar is the default dictation grammar. The second grammar is the spelling dictation grammar. The third grammar is the default dictation grammar that includes a context phrase. The <xref:System.Speech.Recognition.DictationGrammar.SetDictationContext%2A> method is used to associate the context phrase with the dictation grammar after it is loaded to the <xref:System.Speech.Recognition.SpeechRecognitionEngine> object.  \n  \n```c#  \n  \nprivate SpeechRecognitionEngine LoadDictationGrammars()  \n{  \n  \n  // Create a default dictation grammar.  \n  DictationGrammar defaultDictationGrammar = new DictationGrammar();  \n  defaultDictationGrammar.Name = \"default dictation\";  \n  defaultDictationGrammar.Enabled = true;  \n  \n  // Create the spelling dictation grammar.  \n  DictationGrammar spellingDictationGrammar =  \n    new DictationGrammar(\"grammar:dictation#spelling\");  \n  spellingDictationGrammar.Name = \"spelling dictation\";  \n  spellingDictationGrammar.Enabled = true;  \n  \n  // Create the question dictation grammar.  \n  DictationGrammar customDictationGrammar =  \n    new DictationGrammar(\"grammar:dictation\");  \n  customDictationGrammar.Name = \"question dictation\";  \n  customDictationGrammar.Enabled = true;  \n  \n  // Create a SpeechRecognitionEngine object and add the grammars to it.  \n  SpeechRecognitionEngine recoEngine = new SpeechRecognitionEngine();  \n  recoEngine.LoadGrammar(defaultDictationGrammar);  \n  recoEngine.LoadGrammar(spellingDictationGrammar);  \n  recoEngine.LoadGrammar(customDictationGrammar);  \n  \n  // Add a context to customDictationGrammar.  \n  customDictationGrammar.SetDictationContext(\"How do you\", null);  \n  \n  return recoEngine;  \n}  \n  \n```"
   syntax:
@@ -48,8 +48,8 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Initializes a new instance of the <xref href=&quot;System.Speech.Recognition.DictationGrammar&quot;></xref> class for the default dictation grammar provided by Windows Desktop Speech Technology."
-  remarks: "The default dictation grammar emulates standard dictation practices, including punctuation. It does not support the spelling of a word."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Speech.Recognition.DictationGrammar&quot;> </xref> Windows 데스크톱 음성 기술에서 제공 하는 기본 받아쓰기 문법에 대 한 클래스입니다."
+  remarks: "기본 받아쓰기 문법 문장 부호를 포함 하 여 표준 받아쓰기 사례를 에뮬레이션 합니다. 단어의 맞춤법을 지원 하지는 않습니다."
   syntax:
     content: public DictationGrammar ();
     parameters: []
@@ -69,14 +69,14 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Initializes a new instance of the <xref href=&quot;System.Speech.Recognition.DictationGrammar&quot;></xref> class with a specific dictation grammar."
-  remarks: "The Speech platform uses a specialized URI syntax to define the custom dictation grammar. The value `grammar:dictation` indicates the default dictation grammar. The value `grammar:dictation#spelling` indicates the spelling dictation grammar."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Speech.Recognition.DictationGrammar&quot;> </xref> 특정 받아쓰기 문법을 사용 하 여 클래스입니다."
+  remarks: "음성 플랫폼 특별 한 URI 구문을 사용 하 여 사용자 지정 받아쓰기 문법을 정의 합니다. 값 `grammar:dictation` 기본 받아쓰기 문법을 나타냅니다. 값 `grammar:dictation#spelling` 맞춤법 받아쓰기 문법을 나타냅니다."
   syntax:
     content: public DictationGrammar (string topic);
     parameters:
     - id: topic
       type: System.String
-      description: "An XML-compliant Universal Resource Identifier (URI) that specifies the dictation grammar, either `grammar:dictation` or `grammar:dictation#spelling`."
+      description: "XML 호환 유니버설 리소스 식별자 (URI) 하거나 받아쓰기 문법을 지정 하는 `grammar:dictation` 또는 `grammar:dictation#spelling`합니다."
   overload: System.Speech.Recognition.DictationGrammar.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "Adds a context to a dictation grammar that has been loaded by a <xref href=&quot;System.Speech.Recognition.SpeechRecognizer&quot;></xref> or a <xref href=&quot;System.Speech.Recognition.SpeechRecognitionEngine&quot;></xref> object."
-  remarks: "By default, the dictation grammar does not make use of specific words or word order to identify and interpret audio input. When a context is added to a dictation grammar, the recognition engine uses the `precedingText` and `subsequentText` to identify when to interpret speech as dictation.      > [!NOTE] >  A dictation grammar must be loaded by a <xref:System.Speech.Recognition.SpeechRecognizer> or <xref:System.Speech.Recognition.SpeechRecognitionEngine> object before you can use SetDictationContext to add a context.       The following table describes how the recognition engine uses the two parameters to determine when to use the dictation grammar.      |`precedingText`|`subsequentText`|Description|   |---------------------|----------------------|-----------------|   |not `null`|not `null`|The recognition engine uses the terms to bracket possible candidate phrases.|   |`null`|not `null`|The recognition engine uses the `subsequentText` to finish dictation.|   |not `null`|`null`|The recognition engine uses the `precedingText` to start dictation.|   |`null`|`null`|The recognition engine does not use a context when using the dictation grammar.|"
+  summary: "컨텍스트를 하 여 로드 된 받아쓰기 문법에 추가 <xref href=&quot;System.Speech.Recognition.SpeechRecognizer&quot;> </xref> 또는 <xref href=&quot;System.Speech.Recognition.SpeechRecognitionEngine&quot;> </xref> 개체입니다."
+  remarks: "기본적으로 받아쓰기 문법 미치지 않으며 특정 단어의 사용 또는 단어 순서를 식별 하 여 오디오 입력을 해석 합니다. 인식 엔진에 사용 하 여 컨텍스트를 받아쓰기 문법에 추가 되는 `precedingText` 및 `subsequentText` 음성 받아쓰기로 해석 하는 시기를 식별 하 합니다.      > [!NOTE] > 받아쓰기 문법을 로드 해야는 <xref:System.Speech.Recognition.SpeechRecognizer>또는 <xref:System.Speech.Recognition.SpeechRecognitionEngine>개체 컨텍스트를 추가 하려면 SetDictationContext을 사용할 수 있습니다.</xref:System.Speech.Recognition.SpeechRecognitionEngine> </xref:System.Speech.Recognition.SpeechRecognizer>       다음 표에서 인식 엔진 받아쓰기 문법을 사용 하는 시기를 결정 하는 두 개의 매개 변수를 사용 하는 방법을 설명 합니다.      | `precedingText`|`subsequentText`| 설명 |   |---------------------|----------------------|-----------------|   |not `null`|not `null`| 인식 엔진 용어를 사용 하 여 가능한 후보 구 묶습니다. |   | `null`|not `null`| 인식 엔진 사용 하 여는 `subsequentText` 받아쓰기 끝나기를. |   |not `null`|`null`| 인식 엔진 사용 하 여는 `precedingText` 받아쓰기를 시작 합니다. |   | `null`|`null`| 인식 엔진 받아쓰기 문법을 사용 하 여 때 컨텍스트를 사용 하지 않습니다. |"
   syntax:
     content: public void SetDictationContext (string precedingText, string subsequentText);
     parameters:
     - id: precedingText
       type: System.String
-      description: "Text that indicates the start of a dictation context."
+      description: "받아쓰기 컨텍스트의 시작을 나타내는 텍스트입니다."
     - id: subsequentText
       type: System.String
-      description: "Text that indicates the end of a dictation context."
+      description: "받아쓰기 컨텍스트의 끝을 나타내는 텍스트입니다."
   overload: System.Speech.Recognition.DictationGrammar.SetDictationContext*
   exceptions: []
   platform:

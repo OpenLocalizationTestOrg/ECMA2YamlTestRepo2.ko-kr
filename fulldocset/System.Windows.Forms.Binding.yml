@@ -37,8 +37,8 @@ items:
   nameWithType: Binding
   fullName: System.Windows.Forms.Binding
   type: Class
-  summary: "Represents the simple binding between the property value of an object and the property value of a control."
-  remarks: "Use the Binding class to create and maintain a simple binding between the property of a control and either the property of an object, or the property of the current object in a list of objects.       As an example of the first case, you can bind the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control to the `FirstName` property of a `Customer` object. As an example of the second case, you can bind the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control to the `FirstName` property of a <xref:System.Data.DataTable> that contains customers.       The Binding class also enables you to format values for display through the <xref:System.Windows.Forms.Binding.Format> event and to retrieve formatted values through the <xref:System.Windows.Forms.Binding.Parse> event.       When constructing a Binding instance with <xref:System.Windows.Forms.Binding.%23ctor%2A> constructor, you must specify three items:      -   The name of the control property to bind to.      -   The data source.      -   The navigation path that resolves to a list or property in the data source. The navigation path is also used to create the object&quot;s <xref:System.Windows.Forms.Binding.BindingMemberInfo%2A> property.       First, you must specify name of the control property you want to bind the data to. For example, to display data in a <xref:System.Windows.Forms.TextBox> control, specify the <xref:System.Windows.Forms.TextBoxBase.Text%2A> property.       Second, you can specify an instance of any one of the classes in the following table as the data source.        Third, you must specify the navigation path, which can be an empty string (&quot;&quot;), a single property name, or a period-delimited hierarchy of names. If you set the navigation path to an empty string, the <xref:System.Object.ToString%2A> method will be called on the underlying data source object.       If the data source is a <xref:System.Data.DataTable>, which can contain multiple <xref:System.Data.DataColumn> objects, the navigation path must be used to resolve to a specific column.      > [!NOTE] >  When the data source is a <xref:System.Data.DataSet>, <xref:System.Data.DataViewManager>, or <xref:System.Data.DataTable>, you are actually binding to a <xref:System.Data.DataView>. Consequently, the bound rows are actually <xref:System.Data.DataRowView> objects.       A period-delimited navigation path is required when the data source is set to an object that contains multiple <xref:System.Data.DataTable> objects (such as a <xref:System.Data.DataSet> or <xref:System.Data.DataViewManager>). You can also use a period-delimited navigation path when you bind to an object whose properties return references to other objects (such as a class with properties that return other class objects). For example, the following navigation paths all describe valid data fields:      -   &quot;Size.Height&quot;      -   &quot;Suppliers.CompanyName&quot;      -   &quot;Regions.regionsToCustomers.CustomerFirstName&quot;      -   &quot;Regions.regionsToCustomers.customersToOrders.ordersToDetails.Quantity&quot;       Each member of the path can return either a property that resolves to a single value (such as an integer), or a list of values (such as an array of strings). Although each member in the path can be a list or property, the final member must resolve to a property. Each member builds on the previous member: &quot;Size.Height&quot; resolves to the <xref:System.Drawing.Size.Height%2A> property for the current <xref:System.Drawing.Size>; &quot;Regions.regionsToCustomers.CustomerFirstName&quot; resolves to the first name for the current customer, where the customer is one of the customers for the current region.       A <xref:System.Data.DataRelation> returns a list of values by linking one <xref:System.Data.DataTable> to a second <xref:System.Data.DataTable> in a <xref:System.Data.DataSet>. If the <xref:System.Data.DataSet> contains <xref:System.Data.DataRelation> objects, you can specify the data member as a <xref:System.Data.DataTable.TableName%2A> followed by a <xref:System.Data.DataRelation.RelationName%2A>, and then a <xref:System.Data.DataColumn.ColumnName%2A>. For example, if the <xref:System.Data.DataTable> named &quot;Suppliers&quot; contains a <xref:System.Data.DataRelation> named &quot;suppliers2products&quot;, the data member could be &quot;Suppliers.suppliers2products.ProductName&quot;.       The data source can consist of a set of related classes. For example, imagine a set of classes that catalogs solar systems. The class named `System` contains a property named `Stars` that returns a collection of `Star` objects. Each `Star` object has `Name` and `Mass` properties, as well as a `Planets` property that returns a collection of `Planet` objects. In this system, each planet also has `Mass` and `Name` properties. Each `Planet` object further has a `Moons` property that returns a collection of `Moon` objects, each of which also has `Name` and `Mass` properties. If you specify a `System` object as the data source, you can specify any of the following as the data member:      -   &quot;Stars.Name&quot;      -   &quot;Stars.Mass&quot;      -   &quot;Stars.Planets.Name&quot;      -   &quot;Stars.Planets.Mass&quot;      -   &quot;Stars.Planets.Moons.Name&quot;      -   &quot;Stars.Planets.Moons.Mass&quot;       Controls that can be simple-bound feature a collection of Binding objects in a <xref:System.Windows.Forms.ControlBindingsCollection>, which you can access through the control&quot;s <xref:System.Windows.Forms.Control.DataBindings%2A> property. You add a Binding to the collection by calling the <xref:System.Windows.Forms.ControlBindingsCollection.Add%2A> method, thereby binding a property of the control to a property of an object (or to a property of the current object in a list).       You can simple-bind to any object that derives from the <xref:System.Windows.Forms.Control?displayProperty=fullName> class, for example, the following Windows controls:      -   <xref:System.Windows.Forms.Button>      -   <xref:System.Windows.Forms.CheckBox>      -   <xref:System.Windows.Forms.CheckedListBox>      -   <xref:System.Windows.Forms.ComboBox>      -   <xref:System.Windows.Forms.DateTimePicker>      -   <xref:System.Windows.Forms.DomainUpDown>      -   <xref:System.Windows.Forms.GroupBox>      -   <xref:System.Windows.Forms.HScrollBar>      -   <xref:System.Windows.Forms.Label>      -   <xref:System.Windows.Forms.LinkLabel>      -   <xref:System.Windows.Forms.ListBox>      -   <xref:System.Windows.Forms.ListView>      -   <xref:System.Windows.Forms.MonthCalendar>      -   <xref:System.Windows.Forms.NumericUpDown>      -   <xref:System.Windows.Forms.PictureBox>      -   <xref:System.Windows.Forms.ProgressBar>      -   <xref:System.Windows.Forms.RadioButton>      -   <xref:System.Windows.Forms.RichTextBox>      -   <xref:System.Windows.Forms.ScrollBar>      -   <xref:System.Windows.Forms.StatusBar>      -   <xref:System.Windows.Forms.TextBox>      -   <xref:System.Windows.Forms.TreeView>      -   <xref:System.Windows.Forms.VScrollBar>      > [!NOTE] >  Only the <xref:System.Windows.Forms.ListControl.SelectedValue%2A> property of the <xref:System.Windows.Forms.ComboBox>, <xref:System.Windows.Forms.CheckedListBox>, and <xref:System.Windows.Forms.ListBox> control is simple bound.       The <xref:System.Windows.Forms.BindingManagerBase> class is an abstract class that manages all the Binding objects for a particular data source and data member. Classes that derive from <xref:System.Windows.Forms.BindingManagerBase> are the <xref:System.Windows.Forms.CurrencyManager> and the <xref:System.Windows.Forms.PropertyManager> classes. How a Binding is managed depends on whether the Binding is a list binding or a property binding. For example, if it is a list binding, you can use the <xref:System.Windows.Forms.BindingManagerBase> to specify a <xref:System.Windows.Forms.BindingManagerBase.Position%2A> in the list; the <xref:System.Windows.Forms.BindingManagerBase.Position%2A>, therefore, determines which item (out of all items in the list) is actually bound to a control. To return the appropriate <xref:System.Windows.Forms.BindingManagerBase>, use the <xref:System.Windows.Forms.BindingContext>.       To add a new row to a set of controls bound to the same <xref:System.Windows.Forms.Binding.DataSource%2A>, use the <xref:System.Windows.Forms.BindingManagerBase.AddNew%2A> method of the <xref:System.Windows.Forms.BindingManagerBase> class. Use the <xref:System.Windows.Forms.BindingContext.Item%2A> property of the <xref:System.Windows.Forms.BindingContext> class to return the appropriate <xref:System.Windows.Forms.CurrencyManager>. To escape the addition of the new row, use the <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A> method."
+  summary: "개체의 속성 값과 컨트롤의 속성 값 사이의 단순 바인딩을 나타냅니다."
+  remarks: "바인딩 클래스를 사용 하 여 만들고 컨트롤의 속성 및 개체의 속성 또는 개체의 목록에 현재 개체의 속성 사이의 단순 바인딩을 유지 관리 합니다.       첫 번째 경우의 예를 들어 바인딩할 수 있습니다는 <xref:System.Windows.Forms.Control.Text%2A>속성의는 <xref:System.Windows.Forms.TextBox>컨트롤을 `FirstName` 의 속성을 `Customer` 개체.</xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A> 두 번째 경우의 예를 들어 바인딩할 수 있습니다는 <xref:System.Windows.Forms.Control.Text%2A>속성의는 <xref:System.Windows.Forms.TextBox>컨트롤을 `FirstName` 속성의는 <xref:System.Data.DataTable>customer가 들어 있는.</xref:System.Data.DataTable> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A>       Binding 클래스 또한 통해을 수 있습니다는 <xref:System.Windows.Forms.Binding.Format>이벤트를 통해 서식이 지정 된 값을 검색할 수는 <xref:System.Windows.Forms.Binding.Parse>이벤트.</xref:System.Windows.Forms.Binding.Parse> </xref:System.Windows.Forms.Binding.Format>       바인딩 인스턴스를 생성할 때 <xref:System.Windows.Forms.Binding.%23ctor%2A>생성자, 세 가지 항목을 지정 해야 합니다:-바인딩할 컨트롤 속성의 이름입니다.</xref:System.Windows.Forms.Binding.%23ctor%2A>      -데이터 소스입니다.      -탐색 경로 목록 또는 데이터 원본에 대 한 속성으로 확인 된입니다. 탐색 경로 개체를 만드는 데도 <xref:System.Windows.Forms.Binding.BindingMemberInfo%2A>속성.</xref:System.Windows.Forms.Binding.BindingMemberInfo%2A>       첫째, 데이터를 바인딩할 컨트롤 속성의 이름을 지정 해야 합니다. 예를 들어, 데이터를 표시할는 <xref:System.Windows.Forms.TextBox>을 제어는 <xref:System.Windows.Forms.TextBoxBase.Text%2A>속성.</xref:System.Windows.Forms.TextBoxBase.Text%2A> </xref:System.Windows.Forms.TextBox>       둘째, 데이터 원본으로는 다음 표에 클래스의 인스턴스를 지정할 수 있습니다.        빈 문자열이 될 수 있는 탐색 경로 지정 해야 하는 세 번째 (&quot;&quot;), 단일 속성 이름 또는 이름의 마침표로 구분 된 계층 구조입니다. 빈 문자열로 탐색 경로 설정 하는 경우는 <xref:System.Object.ToString%2A>메서드가 기본 데이터 원본 개체에서 호출 됩니다.</xref:System.Object.ToString%2A>       데이터 원본이 있으면는 <xref:System.Data.DataTable>, 여러 개 포함할 수 있는 <xref:System.Data.DataColumn>개체를 탐색 경로 사용 하 여 특정 열으로 확인할 수 있어야 합니다.</xref:System.Data.DataColumn> </xref:System.Data.DataTable>      > [!NOTE] > 데이터 소스는 <xref:System.Data.DataSet>, <xref:System.Data.DataViewManager> <xref:System.Data.DataTable>에 <xref:System.Data.DataView>.</xref:System.Data.DataView> 바인딩할 때 실제로,</xref:System.Data.DataTable> 또는</xref:System.Data.DataViewManager> </xref:System.Data.DataSet> 따라서 바인딩된 열은 실제로 <xref:System.Data.DataRowView>개체입니다.</xref:System.Data.DataRowView>       데이터 원본을 여러 개 포함 하는 개체에 설정 된 경우에 마침표로 구분 된 탐색 경로 필수 <xref:System.Data.DataTable>개체 (예:는 <xref:System.Data.DataSet>또는 <xref:System.Data.DataViewManager>).</xref:System.Data.DataViewManager> </xref:System.Data.DataSet> </xref:System.Data.DataTable> 속성을 가진 다른 개체 (예: 다른 클래스 개체를 반환 하는 속성을 사용 하는 클래스)에 대 한 참조를 반환 하는 개체에 바인딩하는 경우에 마침표로 구분 된 탐색 경로 사용할 수 있습니다. 다음 탐색 경로 모든 유효한 데이터 필드를 설명 하는 예를 들어:-&quot;Size.Height&quot;-&quot;Suppliers.CompanyName&quot;-&quot;Regions.regionsToCustomers.CustomerFirstName&quot;-&quot;Regions.regionsToCustomers.customersToOrders.ordersToDetails.Quantity&quot; 경로의 각 멤버 (예: 정수), 단일 값으로 확인 하는 속성 또는 값 (예: 문자열의 배열)의 목록을 반환할 수 있습니다. 경로 있는 각 멤버 속성이 나 목록을 사용할 수 있지만 최종 멤버 속성을 확인 해야 합니다. 이전 멤버를 기반으로 각 멤버: &quot;Size.Height&quot; 현재 <xref:System.Drawing.Size>;에 대 한 <xref:System.Drawing.Size.Height%2A>속성 확인 &quot;Regions.regionsToCustomers.CustomerFirstName&quot; 이름으로 확인 된 첫 번째 현재 고객에 대 한 고객은 현재 영역에 대 한 고객 중 하나입니다. </xref:System.Drawing.Size.Height%2A></xref:System.Drawing.Size>       <xref:System.Data.DataRelation>연결 하 여 한 <xref:System.Data.DataTable>두 번째 <xref:System.Data.DataTable> <xref:System.Data.DataSet>.</xref:System.Data.DataSet> </xref:System.Data.DataTable> </xref:System.Data.DataTable> 값 목록을 반환합니다 합니다.</xref:System.Data.DataRelation> 경우는 <xref:System.Data.DataSet>포함 <xref:System.Data.DataRelation>개체와 데이터 멤버가 지정할 수 있습니다는 <xref:System.Data.DataTable.TableName%2A>이어서는 <xref:System.Data.DataRelation.RelationName%2A>, 및 <xref:System.Data.DataColumn.ColumnName%2A>.</xref:System.Data.DataColumn.ColumnName%2A> 다음</xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable.TableName%2A> </xref:System.Data.DataRelation> </xref:System.Data.DataSet> 예를 들어 경우는 <xref:System.Data.DataTable>&quot;공급 업체&quot; 라는 포함 된 <xref:System.Data.DataRelation>&quot;suppliers2products&quot; 라는 데이터 멤버가 될 수 &quot;Suppliers.suppliers2products.ProductName&quot;.</xref:System.Data.DataRelation> </xref:System.Data.DataTable>       데이터 소스 관련된 클래스 집합을 구성할 수 있습니다. 예를 들어 태양계 카탈로그화 하는 클래스 집합인 한다고 가정 합니다. 이름의 클래스 `System` 라는 속성이 포함 `Stars` 의 컬렉션을 반환 하는 `Star` 개체입니다. 각 `Star` 개체에 `Name` 및 `Mass` 속성 및 `Planets` 속성의 컬렉션을 반환 하는 `Planet` 개체입니다. 이 시스템에서 각 지구 역시 `Mass` 및 `Name` 속성입니다. 각 `Planet` 추가 개체에는 `Moons` 속성의 컬렉션을 반환 하는 `Moon` 역시는 각각 개체 `Name` 및 `Mass` 속성입니다. 지정 하는 경우는 `System` 개체 데이터 소스로 데이터 멤버로 다음 중 하나를 지정할 수 있습니다:-&quot;Stars.Name&quot;-&quot;Stars.Mass&quot;-&quot;Stars.Planets.Name&quot;-&quot;Stars.Planets.Mass&quot;-&quot;Stars.Planets.Moons.Name&quot;-&quot;Stars.Planets.Moons.Mass&quot; 단순 바인딩 일 수 있는 기능에 있는 개체를 바인딩 컬렉션은 <xref:System.Windows.Forms.ControlBindingsCollection>, 컨트롤의 통해 액세스할 수 있는 <xref:System.Windows.Forms.Control.DataBindings%2A>속성.</xref:System.Windows.Forms.Control.DataBindings%2A> </xref:System.Windows.Forms.ControlBindingsCollection> 호출 하 여 바인딩을 컬렉션에 추가할 수는 <xref:System.Windows.Forms.ControlBindingsCollection.Add%2A>메서드를 함으로써 바인딩 컨트롤의 속성을 개체의 속성 (또는 목록에 있는 현재 개체의 속성에).</xref:System.Windows.Forms.ControlBindingsCollection.Add%2A>       You can simple-bind to any object that derives from the <xref:System.Windows.Forms.Control?displayProperty=fullName> class, for example, the following Windows controls:      -   <xref:System.Windows.Forms.Button>      -   <xref:System.Windows.Forms.CheckBox>      -   <xref:System.Windows.Forms.CheckedListBox>      -   <xref:System.Windows.Forms.ComboBox>      -   <xref:System.Windows.Forms.DateTimePicker>      -   <xref:System.Windows.Forms.DomainUpDown>      -   <xref:System.Windows.Forms.GroupBox>      -   <xref:System.Windows.Forms.HScrollBar>      -   <xref:System.Windows.Forms.Label>      -   <xref:System.Windows.Forms.LinkLabel>      -   <xref:System.Windows.Forms.ListBox>      -   <xref:System.Windows.Forms.ListView>      -   <xref:System.Windows.Forms.MonthCalendar>      -   <xref:System.Windows.Forms.NumericUpDown>      -   <xref:System.Windows.Forms.PictureBox>      -   <xref:System.Windows.Forms.ProgressBar>      -   <xref:System.Windows.Forms.RadioButton>      -   <xref:System.Windows.Forms.RichTextBox>      -   <xref:System.Windows.Forms.ScrollBar>      -   <xref:System.Windows.Forms.StatusBar>      -   <xref:System.Windows.Forms.TextBox>      -   <xref:System.Windows.Forms.TreeView>      -   <xref:System.Windows.Forms.VScrollBar>      > [!NOTE] >  Only the <xref:System.Windows.Forms.ListControl.SelectedValue%2A> property of the <xref:System.Windows.Forms.ComboBox>, <xref:System.Windows.Forms.CheckedListBox>, and <xref:System.Windows.Forms.ListBox> control is simple bound.</xref:System.Windows.Forms.ListBox></xref:System.Windows.Forms.CheckedListBox></xref:System.Windows.Forms.ComboBox></xref:System.Windows.Forms.ListControl.SelectedValue%2A></xref:System.Windows.Forms.VScrollBar></xref:System.Windows.Forms.TreeView></xref:System.Windows.Forms.TextBox></xref:System.Windows.Forms.StatusBar></xref:System.Windows.Forms.ScrollBar></xref:System.Windows.Forms.RichTextBox></xref:System.Windows.Forms.RadioButton></xref:System.Windows.Forms.ProgressBar></xref:System.Windows.Forms.PictureBox></xref:System.Windows.Forms.NumericUpDown></xref:System.Windows.Forms.MonthCalendar></xref:System.Windows.Forms.ListView></xref:System.Windows.Forms.ListBox></xref:System.Windows.Forms.LinkLabel></xref:System.Windows.Forms.Label></xref:System.Windows.Forms.HScrollBar></xref:System.Windows.Forms.GroupBox></xref:System.Windows.Forms.DomainUpDown></xref:System.Windows.Forms.DateTimePicker></xref:System.Windows.Forms.ComboBox></xref:System.Windows.Forms.CheckedListBox></xref:System.Windows.Forms.CheckBox></xref:System.Windows.Forms.Button></xref:System.Windows.Forms.Control?displayProperty=fullName>       <xref:System.Windows.Forms.BindingManagerBase>클래스는 특정 데이터 원본과 데이터 멤버에 대 한 모든 바인딩 개체를 관리 하는 추상 클래스입니다.</xref:System.Windows.Forms.BindingManagerBase> 파생 된 클래스 <xref:System.Windows.Forms.BindingManagerBase>됩니다는 <xref:System.Windows.Forms.CurrencyManager>및 <xref:System.Windows.Forms.PropertyManager>클래스.</xref:System.Windows.Forms.PropertyManager> </xref:System.Windows.Forms.CurrencyManager> </xref:System.Windows.Forms.BindingManagerBase> 바인딩을 관리 하는 방법 바인딩을 목록 바인딩이나 속성 바인딩을 인지에 따라 달라 집니다. 예를 들어 목록 바인딩인 경우 사용할 수 있습니다는 <xref:System.Windows.Forms.BindingManagerBase>지정 하는 <xref:System.Windows.Forms.BindingManagerBase.Position%2A>목록에는 <xref:System.Windows.Forms.BindingManagerBase.Position%2A>, 따라서 (목록에 있는 모든 항목) 중 어떤 항목 컨트롤에 실제로 연결을 결정 합니다.</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> 적절 한 <xref:System.Windows.Forms.BindingManagerBase> <xref:System.Windows.Forms.BindingContext>.</xref:System.Windows.Forms.BindingContext> 를 사용 하 여</xref:System.Windows.Forms.BindingManagerBase> 반환 하려면       동일한 <xref:System.Windows.Forms.Binding.DataSource%2A> <xref:System.Windows.Forms.BindingManagerBase.AddNew%2A> <xref:System.Windows.Forms.BindingManagerBase>클래스</xref:System.Windows.Forms.BindingManagerBase> 의 메서드</xref:System.Windows.Forms.BindingManagerBase.AddNew%2A> 를 사용 하 여</xref:System.Windows.Forms.Binding.DataSource%2A> 바인딩된 컨트롤의 집합에 새 행을 추가 하려면 <xref:System.Windows.Forms.BindingContext.Item%2A> <xref:System.Windows.Forms.BindingContext>적절 한 <xref:System.Windows.Forms.CurrencyManager>.</xref:System.Windows.Forms.CurrencyManager> 반환 하는 클래스</xref:System.Windows.Forms.BindingContext> 의 속성</xref:System.Windows.Forms.BindingContext.Item%2A> 을 사용 하 여 사용 하 여 새 행 추가 이스케이프 하는 <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>메서드.</xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>"
   example:
   - "The following code example creates a Windows Form with several controls that demonstrate simple data binding. The example creates a <xref:System.Data.DataSet> with two tables named `Customers` and `Orders`, and a <xref:System.Data.DataRelation> named `custToOrders`. Four controls (a <xref:System.Windows.Forms.DateTimePicker> and three <xref:System.Windows.Forms.TextBox> controls) are data bound to columns in the tables. For each control, the example creates and adds a Binding to the control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The example returns a <xref:System.Windows.Forms.BindingManagerBase> for each table through the form's <xref:System.Windows.Forms.BindingContext>. Four <xref:System.Windows.Forms.Button> controls increment or decrement the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property on the <xref:System.Windows.Forms.BindingManagerBase> objects.  \n  \n [!code-cs[Classic Binding Example#1](~/add/codesnippet/csharp/t-system.windows.forms.b_1_1.cs)]\n [!code-cpp[Classic Binding Example#1](~/add/codesnippet/cpp/t-system.windows.forms.b_1_1.cpp)]\n [!code-vb[Classic Binding Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.b_1_1.vb)]"
   syntax:
@@ -64,8 +64,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that simple-binds the indicated control property to the specified data member of the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)       If you attempt to bind to a property that does not exist, an <xref:System.ArgumentException> will be thrown when the <xref:System.Windows.Forms.Binding> is added to the control&quot;s <xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName> collection."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 단순 바인딩하 표시 된 컨트롤 속성을 데이터 소스의 지정 된 데이터 멤버는 클래스입니다."
+  remarks: "모든 데이터 원본에 대 한 다음 클래스의 인스턴스를 지정할 수 있습니다:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-구현 하는 모든 클래스는 <xref:System.Collections.IList>인터페이스-모든 클래스 참조는 <xref:System.Windows.Forms.Binding>만들기에 대 한 자세한 내용은 `dataMember` 문자열.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       컨트롤의 속성에 대 한 바인딩을 만들 때 새 <xref:System.Windows.Forms.Binding>바인딩된 컨트롤에서 노출 하는 이벤트를 검사 하 고 두 특정 이벤트에 연결:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>-라는 이벤트 *PropertyName* `Changed` (예를 들어 <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>) 존재 하지 않는 속성에 바인딩할 하려고 하면는 <xref:System.ArgumentException>throw 됩니다는 <xref:System.Windows.Forms.Binding>를 컨트롤의 추가 <xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName>컬렉션.</xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName> </xref:System.Windows.Forms.Binding> </xref:System.ArgumentException> </xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   example:
   - "The following code example binds a <xref:System.Windows.Forms.TextBox> control to a table column in a <xref:System.Data.DataSet> named `myDataSet`. The example requires that you have declared `myDataSet` in the declarations section of the module.  \n  \n [!code-cs[Classic Binding.Binding Example#1](~/add/codesnippet/csharp/49bd158c-67fd-4ab1-9c8d-_1.cs)]\n [!code-vb[Classic Binding.Binding Example#1](~/add/codesnippet/visualbasic/49bd158c-67fd-4ab1-9c8d-_1.vb)]\n [!code-cpp[Classic Binding.Binding Example#1](~/add/codesnippet/cpp/49bd158c-67fd-4ab1-9c8d-_1.cpp)]"
   syntax:
@@ -73,21 +73,21 @@ items:
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "<xref:System.Object>데이터 소스를 나타내는입니다.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "<code>propertyName</code> is neither a valid property of a control nor an empty string (&quot;&quot;)."
+    description: "<code>propertyName</code>이 컨트롤의 유효한 속성 아니고 빈 문자열 (&quot;&quot;)."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean)
@@ -102,30 +102,30 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the indicated control property to the specified data member of the data source, and optionally enables formatting to be applied."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 데이터 소스의 지정 된 데이터 멤버에 표시 된 컨트롤 속성을 바인딩하고 필요에 따라 적용 될 서식 지정을 활성화 하는 클래스입니다."
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "<xref:System.Object>데이터 소스를 나타내는입니다.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>표시 된 데이터의 서식을 지정 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The property given is a read-only property."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다.       -또는-지정 된 속성이 읽기 전용 속성입니다."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "Formatting is disabled and <code>propertyName</code> is neither a valid property of a control nor an empty string (&quot;&quot;)."
+    description: "서식을 사용 하지 않도록 설정 하 고 <code> propertyName </code> 이 컨트롤의 유효한 속성 아니고 빈 문자열 (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode)
@@ -140,31 +140,31 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the specified control property to the specified data member of the specified data source. Optionally enables formatting and propagates values to the data source based on the specified update setting."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>.      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 지정 된 데이터 소스의 지정 된 데이터 멤버에 지정된 된 컨트롤 속성 바인딩되는 클래스입니다. 선택적으로 서식 지정을 활성화 하 고 지정 된 업데이트 설정을 기반으로 데이터 소스에 값을 전파 합니다."
+  remarks: "모든 데이터 원본에 대 한 다음 클래스의 인스턴스를 지정할 수 있습니다:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-구현 하는 모든 클래스는 <xref:System.Collections.IList>인터페이스-모든 클래스 참조는 <xref:System.Windows.Forms.Binding>만들기에 대 한 자세한 내용은 `dataMember` 문자열.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       컨트롤의 속성에 대 한 바인딩을 만들 때 새 <xref:System.Windows.Forms.Binding>바인딩된 컨트롤에서 노출 하는 이벤트를 검사 하 고 두 특정 이벤트에 연결:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>.</xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>      -라는 이벤트 *PropertyName* `Changed` (예: <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "<xref:System.Object>데이터 원본을 나타내는.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>표시 된 데이터의 서식을 지정 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> 값입니다."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다.       -또는-데이터 원본 또는 데이터 멤버 또는 컨트롤 지정 된 속성 컬렉션의 다른 바인딩과 연관 됩니다."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object)
@@ -179,34 +179,34 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the indicated control property to the specified data member of the specified data source. Optionally enables formatting, propagates values to the data source based on the specified update setting, and sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 표시 된 컨트롤 속성 지정된 된 데이터 멤버의 지정된 된 데이터 원본에 바인딩되는 클래스입니다. 필요에 따라 서식 지정을 활성화, 지정 된 업데이트 설정을 기반으로 데이터 소스에 값을 전파 되 고 속성이 지정 된 값으로 <xref href=&quot;System.DBNull&quot;> </xref> 데이터 원본에서 반환 됩니다."
+  remarks: "모든 데이터 원본에 대 한 다음 클래스의 인스턴스를 지정할 수 있습니다:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-구현 하는 모든 클래스는 <xref:System.Collections.IList>인터페이스-모든 클래스 참조는 <xref:System.Windows.Forms.Binding>만들기에 대 한 자세한 내용은 `dataMember` 문자열.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       컨트롤의 속성에 대 한 바인딩을 만들 때 새 <xref:System.Windows.Forms.Binding>바인딩된 컨트롤에서 노출 하는 이벤트를 검사 하 고 두 특정 이벤트에 연결:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>-라는 이벤트 *PropertyName* `Changed` (예: <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "<xref:System.Object>데이터 원본을 나타내는.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>표시 된 데이터의 서식을 지정 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> 값입니다."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "<xref:System.Object>데이터 소스 값 바인딩된 컨트롤 속성에 적용 될 수는 <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다.       -또는-데이터 원본 또는 데이터 멤버 또는 컨트롤 지정 된 속성 컬렉션의 다른 바인딩과 연관 됩니다."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object,System.String)
@@ -221,37 +221,37 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the specified control property to the specified data member of the specified data source. Optionally enables formatting with the specified format string; propagates values to the data source based on the specified update setting; and sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 지정 된 데이터 소스의 지정 된 데이터 멤버에 지정된 된 컨트롤 속성 바인딩되는 클래스입니다. 필요에 따라 지정 된 형식 문자열; 서식 지정을 활성화합니다 지정 된 업데이트 설정을; 기반 데이터 소스에 값을 전파 지정 된 속성을 설정 하 고 값으로 <xref href=&quot;System.DBNull&quot;> </xref> 데이터 원본에서 반환 됩니다."
+  remarks: "모든 데이터 원본에 대 한 다음 클래스의 인스턴스를 지정할 수 있습니다:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-구현 하는 모든 클래스는 <xref:System.Collections.IList>인터페이스-모든 클래스 참조는 <xref:System.Windows.Forms.Binding>만들기에 대 한 자세한 내용은 `dataMember` 문자열.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       컨트롤의 속성에 대 한 바인딩을 만들 때 새 <xref:System.Windows.Forms.Binding>바인딩된 컨트롤에서 노출 하는 이벤트를 검사 하 고 두 특정 이벤트에 연결:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>-라는 이벤트 *PropertyName* `Changed` (예: <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "<xref:System.Object>데이터 원본을 나타내는.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>표시 된 데이터의 서식을 지정 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> 값입니다."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "<xref:System.Object>데이터 소스 값 바인딩된 컨트롤 속성에 적용 될 수는 <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
     - id: formatString
       type: System.String
-      description: "One or more format specifier characters that indicate how a value is to be displayed."
+      description: "하나 이상의 형식 지정자 문자는 값을 표시할 방법을 나타내는입니다."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다.       -또는-데이터 원본 또는 데이터 멤버 또는 컨트롤 지정 된 속성 컬렉션의 다른 바인딩과 연관 됩니다."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object,System.String,System.IFormatProvider)
@@ -266,40 +266,40 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class with the specified control property to the specified data member of the specified data source. Optionally enables formatting with the specified format string; propagates values to the data source based on the specified update setting; enables formatting with the specified format string; sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source; and sets the specified format provider."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 지정 된 데이터 소스의 지정 된 데이터 멤버에 지정 된 컨트롤 속성을 사용 하 여 클래스입니다. 필요에 따라 지정 된 형식 문자열; 서식 지정을 활성화합니다 지정 된 업데이트 설정을; 기반 데이터 소스에 값을 전파 지정 된 형식 문자열; 서식을 사용 하도록 설정 속성을 지정 된 설정 값으로 <xref href=&quot;System.DBNull&quot;> </xref> 은 데이터 소스에서 반환 되 고 지정 된 형식 공급자를 설정 합니다."
+  remarks: "모든 데이터 원본에 대 한 다음 클래스의 인스턴스를 지정할 수 있습니다:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-구현 하는 모든 클래스는 <xref:System.Collections.IList>인터페이스-모든 클래스 참조는 <xref:System.Windows.Forms.Binding>만들기에 대 한 자세한 내용은 `dataMember` 문자열.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       컨트롤의 속성에 대 한 바인딩을 만들 때 새 <xref:System.Windows.Forms.Binding>바인딩된 컨트롤에서 노출 하는 이벤트를 검사 하 고 두 특정 이벤트에 연결:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>-라는 이벤트 *PropertyName* `Changed` (예: <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString, IFormatProvider formatInfo);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "<xref:System.Object>데이터 원본을 나타내는.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "속성 또는 바인딩할 목록입니다."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>표시 된 데이터의 서식을 지정 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> 값입니다."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "<xref:System.Object>데이터 소스 값 바인딩된 컨트롤 속성에 적용 될 수는 <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
     - id: formatString
       type: System.String
-      description: "One or more format specifier characters that indicate how a value is to be displayed."
+      description: "하나 이상의 형식 지정자 문자는 값을 표시할 방법을 나타내는입니다."
     - id: formatInfo
       type: System.IFormatProvider
-      description: "An implementation of <xref:System.IFormatProvider> to override default formatting behavior."
+      description: "구현 <xref:System.IFormatProvider>기본 서식 지정 동작을 재정의할 수 있습니다.</xref:System.IFormatProvider>"
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "지정 된 속성이 <code> propertyName </code> 컨트롤에 존재 하지 않습니다.       -또는-데이터 원본 또는 데이터 멤버 또는 컨트롤 지정 된 속성 컬렉션의 다른 바인딩과 연관 됩니다."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.BindableComponent
@@ -314,12 +314,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the control the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> is associated with."
+  summary: "컨트롤을 가져옵니다는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 연관 됩니다."
   syntax:
     content: public System.Windows.Forms.IBindableComponent BindableComponent { get; }
     return:
       type: System.Windows.Forms.IBindableComponent
-      description: "The <xref href=&quot;System.Windows.Forms.IBindableComponent&quot;></xref> the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> is associated with."
+      description: "<xref href=&quot;System.Windows.Forms.IBindableComponent&quot;> </xref> 는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> 연관 됩니다."
   overload: System.Windows.Forms.Binding.BindableComponent*
   exceptions: []
   platform:
@@ -336,15 +336,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.Binding.FormattingEnabled*> property is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and a binding operation is complete, such as when data is pushed from the control to the data source or vice versa"
-  remarks: "This event is raised under any of the following conditions when <xref:System.Windows.Forms.Binding.FormattingEnabled%2A> is `true`:      -   Data from the data source is pushed onto the control property.      -   Data from the control property is pushed onto the data source.       This event is raised at the completion of these operations, independent of the completion status. For example, if a binding operation binds a null value to a <xref:System.Windows.Forms.DateTimePicker.Value%2A> property, an exception is thrown, but the BindingComplete event still occurs. The handler of this event can take the appropriate action, based on the success, error, or exceptions in the binding process, by examining the <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A> property of the <xref:System.Windows.Forms.BindingCompleteEventArgs> parameter.       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "발생 경우는 <xref:System.Windows.Forms.Binding.FormattingEnabled*>속성이 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 바인딩 작업을 가져올 때 데이터 원본으로 또는 반대로 컨트롤에서 같은 완료 되 고</xref:System.Windows.Forms.Binding.FormattingEnabled*>"
+  remarks: "다음 중 하나에서이 이벤트는 발생 하는 경우 조건을 <xref:System.Windows.Forms.Binding.FormattingEnabled%2A>은 `true`:-컨트롤 속성으로 데이터 원본에서 데이터를 밀어넣을.</xref:System.Windows.Forms.Binding.FormattingEnabled%2A>      데이터 컨트롤 속성에서이 데이터 원본이 푸시됩니다.       이 이벤트는 이러한 작업을 완료 상태와 무관 완료 될 때 발생 합니다. 예를 들어, 바인딩 작업에 null 값을 바인딩하는 <xref:System.Windows.Forms.DateTimePicker.Value%2A>속성, 예외가 발생 하지만 BindingComplete 이벤트가 계속 발생 합니다.</xref:System.Windows.Forms.DateTimePicker.Value%2A> 이 이벤트의 처리기 수는 적절 한 조치를 검사 하 여 성공, 오류 또는 바인딩 프로세스의 예외에 따라는 <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>의 속성은 <xref:System.Windows.Forms.BindingCompleteEventArgs>매개 변수.</xref:System.Windows.Forms.BindingCompleteEventArgs> </xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>       이벤트를 처리 하는 방법에 대 한 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example demonstrates how to handle the BindingComplete event.  \n  \n [!code-cs[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/csharp/e-system.windows.forms.b_7_1.cs)]\n [!code-cpp[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/cpp/e-system.windows.forms.b_7_1.cpp)]\n [!code-vb[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/visualbasic/e-system.windows.forms.b_7_1.vb)]"
   syntax:
     content: public event System.Windows.Forms.BindingCompleteEventHandler BindingComplete;
     return:
       type: System.Windows.Forms.BindingCompleteEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -361,14 +361,14 @@ items:
   - System.Windows.Forms
   namespace: System.Windows.Forms
   summary: "Gets the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> for this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
-  remarks: "Use the <xref:System.Windows.Forms.BindingManagerBase> to iterate through a data-bound list by incrementing or decrementing the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property. The <xref:System.Windows.Forms.BindingManagerBase> class is abstract. The <xref:System.Windows.Forms.CurrencyManager> class, which manages data-bound lists, inherits from the <xref:System.Windows.Forms.BindingManagerBase> class."
+  remarks: "사용 된 <xref:System.Windows.Forms.BindingManagerBase>증가 시키거나 감소 시키는 하 여 데이터 바인딩된 목록에서 반복 하는 <xref:System.Windows.Forms.BindingManagerBase.Position%2A>속성.</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> <xref:System.Windows.Forms.BindingManagerBase>클래스는 추상 클래스입니다.</xref:System.Windows.Forms.BindingManagerBase> <xref:System.Windows.Forms.CurrencyManager>클래스에 대 한 관리 데이터 바인딩된 목록, <xref:System.Windows.Forms.BindingManagerBase>클래스</xref:System.Windows.Forms.BindingManagerBase> 에서 상속</xref:System.Windows.Forms.CurrencyManager>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingManagerBase> of every <xref:System.Windows.Forms.Binding> on the form, and prints the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property for each <xref:System.Windows.Forms.BindingManagerBase>.  \n  \n [!code-cpp[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_13_1.cpp)]\n [!code-cs[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_13_1.cs)]\n [!code-vb[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_13_1.vb)]"
   syntax:
     content: public System.Windows.Forms.BindingManagerBase BindingManagerBase { get; }
     return:
       type: System.Windows.Forms.BindingManagerBase
-      description: "The <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> that manages this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
+      description: "<xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> 이 관리 하는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.BindingManagerBase*
   exceptions: []
   platform:
@@ -385,15 +385,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets an object that contains information about this binding based on the <code>dataMember</code> parameter in the &lt;xref:System.Windows.Forms.Binding.%23ctor%2A&gt; constructor."
-  remarks: "The <xref:System.Windows.Forms.BindingMemberInfo> is created from the `dataMember` string passed to the <xref:System.Windows.Forms.Binding.%23ctor%2A> constructor."
+  summary: "이 바인딩 기반으로 하는 방법에 대 한 정보를 포함 하는 개체를 가져옵니다는 <code> dataMember </code> 에서 매개 변수는 &lt;xref:System.Windows.Forms.Binding.%23ctor%2A&gt; 생성자입니다."
+  remarks: "<xref:System.Windows.Forms.BindingMemberInfo>에서 만든는 `dataMember` 문자열을 전달 하는 <xref:System.Windows.Forms.Binding.%23ctor%2A>생성자.</xref:System.Windows.Forms.Binding.%23ctor%2A> </xref:System.Windows.Forms.BindingMemberInfo>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingMemberInfo> of each <xref:System.Windows.Forms.Binding> on a form, and prints the <xref:System.Windows.Forms.BindingMemberInfo.BindingPath%2A>, <xref:System.Windows.Forms.BindingMemberInfo.BindingField%2A>, and <xref:System.Windows.Forms.BindingMemberInfo.BindingMember%2A> property values for that <xref:System.Windows.Forms.Binding>.  \n  \n [!code-cs[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_22_1.cs)]\n [!code-vb[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_22_1.vb)]\n [!code-cpp[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_22_1.cpp)]"
   syntax:
     content: public System.Windows.Forms.BindingMemberInfo BindingMemberInfo { get; }
     return:
       type: System.Windows.Forms.BindingMemberInfo
-      description: "A <xref href=&quot;System.Windows.Forms.BindingMemberInfo&quot;></xref> that contains information about this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
+      description: "A <xref href=&quot;System.Windows.Forms.BindingMemberInfo&quot;> </xref> 이 대 한 정보가 들어 있는 <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.BindingMemberInfo*
   exceptions: []
   platform:
@@ -410,7 +410,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the control that the binding belongs to."
+  summary: "바인딩이 속한 컨트롤을 가져옵니다."
   remarks: ''
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingManagerBase> for a specific data source, and prints information about each Control property that is bound to the data source. The example uses the <xref:System.Windows.Forms.BindingManagerBase.Bindings%2A> property of the <xref:System.Windows.Forms.BindingManagerBase> to get all controls.  \n  \n [!code-cpp[Classic Binding.Control Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_20_1.cpp)]\n [!code-vb[Classic Binding.Control Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_20_1.vb)]\n [!code-cs[Classic Binding.Control Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_20_1.cs)]"
@@ -418,7 +418,7 @@ items:
     content: public System.Windows.Forms.Control Control { get; }
     return:
       type: System.Windows.Forms.Control
-      description: "The <xref href=&quot;System.Windows.Forms.Control&quot;></xref> that the binding belongs to."
+      description: "<xref href=&quot;System.Windows.Forms.Control&quot;> </xref> 바인딩이 속한입니다."
   overload: System.Windows.Forms.Binding.Control*
   exceptions: []
   platform:
@@ -435,12 +435,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets when changes to the data source are propagated to the bound control property."
+  summary: "변경 내용을 데이터 소스에 바인딩된 컨트롤 속성에 전파 될 때 값을 가져오거나 설정 합니다."
   syntax:
     content: public System.Windows.Forms.ControlUpdateMode ControlUpdateMode { get; set; }
     return:
       type: System.Windows.Forms.ControlUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;></xref> values. The default is <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;> </xref> 값입니다. 기본값은 <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.ControlUpdateMode*
   exceptions: []
   platform:
@@ -457,15 +457,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the data source for this binding."
-  remarks: "Possible data sources include:      -   A <xref:System.Data.DataSet>      -   A <xref:System.Data.DataTable>      -   A <xref:System.Data.DataView>      -   A <xref:System.Data.DataViewManager>      -   Any object that implements the <xref:System.Collections.IList> interface      -   Any object"
+  summary: "이 바인딩에 대 한 데이터 소스를 가져옵니다."
+  remarks: "가능한 데이터 소스:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>-A <xref:System.Data.DataViewManager>- <xref:System.Collections.IList>인터페이스-모든 개체를</xref:System.Collections.IList> 구현 하는 모든 개체</xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>"
   example:
   - "The following code example uses the DataSource property to return a <xref:System.Data.DataSet>.  \n  \n [!code-cpp[Classic Binding.DataSource Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_28_1.cpp)]\n [!code-cs[Classic Binding.DataSource Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_28_1.cs)]\n [!code-vb[Classic Binding.DataSource Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_28_1.vb)]"
   syntax:
     content: public object DataSource { get; }
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "<xref:System.Object>데이터 소스를 나타내는입니다.</xref:System.Object>"
   overload: System.Windows.Forms.Binding.DataSource*
   exceptions: []
   platform:
@@ -482,13 +482,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the value to be stored in the data source if the control value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
-  remarks: "You can use the <xref:System.Windows.Forms.Binding.NullValue%2A> property to specify the value displayed in a bound control when the data source contains <xref:System.DBNull>."
+  summary: "컨트롤 값이 데이터 원본에 저장 될 값을 가져오거나 설정 합니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
+  remarks: "<xref:System.Windows.Forms.Binding.NullValue%2A>데이터 원본은 <xref:System.DBNull>.</xref:System.DBNull> 를 포함 하는 경우 바인딩된 컨트롤에 표시 되는 값을 지정 하는 속성</xref:System.Windows.Forms.Binding.NullValue%2A> 을 사용할 수 있습니다."
   syntax:
     content: public object DataSourceNullValue { get; set; }
     return:
       type: System.Object
-      description: "The <xref:System.Object> to be stored in the data source when the control property is empty or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The default is <xref href=&quot;System.DBNull&quot;></xref> for value types and <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for non-value types."
+      description: "<xref:System.Object>컨트롤 속성이 비어 있을 때 데이터 원본에 저장 될 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Object> 기본값은 <xref href=&quot;System.DBNull&quot;> </xref> 값 형식에 대 한 및 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 값이 아닌 형식에 대 한 합니다."
   overload: System.Windows.Forms.Binding.DataSourceNullValue*
   exceptions: []
   platform:
@@ -505,13 +505,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value that indicates when changes to the bound control property are propagated to the data source."
-  remarks: "Note that even if this property is set to <xref:System.Windows.Forms.DataSourceUpdateMode>, the binding will update at least one time, when it is first established."
+  summary: "데이터 소스에 바인딩된 컨트롤 속성의 변경 내용이 전파 되는 때를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은로 설정 하는 경우에 <xref:System.Windows.Forms.DataSourceUpdateMode>, 바인딩이 적어도 한 번, 처음 설정 될 때 업데이트 됩니다.</xref:System.Windows.Forms.DataSourceUpdateMode>"
   syntax:
     content: public System.Windows.Forms.DataSourceUpdateMode DataSourceUpdateMode { get; set; }
     return:
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "A value that indicates when changes are propagated. The default is <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref>."
+      description: "변경 내용이 전파 여부를 나타내는 값입니다. 기본값은 <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.DataSourceUpdateMode*
   exceptions: []
   platform:
@@ -528,15 +528,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the property of a control is bound to a data value."
-  remarks: "The Format event is raised when data is pushed from the data source into the control. You can handle the Format event to convert unformatted data from the data source into formatted data for display. When data is pulled from the control into the data source, the <xref:System.Windows.Forms.Binding.Parse> event is raised to unformat the displayed value, then the Format event occurs to reformat the data for display. This ensures that the bound control displays correctly formatted data regardless of whether the user enters formatted or unformatted data in the control.       The Format and <xref:System.Windows.Forms.Binding.Parse> events allow you to create custom formats for displaying data. For example, if the data in a table is of type <xref:System.Decimal>, you can display the data in the local currency format by setting the <xref:System.Windows.Forms.ConvertEventArgs.Value%2A> property of the <xref:System.Windows.Forms.ConvertEventArgs> to the formatted value in the Format event. You must consequently unformat the displayed value in the <xref:System.Windows.Forms.Binding.Parse> event.       The Format event occurs whenever the <xref:System.Windows.Forms.BindingManagerBase.Current%2A> value of the <xref:System.Windows.Forms.BindingManagerBase> changes, which includes:      -   The first time the property is bound.      -   Any time the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> changes.      -   Whenever the data-bound list is sorted or filtered, which is accomplished when a <xref:System.Data.DataView> supplies the list.       The Format event also occurs after the <xref:System.Windows.Forms.Binding.Parse> event. For example, when a control loses focus, its contents are parsed. Immediately afterward, as new data is pushed into the control, the Format event occurs allowing the new contents to be formatted.       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "컨트롤의 속성을 데이터 값에 바인딩되면 발생 합니다."
+  remarks: "Format 이벤트는 컨트롤을 컨트롤에 데이터 원본에서 데이터를 가져올 때 발생 합니다. 데이터 원본에서 형식이 지정 되지 않은 데이터 표시를 위해 형식이 지정 된 데이터를 변환할 형식 이벤트를 처리할 수 있습니다. 데이터 소스에 컨트롤에서 데이터를 끌어온 경우는 <xref:System.Windows.Forms.Binding.Parse>때는 표시 된 값은 이벤트가 발생 한 후에 표시할 데이터의 서식을 다시 지정 하는 Format 이벤트가 발생 합니다.</xref:System.Windows.Forms.Binding.Parse> 이렇게 하면 바인딩된 컨트롤을 사용자 컨트롤에 서식이 지정 되거나 지정 되지 않은 데이터를 입력 하는 여부에 관계 없이 올바른 형식의 데이터를 표시 합니다.       형식 및 <xref:System.Windows.Forms.Binding.Parse>이벤트를 통해 데이터를 표시 하기 위한 사용자 지정 형식을 만들 수 있습니다.</xref:System.Windows.Forms.Binding.Parse> 예를 들어, 테이블의 데이터 형식인 경우 <xref:System.Decimal>, 현지 통화 형식으로 설정 하 여 데이터를 표시할 수는 <xref:System.Windows.Forms.ConvertEventArgs.Value%2A>의 속성은 <xref:System.Windows.Forms.ConvertEventArgs>Format 이벤트에서 형식이 지정 된 값으로.</xref:System.Windows.Forms.ConvertEventArgs> </xref:System.Windows.Forms.ConvertEventArgs.Value%2A> </xref:System.Decimal> 에 표시 된 값을 때는 결과적으로 해야 합니다는 <xref:System.Windows.Forms.Binding.Parse>이벤트.</xref:System.Windows.Forms.Binding.Parse>       형식 이벤트가 발생할 때마다는 <xref:System.Windows.Forms.BindingManagerBase.Current%2A>의 값은 <xref:System.Windows.Forms.BindingManagerBase>변경 내용을 포함 하는:-는 속성이 바인딩되는 처음으로.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.Current%2A>      -든 지는 <xref:System.Windows.Forms.BindingManagerBase.Position%2A>변경.</xref:System.Windows.Forms.BindingManagerBase.Position%2A>      -때마다 데이터 바인딩된 목록 정렬 되거나 필터링이 수행 될 때는 <xref:System.Data.DataView>목록을 제공 합니다.</xref:System.Data.DataView>       다음 형식의 이벤트에도 발생는 <xref:System.Windows.Forms.Binding.Parse>이벤트.</xref:System.Windows.Forms.Binding.Parse> 예를 들어 컨트롤이 포커스를 잃을 때 해당 내용은 구문 분석 됩니다. 바로 다음에 컨트롤을 컨트롤에 새 데이터를 밀어넣을, 대로 Format 이벤트가 서식을 지정 하 여 새 내용 발생 합니다.       이벤트를 처리 하는 방법에 대 한 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example creates a <xref:System.Windows.Forms.Binding>, adds a <xref:System.Windows.Forms.ConvertEventHandler> delegate to both the <xref:System.Windows.Forms.Binding.Parse> and Format events, and adds the <xref:System.Windows.Forms.Binding> to the <xref:System.Windows.Forms.BindingsCollection> of a <xref:System.Windows.Forms.TextBox> control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The `DecimalToCurrencyString` event delegate, added to the Format event, formats the bound value (a <xref:System.Decimal> type) as currency using the <xref:System.Decimal.ToString%2A> method. The `CurrencyStringToDecimal` event delegate, added to the <xref:System.Windows.Forms.Binding.Parse> event, converts the value displayed by the control back to the <xref:System.Decimal> type.  \n  \n This example assumes the presence of a <xref:System.Data.DataSet> named `ds`.  \n  \n [!code-cpp[Classic Binding.Format Example#1](~/add/codesnippet/cpp/e-system.windows.forms.b_2_1.cpp)]\n [!code-vb[Classic Binding.Format Example#1](~/add/codesnippet/visualbasic/e-system.windows.forms.b_2_1.vb)]\n [!code-cs[Classic Binding.Format Example#1](~/add/codesnippet/csharp/e-system.windows.forms.b_2_1.cs)]"
   syntax:
     content: public event System.Windows.Forms.ConvertEventHandler Format;
     return:
       type: System.Windows.Forms.ConvertEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -552,13 +552,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref:System.IFormatProvider> that provides custom formatting behavior."
-  remarks: "Setting this property will override the default formatting behavior, which uses the <xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName> property setting."
+  summary: "가져오거나는 <xref:System.IFormatProvider>사용자 지정 서식 동작을 제공 하는.</xref:System.IFormatProvider>"
+  remarks: "이 속성을 설정 하면 기본 동작을 사용 하 여 서식 지정 재정의 합니다는 <xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName>속성을 설정 합니다.</xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName>"
   syntax:
     content: public IFormatProvider FormatInfo { get; set; }
     return:
       type: System.IFormatProvider
-      description: "The <xref:System.IFormatProvider> implementation that provides custom formatting behavior."
+      description: "<xref:System.IFormatProvider>사용자 지정 서식 동작을 제공 하는 구현.</xref:System.IFormatProvider>"
   overload: System.Windows.Forms.Binding.FormatInfo*
   exceptions: []
   platform:
@@ -575,13 +575,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the format specifier characters that indicate how a value is to be displayed."
-  remarks: "The format string used should follow standard .NET Framework format specifications. For more information, see [Formatting Types in the .NET Framework](~/add/includes/ajax-current-ext-md.md)."
+  summary: "형식 지정자 문자는 값을 표시할 방법을 나타내는 가져오거나 설정 합니다."
+  remarks: "사용 된 형식 문자열에는 표준.NET Framework 형식 사양을 따라야 합니다. 자세한 내용은 참조 [.NET Framework의 형식 지정](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public string FormatString { get; set; }
     return:
       type: System.String
-      description: "The string of format specifier characters that indicate how a value is to be displayed."
+      description: "문자열 값을 표시할 방법을 나타내는 서식 지정자 문자입니다."
   overload: System.Windows.Forms.Binding.FormatString*
   exceptions: []
   platform:
@@ -598,13 +598,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether type conversion and formatting is applied to the control property data."
-  remarks: "Setting this property to `true` also enables error-handling behavior and causes the <xref:System.Windows.Forms.Binding.BindingComplete> event to be raised. The handler of this event can take the appropriate action, based on the success, error, or exceptions in the binding process, by examining the <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A> property of the <xref:System.Windows.Forms.BindingCompleteEventArgs> parameter."
+  summary: "형식 변환과 서식 지정 제어 속성 데이터에 적용 되는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "이 속성을 설정 `true` 또한 오류 처리 동작을 사용 하 고 하면는 <xref:System.Windows.Forms.Binding.BindingComplete>이벤트를 발생 합니다.</xref:System.Windows.Forms.Binding.BindingComplete> 이 이벤트의 처리기 수는 적절 한 조치를 검사 하 여 성공, 오류 또는 바인딩 프로세스의 예외에 따라는 <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>의 속성은 <xref:System.Windows.Forms.BindingCompleteEventArgs>매개 변수.</xref:System.Windows.Forms.BindingCompleteEventArgs> </xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>"
   syntax:
     content: public bool FormattingEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if type conversion and formatting of control property data is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>형식 변환 및 컨트롤 속성 데이터의 서식을 사용할 수 있습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.FormattingEnabled*
   exceptions: []
   platform:
@@ -621,15 +621,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the binding is active."
-  remarks: "A binding is active when it meets these conditions:      -   All its properties are set.      -   The user did not call <xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A> or <xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A> on the <xref:System.Windows.Forms.BindingManagerBase> that the <xref:System.Windows.Forms.Binding> belongs to.      -   The control to which the <xref:System.Windows.Forms.Binding> belongs has been created."
+  summary: "바인딩이 활성화 되어 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "바인딩이 다음이 조건에 맞을 때 활성화 됩니다.-모든 속성을 설정 합니다.      -사용자 로드 하지 않는 <xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A>또는 <xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A>에 <xref:System.Windows.Forms.BindingManagerBase>하는 <xref:System.Windows.Forms.Binding>에 속합니다.</xref:System.Windows.Forms.Binding> </xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A> </xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A>      -컨트롤에는 <xref:System.Windows.Forms.Binding>속한 만들어졌습니다.</xref:System.Windows.Forms.Binding>"
   example:
   - "The following code example prints the <xref:System.Windows.Forms.Binding.PropertyName%2A> and IsBinding value for each <xref:System.Windows.Forms.Binding> on a form.  \n  \n [!code-cs[Classic Binding.IsBinding Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_8_1.cs)]\n [!code-vb[Classic Binding.IsBinding Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_8_1.vb)]\n [!code-cpp[Classic Binding.IsBinding Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_8_1.cpp)]"
   syntax:
     content: public bool IsBinding { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binding is active; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>바인딩이 활성화 되어 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.IsBinding*
   exceptions: []
   platform:
@@ -646,13 +646,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref:System.Object> to be set as the control property when the data source contains a <xref href=&quot;System.DBNull&quot;></xref> value."
-  remarks: "The data source must contain <xref:System.DBNull> for the NullValue property to be correctly applied. If the data source type is a type such as a string or integer the value of the NullValue property will be ignored. Also, the NullValue property is ignored if it is set to `null`.       A null value will be added to the data source when the control property is set to the object of NullValue. If NullValue is set to a string value, comparisons are case-insensitive."
+  summary: "가져오거나는 <xref:System.Object>데이터 원본에 포함 된 컨트롤 속성으로 설정 해야 하는 <xref href=&quot;System.DBNull&quot;> </xref> 값.</xref:System.Object>"
+  remarks: "데이터 원본에 포함 해야 <xref:System.DBNull>올바르게 적용 되도록 NullValue 속성에 대 한.</xref:System.DBNull> 데이터 원본 유형을 문자열 또는 정수 NullValue 속성의 값 같은 형식인 경우 무시 됩니다. 로 설정 되어 있으면 NullValue 속성은 무시 됩니다 또한 `null`합니다.       컨트롤 속성이 NullValue의 개체에 설정 된 경우 null 값을 데이터 원본에 추가 됩니다. NullValue을 문자열 값으로 설정 하는 경우 비교는 대/소문자 구분 합니다."
   syntax:
     content: public object NullValue { get; set; }
     return:
       type: System.Object
-      description: "The <xref:System.Object> to be set as the control property when the data source contains a <xref href=&quot;System.DBNull&quot;></xref> value. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref:System.Object>데이터 원본에 포함 된 컨트롤 속성으로 설정 해야 하는 <xref href=&quot;System.DBNull&quot;> </xref> 값.</xref:System.Object> 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.Binding.NullValue*
   exceptions: []
   platform:
@@ -669,14 +669,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.BindingComplete&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnBindingComplete method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Binding.BindingComplete&quot;> </xref> 이벤트입니다."
+  remarks: "이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다.       OnBindingComplete 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnBindingComplete (System.Windows.Forms.BindingCompleteEventArgs e);
     parameters:
     - id: e
       type: System.Windows.Forms.BindingCompleteEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.BindingCompleteEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Windows.Forms.BindingCompleteEventArgs&quot;> </xref> 하는 이벤트 데이터를 포함 합니다."
   overload: System.Windows.Forms.Binding.OnBindingComplete*
   exceptions: []
   platform:
@@ -693,14 +693,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.Format&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnFormat method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Binding.Format&quot;> </xref> 이벤트입니다."
+  remarks: "이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다.       OnFormat 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnFormat (System.Windows.Forms.ConvertEventArgs cevent);
     parameters:
     - id: cevent
       type: System.Windows.Forms.ConvertEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;> </xref> 하는 이벤트 데이터를 포함 합니다."
   overload: System.Windows.Forms.Binding.OnFormat*
   exceptions: []
   platform:
@@ -717,14 +717,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.Parse&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnParse method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Windows.Forms.Binding.Parse&quot;> </xref> 이벤트입니다."
+  remarks: "이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다.       OnParse 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할를 수도 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnParse (System.Windows.Forms.ConvertEventArgs cevent);
     parameters:
     - id: cevent
       type: System.Windows.Forms.ConvertEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;> </xref> 하는 이벤트 데이터를 포함 합니다."
   overload: System.Windows.Forms.Binding.OnParse*
   exceptions: []
   platform:
@@ -741,15 +741,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the value of a data-bound control changes."
-  remarks: "The <xref:System.Windows.Forms.Binding.Format> and Parse events allow you to create custom formats for displaying data. For example, if the data in a table is of type <xref:System.Decimal>, you can display the data in the local currency format by setting the <xref:System.Windows.Forms.ConvertEventArgs.Value%2A> property of the <xref:System.Windows.Forms.ConvertEventArgs> to the formatted value in the <xref:System.Windows.Forms.Binding.Format> event. You must consequently unformat the displayed value in the Parse event.       The Parse event occurs under the following conditions:      -   After the <xref:System.Windows.Forms.Control.Validated> event of the <xref:System.Windows.Forms.Control> occurs.      -   When the <xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A> method of the <xref:System.Windows.Forms.BindingManagerBase> is called.      -   When the <xref:System.Windows.Forms.BindingManagerBase.Current%2A> of the <xref:System.Windows.Forms.BindingManagerBase> changes (in other words, when the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> changes).       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "데이터 바인딩된 컨트롤의 값이 변경 될 때 발생 합니다."
+  remarks: "<xref:System.Windows.Forms.Binding.Format>및 구문 분석 이벤트를 통해 데이터를 표시 하기 위한 사용자 지정 형식을 만들 수 있습니다.</xref:System.Windows.Forms.Binding.Format> 예를 들어, 테이블의 데이터 형식인 경우 <xref:System.Decimal>, 현지 통화 형식으로 설정 하 여 데이터를 표시할 수는 <xref:System.Windows.Forms.ConvertEventArgs.Value%2A>의 속성은 <xref:System.Windows.Forms.ConvertEventArgs>서식이 지정 된 값에 <xref:System.Windows.Forms.Binding.Format>이벤트.</xref:System.Windows.Forms.Binding.Format> </xref:System.Windows.Forms.ConvertEventArgs> </xref:System.Windows.Forms.ConvertEventArgs.Value%2A> </xref:System.Decimal> 구문 분석 이벤트에 표시 된 값을 그러므로 결과적으로 해야 합니다입니다.       다음과 같은 구문 분석 이벤트 발생: After-는 <xref:System.Windows.Forms.Control.Validated>의 이벤트는 <xref:System.Windows.Forms.Control>발생 합니다.</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.Control.Validated>      -는 <xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A>의 메서드는 <xref:System.Windows.Forms.BindingManagerBase>호출 됩니다.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A>      -는 <xref:System.Windows.Forms.BindingManagerBase.Current%2A>의 <xref:System.Windows.Forms.BindingManagerBase>변경 (즉 때는 <xref:System.Windows.Forms.BindingManagerBase.Position%2A>변경).</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.Current%2A>       이벤트를 처리 하는 방법에 대 한 자세한 내용은 참조 [이벤트 처리 및 발생](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example creates a <xref:System.Windows.Forms.Binding>, adds a <xref:System.Windows.Forms.ConvertEventHandler> delegate to both the Parse and <xref:System.Windows.Forms.Binding.Format> events, and adds the <xref:System.Windows.Forms.Binding> to the <xref:System.Windows.Forms.BindingsCollection> of a <xref:System.Windows.Forms.TextBox> control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The `DecimalToCurrencyString` event delegate, added to the <xref:System.Windows.Forms.Binding.Format> event, formats the bound value (a <xref:System.Decimal> type) as currency using the <xref:System.Decimal.ToString%2A> method. The `CurrencyStringToDecimal` event delegate, added to the Parse event, converts the value displayed by the control back to the <xref:System.Decimal> type.  \n  \n [!code-cs[Classic Binding.Parse Example#1](~/add/codesnippet/csharp/e-system.windows.forms.b_1_1.cs)]\n [!code-cpp[Classic Binding.Parse Example#1](~/add/codesnippet/cpp/e-system.windows.forms.b_1_1.cpp)]\n [!code-vb[Classic Binding.Parse Example#1](~/add/codesnippet/visualbasic/e-system.windows.forms.b_1_1.vb)]"
   syntax:
     content: public event System.Windows.Forms.ConvertEventHandler Parse;
     return:
       type: System.Windows.Forms.ConvertEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -765,15 +765,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the name of the control&quot;s data-bound property."
-  remarks: "Use the PropertyName to specify the control property that you want to bind to a list in a data source. Most commonly, you bind a display property such as the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control. However, because you can bind any property of a control, you can programmatically create controls at run time using data from a database."
+  summary: "컨트롤의 데이터 바인딩된 속성의 이름을 가져오거나 설정 합니다."
+  remarks: "데이터 원본에 있는 목록에 바인딩할 컨트롤 속성을 지정 된 PropertyName을 사용 합니다. 와 같은 display 속성을 바인딩할 가장 일반적으로 <xref:System.Windows.Forms.Control.Text%2A>속성은 <xref:System.Windows.Forms.TextBox>컨트롤.</xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A> 그러나 컨트롤의 모든 속성을 바인딩할 수 있으므로 프로그래밍 방식으로 컨트롤 만들 수 있습니다 데이터베이스에서 데이터를 사용 하 여 런타임에 합니다."
   example:
   - "The following code example prints the PropertyName value of each <xref:System.Windows.Forms.Binding> for each control on a form.  \n  \n [!code-cpp[Classic Binding.PropertyName Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_26_1.cpp)]\n [!code-vb[Classic Binding.PropertyName Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_26_1.vb)]\n [!code-cs[Classic Binding.PropertyName Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_26_1.cs)]"
   syntax:
     content: public string PropertyName { get; }
     return:
       type: System.String
-      description: "The name of a control property to bind to."
+      description: "바인딩할 컨트롤 속성의 이름입니다."
   overload: System.Windows.Forms.Binding.PropertyName*
   exceptions: []
   platform:
@@ -790,7 +790,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Sets the control property to the value read from the data source."
+  summary: "데이터 원본에서 읽은 값에 컨트롤 속성을 설정 합니다."
   syntax:
     content: public void ReadValue ();
     parameters: []
@@ -810,7 +810,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Reads the current value from the control property and writes it to the data source."
+  summary: "컨트롤 속성의 현재 값을 읽고 데이터 소스에 씁니다."
   syntax:
     content: public void WriteValue ();
     parameters: []

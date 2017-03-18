@@ -19,8 +19,8 @@ items:
   nameWithType: OdbcConnectionStringBuilder
   fullName: System.Data.Odbc.OdbcConnectionStringBuilder
   type: Class
-  summary: "Provides a simple way to create and manage the contents of connection strings used by the <xref href=&quot;System.Data.Odbc.OdbcConnection&quot;></xref> class."
-  remarks: "The connection string builders let developers programmatically create syntactically correct connection strings, and parse and rebuild existing connection strings, using properties and methods of the class. The connection string builder provides strongly typed properties corresponding to the known key/value pairs allowed by ODBC connections, and developers can add arbitrary key/value pairs for any other connection string values.       Developers needing to create connection strings as part of applications can use the OdbcConnectionStringBuilder class to build and modify connection strings. The class also makes it easy to manage connection strings stored in an application configuration file. OdbcConnectionStringBuilder performs checks only for the limited set of known key/value pairs. Therefore, this class can be used to create invalid connection strings. The following table lists the specific known keys together with their corresponding properties within the OdbcConnectionStringBuilder class, and their default values. Besides these specific values, developers can add any key/value pairs to the collection that is contained within the OdbcConnectionStringBuilder instance.      |Key|Property|Comment|Default value|   |---------|--------------|-------------|-------------------|   |Driver|<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>|Developers should not include the braces surrounding the driver name when they set the <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> property. The OdbcConnectionStringBuilder instance adds braces as needed.|Empty string|   |DSN|<xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A>||Empty string|       If any value (other than the <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> value) within the connection string contains a semicolon (;), the OdbcConnectionStringBuilder surrounds the value with quotation marks in the connection string. In order to avoid this issue with the <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> value that frequently contains a semicolon, the OdbcConnectionStringBuilder class always surrounds this value with braces. The ODBC specification indicates that driver values that contain semicolons must be surrounded with braces, and this class handles this for you.       The <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A> property handles attempts to insert malicious code. For example, the following code, using the default <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A> property (the indexer, in C#) correctly escapes the nested key/value pair.       [Visual Basic]      ```   Dim builder As _    New System.Data.Odbc.OdbcConnectionStringBuilder   &quot; Take advantage of the Driver property.    builder.Driver = &quot;SQL Server&quot;   builder(&quot;Server&quot;) = &quot;MyServer;NewValue=Bad&quot;   Console.WriteLine(builder.ConnectionString)   ```       [C#]      ```   System.Data.Odbc.OdbcConnectionStringBuilder builder =      new System.Data.Odbc.OdbcConnectionStringBuilder();   // Take advantage of the Driver property.    builder.Driver = &quot;SQL Server&quot;;   builder[&quot;Server&quot;] = &quot;MyServer;NewValue=Bad&quot;;   Console.WriteLine(builder.ConnectionString);   ```       The result is the following connection string that handles the invalid value in a safe manner:      ```   Driver={SQL Server};Server=&quot;MyServer;NewValue=Bad&quot;   ```"
+  summary: "만들기 및 사용 되는 연결 문자열의 내용을 관리 하는 간단한 방법을 제공는 <xref href=&quot;System.Data.Odbc.OdbcConnection&quot;> </xref> 클래스입니다."
+  remarks: "연결 문자열 작성기 클래스의 메서드와 속성을 사용 하 여 프로그래밍 방식으로 올바른 구문의 연결 문자열을 만들고 및 구문 분석 하 고 기존 연결 문자열을 다시 작성 하는 개발자를 수 있습니다. ODBC 연결에서 허용 되는 알려진된 키/값 쌍에 해당 하는 속성 및 개발자가 다른 연결 문자열 값에 대 한 임의의 키/값 쌍을 추가할 수 강력한 형식의 연결 문자열 작성기를 제공 합니다.       연결 문자열을 만드는 응용 프로그램의 일부로 개발자 OdbcConnectionStringBuilder 클래스를 사용 작성 하 고 연결 문자열을 수정할 수 있습니다. 또한 클래스에서는 응용 프로그램 구성 파일에 저장 된 연결 문자열을 관리 하기가 쉽습니다. OdbcConnectionStringBuilder 알려진된 키/값 쌍의 제한 된 집합에 대해서만 검사를 수행합니다. 따라서이 클래스 잘못 된 연결 문자열을 만드는 데 사용할 수 있습니다. 다음 표에서 알려진된 키 함께 OdbcConnectionStringBuilder 클래스 및 해당 기본값에 해당 속성을 나열합니다. 이 특정 값을 외에도 개발자 OdbcConnectionStringBuilder 인스턴스 내에 포함 된 컬렉션에 모든 키/값 쌍을 추가할 수 있습니다.      | 키 | 속성 | 설명 | 기본 값 |   |---------|--------------|-------------|-------------------|   | 드라이버 | <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>| 개발자는 중괄호로 드라이버 이름을 설정할 때를 포함 하지 않아야는 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>속성.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> </xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> 필요에 따라 OdbcConnectionStringBuilder 인스턴스에서 중괄호를 추가 합니다. | 빈 문자열 |   | DSN | <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A>|| 빈 문자열 |       모든 값 (이외의 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>값) 연결 내에서 문자열에는 세미콜론 (;)이 포함 되어는 OdbcConnectionStringBuilder 연결 문자열에 인용 부호와 값을 묶습니다.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> </xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A> 이 문제를 방지 하기 위해는 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>자주 세미콜론을 항상 OdbcConnectionStringBuilder 클래스를 포함 하는 값이이 값을 중괄호로 묶습니다.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> ODBC 사양 중괄호와 세미콜론을 포함 하는 드라이버 값 묶어야이 클래스 자동으로 처리 함을 나타냅니다.       <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>악성 코드를 삽입 하는 시도 처리 하는 속성.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A> 예를 들어 다음 코드를 기본값을 사용 하 여 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>속성 (C# 인덱서) 중첩 된 키/값 쌍을 올바르게 이스케이프.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Item%2A>       [Visual Basic]      ```   Dim builder As _    New System.Data.Odbc.OdbcConnectionStringBuilder   &quot; Take advantage of the Driver property.    builder.Driver = &quot;SQL Server&quot;   builder(&quot;Server&quot;) = &quot;MyServer;NewValue=Bad&quot;   Console.WriteLine(builder.ConnectionString)   ``` [C#] ```   System.Data.Odbc.OdbcConnectionStringBuilder builder =      new System.Data.Odbc.OdbcConnectionStringBuilder();   // Take advantage of the Driver property.    builder.Driver = &quot;SQL Server&quot;;   builder[&quot;Server&quot;] = &quot;MyServer;NewValue=Bad&quot;;   Console.WriteLine(builder.ConnectionString);   ``` 결과 안전한 방법으로 잘못 된 값을 처리 하는 다음 연결 문자열:```   Driver={SQL Server};Server=&quot;MyServer;NewValue=Bad&quot;   ```"
   example:
   - "The following console application builds connection strings for several ODBC databases. First, the example creates a connection string for a Microsoft Access database. It then creates a connection string for an IBM DB2 database. The example also parses an existing connection string, and demonstrates various ways of manipulating the contents of the connection string.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how OdbcConnectionStringBuilder works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks OdbcConnectionStringBuilder#1](~/add/codesnippet/csharp/t-system.data.odbc.odbcc_2_1.cs)]\n [!code-vb[DataWorks OdbcConnectionStringBuilder#1](~/add/codesnippet/visualbasic/t-system.data.odbc.odbcc_2_1.vb)]"
   syntax:
@@ -84,7 +84,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 클래스입니다."
   syntax:
     content: public OdbcConnectionStringBuilder ();
     parameters: []
@@ -104,8 +104,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> class. The provided connection string provides the data for the instance&quot;s internal connection information."
-  remarks: "You can pass a connection string in the constructor, or you can set the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property explicitly. The behavior is the same either way."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 클래스입니다. 제공 된 연결 문자열은 인스턴스의 내부 연결 정보에 대 한 데이터를 제공 합니다."
+  remarks: "연결 문자열을 생성자에 전달 하거나 설정할 수 있습니다는 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A>속성이 명시적으로.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> 동작은 동일한 어떤 방법을 사용 합니다."
   example:
   - "The following example creates multiple <xref:System.Data.Odbc.OdbcConnectionStringBuilder> instances, passing a different connection string to the constructor in each case. Note that the ordering of elements within the connection string may be modified when you retrieve the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property. Also note that keys other than the predefined \"Dsn\" and \"Driver\" keys are converted to lowercase by the <xref:System.Data.Odbc.OdbcConnectionStringBuilder> class.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Odbc.OdbcConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks OdbcConnectionStringBuilder.Multiple#1](~/add/codesnippet/csharp/m-system.data.odbc.odbcc_5_1.cs)]\n [!code-vb[DataWorks OdbcConnectionStringBuilder.Multiple#1](~/add/codesnippet/visualbasic/m-system.data.odbc.odbcc_5_1.vb)]"
   syntax:
@@ -113,12 +113,12 @@ items:
     parameters:
     - id: connectionString
       type: System.String
-      description: "The basis for the object&quot;s internal connection information. Parsed into key/value pairs."
+      description: "개체의 내부 연결 정보에 대 한 기초로 사용 됩니다. 키/값 쌍으로 구문 분석 합니다."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The connection string is incorrectly formatted (perhaps missing the required &quot;=&quot; within a key/value pair)."
+    description: "연결 문자열 형식이 잘못 되었습니다 (아마도 누락 된 필수 &quot;=&quot; 키/값 쌍 내에서)."
   platform:
   - net462
 - uid: System.Data.Odbc.OdbcConnectionStringBuilder.Clear
@@ -133,8 +133,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Clears the contents of the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> instance."
-  remarks: "The Clear method removes all key/value pairs from the <xref:System.Data.Odbc.OdbcConnectionStringBuilder> and resets the <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> and <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A> properties to their default values. The Clear method also sets the <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A> property to 0 and the <xref:System.Data.Odbc.OdbcConnectionStringBuilder.ConnectionString> property to an empty string."
+  summary: "내용을 지웁니다는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "모든 키/값 쌍을 제거 하는 Clear 메서드는 <xref:System.Data.Odbc.OdbcConnectionStringBuilder>다시 설정 하 고는 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A>및 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A>속성을 기본값으로.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.Dsn%2A> </xref:System.Data.Odbc.OdbcConnectionStringBuilder.Driver%2A> </xref:System.Data.Odbc.OdbcConnectionStringBuilder> Clear 메서드 설정는 <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>속성을 0 및 <xref:System.Data.Odbc.OdbcConnectionStringBuilder.ConnectionString>속성을 빈 문자열로.</xref:System.Data.Odbc.OdbcConnectionStringBuilder.ConnectionString> </xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>"
   example:
   - >-
     [!code-vb[DataWorks OdbcConnectionStringBuilder.Clear#1](~/add/codesnippet/visualbasic/m-system.data.odbc.odbcc_8_1.vb)]
@@ -158,7 +158,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Determines whether the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> contains a specific key."
+  summary: "결정 여부는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 특정 키가 들어 있습니다."
   remarks: ''
   example:
   - "The following example creates an <xref:System.Data.Odbc.OdbcConnectionStringBuilder> instance, sets some of its properties, and then tries to determine whether various keys exist within the object by calling the ContainsKey method.  \n  \n [!code-vb[DataWorks OdbcConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/visualbasic/m-system.data.odbc.odbcc_2_1.vb)]\n [!code-cs[DataWorks OdbcConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/csharp/m-system.data.odbc.odbcc_2_1.cs)]"
@@ -167,15 +167,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref>."
+      description: "찾을 수 있는 키의 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> contains an element that has the specified key; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 를 가진 지정 된 요소가 포함 된 키, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.Odbc.OdbcConnectionStringBuilder.Driver
@@ -190,13 +190,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Gets or sets the name of the ODBC driver associated with the connection."
-  remarks: "If the value passed in is null when you try to set the property, the Driver property is reset. If the value has not been set and the developer tries to retrieve the property, the return value is `String.Empty`. This property corresponds to the &quot;Driver&quot; key within the connection string."
+  summary: "연결과 관련 된 ODBC 드라이버의 이름을 가져오거나 설정 합니다."
+  remarks: "속성을 설정 하려고 할 때 전달 된 값이 null 이면 드라이버 속성이 다시 설정 됩니다. 반환 값은 값이 설정 하는 경우 개발자가 속성을 검색 하려고 `String.Empty`합니다. 이 속성은 연결 문자열 내의 &quot;드라이버&quot; 키에 해당 합니다."
   syntax:
     content: public string Driver { get; set; }
     return:
       type: System.String
-      description: "The value of the Driver property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "드라이버 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.Driver*
   exceptions: []
   platform:
@@ -213,13 +213,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Gets or sets the name of the data source name (DSN) associated with the connection."
-  remarks: "If the value passed in is null when you try to set the property, the Dsn property is reset. If the value has not been set and the developer tries to retrieve the property, the return value is `String.Empty`. This property corresponds to the &quot;Dsn&quot; key within the connection string."
+  summary: "연결과 관련 된 데이터 원본 이름 (DSN)의 이름을 가져오거나 설정 합니다."
+  remarks: "속성을 설정 하려고 할 때 전달 된 값이 null 이면 Dsn 속성이 다시 설정 됩니다. 반환 값은 값이 설정 하는 경우 개발자가 속성을 검색 하려고 `String.Empty`합니다. 이 속성은 연결 문자열 내의 &quot;Dsn&quot; 키에 해당 합니다."
   syntax:
     content: public string Dsn { get; set; }
     return:
       type: System.String
-      description: "The value of the Dsn property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "Dsn 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.Dsn*
   exceptions: []
   platform:
@@ -236,8 +236,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Gets or sets the value associated with the specified key. In C#, this property is the indexer."
-  remarks: "When you set this property, if the specified key already exists in the dictionary, the value is replaced; otherwise, a new element is created."
+  summary: "지정된 된 키와 연결 된 값을 가져오거나 설정 합니다. C#의 경우이 속성은 인덱서 합니다."
+  remarks: "지정된 된 키가 사전에 이미 있는 경우이 속성을 설정 하면 해당 값이 바뀝니다. 그렇지 않으면 새 요소가 만들어집니다."
   example:
   - "The following code, in a console application, creates a new <xref:System.Data.Odbc.OdbcConnectionStringBuilder> and adds key/value pairs to its connection string, using the Item property.  \n  \n [!code-vb[DataWorks OdbcConnectionStringBuilder.Item#1](~/add/codesnippet/visualbasic/p-system.data.odbc.odbcc_2_1.vb)]\n [!code-cs[DataWorks OdbcConnectionStringBuilder.Item#1](~/add/codesnippet/csharp/p-system.data.odbc.odbcc_2_1.cs)]"
   syntax:
@@ -245,18 +245,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to get or set."
+      description: "가져오거나 설정할 항목의 키입니다."
     return:
       type: System.Object
-      description: "The value associated with the specified key."
+      description: "지정된 된 키와 연결 된 값입니다."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.Item*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The connection string is incorrectly formatted (perhaps missing the required &quot;=&quot; within a key/value pair)."
+    description: "연결 문자열 형식이 잘못 되었습니다 (아마도 누락 된 필수 &quot;=&quot; 키/값 쌍 내에서)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.Odbc.OdbcConnectionStringBuilder.Keys
@@ -271,15 +271,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is the same order as the associated values in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> property."
+  summary: "가져옵니다는 <xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
+  remarks: "에 있는 값의 순서는 <xref:System.Collections.ICollection>에 연결 된 값과 순서가 동일는 <xref:System.Collections.ICollection>에서 반환 되는 <xref:System.Data.Common.DbConnectionStringBuilder.Values%2A>속성.</xref:System.Data.Common.DbConnectionStringBuilder.Values%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>"
   example:
   - "The following console application example creates a new <xref:System.Data.Odbc.OdbcConnectionStringBuilder>. The code loops through the <xref:System.Collections.ICollection> returned by the Keys property displaying the key/value pairs.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.Odbc.OdbcConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-vb[DataWorks OdbcConnectionStringBuilder.Keys#1](~/add/codesnippet/visualbasic/p-system.data.odbc.odbcc_0_1.vb)]\n [!code-cs[DataWorks OdbcConnectionStringBuilder.Keys#1](~/add/codesnippet/csharp/p-system.data.odbc.odbcc_0_1.cs)]"
   syntax:
     content: public override System.Collections.ICollection Keys { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.Keys*
   exceptions: []
   platform:
@@ -296,8 +296,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Removes the entry with the specified key from the <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref> instance."
-  remarks: "Because the Remove method returns a value that indicates its success, it is not required to look for the existence of a key before trying to remove the key/value pair from the <xref:System.Data.Odbc.OdbcConnectionStringBuilder> instance."
+  summary: "지정된 된 키를 가지는 엔트리를 제거는 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "찾을 키/값 쌍을 제거 하려고 하기 전에 키가 있는지에 대 한 필요 없습니다 Remove 메서드는 성공 여부를 나타내는 값을 반환 하므로 <xref:System.Data.Odbc.OdbcConnectionStringBuilder>인스턴스.</xref:System.Data.Odbc.OdbcConnectionStringBuilder>"
   example:
   - "The following example creates an <xref:System.Data.Odbc.OdbcConnectionStringBuilder> instance and demonstrates the behavior of the Remove method.  \n  \n [!code-cs[DataWorks OdbcConnectionStringBuilder.Remove#1](~/add/codesnippet/csharp/m-system.data.odbc.odbcc_7_1.cs)]\n [!code-vb[DataWorks OdbcConnectionStringBuilder.Remove#1](~/add/codesnippet/visualbasic/m-system.data.odbc.odbcc_7_1.vb)]"
   syntax:
@@ -305,15 +305,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the key/value pair to be removed from the connection string in this <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref>."
+      description: "이 연결 문자열에서 제거할 키/값 쌍의 키 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the key existed within the connection string and was removed; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the key did not exist."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>키 연결 문자열 내에 존재 하 고 제거 되었습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 존재 하지 않았습니다."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.Remove*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue(System.String,System.Object@)
@@ -328,8 +328,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Odbc
-  summary: "Retrieves a value corresponding to the supplied key from this <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;></xref>."
-  remarks: "The TryGetValue method lets developers safely retrieve a value from a <xref:System.Data.Odbc.OdbcConnectionStringBuilder> without needing to verify that the supplied key name is a valid key name. Because TryGetValue does not raise an exception when you pass in a nonexistent key, you do not have to look for a key before retrieving its value. Calling TryGetValue with a nonexistent key places the value null (`Nothing` in Visual Basic) in the `value` parameter."
+  summary: "이 제공된 된 키에 해당 하는 값을 검색 <xref href=&quot;System.Data.Odbc.OdbcConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "TryGetValue 메서드 값을 안전 하 게 검색할 수 있습니다는 <xref:System.Data.Odbc.OdbcConnectionStringBuilder>제공 된 키 이름이 올바른 키 이름 인지 확인할 필요 없이.</xref:System.Data.Odbc.OdbcConnectionStringBuilder> TryGetValue는 존재 하지 않는 키에 전달할 때 예외가 발생 하지 않으므로, 해당 값을 검색 하기 전에 키를 찾이 필요가 없습니다. Null 값을 배치 존재 하지 않는 키를 가진 TryGetValue 호출 (`Nothing` Visual basic에서)에 `value` 매개 변수입니다."
   example:
   - "The following example demonstrates the behavior of the TryGetValue method.  \n  \n [!code-vb[DataWorks OdbcConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/visualbasic/43cb7fd0-7a9f-4e91-821e-_1.vb)]\n [!code-cs[DataWorks OdbcConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/csharp/43cb7fd0-7a9f-4e91-821e-_1.cs)]"
   syntax:
@@ -337,13 +337,13 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to retrieve."
+      description: "검색할 항목의 키입니다."
     - id: value
       type: System.Object
-      description: "The value corresponding to `keyword.`"
+      description: "해당 하는 값`keyword.`"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>keyword</code> was found within the connection string; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> keyword </code> 했으면 연결 문자열에 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.Odbc.OdbcConnectionStringBuilder.TryGetValue*
   exceptions: []
   platform:
