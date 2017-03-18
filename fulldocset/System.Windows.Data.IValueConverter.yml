@@ -11,8 +11,8 @@ items:
   nameWithType: IValueConverter
   fullName: System.Windows.Data.IValueConverter
   type: Interface
-  summary: "Provides a way to apply custom logic to a binding."
-  remarks: "If you want to associate a value converter with a binding, create a class that implements the IValueConverter interface and then implement the <xref:System.Windows.Data.IValueConverter.Convert%2A> and <xref:System.Windows.Data.IValueConverter.ConvertBack%2A> methods. Converters can change data from one type to another, translate data based on cultural information, or modify other aspects of the presentation. For examples of some typical converter scenarios, see &quot;Data Conversion&quot; in [Data Binding Overview](~/add/includes/ajax-current-ext-md.md).       Value converters are culture-aware. Both the <xref:System.Windows.Data.IValueConverter.Convert%2A> and <xref:System.Windows.Data.IValueConverter.ConvertBack%2A> methods have a `culture` parameter that indicates the cultural information. If cultural information is irrelevant to the conversion, then you can ignore that parameter in your custom converter.       The <xref:System.Windows.Data.IValueConverter.Convert%2A> and <xref:System.Windows.Data.IValueConverter.ConvertBack%2A> methods also have a parameter called `parameter` so that you can use the same instance of the converter with different parameters. For example, you can write a formatting converter that produces different formats of data based on the input parameter that you use. You can use the <xref:System.Windows.Data.Binding.ConverterParameter%2A> of the <xref:System.Windows.Data.Binding> class to pass a parameter as an argument into the <xref:System.Windows.Data.IValueConverter.Convert%2A> and <xref:System.Windows.Data.IValueConverter.ConvertBack%2A> methods."
+  summary: "바인딩에 사용자 지정 논리를 적용할 수 있는 방법을 제공 합니다."
+  remarks: "값 변환기는 바인딩으로 연결 하려는 경우 IValueConverter 인터페이스를 구현 하는 클래스를 만들고 다음 구현는 <xref:System.Windows.Data.IValueConverter.Convert%2A>및 <xref:System.Windows.Data.IValueConverter.ConvertBack%2A>메서드.</xref:System.Windows.Data.IValueConverter.ConvertBack%2A> </xref:System.Windows.Data.IValueConverter.Convert%2A> 변환기 형식 간에 데이터 변경, 문화권 정보를 기반으로 데이터를 변환 하거나 프레젠테이션에의 다른 기능을 수정할 수 있습니다. 몇 가지 일반적인 변환기 시나리오의 예에 &quot;데이터 변환&quot;를 참조 [데이터 바인딩 개요](~/add/includes/ajax-current-ext-md.md)합니다.       값 변환기는 문화권 인식 합니다. 둘 다는 <xref:System.Windows.Data.IValueConverter.Convert%2A>및 <xref:System.Windows.Data.IValueConverter.ConvertBack%2A>메서드에 `culture` 문화권 정보를 나타내는 매개 변수입니다.</xref:System.Windows.Data.IValueConverter.ConvertBack%2A> </xref:System.Windows.Data.IValueConverter.Convert%2A> 문화권 정보를 변환과 관련이 없는 경우 사용자 지정 변환기에서 해당 매개 변수를 무시할 수 있습니다.       <xref:System.Windows.Data.IValueConverter.Convert%2A>및 <xref:System.Windows.Data.IValueConverter.ConvertBack%2A>메서드에도 라는 매개 변수를 `parameter` 다른 매개 변수와 함께 변환기의 동일한 인스턴스를 사용할 수 있도록 합니다.</xref:System.Windows.Data.IValueConverter.ConvertBack%2A> </xref:System.Windows.Data.IValueConverter.Convert%2A> 예를 들어 다른 형식의 데이터를 기반으로 사용 하는 입력된 매개 변수를 생성 하는 형식 변환기를 작성할 수 있습니다. 사용할 수는 <xref:System.Windows.Data.Binding.ConverterParameter%2A>의 <xref:System.Windows.Data.Binding>클래스에 대 한 인수로 매개 변수를 전달 하는 <xref:System.Windows.Data.IValueConverter.Convert%2A>및 <xref:System.Windows.Data.IValueConverter.ConvertBack%2A>메서드.</xref:System.Windows.Data.IValueConverter.ConvertBack%2A> </xref:System.Windows.Data.IValueConverter.Convert%2A> </xref:System.Windows.Data.Binding> </xref:System.Windows.Data.Binding.ConverterParameter%2A>"
   syntax:
     content: public interface IValueConverter
   implements: []
@@ -30,26 +30,26 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Data
-  summary: "Converts a value."
-  remarks: "The data binding engine calls this method when it propagates a value from the binding source to the binding target.       The data binding engine does not catch exceptions that are thrown by a user-supplied converter. Any exception that is thrown by the Convert method, or any uncaught exceptions that are thrown by methods that the Convert method calls, are treated as run-time errors. Handle anticipated problems by returning <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>.       A return value of <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName> indicates that the converter produced no value and that the binding uses the <xref:System.Windows.Data.BindingBase.FallbackValue%2A>, if available, or the default value instead.       A return value of <xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName> indicates that the binding does not transfer the value or use the <xref:System.Windows.Data.BindingBase.FallbackValue%2A> or default value."
+  summary: "값으로 변환합니다."
+  remarks: "데이터 바인딩 엔진 바인딩 소스에서 바인딩 대상 값을 전파할 때이 메서드를 호출 합니다.       데이터 바인딩 엔진에는 사용자가 제공한 변환기에 의해 throw 되는 예외를 catch 하지 않습니다. Convert 메서드에서 throw 되는 모든 예외 또는 확인할 수 없는 예외는 Convert 메서드에서 호출 하는 메서드에서 throw 되는 런타임 오류로 처리 됩니다. <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>.</xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName> 반환 하 여 예상 되는 문제를 처리       반환 값이 <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>변환기 값을 생성 함을 나타내며 바인딩에서 사용 하는 <xref:System.Windows.Data.BindingBase.FallbackValue%2A>제공 되는 경우, 또는 기본값을 대신 합니다.</xref:System.Windows.Data.BindingBase.FallbackValue%2A> </xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>       반환 값이 <xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName>바인딩 값을 전송 하거나 사용 하지 않는 나타냅니다는 <xref:System.Windows.Data.BindingBase.FallbackValue%2A>값 또는 기본값.</xref:System.Windows.Data.BindingBase.FallbackValue%2A> </xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName>"
   syntax:
     content: public object Convert (object value, Type targetType, object parameter, System.Globalization.CultureInfo culture);
     parameters:
     - id: value
       type: System.Object
-      description: "The value produced by the binding source."
+      description: "바인딩 소스에서 생성 한 값입니다."
     - id: targetType
       type: System.Type
-      description: "The type of the binding target property."
+      description: "바인딩 대상 속성의 형식입니다."
     - id: parameter
       type: System.Object
-      description: "The converter parameter to use."
+      description: "사용할 변환기 매개 변수입니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The culture to use in the converter."
+      description: "변환기에서 사용할 문화권입니다."
     return:
       type: System.Object
-      description: "A converted value. If the method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the valid null value is used."
+      description: "변환 된 값입니다. 메서드에서 반환 되 면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 유효한 null 값이 사용 됩니다."
   overload: System.Windows.Data.IValueConverter.Convert*
   exceptions: []
   platform:
@@ -66,26 +66,26 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Data
-  summary: "Converts a value."
-  remarks: "The data binding engine calls this method when it propagates a value from the binding target to the binding source.       The implementation of this method must be the inverse of the <xref:System.Windows.Data.IValueConverter.Convert%2A> method.       The data binding engine does not catch exceptions that are thrown by a user-supplied converter. Any exception that is thrown by the ConvertBack method, or any uncaught exceptions that are thrown by methods that the ConvertBack method calls, are treated as run-time errors. Handle anticipated problems by returning <xref:System.Windows.DependencyProperty>.<xref:System.Windows.DependencyProperty.UnsetValue>.       A return value of <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName> indicates that the converter produced no value and that the binding uses the <xref:System.Windows.Data.BindingBase.FallbackValue%2A>, if available, or the default value instead.       A return value of <xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName> indicates that the binding does not transfer the value or use the <xref:System.Windows.Data.BindingBase.FallbackValue%2A> or default value."
+  summary: "값으로 변환합니다."
+  remarks: "데이터 바인딩 엔진 바인딩 소스에서 바인딩 대상 값을 전파할 때이 메서드를 호출 합니다.       이 메서드의 구현은의 역함수 값 이어야 합니다는 <xref:System.Windows.Data.IValueConverter.Convert%2A>메서드.</xref:System.Windows.Data.IValueConverter.Convert%2A>       데이터 바인딩 엔진에는 사용자가 제공한 변환기에 의해 throw 되는 예외를 catch 하지 않습니다. ConvertBack 메서드에서 throw 되는 모든 예외 또는 확인할 수 없는 예외는 ConvertBack 메서드에서 호출 하는 메서드에서 throw 되는 런타임 오류로 처리 됩니다. 반환 하 여 예상 되는 문제를 처리 <xref:System.Windows.DependencyProperty>.<xref:System.Windows.DependencyProperty.UnsetValue>.</xref:System.Windows.DependencyProperty.UnsetValue> </xref:System.Windows.DependencyProperty>       반환 값이 <xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>변환기 값을 생성 함을 나타내며 바인딩에서 사용 하는 <xref:System.Windows.Data.BindingBase.FallbackValue%2A>제공 되는 경우, 또는 기본값을 대신 합니다.</xref:System.Windows.Data.BindingBase.FallbackValue%2A> </xref:System.Windows.DependencyProperty.UnsetValue?displayProperty=fullName>       반환 값이 <xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName>바인딩 값을 전송 하거나 사용 하지 않는 나타냅니다는 <xref:System.Windows.Data.BindingBase.FallbackValue%2A>값 또는 기본값.</xref:System.Windows.Data.BindingBase.FallbackValue%2A> </xref:System.Windows.Data.Binding.DoNothing?displayProperty=fullName>"
   syntax:
     content: public object ConvertBack (object value, Type targetType, object parameter, System.Globalization.CultureInfo culture);
     parameters:
     - id: value
       type: System.Object
-      description: "The value that is produced by the binding target."
+      description: "바인딩 대상에서 생성 되는 값입니다."
     - id: targetType
       type: System.Type
-      description: "The type to convert to."
+      description: "변환할 대상 형식입니다."
     - id: parameter
       type: System.Object
-      description: "The converter parameter to use."
+      description: "사용할 변환기 매개 변수입니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The culture to use in the converter."
+      description: "변환기에서 사용할 문화권입니다."
     return:
       type: System.Object
-      description: "A converted value. If the method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the valid null value is used."
+      description: "변환 된 값입니다. 메서드에서 반환 되 면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 유효한 null 값이 사용 됩니다."
   overload: System.Windows.Data.IValueConverter.ConvertBack*
   exceptions: []
   platform:
