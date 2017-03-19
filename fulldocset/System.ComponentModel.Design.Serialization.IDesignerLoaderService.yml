@@ -12,8 +12,8 @@ items:
   nameWithType: IDesignerLoaderService
   fullName: System.ComponentModel.Design.Serialization.IDesignerLoaderService
   type: Interface
-  summary: "Provides an interface that can extend a designer loader to support asynchronous loading of external components."
-  remarks: "A <xref:System.ComponentModel.Design.Serialization.DesignerLoader> can implement this interface to manage designer loading that involves external components. This interface also allows external components to initiate a reload of the design surface by calling <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A>. A designer loader does not have to implement this interface if it does not require support for asynchronous loading.       Designer loading using a custom implementation of the IDesignerLoaderService can occur in a variety of ways. Sometimes external components are involved in the loading process. To facilitate loading with external dependencies, the designer loader service interface provides a mechanism that determines when loading is complete and allows each portion of loading to signal that it has completed. The IDesignerLoaderService typically determines when loading is complete by testing a counter that tracks the number of load dependencies remaining. When each portion of the load completes, <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> is called, and the service decrements the counter. To set the number of dependent load processes, call <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> once for each load process that calls <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> when its loading is complete. When the final loading is complete, the service calls <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A> on the loader host."
+  summary: "디자이너 로더가 외부 구성 요소의 비동기 로딩을 지원 하도록 확장할 수 있는 인터페이스를 제공 합니다."
+  remarks: "A <xref:System.ComponentModel.Design.Serialization.DesignerLoader>외부 구성 요소를 포함 하는 디자이너 로드를 관리 하려면이 인터페이스를 구현할 수 있습니다.</xref:System.ComponentModel.Design.Serialization.DesignerLoader> 이 인터페이스에서는 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A>.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload%2A> 를 호출 하 여 디자인 화면에 대 한 다시 로드를 시작 하는 외부 구성 요소 디자이너 로더는 비동기 로드에 대 한 지원이 필요 하지 않은 경우에이 인터페이스를 구현 하지 않아도 됩니다.       디자이너를 사용 하 여 로드는 IDesignerLoaderService의 사용자 지정 구현을 여러 가지 방법으로 발생할 수 있습니다. 경우에 따라 외부 구성 요소가 로드 프로세스에 관련 된 합니다. 외부 종속성이 로드를 용이 하 게 하려면 디자이너 로더가 서비스 인터페이스 로드가 완료 되 고 완료 되었음을 알리기 위해 로드의 각 부분 시기를 결정 하는 메커니즘을 제공 합니다. IDesignerLoaderService 남은 부하 종속성의 수를 추적 하는 카운터를 테스트 하 여 로드가 완료 되는 경우 일반적으로 결정 합니다. 각 부하의 일부 완료 되 면 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>를 호출 하 고 서비스 감소 카운터.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> 종속 로드 프로세스의 수를 설정 하려면 호출 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>호출 하는 각 로드 프로세스에 대해 한 번씩 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>로드가 완료 되 면.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> 마지막 로드가 완료 되 면, 서비스 호출 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A>로더 호스트에.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderHost.EndLoad%2A>"
   syntax:
     content: public interface IDesignerLoaderService
   implements: []
@@ -31,8 +31,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Registers an external component as part of the load process managed by this interface."
-  remarks: "Call AddLoadDependency once for each external object participating in the load process. <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> is called when the work of the load process is done."
+  summary: "이 인터페이스에 의해 관리 되는 로드 프로세스의 일환으로 외부 구성 요소를 등록 합니다."
+  remarks: "로드 프로세스에 참여 하는 각 외부 개체에 대 한 AddLoadDependency를 한 번 호출 합니다. <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>로드 프로세스의 작업을 수행 하는 경우 호출 됩니다.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>"
   syntax:
     content: public void AddLoadDependency ();
     parameters: []
@@ -52,17 +52,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Signals that a dependent load has finished."
-  remarks: "This method is called to signal that a dependent loading operation has completed. Call DependentLoadComplete once for every process that was registered by calling <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>, which has already completed.       If the dependent load succeeds, the caller sets the `successful` parameter to `true` and passes either an empty collection or `null` to the `errorCollection` parameter. If the dependent load encounters errors, the caller sets the `successful` parameter to `false` and passes a collection of exceptions that indicate the reason or reasons for failure to the `errorCollection` parameter."
+  summary: "종속 로드가 완료 되었음을 알립니다."
+  remarks: "이 메서드는 종속 로드 작업이 완료 되었음을 알리기 위해 호출 됩니다. DependentLoadComplete를 한 번 호출 하 여 등록 된 모든 프로세스에 대 한 호출 <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>를 이미 완료입니다.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>       경우 종속 로드가 성공 하면 호출자에 게 집합은 `successful` 매개 변수를 `true` 빈 컬렉션을 전달 또는 `null` 에 `errorCollection` 매개 변수입니다. 호출자 종속 로드 오류가 발생 하는 경우 설정의 `successful` 매개 변수를 `false` 실패 한 이유를 나타내는 예외의 컬렉션을 전달는 `errorCollection` 매개 변수입니다."
   syntax:
     content: public void DependentLoadComplete (bool successful, System.Collections.ICollection errorCollection);
     parameters:
     - id: successful
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the load of the designer is successful; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if errors prevented the load from finishing."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>디자이너의 로드에 성공 하면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 에서 로드 오류가 발생 하는 경우 마무리 합니다."
     - id: errorCollection
       type: System.Collections.ICollection
-      description: "A collection of errors that occurred during the load, if any. If no errors occurred, pass either an empty collection or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "있는 경우 로딩 하는 동안 발생 한 오류의 컬렉션입니다. 오류가 발생 하지 않으면, 빈 컬렉션을 전달 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete*
   exceptions: []
   platform:
@@ -79,14 +79,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Reloads the design document."
-  remarks: "Any object can call this method to request that the loader reload the design document. If the loader supports reloading and complies with the reload, the designer loader can return `true`. Otherwise, it returns `false`, indicating that the reload will not occur. Callers cannot rely on the reload happening immediately; the designer loader can schedule this for some other time, or it can try to reload at once.       The caller can display a message to the user if the designer cannot be reloaded."
+  summary: "디자인 문서를 다시 로드합니다."
+  remarks: "모든 개체 로더 다시 로드 디자인 문서를 요청 하는이 메서드를 호출할 수 있습니다. 디자이너 로더가 수를 반환할 경우 로더를 다시 로드를 지원 하 고 다시 로드 될 때까지 준수, `true`합니다. 그렇지 않으면 반환 `false`, 나타내는 다시 로드가 발생 하지 것입니다. 호출자에 게 발생 하는 즉시; 다시 로드를 사용할 수 없게 디자이너 로더가 다른 시간에 대 한이 예약할 수 또는 한 번에 다시 로드를 시도할 수 있습니다.       디자이너를 다시 로드할 수 없는 경우 호출자에 게 사용자에 게 메시지를 표시할 수 있습니다."
   syntax:
     content: public bool Reload ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reload request is accepted, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the loader does not allow the reload."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>다시 로드 요청이 승인 되 면 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 로더 다시 로드를 허용 하지 않습니다."
   overload: System.ComponentModel.Design.Serialization.IDesignerLoaderService.Reload*
   exceptions: []
   platform:
