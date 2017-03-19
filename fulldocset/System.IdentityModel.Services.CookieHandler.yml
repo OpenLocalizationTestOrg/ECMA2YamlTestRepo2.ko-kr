@@ -33,7 +33,7 @@ items:
   nameWithType: CookieHandler
   fullName: System.IdentityModel.Services.CookieHandler
   type: Class
-  summary: "Provides an abstract base class for reading, writing, and deleting session cookies on an HTTP client."
+  summary: "읽기, 쓰기 및 HTTP 클라이언트에서 세션 쿠키를 삭제에 대 한 추상 기본 클래스를 제공 합니다."
   remarks: "The <xref:System.IdentityModel.Services.SessionAuthenticationModule> (SAM) uses an instance of the CookieHandler class to read, write, and delete the cookie or cookies that contain the <xref:System.IdentityModel.Tokens.SessionSecurityToken> on the HTTP client. The cookie (or cookies, in the case where the session token is split across several cookies) that contains the session token is known as the session cookie.  \n  \n Windows Identity Foundation (WIF) ships with a cookie handler called the chunked cookie handler that is implemented by the <xref:System.IdentityModel.Services.ChunkedCookieHandler> class. The chunked cookie handler splits the session token across one or more cookies according to a specified chunk size. This is to meet size limitations on individual cookies imposed by many browsers.  \n  \n You can derive from CookieHandler to create your own cookie handler. When you do so, you must override the <xref:System.IdentityModel.Services.CookieHandler.DeleteCore%2A>, <xref:System.IdentityModel.Services.CookieHandler.ReadCore%2A>, and <xref:System.IdentityModel.Services.CookieHandler.WriteCore%2A> methods to perform the actual work of deleting, reading, and writing the session cookie. These methods typically read the cookie from the <xref:System.Web.HttpRequest.Cookies%2A?displayProperty=fullName> collection and write or delete cookies through the <xref:System.Web.HttpResponse.Cookies%2A?displayProperty=fullName> collection. The <xref:System.Web.HttpContext> object through which you can access the request and response is provided as a parameter to each of these methods. In addition to the required methods, you can optionally override other virtual methods properties exposed by the CookieHandler class to customize the behavior of your handler.  \n  \n Several properties are exposed by the CookieHandler class that specify default behavior and properties for the session cookie. The <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties supply the base name for the cookie, the domain in which it is valid and the path under which it is stored on the client. The <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> property specifies whether the cookie is accessible to client-side scripts. The <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A> property specifies whether the cookie should be transmitted only over secure (HTTPS) connections. If set, the <xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A> property is used to set the expiration time for persistent sessions, that is for sessions that remain valid even after the browser is closed. All of these properties have equivalent properties that are typically set on the underlying <xref:System.Web.HttpCookie> object (or objects) by the \"core\" methods of the handler. For more information see the documentation for each property.  \n  \n The cookie handler that is used by the SAM can be specified in configuration through the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element. The cookie handler set by this element can be modified in an event delegate for the <xref:System.IdentityModel.Services.FederatedAuthentication.FederationConfigurationCreated?displayProperty=fullName> event or it can be set or accessed directly through the <xref:System.IdentityModel.Services.SessionAuthenticationModule.CookieHandler%2A?displayProperty=fullName> property."
   example:
   - "The following example configures the SAM to use a custom cookie handler of type `MyNamespace.MyCustomCookieHandler`.  \n  \n```xml  \n<cookieHandler mode=\"Custom\">  \n    <customCookieHandler type=\"MyNamespace.MyCustomCookieHandler, MyAssembly\" />  \n</cookieHandler>  \n```"
@@ -57,7 +57,7 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Called from constructors in derived classes to initialize the <xref href=&quot;System.IdentityModel.Services.CookieHandler&quot;></xref> class."
+  summary: "초기화 하는 파생된 클래스의 생성자에서 호출 된 <xref href=&quot;System.IdentityModel.Services.CookieHandler&quot;> </xref> 클래스입니다."
   syntax:
     content: protected CookieHandler ();
     parameters: []
@@ -77,8 +77,8 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the cookie associated with the current request that has the default name, domain, and path."
-  remarks: "The name, domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties. The request is specified by <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
+  summary: "기본 이름, 도메인 및 경로 있는 현재 요청과 관련 된 쿠키를 삭제 합니다."
+  remarks: "지정 된 이름, 도메인 및 경로 <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, 및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> </xref:System.IdentityModel.Services.CookieHandler.Name%2A> 요청을 지정 하 여<xref:System.Web.HttpContext.Current%2A?displayProperty=fullName></xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
   syntax:
     content: public void Delete ();
     parameters: []
@@ -98,19 +98,19 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the cookie associated with the current request that has the specified name and the default domain and path."
-  remarks: "The domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Domain%2A> and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties. The request is specified by <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
+  summary: "지정한 이름 및 기본 도메인 및 경로 포함 하는 현재 요청과 관련 된 쿠키를 삭제 합니다."
+  remarks: "도메인 및 경로 의해 지정 되는 <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> 요청을 지정 하 여<xref:System.Web.HttpContext.Current%2A?displayProperty=fullName></xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
   syntax:
     content: public void Delete (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
   overload: System.IdentityModel.Services.CookieHandler.Delete*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Delete(System.Web.HttpContext)
@@ -125,14 +125,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the cookie associated with the current request that has the default name, domain, and path."
-  remarks: "The name, domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties."
+  summary: "기본 이름, 도메인 및 경로 있는 현재 요청과 관련 된 쿠키를 삭제 합니다."
+  remarks: "지정 된 이름, 도메인 및 경로 <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, 및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> </xref:System.IdentityModel.Services.CookieHandler.Name%2A>"
   syntax:
     content: public void Delete (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.Delete*
   exceptions: []
   platform:
@@ -149,22 +149,22 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the cookie associated with the specified request that has the specified name and the default domain and path."
-  remarks: "The domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Domain%2A> and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties."
+  summary: "지정한 이름 및 기본 도메인 및 경로 가진 지정된 된 요청와 연관 된 쿠키를 삭제 합니다."
+  remarks: "도메인 및 경로 의해 지정 되는 <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A>"
   syntax:
     content: public void Delete (string name, System.Web.HttpContext context);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.Delete*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Delete(System.String,System.String,System.String,System.Web.HttpContext)
@@ -179,27 +179,27 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Deletes the cookie associated with the specified request that has the specified name, path, and domain."
+  summary: "지정한 이름, 경로 및 도메인을 가진 지정된 된 요청와 연관 된 쿠키를 삭제 합니다."
   syntax:
     content: public void Delete (string name, string path, string domain, System.Web.HttpContext context);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: path
       type: System.String
-      description: "The path for the cookie."
+      description: "쿠키에 대 한 경로입니다."
     - id: domain
       type: System.String
-      description: "The domain for the cookie"
+      description: "쿠키의 도메인"
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request"
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한"
   overload: System.IdentityModel.Services.CookieHandler.Delete*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.DeleteCore(System.String,System.String,System.String,System.Web.HttpContext)
@@ -214,23 +214,23 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "When overridden in a derived class, deletes the cookie associated with the specified request that has the specified name, domain, and path."
-  remarks: "Called from the overloaded <xref:System.IdentityModel.Services.CookieHandler.Delete%2A> methods to do the actual work of deleting the cookie. The <xref:System.IdentityModel.Services.CookieHandler.Delete%2A> methods will ensure that name and path are non-empty strings."
+  summary: "파생된 클래스에서 재정의 되 면 지정 된 이름, 도메인 및 경로 가진 지정된 된 요청와 연관 된 쿠키를 삭제 합니다."
+  remarks: "오버 로드 된 호출 <xref:System.IdentityModel.Services.CookieHandler.Delete%2A>쿠키를 삭제할 경우의 실제 작업을 수행 하는 메서드.</xref:System.IdentityModel.Services.CookieHandler.Delete%2A> <xref:System.IdentityModel.Services.CookieHandler.Delete%2A>메서드 이름 및 경로 비어 있지 않은 문자열을 확인 합니다.</xref:System.IdentityModel.Services.CookieHandler.Delete%2A>"
   syntax:
     content: protected abstract void DeleteCore (string name, string path, string domain, System.Web.HttpContext context);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie"
+      description: "쿠키의 이름"
     - id: path
       type: System.String
-      description: "The path for the cookie"
+      description: "쿠키에 대 한 경로"
     - id: domain
       type: System.String
-      description: "The domain for the cookie"
+      description: "쿠키의 도메인"
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.DeleteCore*
   exceptions: []
   platform:
@@ -247,13 +247,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets the domain used for cookies."
+  summary: "쿠키에 사용 되는 도메인을 가져오거나 설정 합니다."
   remarks: "Corresponds to the <xref:System.Web.HttpCookie.Domain%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `domain` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual string Domain { get; set; }
     return:
       type: System.String
-      description: "The domain used for cookies. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "쿠키에 사용 되는 도메인입니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Services.CookieHandler.Domain*
   exceptions: []
   platform:
@@ -270,13 +270,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets a value that indicates whether the cookie should be hidden from client script."
+  summary: "클라이언트 스크립트에서 쿠키를 숨길지 여부를 나타내는 값을 가져오거나 설정 합니다."
   remarks: "Controls whether the \"HttpOnly\" flag is emitted in the Set-Cookie header for cookies written by the handler. Some web browsers honor this flag by keeping client-side script from accessing the cookie value.  \n  \n This property corresponds to the <xref:System.Web.HttpCookie.HttpOnly%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `hideFromScript` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual bool HideFromClientScript { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should be hidden from client script; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클라이언트 스크립트에서 쿠키를 숨기는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Services.CookieHandler.HideFromClientScript*
   exceptions: []
   platform:
@@ -293,19 +293,19 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "If the target domain is within the cookie domain and the target path is within the cookie path, match the casing of the cookie path portion."
+  summary: "쿠키 도메인 내에서 대상 도메인은 대상 경로 쿠키 경로에 경우 쿠키 경로 부분의 대/소문자 값과 일치 합니다."
   syntax:
     content: public virtual string MatchCookiePath (Uri baseUri, Uri targetUri);
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "The base URL of the request."
+      description: "기본 URL 요청입니다."
     - id: targetUri
       type: System.Uri
-      description: "The URL to match"
+      description: "일치 하도록 URL"
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "<xref:System.String>입니다.</xref:System.String> 반환"
   overload: System.IdentityModel.Services.CookieHandler.MatchCookiePath*
   exceptions: []
   platform:
@@ -322,18 +322,18 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets the base name for cookies written by the handler."
+  summary: "처리기에 의해 작성 된 쿠키의 기본 이름을 가져오거나 설정 합니다."
   remarks: "This property corresponds to the <xref:System.Web.HttpCookie.Name%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `name` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual string Name { get; set; }
     return:
       type: System.String
-      description: "The base name to use for cookies. The default is “FedAuth”."
+      description: "쿠키에 사용할 기본 이름입니다. 기본값은 &quot;FedAuth&quot;."
   overload: System.IdentityModel.Services.CookieHandler.Name*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt to set a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty value occurs."
+    description: "설정 하려고 한 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 빈 값이 발생 합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Path
@@ -348,18 +348,18 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets the virtual path for cookies written by the handler."
+  summary: "처리기에 의해 작성 된 쿠키에 대 한 가상 경로 가져오거나 설정 합니다."
   remarks: "This property corresponds to the <xref:System.Web.HttpCookie.Path%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `path` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual string Path { get; set; }
     return:
       type: System.String
-      description: "The virtual path. Defaults to the root of the ASP.NET application."
+      description: "가상 경로입니다. ASP.NET 응용 프로그램의 루트에 대 한 기본값입니다."
   overload: System.IdentityModel.Services.CookieHandler.Path*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt to set a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty value occurs."
+    description: "설정 하려고 한 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 또는 빈 값이 발생 합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime
@@ -374,18 +374,18 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "The lifetime of persistent sessions. If zero, transient sessions are always used."
+  summary: "영구 세션의 수명입니다. 0 이면 임시 세션 항상 사용 됩니다."
   remarks: "Tickets for persistent sessions are stored in file-based cookies, meaning that the sign-in session may continue after the web browser is closed and reopened.  \n  \n This property is used to set the <xref:System.Web.HttpCookie.Expires%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `persistentSessionLifetime` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual Nullable<TimeSpan> PersistentSessionLifetime { get; set; }
     return:
       type: System.Nullable{System.TimeSpan}
-      description: "The session lifetime. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "세션 수명입니다. 기본값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A value that is less than zero is specified."
+    description: "0 보다 작은 값을 지정 합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Read
@@ -400,14 +400,14 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Reads the cookie associated with the current request that has the default name."
-  remarks: "The name of the cookie is specified by the <xref:System.IdentityModel.Services.CookieHandler.Name%2A> property. The request is specified by <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>."
+  summary: "기본 이름은 현재 요청과 관련 된 쿠키를 읽습니다."
+  remarks: "쿠키의 이름으로 지정 된 <xref:System.IdentityModel.Services.CookieHandler.Name%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Name%2A> 요청을 <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>.</xref:System.Web.HttpContext.Current%2A?displayProperty=fullName> 지정"
   syntax:
     content: public byte[] Read ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "The cookie value or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the cookie was not found."
+      description: "쿠키 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 쿠키를 찾을 수 없는 경우."
   overload: System.IdentityModel.Services.CookieHandler.Read*
   exceptions: []
   platform:
@@ -424,22 +424,22 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Reads the cookie associated with the current request that has the specified name."
-  remarks: "The request is specified by <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
+  summary: "지정된 된 이름을 가진 현재 요청과 관련 된 쿠키를 읽습니다."
+  remarks: "요청을 지정 하 여<xref:System.Web.HttpContext.Current%2A?displayProperty=fullName></xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>"
   syntax:
     content: public byte[] Read (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie to read."
+      description: "읽을 쿠키의 이름입니다."
     return:
       type: System.Byte[]
-      description: "The cookie value or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the cookie was not found."
+      description: "쿠키 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 쿠키를 찾을 수 없는 경우."
   overload: System.IdentityModel.Services.CookieHandler.Read*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Read(System.Web.HttpContext)
@@ -454,17 +454,17 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Reads the cookie associated with the current request that has the default name, domain, and path."
-  remarks: "The name of the cookie is specified by the <xref:System.IdentityModel.Services.CookieHandler.Name%2A> property."
+  summary: "기본 이름, 도메인 및 경로 있는 현재 요청과 관련 된 쿠키를 읽습니다."
+  remarks: "쿠키의 이름으로 지정 된 <xref:System.IdentityModel.Services.CookieHandler.Name%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Name%2A>"
   syntax:
     content: public byte[] Read (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
     return:
       type: System.Byte[]
-      description: "The cookie value or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the cookie was not found."
+      description: "쿠키 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 쿠키를 찾을 수 없는 경우."
   overload: System.IdentityModel.Services.CookieHandler.Read*
   exceptions: []
   platform:
@@ -481,24 +481,24 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Reads the cookie associated with the specified request that has the specified name and the default domain and path."
+  summary: "지정한 이름 및 기본 도메인 및 경로 가진 지정된 된 요청와 연관 된 쿠키를 읽습니다."
   syntax:
     content: public byte[] Read (string name, System.Web.HttpContext context);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie to read."
+      description: "읽을 쿠키의 이름입니다."
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
     return:
       type: System.Byte[]
-      description: "The cookie value or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the cookie was not found."
+      description: "쿠키 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 쿠키를 찾을 수 없는 경우."
   overload: System.IdentityModel.Services.CookieHandler.Read*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.ReadCore(System.String,System.Web.HttpContext)
@@ -513,20 +513,20 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "When overridden in a derived class, reads the cookie that has the specified name and that is associated with the specified request."
-  remarks: "Called from the overloaded <xref:System.IdentityModel.Services.CookieHandler.Read%2A> methods to do the actual work of reading the cookie. The <xref:System.IdentityModel.Services.CookieHandler.Read%2A> methods will ensure that `name` is a non-empty string."
+  summary: "파생된 클래스에서 재정의 되 면 지정된 된 이름을 가진 쿠키 읽고 연결 된 지정된 된 요청 합니다."
+  remarks: "오버 로드 된 호출 <xref:System.IdentityModel.Services.CookieHandler.Read%2A>읽는 쿠키의 실제 작업을 수행 하는 메서드.</xref:System.IdentityModel.Services.CookieHandler.Read%2A> <xref:System.IdentityModel.Services.CookieHandler.Read%2A>메서드는 하는지 확인 `name` 은 비어 있지 않은 문자열.</xref:System.IdentityModel.Services.CookieHandler.Read%2A>"
   syntax:
     content: protected abstract byte[] ReadCore (string name, System.Web.HttpContext context);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the cookie"
+      description: "쿠키의 이름"
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
     return:
       type: System.Byte[]
-      description: "The cookie value or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the cookie was not found"
+      description: "쿠키 값 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 쿠키를 찾을 수 없는 경우"
   overload: System.IdentityModel.Services.CookieHandler.ReadCore*
   exceptions: []
   platform:
@@ -543,13 +543,13 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Gets or sets a value that specifies whether the cookie should be used only with SSL."
+  summary: "SSL에만 쿠키를 사용할지 여부를 지정 하는 값을 가져오거나 설정 합니다."
   remarks: "Controls whether the \"Secure\" flag in the Set-Cookie header is emitted for any cookies written. If this value is `true`, the session cookies will only be available over HTTPS.  \n  \n This property corresponds to the <xref:System.Web.HttpCookie.Secure%2A?displayProperty=fullName> property.  \n  \n The property can be initialized by specifying the `requireSSL` attribute on the [\\&lt;cookieHandler\\&gt;](../Topic/%3CcookieHandler%3E.md) element in configuration."
   syntax:
     content: public virtual bool RequireSsl { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should only be used over an SSL connection; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>SSL 연결을 통해에 쿠키를 사용 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Services.CookieHandler.RequireSsl*
   exceptions: []
   platform:
@@ -566,25 +566,25 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Writes a cookie associated with the current request that has the specified value, persistence, and expiration time."
-  remarks: "If the `isPersistent` parameter is `false`, the cookie expiration time is set to <xref:System.DateTime?displayProperty=fullName>. If the `isPersistent` parameter is `true`, the cookie expiration time is set to the value of the <xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A> property if it is not `null` or, if the <xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A> property is `null`, the expiration time is set to the value of the `tokenExpirationTime` parameter.       The cookie name, domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties. The request is specified by <xref:System.Web.HttpContext.Current%2A>. Whether the cookie should be sent only over SSL is specified by the <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A> property and whether the cookie should be hidden from client-side scripts is specified by the <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> property."
+  summary: "지정 된 값, 지 속성 및 만료 시간 있는 현재 요청과 관련 된 쿠키를 기록 합니다."
+  remarks: "경우는 `isPersistent` 매개 변수는 `false`, 쿠키 만료 시간은 <xref:System.DateTime?displayProperty=fullName>.</xref:System.DateTime?displayProperty=fullName> 으로 설정 됩니다 경우는 `isPersistent` 매개 변수는 `true`, 쿠키 만료 시간은의 값으로 설정 됩니다는 <xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A>되지 않았으면 속성 `null` 또는 경우에는 <xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A>속성은 `null`, 만료 시간은의 값으로 설정 됩니다는 `tokenExpirationTime` 매개 변수.</xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A> </xref:System.IdentityModel.Services.CookieHandler.PersistentSessionLifetime%2A>       지정 된 쿠키 이름, 도메인 및 경로 <xref:System.IdentityModel.Services.CookieHandler.Name%2A>, <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>, 및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> </xref:System.IdentityModel.Services.CookieHandler.Name%2A> 요청을 <xref:System.Web.HttpContext.Current%2A>.</xref:System.Web.HttpContext.Current%2A> 지정 SSL을 통해서만 쿠키를 보낼지 여부 지정는 <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>속성 및 클라이언트 쪽 스크립트에서 쿠키 숨겨야 하는지 여부를 지정 하 여는 <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> </xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>"
   syntax:
     content: public void Write (byte[] value, bool isPersistent, DateTime tokenExpirationTime);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The cookie value."
+      description: "쿠키 값입니다."
     - id: isPersistent
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie is persistent; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the cookie is session-only, that is, only valid until the browser on the client is closed."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>쿠키 되; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 쿠키는 세션 전용, 즉, 브라우저 클라이언트에서 될 때까지 유효한 닫힙니다."
     - id: tokenExpirationTime
       type: System.DateTime
-      description: "The expiration time for the underlying token."
+      description: "기본 토큰에 대 한 만료 시간입니다."
   overload: System.IdentityModel.Services.CookieHandler.Write*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>value</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.DateTime)
@@ -599,28 +599,28 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Writes a cookie associated with the current request that has the specified name, value, and expiration time."
-  remarks: "The cookie domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Domain%2A> and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties. The request is specified by <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>.  The request is specified by <xref:System.Web.HttpContext.Current%2A>. Whether the cookie should be sent only over SSL is specified by the <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A> property and whether the cookie should be hidden from client-side scripts is specified by the <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> property."
+  summary: "지정한 이름, 값 및 만료 시간을 가진 현재 요청과 관련 된 쿠키를 기록 합니다."
+  remarks: "쿠키 도메인 및 경로 의해 지정 되는 <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> 요청을 <xref:System.Web.HttpContext.Current%2A?displayProperty=fullName>.</xref:System.Web.HttpContext.Current%2A?displayProperty=fullName> 지정  요청을 <xref:System.Web.HttpContext.Current%2A>.</xref:System.Web.HttpContext.Current%2A> 지정 SSL을 통해서만 쿠키를 보낼지 여부 지정는 <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>속성 및 클라이언트 쪽 스크립트에서 쿠키 숨겨야 하는지 여부를 지정 하 여는 <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> </xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>"
   syntax:
     content: public void Write (byte[] value, string name, DateTime expirationTime);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The cookie value."
+      description: "쿠키 값입니다."
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: expirationTime
       type: System.DateTime
-      description: "The expiration time for the cookie, or <xref:System.DateTime> for a session (session-only) cookie."
+      description: "쿠키의 만료 시간 또는 <xref:System.DateTime>세션 (세션 전용) 쿠키에 대 한.</xref:System.DateTime>"
   overload: System.IdentityModel.Services.CookieHandler.Write*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>value</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.DateTime,System.Web.HttpContext)
@@ -635,31 +635,31 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Writes a cookie associated with the specified request that has the specified name, value, and expiration time."
-  remarks: "The cookie domain and path are specified by the <xref:System.IdentityModel.Services.CookieHandler.Domain%2A> and <xref:System.IdentityModel.Services.CookieHandler.Path%2A> properties. The request is specified by <xref:System.Web.HttpContext.Current%2A>. Whether the cookie should be sent only over SSL is specified by the <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A> property and whether the cookie should be hidden from client-side scripts is specified by the <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> property."
+  summary: "지정한 이름, 값 및 만료 시간에 지정 된 요청과 관련 된 쿠키를 기록 합니다."
+  remarks: "쿠키 도메인 및 경로 의해 지정 되는 <xref:System.IdentityModel.Services.CookieHandler.Domain%2A>및 <xref:System.IdentityModel.Services.CookieHandler.Path%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.Path%2A> </xref:System.IdentityModel.Services.CookieHandler.Domain%2A> 요청을 <xref:System.Web.HttpContext.Current%2A>.</xref:System.Web.HttpContext.Current%2A> 지정 SSL을 통해서만 쿠키를 보낼지 여부 지정는 <xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>속성 및 클라이언트 쪽 스크립트에서 쿠키 숨겨야 하는지 여부를 지정 하 여는 <xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A>속성.</xref:System.IdentityModel.Services.CookieHandler.HideFromClientScript%2A> </xref:System.IdentityModel.Services.CookieHandler.RequireSsl%2A>"
   syntax:
     content: public void Write (byte[] value, string name, DateTime expirationTime, System.Web.HttpContext context);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The cookie value."
+      description: "쿠키 값입니다."
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: expirationTime
       type: System.DateTime
-      description: "The expiration time for the cookie, or <xref:System.DateTime> for a session (session-only) cookie."
+      description: "쿠키의 만료 시간 또는 <xref:System.DateTime>세션 (세션 전용) 쿠키에 대 한.</xref:System.DateTime>"
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.Write*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>value</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.Write(System.Byte[],System.String,System.String,System.String,System.DateTime,System.Boolean,System.Boolean,System.Web.HttpContext)
@@ -674,42 +674,42 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Writes a cookie associated with the specified request that has the specified name, value, domain, path, expiration time, and visibility."
+  summary: "지정한 이름, 값, 도메인, 경로, 만료 시간 및 표시 유형을 가진 지정 된 요청과 관련 된 쿠키를 기록 합니다."
   syntax:
     content: public void Write (byte[] value, string name, string path, string domain, DateTime expirationTime, bool requiresSsl, bool hideFromClientScript, System.Web.HttpContext context);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The cookie value."
+      description: "쿠키 값입니다."
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: path
       type: System.String
-      description: "The path for the cookie"
+      description: "쿠키에 대 한 경로"
     - id: domain
       type: System.String
-      description: "The domain for the cookie"
+      description: "쿠키의 도메인"
     - id: expirationTime
       type: System.DateTime
-      description: "The expiration time for the cookie, or <xref:System.DateTime> for a session (session-only) cookie."
+      description: "쿠키의 만료 시간 또는 <xref:System.DateTime>세션 (세션 전용) 쿠키에 대 한.</xref:System.DateTime>"
     - id: requiresSsl
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should only be used over an SSL connection; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>SSL 연결을 통해에 쿠키를 사용 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: hideFromClientScript
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should be hidden from client script; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클라이언트 스크립트에서 쿠키를 숨기는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.Write*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>value</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>name</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Services.CookieHandler.WriteCore(System.Byte[],System.String,System.String,System.String,System.DateTime,System.Boolean,System.Boolean,System.Web.HttpContext)
@@ -724,35 +724,35 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "When overridden in a derived class, writes a cookie associated with the specified request that has the specified name, value, domain, path, expiration time, persistence and visibility."
-  remarks: "Called from the overloaded <xref:System.IdentityModel.Services.CookieHandler.Write%2A> methods to do the actual work of writing the cookie. The <xref:System.IdentityModel.Services.CookieHandler.Write%2A> methods will ensure that `value` is a non-empty byte array and that `name` and `path` are non-empty strings."
+  summary: "파생된 클래스에서 재정의 되 면 지정 된 이름, 값, 도메인, 경로, 만료 시간, 지 속성 및 표시 유형을 가진 지정 된 요청과 관련 된 쿠키를 기록 합니다."
+  remarks: "오버 로드 된 호출 <xref:System.IdentityModel.Services.CookieHandler.Write%2A>쿠키 작성의 실제 작업을 수행 하는 메서드.</xref:System.IdentityModel.Services.CookieHandler.Write%2A> <xref:System.IdentityModel.Services.CookieHandler.Write%2A>메서드는 하는지 확인 `value` 비어 있지 않은 바이트 배열이 고는 `name` 및 `path` 는 비어 있지 않은 문자열.</xref:System.IdentityModel.Services.CookieHandler.Write%2A>"
   syntax:
     content: protected abstract void WriteCore (byte[] value, string name, string path, string domain, DateTime expirationTime, bool secure, bool httpOnly, System.Web.HttpContext context);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The cookie value."
+      description: "쿠키 값입니다."
     - id: name
       type: System.String
-      description: "The name of the cookie."
+      description: "쿠키의 이름입니다."
     - id: path
       type: System.String
-      description: "The path for the cookie"
+      description: "쿠키에 대 한 경로"
     - id: domain
       type: System.String
-      description: "The domain for the cookie"
+      description: "쿠키의 도메인"
     - id: expirationTime
       type: System.DateTime
-      description: "The expiration time for the cookie, or <xref:System.DateTime> for a session (session-only) cookie."
+      description: "쿠키의 만료 시간 또는 <xref:System.DateTime>세션 (세션 전용) 쿠키에 대 한.</xref:System.DateTime>"
     - id: secure
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should only be used over an SSL connection; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>SSL 연결을 통해에 쿠키를 사용 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: httpOnly
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie should be hidden from client script; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클라이언트 스크립트에서 쿠키를 숨기는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the request."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 요청에 대 한 합니다."
   overload: System.IdentityModel.Services.CookieHandler.WriteCore*
   exceptions: []
   platform:

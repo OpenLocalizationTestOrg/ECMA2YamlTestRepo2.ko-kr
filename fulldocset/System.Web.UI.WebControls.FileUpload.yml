@@ -22,7 +22,7 @@ items:
   nameWithType: FileUpload
   fullName: System.Web.UI.WebControls.FileUpload
   type: Class
-  summary: "Displays a text box control and a browse button that enable users to select a file to upload to the server."
+  summary: "텍스트 상자 컨트롤 및 사용자가을 서버에 업로드할 파일을 선택할 수 있는 찾아보기 단추를 표시 합니다."
   remarks: "In this topic:  \n  \n-   [Introduction](#introduction)  \n  \n-   [Saving Uploaded Files](#saving_uploaded_files)  \n  \n-   [Security Considerations](#security_considerations)  \n  \n-   [Memory Limitations](#memory_limitations)  \n  \n-   [Using the FileUpload Control with the UpdatePanel Control](#using_the_FileUpload_Control_with_the_UpdatePanel_control)  \n  \n-   [Declarative Syntax](#DeclarativeSyntax)  \n  \n<a name=\"introduction\"></a>   \n## Introduction  \n The FileUpload class displays a text box control and a browse button that enable users to select a file on the client and upload it to the Web server. The user specifies the file to upload by entering the full path of the file on the local computer (for example, **C:\\MyFiles\\TestFile.txt**) in the text box of the control. Alternately, the user can select the file by clicking the **Browse** button, and then locating it in the **Choose File** dialog box.  \n  \n Use the <xref:System.Web.UI.WebControls.FileUpload.FileName%2A> property to get the name of a file on a client to upload by using the FileUpload control. The file name that this property returns does not include the path of the file on the client.  \n  \n The <xref:System.Web.UI.WebControls.FileUpload.FileContent%2A> property gets a <xref:System.IO.Stream> object that points to a file to upload. Use this property to access the contents of the file as bytes. For example, you can use the <xref:System.IO.Stream> object that is returned by the <xref:System.Web.UI.WebControls.FileUpload.FileContent%2A> property to read the contents of the file as bytes and store them in a byte array. Alternatively, you can use the <xref:System.Web.UI.WebControls.FileUpload.FileBytes%2A> property to retrieve all the bytes in the file.  \n  \n The <xref:System.Web.UI.WebControls.FileUpload.PostedFile%2A> property gets the underlying <xref:System.Web.HttpPostedFile> object for the file to upload. You can use this property to access additional properties on the file. The <xref:System.Web.HttpPostedFile.ContentLength%2A> property gets the length of the file. The <xref:System.Web.HttpPostedFile.ContentType%2A> property gets the MIME content type of the file. In addition, you can use the <xref:System.Web.UI.WebControls.FileUpload.PostedFile%2A> property to access the <xref:System.Web.HttpPostedFile.FileName%2A> property, the <xref:System.Web.HttpPostedFile.InputStream%2A> property, and the <xref:System.Web.HttpPostedFile.SaveAs%2A> method. However, the same functionality is provided by the <xref:System.Web.UI.WebControls.FileUpload.FileName%2A> property, the <xref:System.Web.UI.WebControls.FileUpload.FileContent%2A> property, and the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method.  \n  \n<a name=\"saving_uploaded_files\"></a>   \n## Saving Uploaded Files  \n The FileUpload control does not automatically save a file to the server after the user selects the file to upload. You must explicitly provide a control or mechanism to allow the user to submit the specified file. For example, you can provide a button that the user clicks to upload the file. The code that you write to save the specified file should call the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method, which saves the contents of a file to a specified path on the server. Typically, the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called in an event-handling method for an event that raises a post back to the server. For example, if you provide a button to submit a file, you could include the code to save the file inside the event-handling method for the click event.  \n  \n Before calling the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method to save the file to the server, use the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> property to verify that the FileUpload control contains a file. If the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> returns `true`, call the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method. If it returns `false`, display a message to the user indicating that the control does not contain a file. Do not check the <xref:System.Web.UI.WebControls.FileUpload.PostedFile%2A> property to determine whether a file to upload exists because, by default, this property contains 0 bytes. As a result, even when the FileUpload control is blank, the <xref:System.Web.UI.WebControls.FileUpload.PostedFile%2A> property returns a non-null value.  \n  \n<a name=\"security_considerations\"></a>   \n## Security Considerations  \n When you call the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method, you must specify the full path of the directory in which to save the uploaded file. If you do not explicitly specify a path in your application code, an exception is thrown when a user attempts to upload a file. This behavior helps keep the files on the server secure by preventing users from being able to write to arbitrary locations in your application's directory structure, as well as preventing access to sensitive root directories.  \n  \n The <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method writes the uploaded file to the specified directory. Therefore, the ASP.NET application must have write access to the directory on the server. There are two ways that the application can get write access. You can explicitly grant write access to the account under which the application is running, in the directory in which the uploaded files will be saved. Alternatively, you can increase the level of trust that is granted to the ASP.NET application. To get write access to the executing directory for the application, the application must be granted the <xref:System.Web.AspNetHostingPermission> object with the trust level set to the <xref:System.Web.AspNetHostingPermissionLevel?displayProperty=fullName> value. Increasing the level of trust increases the application's access to resources on the server. Note that this is not a secure approach, because a malicious user who gains control of your application will also be able to run under this higher level of trust. It is a best practice to run an ASP.NET application in the context of a user with the minimum privileges that are required for the application to run. For more information about security in ASP.NET applications, see [Basic Security Practices for Web Applications](~/add/includes/ajax-current-ext-md.md) and [ASP.NET Trust Levels and Policy Files](~/add/includes/ajax-current-ext-md.md).  \n  \n<a name=\"memory_limitations\"></a>   \n## Memory Limitations  \n One way to guard against denial of service attacks is to limit the size of the files that can be uploaded by using the FileUpload control. You should set a size limit that is appropriate for the types of files that you expect to be uploaded. The default size limit is 4096 kilobytes (KB), or 4 megabytes (MB). You can allow larger files to be uploaded by setting the `maxRequestLength` attribute of the  element. To increase the maximum allowable file size for the entire application, set the `maxRequestLength` attribute in the Web.config file. To increase the maximum allowable file size for a specified page, set the `maxRequestLength` attribute inside the `location` element in Web.config. For an example, see [location Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/922ef7d5-da38-4661-b1c6-5b9e5ceda1d5).  \n  \n When uploading large files, a user might also receive the following error message:  \n  \n `aspnet_wp.exe (PID: 1520) was recycled because memory consumption exceeded 460 MB (60 percent of available RAM).`  \n  \n If your users encounter this error message, increase the value of the `memoryLimit` attribute in the  of element the Web.config file for the application. The `memoryLimit` attribute specifies the maximum amount of memory that a worker process can use. If the worker process exceeds the `memoryLimit` amount, a new process is created to replace it, and all current requests are reassigned to the new process.  \n  \n To control whether the file to upload is temporarily stored in memory or on the server while the request is being processed, set the `requestLengthDiskThreshold` attribute of the  element. This attribute enables you to manage the size of the input stream buffer. The default is 256 bytes. The value that you specify should not exceed the value that you specify for the `maxRequestLength` attribute.  \n  \n<a name=\"using_the_FileUpload_Control_with_the_UpdatePanel_control\"></a>   \n## Using the FileUpload Control with the UpdatePanel Control  \n The FileUpload control is designed to be used only in postback scenarios and not in asynchronous postback scenarios during partial-page rendering. When you use a FileUpload control inside an <xref:System.Web.UI.UpdatePanel> control, the file must be uploaded by using a control that is a <xref:System.Web.UI.PostBackTrigger> object for the panel. <xref:System.Web.UI.UpdatePanel> controls are used to update selected regions of a page instead of updating the whole page with a postback. For more information, see [UpdatePanel Control Overview](~/add/includes/ajax-current-ext-md.md) and [Partial-Page Rendering Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n<a name=\"DeclarativeSyntax\"></a>   \n## Declarative Syntax  \n  \n```  \n<asp:FileUpload  \n    AccessKey=\"string\"  \n    BackColor=\"color name|#dddddd\"  \n    BorderColor=\"color name|#dddddd\"  \n    BorderStyle=\"NotSet|None|Dotted|Dashed|Solid|Double|Groove|Ridge|  \n        Inset|Outset\"  \n    BorderWidth=\"size\"  \n    CssClass=\"string\"  \n    Enabled=\"True|False\"  \n    EnableTheming=\"True|False\"  \n    EnableViewState=\"True|False\"  \n    Font-Bold=\"True|False\"  \n    Font-Italic=\"True|False\"  \n    Font-Names=\"string\"  \n    Font-Overline=\"True|False\"  \n    Font-Size=\"string|Smaller|Larger|XX-Small|X-Small|Small|Medium|  \n        Large|X-Large|XX-Large\"  \n    Font-Strikeout=\"True|False\"  \n    Font-Underline=\"True|False\"  \n    ForeColor=\"color name|#dddddd\"  \n    Height=\"size\"  \n    ID=\"string\"  \n    OnDataBinding=\"DataBinding event handler\"  \n    OnDisposed=\"Disposed event handler\"  \n    OnInit=\"Init event handler\"  \n    OnLoad=\"Load event handler\"  \n    OnPreRender=\"PreRender event handler\"  \n    OnUnload=\"Unload event handler\"  \n    runat=\"server\"  \n    SkinID=\"string\"  \n    Style=\"string\"  \n    TabIndex=\"integer\"  \n    ToolTip=\"string\"  \n    Visible=\"True|False\"  \n    Width=\"size\"  \n/>  \n```"
   example:
   - "A Visual Studio Web site project with source code is available to accompany this topic: [Download](http://go.microsoft.com/fwlink/?LinkId=191897).  \n  \n This section contains the following four examples:  \n  \n-   The first example demonstrates how to create a FileUpload control that saves files to a path that is specified in code.  \n  \n-   The second example demonstrates how to create a FileUpload control that saves files to a specified directory in the file system for the application.  \n  \n-   The third example demonstrates how to create a FileUpload control that saves files to a specified path and limits the size of the file that can be uploaded.  \n  \n-   The fourth example demonstrates how to create a FileUpload control that saves files to a specified path and allows only files that have the .doc or .xls file name extensions to be uploaded.  \n  \n> [!CAUTION]\n>  These examples demonstrate the basic syntax for the FileUpload control, but they do not demonstrate all the necessary error checking that should be completed before to saving the file. For a more complete example, see <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A>.  \n  \n The following example demonstrates how to create a FileUpload control that saves files to a path that is specified in code. The <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called to save the file to the specified path on the server.  \n  \n [!code-vb[FileUploadClass1#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_338_1.aspx)]\n [!code-cs[FileUploadClass1#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_338_1.aspx)]  \n  \n The following example demonstrates how to create a FileUpload control that saves files to a specified directory in the file system for the application. The <xref:System.Web.HttpRequest.PhysicalApplicationPath%2A?displayProperty=fullName> property is used to get the physical file system path of the root directory for the currently executing server application. The <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called to save the file to the specified path on the server.  \n  \n [!code-vb[FileUploadClass2#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_338_2.aspx)]\n [!code-cs[FileUploadClass2#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_338_2.aspx)]  \n  \n The following example demonstrates how to create a FileUpload control that saves files to a path that is specified in the code. The control limits the size of the file that can be uploaded to 5 MB. The <xref:System.Web.UI.WebControls.FileUpload.PostedFile%2A> property is used to access the underlying <xref:System.Web.HttpPostedFile.ContentLength%2A> property and return the size of the file. If the size of the file to upload is less than 2 MB, the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called to save the file to the specified path on the server. In addition to checking for the maximum file size setting in your application code, you can set the `maxRequestLength` attribute of the  element to a maximum allowable size in the configuration file for your application.  \n  \n [!code-vb[FileUploadClass3#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_338_3.aspx)]\n [!code-cs[FileUploadClass3#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_338_3.aspx)]  \n  \n The following example demonstrates how to create a FileUpload control that saves files to a path that is specified in the code. This example allows only files that have the .doc or .xls file name extensions to be uploaded. The <xref:System.IO.Path.GetExtension%2A?displayProperty=fullName> method is called to return the extension of the file to upload. If the file has a .doc or .xls file name extension, the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called to save the file to the specified path on the server.  \n  \n [!code-vb[FileUploadClass4#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_338_4.aspx)]\n [!code-cs[FileUploadClass4#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_338_4.aspx)]"
@@ -194,8 +194,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> class."
-  remarks: "Use the FileUpload constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.FileUpload> class. The <xref:System.Web.UI.WebControls.FileUpload> control does not automatically save a file to the server after the user selects the file to upload. You must explicitly provide a control or mechanism to allow the user to submit the specified file. For example, you can provide a button that the user clicks to upload the file."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 클래스입니다."
+  remarks: "<xref:System.Web.UI.WebControls.FileUpload>클래스</xref:System.Web.UI.WebControls.FileUpload> 의 새 인스턴스를 초기화 하는 파일 업로드 생성자를 사용 합니다. <xref:System.Web.UI.WebControls.FileUpload>컨트롤이 자동으로 저장 하지는 파일 서버에 업로드할 파일을 선택한 후.</xref:System.Web.UI.WebControls.FileUpload> 명시적으로 컨트롤이 나 사용자 지정된 된 파일을 전송 하도록 허용 하는 메커니즘을 제공 해야 합니다. 예를 들어 파일을 업로드 하는 사용자가 클릭 하는 단추를 제공할 수 있습니다."
   example:
   - "The following example demonstrates how to initialize a new instance of the <xref:System.Web.UI.WebControls.FileUpload> class. Note that this example demonstrates the constructor syntax but does not add functionality to the control after it is created.  \n  \n This example is part of a larger example provided for the <xref:System.Web.UI.WebControls.FileUpload> class.  \n  \n [!code-vb[FileUploadCstr#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_212_1.aspx)]"
   syntax:
@@ -217,14 +217,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Adds the HTML attributes and styles of a <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control to render to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The AddAttributesToRender method is primarily used by control developers to insert the appropriate attributes and styles to the <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName> output stream for a <xref:System.Web.UI.WebControls.FileUpload> control. The AddAttributesToRender method overrides the <xref:System.Web.UI.WebControls.WebControl.AddAttributesToRender%2A?displayProperty=fullName> method."
+  summary: "HTML 특성 및 스타일의 추가 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 컨트롤을 지정 된 렌더링할 <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 개체입니다."
+  remarks: "AddAttributesToRender 메서드는 주로 컨트롤 개발자가 적절 한 특성을 삽입 하 고 스타일을 <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName>에 대 한 출력 스트림에 <xref:System.Web.UI.WebControls.FileUpload>컨트롤.</xref:System.Web.UI.WebControls.FileUpload> </xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName> AddAttributesToRender 메서드 재정의 <xref:System.Web.UI.WebControls.WebControl.AddAttributesToRender%2A?displayProperty=fullName>메서드.</xref:System.Web.UI.WebControls.WebControl.AddAttributesToRender%2A?displayProperty=fullName>"
   syntax:
     content: protected override void AddAttributesToRender (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> HTML 클라이언트에서 콘텐츠를 렌더링 하기 위한 출력 스트림을 나타내는입니다."
   overload: System.Web.UI.WebControls.FileUpload.AddAttributesToRender*
   exceptions: []
   platform:
@@ -241,12 +241,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that specifies whether multiple files can be selected for upload."
+  summary: "여러 파일 업로드를 위해 선택할 수 있는지 여부를 지정 하는 값을 가져오거나 설정 합니다."
   syntax:
     content: public virtual bool AllowMultiple { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if multiple files can be selected; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>여러 파일을 선택할 수 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.FileUpload.AllowMultiple*
   exceptions: []
   platform:
@@ -263,20 +263,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets an array of the bytes in a file that is specified by using a <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.WebControls.FileUpload> control does not automatically read the file from the client. You must explicitly provide a control or mechanism to allow the user to submit the specified file. For example, you can provide a button that the user can click to upload the file. The code that you write to save the specified file could call the FileBytes property, which returns the contents of the file.       Before calling the FileBytes property, you should use the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> property to verify that the <xref:System.Web.UI.WebControls.FileUpload> control contains a file to upload. If the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> returns `true`, call the FileBytes property. If it returns `false`, display a message to the user indicating that the control does not contain a file. If you do not provide error-handling code to verify that a file exists, an attempt to save a nonexistent file throws an <xref:System.Web.HttpException> exception."
+  summary: "사용 하 여 지정 된 파일에 있는 바이트의 배열을 가져옵니다는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 제어 합니다."
+  remarks: "<xref:System.Web.UI.WebControls.FileUpload>컨트롤에 자동으로 파일을 읽을 클라이언트에서.</xref:System.Web.UI.WebControls.FileUpload> 명시적으로 컨트롤이 나 사용자 지정된 된 파일을 전송 하도록 허용 하는 메커니즘을 제공 해야 합니다. 예를 들어 사용자는 해당 파일을 업로드 하기 위해 클릭할 수 있는 단추를 제공할 수 있습니다. 지정된 된 파일을 저장 하기 위해 작성 하는 코드 파일의 내용을 반환 합니다. FileBytes 속성을 호출 합니다.       사용 해야 FileBytes 속성을 호출 하기 전에 <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A>되었는지 확인 하는 속성은 <xref:System.Web.UI.WebControls.FileUpload>컨트롤에 업로드할 파일을 포함 합니다.</xref:System.Web.UI.WebControls.FileUpload> </xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> 경우는 <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A>반환 `true`, FileBytes 속성을 호출 합니다.</xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> 반환 하는 경우 `false`를 사용자에 게 컨트롤 파일이 없습니다 메시지를 표시 합니다. 파일이 있는지 확인 하려면 오류 처리 코드를 제공 하지 않으면 존재 하지 않는 파일을 저장 하려는 시도가 발생 한 <xref:System.Web.HttpException>예외.</xref:System.Web.HttpException>"
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control. When the user clicks the **Upload file** button, the contents of the file are displayed as bytes in a text box on the page. This example uses the FileBytes property to upload the entire file.  \n  \n [!code-cs[FileUploadFileBytes#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_816_1.aspx)]\n [!code-vb[FileUploadFileBytes#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_816_1.aspx)]"
   syntax:
     content: public byte[] FileBytes { get; }
     return:
       type: System.Byte[]
-      description: "A <xref:System.Byte> array that contains the contents of the specified file."
+      description: "A <xref:System.Byte>지정된 된 파일의 내용이 포함 된 배열.</xref:System.Byte>"
   overload: System.Web.UI.WebControls.FileUpload.FileBytes*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The entire file was not read."
+    description: "전체 파일을 읽지 않았습니다."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.FileUpload.FileContent
@@ -291,15 +291,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a <xref:System.IO.Stream> object that points to a file to upload using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control."
-  remarks: "The FileContent property gets a <xref:System.IO.Stream> object that points to a file to upload by using the <xref:System.Web.UI.WebControls.FileUpload> control. Use the FileContent property to access the contents of the file. For example, you can use the <xref:System.IO.Stream> object that is returned by this property to read the contents of the file as bytes and store them in a byte array."
+  summary: "가져옵니다는 <xref:System.IO.Stream>를 사용 하 여 업로드할 파일을 가리키는 개체는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 컨트롤.</xref:System.IO.Stream>"
+  remarks: "FileContent 속성 get는 <xref:System.IO.Stream>를 사용 하 여 업로드할 파일을 가리키는 개체는 <xref:System.Web.UI.WebControls.FileUpload>컨트롤.</xref:System.Web.UI.WebControls.FileUpload> </xref:System.IO.Stream> FileContent 속성을 사용 하 여 파일의 내용에 액세스할 수 있습니다. 예를 들어, 사용할 수는 <xref:System.IO.Stream>바이트 형식으로 파일의 내용을 읽고 바이트 배열에 저장 하려면이 속성에서 반환 되는 개체입니다.</xref:System.IO.Stream>"
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control. The FileContent property is used to read the contents of the file into a byte array. When the user clicks the **Upload file** button, the contents of the file are displayed as bytes in a text box on the page.  \n  \n [!code-cs[FileUpload.FileContent#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_458_1.aspx)]\n [!code-vb[FileUpload.FileContent#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_458_1.aspx)]"
   syntax:
     content: public System.IO.Stream FileContent { get; }
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> that points to a file to upload using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref>."
+      description: "A <xref:System.IO.Stream>를 사용 하 여 업로드할 파일을 가리키는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref>.</xref:System.IO.Stream>"
   overload: System.Web.UI.WebControls.FileUpload.FileContent*
   exceptions: []
   platform:
@@ -316,15 +316,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the name of a file on a client to upload using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control."
-  remarks: "Gets the name of a file on a client to upload using the <xref:System.Web.UI.WebControls.FileUpload> control. The file name that the FileName property returns does not include the path of the file on the client."
+  summary: "사용 하 여 업로드할 클라이언트의 파일의 이름을 가져옵니다는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 제어 합니다."
+  remarks: "사용 하 여 업로드할 클라이언트의 파일의 이름을 가져옵니다는 <xref:System.Web.UI.WebControls.FileUpload>컨트롤.</xref:System.Web.UI.WebControls.FileUpload> 파일 이름을 FileName 속성에서 반환 하는 클라이언트에서 파일의 경로 포함 되지 않습니다."
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control that saves files to a path that is specified in code. The FileName property is used to get the name of the file to upload. The <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called to save the file to the specified path on the server, using the same name the file has on the client. Note that this example demonstrates the basic syntax for this control, but does not demonstrate all the necessary error checking that should be done before saving the file. For a more complete example, see <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A>.  \n  \n [!code-vb[FileUploadClass1#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_813_1.aspx)]\n [!code-cs[FileUploadClass1#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_813_1.aspx)]"
   syntax:
     content: public string FileName { get; }
     return:
       type: System.String
-      description: "A string that specifies the name of a file on a client to upload using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref>."
+      description: "사용 하 여 업로드할 클라이언트의 파일의 이름을 지정 하는 문자열은 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.FileUpload.FileName*
   exceptions: []
   platform:
@@ -341,15 +341,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value indicating whether the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control contains a file."
-  remarks: "The HasFile property gets a value indicating whether the <xref:System.Web.UI.WebControls.FileUpload> control contains a file to upload. Use this property to verify that a file to upload exists before performing operations on the file. For example, before calling the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method to save the file to disk, use the HasFile property to verify that the file exists. If HasFile returns `true`, call the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method. If it returns `false`, display a message to the user indicating that the control does not contain a file."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 컨트롤 파일을 포함 합니다."
+  remarks: "HasFile 속성 나타내는 값을 가져옵니다 여부는 <xref:System.Web.UI.WebControls.FileUpload>컨트롤에 업로드할 파일을 포함 합니다.</xref:System.Web.UI.WebControls.FileUpload> 이 속성을 사용 하 여 업로드할 파일을 파일에 대 한 작업을 수행 하기 전에 존재 하는지 확인 합니다. 예를 들어 호출 하기 전에 <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A>를 디스크에 파일을 저장 하려면 파일이 있는지 확인 하려면 HasFile 속성을 사용 합니다.</xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> HasFile 반환 하는 경우 `true`, 호출 된 <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A>메서드.</xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> 반환 하는 경우 `false`를 사용자에 게 컨트롤 파일이 없습니다 메시지를 표시 합니다."
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control that performs error checking. Before saving the file, the HasFile method is called to verify that the control contains a file to upload. In addition, the <xref:System.IO.File.Exists%2A?displayProperty=fullName> method is called to check whether a file with the same name already occurs in the path. If it does, the name of the file to upload is prefixed with an underscore character before the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method is called. This prevents the existing file from being overwritten.  \n  \n [!code-vb[FileUpload.SaveAs#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_287_1.aspx)]\n [!code-cs[FileUpload.SaveAs#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_287_1.aspx)]"
   syntax:
     content: public bool HasFile { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> contains a file; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 포함 된 파일, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.FileUpload.HasFile*
   exceptions: []
   platform:
@@ -366,13 +366,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether any files have been uploaded."
-  remarks: "This method also returns `false` if an empty file (zero bytes) is uploaded."
+  summary: "업로드 된 모든 파일이 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "또한이 메서드 반환 `false` (0 바이트) 하는 빈 파일을 업로드 합니다."
   syntax:
     content: public bool HasFiles { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if any files have been uploaded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>파일이 업로드 되지 않으면 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.FileUpload.HasFiles*
   exceptions: []
   platform:
@@ -389,14 +389,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event for the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control."
-  remarks: "The OnPreRender method notifies the <xref:System.Web.UI.WebControls.FileUpload> control to perform any necessary pre-rendering steps before saving view state and rendering content."
+  summary: "발생는 <xref href=&quot;System.Web.UI.Control.PreRender&quot;> </xref> 에 대 한 이벤트는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 제어 합니다."
+  remarks: "OnPreRender 메서드 알립니다는 <xref:System.Web.UI.WebControls.FileUpload>뷰 상태 및 렌더링 콘텐츠를 저장 하기 전에 필요한 모든 사전 렌더링 단계를 수행 하는 컨트롤입니다.</xref:System.Web.UI.WebControls.FileUpload>"
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An &lt;xref:System.EventArgs?displayProperty=fullName&gt; object that contains the event data."
+      description: "&lt;xref:System.EventArgs?displayProperty=fullName&gt; 이벤트 데이터를 포함 하는 개체입니다."
   overload: System.Web.UI.WebControls.FileUpload.OnPreRender*
   exceptions: []
   platform:
@@ -413,15 +413,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the underlying <xref href=&quot;System.Web.HttpPostedFile&quot;></xref> object for a file that is uploaded by using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control."
-  remarks: "The PostedFile property gets the underlying <xref:System.Web.HttpPostedFile> object for a file that is uploaded by using the <xref:System.Web.UI.WebControls.FileUpload> control. Use this property to access additional properties on the uploaded file.       You can use the <xref:System.Web.HttpPostedFile.ContentLength%2A> property to get the length of the file. You can use the <xref:System.Web.HttpPostedFile.ContentType%2A> property to get the MIME content type of the file. In addition, you can use the PostedFile property to access the <xref:System.Web.HttpPostedFile.FileName%2A> property, the <xref:System.Web.HttpPostedFile.InputStream%2A> property, and the <xref:System.Web.HttpPostedFile.SaveAs%2A> method. However, the same functionality is provided by the <xref:System.Web.UI.WebControls.FileUpload.FileName%2A> property, the <xref:System.Web.UI.WebControls.FileUpload.FileContent%2A> property, and the <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> method."
+  summary: "내부 가져옵니다 <xref href=&quot;System.Web.HttpPostedFile&quot;> </xref> 를 사용 하 여 업로드 된 파일에 대 한 개체는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 제어 합니다."
+  remarks: "PostedFile 속성의 내부 가져옵니다 <xref:System.Web.HttpPostedFile>를 사용 하 여 업로드 된 파일에 대 한 개체는 <xref:System.Web.UI.WebControls.FileUpload>컨트롤.</xref:System.Web.UI.WebControls.FileUpload> </xref:System.Web.HttpPostedFile> 업로드 된 파일에서 추가 속성에 액세스 하려면이 속성을 사용 합니다.       사용할 수는 <xref:System.Web.HttpPostedFile.ContentLength%2A>파일의 길이 가져올 속성입니다.</xref:System.Web.HttpPostedFile.ContentLength%2A> 사용할 수는 <xref:System.Web.HttpPostedFile.ContentType%2A>MIME 가져올 속성을 콘텐츠 형식 파일입니다.</xref:System.Web.HttpPostedFile.ContentType%2A> 또한에 액세스 하려면 PostedFile 속성을 사용할 수 있습니다는 <xref:System.Web.HttpPostedFile.FileName%2A>속성에는 <xref:System.Web.HttpPostedFile.InputStream%2A>속성 및 <xref:System.Web.HttpPostedFile.SaveAs%2A>메서드.</xref:System.Web.HttpPostedFile.SaveAs%2A> </xref:System.Web.HttpPostedFile.InputStream%2A> </xref:System.Web.HttpPostedFile.FileName%2A> 하지만 동일한 기능을 제공는 <xref:System.Web.UI.WebControls.FileUpload.FileName%2A>속성은 <xref:System.Web.UI.WebControls.FileUpload.FileContent%2A>속성 및 <xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A>메서드.</xref:System.Web.UI.WebControls.FileUpload.SaveAs%2A> </xref:System.Web.UI.WebControls.FileUpload.FileContent%2A> </xref:System.Web.UI.WebControls.FileUpload.FileName%2A>"
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control. When the user clicks the **Upload file** button, the contents of the file are displayed as bytes in a text box on the page. This example uses the PostedFile property to access the <xref:System.Web.HttpPostedFile.ContentLength%2A?displayProperty=fullName> property. The <xref:System.Web.HttpPostedFile.ContentLength%2A> property is used to determine the length of the file before copying the file contents to a byte array.  \n  \n [!code-cs[FileUpload.FileContent#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_462_1.aspx)]\n [!code-vb[FileUpload.FileContent#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_462_1.aspx)]"
   syntax:
     content: public System.Web.HttpPostedFile PostedFile { get; }
     return:
       type: System.Web.HttpPostedFile
-      description: "An <xref href=&quot;System.Web.HttpPostedFile&quot;></xref> for a file uploaded by using the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref>."
+      description: "<xref href=&quot;System.Web.HttpPostedFile&quot;> </xref> 를 사용 하 여 업로드 하는 파일에 대 한는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref>합니다."
   overload: System.Web.UI.WebControls.FileUpload.PostedFile*
   exceptions: []
   platform:
@@ -438,12 +438,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the collection of uploaded files."
+  summary: "업로드 된 파일의 컬렉션을 가져옵니다."
   syntax:
     content: public System.Collections.Generic.IList<System.Web.HttpPostedFile> PostedFiles { get; }
     return:
       type: System.Collections.Generic.IList{System.Web.HttpPostedFile}
-      description: "The collection of uploaded files."
+      description: "업로드 된 파일의 컬렉션입니다."
   overload: System.Web.UI.WebControls.FileUpload.PostedFiles*
   exceptions: []
   platform:
@@ -460,14 +460,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Sends the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control content to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object, which writes the content to render on the client."
-  remarks: "The Render method sends the <xref:System.Web.UI.WebControls.FileUpload> control content to the specified <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName> object, which writes the content to render on the client."
+  summary: "보냅니다는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 컨트롤 콘텐츠를 지정 된 <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 개체는 클라이언트에서 렌더링할 콘텐츠를 기록 합니다."
+  remarks: "Render 메서드는 전송 된 <xref:System.Web.UI.WebControls.FileUpload>컨트롤 콘텐츠를 지정 된 <xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName>클라이언트에서 렌더링할 콘텐츠를 쓰는.</xref:System.Web.UI.HtmlTextWriter?displayProperty=fullName> </xref:System.Web.UI.WebControls.FileUpload>"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object that receives the <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;></xref> control content."
+      description: "<xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> 받는 개체는 <xref href=&quot;System.Web.UI.WebControls.FileUpload&quot;> </xref> 내용을 제어 합니다."
   overload: System.Web.UI.WebControls.FileUpload.Render*
   exceptions: []
   platform:
@@ -484,8 +484,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves the contents of an uploaded file to a specified path on the Web server."
-  remarks: "The SaveAs method saves the contents of an uploaded file to a specified path on the Web server.       The <xref:System.Web.UI.WebControls.FileUpload> control does not automatically save a file to the server after the user selects the file to upload. You must explicitly provide a control or mechanism to allow the user to submit the specified file. For example, you can provide a button that the user clicks to upload the file. The code that you write to save the specified file should call the SaveAs method, which saves the contents of a file to a specified path on the server. Typically, the SaveAs method is called in an event-handling method for an event that raises a post back to the server. For example, if you provide a button to submit a file, the code to save the file to the server could then be included inside the event-handling method for the click event.       When you call the SaveAs method, you must specify the full path of the directory on the server in which to save the uploaded file. If you do not explicitly specify a path in your application code, an <xref:System.Web.HttpException> exception is thrown when a user attempts to upload a file. This behavior helps keep the files on the server secure, by not allowing users to specify a path in which to save the files that they upload.       Before calling the SaveAs method, you should use the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> property to verify that the <xref:System.Web.UI.WebControls.FileUpload> control contains a file to upload. If the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> returns `true`, call the SaveAs method. If it returns `false`, display a message to the user indicating that the control does not contain a file. If you do not provide error-handling code to verify that a file exists, an attempt to save a nonexistent file throws an <xref:System.Web.HttpException> exception.       For a call to the SaveAs to work, the ASP.NET application must have write access to the directory on the server. There are two ways that the application can get write access. You can explicitly grant write access to the account under which the application is running, in the directory in which the uploaded files will be saved. Alternatively, you can increase the level of trust that is granted to the ASP.NET application. To get write access to the executing directory for the application, the application must be granted the <xref:System.Web.AspNetHostingPermission> object with the trust level set to the <xref:System.Web.AspNetHostingPermissionLevel?displayProperty=fullName> value. Increasing the level of trust increases the application&quot;s access to resources on the server. Note that this is not a secure approach, because a malicious user who gains control of your application will also be able to run under this higher level of trust. It is a best practice to run an ASP.NET application in the context of a user who has the minimum privileges that are required for the application to run. For more information about security in ASP.NET applications, see [Basic Security Practices for Web Applications](~/add/includes/ajax-current-ext-md.md) and [ASP.NET Trust Levels and Policy Files](~/add/includes/ajax-current-ext-md.md)."
+  summary: "웹 서버에서 지정 된 경로에 업로드 된 파일의 내용을 저장합니다."
+  remarks: "SaveAs 메서드는 웹 서버에서 지정 된 경로에 업로드 된 파일의 내용을 저장합니다.       <xref:System.Web.UI.WebControls.FileUpload>컨트롤이 자동으로 저장 하지는 파일 서버에 업로드할 파일을 선택한 후.</xref:System.Web.UI.WebControls.FileUpload> 명시적으로 컨트롤이 나 사용자 지정된 된 파일을 전송 하도록 허용 하는 메커니즘을 제공 해야 합니다. 예를 들어 파일을 업로드 하는 사용자가 클릭 하는 단추를 제공할 수 있습니다. 지정된 된 파일을 저장 하기 위해 작성 하는 코드는 서버에서 파일의 내용이 지정된 된 경로에 저장 하는 SaveAs 메서드를 호출 해야 합니다. 일반적으로 SaveAs 메서드는 서버에 다시 게시를 발생 시키는 이벤트에 대 한 이벤트 처리 메서드에서 호출 됩니다. 예를 들어 파일을 전송 하는 단추를 제공 하는 경우 서버에 파일을 저장 하는 코드 click 이벤트에 대 한 이벤트 처리 메서드 내에 포함 됩니다.       SaveAs 메서드를 호출할 때 업로드 된 파일을 저장 하는 서버에서 디렉터리의 전체 경로 지정 해야 합니다. 응용 프로그램 코드에서 경로 명시적으로 지정 하지 않는 경우는 <xref:System.Web.HttpException>사용자가 파일을 업로드 하는 경우 예외가 throw 됩니다.</xref:System.Web.HttpException> 이 문제는 서버에서 파일을 업로드 하는 파일을 저장할 경로 지정 하려면 사용자가 허용 하지 않도록 보안을 유지 하기 하는 데 도움이 됩니다.       SaveAs 메서드를 호출 하기 전에 사용 해야는 <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A>되었는지 확인 하는 속성은 <xref:System.Web.UI.WebControls.FileUpload>컨트롤에 업로드할 파일을 포함 합니다.</xref:System.Web.UI.WebControls.FileUpload> </xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> 경우는 <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A>반환 `true`, SaveAs 메서드를 호출 합니다.</xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> 반환 하는 경우 `false`를 사용자에 게 컨트롤 파일이 없습니다 메시지를 표시 합니다. 파일이 있는지 확인 하려면 오류 처리 코드를 제공 하지 않으면 존재 하지 않는 파일을 저장 하려는 시도가 발생 한 <xref:System.Web.HttpException>예외.</xref:System.Web.HttpException>       실행 되도록 하는 다른 이름으로 저장 한 호출에 대 한 ASP.NET 응용 프로그램 서버에서 디렉터리에 대 한 쓰기 있어야 합니다. 두 가지 방법으로 응용 프로그램 쓰기 액세스를 얻을 수 있습니다. 명시적으로 응용 프로그램이 실행 되 고 있는, 업로드 한 파일을 저장할 디렉터리에서 계정에 대 한 쓰기 액세스를 부여할 수 있습니다. 또는 ASP.NET 응용 프로그램에 부여 되는 신뢰 수준을 높일 수 있습니다. 응용 프로그램에 대 한 실행 디렉터리에 대 한 쓰기를 가져오려는 응용 프로그램을 부여 해야 합니다는 <xref:System.Web.AspNetHostingPermission>신뢰 수준을 설정 하는 개체는 <xref:System.Web.AspNetHostingPermissionLevel?displayProperty=fullName>값.</xref:System.Web.AspNetHostingPermissionLevel?displayProperty=fullName> </xref:System.Web.AspNetHostingPermission> 신뢰 수준의 늘리면 서버에서 리소스에 대 한 응용 프로그램의 액세스를 증가 합니다. 참고가 아닌지 안전한 방법은 응용 프로그램의 제어권을 얻은 악의적인 사용자도 되므로이 더 높은 신뢰 수준에서 실행할 수 있습니다. 실행할 응용 프로그램에 필요한 최소 권한을 가진 사용자의 컨텍스트에서 ASP.NET 응용 프로그램을 실행 하는 것이 좋습니다. ASP.NET 응용 프로그램의 보안에 대 한 자세한 내용은 참조 [웹 응용 프로그램에 대 한 기본 보안 사례](~/add/includes/ajax-current-ext-md.md) 및 [ASP.NET 신뢰 수준과 정책 파일](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example demonstrates how to create a <xref:System.Web.UI.WebControls.FileUpload> control that performs error checking. Before the file is saved, the <xref:System.Web.UI.WebControls.FileUpload.HasFile%2A> method is called to verify that a file to upload exists. In addition, the <xref:System.IO.File.Exists%2A?displayProperty=fullName> method is called to check whether a file that has the same name already exists in the path. If it does, the name of the file to upload is prefixed with a number before the SaveAs method is called. This prevents the existing file from being overwritten.  \n  \n [!code-vb[FileUpload.SaveAs#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_81_1.aspx)]\n [!code-cs[FileUpload.SaveAs#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_81_1.aspx)]"
   syntax:
@@ -493,12 +493,12 @@ items:
     parameters:
     - id: filename
       type: System.String
-      description: "A string that specifies the full path of the location of the server on which to save the uploaded file."
+      description: "에 업로드 된 파일을 저장할 서버의 위치의 전체 경로 지정 하는 문자열입니다."
   overload: System.Web.UI.WebControls.FileUpload.SaveAs*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "<code>filename</code> is not a full path."
+    description: "<code>filename</code>전체 경로 않습니다."
   platform:
   - net462
 references:

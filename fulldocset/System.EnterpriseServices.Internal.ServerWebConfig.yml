@@ -12,8 +12,8 @@ items:
   nameWithType: ServerWebConfig
   fullName: System.EnterpriseServices.Internal.ServerWebConfig
   type: Class
-  summary: "Creates a Web.config file for a SOAP-enabled COM+ application. Can also add component entries to the file for COM interfaces being published in the application."
-  remarks: "The ServerWebConfig class is used to create a Web.config file during creation of a virtual root in Internet Information Services (IIS) 6.0 for a SOAP-enabled COM+ application. It also can add XML elements to the Web.config file for component interfaces being added to the application.       ServerWebConfig is used internally by the .NET Framework. You do not need to use it directly in your code."
+  summary: "SOAP 기반 COM + 응용 프로그램에 대 한 Web.config 파일을 만듭니다. 응용 프로그램에 게시 되는 COM 인터페이스에 대 한 파일에 구성 요소 항목을 추가할 수도 있습니다."
+  remarks: "인터넷 정보 서비스 (IIS) 6.0 SOAP 기반 COM + 응용 프로그램에 대 한 가상 루트를 만드는 동안 Web.config 파일을 만드는 데 ServerWebConfig 클래스입니다. 또한 응용 프로그램에 추가 되 고 구성 요소 인터페이스에 대 한 Web.config 파일에 XML 요소를 추가할 수 있습니다.       ServerWebConfig은.NET Framework에서 내부적으로 사용 됩니다. 코드에서 직접 사용할 필요가 없습니다."
   syntax:
     content: 'public class ServerWebConfig : System.EnterpriseServices.Internal.IServerWebConfig'
   inheritance:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Initializes a new instance of the <xref href=&quot;System.EnterpriseServices.Internal.ServerWebConfig&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.EnterpriseServices.Internal.ServerWebConfig&quot;> </xref> 클래스입니다."
   syntax:
     content: public ServerWebConfig ();
     parameters: []
@@ -55,29 +55,29 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Adds XML elements to a Web.config file for a COM interface being published in a SOAP-enabled COM+ application."
-  remarks: "For the specified type, the AddElement method adds to the Web.config file the `<wellknown>` and `<activated>` elements as children of the `<service>` element with the following XPath:       `/configuration/system.runtime.remoting/application/service`       The `AssemblyName`, `TypeName`, `ProgId`, and `WkoMode` parameters are incorporated into the attribute values of the two added elements.       AddElement should not be called directly. Instead, call the <xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A> method."
+  summary: "SOAP 기반 COM + 응용 프로그램에 게시 되는 COM 인터페이스에 대 한 Web.config 파일에 XML 요소를 추가 합니다."
+  remarks: "지정된 된 형식에 대 한 AddElement 메서드 Web.config 파일에 추가 된 `<wellknown>` 및 `<activated>` 자식으로 `<service>` 다음 XPath로 요소: `/configuration/system.runtime.remoting/application/service` 는 `AssemblyName`, `TypeName`, `ProgId`, 및 `WkoMode` 매개 변수는 두 개의 추가 된 요소의 특성 값에 통합 됩니다.       AddElement 직접 호출할 수 없습니다. 대신, 호출 된 <xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A>메서드.</xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A>"
   syntax:
     content: public void AddElement (string FilePath, string AssemblyName, string TypeName, string ProgId, string WkoMode, out string Error);
     parameters:
     - id: FilePath
       type: System.String
-      description: "The path of the existing Web.config file."
+      description: "기존 Web.config 파일의 경로입니다."
     - id: AssemblyName
       type: System.String
-      description: "The name of the assembly that contains the type being added."
+      description: "추가 되는 형식에 포함 된 어셈블리의 이름입니다."
     - id: TypeName
       type: System.String
-      description: "The name of the type being added."
+      description: "추가 되는 형식의 이름입니다."
     - id: ProgId
       type: System.String
-      description: "The programmatic identifier for the type being added."
+      description: "추가 되는 형식에 대 한 프로그래밍 방식 식별자입니다."
     - id: WkoMode
       type: System.String
-      description: "A string constant that corresponds to the name of a member from the <xref href=&quot;System.Runtime.Remoting.WellKnownObjectMode&quot;></xref> enumeration, which indicates how a well-known object is activated."
+      description: "멤버의 이름에 해당 하는 문자열 상수는 <xref href=&quot;System.Runtime.Remoting.WellKnownObjectMode&quot;> </xref> 잘 알려진 개체를 활성화 하는 방법을 나타내는 열거형입니다."
     - id: Error
       type: System.String
-      description: "A string to which an error message can be written."
+      description: "오류 메시지를 작성할 수 있는 문자열입니다."
   overload: System.EnterpriseServices.Internal.ServerWebConfig.AddElement*
   exceptions: []
   platform:
@@ -94,20 +94,20 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Creates a Web.config file for a SOAP-enabled COM+ application so that the file is ready to have XML elements added for COM interfaces being published."
-  remarks: "The Create method creates a Web.config file that contains the hierarchy for an empty element with the following XPath:      ```   /configuration/system.runtime.remoting/application/service   ```       Instead of instantiating a <xref:System.EnterpriseServices.Internal.ServerWebConfig> class object and calling Create directly, call the <xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A> method."
+  summary: "파일이 게시 되는 COM 인터페이스에 대 한 추가 XML 요소를 준비 하는 SOAP 기반 COM + 응용 프로그램에 대 한 Web.config 파일을 만듭니다."
+  remarks: "Create 메서드 다음 xpath는 빈 요소에 대 한 계층을 포함 하는 Web.config 파일을 만듭니다: ```   /configuration/system.runtime.remoting/application/service   ``` 인스턴스화하는 대신는 <xref:System.EnterpriseServices.Internal.ServerWebConfig>개체 만들기를 직접 호출을 호출 하 고 클래스는 <xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A>메서드.</xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A> </xref:System.EnterpriseServices.Internal.ServerWebConfig>"
   syntax:
     content: public void Create (string FilePath, string FilePrefix, out string Error);
     parameters:
     - id: FilePath
       type: System.String
-      description: "The folder in which the configuration file should be created."
+      description: "구성 파일을 만들 폴더입니다."
     - id: FilePrefix
       type: System.String
-      description: "The string value &quot;Web&quot;, to which a config extension is added."
+      description: "문자열 값 &quot;웹&quot;, config 확장이 추가 됩니다."
     - id: Error
       type: System.String
-      description: "A string to which an error message can be written."
+      description: "오류 메시지를 작성할 수 있는 문자열입니다."
   overload: System.EnterpriseServices.Internal.ServerWebConfig.Create*
   exceptions: []
   platform:

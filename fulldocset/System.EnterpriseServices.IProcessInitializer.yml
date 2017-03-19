@@ -11,8 +11,8 @@ items:
   nameWithType: IProcessInitializer
   fullName: System.EnterpriseServices.IProcessInitializer
   type: Interface
-  summary: "Supports methods that can be called when a COM component starts up or shuts down."
-  remarks: "Implement the IProcessInitializer interface methods on serviced components if you want to run initialization or shutdown code when a server process (Dllhost.exe) starts up or shuts down, respectively.       COM+ provides `Startup` and `Shutdown` events when Dllhost.exe starts and ends. This feature enables any COM+ components that are installed in a COM+ server application (referred to as server components hereafter) to run custom initialization and clean up code. An instance of each component that implements the IProcessInitializer interface will be created and stored for the duration of the process, and called on the interface methods during startup and shutdown. When implemented on a <xref:System.EnterpriseServices.ServicedComponent>, during registration of the component, the `InitializesServerApplication` parameter in the `COMAdminCatalogObject` within the Components collection is set to `true`.       Using the `Startup` and `Shutdown` events, you can initialize resources, create connections, initialize shared data, and run cleanup code. However, you must not access states that are specific to COM+ because instances of server components have not yet been created. In addition, the code in the `Startup` and `Shutdown` events should return as quickly as possible, because the system waits only 90 seconds for Dllhost.exe to prepare to accept activations after the system starts the process. If Dllhost.exe does not signal that it is ready within 90 seconds, the system ends the process; thus, all initialization processing needs to be completed within this time frame. Each server component that participates in initialization must support the IProcessInitializer interface. On DllHost.exe startup, COM+ creates all server components that requested this service, calls `QueryInterface` for the IProcessInitializer interface, and calls the <xref:System.EnterpriseServices.IProcessInitializer.Startup%2A> function. Similarly, when the DllHost.exe process is shut down, it calls the <xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A> function on those previously stored interface pointers."
+  summary: "COM 구성 요소 시작 되거나 종료 될 때 호출 될 수 있는 메서드를 지원 합니다."
+  remarks: "서버 프로세스 (Dllhost.exe) 시작 되거나 각각 종료 될 때 초기화 또는 종료 코드를 실행 하려는 경우에 서비스 구성 요소에서 IProcessInitializer 인터페이스 메서드를 구현 합니다.       COM + 제공 `Startup` 및 `Shutdown` Dllhost.exe 시작 되 고 끝날 때 이벤트입니다. 이 기능을 사용 하면 (라고도 함 서버 구성 요소 이후) 사용자 지정 초기화를 실행 하 고 코드를 정리 하려면 COM + 서버 응용 프로그램에 설치 되어 있는 모든 COM + 구성 요소입니다. IProcessInitializer 인터페이스를 구현 하는 각 구성 요소의 인스턴스를 생성 및 저장, 프로세스의 기간에 대 한 및 시작 및 종료 하는 동안 인터페이스 메서드를 호출 합니다. 구현 되는 경우는 <xref:System.EnterpriseServices.ServicedComponent>, 구성 요소를 등록 하는 동안는 `InitializesServerApplication` 에서 매개 변수는 `COMAdminCatalogObject` 컬렉션으로 설정 되는 구성 요소 내에서 `true`.</xref:System.EnterpriseServices.ServicedComponent>       사용 하는 `Startup` 및 `Shutdown` 이벤트, 리소스를 초기화할 연결을 만들 수 있습니다, 초기화 데이터를 공유 및 정리 코드를 실행 합니다. 그러나 서버 구성 요소 인스턴스가 아직 만들지 않은 때문에 COM +에 적용 되는 상태를 액세스 하지 않아야 합니다. 또한 코드에는 `Startup` 및 `Shutdown` 90 초만 시스템 프로세스를 시작 합니다. 활성화를 허용 하도록 준비 하는 Dllhost.exe에 대 한 대기 하기 때문에 이벤트를 최대한 빨리 반환 해야 합니다. Dllhost.exe 신호를 보내지 않는 준비가 되었음을 90 초 이내, 시스템 프로세스를 종료 따라서 모든 초기화를 처리 하는이 기간 내에 완료 해야 합니다. 초기화에 참여 하는 각 서버 구성 요소는 IProcessInitializer 인터페이스를 지원 해야 합니다. DllHost.exe 시작할 때 COM + 만듭니다 요청한이 서비스를 호출 하는 모든 서버 구성 요소 `QueryInterface` IProcessInitializer 인터페이스 및 호출에는 <xref:System.EnterpriseServices.IProcessInitializer.Startup%2A>함수.</xref:System.EnterpriseServices.IProcessInitializer.Startup%2A> 마찬가지로, DllHost.exe 프로세스를 종료 하 고, 호출 된 <xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A>함수 항목에 이전에 인터페이스 포인터를 저장 합니다.</xref:System.EnterpriseServices.IProcessInitializer.Shutdown%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.Guid("1113f52d-dc7f-4943-aed6-88d04027e32a")]
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Performs shutdown actions. Called when Dllhost.exe is shut down."
-  remarks: "Shutdown is not called during a failfast or other catastrophic shutdown events."
+  summary: "종료 작업을 수행 합니다. Dllhost.exe 종료 될 때 호출 됩니다."
+  remarks: "종료는 failfast 또는 기타 심각한 종료 이벤트가 발생 하는 동안 호출 되지 않습니다."
   syntax:
     content: public void Shutdown ();
     parameters: []
@@ -56,14 +56,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Performs initialization at startup. Called when Dllhost.exe is started."
-  remarks: "The object referenced by `punkProcessControl` implements an <xref:System.EnterpriseServices.IProcessInitControl> interface. <xref:System.EnterpriseServices.IProcessInitControl> supports the single method <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>.       The initialization code in Startup can call the <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>, with the time-out set equal to the number of seconds remaining before the startup of the component times out."
+  summary: "시작 시 초기화를 수행 합니다. Dllhost.exe 시작 될 때 호출 됩니다."
+  remarks: "참조 하는 개체 `punkProcessControl` 구현 하는 <xref:System.EnterpriseServices.IProcessInitControl>인터페이스.</xref:System.EnterpriseServices.IProcessInitControl> <xref:System.EnterpriseServices.IProcessInitControl>단일 메서드 <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>.</xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A> 지원</xref:System.EnterpriseServices.IProcessInitControl>       시작에 초기화 코드를 호출할 수는 <xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>, 구성 요소의 제한 시간을 시작 하기 전까지 남은 시간 (초)의 수는 동일 하 게 설정 시간 제한을 사용 합니다.</xref:System.EnterpriseServices.IProcessInitControl.ResetInitializerTimeout%2A>"
   syntax:
     content: public void Startup (object punkProcessControl);
     parameters:
     - id: punkProcessControl
       type: System.Object
-      description: "In Microsoft Windows XP, a pointer to the <xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;></xref> interface of the COM component starting up. In Microsoft Windows 2000, this argument is always <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Microsoft Windows xp에 대 한 포인터는 <xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;> </xref> 인터페이스의 COM 구성 요소를 시작 합니다. Microsoft Windows 2000에서이 인수는 항상 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.EnterpriseServices.IProcessInitializer.Startup*
   exceptions: []
   platform:
