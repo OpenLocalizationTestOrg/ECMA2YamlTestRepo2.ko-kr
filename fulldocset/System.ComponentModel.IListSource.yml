@@ -11,8 +11,8 @@ items:
   nameWithType: IListSource
   fullName: System.ComponentModel.IListSource
   type: Interface
-  summary: "Provides functionality to an object to return a list that can be bound to a data source."
-  remarks: "You typically use this interface to return a list that can be bound to a data source, from an object that does not implement <xref:System.Collections.IList> itself.       Binding to data can occur at either run time or in a designer, but there are rules for each. At run time, you can bind to data in any of the following:      -   <xref:System.Array>      -   Implementer of <xref:System.Collections.IList>, provided the implementer has a strongly typed <xref:System.Collections.IList.Item%2A> property (that is, the <xref:System.Type> is anything but <xref:System.Object>). You can accomplish this by making the default implementation of <xref:System.Collections.IList.Item%2A> private. If you want to create an <xref:System.Collections.IList> that follows the rules of a strongly typed collection, you should derive from <xref:System.Collections.CollectionBase>.      -   Implementer of <xref:System.ComponentModel.ITypedList>.       In a designer, you can initialize binding to <xref:System.ComponentModel.Component> objects by following the same rules.      > [!NOTE] >  Implementers of IListSource can return an <xref:System.Collections.IList> that contains a collection of <xref:System.Collections.IList> objects."
+  summary: "데이터 원본에 바인딩될 수 있는 목록을 반환 하는 개체에는 기능을 제공 합니다."
+  remarks: "일반적으로 구현 하지 않는 개체에서 데이터 원본에 바인딩될 수 있는 목록을 반환 하려면이 인터페이스를 사용 <xref:System.Collections.IList>자체.</xref:System.Collections.IList>       데이터 바인딩 중 하나가 실행 시 또는 디자이너에서 발생할 수 있습니다 하지만 각각에 대 한 규칙이 있습니다. 런타임 시 데이터는 다음에 바인딩할 수 있습니다:- <xref:System.Array>-의 구현자 <xref:System.Collections.IList>구현자에 강력한 형식의 <xref:System.Collections.IList.Item%2A>속성 (즉,는 <xref:System.Type>이외의 <xref:System.Object>).</xref:System.Object> </xref:System.Type> </xref:System.Collections.IList.Item%2A> </xref:System.Collections.IList> </xref:System.Array> 기본 구현 하 여이 수행할 수 있습니다 <xref:System.Collections.IList.Item%2A>개인.</xref:System.Collections.IList.Item%2A> <xref:System.Collections.IList>강력한 형식의 컬렉션의 규칙을 따르는, <xref:System.Collections.CollectionBase>.</xref:System.Collections.CollectionBase> 에서 파생 되어야</xref:System.Collections.IList> 만들려는 경우      -구현자 <xref:System.ComponentModel.ITypedList>안내 하십시오.</xref:System.ComponentModel.ITypedList>       디자이너에서 바인딩할 수를 초기화할 수 있습니다 <xref:System.ComponentModel.Component>동일한 규칙에 따라 개체입니다.</xref:System.ComponentModel.Component>      > [!NOTE] > IListSource 구현자를 반환할 수 있습니다는 <xref:System.Collections.IList>의 컬렉션을 포함 하는 <xref:System.Collections.IList>개체.</xref:System.Collections.IList> </xref:System.Collections.IList>"
   example:
   - "The following code example demonstrates how to implement the IListSource interface. A component named `EmployeeListSource` exposes an <xref:System.Collections.IList> for data binding by implementing the <xref:System.ComponentModel.IListSource.GetList%2A> method. For a full code listing, see [How to: Implement the IListSource Interface](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.ComponentModel.IListSource#1](~/add/codesnippet/csharp/t-system.componentmodel._62_1.cs)]\n [!code-vb[System.ComponentModel.IListSource#1](~/add/codesnippet/visualbasic/t-system.componentmodel._62_1.vb)]"
   syntax:
@@ -39,15 +39,15 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a value indicating whether the collection is a collection of <xref:System.Collections.IList> objects."
-  remarks: "Using this property in <xref:System.Data.DataSet> returns `true` because the <xref:System.Data.DataSet> class contains a collection of collections. Using this property in <xref:System.Data.DataTable> returns `false` because the <xref:System.Data.DataTable> class contains a collection of objects."
+  summary: "컬렉션의 컬렉션 인지를 나타내는 값을 가져옵니다 <xref:System.Collections.IList>개체입니다.</xref:System.Collections.IList>"
+  remarks: "이 속성을 사용 하 여 <xref:System.Data.DataSet>반환 `true` 때문에 <xref:System.Data.DataSet>클래스 컬렉션의 컬렉션을 포함 합니다.</xref:System.Data.DataSet> </xref:System.Data.DataSet> 이 속성을 사용 하 여 <xref:System.Data.DataTable>반환 `false` 때문에 <xref:System.Data.DataTable>클래스 개체의 컬렉션을 포함 합니다.</xref:System.Data.DataTable> </xref:System.Data.DataTable>"
   example:
   - "The following code example demonstrates how to implement the <xref:System.ComponentModel.IListSource> interface. A component named `EmployeeListSource` indicates that it does not contain an <xref:System.Collections.IList> for data binding by returning `false` from the ContainsListCollection method. For a full code listing, see [How to: Implement the IListSource Interface](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.ComponentModel.IListSource#3](~/add/codesnippet/csharp/p-system.componentmodel._17_1.cs)]\n [!code-vb[System.ComponentModel.IListSource#3](~/add/codesnippet/visualbasic/p-system.componentmodel._17_1.vb)]"
   syntax:
     content: public bool ContainsListCollection { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the collection is a collection of <xref:System.Collections.IList> objects; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컬렉션의 컬렉션의 경우 <xref:System.Collections.IList>개체이 고, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Collections.IList>"
   overload: System.ComponentModel.IListSource.ContainsListCollection*
   exceptions: []
   platform:
@@ -64,7 +64,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns an <xref:System.Collections.IList> that can be bound to a data source from an object that does not implement an <xref:System.Collections.IList> itself."
+  summary: "반환 된 <xref:System.Collections.IList>구현 하지 않는 개체에서 데이터 원본에 바인딩할 수는 <xref:System.Collections.IList>자체.</xref:System.Collections.IList> </xref:System.Collections.IList>"
   remarks: ''
   example:
   - "The following code example demonstrates how to implement the <xref:System.ComponentModel.IListSource> interface. A component named `EmployeeListSource` exposes an <xref:System.Collections.IList> for data binding by implementing the GetList method. For a full code listing, see [How to: Implement the IListSource Interface](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.ComponentModel.IListSource#4](~/add/codesnippet/csharp/m-system.componentmodel._6_1.cs)]\n [!code-vb[System.ComponentModel.IListSource#4](~/add/codesnippet/visualbasic/m-system.componentmodel._6_1.vb)]"
@@ -73,7 +73,7 @@ items:
     parameters: []
     return:
       type: System.Collections.IList
-      description: "An <xref:System.Collections.IList> that can be bound to a data source from the object."
+      description: "<xref:System.Collections.IList>개체에서 데이터 원본에 바인딩할 수 있습니다.</xref:System.Collections.IList>"
   overload: System.ComponentModel.IListSource.GetList*
   exceptions: []
   platform:

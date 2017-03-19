@@ -34,8 +34,8 @@ items:
   nameWithType: Installer
   fullName: System.Configuration.Install.Installer
   type: Class
-  summary: "Provides the foundation for custom installations."
-  remarks: "This is the base class for all custom installers in the .NET Framework. Installers are components that help install applications on a computer.       There are several steps you must follow to use an Installer:      -   Inherit the Installer class.      -   Override the <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods.      -   Add the <xref:System.ComponentModel.RunInstallerAttribute> to your derived class and set it to `true`.      -   Put your derived class in the assembly with your application to install.      -   Invoke the installers. For example, use the InstallUtil.exe to invoke the installers.       The <xref:System.Configuration.Install.Installer.Installers%2A> property contains a collection of installers. If this instance of Installer is part of an installer collection, the <xref:System.Configuration.Install.Installer.Parent%2A> property is set to the Installer instance that contains the collection. For an example of the use of the <xref:System.Configuration.Install.Installer.Installers%2A> collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class.       The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the Installer class go through the collection of installers stored in the <xref:System.Configuration.Install.Installer.Installers%2A> property, and invokes the corresponding method of each installer.       The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods are not always called on the same Installer instance. For example, one Installer instance might be used while installing and committing an application, and then the reference to that instance is released. Later, uninstalling the application creates a reference to a new Installer instance, meaning that the <xref:System.Configuration.Install.Installer.Uninstall%2A> method is called by a different instance of Installer. For this reason, in your derived class, do not save the state of a computer in an installer. Instead, use an <xref:System.Collections.IDictionary> that is preserved across calls and passed into your <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods.       Two situations illustrate the need to save information in the state-saver <xref:System.Collections.IDictionary>. First, suppose that your installer sets a registry key. It should save the key&quot;s original value in the <xref:System.Collections.IDictionary>. If the installation is rolled back, the original value can be restored. Second, suppose the installer replaces an existing file. Save the existing file in a temporary directory and the location of the new location of the file in the <xref:System.Collections.IDictionary>. If the installation is rolled back, the newer file is deleted and replaced by the original from the temporary location.       The <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName> property contains information about the installation. For example, information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run."
+  summary: "사용자 지정 설치를 위한 토대를 제공 합니다."
+  remarks: ".NET Framework의 모든 사용자 지정 설치 관리자에 대 한 기본 클래스입니다. 설치 관리자는 컴퓨터에서 응용 프로그램을 설치 하는 데 도움이 되는 구성 요소입니다.       설치 관리자를 사용 하기 위해 따라야 할 몇 가지 단계:-설치 관리자 클래스를 상속 합니다.      -재정의 <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>      -추가 <xref:System.ComponentModel.RunInstallerAttribute>하 여 파생 클래스를 설정 `true`.</xref:System.ComponentModel.RunInstallerAttribute>      -설치할 응용 프로그램을 사용 하 여 어셈블리의 파생된 클래스를 배치 합니다.      설치 관리자를 호출 합니다. 예를 들어 InstallUtil.exe을 사용 하 여 설치 관리자를 호출 합니다.       <xref:System.Configuration.Install.Installer.Installers%2A>속성 설치 관리자의 컬렉션을 포함 합니다.</xref:System.Configuration.Install.Installer.Installers%2A> 설치 관리자의이 인스턴스는 설치 관리자 컬렉션의 일부인 경우는 <xref:System.Configuration.Install.Installer.Parent%2A>컬렉션을 포함 하는 설치 관리자 인스턴스 속성.</xref:System.Configuration.Install.Installer.Parent%2A> <xref:System.Configuration.Install.Installer.Installers%2A> <xref:System.Configuration.Install.AssemblyInstaller>클래스</xref:System.Configuration.Install.AssemblyInstaller> 참조 컬렉션</xref:System.Configuration.Install.Installer.Installers%2A> 의 사용의 예       <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>에 저장 된 설치 관리자의 컬렉션을 이동 하는 설치 관리자 클래스의 메서드는 <xref:System.Configuration.Install.Installer.Installers%2A>속성을 각 설치 관리자의 해당 메서드를 호출 합니다.</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드는 동일한 설치 관리자 인스턴스에 대해 항상 호출 되지는 않습니다.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A> 예를 들어 하나의 설치 관리자 인스턴스를 설치 하 고 응용 프로그램을 커밋하는 동안 사용 하 고 해당 인스턴스에 대 한 참조를 해제 하 되 다음 합니다. 나중에, 즉 새 설치 관리자 인스턴스에 대 한 참조를 만듭니다 응용 프로그램 제거는 <xref:System.Configuration.Install.Installer.Uninstall%2A>설치 관리자의 다른 인스턴스 메서드를 호출 합니다.</xref:System.Configuration.Install.Installer.Uninstall%2A> 이러한 이유로 파생된 클래스에 저장 하지 마십시오 하는 설치 관리자에 있는 컴퓨터의 상태. 대신 사용 하세요는 <xref:System.Collections.IDictionary>호출 간에 유지 되 고에 전달 하 여 <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A> </xref:System.Collections.IDictionary>       두 가지 상황을 상태 보호기 <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> 에 정보를 저장할 필요가 보여 줍니다. 첫째, 설치 관리자는 레지스트리 키를 설정 하는 것으로 가정 합니다. <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> 키의 원래 값을 저장 해야 설치 롤백, 원래 값을 복원할 수 있습니다. 둘째, 설치 관리자는 기존 파일을 대체 가정 합니다. 임시 디렉터리와 <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> 파일의 새 위치로의 위치에 있는 기존 파일을 저장 합니다. 설치 롤백되면 최신 파일 삭제 되어 임시 위치에서 원본으로 대체 됩니다.       <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>속성의 설치에 대 한 정보를 포함 합니다.</xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName> 예를 들어 설치에 필요한 정보를 저장할 파일의 위치에 대 한 로그 파일의 위치에 대 한 정보는 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드와 설치 실행 파일 실행 될 때 입력 한 명령줄.</xref:System.Configuration.Install.Installer.Uninstall%2A>"
   example:
   - "The following example demonstrates the use of the Installer class. It creates a class which inherits from Installer. When <xref:System.Configuration.Install.Installer.Commit%2A> is about to complete, <xref:System.Configuration.Install.Installer.Committing> event occurs and a message is displayed. To use the Installer class, you must reference the **System.Configuration.Install** assembly in your project.  \n  \n [!code-cpp[Installer#1](~/add/codesnippet/cpp/t-system.configuration.i_5_1.cpp)]\n [!code-vb[Installer#1](~/add/codesnippet/visualbasic/t-system.configuration.i_5_1.vb)]\n [!code-cs[Installer#1](~/add/codesnippet/csharp/t-system.configuration.i_5_1.cs)]"
   syntax:
@@ -77,7 +77,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Initializes a new instance of the <xref href=&quot;System.Configuration.Install.Installer&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Configuration.Install.Installer&quot;> </xref> 클래스입니다."
   syntax:
     content: public Installer ();
     parameters: []
@@ -97,7 +97,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after the <xref:System.Configuration.Install.Installer.Install*> methods of all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property have run."
+  summary: "뒤에 오는 <> </> *>에 있는 모든 설치의 메서드는 <> </> *> 속성을 실행 합니다."
   remarks: ''
   example:
   - "The following example demonstrates the AfterInstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnAfterInstall%2A> method.  \n  \n [!code-cpp[Installer_AfterInstall#1](~/add/codesnippet/cpp/e-system.configuration.i_2_1.cpp)]\n [!code-vb[Installer_AfterInstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_2_1.vb)]\n [!code-cs[Installer_AfterInstall#1](~/add/codesnippet/csharp/e-system.configuration.i_2_1.cs)]"
@@ -105,7 +105,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterInstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -121,7 +121,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after the installations of all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+  summary: "에 있는 모든 설치 관리자 설치 후에 발생는 <xref:System.Configuration.Install.Installer.Installers*>속성 롤백됩니다.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the AfterRollback event. It overrides the <xref:System.Configuration.Install.Installer.Install%2A> method and explicitly throws an <xref:System.ArgumentException> so that the <xref:System.Configuration.Install.Installer.Rollback%2A> method is called. When the <xref:System.Configuration.Install.Installer.Rollback%2A> is completed, the AfterRollback event occurs and a message is displayed.  \n  \n [!code-cs[Installer_AfterRollback#1](~/add/codesnippet/csharp/e-system.configuration.i_1_1.cs)]\n [!code-cpp[Installer_AfterRollback#1](~/add/codesnippet/cpp/e-system.configuration.i_1_1.cpp)]\n [!code-vb[Installer_AfterRollback#1](~/add/codesnippet/visualbasic/e-system.configuration.i_1_1.vb)]"
@@ -129,7 +129,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterRollback;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -145,7 +145,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property perform their uninstallation operations."
+  summary: "모든 발생에 발생 후에 설치 관리자는 <xref:System.Configuration.Install.Installer.Installers*>속성이 제거 작업을 수행 합니다.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the AfterUninstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnAfterUninstall%2A> method.  \n  \n [!code-cs[Installer_AfterUninstall#1](~/add/codesnippet/csharp/e-system.configuration.i_7_1.cs)]\n [!code-cpp[Installer_AfterUninstall#1](~/add/codesnippet/cpp/e-system.configuration.i_7_1.cpp)]\n [!code-vb[Installer_AfterUninstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_7_1.vb)]"
@@ -153,7 +153,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterUninstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -169,7 +169,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the <xref:System.Configuration.Install.Installer.Install*> method of each installer in the installer collection has run."
+  summary: "앞에 오는 <xref:System.Configuration.Install.Installer.Install*>설치 관리자 컬렉션에 있는 각 설치 관리자의 메서드가 실행 되기.</xref:System.Configuration.Install.Installer.Install*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeInstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnBeforeInstall%2A> method.  \n  \n [!code-cpp[Installer_BeforeInstall#1](~/add/codesnippet/cpp/e-system.configuration.i_0_1.cpp)]\n [!code-cs[Installer_BeforeInstall#1](~/add/codesnippet/csharp/e-system.configuration.i_0_1.cs)]\n [!code-vb[Installer_BeforeInstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_0_1.vb)]"
@@ -177,7 +177,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeInstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -193,7 +193,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+  summary: "에 있는 설치 관리자 앞에 오는 <xref:System.Configuration.Install.Installer.Installers*>속성 롤백됩니다.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeRollback event. It overrides the <xref:System.Configuration.Install.Installer.Install%2A> method and explicitly throws an <xref:System.ArgumentException> so that the <xref:System.Configuration.Install.Installer.Rollback%2A> method is called. When the <xref:System.Configuration.Install.Installer.Rollback%2A> is complete, the BeforeRollback event occurs and a message is displayed.  \n  \n [!code-vb[Installer_BeforeRollback#1](~/add/codesnippet/visualbasic/e-system.configuration.i_5_1.vb)]\n [!code-cs[Installer_BeforeRollback#1](~/add/codesnippet/csharp/e-system.configuration.i_5_1.cs)]\n [!code-cpp[Installer_BeforeRollback#1](~/add/codesnippet/cpp/e-system.configuration.i_5_1.cpp)]"
@@ -201,7 +201,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeRollback;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -217,7 +217,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property perform their uninstall operations."
+  summary: "에 있는 설치 관리자 앞에 오는 <xref:System.Configuration.Install.Installer.Installers*>속성 수행의 제거 작업.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeUninstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnBeforeUninstall%2A> method.  \n  \n [!code-cs[Installer_BeforeUninstall#1](~/add/codesnippet/csharp/e-system.configuration.i_4_1.cs)]\n [!code-cpp[Installer_BeforeUninstall#1](~/add/codesnippet/cpp/e-system.configuration.i_4_1.cpp)]\n [!code-vb[Installer_BeforeUninstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_4_1.vb)]"
@@ -225,7 +225,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeUninstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -241,7 +241,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, completes the install transaction."
+  summary: "파생된 클래스에서 재정의 되 면 설치 트랜잭션을 완료 합니다."
   remarks: ''
   example:
   - "The following example demonstrates the Commit method of the <xref:System.Configuration.Install.Installer> class. A class is derived from the <xref:System.Configuration.Install.Installer> base class and the Commit method are overridden.  \n  \n [!code-cs[Installer_Install#2](~/add/codesnippet/csharp/m-system.configuration.i_4_1.cs)]\n [!code-vb[Installer_Install#2](~/add/codesnippet/visualbasic/m-system.configuration.i_4_1.vb)]\n [!code-cpp[Installer_Install#2](~/add/codesnippet/cpp/m-system.configuration.i_4_1.cpp)]"
@@ -250,15 +250,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers in the collection have run."
+      description: "<xref:System.Collections.IDictionary>컴퓨터의 상태를 포함 하는 컬렉션에 있는 모든 설치 관리자를 실행 한 후.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Commit*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -또는-저장 된 상태 <xref:System.Collections.IDictionary>손상 되었을 수 있습니다.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred during the Commit phase of the installation. This exception is ignored and the installation continues. However, the application might not function correctly after the installation is complete."
+    description: "설치의 커밋 단계 중에 예외가 발생 했습니다. 이 예외는 무시 되 고 후 설치가 계속 됩니다. 그러나 설치가 완료 된 후 응용 프로그램이 제대로 작동 하지 수도 있습니다."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Committed
@@ -273,7 +273,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property have committed their installations."
+  summary: "모든 발생에 발생 후에 설치 관리자는 <xref:System.Configuration.Install.Installer.Installers*>속성이 설치를 커밋한.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the Committed event. It is raised by the <xref:System.Configuration.Install.Installer.OnCommitted%2A> method.  \n  \n [!code-cpp[Installer_Committed1#1](~/add/codesnippet/cpp/e-system.configuration.i_3_1.cpp)]\n [!code-cs[Installer_Committed1#1](~/add/codesnippet/csharp/e-system.configuration.i_3_1.cs)]\n [!code-vb[Installer_Committed1#1](~/add/codesnippet/visualbasic/e-system.configuration.i_3_1.vb)]"
@@ -281,7 +281,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler Committed;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -297,7 +297,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property committ their installations."
+  summary: "에 있는 설치 관리자 앞에 오는 <xref:System.Configuration.Install.Installer.Installers*>속성 커밋하기가 설치 됩니다.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the Committing event. It is raised by the <xref:System.Configuration.Install.Installer.OnCommitting%2A> method.  \n  \n [!code-cpp[Installer_Committing#1](~/add/codesnippet/cpp/e-system.configuration.i_6_1.cpp)]\n [!code-cs[Installer_Committing#1](~/add/codesnippet/csharp/e-system.configuration.i_6_1.cs)]\n [!code-vb[Installer_Committing#1](~/add/codesnippet/visualbasic/e-system.configuration.i_6_1.vb)]"
@@ -305,7 +305,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler Committing;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -321,15 +321,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets or sets information about the current installation."
-  remarks: "The Context property contains installation information. For example, information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run.       The program that calls the <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, or <xref:System.Configuration.Install.Installer.Uninstall%2A> methods sets the Context property with information that the methods need.       If an installer belongs to an installer collection, the parent installer sets the Context property before calling any of these methods. The parent installer can be accessed through the <xref:System.Configuration.Install.Installer.Parent%2A> property."
+  summary: "현재 설치에 대 한 정보를 가져오거나 설정 합니다."
+  remarks: "컨텍스트 속성은 설치 정보를 포함합니다. 예를 들어 설치에 필요한 정보를 저장할 파일의 위치에 대 한 로그 파일의 위치에 대 한 정보는 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드와 설치 실행 파일 실행 될 때 입력 한 명령줄.</xref:System.Configuration.Install.Installer.Uninstall%2A>       호출 하는 프로그램의 <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 또는 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드는 메서드에 필요한 정보와 함께 컨텍스트 속성을 설정 합니다.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       설치 관리자 설치 관리자 컬렉션에 속하면 부모 설치 관리자는 다음이 방법 중 하나를 호출 하기 전에 컨텍스트 속성을 설정 합니다. 부모 설치 관리자를 통해 액세스할 수는 <xref:System.Configuration.Install.Installer.Parent%2A>속성.</xref:System.Configuration.Install.Installer.Parent%2A>"
   example:
   - "The following example demonstrates the Context property of the <xref:System.Configuration.Install.Installer> class. The contents of the Context property contain information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run. These contents are then displayed on the console.  \n  \n [!code-cpp[Installer_Context#1](~/add/codesnippet/cpp/p-system.configuration.i_9_1.cpp)]\n [!code-cs[Installer_Context#1](~/add/codesnippet/csharp/p-system.configuration.i_9_1.cs)]\n [!code-vb[Installer_Context#1](~/add/codesnippet/visualbasic/p-system.configuration.i_9_1.vb)]"
   syntax:
     content: public System.Configuration.Install.InstallContext Context { get; set; }
     return:
       type: System.Configuration.Install.InstallContext
-      description: "An <xref href=&quot;System.Configuration.Install.InstallContext&quot;></xref> that contains information about the current installation."
+      description: "<xref href=&quot;System.Configuration.Install.InstallContext&quot;> </xref> 현재 설치에 대 한 정보가 들어 있는입니다."
   overload: System.Configuration.Install.Installer.Context*
   exceptions: []
   platform:
@@ -346,7 +346,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets the help text for all the installers in the installer collection."
+  summary: "설치 관리자 컬렉션에 있는 모든 설치에 대 한 도움말 텍스트를 가져옵니다."
   remarks: ''
   example:
   - "The following example demonstrates the HelpText property. This property is defined in the <xref:System.Configuration.Install.Installer> class, which, when called, returns the description of the <xref:System.Configuration.Install.Installer> and the command line options for the installation executable, such as the Installutil.exe utility, that can be passed to and understood by the <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cs[Installer_HelpText#1](~/add/codesnippet/csharp/p-system.configuration.i_1_1.cs)]\n [!code-cpp[Installer_HelpText#1](~/add/codesnippet/cpp/p-system.configuration.i_1_1.cpp)]\n [!code-vb[Installer_HelpText#1](~/add/codesnippet/visualbasic/p-system.configuration.i_1_1.vb)]"
@@ -354,12 +354,12 @@ items:
     content: public virtual string HelpText { get; }
     return:
       type: System.String
-      description: "The help text for all the installers in the installer collection, including the description of what the installer does and the command line options for the installation executable, such as the InstallUtil.exe utility, that can be passed to and understood by this installer."
+      description: "설치 관리자가 수행 하 고 설치를 전달할 수 있으며이 설치 관리자가 이해할 수 있는 InstallUtil.exe 유틸리티와 같은 실행 파일에 대 한 명령줄 옵션에 대 한 설명을 포함 하 여 설치 관리자 컬렉션에 있는 모든 설치에 대 한 도움말 텍스트입니다."
   overload: System.Configuration.Install.Installer.HelpText*
   exceptions:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "One of the installers in the installer collection specifies a null reference instead of help text. A likely cause for this exception is that a field to contain the help text is defined but not initialized."
+    description: "설치 관리자 컬렉션에 있는 설치 관리자 중 하나에 도움말 텍스트 대신 null 참조를 지정합니다. 이 예외에 대 한 한 가지 가능한 원인은 도움말 텍스트를 포함 하는 필드가 정의 되어 있지만 초기화 되지 됩니다."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Install(System.Collections.IDictionary)
@@ -374,7 +374,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, performs the installation."
+  summary: "파생된 클래스에서 재정의 되 면 설치를 수행 합니다."
   remarks: ''
   example:
   - "The following example demonstrates the Install method of the <xref:System.Configuration.Install.Installer> class. A class is derived from the <xref:System.Configuration.Install.Installer> base class and the Install method is overridden.  \n  \n [!code-cs[Installer_Install#1](~/add/codesnippet/csharp/m-system.configuration.i_0_1.cs)]\n [!code-vb[Installer_Install#1](~/add/codesnippet/visualbasic/m-system.configuration.i_0_1.vb)]\n [!code-cpp[Installer_Install#1](~/add/codesnippet/cpp/m-system.configuration.i_0_1.cpp)]"
@@ -383,7 +383,7 @@ items:
     parameters:
     - id: stateSaver
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> used to save information needed to perform a commit, rollback, or uninstall operation."
+      description: "<xref:System.Collections.IDictionary>커밋, 수행 하는 데 필요한 정보를 저장 하는 데 사용 롤백 또는 제거 작업.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Install*
   exceptions:
   - type: System.ArgumentException
@@ -391,7 +391,7 @@ items:
     description: "The <code>stateSaver</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An exception occurred in the <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;></xref> event handler of one of the installers in the collection.       -or-       An exception occurred in the <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;></xref> event handler of one of the installers in the collection."
+    description: "예외가 발생는 <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;> </xref> 이벤트 처리기 컬렉션에 있는 설치 관리자 중 하나입니다.       -또는-에서 예외가 발생는 <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;> </xref> 이벤트 처리기 컬렉션에 있는 설치 관리자 중 하나입니다."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Installers
@@ -406,15 +406,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets the collection of installers that this installer contains."
-  remarks: "The Installers property contains a collection of installers that install objects needed by this <xref:System.Configuration.Install.Installer> instance to correctly install the component. The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the <xref:System.Configuration.Install.Installer> class go through the collection of installers and invokes the corresponding method of each installer.       If this instance of <xref:System.Configuration.Install.Installer> is contained in an installer collection, the <xref:System.Configuration.Install.Installer.Parent%2A> property is the <xref:System.Configuration.Install.Installer> instance that contains the collection. For an example of the use of the Installers collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class."
+  summary: "이 설치 관리자를 포함 하는 설치 관리자의 컬렉션을 가져옵니다."
+  remarks: "필요한 개체를 설치 하는 설치 관리자의 컬렉션을 포함 하는 설치 관리자 속성 <xref:System.Configuration.Install.Installer>인스턴스가 올바르게 구성 요소를 설치 합니다.</xref:System.Configuration.Install.Installer> <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>의 메서드는 <xref:System.Configuration.Install.Installer>클래스 설치 관리자의 컬렉션을 이동 하 고 각 설치 관리자의 해당 메서드를 호출 합니다.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       하는 경우의이 인스턴스에 <xref:System.Configuration.Install.Installer>는 설치 관리자 컬렉션에 포함 되어는 <xref:System.Configuration.Install.Installer.Parent%2A>속성은는 <xref:System.Configuration.Install.Installer>컬렉션을 포함 하는 인스턴스.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Parent%2A> </xref:System.Configuration.Install.Installer> 설치 관리자 컬렉션 사용의 예를 들어 <xref:System.Configuration.Install.AssemblyInstaller>클래스</xref:System.Configuration.Install.AssemblyInstaller> 를 참조 하십시오."
   example:
   - "The following example demonstrates the Installers and <xref:System.Configuration.Install.Installer.Parent%2A> properties. The Installers property shows the <xref:System.Configuration.Install.InstallerCollection> associated with an <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cs[Installer_Installers#1](~/add/codesnippet/csharp/p-system.configuration.i_12_1.cs)]\n [!code-cpp[Installer_Installers#1](~/add/codesnippet/cpp/p-system.configuration.i_12_1.cpp)]\n [!code-vb[Installer_Installers#1](~/add/codesnippet/visualbasic/p-system.configuration.i_12_1.vb)]"
   syntax:
     content: public System.Configuration.Install.InstallerCollection Installers { get; }
     return:
       type: System.Configuration.Install.InstallerCollection
-      description: "An <xref href=&quot;System.Configuration.Install.InstallerCollection&quot;></xref> containing the collection of installers associated with this installer."
+      description: "<xref href=&quot;System.Configuration.Install.InstallerCollection&quot;> </xref> 이 설치 관리자와 관련 된 설치 관리자의 컬렉션을 포함 합니다."
   overload: System.Configuration.Install.Installer.Installers*
   exceptions: []
   platform:
@@ -431,8 +431,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Install%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterInstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;> </xref> 이벤트입니다."
+  remarks: "후에이 메서드는 <xref:System.Configuration.Install.Installer.Install%2A>메서드가이 인스턴스의 모든 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>실행.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Install%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnAfterInstall 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   example:
   - "The following example demonstrates the OnAfterInstall method. This method is overridden in the derived class. Space is provided to add steps to be done after the installation in the OnAfterInstall method.  \n  \n [!code-cs[Installer_OnInstall#2](~/add/codesnippet/csharp/60146eeb-3353-443b-b027-_1.cs)]\n [!code-vb[Installer_OnInstall#2](~/add/codesnippet/visualbasic/60146eeb-3353-443b-b027-_1.vb)]\n [!code-cpp[Installer_OnInstall#2](~/add/codesnippet/cpp/60146eeb-3353-443b-b027-_1.cpp)]"
   syntax:
@@ -440,7 +440,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property have completed their installations."
+      description: "<xref:System.Collections.IDictionary>모든 설치 관리자에 포함 된 후 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성이 설치를 완료 합니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterInstall*
   exceptions: []
   platform:
@@ -457,14 +457,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterRollback&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Rollback%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> have run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterRollback method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.AfterRollback&quot;> </xref> 이벤트입니다."
+  remarks: "후에이 메서드는 <xref:System.Configuration.Install.Installer.Rollback%2A>메서드가이 인스턴스의 모든 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>실행 했습니다.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Rollback%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnAfterRollback 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnAfterRollback (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+      description: "<xref:System.Collections.IDictionary>설치 관리자에 포함 된 후 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성 롤백됩니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterRollback*
   exceptions: []
   platform:
@@ -481,14 +481,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterUninstall&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> have run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterUninstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.AfterUninstall&quot;> </xref> 이벤트입니다."
+  remarks: "후에이 메서드는 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드가이 인스턴스의 모든 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>실행 했습니다.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Uninstall%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnAfterUninstall 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnAfterUninstall (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property are uninstalled."
+      description: "<xref:System.Collections.IDictionary>모든 설치 관리자에 포함 된 후 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성 제거 됩니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterUninstall*
   exceptions: []
   platform:
@@ -505,8 +505,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Install%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are called.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeInstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;> </xref> 이벤트입니다."
+  remarks: "하기 전에이 메서드는 <xref:System.Configuration.Install.Installer.Install%2A>메서드가이 인스턴스의에 있는 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>호출 됩니다.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Install%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnBeforeInstall 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   example:
   - "The following example demonstrates the OnBeforeInstall method. This method is overridden in the derived class. Space is provided to add steps to be done before the installation in the OnBeforeInstall method.  \n  \n [!code-cs[Installer_OnInstall#1](~/add/codesnippet/csharp/05e12d6b-04c9-42f3-be39-_1.cs)]\n [!code-vb[Installer_OnInstall#1](~/add/codesnippet/visualbasic/05e12d6b-04c9-42f3-be39-_1.vb)]\n [!code-cpp[Installer_OnInstall#1](~/add/codesnippet/cpp/05e12d6b-04c9-42f3-be39-_1.cpp)]"
   syntax:
@@ -514,7 +514,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are installed. This <xref:System.Collections.IDictionary> object should be empty at this point."
+      description: "<xref:System.Collections.IDictionary>에 커밋되기 전의 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성 설치 됩니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary> 이 <xref:System.Collections.IDictionary>개체는 비어 있어야이 시점에서.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeInstall*
   exceptions: []
   platform:
@@ -531,14 +531,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeRollback&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Rollback%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are called.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeRollback method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.BeforeRollback&quot;> </xref> 이벤트입니다."
+  remarks: "하기 전에이 메서드는 <xref:System.Configuration.Install.Installer.Rollback%2A>메서드가이 인스턴스의에 있는 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>호출 됩니다.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Rollback%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnBeforeRollback 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnBeforeRollback (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+      description: "<xref:System.Collections.IDictionary>에 커밋되기 전의 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성 롤백됩니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeRollback*
   exceptions: []
   platform:
@@ -555,14 +555,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeUninstall&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are uninstalled.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeUninstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.BeforeUninstall&quot;> </xref> 이벤트입니다."
+  remarks: "하기 전에이 메서드는 <xref:System.Configuration.Install.Installer.Uninstall%2A>메서드가이 인스턴스의에 있는 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>제거 됩니다.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Uninstall%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnBeforeUninstall 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   syntax:
     content: protected virtual void OnBeforeUninstall (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property uninstall their installations."
+      description: "<xref:System.Collections.IDictionary>에 커밋되기 전의 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성이 설치를 제거 합니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeUninstall*
   exceptions: []
   platform:
@@ -579,8 +579,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.Committed&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Commit%2A> methods of all the installers contained in this instance&quot;s installer collection run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnCommitted method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.Committed&quot;> </xref> 이벤트입니다."
+  remarks: "후에이 메서드는 <xref:System.Configuration.Install.Installer.Commit%2A>메서드 실행이 인스턴스 설치 관리자 컬렉션에 포함 된 모든 설치 관리자.</xref:System.Configuration.Install.Installer.Commit%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnCommitted 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   example:
   - "The following example demonstrates the OnCommitted method of the <xref:System.Configuration.Install.Installer> class. The OnCommitted method is overridden in the derived class. Space is provided for the user to add the steps to be performed before committing and after committing.  \n  \n [!code-cs[Installer_Committed#2](~/add/codesnippet/csharp/5648b84f-6316-46f8-bd1c-_1.cs)]\n [!code-cpp[Installer_Committed#2](~/add/codesnippet/cpp/5648b84f-6316-46f8-bd1c-_1.cpp)]\n [!code-vb[Installer_Committed#2](~/add/codesnippet/visualbasic/5648b84f-6316-46f8-bd1c-_1.vb)]"
   syntax:
@@ -588,7 +588,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property run."
+      description: "<xref:System.Collections.IDictionary>에 있는 모든 설치 후 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>실행 속성입니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnCommitted*
   exceptions: []
   platform:
@@ -605,8 +605,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.Committing&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Commit%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnCommitting method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "발생 된 <xref href=&quot;System.Configuration.Install.Installer.Committing&quot;> </xref> 이벤트입니다."
+  remarks: "하기 전에이 메서드는 <xref:System.Configuration.Install.Installer.Commit%2A>메서드가이 인스턴스의에 있는 설치 관리자 <xref:System.Configuration.Install.InstallerCollection>실행.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Commit%2A>       이벤트를 발생 시키는 대리자를 통해 이벤트 처리기를 호출 합니다. 자세한 내용은 참조 [이벤트](~/add/includes/ajax-current-ext-md.md)합니다.       OnCommitting 메서드는 파생된 클래스가 대리자를 연결 하지 않고도 이벤트를 처리할 수 있습니다. 이 파생된 클래스에서 이벤트를 처리 하는 기본 방법입니다."
   example:
   - "The following example demonstrates the OnCommitting method of the <xref:System.Configuration.Install.Installer> class. The OnCommitting method is overridden in the derived class. Space is provided for the user to add the steps to be performed before committing and after committing.  \n  \n [!code-cs[Installer_Committed#1](~/add/codesnippet/csharp/4332932f-4b73-47c5-9f45-_1.cs)]\n [!code-cpp[Installer_Committed#1](~/add/codesnippet/cpp/4332932f-4b73-47c5-9f45-_1.cpp)]\n [!code-vb[Installer_Committed#1](~/add/codesnippet/visualbasic/4332932f-4b73-47c5-9f45-_1.vb)]"
   syntax:
@@ -614,7 +614,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are committed."
+      description: "<xref:System.Collections.IDictionary>에 커밋되기 전의 컴퓨터의 상태를 포함 하는 <xref:System.Configuration.Install.Installer.Installers*>속성 커밋됩니다.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnCommitting*
   exceptions: []
   platform:
@@ -631,15 +631,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets or sets the installer containing the collection that this installer belongs to."
-  remarks: "If this instance of <xref:System.Configuration.Install.Installer> is part of an installer collection, the Parent property is set to the <xref:System.Configuration.Install.Installer> instance that contains the collection. For an example of the use of the <xref:System.Configuration.Install.Installer.Installers%2A> collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class.       The <xref:System.Configuration.Install.Installer.Installers%2A> property contains a collection of installers. The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the <xref:System.Configuration.Install.Installer> class go through the collection of installers and invokes the corresponding method of each installer."
+  summary: "이 설치 관리자가 속한 컬렉션을 포함 하는 설치 관리자를 가져오거나 설정 합니다."
+  remarks: "하는 경우의이 인스턴스에 <xref:System.Configuration.Install.Installer>속성이로 설정 된 부모 설치 관리자 컬렉션의 일부인는 <xref:System.Configuration.Install.Installer>컬렉션을 포함 하는 인스턴스.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer> <xref:System.Configuration.Install.Installer.Installers%2A> <xref:System.Configuration.Install.AssemblyInstaller>클래스</xref:System.Configuration.Install.AssemblyInstaller> 참조 컬렉션</xref:System.Configuration.Install.Installer.Installers%2A> 의 사용의 예       <xref:System.Configuration.Install.Installer.Installers%2A>속성 설치 관리자의 컬렉션을 포함 합니다.</xref:System.Configuration.Install.Installer.Installers%2A> <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, 및 <xref:System.Configuration.Install.Installer.Uninstall%2A>의 메서드는 <xref:System.Configuration.Install.Installer>클래스 설치 관리자의 컬렉션을 이동 하 고 각 설치 관리자의 해당 메서드를 호출 합니다.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>"
   example:
   - "The following example demonstrates the Parent property. The Parent property gets the <xref:System.Configuration.Install.Installer> containing the collection that this <xref:System.Configuration.Install.Installer> belongs to.  \n  \n [!code-cs[Installer_Installers#2](~/add/codesnippet/csharp/p-system.configuration.i_7_1.cs)]\n [!code-cpp[Installer_Installers#2](~/add/codesnippet/cpp/p-system.configuration.i_7_1.cpp)]\n [!code-vb[Installer_Installers#2](~/add/codesnippet/visualbasic/p-system.configuration.i_7_1.vb)]"
   syntax:
     content: public System.Configuration.Install.Installer Parent { get; set; }
     return:
       type: System.Configuration.Install.Installer
-      description: "An <xref href=&quot;System.Configuration.Install.Installer&quot;></xref> containing the collection that this instance belongs to, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this instance does not belong to a collection."
+      description: "<xref href=&quot;System.Configuration.Install.Installer&quot;> </xref> 이 인스턴스가 속한 컬렉션을 포함 하 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 인스턴스가 컬렉션에 속하지 않는 경우."
   overload: System.Configuration.Install.Installer.Parent*
   exceptions: []
   platform:
@@ -656,7 +656,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, restores the pre-installation state of the computer."
+  summary: "파생된 클래스에서 재정의 되 면 컴퓨터의 사전 설치 상태를 복원 합니다."
   remarks: ''
   example:
   - "The following example demonstrates the Rollback method of <xref:System.Configuration.Install.Installer>. The Rollback method is overridden in the derived class of <xref:System.Configuration.Install.Installer>. An exception is generated to force an installation rollback.  \n  \n [!code-cpp[Installer_Rollback#1](~/add/codesnippet/cpp/f7b5aa66-1011-46b1-9df6-_1.cpp)]\n [!code-cs[Installer_Rollback#1](~/add/codesnippet/csharp/f7b5aa66-1011-46b1-9df6-_1.cs)]\n [!code-vb[Installer_Rollback#1](~/add/codesnippet/visualbasic/f7b5aa66-1011-46b1-9df6-_1.vb)]"
@@ -665,15 +665,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the pre-installation state of the computer."
+      description: "<xref:System.Collections.IDictionary>컴퓨터의 설치 전 상태가 포함 된.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Rollback*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -또는-저장 된 상태 <xref:System.Collections.IDictionary>손상 되었을 수 있습니다.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred during the Rollback phase of the installation. This exception is ignored and the rollback continues. However, the computer might not be fully reverted to its initial state after the rollback completes."
+    description: "설치의 Rollback 단계 중에 예외가 발생 했습니다. 이 예외는 무시 되 고 롤백이 계속 됩니다. 그러나 컴퓨터 수 있습니다 완전히으로 되돌릴 수 없습니다 초기 상태로 롤백이 완료 된 후입니다."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Uninstall(System.Collections.IDictionary)
@@ -688,7 +688,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, removes an installation."
+  summary: "파생된 클래스에서 재정의 되 면 설치를 제거 합니다."
   remarks: ''
   example:
   - "The following example demonstrates the Uninstall method of <xref:System.Configuration.Install.Installer>. The Uninstall method is overridden in the derived class of <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cpp[Installer_Uninstall#1](~/add/codesnippet/cpp/6ad3795d-c7c2-494d-bf0b-_1.cpp)]\n [!code-vb[Installer_Uninstall#1](~/add/codesnippet/visualbasic/6ad3795d-c7c2-494d-bf0b-_1.vb)]\n [!code-cs[Installer_Uninstall#1](~/add/codesnippet/csharp/6ad3795d-c7c2-494d-bf0b-_1.cs)]"
@@ -697,15 +697,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after the installation was complete."
+      description: "<xref:System.Collections.IDictionary>설치가 완료 된 후 컴퓨터의 상태를 포함 하는.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Uninstall*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "저장 된 상태 <xref:System.Collections.IDictionary>손상 되었을 수 있습니다.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred while uninstalling. This exception is ignored and the uninstall continues. However, the application might not be fully uninstalled after the uninstallation completes."
+    description: "제거 하는 동안 예외가 발생 했습니다. 이 예외는 무시 되 고 제거가 계속 됩니다. 하지만, 응용 프로그램 수 있습니다 완전히 제거 되지 제거가 완료 된 후입니다."
   platform:
   - net462
 references:

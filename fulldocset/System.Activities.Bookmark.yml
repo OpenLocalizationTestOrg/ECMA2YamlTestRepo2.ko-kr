@@ -15,8 +15,8 @@ items:
   nameWithType: Bookmark
   fullName: System.Activities.Bookmark
   type: Class
-  summary: "Represents a point at which a workflow or activity can passively wait to be resumed."
-  remarks: "When an activity creates a Bookmark, it becomes idle and waits for the Bookmark to be resumed. If there are other activities in parallel with the activity that created the Bookmark, they will be scheduled for execution.       Bookmarks can be resumed by the host application using one of the <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A> overloads.       [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] bookmarks, see [Using WorkflowInvoker and WorkflowApplication](~/add/includes/ajax-current-ext-md.md), [Bookmarks](~/add/includes/ajax-current-ext-md.md), and the [Bookmarks &#91; WF Samples&#93;](~/add/includes/ajax-current-ext-md.md) and [Wait For Input Activity &#91;WF Samples&#93;](~/add/includes/ajax-current-ext-md.md) samples."
+  summary: "포인트를 나타내는 워크플로 또는 활동 수 둘 때까지 있는 재개 됩니다."
+  remarks: "활동 책갈피를 만들 때 유휴 상태가 되 고 책갈피가 다시 시작 될 때까지 기다립니다. 책갈피를 만든 활동과 병렬에 다른 활동이 있는 경우 실행을 위해 예약 됩니다.       호스트 응용 프로그램 중 하나를 사용 하 여 책갈피를 다시 시작할 수는 <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A>오버 로드.</xref:System.Activities.WorkflowApplication.ResumeBookmark%2A>       [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)]책갈피, 참조 [를 사용 하 여 WorkflowInvoker 및 WorkflowApplication](~/add/includes/ajax-current-ext-md.md), [책갈피](~/add/includes/ajax-current-ext-md.md), 및 [책갈피 [WF 샘플]](~/add/includes/ajax-current-ext-md.md) 및 [대기에 대 한 입력 활동 [WF 샘플]](~/add/includes/ajax-current-ext-md.md) 샘플입니다."
   example:
   - "In the following example, a `ReadLine` activity is created. When executed, the `ReadLine` activity creates a Bookmark, registers a callback, and then waits for the Bookmark to be resumed. When it is resumed, the `ReadLine` activity assigns the data that was passed with the Bookmark to its <xref:System.Activities.Activity%601.Result%2A> argument.  \n  \n<CodeContentPlaceHolder>0</CodeContentPlaceHolder>  \n In the following example, a workflow is created that uses the `ReadLine` activity to gather the user’s name and display it to the console window. The host application performs the actual work of gathering the input and passes it to the workflow by resuming the Bookmark.  \n  \n<CodeContentPlaceHolder>1</CodeContentPlaceHolder>  \n When the `ReadLine` activity is executed, it creates a Bookmark named `UserName` and then waits for the bookmark to be resumed. The host collects the desired data and then resumes the Bookmark. The workflow resumes, displays the name, and then completes. Note that no synchronization code is required with regard to resuming the bookmark. A Bookmark can only be resumed when the workflow is idle, and if the workflow is not idle, the call to <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A> blocks until the workflow becomes idle."
   syntax:
@@ -43,13 +43,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Bookmark&quot;></xref> class using the specified name."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 클래스 지정된 된 이름을 사용 합니다."
   syntax:
     content: public Bookmark (string name);
     parameters:
     - id: name
       type: System.String
-      description: "A name that identifies the bookmark."
+      description: "책갈피를 식별 하는 이름입니다."
   overload: System.Activities.Bookmark.#ctor*
   exceptions: []
   platform:
@@ -66,16 +66,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Determines whether the current <xref href=&quot;System.Activities.Bookmark&quot;></xref> and the specified <xref href=&quot;System.Activities.Bookmark&quot;></xref> refer to the same continuation point in a workflow."
+  summary: "결정 여부 현재 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 와 지정 된 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 워크플로에서 동일한 연속 지점을 참조 합니다."
   syntax:
     content: public bool Equals (System.Activities.Bookmark other);
     parameters:
     - id: other
       type: System.Activities.Bookmark
-      description: "The bookmark to compare."
+      description: "비교할 책갈피입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Activities.Bookmark&quot;></xref> objects are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 같고, 그렇지 않으면 개체는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Activities.Bookmark.Equals*
   exceptions: []
   platform:
@@ -92,16 +92,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Determines whether the current <xref href=&quot;System.Activities.Bookmark&quot;></xref> and the specified object refer to the same continuation point in a workflow."
+  summary: "결정 여부 현재 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 지정한 개체가 워크플로에서 동일한 연속 지점을 참조 하 고 있습니다."
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to compare."
+      description: "비교할 개체입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Activities.Bookmark&quot;></xref> objects are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 같고, 그렇지 않으면 개체는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Activities.Bookmark.Equals*
   exceptions: []
   platform:
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns a unique identifier for this <xref href=&quot;System.Activities.Bookmark&quot;></xref> instance."
+  summary: "이 대 한 고유 식별자를 반환 합니다. <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 인스턴스."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The unique identifier of this <xref href=&quot;System.Activities.Bookmark&quot;></xref> instance."
+      description: "이 항목의 고유 식별자 <xref href=&quot;System.Activities.Bookmark&quot;> </xref> 인스턴스."
   overload: System.Activities.Bookmark.GetHashCode*
   exceptions: []
   platform:
@@ -141,12 +141,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Gets the bookmark name."
+  summary: "책갈피 이름을 가져옵니다."
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The bookmark name."
+      description: "책갈피 이름입니다."
   overload: System.Activities.Bookmark.Name*
   exceptions: []
   platform:
@@ -163,13 +163,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns the bookmark name for a named bookmark or the bookmark ID for an unnamed bookmark."
+  summary: "명명된 된 책갈피의 책갈피 이름 또는 명명 되지 않은 책갈피의 책갈피 ID를 반환합니다."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The bookmark name or ID."
+      description: "책갈피 이름 또는 id입니다."
   overload: System.Activities.Bookmark.ToString*
   exceptions: []
   platform:

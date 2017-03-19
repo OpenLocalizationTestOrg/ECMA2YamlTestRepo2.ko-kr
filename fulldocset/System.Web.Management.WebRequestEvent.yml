@@ -13,8 +13,8 @@ items:
   nameWithType: WebRequestEvent
   fullName: System.Web.Management.WebRequestEvent
   type: Class
-  summary: "Defines the base class for events providing Web-request information."
-  remarks: "The WebRequestEvent is raised at every Web request.       It uses the <xref:System.Web.Management.WebRequestInformation> class to obtain request information.      > [!NOTE] >  In most cases you will use the standard ASP.NET health-monitoring types and control their behavior by setting the `healthMonitoring` configuration section. You can also create custom types, as shown in the next example. If you create your custom event type and you need to add your own information, customize the <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "웹 요청 정보를 제공 하는 이벤트에 대 한 기본 클래스를 정의 합니다."
+  remarks: "WebRequestEvent는 모든 웹 요청 시 발생 합니다.       사용 하 여는 <xref:System.Web.Management.WebRequestInformation>요청 정보를 가져오는 클래스.</xref:System.Web.Management.WebRequestInformation>      > [!NOTE] > 대부분의 경우에서 표준 ASP.NET 상태 모니터링 유형을 사용 및 설정 하 여 동작을 제어 합니다는 `healthMonitoring` 구성 섹션입니다. 또한 다음 예에서 같이 사용자 지정 형식을 만들 수 있습니다. 사용자 지정 이벤트 형식을 만들고 사용자 지정 하는 사용자의 정보를 추가 해야 하는 경우는 <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>메서드.</xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> 이렇게 하면 중요 한 시스템 정보를 덮어쓰거나 훼손 필요가 없습니다."
   example:
   - "The following code example shows how to derive from the WebRequestEvent class to create a custom event.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._5_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/csharp/t-system.web.management._5_1.cs)]  \n  \n The following is an excerpt of the configuration file that enables ASP.NET to use the custom event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  <providers>  \n    <!-- Define the custom provider that   \n         processes custom Web request events. -->  \n    <add name=\"SampleWebEventProvider\"   \ntype=\"SamplesAspNet.SampleEventProvider,webeventprovider,Version=1.0.1573.18094, Culture=neutral, PublicKeyToken=b5a57a9a9d487cf4, processorArchitecture=MSIL\"/>  \n  </providers>  \n  \n  <eventMappings>  \n    <!--  Define the event source that   \n         issues custom events.   -->  \n    <add  name=\"SampleWebRequestEvent\"   \ntype=\"SamplesAspNet.SampleWebRequestEvent,webrequestevent,Version=1.0.1573.23947, Culture=neutral, PublicKeyToken=e717d983a78c8ddb, processorArchitecture=MSIL\"/>  \n    </eventMappings>  \n  \n  <rules>  \n        <!-- Associate custom event with   \n        related custom provider -->  \n    <add   \n      name=\"CustomWebRequestEvent\"  \n      eventName=\"SampleWebRequestEvent\"   \n      provider=\"SampleWebEventProvider\"   \n      profile=\"Critical\"/>  \n  </rules>  \n</healthMonitoring>  \n```"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, and the code or identifier associated with the event."
+  summary: "초기화는 <xref href=&quot;System.Web.Management.WebRequestEvent&quot;> </xref> 지정 된 이벤트 매개 변수를 사용 하 여 클래스입니다."
+  remarks: "생성자 WebRequestEvent 소스 코드 또는 이벤트와 연결 된 식별자 및 이벤트를 이벤트 메시지를 지정할 수 있습니다."
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/visualbasic/3544ae82-e0d1-4dd2-b070-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/csharp/3544ae82-e0d1-4dd2-b070-_1.cs)]"
   syntax:
@@ -64,13 +64,13 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "이벤트와 연결 된 메시지입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "이벤트의 원본인 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 이벤트와 연결 된 코드입니다. 보다 커야 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, the code or identifier associated with the event, and the detailed code."
+  summary: "초기화는 <xref href=&quot;System.Web.Management.WebRequestEvent&quot;> </xref> 지정 된 이벤트 매개 변수를 사용 하 여 클래스입니다."
+  remarks: "생성자 WebRequestEvent 이벤트 메시지, 이벤트, 코드 또는 이벤트와 자세한 코드와 관련 된 식별자의 소스를 지정할 수 있습니다."
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/visualbasic/7570cf44-aeea-49b6-a5bc-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/csharp/7570cf44-aeea-49b6-a5bc-_1.cs)]"
   syntax:
@@ -96,16 +96,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "이벤트와 연결 된 메시지입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "이벤트의 원본인 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 이벤트와 연결 된 코드입니다. 보다 커야 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
     - id: eventDetailCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> detail code associated with the event."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 이벤트와 연결 된 코드에 자세히 설명 합니다."
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -122,7 +122,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Used internally to increment the performance counters."
+  summary: "성능 카운터를 증가 시키기 위해 내부적으로 사용 합니다."
   syntax:
     content: protected override void IncrementPerfCounters ();
     parameters: []
@@ -142,15 +142,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the information associated with the Web-application request."
-  remarks: "The standard request information is defined by the <xref:System.Web.Management.WebRequestInformation> class."
+  summary: "웹 응용 프로그램 요청에 연결 된 정보를 가져옵니다."
+  remarks: "<xref:System.Web.Management.WebRequestInformation>클래스</xref:System.Web.Management.WebRequestInformation> 에서 정의 된 표준 요청 정보"
   example:
   - "The following code example shows how to obtain the Web-request information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public System.Web.Management.WebRequestInformation RequestInformation { get; }
     return:
       type: System.Web.Management.WebRequestInformation
-      description: "The information associated with the Web-application request."
+      description: "웹 응용 프로그램 요청에 연결 된 정보입니다."
   overload: System.Web.Management.WebRequestEvent.RequestInformation*
   exceptions: []
   platform:

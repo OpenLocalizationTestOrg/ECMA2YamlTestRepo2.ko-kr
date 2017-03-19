@@ -10,8 +10,8 @@ items:
   nameWithType: IStopListeningRegisteredObject
   fullName: System.Web.Hosting.IStopListeningRegisteredObject
   type: Interface
-  summary: "[Supported in the .NET Framework 4.5.1 and later versions]       Listens for `GL_STOP_LISTENING` notifications from IIS."
-  remarks: "You can implement the IStopListeningRegisteredObject interface by passing an object to the <xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A> method. The passed object listens for `GL_STOP_LISTENING` notifications from IIS. You can call this implementation when ASP.NET receives a `GL_STOP_LISTENING` notification from IIS, which signals that IIS is no longer listening for new requests for this application. The web server can allow requests that are in progress to run to completion. If your application processes long running requests, you might want to have the application listen for these IIS notifications to gracefully wind down the request. The <xref:System.Web.Hosting.IStopListeningRegisteredObject.StopListening%2A> method contrasts with the <xref:System.Web.Hosting.IRegisteredObject.Stop%2A> method, which signals immediate application shutdown."
+  summary: "[.NET Framework 4.5.1 이상 버전에서 지원 됨]       에 대 한 수신 `GL_STOP_LISTENING` IIS에서 보내는 알림입니다."
+  remarks: "개체를 전달 하 여 IStopListeningRegisteredObject 인터페이스를 구현할 수는 <xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A>메서드.</xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A> 전달된 된 개체에 대 한 수신 `GL_STOP_LISTENING` IIS에서 보내는 알림입니다. ASP.NET을 받으면이 구현을 호출할 수 없습니다는 `GL_STOP_LISTENING` 신호를 IIS를 더 이상이 응용 프로그램에 대 한 새 요청을 수신 대기 하는 IIS의 알림입니다. 웹 서버에는 실행이 완료에 진행 중인 요청을 허용할 수 있습니다. 장기 실행 요청에서 응용 프로그램 프로세스를 하려는 경우도 있을 경우 응용 프로그램 요청 풍력 정상적으로 이러한 IIS 알림을 수신 합니다. <xref:System.Web.Hosting.IStopListeningRegisteredObject.StopListening%2A>와 대조 메서드는 <xref:System.Web.Hosting.IRegisteredObject.Stop%2A>메서드 즉시 응용 프로그램 종료 신호를 보냅니다.</xref:System.Web.Hosting.IRegisteredObject.Stop%2A> </xref:System.Web.Hosting.IStopListeningRegisteredObject.StopListening%2A>"
   syntax:
     content: 'public interface IStopListeningRegisteredObject : System.Web.Hosting.IRegisteredObject'
   implements:
@@ -30,8 +30,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "[Supported in the .NET Framework 4.5.1 and later versions]       Stops listening for new requests."
-  remarks: "The StopListening method is supported only when running in IIS integrated mode. The ASP.NET runtime does not guarantee that the StopListening method will ever fire.       The StopListening method must not throw exceptions, otherwise the behavior is undefined and the process will likely be terminated. Further, to avoid creating deadlocks, the StopListening method should not block execution.      > [!IMPORTANT] >  In many applications the StopListening method can run at the same time as the <xref:System.AppDomain.Unload%2A> method.  If <xref:System.AppDomain> unload occurs, the StopListening method might be forcibly aborted before it finishes executing."
+  summary: "[.NET Framework 4.5.1 이상 버전에서 지원 됨]       새 요청을 수신 대기를 중지 합니다."
+  remarks: "StopListening 메서드는 IIS 통합된 모드에서 실행 하는 경우에 지원 됩니다. ASP.NET 런타임 StopListening 메서드는 현재까지 발생 하는 것을 보장 하지 않습니다.       StopListening 메서드 예외가 발생 하지 않아야, 그렇지 않으면 동작이 정의 되지 않습니다. 및 프로세스가 종료 될 가능성이 됩니다. 또한 만드는 교착 상태를 방지 하려면 StopListening 메서드 차단 하지 않아야 실행 합니다.      > [!IMPORTANT] > 많은 응용 프로그램은 StopListening 메서드도 동시에 실행할 수는 <xref:System.AppDomain.Unload%2A>메서드.</xref:System.AppDomain.Unload%2A>  경우 <xref:System.AppDomain>언로드 발생 실행 완료 되기 전에 StopListening 메서드 강제로 취소 될 수 있습니다.</xref:System.AppDomain>"
   syntax:
     content: public void StopListening ();
     parameters: []

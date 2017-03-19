@@ -15,8 +15,8 @@ items:
   nameWithType: MobileCapabilities
   fullName: System.Web.Mobile.MobileCapabilities
   type: Class
-  summary: "Provides a single source for accessing capability information about a client device and for performing queries against device capabilities. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "The MobileCapabilities class extends the <xref:System.Web.HttpBrowserCapabilities> class. The MobileCapabilities class offers a large number of read-only properties that provide type-safe access to the Browser object&quot;s capabilities dictionary.       You can use the Browser property of the <xref:System.Web.HttpRequest> object to point to an instance of a MobileCapabilities object, which can then be used to read the capabilities of the requesting browser and device."
+  summary: "클라이언트 장치에 대 한 기능 정보에 액세스 하 고 장치 기능에 대 한 쿼리를 수행 하기 위한 단일 소스를 제공 합니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "<xref:System.Web.HttpBrowserCapabilities>클래스</xref:System.Web.HttpBrowserCapabilities> 를 확장 하는 MobileCapabilities 클래스는 MobileCapabilities 클래스는 많은 수의 브라우저 개체의 기능 사전에 대 한 형식이 안전한 액세스를 제공 하는 읽기 전용 속성을 제공 합니다.       Browser 속성을 사용할 수 있습니다는 <xref:System.Web.HttpRequest>개체를 요청 하는 브라우저와 장치 기능을 읽을 사용할 수 있는 MobileCapabilities 개체의 인스턴스를 가리키도록 합니다.</xref:System.Web.HttpRequest>"
   example:
   - "During the page load, the MobileCapabilities object obtains the capabilities through the <xref:System.Web.Configuration.HttpCapabilitiesBase.Browser%2A> property as previously discussed. The <xref:System.Web.Configuration.HttpCapabilitiesBase.PreferredRenderingMime%2A> and the <xref:System.Web.Configuration.HttpCapabilitiesBase.ScreenCharactersWidth%2A> properties of the MobileCapabilities object report back to the browser by setting properties on the <xref:System.Web.HttpResponse> object and also by programmatically setting the `Text` property of certain controls on the page.  \n  \n```c#  \n<%@ Page Inherits=\"System.Web.UI.MobileControls.MobilePage\"   \n    Language=\"c#\" %>  \n<script language=\"c#\" runat=\"server\">  \npublic void Page_Load(Object sender, EventArgs e)  \n{  \n    System.Web.Mobile.MobileCapabilities currentCapabilities;  \n    MobileCapabilities currentCapabilities =   \n        (MobileCapabilities)Request.Browser;  \n    // Programatically find the mobile capabilities without using   \n    // DeviceSpecific Filters.  \n    if(currentCapabilities.PreferredRenderingMIME==\"text/html\")  \n    {  \n        Label2.Text = \"You are using an html supported device.\";  \n    }  \n    else if(currentCapabilities.PreferredRenderingMIME ==   \n        \"text/vnd.wap.wml\")  \n    {  \n        Label2.Text = \"You are using a wml supported device.\";  \n    }  \n    Label1.Text = \"Screen Width (chars): \" +   \n        currentCapabilities.ScreenCharactersWidth;  \n }  \n </script>  \n <Mobile:Form runat=\"server\" id=frmTemplate >  \n      <mobile:label ID=\"Label1\" runat=\"server\" />  \n      <mobile:label ID=\"Label2\" runat=\"server\" />  \n </Mobile:Form>  \n```"
   syntax:
@@ -168,7 +168,7 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> class. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
+  summary: "인스턴스를 만듭니다는 <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;> </xref> 클래스입니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
   syntax:
     content: public MobileCapabilities ();
     parameters: []
@@ -188,28 +188,28 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Provides a uniform way to evaluate device capabilities. This method is used internally by ASP.NET to implement various device-selection criteria expressed in the syntax of the controls. For example, this method is used to choose among [&lt;Choice&gt; Element (.NET Framework Developer&quot;s Guide)](http://msdn.microsoft.com/en-us/c81bee77-bb45-4211-be0f-e13a040b3c2d) elements in a DeviceSpecific/Choice construct. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Applications can use the HasCapability method programmatically when they gather device-specific information. If the `capabilityName` parameter specifies a device evaluation method, the `optionalArgument` parameter is passed to this method. If the `capabilityName` parameter specifies a property name or item in the capabilities dictionary, the HasCapability method checks whether the property or item is equal to the `optionalArgument` parameter."
+  summary: "장치 기능을 평가 하는 일정 한 방법을 제공 합니다. 이 메서드는 컨트롤의 구문으로 표현 하는 다양 한 장치 선택 조건을 구현 하려면 ASP.NET에서 내부적으로 사용 됩니다. 이 메서드 중에서 선택 하는 예를 들어 [ &lt;선택&gt; 요소 (.NET Framework 개발자 가이드)](http://msdn.microsoft.com/en-us/c81bee77-bb45-4211-be0f-e13a040b3c2d) DeviceSpecific/선택을의 요소를 생성 합니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "장치 관련 정보를 수집 하는 경우 응용 프로그램 HasCapability 메서드를 프로그래밍 방식으로 사용할 수 있습니다. 경우는 `capabilityName` 장치 확인 메서드를 지정 하는 매개 변수는 `optionalArgument` 매개 변수는이 메서드에 전달 됩니다. 경우는 `capabilityName` HasCapability 메서드는 속성이 나 항목이 같은지 여부를 확인, 매개 변수는 속성 이름 또는 항목 기능 사전에서 지정 된 `optionalArgument` 매개 변수입니다."
   syntax:
     content: public bool HasCapability (string delegateName, string optionalParameter);
     parameters:
     - id: delegateName
       type: System.String
-      description: "The device evaluation method, property name, or item in the capabilities collection."
+      description: "장치 확인 메서드, 속성 이름 또는 항목 기능 컬렉션입니다."
     - id: optionalParameter
       type: System.String
-      description: "The optional argument."
+      description: "선택적 인수입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the device has the specified capability; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>장치에 있는 경우 지정된 된 기능입니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Mobile.MobileCapabilities.HasCapability*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "A <code>capabilityName</code> parameter is not found as a device-filter name specified in the configuration file, as a <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> property, or as an item in the <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;></xref> Item collection."
+    description: "A <code> capabilityName </code> 구성 파일에 지정 된 장치 필터 이름으로 매개 변수를 찾을 수 없습니다는 <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;> </xref> 속성 또는 보고서에 항목으로는 <xref href=&quot;System.Web.Mobile.MobileCapabilities&quot;> </xref> 항목 컬렉션입니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>delegateName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>delegateName</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다."
   platform:
   - net462
 - uid: System.Web.Mobile.MobileCapabilities.PreferredRenderingTypeChtml10
@@ -224,13 +224,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for compact HTML 1.0. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by an adapter to assign the rendering type for the device."
+  summary: "간단한 HTML 1.0에 사용할 수 있는 원본 식별자를 반환 합니다. 이 필드는 읽기 전용입니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "어댑터에서 장치에 대 한 렌더링 형식을 할당 하는 데 사용 합니다."
   syntax:
     content: public static readonly string PreferredRenderingTypeChtml10;
     return:
       type: System.String
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -246,13 +246,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for HTML 3.2. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "HTML 3.2에 사용할 원본 식별자를 반환 합니다. 이 필드는 읽기 전용입니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "어댑터에서 장치에 대 한 렌더링 형식을 할당 하는 데 사용 합니다."
   syntax:
     content: public static readonly string PreferredRenderingTypeHtml32;
     return:
       type: System.String
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -268,13 +268,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for WML 1.1. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "WML 1.1에 사용할 원본 식별자를 반환 합니다. 이 필드는 읽기 전용입니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "어댑터에서 장치에 대 한 렌더링 형식을 할당 하는 데 사용 합니다."
   syntax:
     content: public static readonly string PreferredRenderingTypeWml11;
     return:
       type: System.String
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -290,13 +290,13 @@ items:
   assemblies:
   - System.Web.Mobile
   namespace: System.Web.Mobile
-  summary: "Returns the source identifier to use for WML 1.2. This field is read-only. This API is obsolete. For information about how to develop ASP.NET mobile applications, see the [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) Web site."
-  remarks: "Used by the adapter to assign the rendering type for the device."
+  summary: "WML 1.2에 대 한 사용할 수 있는 원본 식별자를 반환 합니다. 이 필드는 읽기 전용입니다. 이 API는 사용 되지 않습니다. ASP.NET 모바일 응용 프로그램을 개발 하는 방법에 대 한 정보를 참조 하십시오.는 [www.asp.net/mobile](http://go.microsoft.com/fwlink/?LinkID=182900) 웹 사이트입니다."
+  remarks: "어댑터에서 장치에 대 한 렌더링 형식을 할당 하는 데 사용 합니다."
   syntax:
     content: public static readonly string PreferredRenderingTypeWml12;
     return:
       type: System.String
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

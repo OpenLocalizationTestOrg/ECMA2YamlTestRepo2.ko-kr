@@ -16,8 +16,8 @@ items:
   nameWithType: IDataEnvironment
   fullName: System.ComponentModel.Design.Data.IDataEnvironment
   type: Interface
-  summary: "Defines an interface to data services that enables control designers to integrate data store or database-related functionality into their design environment."
-  remarks: "An object that implements the IDataEnvironment interface can access the data connections available to an application at design time. The IDataEnvironment interface provides methods to list available data connections, create new data connections, retrieve schema information from a connection, and save data-connection configuration information to the application&quot;s configuration file.       The IDataEnvironment interface enables you to interact with data connections in the design environment, but it is not intended as a data-management API."
+  summary: "컨트롤 디자이너 데이터 저장소 또는 데이터베이스 관련 기능 디자인 환경에 통합할 수 있도록 데이터 서비스에는 인터페이스를 정의 합니다."
+  remarks: "IDataEnvironment 인터페이스를 구현 하는 개체 디자인 타임에 응용 프로그램에 사용할 수 있는 데이터 연결에 액세스할 수 있습니다. IDataEnvironment 인터페이스에는 사용할 수 있는 데이터 연결 목록, 새 데이터 연결 만들기, 연결 로부터 연결 하면 스키마 정보를 검색 및 응용 프로그램의 구성 파일에 데이터 연결 구성 정보를 저장 하는 메서드를 제공 합니다.       IDataEnvironment 인터페이스를 사용 하면 디자인 환경에서 데이터 연결와 상호 작용할 수 있지만 데이터 관리 API로 적합 하지 않습니다."
   syntax:
     content: public interface IDataEnvironment
   implements: []
@@ -35,20 +35,20 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Creates a new data connection or edits an existing connection using the design tool&quot;s new connection user interface."
-  remarks: "Use the BuildConnection method to activate the design environment&quot;s user interface for creating or editing data connections. If the `initialConnection` parameter is `null`, it indicates the user wants to create a new connection. If the `initialConnection` parameter is a <xref:System.ComponentModel.Design.Data.DesignerDataConnection> object, it indicates the user wants to edit an existing connection.       Your design environment is responsible for creating the data connection, adding the connection either to a global list of connections or to the Web application&quot;s configuration file, and adding the new connection to the <xref:System.ComponentModel.Design.Data.IDataEnvironment.Connections%2A> property.       The new connection should include the information that the application needs to create a data connection at run time. If you need to use the data connection in the design environment, use the <xref:System.ComponentModel.Design.Data.IDataEnvironment.GetDesignTimeConnection%2A> method to return a <xref:System.Data.Common.DbConnection> object that will connect to the data store from the design environment.       If the user chooses to cancel the new connection creation process, the BuildConnection method should return `null`."
+  summary: "새 데이터 연결을 만들거나 새로운 연결 사용자 인터페이스 디자인 도구를 사용 하 여 기존 연결을 편집 합니다."
+  remarks: "디자인 환경 사용자 인터페이스 만들기 또는 데이터 연결을 편집을 활성화 하려면 BuildConnection 메서드를 사용 합니다. 경우는 `initialConnection` 매개 변수는 `null`, 사용자가 새 연결을 나타냅니다. 경우는 `initialConnection` 매개 변수는 한 <xref:System.ComponentModel.Design.Data.DesignerDataConnection>개체를 사용자가 기존 연결을 편집을 나타냅니다.</xref:System.ComponentModel.Design.Data.DesignerDataConnection>       디자인 환경은 연결의 전역 목록 또는 웹 응용 프로그램의 구성 파일에 연결을 추가 데이터 연결을 만들고 새 연결을 추가 <xref:System.ComponentModel.Design.Data.IDataEnvironment.Connections%2A>속성.</xref:System.ComponentModel.Design.Data.IDataEnvironment.Connections%2A>       새 연결 응용 프로그램 실행 시 데이터 연결을 만드는 데 필요한 정보를 포함 해야 합니다. 사용 하 여 디자인 환경에서 데이터 연결을 사용 해야 할 경우는 <xref:System.ComponentModel.Design.Data.IDataEnvironment.GetDesignTimeConnection%2A>반환 하는 메서드는 <xref:System.Data.Common.DbConnection>디자인 환경에서 데이터 저장소에 연결 하는 개체입니다.</xref:System.Data.Common.DbConnection> </xref:System.ComponentModel.Design.Data.IDataEnvironment.GetDesignTimeConnection%2A>       BuildConnection 메서드를 반환 해야 하는 경우 사용자가을 새 연결 만들기 프로세스를 취소, `null`합니다."
   syntax:
     content: public System.ComponentModel.Design.Data.DesignerDataConnection BuildConnection (System.Windows.Forms.IWin32Window owner, System.ComponentModel.Design.Data.DesignerDataConnection initialConnection);
     parameters:
     - id: owner
       type: System.Windows.Forms.IWin32Window
-      description: "The parent window for the connection dialog."
+      description: "연결 대화 상자에 대 한 부모 창입니다."
     - id: initialConnection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "The connection, if any, to edit. To create a new connection, `initialConnection` should be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "편집할 수 있는 경우 연결입니다. 새 연결을 만들려면 `initialConnection` 해야 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "A new or edited <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;></xref> object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the user canceled."
+      description: "새로 만들거나 편집한 <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;> </xref> 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 을 취소 합니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.BuildConnection*
   exceptions: []
   platform:
@@ -65,26 +65,26 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Launches a dialog to build a SQL query string."
-  remarks: "The BuildQuery method launches the design environment&quot;s UI for editing or creating SQL query strings. If the `initialQueryText` parameter is <xref:System.String>, it indicates the user wants to create a new query. If the `initialQueryText` parameter contains a string, it indicates the user wants to edit the existing query.       The `mode` parameter indicates the type of query the user wants to build; either select, update, insert, or delete. Your user interface can use the `mode` parameter to configure itself for the type of query desired, limit the user to using SQL statements valid only for the type of query desired, and/or validate the query against the desired type."
+  summary: "SQL 쿼리 문자열을 작성할 수 있는 대화 상자를 시작 합니다."
+  remarks: "BuildQuery 메서드를 편집 하거나 만들 SQL 쿼리 문자열에 대 한 디자인 환경 UI를 시작 합니다. 경우는 `initialQueryText` 매개 변수는 <xref:System.String>, 사용자가 새 쿼리를 작성을 나타냅니다.</xref:System.String> 경우는 `initialQueryText` 매개 변수는 문자열이 포함 된 경우 사용자가 기존 쿼리를 편집을 나타냅니다.       `mode` 매개 변수는 사용자가을 작성 하는 쿼리의 형식을 나타냅니다;를 선택 하거나, 업데이트, 삽입 또는 삭제 합니다. 사용자 인터페이스에서 사용할 수는 `mode` 매개 변수를 자체적으로 원하는 쿼리 형식에 대 한 구성, 원하는 쿼리 형식에 대해서만 유효한 SQL 문을 사용 하 여 사용자 및/또는 원하는 형식에 대해 쿼리의 유효성을 검사 합니다."
   syntax:
     content: public string BuildQuery (System.Windows.Forms.IWin32Window owner, System.ComponentModel.Design.Data.DesignerDataConnection connection, System.ComponentModel.Design.Data.QueryBuilderMode mode, string initialQueryText);
     parameters:
     - id: owner
       type: System.Windows.Forms.IWin32Window
-      description: "The parent window for the dialog."
+      description: "대화 상자에 대 한 부모 창입니다."
     - id: connection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "The data connection to use for the query."
+      description: "쿼리를 사용 하 여 데이터 연결 합니다."
     - id: mode
       type: System.ComponentModel.Design.Data.QueryBuilderMode
-      description: "One of the <xref href=&quot;System.ComponentModel.Design.Data.QueryBuilderMode&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.ComponentModel.Design.Data.QueryBuilderMode&quot;> </xref> 값입니다."
     - id: initialQueryText
       type: System.String
-      description: "The initial value of the query or <xref:System.String> to create a new query."
+      description: "쿼리 초기 값 또는 <xref:System.String>새 쿼리를 만듭니다.</xref:System.String>"
     return:
       type: System.String
-      description: "A string containing the SQL query, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the user canceled."
+      description: "SQL 쿼리를 포함 하는 문자열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 을 취소 합니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.BuildQuery*
   exceptions: []
   platform:
@@ -101,23 +101,23 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Writes a connection string to the application&quot;s configuration file."
-  remarks: "The ConfigureConnection method writes a connection to the application&quot;s configuration file. The connection string and provider name are written to the [connectionStrings Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b6ffbb2e-a4d1-410e-8f7e-9755e92c65de) configuration element named according to the `name` parameter. The <xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name%2A> property of the `connection` parameter is ignored.       Implementations of the ConfigureConnection method should throw the following exceptions.      |Exception|Reason|   |---------------|------------|   |<xref:System.ArgumentException>|A duplicate name exists in the application&quot;s configuration file.|   |<xref:System.IO.FileNotFoundException>, <xref:System.UnauthorizedAccessException>, or other appropriate file IO exception.|The application&quot;s configuration file cannot be updated. Your ConfigureConnection method implementation should throw an appropriate exception.|   |<xref:System.ComponentModel.Design.CheckoutException>|The application&quot;s configuration file cannot be checked out from the source control system.|       Consider using the configuration-management APIs in the <xref:System.Configuration> namespace to read and write the application&quot;s configuration file. The <xref:System.Configuration.ConnectionStringsSection> class will read and write the [connectionStrings Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b6ffbb2e-a4d1-410e-8f7e-9755e92c65de) configuration element."
+  summary: "응용 프로그램의 구성 파일에 연결 문자열을 씁니다."
+  remarks: "ConfigureConnection 메서드는 응용 프로그램의 구성 파일에 대 한 연결을 씁니다. 연결 문자열과 공급자 이름에 기록 되는 [connectionStrings 요소 (ASP.NET 설정 스키마)](http://msdn.microsoft.com/en-us/b6ffbb2e-a4d1-410e-8f7e-9755e92c65de) 에 따라 명명 된 구성 요소는 `name` 매개 변수입니다. <xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name%2A>의 속성은 `connection` 매개 변수가 무시 됩니다.</xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name%2A>       ConfigureConnection 메서드의 구현에서는 다음과 같은 예외를 throw 해야 합니다.      | 예외 | 이유 |   |---------------|------------|   | <xref:System.ArgumentException>| 응용 프로그램의 구성 파일에는 중복 된 이름이 있습니다. |   | <xref:System.IO.FileNotFoundException>, <xref:System.UnauthorizedAccessException>, 또는 다른 적절 한 파일 IO 예외가. | 응용 프로그램의 구성 파일을 업데이트할 수 없습니다.</xref:System.UnauthorizedAccessException> </xref:System.IO.FileNotFoundException> </xref:System.ArgumentException> ConfigureConnection 메서드 구현에서 적절 한 예외를 throw 해야 합니다. |   | <xref:System.ComponentModel.Design.CheckoutException>| 소스 제어 시스템에서 응용 프로그램의 구성 파일을 체크아웃할 수 수 없습니다. |       구성 관리 Api를 사용 하는 것이 좋습니다는 <xref:System.Configuration>을 읽고 응용 프로그램의 구성 파일을 쓸.</xref:System.Configuration> </xref:System.ComponentModel.Design.CheckoutException> <xref:System.Configuration.ConnectionStringsSection>클래스는 읽기 및 쓰기는 [connectionStrings 요소 (ASP.NET 설정 스키마)](http://msdn.microsoft.com/en-us/b6ffbb2e-a4d1-410e-8f7e-9755e92c65de) 구성 요소.</xref:System.Configuration.ConnectionStringsSection>"
   syntax:
     content: public System.ComponentModel.Design.Data.DesignerDataConnection ConfigureConnection (System.Windows.Forms.IWin32Window owner, System.ComponentModel.Design.Data.DesignerDataConnection connection, string name);
     parameters:
     - id: owner
       type: System.Windows.Forms.IWin32Window
-      description: "The parent window for the dialog, if any."
+      description: "있는 경우 대화 상자에 대 한 부모 창입니다."
     - id: connection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "A <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;></xref> object containing the connection data to save."
+      description: "A <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;> </xref> 저장 연결 데이터가 들어 있는 개체입니다."
     - id: name
       type: System.String
-      description: "The name of the new connection configuration entry."
+      description: "새 연결 구성 항목의 이름입니다."
     return:
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "A <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;></xref> object containing the saved connection data with the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.Name*> property set to <code>name</code>, and the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.IsConfigured*> property set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "A <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;> </xref> 개체를 사용 하 여 저장 된 연결 데이터를 포함 하는 <> </> *> 속성이로 설정 <code> name </code>, 및 <> </> *> 속성이로 설정 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.ConfigureConnection*
   exceptions: []
   platform:
@@ -134,13 +134,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Gets a collection of data connections defined in the current design session."
-  remarks: "The Connections property returns the set of connections available at design time. Your implementation of the Connections property can return either the list of connections defined in the current Web application, or a list of connections defined at a global level, such as a list of data connections maintained by the design environment.       Each connection in the collection should have a unique connection string. If your collection includes both connections from the application&quot;s configuration file and global connections, your implementation must handle the case where connections from the global list and the configuration file have the same connection string. In this case, it is recommended that you eliminate duplicates and use the configuration-file connection only."
+  summary: "현재 디자인 세션에서 정의 된 데이터 연결의 컬렉션을 가져옵니다."
+  remarks: "연결 속성 디자인 타임에 사용할 수 있는 연결 집합을 반환 합니다. 연결 속성의 구현에는 현재 웹 응용 프로그램 또는 디자인 환경에서 유지 관리 하는 데이터 연결 목록 등의 전역 수준에서 정의 된 연결 목록에 정의 된 연결 목록을 반환할 수 있습니다.       컬렉션에 있는 각 연결은 고유한 연결 문자열이 있어야 합니다. 컬렉션에서 응용 프로그램의 구성 파일에서 연결 및 글로벌 연결 모두를 포함 하는 경우 구현 연결 전역 목록 및 구성 파일에서 동일한 연결 문자열에 있는 경우를 처리 해야 합니다. 이 경우 중복 행을 제거 하 고 구성 파일 연결에만 사용 하 여이 좋습니다."
   syntax:
     content: public System.Collections.ICollection Connections { get; }
     return:
       type: System.Collections.ICollection
-      description: "A collection of <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;></xref> objects representing the data connections available in the current design session."
+      description: "컬렉션 <xref href=&quot;System.ComponentModel.Design.Data.DesignerDataConnection&quot;> </xref> 현재 디자인 세션에서 사용할 수 있는 데이터 연결을 나타내는 개체입니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.Connections*
   exceptions: []
   platform:
@@ -157,16 +157,16 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Returns a code expression that contains the source code required to retrieve a connection string from the application&quot;s configuration file."
+  summary: "응용 프로그램의 구성 파일에서 연결 문자열을 검색 하는 데 필요한 소스 코드를 포함 하는 코드 식을 반환 합니다."
   syntax:
     content: public System.CodeDom.CodeExpression GetCodeExpression (System.ComponentModel.Design.Data.DesignerDataConnection connection);
     parameters:
     - id: connection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "The connection to retrieve from the application&quot;s configuration file."
+      description: "연결 응용 프로그램의 구성 파일에서 검색입니다."
     return:
       type: System.CodeDom.CodeExpression
-      description: "A <xref href=&quot;System.CodeDom.CodeExpression&quot;></xref> object containing the source code required to retrieve a connection string from the application&quot;s configuration file."
+      description: "A <xref href=&quot;System.CodeDom.CodeExpression&quot;> </xref> 응용 프로그램의 구성 파일에서 연결 문자열을 검색 하는 데 필요한 소스 코드가 들어 있는 개체입니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetCodeExpression*
   exceptions: []
   platform:
@@ -183,17 +183,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Gets the schema for the specified data connection."
-  remarks: "The GetConnectionSchema method returns the database schema for the specified data connection. If the schema is unavailable, or if the provider for the connection is unavailable, the GetConnectionSchema should return `null`."
+  summary: "지정된 된 데이터 연결에 대 한 스키마를 가져옵니다."
+  remarks: "GetConnectionSchema 메서드는 지정된 된 데이터 연결에 대 한 데이터베이스 스키마를 반환합니다. 스키마를 사용할 수 없거나 또는 연결에 대 한 공급자를 사용할 수 없는 경우는 GetConnectionSchema를 반환 해야 하는 경우 `null`합니다."
   syntax:
     content: public System.ComponentModel.Design.Data.IDesignerDataSchema GetConnectionSchema (System.ComponentModel.Design.Data.DesignerDataConnection connection);
     parameters:
     - id: connection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "The data connection for which to return schema information."
+      description: "스키마 정보를 반환할에 대 한 데이터 연결입니다."
     return:
       type: System.ComponentModel.Design.Data.IDesignerDataSchema
-      description: "An <xref href=&quot;System.ComponentModel.Design.Data.IDesignerDataSchema&quot;></xref> object containing the schema information for the specified data connection, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no schema information is available."
+      description: "<xref href=&quot;System.ComponentModel.Design.Data.IDesignerDataSchema&quot;> </xref> 지정 된 데이터 연결에 대 한 스키마 정보를 포함 하는 개체 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 스키마 정보가 없는 경우."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetConnectionSchema*
   exceptions: []
   platform:
@@ -210,17 +210,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Data
-  summary: "Gets a database connection that can be used at design time."
-  remarks: "The GetDesignTimeConnection method returns a valid, open connection to the data store that can be used by the control designer.       Control designers should use the GetDesignTimeConnection to obtain a data connection and should not attempt to open a connection using the <xref:System.ComponentModel.Design.Data.DesignerDataConnection.ConnectionString%2A> property."
+  summary: "디자인 타임에 사용할 수 있는 데이터베이스 연결을 가져옵니다."
+  remarks: "GetDesignTimeConnection 메서드 컨트롤 디자이너에서 사용할 수 있는 데이터 저장소에 유효한 열린 연결을 반환 합니다.       컨트롤 디자이너에 연결 하는 데이터 연결의 GetDesignTimeConnection을 사용 해야 하며 사용 하 여 연결 열기를 시도 하지 않아야는 <xref:System.ComponentModel.Design.Data.DesignerDataConnection.ConnectionString%2A>속성.</xref:System.ComponentModel.Design.Data.DesignerDataConnection.ConnectionString%2A>"
   syntax:
     content: public System.Data.Common.DbConnection GetDesignTimeConnection (System.ComponentModel.Design.Data.DesignerDataConnection connection);
     parameters:
     - id: connection
       type: System.ComponentModel.Design.Data.DesignerDataConnection
-      description: "The desired data connection."
+      description: "원하는 데이터 연결입니다."
     return:
       type: System.Data.Common.DbConnection
-      description: "A <xref href=&quot;System.Data.Common.DbConnection&quot;></xref> object that can be used at design time."
+      description: "A <xref href=&quot;System.Data.Common.DbConnection&quot;> </xref> 디자인 타임에 사용할 수 있는 개체입니다."
   overload: System.ComponentModel.Design.Data.IDataEnvironment.GetDesignTimeConnection*
   exceptions: []
   platform:

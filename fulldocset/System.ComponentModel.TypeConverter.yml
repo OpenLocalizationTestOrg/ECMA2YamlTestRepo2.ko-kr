@@ -48,8 +48,8 @@ items:
   nameWithType: TypeConverter
   fullName: System.ComponentModel.TypeConverter
   type: Class
-  summary: "Provides a unified way of converting types of values to other types, as well as for accessing standard values and subproperties."
-  remarks: "The most common type of converter is one that converts to and from a text representation. The type converter for a class is bound to the class with a <xref:System.ComponentModel.TypeConverterAttribute>. Unless this attribute is overridden, all classes that inherit from this class use the same type converter as the base class.      > [!NOTE] >  For general type system purposes, do not access a type converter directly. Instead, access the appropriate converter by using <xref:System.ComponentModel.TypeDescriptor>. For more information, see the code examples provided.       **Note** For XAML purposes, a XAML processor searches for the <xref:System.ComponentModel.TypeConverterAttribute> directly, instead of going through <xref:System.ComponentModel.TypeDescriptor>. For cases where you do want a <xref:System.ComponentModel.TypeDescriptor> instance from code, or where you create a shared instance in WPF resources, it is acceptable to construct it directly without referencing <xref:System.ComponentModel.TypeDescriptor> or other reflection and type system support.       Classes derived from TypeConverter are often referenced as part of how a XAML processor converts an attribute or initialization text value from markup (which is inherently a string) and generates an object for a run-time representation. Custom type authors that intend to support a type conversion behavior for XAML typically implement a TypeConverter class that supports their own unique `ConvertFrom` behavior from a string. This behavior enables type conversion from the string provided as a XAML attribute value and provides a XAML processor with the support needed to create an object from the string, so that the object can be produced in a parsed object graph. Custom types or members of custom types are indicated by applying <xref:System.ComponentModel.TypeConverterAttribute> to the definitions, with the attribute referencing the custom TypeConverter implementation. For more information, see [Type Converters for XAML Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "다른 형식으로, 물론 표준 값과 하위 속성에 액세스 하기 위한 값의 형식을 변환 하는 단일화 된 방법을 제공 합니다."
+  remarks: "변환기의 가장 일반적인 유형은 텍스트 표현을 상호 변환 하는 하나입니다. 클래스에 대 한 형식 변환기에 <xref:System.ComponentModel.TypeConverterAttribute>.</xref:System.ComponentModel.TypeConverterAttribute> 클래스에 바인딩됩니다. 이 특성을 재정의 하지 않는 한 기본 클래스와 동일한 형식 변환기를 사용 하는이 클래스에서 상속 하는 모든 클래스입니다.      > [!NOTE] > 일반 형식 시스템을 위해 직접 액세스 하지 않습니다는 형식 변환기입니다. 대신 적절 한 변환기 <xref:System.ComponentModel.TypeDescriptor>.</xref:System.ComponentModel.TypeDescriptor> 를 사용 하 여 액세스 자세한 내용은 제공 된 코드 예제를 참조 하세요.       **참고** XAML 용도에서는 XAML 프로세서는 <xref:System.ComponentModel.TypeConverterAttribute> <xref:System.ComponentModel.TypeDescriptor>.</xref:System.ComponentModel.TypeDescriptor> 을 통하지 않고 직접</xref:System.ComponentModel.TypeConverterAttribute> 에 대 한 검색 원하는 경우에는 <xref:System.ComponentModel.TypeDescriptor>코드에서 인스턴스 또는 WPF의 공유 인스턴스를 만들 위치 리소스를 사용할 수 있기를 참조 하지 않고 직접 생성 하 <xref:System.ComponentModel.TypeDescriptor>또는 기타 리플렉션 및 형식 시스템을 지원 합니다.</xref:System.ComponentModel.TypeDescriptor> </xref:System.ComponentModel.TypeDescriptor>       TypeConverter에서 파생 된 클래스는 주로 XAML 프로세서에서 태그 (기본적으로 문자열) 특성 또는 초기화 텍스트 값을 변환 하는 방법의 일부로 참조 런타임 표현에 대 한 개체를 생성 합니다. 지 원하는 자체의 고유한 TypeConverter 클래스를 구현 하는 사용자 지정 형식 작성자는 일반적으로 XAML에 대 한 형식 변환 동작을 지 원하는 데 `ConvertFrom` 문자열에서 동작 합니다. 이 동작은 XAML 특성 값으로 제공 하는 문자열 형식 변환할 수 있습니다 하 고 구문 분석 된 개체 그래프에서 개체를 생성 될 수 있도록 문자열에서 개체를 만드는 데 필요한 지원으로 XAML 프로세서를 제공 합니다. 사용자 정의 형식 또는 사용자 지정 형식의 멤버를 적용 하 여 표시 됩니다 <xref:System.ComponentModel.TypeConverterAttribute>는 정의에 특성으로 참조 하는 사용자 지정 TypeConverter 구현을.</xref:System.ComponentModel.TypeConverterAttribute> 자세한 내용은 참조 [XAML 개요에 대 한 유형 변환기](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example shows how to create an instance of a type converter and bind it to a class. The class implementing the converter, `MyClassConverter`, must inherit from the TypeConverter class.  \n  \n [!code-cpp[Classic TypeConverter Example#1](~/add/codesnippet/cpp/t-system.componentmodel._43_1.cpp)]\n [!code-cs[Classic TypeConverter Example#1](~/add/codesnippet/csharp/t-system.componentmodel._43_1.cs)]\n [!code-vb[Classic TypeConverter Example#1](~/add/codesnippet/visualbasic/t-system.componentmodel._43_1.vb)]  \n  \n When you have a property that has an enumeration, check to see whether an enumeration value is valid before setting the property. The next code example requires that an enumeration called `MyPropertyEnum` has been declared.  \n  \n [!code-cpp[Classic TypeConverter Example#2](~/add/codesnippet/cpp/t-system.componentmodel._43_2.cpp)]\n [!code-cs[Classic TypeConverter Example#2](~/add/codesnippet/csharp/t-system.componentmodel._43_2.cs)]\n [!code-vb[Classic TypeConverter Example#2](~/add/codesnippet/visualbasic/t-system.componentmodel._43_2.vb)]  \n  \n Another common type converter usage is to convert an object to a string. The following code example prints out the name of the <xref:System.Drawing.Color> stored in the variable `c`.  \n  \n [!code-cpp[Classic TypeConverter Example#3](~/add/codesnippet/cpp/t-system.componentmodel._43_3.cpp)]\n [!code-cs[Classic TypeConverter Example#3](~/add/codesnippet/csharp/t-system.componentmodel._43_3.cs)]\n [!code-vb[Classic TypeConverter Example#3](~/add/codesnippet/visualbasic/t-system.componentmodel._43_3.vb)]  \n  \n You can also use a type converter to convert a value from its name, as shown in the next code example.  \n  \n [!code-cpp[Classic TypeConverter Example#4](~/add/codesnippet/cpp/t-system.componentmodel._43_4.cpp)]\n [!code-cs[Classic TypeConverter Example#4](~/add/codesnippet/csharp/t-system.componentmodel._43_4.cs)]\n [!code-vb[Classic TypeConverter Example#4](~/add/codesnippet/visualbasic/t-system.componentmodel._43_4.vb)]  \n  \n In the following code example, you can use a type converter to print out the set of standard values that the object supports.  \n  \n [!code-cpp[Classic TypeConverter Example#5](~/add/codesnippet/cpp/t-system.componentmodel._43_5.cpp)]\n [!code-cs[Classic TypeConverter Example#5](~/add/codesnippet/csharp/t-system.componentmodel._43_5.cs)]\n [!code-vb[Classic TypeConverter Example#5](~/add/codesnippet/visualbasic/t-system.componentmodel._43_5.vb)]"
   syntax:
@@ -75,7 +75,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ComponentModel.TypeConverter&quot;> </xref> 클래스입니다."
   syntax:
     content: public TypeConverter ();
     parameters: []
@@ -95,17 +95,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this converter can convert an object of the given type to the type of this converter."
-  remarks: "As implemented in this class, this method always returns `false`. It never returns `true`."
+  summary: "이 변환기 지정 된 형식의 개체를이 변환기의 형식으로 변환할 수 있는지 여부를 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다. 반환 하지 않습니다 `true`합니다."
   syntax:
     content: public bool CanConvertFrom (Type sourceType);
     parameters:
     - id: sourceType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type you want to convert from."
+      description: "A <xref:System.Type>에서 변환할 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this converter can perform the conversion; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 변환기에서 변환을; 수행할 수 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CanConvertFrom*
   exceptions: []
   platform:
@@ -122,20 +122,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context."
-  remarks: "As implemented in this class, this method returns `false`, unless `sourceType` is an <xref:System.ComponentModel.Design.Serialization.InstanceDescriptor>."
+  summary: "이 변환기의 지정된 된 컨텍스트를 사용 하 여이 변환기 형식으로 지정 된 형식의 개체를 변환할 수 있는지 여부를 반환 합니다."
+  remarks: "이 메서드가 반환 하는이 클래스에서 구현 된 대로 `false`하지 않는 한, `sourceType` 은 <xref:System.ComponentModel.Design.Serialization.InstanceDescriptor>.</xref:System.ComponentModel.Design.Serialization.InstanceDescriptor>"
   syntax:
     content: public virtual bool CanConvertFrom (System.ComponentModel.ITypeDescriptorContext context, Type sourceType);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: sourceType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type you want to convert from."
+      description: "A <xref:System.Type>에서 변환할 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this converter can perform the conversion; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 변환기에서 변환을; 수행할 수 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CanConvertFrom*
   exceptions: []
   platform:
@@ -152,17 +152,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this converter can convert the object to the specified type."
-  remarks: "If `destinationType` is a string, the default implementation of <xref:System.ComponentModel.TypeConverter.CanConvertTo%2A> always returns `true`."
+  summary: "이 변환기 개체를 지정된 된 형식으로 변환할 수 있는지 여부를 반환 합니다."
+  remarks: "경우 `destinationType` 는 문자열의 기본 구현은 <xref:System.ComponentModel.TypeConverter.CanConvertTo%2A>항상 반환 `true`.</xref:System.ComponentModel.TypeConverter.CanConvertTo%2A>"
   syntax:
     content: public bool CanConvertTo (Type destinationType);
     parameters:
     - id: destinationType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type you want to convert to."
+      description: "A <xref:System.Type>를 변환할 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this converter can perform the conversion; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 변환기에서 변환을; 수행할 수 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CanConvertTo*
   exceptions: []
   platform:
@@ -179,20 +179,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this converter can convert the object to the specified type, using the specified context."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       If `destinationType` is a string, the default implementation of <xref:System.ComponentModel.TypeConverter.CanConvertTo%2A> always returns `true`."
+  summary: "이 변환기 개체를 지정된 된 컨텍스트를 사용 하 여 지정 된 형식으로 변환할 수 있는지 여부를 반환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       경우 `destinationType` 는 문자열의 기본 구현은 <xref:System.ComponentModel.TypeConverter.CanConvertTo%2A>항상 반환 `true`.</xref:System.ComponentModel.TypeConverter.CanConvertTo%2A>"
   syntax:
     content: public virtual bool CanConvertTo (System.ComponentModel.ITypeDescriptorContext context, Type destinationType);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: destinationType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type you want to convert to."
+      description: "A <xref:System.Type>를 변환할 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this converter can perform the conversion; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 변환기에서 변환을; 수행할 수 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CanConvertTo*
   exceptions: []
   platform:
@@ -209,21 +209,21 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value to the type of this converter."
+  summary: "이 변환기의 형식 지정된 값으로 변환 합니다."
   syntax:
     content: public object ConvertFrom (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFrom*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)
@@ -238,28 +238,28 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given object to the type of this converter, using the specified context and culture information."
-  remarks: "Custom type authors that intend to support a type conversion behavior for XAML typically implement a <xref:System.ComponentModel.TypeConverter> class that supports ConvertFrom behavior from a string. This behavior enables type conversion from the string provided as a XAML attribute value and provides a XAML processor with the support needed to create an object from the string, so that the object can be produced in a parsed object graph. Custom types or members of custom types are indicated by applying <xref:System.ComponentModel.TypeConverterAttribute> to the definitions, with the attribute referencing the custom <xref:System.ComponentModel.TypeConverter> implementation.       For XAML purposes, you do not typically provide branching implementations based on `culture`. This is because XAML is precompiled in a development environment context, and culture-specific information for runtime XAML is not relevant for XAML type conversion. For more information, see [Type Converters for XAML Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "지정 된 컨텍스트 및 문화권 정보를 사용 하 여이 변환기의 형식으로 지정된 된 개체를 변환 합니다."
+  remarks: "사용자 지정 형식 작성자는 일반적으로 XAML에 대 한 형식 변환 동작을 지원 하기 위해 구현는 <xref:System.ComponentModel.TypeConverter>문자열에서 ConvertFrom 동작을 지 원하는 클래스입니다.</xref:System.ComponentModel.TypeConverter> 이 동작은 XAML 특성 값으로 제공 하는 문자열 형식 변환할 수 있습니다 하 고 구문 분석 된 개체 그래프에서 개체를 생성 될 수 있도록 문자열에서 개체를 만드는 데 필요한 지원으로 XAML 프로세서를 제공 합니다. 사용자 정의 형식 또는 사용자 지정 형식의 멤버를 적용 하 여 표시 됩니다 <xref:System.ComponentModel.TypeConverterAttribute>는 정의에 특성으로 참조 하는 사용자 지정 <xref:System.ComponentModel.TypeConverter>구현.</xref:System.ComponentModel.TypeConverter> </xref:System.ComponentModel.TypeConverterAttribute>       XAML 용도에서는 일반적으로 제공 하지 않으면 분기 구현을 기반으로 `culture`합니다. 개발 환경 컨텍스트에서 미리 컴파일된 XAML 및 문화 별 정보가 런타임에 대 한 XAML은 XAML 형식 변환에 대 한와 관련이 없습니다 때문입니다. 자세한 내용은 참조 [XAML 개요에 대 한 유형 변환기](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public virtual object ConvertFrom (System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The <xref:System.Globalization.CultureInfo> to use as the current culture."
+      description: "<xref:System.Globalization.CultureInfo>현재 문화권으로 사용할.</xref:System.Globalization.CultureInfo>"
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFrom*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFromInvariantString(System.String)
@@ -274,22 +274,22 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given string to the type of this converter, using the invariant culture."
-  remarks: "The default implementation always returns `null`."
+  summary: "고정 문화권을 사용 하 여이 변환기의 형식으로 지정된 된 문자열을 변환 합니다."
+  remarks: "기본 구현에서는 항상 반환 `null`합니다."
   syntax:
     content: public object ConvertFromInvariantString (string text);
     parameters:
     - id: text
       type: System.String
-      description: "The <xref:System.String> to convert."
+      description: "<xref:System.String>변환할.</xref:System.String>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted text."
+      description: "<xref:System.Object>변환된 된 텍스트를 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFromInvariantString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFromInvariantString(System.ComponentModel.ITypeDescriptorContext,System.String)
@@ -304,25 +304,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given string to the type of this converter, using the invariant culture and the specified context."
-  remarks: "An exception is raised if the string cannot be converted into the appropriate object. The default implementation always returns `null`.       Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`."
+  summary: "고정 문화권 및 지정된 된 컨텍스트를 사용 하 여이 변환기의 형식으로 지정된 된 문자열을 변환 합니다."
+  remarks: "문자열을 적절 한 개체로 변환할 수 없는 경우 예외가 발생 합니다. 기본 구현에서는 항상 반환 `null`합니다.       사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다."
   syntax:
     content: public object ConvertFromInvariantString (System.ComponentModel.ITypeDescriptorContext context, string text);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: text
       type: System.String
-      description: "The <xref:System.String> to convert."
+      description: "<xref:System.String>변환할.</xref:System.String>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted text."
+      description: "<xref:System.Object>변환된 된 텍스트를 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFromInvariantString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFromString(System.String)
@@ -337,8 +337,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the specified text to an object."
-  remarks: "The default implementation always returns `null`."
+  summary: "지정된 된 텍스트를 개체로 변환 합니다."
+  remarks: "기본 구현에서는 항상 반환 `null`합니다."
   example:
   - For an example of this function, see the <xref:System.ComponentModel.TypeConverter> class.
   syntax:
@@ -346,15 +346,15 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: "The text representation of the object to convert."
+      description: "변환할 개체의 텍스트 표현입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted text."
+      description: "<xref:System.Object>변환된 된 텍스트를 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFromString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The string cannot be converted into the appropriate object."
+    description: "문자열을 적절 한 개체로 변환할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFromString(System.ComponentModel.ITypeDescriptorContext,System.String)
@@ -369,25 +369,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given text to an object, using the specified context."
-  remarks: "An exception is raised if the string cannot be converted into the appropriate object. The default implementation always returns `null`.       Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`."
+  summary: "지정된 된 컨텍스트를 사용 하 여 개체에 지정된 된 텍스트를 변환 합니다."
+  remarks: "문자열을 적절 한 개체로 변환할 수 없는 경우 예외가 발생 합니다. 기본 구현에서는 항상 반환 `null`합니다.       사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다."
   syntax:
     content: public object ConvertFromString (System.ComponentModel.ITypeDescriptorContext context, string text);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: text
       type: System.String
-      description: "The <xref:System.String> to convert."
+      description: "<xref:System.String>변환할.</xref:System.String>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted text."
+      description: "<xref:System.Object>변환된 된 텍스트를 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFromString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertFromString(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.String)
@@ -402,28 +402,28 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given text to an object, using the specified context and culture information."
-  remarks: "An exception is raised if the string cannot be converted into the appropriate object. The default implementation always returns `null`.       Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`."
+  summary: "지정 된 컨텍스트 및 문화권 정보를 사용 하 여 개체에 지정된 된 텍스트를 변환 합니다."
+  remarks: "문자열을 적절 한 개체로 변환할 수 없는 경우 예외가 발생 합니다. 기본 구현에서는 항상 반환 `null`합니다.       사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다."
   syntax:
     content: public object ConvertFromString (System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, string text);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "A <xref:System.Globalization.CultureInfo>. If <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is passed, the current culture is assumed."
+      description: "A <xref:System.Globalization.CultureInfo>.</xref:System.Globalization.CultureInfo> 경우 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 전달 되 면 현재 문화권이 사용 됩니다."
     - id: text
       type: System.String
-      description: "The <xref:System.String> to convert."
+      description: "<xref:System.String>변환할.</xref:System.String>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted text."
+      description: "<xref:System.Object>변환된 된 텍스트를 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertFromString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertTo(System.Object,System.Type)
@@ -438,20 +438,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value object to the specified type, using the arguments."
-  remarks: "The most common type to convert to and from is a string object. This implementation calls <xref:System.Object.ToString%2A> on the object, if the object is valid and if the destination type is a string."
+  summary: "인수를 사용 하 여 지정 된 형식으로 지정된 된 값 개체를 변환 합니다."
+  remarks: "가장 일반적인 형식 간에 변환 하는 문자열 개체입니다. 이 구현에서는 호출 <xref:System.Object.ToString%2A>개체에는 개체가 올바른지 및 대상 형식 문자열인 경우.</xref:System.Object.ToString%2A>"
   syntax:
     content: public object ConvertTo (object value, Type destinationType);
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     - id: destinationType
       type: System.Type
-      description: "The <xref:System.Type> to convert the `value` parameter to."
+      description: "<xref:System.Type>변환 하는 `value` 매개 변수를.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertTo*
   exceptions:
   - type: System.ArgumentNullException
@@ -459,7 +459,7 @@ items:
     description: "The <code>destinationType</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)
@@ -474,26 +474,26 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value object to the specified type, using the specified context and culture information."
-  remarks: "The most common types to convert are to and from a string object. This implementation calls <xref:System.Object.ToString%2A> on the object if the object is valid and if the destination type is a string.       Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       Custom type authors that intend to support a type conversion behavior for XAML typically implement a <xref:System.ComponentModel.TypeConverter> class that supports <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> behavior from a string. These type converters might also implement ConvertTo to support serialization back to XAML.       Some XAML serialization scenarios cannot be adequately addressed with <xref:System.ComponentModel.TypeConverter> alone. In these cases, it may be necessary to also define a <xref:System.Windows.Markup.ValueSerializer> that handles the serialization cases that would otherwise be handled by ConvertTo. For more information, see <xref:System.Windows.Markup.ValueSerializer>."
+  summary: "지정 된 컨텍스트 및 문화권 정보를 사용 하 여 지정 된 형식으로 지정된 된 값 개체를 변환 합니다."
+  remarks: "String 개체에서 가장 일반적인 형식 변환 하는입니다. 이 구현에서는 호출 <xref:System.Object.ToString%2A>개체에는 개체가 올바른지 및 대상 형식 문자열인 경우.</xref:System.Object.ToString%2A>       사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       사용자 지정 형식 작성자는 일반적으로 XAML에 대 한 형식 변환 동작을 지원 하기 위해 구현는 <xref:System.ComponentModel.TypeConverter>지 원하는 클래스 <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A>문자열에서 동작 합니다.</xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> </xref:System.ComponentModel.TypeConverter> 이러한 형식 변환기를 XAML로 직렬화를 지원 하기 위해 ConvertTo 구현할 수도 있습니다.       일부 XAML serialization 시나리오와 적절 하 게 해결할 수 없으면 <xref:System.ComponentModel.TypeConverter>단독.</xref:System.ComponentModel.TypeConverter> 이러한 경우에도 정의 해야 할 수 있습니다는 <xref:System.Windows.Markup.ValueSerializer>ConvertTo에 의해 처리 될 수 있는 직렬화 사례를 처리 하는.</xref:System.Windows.Markup.ValueSerializer> 자세한 내용은 <xref:System.Windows.Markup.ValueSerializer>.</xref:System.Windows.Markup.ValueSerializer> 을 참조 하십시오."
   syntax:
     content: public virtual object ConvertTo (System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "A <xref:System.Globalization.CultureInfo>. If <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is passed, the current culture is assumed."
+      description: "A <xref:System.Globalization.CultureInfo>.</xref:System.Globalization.CultureInfo> 경우 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 전달 되 면 현재 문화권이 사용 됩니다."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     - id: destinationType
       type: System.Type
-      description: "The <xref:System.Type> to convert the `value` parameter to."
+      description: "<xref:System.Type>변환 하는 `value` 매개 변수를.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertTo*
   exceptions:
   - type: System.ArgumentNullException
@@ -501,7 +501,7 @@ items:
     description: "The <code>destinationType</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertToInvariantString(System.Object)
@@ -516,22 +516,22 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the specified value to a culture-invariant string representation."
-  remarks: "The `context` parameter can be used to extract additional information about the environment from which this converter is being invoked. This can be `null`, so always check. Also, properties on the context object can return `null`.       Depending on the implementation of the value formatter, it might be possible to pass the returned string back into the value formatter to re-create an instance of the object."
+  summary: "지정된 된 값을 고정 문화권의 문자열 표현으로 변환 합니다."
+  remarks: "`context` 매개 변수를 사용 하 여이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출할 수 수 있습니다. 이 수 `null`, 있으므로 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       값 포맷터의 구현에 따라 개체의 인스턴스를 다시 만들려고 값 포맷터에 다시 반환 된 문자열을 전달할 수 있습니다."
   syntax:
     content: public string ConvertToInvariantString (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the converted value."
+      description: "A <xref:System.String>변환 된 값을 나타내는입니다.</xref:System.String>"
   overload: System.ComponentModel.TypeConverter.ConvertToInvariantString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertToInvariantString(System.ComponentModel.ITypeDescriptorContext,System.Object)
@@ -546,25 +546,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the specified value to a culture-invariant string representation, using the specified context."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       Depending on the implementation of the value formatter, it might be possible to pass the returned string back into the value formatter to re-create an instance of the object."
+  summary: "지정된 된 값을 지정된 된 컨텍스트를 사용 하 여 고정 문화권의 문자열 표현으로 변환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       값 포맷터의 구현에 따라 개체의 인스턴스를 다시 만들려고 값 포맷터에 다시 반환 된 문자열을 전달할 수 있습니다."
   syntax:
     content: public string ConvertToInvariantString (System.ComponentModel.ITypeDescriptorContext context, object value);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the converted value."
+      description: "A <xref:System.String>변환 된 값을 나타내는입니다.</xref:System.String>"
   overload: System.ComponentModel.TypeConverter.ConvertToInvariantString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertToString(System.Object)
@@ -579,8 +579,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the specified value to a string representation."
-  remarks: "Depending on the implementation of the value formatter, it might be possible to pass the returned string back into the value formatter to re-create an instance of the object."
+  summary: "지정된 된 값을 문자열 표현으로 변환 합니다."
+  remarks: "값 포맷터의 구현에 따라 개체의 인스턴스를 다시 만들려고 값 포맷터에 다시 반환 된 문자열을 전달할 수 있습니다."
   example:
   - For an example on this function, see the <xref:System.ComponentModel.TypeConverter> class.
   syntax:
@@ -588,15 +588,15 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.String
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertToString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertToString(System.ComponentModel.ITypeDescriptorContext,System.Object)
@@ -611,25 +611,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value to a string representation, using the given context."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       Depending on the implementation of the value formatter, it might be possible to pass the returned string back into the value formatter to re-create an instance of the object."
+  summary: "지정된 된 값을 지정 된 컨텍스트를 사용 하는 문자열 표현으로 변환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       값 포맷터의 구현에 따라 개체의 인스턴스를 다시 만들려고 값 포맷터에 다시 반환 된 문자열을 전달할 수 있습니다."
   syntax:
     content: public string ConvertToString (System.ComponentModel.ITypeDescriptorContext context, object value);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.String
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertToString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.ConvertToString(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)
@@ -644,28 +644,28 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value to a string representation, using the specified context and culture information."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       Depending on the implementation of the value formatter, it might be possible to pass the returned string back into the value formatter to re-create an instance of the object."
+  summary: "지정된 된 값을 지정 된 컨텍스트 및 문화권 정보를 사용 하는 문자열 표현으로 변환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       값 포맷터의 구현에 따라 개체의 인스턴스를 다시 만들려고 값 포맷터에 다시 반환 된 문자열을 전달할 수 있습니다."
   syntax:
     content: public string ConvertToString (System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "A <xref:System.Globalization.CultureInfo>. If <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is passed, the current culture is assumed."
+      description: "A <xref:System.Globalization.CultureInfo>.</xref:System.Globalization.CultureInfo> 경우 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이 전달 되 면 현재 문화권이 사용 됩니다."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert."
+      description: "<xref:System.Object>변환할.</xref:System.Object>"
     return:
       type: System.String
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "<xref:System.Object>변환 된 값을 나타내는입니다.</xref:System.Object>"
   overload: System.ComponentModel.TypeConverter.ConvertToString*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "변환을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.CreateInstance(System.Collections.IDictionary)
@@ -680,17 +680,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Re-creates an <xref:System.Object> given a set of property values for the object."
-  remarks: "Use this method for objects that are immutable, but for which you want to provide changeable properties.       The dictionary provided by the `propertyValues` parameter has a series of name/value pairs, one for each property returned from <xref:System.ComponentModel.TypeConverter.GetProperties%2A>."
+  summary: "다시 생성 한 <xref:System.Object>개체에 대 한 속성 값 집합을 제공 합니다.</xref:System.Object>"
+  remarks: "이 메서드를 사용 하 여 변경할 수 없는 있지만 변경할 수 있는 속성을 제공 하려는 개체에 대 한 합니다.       제공 하는 사전은 `propertyValues` <xref:System.ComponentModel.TypeConverter.GetProperties%2A>.</xref:System.ComponentModel.TypeConverter.GetProperties%2A> 에서 반환 된 각 속성에 대 한 매개 변수는 이름/값 쌍"
   syntax:
     content: public object CreateInstance (System.Collections.IDictionary propertyValues);
     parameters:
     - id: propertyValues
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that represents a dictionary of new property values."
+      description: "<xref:System.Collections.IDictionary>새 속성 값의 사전을 나타내는.</xref:System.Collections.IDictionary>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the given <xref:System.Collections.IDictionary>, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object cannot be created. This method always returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref:System.Object>나타내는 주어진 <xref:System.Collections.IDictionary>, 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체를 만들 수 없는 경우.</xref:System.Collections.IDictionary> </xref:System.Object> 이 메서드는 항상 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CreateInstance*
   exceptions: []
   platform:
@@ -707,20 +707,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Creates an instance of the type that this <xref href=&quot;System.ComponentModel.TypeConverter&quot;></xref> is associated with, using the specified context, given a set of property values for the object."
-  remarks: "Use this method for objects that are immutable, but for which you want to provide changeable properties."
+  summary: "형식의 인스턴스를 만들고이 <xref href=&quot;System.ComponentModel.TypeConverter&quot;> </xref> 가 연결 된 지정된 된 컨텍스트를 사용 하 여 개체에 대 한 속성 값 집합을 제공 합니다."
+  remarks: "이 메서드를 사용 하 여 변경할 수 없는 있지만 변경할 수 있는 속성을 제공 하려는 개체에 대 한 합니다."
   syntax:
     content: public virtual object CreateInstance (System.ComponentModel.ITypeDescriptorContext context, System.Collections.IDictionary propertyValues);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: propertyValues
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> of new property values."
+      description: "<xref:System.Collections.IDictionary>새 속성 값의.</xref:System.Collections.IDictionary>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the given <xref:System.Collections.IDictionary>, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object cannot be created. This method always returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref:System.Object>나타내는 주어진 <xref:System.Collections.IDictionary>, 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체를 만들 수 없는 경우.</xref:System.Collections.IDictionary> </xref:System.Object> 이 메서드는 항상 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.CreateInstance*
   exceptions: []
   platform:
@@ -737,21 +737,21 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns an exception to throw when a conversion cannot be performed."
+  summary: "변환을 수행할 수 없을 때 발생 하는 예외를 반환 합니다."
   syntax:
     content: protected Exception GetConvertFromException (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object is not available."
+      description: "<xref:System.Object>변환할 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체를 사용할 수 없는 경우.</xref:System.Object>"
     return:
       type: System.Exception
-      description: "An <xref:System.Exception> that represents the exception to throw when a conversion cannot be performed."
+      description: "<xref:System.Exception>변환을 수행할 수 없을 때 발생 하는 예외를 나타내는입니다.</xref:System.Exception>"
   overload: System.ComponentModel.TypeConverter.GetConvertFromException*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Automatically thrown by this method."
+    description: "자동으로이 메서드에 의해 throw 됩니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.GetConvertToException(System.Object,System.Type)
@@ -766,24 +766,24 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns an exception to throw when a conversion cannot be performed."
+  summary: "변환을 수행할 수 없을 때 발생 하는 예외를 반환 합니다."
   syntax:
     content: protected Exception GetConvertToException (object value, Type destinationType);
     parameters:
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the object is not available."
+      description: "<xref:System.Object>변환할 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 개체를 사용할 수 없는 경우.</xref:System.Object>"
     - id: destinationType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type the conversion was trying to convert to."
+      description: "A <xref:System.Type>변환으로 변환 하려고 했던 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Exception
-      description: "An <xref:System.Exception> that represents the exception to throw when a conversion cannot be performed."
+      description: "<xref:System.Exception>변환을 수행할 수 없을 때 발생 하는 예외를 나타내는입니다.</xref:System.Exception>"
   overload: System.ComponentModel.TypeConverter.GetConvertToException*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Automatically thrown by this method."
+    description: "자동으로이 메서드에 의해 throw 됩니다."
   platform:
   - net462
 - uid: System.ComponentModel.TypeConverter.GetCreateInstanceSupported
@@ -798,13 +798,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether changing a value on this object requires a call to the <xref:System.ComponentModel.TypeConverter.CreateInstance*> method to create a new value."
+  summary: "이 개체의 값 변경에 대 한 호출 해야 하는지 여부를 반환 합니다.는 <xref:System.ComponentModel.TypeConverter.CreateInstance*>메서드는 새 값을 생성 합니다.</xref:System.ComponentModel.TypeConverter.CreateInstance*>"
   syntax:
     content: public bool GetCreateInstanceSupported ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if changing a property on this object requires a call to <xref:System.ComponentModel.TypeConverter.CreateInstance*> to create a new value; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우에 호출 해야이 개체에서 속성을 변경 <xref:System.ComponentModel.TypeConverter.CreateInstance*>를 통해 새 값을 만드는 그렇지 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.CreateInstance*>"
   overload: System.ComponentModel.TypeConverter.GetCreateInstanceSupported*
   exceptions: []
   platform:
@@ -821,17 +821,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether changing a value on this object requires a call to <xref:System.ComponentModel.TypeConverter.CreateInstance*> to create a new value, using the specified context."
-  remarks: "As implemented in this class, this method always returns `false`."
+  summary: "이 개체의 값 변경에 대 한 호출 해야 하는지 여부를 반환 합니다. <xref:System.ComponentModel.TypeConverter.CreateInstance*>지정된 된 컨텍스트를 사용 하 여 새 값을 만듭니다.</xref:System.ComponentModel.TypeConverter.CreateInstance*>"
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다."
   syntax:
     content: public virtual bool GetCreateInstanceSupported (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if changing a property on this object requires a call to <xref:System.ComponentModel.TypeConverter.CreateInstance*> to create a new value; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우에 호출 해야이 개체에서 속성을 변경 <xref:System.ComponentModel.TypeConverter.CreateInstance*>를 통해 새 값을 만드는 그렇지 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.CreateInstance*>"
   overload: System.ComponentModel.TypeConverter.GetCreateInstanceSupported*
   exceptions: []
   platform:
@@ -848,17 +848,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns a collection of properties for the type of array specified by the value parameter."
-  remarks: "As implemented in this class, this method always returns `null`.       By default, a type does not return properties. An easy implementation of this method can call <xref:System.ComponentModel.TypeDescriptor.GetProperties%2A> for the correct data type."
+  summary: "값 매개 변수로 지정 된 배열 형식에 대 한 속성의 컬렉션을 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `null`합니다.       기본적으로 형식 속성을 반환 하지 않습니다. 이 메서드의 쉽게 구현을 호출할 수 <xref:System.ComponentModel.TypeDescriptor.GetProperties%2A>올바른 데이터 형식에 대 한.</xref:System.ComponentModel.TypeDescriptor.GetProperties%2A>"
   syntax:
     content: public System.ComponentModel.PropertyDescriptorCollection GetProperties (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "An <xref:System.Object> that specifies the type of array for which to get properties."
+      description: "<xref:System.Object>속성을 가져올 배열 형식을 지정 하는.</xref:System.Object>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> with the properties that are exposed for this data type, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 이 데이터 형식에 노출 되는 속성을 가진 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 속성이 없는 경우."
   overload: System.ComponentModel.TypeConverter.GetProperties*
   exceptions: []
   platform:
@@ -875,20 +875,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns a collection of properties for the type of array specified by the value parameter, using the specified context."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       As implemented in this class, this method always returns `null`.       By default, a type does not return properties. An easy implementation of this method can call <xref:System.ComponentModel.TypeDescriptor.GetProperties%2A> for the correct data type."
+  summary: "지정된 된 컨텍스트를 사용 하 여 값 매개 변수로 지정 된 배열 형식에 대 한 속성의 컬렉션을 반환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       이 메서드는 항상 반환이 클래스에서 구현 된 대로 `null`합니다.       기본적으로 형식 속성을 반환 하지 않습니다. 이 메서드의 쉽게 구현을 호출할 수 <xref:System.ComponentModel.TypeDescriptor.GetProperties%2A>올바른 데이터 형식에 대 한.</xref:System.ComponentModel.TypeDescriptor.GetProperties%2A>"
   syntax:
     content: public System.ComponentModel.PropertyDescriptorCollection GetProperties (System.ComponentModel.ITypeDescriptorContext context, object value);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: value
       type: System.Object
-      description: "An <xref:System.Object> that specifies the type of array for which to get properties."
+      description: "<xref:System.Object>속성을 가져올 배열 형식을 지정 하는.</xref:System.Object>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> with the properties that are exposed for this data type, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 이 데이터 형식에 노출 되는 속성을 가진 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 속성이 없는 경우."
   overload: System.ComponentModel.TypeConverter.GetProperties*
   exceptions: []
   platform:
@@ -905,23 +905,23 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns a collection of properties for the type of array specified by the value parameter, using the specified context and attributes."
-  remarks: "As implemented in this class, this method always returns `null`."
+  summary: "지정 된 컨텍스트 및 특성을 사용 하 여 값 매개 변수로 지정 된 배열 형식에 대 한 속성의 컬렉션을 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `null`합니다."
   syntax:
     content: public virtual System.ComponentModel.PropertyDescriptorCollection GetProperties (System.ComponentModel.ITypeDescriptorContext context, object value, Attribute[] attributes);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: value
       type: System.Object
-      description: "An <xref:System.Object> that specifies the type of array for which to get properties."
+      description: "<xref:System.Object>속성을 가져올 배열 형식을 지정 하는.</xref:System.Object>"
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that is used as a filter."
+      description: "형식의 배열 <xref:System.Attribute>필터로 사용 되는.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> with the properties that are exposed for this data type, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 이 데이터 형식에 노출 되는 속성을 가진 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 속성이 없는 경우."
   overload: System.ComponentModel.TypeConverter.GetProperties*
   exceptions: []
   platform:
@@ -938,14 +938,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this object supports properties."
-  remarks: "As implemented in this class, this method always returns `false`."
+  summary: "이 개체 속성을 지원 하는지 여부를 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다."
   syntax:
     content: public bool GetPropertiesSupported ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref:System.ComponentModel.TypeConverter.GetProperties*> should be called to find the properties of this object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <xref:System.ComponentModel.TypeConverter.GetProperties*>고, 그렇지 않으면이 개체의 속성을 찾기 위해 호출 해야 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.GetProperties*>"
   overload: System.ComponentModel.TypeConverter.GetPropertiesSupported*
   exceptions: []
   platform:
@@ -962,17 +962,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this object supports properties, using the specified context."
-  remarks: "As implemented in this class, this method always returns `false`."
+  summary: "이 개체가 지정된 된 컨텍스트를 사용 하 여 속성을 지원 하는지 여부를 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다."
   syntax:
     content: public virtual bool GetPropertiesSupported (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref:System.ComponentModel.TypeConverter.GetProperties*> should be called to find the properties of this object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <xref:System.ComponentModel.TypeConverter.GetProperties*>고, 그렇지 않으면이 개체의 속성을 찾기 위해 호출 해야 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.GetProperties*>"
   overload: System.ComponentModel.TypeConverter.GetPropertiesSupported*
   exceptions: []
   platform:
@@ -989,14 +989,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns a collection of standard values from the default context for the data type this type converter is designed for."
-  remarks: "As implemented in this class, this method always returns `null`."
+  summary: "이 형식 변환기 용인지 데이터 형식에 대 한 기본 컨텍스트에서 표준 값 컬렉션을 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `null`합니다."
   syntax:
     content: public System.Collections.ICollection GetStandardValues ();
     parameters: []
     return:
       type: System.Collections.ICollection
-      description: "A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> containing a standard set of valid values, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the data type does not support a standard set of values."
+      description: "A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection>표준 유효한 값이 포함 된 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 형식이 표준 값 집합을 지원 하지 않습니다.</xref:System.ComponentModel.TypeConverter.StandardValuesCollection>"
   overload: System.ComponentModel.TypeConverter.GetStandardValues*
   exceptions: []
   platform:
@@ -1013,8 +1013,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns a collection of standard values for the data type this type converter is designed for when provided with a format context."
-  remarks: "As implemented in <xref:System.ComponentModel.TypeConverter>, this method always returns `null`."
+  summary: "형식 컨텍스트와 함께 제공 되는 경우이 형식 변환기에 대 한 설계 된 데이터 형식에 대 한 표준 값의 컬렉션을 반환 합니다."
+  remarks: "구현 될 때 <xref:System.ComponentModel.TypeConverter>,이 메서드는 항상 반환 `null`.</xref:System.ComponentModel.TypeConverter>"
   example:
   - For an example on this function, see the <xref:System.ComponentModel.TypeConverter> class.
   syntax:
@@ -1022,10 +1022,10 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context that can be used to extract additional information about the environment from which this converter is invoked. This parameter or properties of this parameter can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 하는이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 하는 데 사용할 수 있는 형식 컨텍스트를 제공 합니다. 이 매개 변수 또는이 매개 변수는 속성 수 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.ComponentModel.TypeConverter.StandardValuesCollection
-      description: "A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> that holds a standard set of valid values, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the data type does not support a standard set of values."
+      description: "A <xref:System.ComponentModel.TypeConverter.StandardValuesCollection>유효한 값의 표준 집합을 포함 하는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 형식이 표준 값 집합을 지원 하지 않습니다.</xref:System.ComponentModel.TypeConverter.StandardValuesCollection>"
   overload: System.ComponentModel.TypeConverter.GetStandardValues*
   exceptions: []
   platform:
@@ -1042,14 +1042,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether the collection of standard values returned from <xref:System.ComponentModel.TypeConverter.GetStandardValues*> is an exclusive list."
-  remarks: "As implemented in this class, this method always returns `false`.       If the list is exclusive, such as in an enumeration data type, then no other values are valid. If the list is not exclusive, then other valid values might exist in addition to the list of standard values that the <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> method provides. If the values are exclusive, the list returned by <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> should not allow these values to be edited."
+  summary: "표준 값 컬렉션 반환 되는지 반환 <xref:System.ComponentModel.TypeConverter.GetStandardValues*>단독 목록 인지.</xref:System.ComponentModel.TypeConverter.GetStandardValues*>"
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다.       열거형 데이터 형식에서와 같은 단독 목록인 경우 다른 값은 유효한 합니다. 표준 값 목록 단독 아닌 경우, 다른 유효한 값 목록 외에 있을 수 있습니다는 <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>메서드를 제공 합니다.</xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> 목록에서 반환 값이 배타적, <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>이러한 값을 편집할 수 없도록 해야 합니다.</xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>"
   syntax:
     content: public bool GetStandardValuesExclusive ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> returned from <xref:System.ComponentModel.TypeConverter.GetStandardValues*> is an exhaustive list of possible values; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if other values are possible."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref><xref:System.ComponentModel.TypeConverter.StandardValuesCollection> <xref:System.ComponentModel.TypeConverter.GetStandardValues*>에서 반환 되는 단독 목록이 가능한 값이 있습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 다른 값은 가능한 경우.</xref:System.ComponentModel.TypeConverter.GetStandardValues*> </xref:System.ComponentModel.TypeConverter.StandardValuesCollection>"
   overload: System.ComponentModel.TypeConverter.GetStandardValuesExclusive*
   exceptions: []
   platform:
@@ -1066,17 +1066,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether the collection of standard values returned from <xref:System.ComponentModel.TypeConverter.GetStandardValues*> is an exclusive list of possible values, using the specified context."
-  remarks: "As implemented in this class, this method always returns `false`.       If the list is exclusive, such as in an enumeration data type, then no other values are valid. If the list is not exclusive, then other valid values might exist in addition to the list of standard values that the <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> method provides. If the values are exclusive, the list returned by <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> should not allow these values to be edited."
+  summary: "표준 값 컬렉션 반환 되는지 반환 <xref:System.ComponentModel.TypeConverter.GetStandardValues*>의 가능한 값을 지정된 된 컨텍스트를 사용 하 여 단독 목록 인지.</xref:System.ComponentModel.TypeConverter.GetStandardValues*>"
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다.       열거형 데이터 형식에서와 같은 단독 목록인 경우 다른 값은 유효한 합니다. 표준 값 목록 단독 아닌 경우, 다른 유효한 값 목록 외에 있을 수 있습니다는 <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>메서드를 제공 합니다.</xref:System.ComponentModel.TypeConverter.GetStandardValues%2A> 목록에서 반환 값이 배타적, <xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>이러한 값을 편집할 수 없도록 해야 합니다.</xref:System.ComponentModel.TypeConverter.GetStandardValues%2A>"
   syntax:
     content: public virtual bool GetStandardValuesExclusive (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.ComponentModel.TypeConverter.StandardValuesCollection> returned from <xref:System.ComponentModel.TypeConverter.GetStandardValues*> is an exhaustive list of possible values; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if other values are possible."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref><xref:System.ComponentModel.TypeConverter.StandardValuesCollection> <xref:System.ComponentModel.TypeConverter.GetStandardValues*>에서 반환 되는 단독 목록이 가능한 값이 있습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 다른 값은 가능한 경우.</xref:System.ComponentModel.TypeConverter.GetStandardValues*> </xref:System.ComponentModel.TypeConverter.StandardValuesCollection>"
   overload: System.ComponentModel.TypeConverter.GetStandardValuesExclusive*
   exceptions: []
   platform:
@@ -1093,13 +1093,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this object supports a standard set of values that can be picked from a list."
+  summary: "이 개체가 목록에서 선택할 수 있는 값의 표준 집합을 지원 하는지 여부를 반환 합니다."
   syntax:
     content: public bool GetStandardValuesSupported ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref:System.ComponentModel.TypeConverter.GetStandardValues*> should be called to find a common set of values the object supports; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <xref:System.ComponentModel.TypeConverter.GetStandardValues*>개체가 지 원하는 값의 공통 집합을 찾기 위해 호출 건너뛸 필요가 없으면, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.GetStandardValues*>"
   overload: System.ComponentModel.TypeConverter.GetStandardValuesSupported*
   exceptions: []
   platform:
@@ -1116,17 +1116,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether this object supports a standard set of values that can be picked from a list, using the specified context."
-  remarks: "As implemented in this class, this method always returns `false`.       Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`."
+  summary: "이 개체가 지정된 된 컨텍스트를 사용 하 여 목록에서 선택할 수 있는 값의 표준 집합을 지원 하는지 여부를 반환 합니다."
+  remarks: "이 메서드는 항상 반환이 클래스에서 구현 된 대로 `false`합니다.       사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다."
   syntax:
     content: public virtual bool GetStandardValuesSupported (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref:System.ComponentModel.TypeConverter.GetStandardValues*> should be called to find a common set of values the object supports; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <xref:System.ComponentModel.TypeConverter.GetStandardValues*>개체가 지 원하는 값의 공통 집합을 찾기 위해 호출 건너뛸 필요가 없으면, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.TypeConverter.GetStandardValues*>"
   overload: System.ComponentModel.TypeConverter.GetStandardValuesSupported*
   exceptions: []
   platform:
@@ -1143,17 +1143,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether the given value object is valid for this type."
-  remarks: "Starting in [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the <xref:System.ComponentModel.TypeConverter.IsValid%2A> method catches exceptions from the <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> and <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> methods. If the input value type causes <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> to return `false`, or if the input value causes <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> to raise an exception, the <xref:System.ComponentModel.TypeConverter.IsValid%2A> method returns `false`.       To enable the legacy behavior, insert the following lines into the configuration file of the application, for example, application1.exe.config.      ```xml   <configuration>     <appSettings>       <add key=&quot;UseCompatibleTypeConverterBehavior&quot; value=&quot;true&quot; />     </appSettings>   </configuration>   ```"
+  summary: "지정된 된 값 개체가이 형식에 대해 올바른지 여부를 반환 합니다."
+  remarks: "부터는 [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], <xref:System.ComponentModel.TypeConverter.IsValid%2A>메서드 예외를 catch는 <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>및 <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A>메서드.</xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> </xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> </xref:System.ComponentModel.TypeConverter.IsValid%2A> 입력된 값 형식 발생 하는 경우 <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>반환할 `false`, 입력된 값에 따른 경우 또는 <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A>에서 예외가 발생 하는 <xref:System.ComponentModel.TypeConverter.IsValid%2A>메서드 반환 `false`.</xref:System.ComponentModel.TypeConverter.IsValid%2A> </xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> </xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>       레거시 동작을 사용 하려면 예를 들어 application1.exe.config 응용 프로그램의 구성 파일에 다음 줄을 삽입 합니다.      ```xml   <configuration>     <appSettings>       <add key=&quot;UseCompatibleTypeConverterBehavior&quot; value=&quot;true&quot; />     </appSettings>   </configuration>   ```"
   syntax:
     content: public bool IsValid (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to test for validity."
+      description: "유효성을 테스트할 개체입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified value is valid for this object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>지정된 된 값이이 개체에 대 한 유효한 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.IsValid*
   exceptions: []
   platform:
@@ -1170,8 +1170,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Returns whether the given value object is valid for this type and for the specified context."
-  remarks: "Use the `context` parameter to extract additional information about the environment from which this converter is invoked. This parameter can be `null`, so always check it. Also, properties on the context object can return `null`.       Starting in [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the IsValid method catches exceptions from the <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> and <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> methods. If the input value type causes <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> to return `false`, or if the input value causes <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> to raise an exception, the IsValid method returns `false`.       To enable the legacy behavior, insert the following lines into the configuration file of the application, for example, application1.exe.config.      ```xml   <configuration>     <appSettings>       <add key=&quot;UseCompatibleTypeConverterBehavior&quot; value=&quot;true&quot; />     </appSettings>   </configuration>   ```"
+  summary: "지정된 된 값 개체가 지정된 된 컨텍스트 및이 형식에 대해 유효한 지 여부를 반환 합니다."
+  remarks: "사용 하 여 `context` 매개 변수를이 변환기가 호출 되는 환경에 대 한 추가 정보를 추출 합니다. 이 매개 변수 수 `null`, 항상 확인 합니다. 또한 컨텍스트 개체의 속성을 반환할 수 `null`합니다.       부터는 [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], IsValid 메서드 예외를 catch는 <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>및 <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A>메서드.</xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> </xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A> 입력된 값 형식 발생 하는 경우 <xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>반환할 `false`, 입력된 값에 따른 경우 또는 <xref:System.ComponentModel.TypeConverter.ConvertFrom%2A>IsValid 메서드는 예외를 발생 시키기 위해 반환 `false`.</xref:System.ComponentModel.TypeConverter.ConvertFrom%2A> </xref:System.ComponentModel.TypeConverter.CanConvertFrom%2A>       레거시 동작을 사용 하려면 예를 들어 application1.exe.config 응용 프로그램의 구성 파일에 다음 줄을 삽입 합니다.      ```xml   <configuration>     <appSettings>       <add key=&quot;UseCompatibleTypeConverterBehavior&quot; value=&quot;true&quot; />     </appSettings>   </configuration>   ```"
   example:
   - For an example of this function, see the <xref:System.ComponentModel.TypeConverter> class.
   syntax:
@@ -1179,13 +1179,13 @@ items:
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "<xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> 형식 컨텍스트를 제공 하는 합니다."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to test for validity."
+      description: "<xref:System.Object>유효성을 테스트할.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified value is valid for this object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>지정된 된 값이이 개체에 대 한 유효한 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ComponentModel.TypeConverter.IsValid*
   exceptions: []
   platform:
@@ -1202,20 +1202,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Sorts a collection of properties."
-  remarks: "All properties in the collection that are not already in the array of names are added alphabetically to the end. If the `names` parameter is an empty array or `null`, all the properties in the collection are sorted alphabetically."
+  summary: "속성의 컬렉션을 정렬합니다."
+  remarks: "아직 이름의 배열이 되지 않은 컬렉션의 모든 속성은 사전순으로 끝에 추가 됩니다. 경우는 `names` 매개 변수는 빈 배열 또는 `null`, 컬렉션의 모든 속성은 사전순으로 정렬 됩니다."
   syntax:
     content: protected System.ComponentModel.PropertyDescriptorCollection SortProperties (System.ComponentModel.PropertyDescriptorCollection props, string[] names);
     parameters:
     - id: props
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that has the properties to sort."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 정렬 속성이 있습니다."
     - id: names
       type: System.String[]
-      description: "An array of names in the order you want the properties to appear in the collection."
+      description: "속성 컬렉션을 원하는 순서로 이름 배열입니다."
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> that contains the sorted properties."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> 정렬된 속성이 들어 있는입니다."
   overload: System.ComponentModel.TypeConverter.SortProperties*
   exceptions: []
   platform:

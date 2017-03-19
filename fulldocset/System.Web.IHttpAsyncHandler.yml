@@ -11,8 +11,8 @@ items:
   nameWithType: IHttpAsyncHandler
   fullName: System.Web.IHttpAsyncHandler
   type: Interface
-  summary: "Defines the contract that HTTP asynchronous handler objects must implement."
-  remarks: "An IHttpAsyncHandler class can be associated with a file name extension or a particular URL by a configuration file, in the `httpHandlers` configuration section. The ASP.NET infrastructure will then instantiate and call the handler when the corresponding request is received. Alternatively, the handler can be defined in an .ashx file and when the corresponding request is received for the .ashx file the hander will be executed."
+  summary: "HTTP 비동기 처리기 개체를 구현 해야 하는 계약을 정의 합니다."
+  remarks: "IHttpAsyncHandler 클래스에 연결할 수 있는 파일 이름 확장명 또는 구성 파일을 사용 하 여 특정 URL에는 `httpHandlers` 구성 섹션입니다. ASP.NET 인프라 인스턴스화할 및 처리기를 해당 요청을 받을 때 호출 됩니다. 또는 처리기가 실행 되도록.ashx 파일에 대 한 해당 요청을 받으면 및.ashx 파일에서 처리기를 정의할 수 있습니다."
   syntax:
     content: 'public interface IHttpAsyncHandler : System.Web.IHttpHandler'
   implements:
@@ -31,22 +31,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initiates an asynchronous call to the HTTP handler."
+  summary: "HTTP 처리기에 대 한 비동기 호출을 시작합니다."
   syntax:
     content: public IAsyncResult BeginProcessRequest (System.Web.HttpContext context, AsyncCallback cb, object extraData);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "An <xref href=&quot;System.Web.HttpContext&quot;></xref> object that provides references to intrinsic server objects (for example, <xref uid=&quot;langword_csharp_Request&quot; name=&quot;Request&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Response&quot; name=&quot;Response&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Session&quot; name=&quot;Session&quot; href=&quot;&quot;></xref>, and <xref uid=&quot;langword_csharp_Server&quot; name=&quot;Server&quot; href=&quot;&quot;></xref>) used to service HTTP requests."
+      description: "<xref href=&quot;System.Web.HttpContext&quot;> </xref> 내장 서버 개체에 대 한 참조를 제공 하는 개체 (예를 들어 <xref uid=&quot;langword_csharp_Request&quot; name=&quot;Request&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Response&quot; name=&quot;Response&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Session&quot; name=&quot;Session&quot; href=&quot;&quot;> </xref>, 및 <xref uid=&quot;langword_csharp_Server&quot; name=&quot;Server&quot; href=&quot;&quot;> </xref>) HTTP 요청을 처리 하는 데 사용 합니다."
     - id: cb
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> to call when the asynchronous method call is complete. If `cb` is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the delegate is not called."
+      description: "<xref:System.AsyncCallback>비동기 메서드 호출이 완료 될 때 호출할.</xref:System.AsyncCallback> 경우 `cb` 은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 대리자는 호출 되지 않습니다."
     - id: extraData
       type: System.Object
-      description: "Any extra data needed to process the request."
+      description: "요청을 처리 하는 데 필요한 모든 추가 데이터입니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that contains information about the status of the process."
+      description: "<xref:System.IAsyncResult>프로세스의 상태에 대 한 정보가 들어 있는.</xref:System.IAsyncResult>"
   overload: System.Web.IHttpAsyncHandler.BeginProcessRequest*
   exceptions: []
   platform:
@@ -63,14 +63,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides an asynchronous process End method when the process ends."
-  remarks: "You can use EndProcessRequest to raise any exceptions caught during the asynchronous process."
+  summary: "프로세스가 끝날 때 비동기 프로세스 End 메서드를 제공 합니다."
+  remarks: "비동기 프로세스 중 발생 하는 모든 예외를 발생 시키는 EndProcessRequest를 사용할 수 있습니다."
   syntax:
     content: public void EndProcessRequest (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that contains information about the status of the process."
+      description: "<xref:System.IAsyncResult>프로세스의 상태에 대 한 정보가 들어 있는.</xref:System.IAsyncResult>"
   overload: System.Web.IHttpAsyncHandler.EndProcessRequest*
   exceptions: []
   platform:

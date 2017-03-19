@@ -15,8 +15,8 @@ items:
   nameWithType: IExpressionEditorService
   fullName: System.Activities.Presentation.View.IExpressionEditorService
   type: Interface
-  summary: "Creates or closes expression editors."
-  remarks: "An expression editor is a Visual Basic control used to edit expressions inside Visual Studio. This control provides a full-fledged IDE editing experience, including IntelliSense, colorization, ParamInfo, error squiggles, among other features.       The IExpressionEditorService can also be used to manage instances of custom expression editors. To register a custom expression editor, you must publish the IExpressionEditorService using the following code :       `this.expressionEditorService = new ExpressionEditorService();`       `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);`       An expression editor is created when an <xref:System.Activities.Presentation.View.ExpressionTextBox> instance gains focus and is destroyed on losing focus of a valid expression, or on reloading of the designer.       The default expression editor is not available for use in rehosted applications. If the default expression editor is used in a rehosted application, a text box is available for editing. However, custom expression editors can be used in a rehosted application by publishing the IExpressionEditorService in the application.       If you are using an <xref:System.Activities.Presentation.View.ExpressionTextBox> control in a custom activity designer, it is not necessary to create and destroy expression editors using this interface. The <xref:System.Activities.Presentation.View.ExpressionTextBox> class manages this for you."
+  summary: "만들거나 식 편집기를 닫습니다."
+  remarks: "식 편집기는 Visual Studio 내에서 식을 편집 하는 데 사용 되는 Visual Basic 컨트롤입니다. 이 컨트롤은 된 포괄적인 IDE 편집 환경을 포함 하 여 IntelliSense, 색 지정, paraminfo, 다른 기능 중 에서도 오류 물결선 등 다양 한 합니다.       사용자 지정 식 편집기의 인스턴스를 관리 하는 IExpressionEditorService는 사용할 수도 있습니다. 사용자 지정 식 편집기를 등록 하려면 다음 코드를 사용 하 여 IExpressionEditorService 게시 해야 합니다: `this.expressionEditorService = new ExpressionEditorService();` `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);` 식 편집기 때 작성 되는 <xref:System.Activities.Presentation.View.ExpressionTextBox>인스턴스 포커스를 획득 하 고는 유효한 식의 포커스를 잃거나 디자이너가 다시 로드 컴퓨터나 소멸 됩니다.</xref:System.Activities.Presentation.View.ExpressionTextBox>              기본 식 편집기를 다시 호스트 된 응용 프로그램에서 사용 하기 위해 사용할 수 없는 경우 재 호스트 된 응용 프로그램에서 기본 식 편집기가 사용 하는 경우는 입력란을 편집할 수 있습니다. 그러나 사용자 지정 식 편집기는 IExpressionEditorService 응용 프로그램에서 게시 하 여 다시 호스트 된 응용 프로그램에서 사용할 수 있습니다.       사용 하는 경우는 <xref:System.Activities.Presentation.View.ExpressionTextBox>컨트롤 사용자 지정 활동 디자이너에 필요 없는를 만들고이 인터페이스를 사용 하 여 식 편집기를 제거할.</xref:System.Activities.Presentation.View.ExpressionTextBox> <xref:System.Activities.Presentation.View.ExpressionTextBox>클래스에서를이 관리 합니다.</xref:System.Activities.Presentation.View.ExpressionTextBox>"
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
   syntax:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Closes all the active expression editors."
+  summary: "모든 활성 식 편집기를 닫습니다."
   syntax:
     content: public void CloseExpressionEditors ();
     parameters: []
@@ -56,25 +56,25 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor."
+  summary: "새 식 편집기를 만듭니다."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "편집기 세션에 대 한 컨텍스트를 설정 하는 데 사용 합니다."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces to be used by the expression editor."
+      description: "식 편집기에서 사용 될 가져온된 네임 스페이스입니다."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "식 편집기에 대 한 지역 변수입니다."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "식 편집기를 채우는 데 사용 하는 문자열입니다."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "Returns a<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "반환 된<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>합니다."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -91,28 +91,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and expression type."
+  summary: "새 식을 지정 된 어셈블리, 가져온된 네임 스페이스, 변수, 식 텍스트 및 식 형식을 사용 하 여 편집기를 만듭니다."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "환경에서 로컬 및 참조 된 어셈블리입니다."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "식 편집기에 사용 되는 가져온된 네임 스페이스입니다."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "식 편집기에 대 한 지역 변수입니다."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "식 편집기를 채우는 데 사용 하는 문자열입니다."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "식의 형식입니다."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "새 인스턴스는 <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>합니다."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -129,28 +129,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and the initial size."
+  summary: "새 식이 지정된 된 어셈블리, 가져온된 네임 스페이스, 변수, 식 텍스트 및 초기 크기를 사용 하 여 편집기를 만듭니다."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "환경에서 로컬 및 참조 된 어셈블리입니다."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "식 편집기에 사용 되는 가져온된 네임 스페이스입니다."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "식 편집기에 대 한 지역 변수입니다."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "식 편집기를 채우는 데 사용 하는 문자열입니다."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "초기 높이 식 편집기 컨트롤의 너비입니다."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "새 인스턴스는 <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>합니다."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -167,31 +167,31 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, expression type, and the initial size."
+  summary: "새 식이 지정된 된 어셈블리, 가져온된 네임 스페이스, 변수, 식 텍스트, 식 형식 및 초기 크기를 사용 하 여 편집기를 만듭니다."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "환경에서 로컬 및 참조 된 어셈블리입니다."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "식 편집기에 사용 되는 가져온된 네임 스페이스입니다."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "식 편집기에 대 한 지역 변수입니다."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "식 편집기를 채우는 데 사용 하는 문자열입니다."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "식의 형식입니다."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "초기 높이 식 편집기 컨트롤의 너비입니다."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "새 인스턴스는 <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>합니다."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Updates the context for the editing session."
+  summary: "편집 세션에 대 한 컨텍스트를 업데이트합니다."
   syntax:
     content: public void UpdateContext (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "편집기 세션에 대 한 컨텍스트를 설정 하는 데 사용 합니다."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "식 편집기에 사용 되는 가져온된 네임 스페이스입니다."
   overload: System.Activities.Presentation.View.IExpressionEditorService.UpdateContext*
   exceptions: []
   platform:

@@ -17,8 +17,8 @@ items:
   nameWithType: DynamicValidator
   fullName: System.Web.DynamicData.DynamicValidator
   type: Class
-  summary: "Enforces and catches exceptions that are thrown in a data model and displays the error."
-  remarks: "The DynamicValidator control can be used with data fields or data entities. It catches exceptions that are thrown in LINQ-to-SQL classes or entity in extensibility methods in the data model. The DynamicValidator control is associated with the controls that accept user input. For example, a DynamicValidator control that is associated with a text box that accepts user input for a UnitsInStock field in a Products table catches and displays the exception that is thrown if the input is greater or less than the allowable units in the data model.       By default, ASP.NET Dynamic Data does not display all exceptions from the data model in the page, because some database exceptions might contain confidential information. Dynamic Data displays <xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A> values only. If you want your application to display other exceptions, you can create a DynamicValidator control, provide the exceptions that you want to display, and attach the exceptions to the DynamicValidator control. The exceptions that are thrown in the data model will be displayed in all pages in the application."
+  summary: "적용 및 데이터 모델에서 throw 된 예외를 catch 하 고 오류가 표시 됩니다."
+  remarks: "데이터 엔터티 또는 데이터 필드와 DynamicValidator 컨트롤을 사용할 수 있습니다. LINQ to SQL 클래스 또는 엔터티 데이터 모델에서 확장성 메서드에서 throw 되는 예외를 catch 합니다. DynamicValidator 컨트롤이 사용자 입력을 허용 하는 컨트롤에 연관 되어 있습니다. 예를 들어 연결 된 Products 테이블에서 UnitsInStock 필드에 대 한 사용자 입력을 허용 하는 텍스트 상자가 DynamicValidator 컨트롤 catch 하 고 데이터 모델에서 허용 가능한 단위 보다 크거나 작은지 입력이 throw 되는 예외를 표시 합니다.       기본적으로 ASP.NET Dynamic Data 나타나지 데이터 모델에서 모든 예외 페이지에서 일부 데이터베이스 예외 기밀 정보가 포함 될 수 있으므로 합니다. 동적 데이터 표시 <xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A>값만.</xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A> 다른 예외를 표시 하려면 응용 프로그램을 사용 하도록 하려는 경우 DynamicValidator 컨트롤을 만들 수 있습니다, 그리고 예외를 표시 하려면를 제공 및 예외 DynamicValidator 컨트롤에 연결 합니다. 데이터 모델에서 throw 되는 예외는 응용 프로그램의 모든 페이지에 표시 됩니다."
   example:
   - "The following example shows how to create a DynamicValidator control class that displays other exceptions in all pages.  \n  \n [Visual Basic]  \n  \n```  \n''' <summary>   \n''' Display other exceptions in all pages.   \n''' </summary>   \nPublic Class MyDynamicValidator   \n    Inherits DynamicValidator   \n  \n    Protected Overloads Overrides Sub ValidateException(ByVal exception As Exception)   \n        ' If it's not an exception that DynamicValidator displays find   \n        ' the innermost exception.   \n        If Not (TypeOf exception Is IDynamicValidatorException) AndAlso _  \n                Not (TypeOf exception Is ValidationException) Then   \n            While exception.InnerException IsNot Nothing   \n                exception = exception.InnerException   \n            End While   \n  \n            ' Wrap it in a ValidationException so that the base code   \n            ' does not ignore it.   \n            If ExceptionShouldBeDisplayedInPage(exception) Then   \n                exception = New ValidationException(Nothing, exception)   \n            End If   \n        End If   \n  \n        ' Call the base class for the exception that is modified.  \n        MyBase.ValidateException(exception)   \n    End Sub   \n  \n    Private Function ExceptionShouldBeDisplayedInPage(ByVal e As Exception) _  \n            As Boolean   \n        ' Add code to find the exception and   \n        ' decide whether it should be shown in the page.  \n  \n        Return True   \n    End Function   \nEnd Class  \n```  \n  \n [C#]  \n  \n```  \n/// <summary>  \n/// Display other exceptions in all pages.   \n/// </summary>  \npublic class MyDynamicValidator : DynamicValidator {  \n  \n    protected override void ValidateException(Exception exception) {  \n        // If it's not an exception that DynamicValidator displays find   \n        // the innermost exception.  \n        if (!(exception is IDynamicValidatorException) && !(exception   \n              is ValidationException)) {  \n            while (exception.InnerException != null) {  \n                exception = exception.InnerException;  \n            }  \n  \n            // Wrap it in a ValidationException so that the base code   \n            // does not ignore it.  \n            if (ExceptionShouldBeDisplayedInPage(exception)) {  \n                exception = new ValidationException(null, exception);  \n            }  \n        }  \n  \n        // Call the base class on the exception that is modified.  \n        base.ValidateException(exception);  \n    }  \n  \n    private bool ExceptionShouldBeDisplayedInPage(Exception e) {  \n        // Add your code to find the exception and  \n        // decides whether it should be shown in the page.  \n  \n           return true;  \n    }  \n}  \n```  \n  \n The following example shows how to use tag remapping in the web.config file to display the exception in all the Web pages.  \n  \n```  \n<pages>  \n  <tagMapping>  \n    <add tagType=\"System.Web.DynamicData.DynamicValidator\"   \n        mappedTagType=\"MyDynamicValidator\"/>  \n  </tagMapping>  \n</pages>  \n```"
   syntax:
@@ -209,7 +209,7 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;> </xref> 클래스입니다."
   syntax:
     content: public DynamicValidator ();
     parameters: []
@@ -229,12 +229,12 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Gets or sets the column to validate."
+  summary: "유효성을 검사 하는 열을 설정 하거나 가져옵니다."
   syntax:
     content: public System.Web.DynamicData.MetaColumn Column { get; set; }
     return:
       type: System.Web.DynamicData.MetaColumn
-      description: "The column to validate, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if a data entity is validated."
+      description: "유효성을 검사할 열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 엔터티 유효성을 검사 합니다."
   overload: System.Web.DynamicData.DynamicValidator.Column*
   exceptions: []
   platform:
@@ -251,12 +251,12 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Gets the name of the column to validate."
+  summary: "유효성을 검사 하는 열의 이름을 가져옵니다."
   syntax:
     content: public string ColumnName { get; }
     return:
       type: System.String
-      description: "The name of the column to validate, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if a data entity is validated."
+      description: "유효성을 검사할 열 이름 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 엔터티 유효성을 검사 합니다."
   overload: System.Web.DynamicData.DynamicValidator.ColumnName*
   exceptions: []
   platform:
@@ -273,14 +273,14 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Indicates whether the properties of the specified <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;></xref> control are valid."
-  remarks: "This method is overridden from the base class. The call to the base class fails if the control you try to validate does not have a validation property. For example if the control is a <xref:System.Web.UI.WebControls.GridView>, the base class will fail."
+  summary: "나타냅니다 있는지 여부를 지정 된 속성 <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;> </xref> 제어를 사용할 수 있습니다."
+  remarks: "이 메서드는 기본 클래스에서 재정의 됩니다. 기본 클래스에 대 한 호출의 유효성을 검사 하려고 하면 컨트롤에 유효성 검사 속성이 없는 경우 실패 합니다. 예를 들어 컨트롤은 한 <xref:System.Web.UI.WebControls.GridView>, 기본 클래스에 실패 합니다.</xref:System.Web.UI.WebControls.GridView>"
   syntax:
     content: protected override bool ControlPropertiesValid ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the properties of the specified validation control are valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>를 지정 된 유효성 검사 컨트롤의 속성이 올바르면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.DynamicData.DynamicValidator.ControlPropertiesValid*
   exceptions: []
   platform:
@@ -297,13 +297,13 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Determines whether the value in the input control to validate is valid."
+  summary: "유효성을 검사할 입력된 컨트롤의 값이 유효한 지 확인 합니다."
   syntax:
     content: protected override bool EvaluateIsValid ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the validation control that is evaluated is valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>컨트롤이 있는 경우 유효성 검사 평가 되는 올바르지 않습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.DynamicData.DynamicValidator.EvaluateIsValid*
   exceptions: []
   platform:
@@ -320,13 +320,13 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Raises the <xref uid=&quot;langword_csharp_Init&quot; name=&quot;Init&quot; href=&quot;&quot;></xref> event to initialize the <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;></xref> control."
+  summary: "발생는 <xref uid=&quot;langword_csharp_Init&quot; name=&quot;Init&quot; href=&quot;&quot;> </xref> 초기화 하는 이벤트는 <xref href=&quot;System.Web.DynamicData.DynamicValidator&quot;> </xref> 제어 합니다."
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "The event data."
+      description: "이벤트 데이터입니다."
   overload: System.Web.DynamicData.DynamicValidator.OnInit*
   exceptions: []
   platform:
@@ -343,14 +343,14 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Sets up a validation exception if an exception occurs in the data model."
-  remarks: "This method is called when an exception is thrown. A column-specific validator fails when a validation exception contains an associated inner exception, but a global validator fail when a non-validation exception occurs.      > [!NOTE] >  Only use this method if the exception is a <xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A>. If the exception is caused by a database error, using this method can display a sensitive database error"
+  summary: "데이터 모델에서 예외가 발생할 경우 유효성 검사 예외를 설정 합니다."
+  remarks: "이 메서드는 예외가 throw 될 때 호출 됩니다. 유효성 검사 예외가 연결된 된 내부 예외가 포함 되어 있지만 경우의 실패 한 전역 유효성 검사기는 열 관련 유효성 검사기 실패 하면 유효성 검사 아닌 예외가 발생 합니다.      > [!NOTE] >만이 메서드를 사용 하 여 예외가 <xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A>.</xref:System.Web.DynamicData.DynamicValidator.ValidationException%2A> 이 메서드를 사용 하 여 중요 한 데이터베이스 오류를 표시할 수 데이터베이스 오류로 인해 예외가 발생 하는 경우"
   syntax:
     content: protected virtual void ValidateException (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception that is thrown."
+      description: "Throw 되는 예외입니다."
   overload: System.Web.DynamicData.DynamicValidator.ValidateException*
   exceptions: []
   platform:
@@ -367,13 +367,13 @@ items:
   assemblies:
   - System.Web.DynamicData
   namespace: System.Web.DynamicData
-  summary: "Gets or sets validation exception that occurs during validation."
-  remarks: "This property represents the validation exception that is thrown if an error occurs when a value is edited or when a new value is inserted into the data model."
+  summary: "유효성 검사 중 발생 하는 유효성 검사 예외를 가져오거나 설정 합니다."
+  remarks: "이 속성 값을 편집할 때 오류가 발생 하는 경우 또는 데이터 모델에 새 값을 삽입할 때 throw 되는 유효성 검사 예외를 나타냅니다."
   syntax:
     content: protected virtual Exception ValidationException { get; set; }
     return:
       type: System.Exception
-      description: "The validation exception that is thrown."
+      description: "유효성 검사 예외가 throw 됩니다."
   overload: System.Web.DynamicData.DynamicValidator.ValidationException*
   exceptions: []
   platform:
