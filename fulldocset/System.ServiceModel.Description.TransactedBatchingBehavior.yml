@@ -15,8 +15,8 @@ items:
   nameWithType: TransactedBatchingBehavior
   fullName: System.ServiceModel.Description.TransactedBatchingBehavior
   type: Class
-  summary: "Represents a behavior that optimizes the receive operations for transports that support transactional receives."
-  remarks: "A transport that is configured with this behavior attempts to batch several receive operations into one transaction. By doing so, the relatively high cost of creating a transaction and committing it in every receive operation is avoided."
+  summary: "트랜잭션 수신을 지 원하는 전송에 대해 받기 작업을 최적화 하는 동작을 나타냅니다."
+  remarks: "이 동작으로 구성 된 전송은 여러 개의 하려고 받기 작업을 하나의 트랜잭션으로 합니다. 이렇게 하면 트랜잭션을 만들고에 커밋하의 비용 모든 수신 작업을 피할 수 있습니다."
   example:
   - "The following example shows how to add the transacted batching behavior to a service in a configuration file.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following example shows how to add the transacted batching behavior to a service in code.  \n  \n [!code-cs[UETransactedBatchingCode#0](~/add/codesnippet/csharp/t-system.servicemodel.de_10_2.cs)]\n [!code-cs[UETransactedBatchingCode#0](~/add/codesnippet/csharp/t-system.servicemodel.de_10_2.cs)]"
   syntax:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Description.TransactedBatchingBehavior&quot;></xref> class with the specified batch size."
-  remarks: "The `maxBatchSize` value passed into the constructor is only a hint. It is possible that all messages are received before reaching the `maxBatchSize`. When that occurs, it is unnecessary to wait indefinitely for another message to be received. To prevent this from happening, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] commits the batch early and open a new batch to receive additional messages. The batch is committed if there are no messages to be received and 20 percent of the transaction time-out value has elapsed."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Description.TransactedBatchingBehavior&quot;> </xref> 지정 된 일괄 처리 크기를 사용 합니다."
+  remarks: "`maxBatchSize` 은 생성자에 전달 된 값은 힌트로 합니다. 에 도달 하기 전에 모든 메시지를 받을 수는 `maxBatchSize`합니다. 이 경우 다른 메시지를 받는 무한정 기다릴 필요는 없습니다. 이 기능을 방지 하려면 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 일괄 처리를 미리 커밋하고 추가 메시지를 받을 새 일괄 처리를 엽니다. 수신할 메시지가 없고 트랜잭션 시간 제한 값의 20%가 경과 하는 경우 일괄 처리가 커밋됩니다."
   example:
   - "The following code shows how to create a new instance of <xref:System.ServiceModel.Description.TransactedBatchingBehavior> specifying the maximum number of messages to be processed in a batch.  \n  \n [!code-cs[UETransactedBatchingCode#1](~/add/codesnippet/csharp/39fc090e-5527-4a2d-a64d-_1.cs)]"
   syntax:
@@ -49,12 +49,12 @@ items:
     parameters:
     - id: maxBatchSize
       type: System.Int32
-      description: "The maximum number of receive operations that can be batched together."
+      description: "일괄 처리할 수 있는 작업을 수신 하는 최대 수입니다."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>MaxBatchSize</code> is less than 0."
+    description: "<code>MaxBatchSize</code>0 보다 작습니다."
   platform:
   - net462
 - uid: System.ServiceModel.Description.TransactedBatchingBehavior.MaxBatchSize
@@ -69,20 +69,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets the maximum number of receive operations that can be batched together in one transaction."
-  remarks: "The `maxBatchSize` value is only a hint. It is possible that all messages are received before reaching the `maxBatchSize`. When that occurs, it is unnecessary to wait indefinitely for another message to be received. To prevent this from happening, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] commits the batch early and open a new batch to receive additional messages. The batch is committed if there are no messages to be received and 20 percent of the transaction time-out value has elapsed."
+  summary: "최대 받기 작업 일괄 처리할 수 있는 하나의 트랜잭션으로 가져오거나 설정 합니다."
+  remarks: "`maxBatchSize` 값은 힌트로 합니다. 에 도달 하기 전에 모든 메시지를 받을 수는 `maxBatchSize`합니다. 이 경우 다른 메시지를 받는 무한정 기다릴 필요는 없습니다. 이 기능을 방지 하려면 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 일괄 처리를 미리 커밋하고 추가 메시지를 받을 새 일괄 처리를 엽니다. 수신할 메시지가 없고 트랜잭션 시간 제한 값의 20%가 경과 하는 경우 일괄 처리가 커밋됩니다."
   example:
   - "The following code shows how to set the MaxBatchSize property.  \n  \n [!code-cs[UETransactedBatchingCode#2](~/add/codesnippet/csharp/p-system.servicemodel.de_7_1.cs)]"
   syntax:
     content: public int MaxBatchSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of receive operations that can be batched together in one transaction."
+      description: "최대 수신 한 트랜잭션에서 함께 일괄 처리할 수 있는 작업입니다."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.MaxBatchSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>MaxBatchSize</code> is less than 0."
+    description: "<code>MaxBatchSize</code>0 보다 작습니다."
   platform:
   - net462
 - uid: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)
@@ -98,17 +98,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Applies binding settings to the specified service endpoint. This method cannot be inherited."
-  remarks: "Enables you to add additional binding parameters to the specified service endpoint. This is normally used when working with a custom binding."
+  summary: "지정된 된 서비스 끝점 바인딩 설정을 적용합니다. 이 메서드는 상속 될 수 없습니다."
+  remarks: "지정된 된 서비스 끝점에 바인딩 매개 변수를 추가할 수 있습니다. 사용자 지정 바인딩으로 작업할 때 주로 사용 됩니다."
   syntax:
     content: void IEndpointBehavior.AddBindingParameters (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "동작 설정이 적용 되는 서비스 끝점입니다."
     - id: bindingParameters
       type: System.ServiceModel.Channels.BindingParameterCollection
-      description: "A collection of binding parameters that store information used by binding elements to build factories."
+      description: "바인딩 매개 변수를 팩터리를 빌드하기 위해 바인딩 요소에서 사용 되는 정보를 저장 하는 컬렉션입니다."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters*
   exceptions: []
   platform:
@@ -126,16 +126,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Applies transaction batching behavior settings to the specified service endpoint. This method cannot be inherited."
+  summary: "트랜잭션 일괄 처리 동작 설정이 지정된 된 서비스 끝점에 적용 합니다. 이 메서드는 상속 될 수 없습니다."
   syntax:
     content: void IEndpointBehavior.ApplyClientBehavior (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.ClientRuntime behavior);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "동작 설정이 적용 되는 서비스 끝점입니다."
     - id: behavior
       type: System.ServiceModel.Dispatcher.ClientRuntime
-      description: "Contains the transaction batching behavior."
+      description: "트랜잭션 일괄 처리 동작을 포함 합니다."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyClientBehavior*
   exceptions: []
   platform:
@@ -153,17 +153,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Associates an endpoint dispatcher with the specified service endpoint. This method cannot be inherited."
-  remarks: "This method is called by [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to associate a service endpoint with an endpoint dispatcher."
+  summary: "지정된 된 서비스 끝점을 끝점 디스패처를 연결합니다. 이 메서드는 상속 될 수 없습니다."
+  remarks: "이 메서드는 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 서비스 끝점을 끝점 디스패처에 연결 합니다."
   syntax:
     content: void IEndpointBehavior.ApplyDispatchBehavior (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "동작 설정이 적용 되는 서비스 끝점입니다."
     - id: endpointDispatcher
       type: System.ServiceModel.Dispatcher.EndpointDispatcher
-      description: "An endpoint dispatching for dispatching messages"
+      description: "메시지 디스패치를 위한 끝점 디스패치"
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyDispatchBehavior*
   exceptions: []
   platform:
@@ -181,14 +181,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Ensures that transacted batching is applicable only for the bindings that support transacted receive operation. This method cannot be inherited."
-  remarks: "This method is called by [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to ensure that batching is available only for bindings that support transacted receive operations."
+  summary: "트랜잭션 된 일괄 처리 트랜잭션 처리 지원 수신 작업 바인딩에 대해서만 적용 되는지 확인 합니다. 이 메서드는 상속 될 수 없습니다."
+  remarks: "이 메서드는 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 트랜잭션 지원 되는 바인딩에 수신 작업에 대해서만 일괄 처리를 사용할 수 있도록 합니다."
   syntax:
     content: void IEndpointBehavior.Validate (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint for which batching behavior is validated."
+      description: "서비스 끝점을 일괄 처리 동작의 유효성을 검사 합니다."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#Validate*
   exceptions: []
   platform:

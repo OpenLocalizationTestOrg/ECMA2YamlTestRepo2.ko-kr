@@ -12,8 +12,8 @@ items:
   nameWithType: ConcurrencyMode
   fullName: System.ServiceModel.ConcurrencyMode
   type: Enum
-  summary: "Specifies whether a service class supports single-threaded or multi-threaded modes of operation."
-  remarks: "ConcurrencyMode is used in conjunction with the <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> property to specify whether a service class supports single-threaded or multi-threaded modes of operation. A single-threaded operation can be either reentrant or non-reentrant.       The following table shows when [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] permits an operation to be invoked while another one is in progress, depending upon the ConcurrencyMode.      |ConcurrencyMode Value|Can a new operation be invoked?|   |---------------------------|-------------------------------------|   |Single|Never.|   |Reentrant|Only while invoking another service or a callback.|   |Multiple|Always.|"
+  summary: "서비스 클래스가 단일 스레드 또는 다중 스레드 작업 모드를 지원 하는지 여부를 지정 합니다."
+  remarks: "ConcurrencyMode와 함께 사용 되는 <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A>속성을 통해 서비스 클래스가 단일 스레드 또는 다중 스레드 작업 모드를 지원 하는지 여부를 지정 합니다.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> 단일 스레드 작업 이거나 재진입이 재진입 성이 아닌 수 있습니다.       다음 표에서 표시 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] ConcurrencyMode를 따라 진행 중인 다른 하는 동안 호출 되는 작업을 허용 합니다.      | ConcurrencyMode 값 | 새 작업을 호출할 수 있습니까? |   |---------------------------|-------------------------------------|   | 단일 | 없습니다. |   | 재진입 | 다른 서비스나 콜백 호출 도중에. |   | 여러 | 항상. |"
   example:
   - "The following code example demonstrates the different between using Single, Reentrant, and Multiple. This sample does not compile without a real implementation behind it, but does demonstrate the kind of threading guarantees that [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] makes and what that means for your operation code.  \n  \n [!code-cs[C_BestPractices-Concurrency#1](~/add/codesnippet/csharp/reentrantandmultiple/reentrantandmultiple.cs#1)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is multi-threaded. No synchronization guarantees are made. Because other threads can change your service object at any time, you must handle synchronization and state consistency at all times."
+  summary: "서비스 인스턴스가 다중 스레드입니다. 동기화가 보장 되지 않습니다. 다른 스레드가 언제 든 지 서비스 개체를 변경할 수 있습니다, 때문에 동기화를 처리 해야 및 상태 일관성 항상 합니다."
   syntax:
     content: Multiple
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and accepts reentrant calls. The reentrant service accepts calls when you call another service; it is therefore your responsibility to leave your object state consistent before callouts and you must confirm that operation-local data is valid after callouts. Note that the service instance is unlocked only by calling another service over a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] channel. In this case, the called service can reenter the first service via a callback. If the first service is not reentrant, the sequence of calls results in a deadlock. For details, see <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>."
+  summary: "서비스 인스턴스가 단일 스레드 이며 재진입 호출을 허용 합니다. 재진입 서비스는 다른 서비스를 호출할 때 호출을 허용 따라서을 설명선 전에 일관성 있는 개체 상태를 유지 되며 후 작업-로컬 데이터가 유효한 지 확인 해야 합니다. 서비스 인스턴스를 통해 다른 서비스를 호출 하 여만 잠금 해제 됩니다는 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 채널입니다. 이 경우 호출된 된 서비스는 콜백을 통해 첫 번째 서비스에 재진입할 수 있습니다. 첫 번째 서비스가 재진입이 아닌 경우 호출 시퀀스 교착 상태가 발생 합니다. 자세한 내용은 참조 <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>"
   syntax:
     content: Reentrant
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and does not accept reentrant calls. If the <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*> property is <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;></xref>, and additional messages arrive while the instance services a call, these messages must wait until the service is available or until the messages time out."
+  summary: "서비스 인스턴스가 단일 스레드 이며 재진입 호출을 허용 하지 않습니다. 경우는 <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>속성은 <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;> </xref>, 및 추가 메시지가 도착 인스턴스에 서비스를 호출 하는 중,이 메시지는 서비스를 사용할 때까지 또는 메시지 제한 시간이 초과 될 때까지 기다려야 합니다.</xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>"
   syntax:
     content: Single
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

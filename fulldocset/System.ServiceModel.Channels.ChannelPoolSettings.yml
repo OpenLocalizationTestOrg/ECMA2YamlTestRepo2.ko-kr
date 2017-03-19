@@ -13,8 +13,8 @@ items:
   nameWithType: ChannelPoolSettings
   fullName: System.ServiceModel.Channels.ChannelPoolSettings
   type: Class
-  summary: "Specifies quotas for channels that belong to a pool of channels used by a service endpoint."
-  remarks: "Quotas are used as a policy mechanism to prevent the consumption of excessive resources. They prevent Denial of Service (DOS) attacks that are either malicious or unintentional. Use this class when setting channel quotas on a custom channel.       ChannelPoolSettings specifies three quotas:      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A> to specify the maximum interval of time for which the channels in the pool can be idle before being closed.      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A> to specify the interval of time after which a channel, when returned to the pool, is closed.      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A> to specify the maximum number of channels that can be stored in the pool for each remote endpoint."
+  summary: "서비스 끝점에서 사용 되는 채널 풀에 속한 채널에 대 한 할당량을 지정 합니다."
+  remarks: "할당량은 과도 한 리소스 소비를 방지 하기 위한 정책 메커니즘으로 사용 됩니다. 악의적 이거나 의도 하지 않은 서비스 거부 (DOS) 공격을 방지 합니다. 사용자 지정 채널에서 채널 할당량을 설정할 때이 클래스를 사용 합니다.       ChannelPoolSettings 세 가지 할당량을 지정 합니다.- <xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A>의 최대는 풀의 채널이 유휴 상태일 수 닫히기 전에 시간 간격을 지정 하려면.</xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A>      - <xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A>되는 풀으로 반환 하는 경우는 채널이 닫히는 시간 간격을 지정 합니다.</xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A>      - <xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A>각 원격 끝점에 대 한 풀에 저장할 수 있는 채널의 최대 수를 지정 합니다.</xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A>"
   syntax:
     content: public class ChannelPoolSettings
   inheritance:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ChannelPoolSettings&quot;></xref> class."
-  remarks: "The default values set are:      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A>: 2 minutes.      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A>: 10 minutes.      -   <xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A>: 10 channels.       These default quota values are based on a conservatively modest allocation of resources that are suitable for development environments and small installation scenarios. Service administrators should review channel quotas and tune individual quota values if an installation is running out of resources or if connections are being limited despite the availability of additional resources."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Channels.ChannelPoolSettings&quot;> </xref> 클래스입니다."
+  remarks: "설정의 기본값은:- <xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A>: 2 분.</xref:System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout%2A>      - <xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A>: 10 분.</xref:System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout%2A>      - <xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A>: 10 개 채널입니다.</xref:System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint%2A>       이 기본 할당량 값 신중 적당 한 개발 환경 및 소규모 설치 시나리오에 적합 한 리소스 할당을 기반으로 합니다. 서비스 관리자는 채널 할당량을 검토 하 고 경우 설치 된 리소스가 부족해 지거나 추가 리소스에도 불구 하 고 사용할 연결이 제한 되는 개별 할당량 값을 조정 해야 합니다."
   syntax:
     content: public ChannelPoolSettings ();
     parameters: []
@@ -56,18 +56,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Get or sets the maximum interval of time for which the channels in the pool can be idle before being closed."
-  remarks: "The IdleTimeout quota is used to mitigate Denial of Service (DOS) attacks on the server that rely on tying up resources for an extended period of time. On the client, setting the correct value can increase the reliability of connecting with the service. The default value is based on a conservatively modest allocation of resources. It is suitable for a development environment and small installation scenarios. Service administrators should review the value if an installation is running out of resources or if connections are being limited despite the availability of additional resources."
+  summary: "Get 또는 최대는 풀의 채널이 유휴 상태일 수 닫히기 전에 시간 간격을 설정 합니다."
+  remarks: "IdleTimeout 할당량 제한 된 오랜 시간에 대 한 리소스를 사용 하는 서버에서 서비스 거부 (DOS) 공격을 완화 하는 데 사용 됩니다. 클라이언트에서 올바른 값으로 설정 하면 서비스와의 연결 안정성을 증가할 수 있습니다. 기본값은 신중 적당 한 리소스 할당을 기반으로 합니다. 이 개발 환경 및 소규모 설치 시나리오에 적합 합니다. 서비스 관리자는 설치 된 리소스가 부족해 지거나 추가 리소스에도 불구 하 고 연결 제한 되어 아니면 값을 검토 해야 합니다."
   syntax:
     content: public TimeSpan IdleTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the maximum interval of time for which the channels in the pool can be idle before being closed. The default value is 2 minutes."
+      description: "<xref:System.TimeSpan>의 최대는 풀의 채널이 유휴 상태일 수 닫히기 전에 시간 간격을 지정 하는.</xref:System.TimeSpan> 기본값은 2 분입니다."
   overload: System.ServiceModel.Channels.ChannelPoolSettings.IdleTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero or greater than T:System.Int32.MaxValue in milliseconds."
+    description: "값은&0; 보다 작거나 T:System.Int32.MaxValue (밀리초) 보다 큽니다."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout
@@ -82,18 +82,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the lifetime of a channel, after which it is closed."
-  remarks: "The LeaseTimeout quota is used to for integration with load balancers and for improving reliability. The default value is based on a conservative allocation of resources. It is suitable for a development environment and small installation scenarios. Service administrators should review the value if an installation is running out of resources or if connections are being limited despite the availability of additional resources."
+  summary: "채널이 이후에 닫히는 채널 수명을 가져오거나 설정 합니다."
+  remarks: "LeaseTimeout 할당량이 안정성을 향상 하 고 부하 균형 도구와 통합에 사용 됩니다. 기본값은 신중한 리소스 할당을 기반으로 합니다. 이 개발 환경 및 소규모 설치 시나리오에 적합 합니다. 서비스 관리자는 설치 된 리소스가 부족해 지거나 추가 리소스에도 불구 하 고 연결 제한 되어 아니면 값을 검토 해야 합니다."
   syntax:
     content: public TimeSpan LeaseTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "A <xref:System.TimeSpan> that specifies the lifetime of a channel, after which it is closed. The default value is 10 minutes."
+      description: "A <xref:System.TimeSpan>는 채널이 이후에 닫히는 채널 수명을 지정 하는.</xref:System.TimeSpan> 기본값은 10 분입니다."
   overload: System.ServiceModel.Channels.ChannelPoolSettings.LeaseTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero."
+    description: "값이&0; 보다 작습니다."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint
@@ -108,18 +108,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the maximum number of channels connecting to remote endpoints that can be initiated by the service."
-  remarks: "The MaxOutboundChannelsPerEndpoint quota sets cache limits on both the server and the client and is used to improve reliability. The default value is based on a conservatively modest allocation of resources that is suitable for a development environment and small installation scenarios. Service administrators should review the value if an installation is running out of resources or if connections are being limited despite the availability of additional resources."
+  summary: "서비스에서 시작할 수 있는 원격 끝점에 연결 하는 채널의 최대 수를 가져오거나 설정 합니다."
+  remarks: "MaxOutboundChannelsPerEndpoint 할당량 서버와 클라이언트에 캐시 제한을 설정 하 고 안전성 향상을 위해 사용 됩니다. 기본값은 개발 환경 및 소규모 설치 시나리오에 적합 한 신중 적당 한 리소스 할당을 기반으로 합니다. 서비스 관리자는 설치 된 리소스가 부족해 지거나 추가 리소스에도 불구 하 고 연결 제한 되어 아니면 값을 검토 해야 합니다."
   syntax:
     content: public int MaxOutboundChannelsPerEndpoint { get; set; }
     return:
       type: System.Int32
-      description: "A positive integer that specifies the maximum number of channels to a remote endpoint in the pool that can be initiated by the service. The default value is 10 channels."
+      description: "서비스에서 시작할 수 있는 풀의 원격 끝점에 채널의 최대 수를 지정 하는 양의 정수입니다. 기본값은 10 개 채널입니다."
   overload: System.ServiceModel.Channels.ChannelPoolSettings.MaxOutboundChannelsPerEndpoint*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero."
+    description: "값이&0; 보다 작습니다."
   platform:
   - net462
 references:
