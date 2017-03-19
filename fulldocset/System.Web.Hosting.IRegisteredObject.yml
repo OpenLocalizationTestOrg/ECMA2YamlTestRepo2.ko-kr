@@ -10,8 +10,8 @@ items:
   nameWithType: IRegisteredObject
   fullName: System.Web.Hosting.IRegisteredObject
   type: Interface
-  summary: "Defines methods for objects that are managed by the hosting environment."
-  remarks: "Objects must implement the IRegisteredObject interface in order to register with the hosting environment and have their lifetime managed by the hosting environment.       You can create an instance of a registered object by calling the <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A?displayProperty=fullName> method on the application manager. The application manager returns the newly created object to the caller, which can then call a type-specific method on the object. During startup, the registered object should call the <xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A?displayProperty=fullName> method to complete registration of the object.       When the application manager needs to stop a registered object, it will call the <xref:System.Web.Hosting.IRegisteredObject.Stop%2A> method.       Applications can have only one instance of a registered type. To create multiple instances of a registered type, use the factory pattern to create an object manager that is registered with the application and then manages the multiple instances. For an example of an object implementing the factory pattern, see the example for the <xref:System.Web.Hosting.ApplicationManager> class."
+  summary: "호스팅 환경에 의해 관리 되는 개체에 대 한 메서드를 정의 합니다."
+  remarks: "개체는 호스팅 환경에 등록 하 고 해당 수명을 호스팅 환경에 따라 관리 하기 위해 IRegisteredObject 인터페이스를 구현 해야 합니다.       호출 하 여 등록된 된 개체의 인스턴스를 만들 수는 <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A?displayProperty=fullName>메서드는 응용 프로그램 관리자.</xref:System.Web.Hosting.ApplicationManager.CreateObject%2A?displayProperty=fullName> 응용 프로그램 관리자는 개체에는 형식별 메서드를 호출할 수 있습니다 호출자에 게 새로 만든된 개체를 반환 합니다. 시작 하는 동안 등록된 된 개체를 호출 해야는 <xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A?displayProperty=fullName>메서드는 개체의 등록을 완료 합니다.</xref:System.Web.Hosting.HostingEnvironment.RegisterObject%2A?displayProperty=fullName>       호출 응용 프로그램 관리자를 등록된 된 개체를 중지 해야 하는 경우는 <xref:System.Web.Hosting.IRegisteredObject.Stop%2A>메서드.</xref:System.Web.Hosting.IRegisteredObject.Stop%2A>       응용 프로그램은 등록 된 형식의 인스턴스가 하나만 있을 수 있습니다. 등록 된 유형의 여러 인스턴스를 만들려면 관리자 응용 프로그램에 등록 하 고 다음 여러 인스턴스를 관리 하는 개체를 만들려고 팩터리 패턴을 사용 합니다. 팩터리 패턴을 구현 하는 개체의 예로, <xref:System.Web.Hosting.ApplicationManager>클래스</xref:System.Web.Hosting.ApplicationManager> 에 대 한 예제를 참조 하십시오."
   syntax:
     content: public interface IRegisteredObject
   implements: []
@@ -29,14 +29,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Requests a registered object to unregister."
-  remarks: "The application manager will call the Stop method to ask a registered object to unregister. During processing of the Stop method, the registered object must call the <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A?displayProperty=fullName> method.       The Stop method is first called with the `immediate` parameter set to `false`. The object can either complete processing, call the <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A> method, and then return or it can return immediately and complete processing asynchronously before calling the <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A> method.       If the registered object does not complete processing before the application manager&quot;s time-out period expires, the Stop method is called again with the `immediate` parameter set to `true`. When the `immediate` parameter is `true`, the registered object must call the <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A> method before returning; otherwise, its registration will be removed by the application manager."
+  summary: "등록을 취소 하려면 등록된 된 개체를 요청 합니다."
+  remarks: "응용 프로그램 관리자에 등록 된 개체의 등록을 취소를 요청 하기 Stop 메서드를 호출 합니다. Stop 메서드의 처리 하는 동안 등록된 된 개체 호출 해야 합니다는 <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A?displayProperty=fullName>메서드.</xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A?displayProperty=fullName>       Stop 메서드를 먼저 호출한는 `immediate` 매개 변수 설정 `false`합니다. 개체 수 처리를 완료 하거나, 호출의 <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A>메서드, 및 다음 반환 즉시 반환 하 고 호출 하기 전에 비동기적으로 처리를 완료할 수는 <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A>메서드.</xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A> </xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A>       등록된 된 개체는 응용 프로그램 관리자의 제한 시간이 만료 되기 전에 처리 완료 되지 않으면, Stop 메서드가 다시 호출 됩니다는 `immediate` 매개 변수 설정 `true`합니다. 경우는 `immediate` 매개 변수는 `true`, 등록 된 개체를 호출 해야는 <xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A>메서드; 반환 하기 전에 응용 프로그램 관리자가 해당 등록과 그렇지 않은 경우 제거 됩니다.</xref:System.Web.Hosting.HostingEnvironment.UnregisterObject%2A>"
   syntax:
     content: public void Stop (bool immediate);
     parameters:
     - id: immediate
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate the registered object should unregister from the hosting environment before returning; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>등록 된 개체를 나타내는 등록을 취소 해야 호스팅 환경에서; 반환 하기 전에 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.Hosting.IRegisteredObject.Stop*
   exceptions: []
   platform:

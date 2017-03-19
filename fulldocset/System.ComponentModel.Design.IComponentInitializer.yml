@@ -11,8 +11,8 @@ items:
   nameWithType: IComponentInitializer
   fullName: System.ComponentModel.Design.IComponentInitializer
   type: Interface
-  summary: "Provides a set of recommended default values during component creation."
-  remarks: "The IComponentInitializer interface can be implemented by any designer, which is a component that also implements <xref:System.ComponentModel.Design.IDesigner>, which receives a recommended set of default values for the component it is designing. IComponentInitializer is queried during new component creation. Recommended default values for the component&quot;s properties are passed in as name/value pairs in a dictionary.       This design provides two customization points: the toolbox item itself can be replaced or changed to perform custom actions, or the designer for a component can be changed to provide a custom action. A designer that implements IComponentInitializer should not depend on either of its methods—<xref:System.ComponentModel.Design.IComponentInitializer.InitializeNewComponent%2A> or <xref:System.ComponentModel.Design.IComponentInitializer.InitializeExistingComponent%2A>—being called, because toolbox items are not obligated to call these methods.       For an overview of creating design components, see [Extending Design-Time Support](~/add/includes/ajax-current-ext-md.md)."
+  summary: "구성 요소를 만드는 동안 권장 되는 기본 값 집합을 제공합니다."
+  remarks: "또한 구현 하는 구성 요소는 모든 디자이너에서 IComponentInitializer 인터페이스를 구현할 수 <xref:System.ComponentModel.Design.IDesigner>, 권장된 집합 디자인 하는 구성 요소에 대 한 기본값을 받고.</xref:System.ComponentModel.Design.IDesigner> 새 구성 요소를 만드는 동안 IComponentInitializer 쿼리 됩니다. 사전에 있는 이름/값 쌍으로 구성 요소의 속성에 대 한 권장 되는 기본 값이 전달 됩니다.       이 설계는 두 개의 사용자 지정 지점 제공: 도구 상자 항목 자체를 대체 하거나 사용자 지정 동작을 수행 하려면 변경할 수 또는 사용자 지정 작업을 제공 하는 구성 요소에 대 한 디자이너를 변경할 수 있습니다. IComponentInitializer를 구현 하는 디자이너의 메서드 중 하나에 종속-<xref:System.ComponentModel.Design.IComponentInitializer.InitializeNewComponent%2A> 또는 <xref:System.ComponentModel.Design.IComponentInitializer.InitializeExistingComponent%2A>-도구 상자 항목 할 의무가 없으며 이러한 메서드를 호출 하기 때문에 호출 됩니다.</xref:System.ComponentModel.Design.IComponentInitializer.InitializeExistingComponent%2A> </xref:System.ComponentModel.Design.IComponentInitializer.InitializeNewComponent%2A>       디자인 구성 요소 만들기의 개요를 참조 하십시오. [디자인 타임 지원을 확장](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public interface IComponentInitializer
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Restores an instance of a component to its default state."
-  remarks: "The InitializeExistingComponent method is called when a designer will re-initialize an existing component. For example, InitializeExistingComponent is commonly called after a drag-and-drop operation. The `defaultValues` parameter is a dictionary containing name/value pairs of default values that should be applied to properties of the associated component. This dictionary may be `null` if no default values have been specified.      > [!CAUTION] >  When implementing this method, generally you should not modify the component properties beyond those recommendations found in `defaultValue`. The existing component may already have had its properties set by the user or other design-time code."
+  summary: "구성 요소의 인스턴스를 기본 상태로 복원합니다."
+  remarks: "InitializeExistingComponent 메서드는 디자이너는 기존 구성 요소를 다시 초기화 하는 경우 호출 됩니다. 예를 들어 InitializeExistingComponent 끌어서 놓기 작업을 수행한 후 일반적으로 호출 됩니다. `defaultValues` 매개 변수는 관련된 된 구성 요소의 속성에 적용 해야 하는 기본값의 이름/값 쌍을 포함 하는 사전입니다. 이 사전 될 수 있습니다 `null` 기본값이 없는 지정 된 경우.      > [!CAUTION] >이 메서드를 구현할 때 일반적으로 수정 하면 안 구성 요소 속성에 있는 권장 이외의 `defaultValue`합니다. 기존 구성 요소가 이미 했을 수도 있습니다 해당 속성이 사용자 또는 다른 디자인 타임 코드에서 설정 합니다."
   syntax:
     content: public void InitializeExistingComponent (System.Collections.IDictionary defaultValues);
     parameters:
     - id: defaultValues
       type: System.Collections.IDictionary
-      description: "A dictionary of default property values, which are name/value pairs, with which to reset the component&quot;s state."
+      description: "구성 요소의 상태를 다시 설정 하는 이름/값 쌍으로 된 기본 속성 값의 사전입니다."
   overload: System.ComponentModel.Design.IComponentInitializer.InitializeExistingComponent*
   exceptions: []
   platform:
@@ -54,14 +54,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Initializes a new component using a set of recommended values."
-  remarks: "The InitializeNewComponent method is called after a new component is created. It is typically called by the toolbox item itself and is used to configure the component’s default values.       This dictionary may be `null` if no default values are specified. If the dictionary is `null`, the component properties should be left in their implicit default states."
+  summary: "권장된 값 집합을 사용 하 여 새 구성 요소를 초기화 합니다."
+  remarks: "InitializeNewComponent 메서드는 새 구성 요소를 만든 후에 호출 됩니다. 일반적으로 도구 상자 항목 자체에서 호출 하 고 구성 요소의 기본 값을 구성 하는 데 사용 됩니다.       이 사전 수 `null` 기본값이 없는 지정 된 경우. 사전이 `null`, 구성 요소 속성이 암시적 기본 상태로 유지 됩니다."
   syntax:
     content: public void InitializeNewComponent (System.Collections.IDictionary defaultValues);
     parameters:
     - id: defaultValues
       type: System.Collections.IDictionary
-      description: "A dictionary of default property values, which are name/value pairs, with which to initialize the component&quot;s state."
+      description: "구성 요소의 상태를 초기화 하는 이름/값 쌍으로 된 기본 속성 값의 사전입니다."
   overload: System.ComponentModel.Design.IComponentInitializer.InitializeNewComponent*
   exceptions: []
   platform:
