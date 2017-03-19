@@ -47,8 +47,8 @@ items:
   nameWithType: IRecordSequence
   fullName: System.IO.Log.IRecordSequence
   type: Interface
-  summary: "Provides a generic interface to a sequence of records."
-  remarks: "The IRecordSequence interface provides an abstract interface to a record-oriented stream. A IRecordSequence instance can be used to read and write log records.       The IRecordSequence interface provides the following capabilities,      -   Append log records using the <xref:System.IO.Log.IRecordSequence.Append%2A> methods.      -   Read the appended records using the <xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A> method.      -   Write a special restart record using the <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> method.      -   Read restart records from the most recently written restart record using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.      -   Flush the records to durable store using the  <xref:System.IO.Log.IRecordSequence.Flush%2A> method.      -   Reserve space for appending records.      -   Free log space by advancing the base of the log.      -   Receive <xref:System.IO.Log.IRecordSequence.TailPinned> event notifications to move the base of the log to free space.       Log records are appended to a IRecordSequence instance, and each log record is given a unique sequence number. Sequence numbers are strictly monotonically increasing within a given record sequence. A log record consists of opaque data, supplied to the IRecordSequence instance in an <xref:System.Collections.IList> of ArraySegments of bytes.       The IRecordSequence interface also exposes a few basic properties which provides information about log boundaries.      -   The <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> property contains the sequence number of the first valid record in the record sequence.      -   The <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A> property contains a sequence number that is guaranteed to be larger than the sequence number of the last appended record.      -   The <xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A> property contains the sequence number of the last written restart area.      -   The <xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A> property contains the size of the largest record that can be appended to, or read from the sequence.      -   The <xref:System.IO.Log.IRecordSequence.ReservedBytes%2A> property contains the total size of all reservations made in this record sequence.      -   If the <xref:System.IO.Log.IRecordSequence.RetryAppend%2A> property is set to `true`, and an <xref:System.IO.Log.IRecordSequence.Append%2A> operation fails because there is no space in the sequence, the record sequence will attempt to free space, and retry the Append operation."
+  summary: "레코드의 시퀀스에 제네릭 인터페이스를 제공합니다."
+  remarks: "IRecordSequence 인터페이스 레코드 기반 스트림에 대 한 추상 인터페이스를 제공합니다. IRecordSequence 인스턴스 읽고 로그 레코드를 쓰는 데 사용할 수 있습니다.       로그 추가-IRecordSequence 인터페이스는 다음과 같은 기능을 제공를 사용 하 여 기록 된 <xref:System.IO.Log.IRecordSequence.Append%2A>메서드.</xref:System.IO.Log.IRecordSequence.Append%2A>      -를 사용 하 여 추가 된 레코드는 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A>      -는 특수 재시작 레코드를 사용 하 여 작성 된 <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>메서드.</xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>      읽기는 가장 최근에 쓴 재시작 레코드를 사용 하 여의 레코드를 다시 시작은 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>      -다음을 사용 하 여 영 속 저장소에 레코드 플러시는 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A>      -레코드를 추가 하기 위한 공간을 예약 합니다.      -로그 공간이 로그의 기준을 앞으로 이동 하 여 합니다.      -수신 <xref:System.IO.Log.IRecordSequence.TailPinned>공간을 확보 하는 로그의 밑을 이동 하는 이벤트 알림.</xref:System.IO.Log.IRecordSequence.TailPinned>       로그 레코드는 IRecordSequence 인스턴스에 추가 됩니다. 및 각 로그 레코드에 고유한 시퀀스 번호가 지정 됩니다. 시퀀스 번호 순차적으로 지정된 된 레코드 시퀀스 내에서 증가 됩니다. 로그 레코드에서 IRecordSequence 인스턴스를 제공 하는 불투명 데이터 이루어져는 <xref:System.Collections.IList>바이트 배열 세그먼트의.</xref:System.Collections.IList>       또한 IRecordSequence 인터페이스 로그 경계에 대 한 정보를 제공 하는 몇 가지 기본 속성을 노출 합니다.      - <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>속성 레코드 시퀀스에서 유효한 첫 번째 레코드의 시퀀스 번호를 포함 합니다.</xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>      - <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>속성은 반드시 큰 시퀀스 번호를 포함 추가 된 레코드의 마지막 시퀀스 번호 보다.</xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>      - <xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A>속성 마지막 쓴된 재시작 영역의 시퀀스 번호를 포함 합니다.</xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A>      - <xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A>속성을 추가 하거나 시퀀스에서 읽을 수 있는 가장 큰 레코드의 크기를 포함 합니다.</xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A>      - <xref:System.IO.Log.IRecordSequence.ReservedBytes%2A>속성이 레코드 시퀀스에서 만들어진 모든 예약의 총 크기를 포함 합니다.</xref:System.IO.Log.IRecordSequence.ReservedBytes%2A>      -If는 <xref:System.IO.Log.IRecordSequence.RetryAppend%2A>속성이 `true`, 및 <xref:System.IO.Log.IRecordSequence.Append%2A>시퀀스에 공간이 때문에 작업이 실패, 레코드 시퀀스에서 공간을 확보 하 고 추가 작업을 다시 시도 하려고 합니다.</xref:System.IO.Log.IRecordSequence.Append%2A> </xref:System.IO.Log.IRecordSequence.RetryAppend%2A>"
   syntax:
     content: 'public interface IRecordSequence : IDisposable'
   implements:
@@ -67,31 +67,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Moves the base sequence number of the log forward."
-  remarks: "When you use a <xref:System.IO.Log.LogRecordSequence> instance and try to advance the sequence number to free up space in the log, the new base sequence number must reside in a different log extent for the previous extent to be marked as empty. Freeing extents partially is not supported."
+  summary: "로그의 기준 시퀀스 번호를 앞으로 이동합니다."
+  remarks: "사용 하는 경우는 <xref:System.IO.Log.LogRecordSequence>새 기준 시퀀스 번호 이전 범위가 빈 것으로 표시 될 다른 로그 범위에 있어야 인스턴스와으로 로그의 공간을 확보 하기 위해 시퀀스 번호를 이동 하려고 합니다.</xref:System.IO.Log.LogRecordSequence> 익스텐트를 부분적으로 확보 하는 것은 지원 되지 않습니다."
   syntax:
     content: public void AdvanceBaseSequenceNumber (System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number of the record sequence."
+      description: "레코드 시퀀스의 새 기준 시퀀스 번호를 지정 합니다."
   overload: System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>newBaseSequenceNumber</code> is invalid."
+    description: "<code>newBaseSequenceNumber</code>잘못 되었습니다."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>newBaseSequenceNumber</code> is not active in the log."
+    description: "<code>newBaseSequenceNumber</code>로그에 활성 상태가 아닙니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while modifying the sequence."
+    description: "시퀀스를 수정 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "레코드 시퀀스가 꽉 찼습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)
@@ -106,40 +106,40 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 로그 레코드를 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)
@@ -154,40 +154,40 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 로그 레코드를 추가 하는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)
@@ -202,43 +202,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>, using space previously reserved in the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 로그 레코드를 추가 하는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>, 시퀀스에서 이전에 예약 된 공간을 사용 합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 레코드 이전에 예약 된, 변수로 지정 된 예약을 사용 하 여 공간을 사용 하면는 `reservations` 매개 변수입니다. 추가 작업이 성공 하면 및 예약 영역이 컬렉션에서 제거할 데이터를 포함 될 수 있는 가장 작은 예약 영역을 사용 합니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 레코드에 대해 사용 해야 하는 예약이 포함 된입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)
@@ -253,43 +253,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>, using space previously reserved in the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 로그 레코드를 추가 하는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>, 시퀀스에서 이전에 예약 된 공간을 사용 합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 레코드 이전에 예약 된, 변수로 지정 된 예약을 사용 하 여 공간을 사용 하면는 `reservations` 매개 변수입니다. 추가 작업이 성공 하면 및 예약 영역이 컬렉션에서 제거할 데이터를 포함 될 수 있는 가장 작은 예약 영역을 사용 합니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 레코드에 대해 사용 해야 하는 예약이 포함 된입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BaseSequenceNumber
@@ -304,18 +304,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the first valid record in the current <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Valid sequence numbers are greater than or equal to BaseSequenceNumber and less than <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>.       The value of this property can be changed by calling the <xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A> or <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> method."
+  summary: "파생된 클래스에서 재정의할 때 현재에서 유효한 첫 번째 레코드의 시퀀스 번호를 가져옵니다 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
+  remarks: "유효한 시퀀스 번호는 보다 큰가 BaseSequenceNumber 같고 <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>.</xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A> 보다 작음       호출 하 여이 속성의 값을 변경할 수 있습니다는 <xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A>또는 <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>메서드.</xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> </xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber BaseSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The lowest sequence number that corresponds to a valid record in the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
+      description: "유효한 레코드에 해당 하는 가장 낮은 시퀀스 번호는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
   overload: System.IO.Log.IRecordSequence.BaseSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)
@@ -330,46 +330,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 시작 되는 비동기 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는 비동기 추가 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)
@@ -384,46 +384,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 시작 시퀀스에서 이전에 예약 된 공간을 사용 하 여 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는 비동기 추가 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -438,49 +438,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 시작 시퀀스에서 이전에 예약 된 공간을 사용 하 여 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 레코드 이전에 예약 된, 변수로 지정 된 예약을 사용 하 여 공간을 사용 하면는 `reservations` 매개 변수입니다. 추가 작업이 성공 하면 및 예약 영역이 컬렉션에서 제거할 데이터를 포함 될 수 있는 가장 작은 예약 영역을 사용 합니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 레코드에 대해 사용 해야 하는 예약이 포함 된입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는 비동기 추가 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -495,49 +495,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 시작 시퀀스에서 이전에 예약 된 공간을 사용 하 여 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 레코드 이전에 예약 된, 변수로 지정 된 예약을 사용 하 여 공간을 사용 하면는 `reservations` 매개 변수입니다. 추가 작업이 성공 하면 및 예약 영역이 컬렉션에서 제거할 데이터를 포함 될 수 있는 가장 작은 예약 영역을 사용 합니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 됩니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousUndoRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 레코드에 대해 사용 해야 하는 예약이 포함 된입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는 비동기 추가 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginFlush(System.IO.Log.SequenceNumber,System.AsyncCallback,System.Object)
@@ -552,34 +552,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous flush operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by the current method to the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method to ensure that the flush completes and resources are freed appropriately. If an error occurs during an asynchronous flush, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Calling this method ensures that all records that have been appended to the <xref:System.IO.Log.IRecordSequence> are durably written.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous flush request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method is called."
+  summary: "파생된 클래스에서 재정의 하는 경우 시퀀스에서 이전에 예약 된 공간을 사용 하 여 비동기 플러시 작업을 시작 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>를 현재 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndFlush%2A>메서드 여 플러시를 완료 하 고 리소스가 적절 하 게 해제 됩니다.</xref:System.IO.Log.IRecordSequence.EndFlush%2A> </xref:System.IAsyncResult> 될 때까지 비동기 플러시 중에 오류가 발생 하는 경우 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndFlush%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndFlush%2A>       이 메서드를 호출 하면 모든 레코드가 있는에 추가 된는 <xref:System.IO.Log.IRecordSequence>영속적으로 기록 됩니다.</xref:System.IO.Log.IRecordSequence>       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 플러시 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndFlush%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndFlush%2A>"
   syntax:
     content: public IAsyncResult BeginFlush (System.IO.Log.SequenceNumber sequenceNumber, AsyncCallback callback, object state);
     parameters:
     - id: sequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the latest record that must be written. If this <xref href=&quot;System.IO.Log.SequenceNumber&quot;></xref> is invalid, then all records must be written."
+      description: "써야 하는 최신 레코드의 시퀀스 번호입니다. 이 경우 <xref href=&quot;System.IO.Log.SequenceNumber&quot;> </xref> 유효 하지 않을 경우 모든 레코드를 써야 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the flush is complete."
+      description: "플러시가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous flush request from other requests."
+      description: "이 특정 비동기 플러시 요청을 다른 요청과 구별 하는 사용자 제공 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous flush operation, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류할 수를 나타내는 비동기 플러시 작업, 중일 수 있습니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginFlush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "데이터를 플러시하는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)
@@ -594,52 +594,52 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous reserve and append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "재정의 된 경우 파생된 클래스에서 비동기 예약 및 시작 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 지정 된 예약은 레코드와 원자 단위 연산에서 컬렉션 추가 작업에 제공된 된 예약 합니다. 추가 실패, 없음 공간이 예약 됩니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 될 수 있습니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public IAsyncResult BeginReserveAndAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "예약을 만들 예약 컬렉션입니다."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "바이트 단위로 만들 예약 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents this asynchronous operation, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는이 비동기 작업을 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "레코드 시퀀스에서 새 레코드를 포함 하거나 예약을 변경 하려면 충분 한 여유 공간을 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)
@@ -654,52 +654,52 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous reserve and append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "재정의 된 경우 파생된 클래스에서 비동기 예약 및 시작 작업을 추가 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드 추가 작업이 완료 된 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> </xref:System.IAsyncResult> 될 때까지 비동기 추가 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 지정 된 예약은 레코드와 원자 단위 연산에서 컬렉션 추가 작업에 제공된 된 예약 합니다. 추가 실패, 없음 공간이 예약 됩니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 될 수 있습니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public IAsyncResult BeginReserveAndAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "예약을 만들 예약 컬렉션입니다."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "바이트 단위로 만들 예약 합니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "추가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "이 특정 비동기 구별 하는 사용자 제공 개체는 다른 요청에서 요청을 추가 합니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents this asynchronous operation, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중일 수 있는이 비동기 작업을 나타내는입니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "레코드 시퀀스에서 새 레코드를 포함 하거나 예약을 변경 하려면 충분 한 여유 공간을 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginWriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -714,29 +714,29 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous restart area write operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method, to assure that the restart area write operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous restart area write operation, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       When the operation successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a <xref:System.IO.Log.ReservationCollection> is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can hold the data, and that reservation will be removed from the collection.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called."
+  summary: "파생된 클래스에서 재정의 하는 경우 시퀀스에서 이전에 예약 된 공간을 사용 하는 비동기 재시작 영역 쓰기 작업을 시작 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드가 하 여 재시작 영역 쓰기 작업을 완료 하 고 리소스를 적절 하 게 해제할 수 있습니다.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> </xref:System.IAsyncResult> 될 때까지 비동기 재시작 영역 쓰기 작업 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       작업을 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은.       경우는 <xref:System.IO.Log.ReservationCollection>을 지정 쓴된 재시작 영역은 이전에 예약 된, 컬렉션에 포함 된 예약을 사용 하 여 공간을 사용 합니다.</xref:System.IO.Log.ReservationCollection> 메서드가 성공 하면 예약이 컬렉션에서 제거 됩니다 및 사용자 데이터를 포함 될 수 있는 가장 작은 예약을 사용 합니다.       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>"
   syntax:
     content: public IAsyncResult BeginWriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 재시작 영역에 사용 해야 하는 예약이 포함 된입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the restart area write is complete."
+      description: "재시작 영역 쓰기가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous restart area write request from other requests."
+      description: "다른 요청에서 특정 비동기 재시작 영역 쓰기 요청을 구별 하는 사용자 제공 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous restart area write operation, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중인 수는 비동기 재시작 영역 쓰기 작업을 나타내는 중일 수 있습니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginWriteRestartArea*
   exceptions: []
   platform:
@@ -753,43 +753,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous restart area write operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method to ensure that the restart area write operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous restart area write operation, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       When the operation successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a <xref:System.IO.Log.ReservationCollection> is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can hold the data, and that reservation will be removed from the collection.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called."
+  summary: "파생된 클래스에서 재정의 하는 경우 시퀀스에서 이전에 예약 된 공간을 사용 하는 비동기 재시작 영역 쓰기 작업을 시작 합니다."
+  remarks: "전달 해야는 <xref:System.IAsyncResult>에이 메서드에서 반환 되는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드 재시작 영역 쓰기 작업이 완료 되 고 리소스를 적절 하 게 해제할 수 있도록 합니다.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> </xref:System.IAsyncResult> 될 때까지 비동기 재시작 영역 쓰기 작업 중 오류가 발생 했는지, 예외가 throw 되지 않습니다는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드는 <xref:System.IAsyncResult>이 메서드에서 반환 된.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>       에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       작업을 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은.       경우는 <xref:System.IO.Log.ReservationCollection>을 지정 쓴된 재시작 영역은 이전에 예약 된, 컬렉션에 포함 된 예약을 사용 하 여 공간을 사용 합니다.</xref:System.IO.Log.ReservationCollection> 메서드가 성공 하면 예약이 컬렉션에서 제거 됩니다 및 사용자 데이터를 포함 될 수 있는 가장 작은 예약을 사용 합니다.       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>"
   syntax:
     content: public IAsyncResult BeginWriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 재시작 영역에 사용 해야 하는 예약이 포함 된입니다."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the restart area write is complete."
+      description: "재시작 영역 쓰기가 완료 되 면 호출 되는 선택적 비동기 콜백."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous restart area write request from other requests."
+      description: "다른 요청에서 특정 비동기 재시작 영역 쓰기 요청을 구별 하는 사용자 제공 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous restart area write operation, which could still be pending."
+      description: "<xref:System.IAsyncResult>보류 중인 수는 비동기 재시작 영역 쓰기 작업을 나타내는 중일 수 있습니다.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginWriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "레코드 시퀀스에서 새 레코드를 포함할 수 있는 여유 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.CreateReservationCollection
@@ -804,18 +804,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, creates a new <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+  summary: "파생된 클래스에서 재정의 되 면에서는 새 <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>합니다."
   syntax:
     content: public System.IO.Log.ReservationCollection CreateReservationCollection ();
     parameters: []
     return:
       type: System.IO.Log.ReservationCollection
-      description: "The newly created <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+      description: "새로 만든 <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>합니다."
   overload: System.IO.Log.IRecordSequence.CreateReservationCollection*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndAppend(System.IAsyncResult)
@@ -830,25 +830,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous append operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndAppend is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginAppend%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 추가 작업을 끝냅니다."
+  remarks: "이 메서드는 I/O 작업이 완료 될 때까지 차단 됩니다. 비동기 쓰기 요청 I/O 요청 중의 디스크 오류와 같은 중 발생 하는 오류 EndAppend를 호출할 때 표시 됩니다.       이 메서드를 정확히 한 번만 호출 해야 모든 <xref:System.IAsyncResult>에서 반환 되는 <xref:System.IO.Log.IRecordSequence.BeginAppend%2A>메서드.</xref:System.IO.Log.IRecordSequence.BeginAppend%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndAppend (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "처리 중인 비동기 I/O 요청에 대 한 참조입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.EndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndFlush(System.IAsyncResult)
@@ -863,25 +863,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous flush operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous flush request, such as a disk failure during the I/O request, become visible when EndFlush is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginFlush%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 플러시 작업을 종료 합니다."
+  remarks: "이 메서드는 I/O 작업이 완료 될 때까지 차단 됩니다. I/O 요청 중의 디스크 오류와 같은 비동기 플러시 요청 중에 발생 하는 오류 EndFlush를 호출할 때 표시 됩니다.       이 메서드를 정확히 한 번만 호출 해야 모든 <xref:System.IAsyncResult>에서 반환 되는 <xref:System.IO.Log.IRecordSequence.BeginFlush%2A>메서드.</xref:System.IO.Log.IRecordSequence.BeginFlush%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndFlush (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "처리 중인 비동기 I/O 요청에 대 한 참조입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "마지막으로 쓴 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.EndFlush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndReserveAndAppend(System.IAsyncResult)
@@ -896,25 +896,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous reserve and append operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndReserveAndAppend is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 종료 비동기 예약 및 추가 작업을 합니다."
+  remarks: "이 메서드는 I/O 작업이 완료 될 때까지 차단 됩니다. 비동기 쓰기 요청 I/O 요청 중의 디스크 오류와 같은 중 발생 하는 오류 EndReserveAndAppend를 호출할 때 표시 됩니다.       이 메서드를 정확히 한 번만 호출 해야 모든 <xref:System.IAsyncResult>에서 반환 되는 <xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A>메서드.</xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndReserveAndAppend (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "처리 중인 비동기 I/O 요청에 대 한 참조입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.EndReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndWriteRestartArea(System.IAsyncResult)
@@ -929,25 +929,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous restart area write operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndWriteRestartArea is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A> method."
+  summary: "파생된 클래스에서 재정의 하는 경우 비동기 재시작 영역 쓰기 작업을 종료 합니다."
+  remarks: "이 메서드는 I/O 작업이 완료 될 때까지 차단 됩니다. 비동기 쓰기 요청 I/O 요청 중의 디스크 오류와 같은 중 발생 하는 오류 EndWriteRestartArea를 호출할 때 표시 됩니다.       이 메서드를 정확히 한 번만 호출 해야 모든 <xref:System.IAsyncResult>에서 반환 되는 <xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A>메서드.</xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndWriteRestartArea (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "처리 중인 비동기 I/O 요청에 대 한 참조입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written log record."
+      description: "쓴된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.EndWriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Flush
@@ -962,22 +962,22 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ensures that all appended records have been written."
-  remarks: "Calling this method ensures that all records that have been appended to the <xref:System.IO.Log.IRecordSequence> have been durably written."
+  summary: "파생된 클래스에서 재정의 되 면 추가 된 모든 레코드가 썼는지 확인 합니다."
+  remarks: "이 메서드를 호출 하면 모든 레코드가 있는에 추가 된는 <xref:System.IO.Log.IRecordSequence>영속적으로 씁니다.</xref:System.IO.Log.IRecordSequence>"
   syntax:
     content: public System.IO.Log.SequenceNumber Flush ();
     parameters: []
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "마지막으로 쓴 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Flush*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "데이터를 플러시하는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Flush(System.IO.Log.SequenceNumber)
@@ -992,28 +992,28 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ensures that all appended records up to and including the record with the specified sequence number have been durably written."
-  remarks: "Calling this method ensures that all records with sequence numbers up to and including the specified sequence number have been durably written."
+  summary: "파생된 클래스에서 재정의 되 면 추가 된 모든 레코드 및 지정 된 시퀀스 번호와 레코드까지 영속적으로 기록 되었음을 확인 합니다."
+  remarks: "이 메서드를 사용 하면 시퀀스 번호를 모든 레코드가 최대 호출 하 고 지정 된 시퀀스 번호를 포함 하 여 영속적 기록 합니다."
   syntax:
     content: public System.IO.Log.SequenceNumber Flush (System.IO.Log.SequenceNumber sequenceNumber);
     parameters:
     - id: sequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the latest record that must be written. If this <xref href=&quot;System.IO.Log.SequenceNumber&quot;></xref> is invalid, then all records must be written."
+      description: "써야 하는 최신 레코드의 시퀀스 번호입니다. 이 경우 <xref href=&quot;System.IO.Log.SequenceNumber&quot;> </xref> 유효 하지 않을 경우 모든 레코드를 써야 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "마지막으로 쓴 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.Flush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "데이터를 플러시하는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.LastSequenceNumber
@@ -1028,18 +1028,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number which is greater than the last record appended."
-  remarks: "This property contains a sequence number that is guaranteed to be larger than the sequence number of the last appended record. Valid sequence numbers are greater than or equal to <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> and less than LastSequenceNumber.      > [!NOTE] >  When using a <xref:System.IO.Log.LogRecordSequence> instance, the <xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A> value can become out of date until records are flushed to the log. See <xref:System.IO.Log.IRecordSequence.Flush%2A> and <xref:System.IO.Log.RecordAppendOptions> for more information on flushing records.."
+  summary: "파생된 클래스에서 재정의 되 면 시퀀스 번호를 가져옵니다 마지막으로 추가 된 레코드 보다 큰 합니다."
+  remarks: "이 속성은 반드시 큰 시퀀스 번호를 포함 추가 된 레코드의 마지막 시퀀스 번호 보다 합니다. 유효한 시퀀스 번호 보다 크거나 같은 경우는 <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>같고 LastSequenceNumber 보다.</xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>      > [!NOTE] >는 <xref:System.IO.Log.LogRecordSequence>인스턴스, <xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A>값이 레코드의 로그를 플러시할 때까지 만료 될 수 있습니다</xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A> </xref:System.IO.Log.LogRecordSequence> 를 사용 하는 경우 <xref:System.IO.Log.IRecordSequence.Flush%2A>및 <xref:System.IO.Log.RecordAppendOptions>플러시 레코드.. 대 한 자세한 내용은</xref:System.IO.Log.RecordAppendOptions> </xref:System.IO.Log.IRecordSequence.Flush%2A> 참조 하십시오."
   syntax:
     content: public System.IO.Log.SequenceNumber LastSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "A sequence number which is greater than the last record appended."
+      description: "마지막으로 추가 된 레코드 보다 큰 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.LastSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.MaximumRecordLength
@@ -1054,17 +1054,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the size of the largest record that can be appended to or read from this sequence, in bytes."
+  summary: "파생된 클래스에서 재정의 되 면 추가 하거나 (바이트)이이 시퀀스에서 읽을 수 있는 가장 큰 레코드의 크기를 가져옵니다."
   syntax:
     content: public long MaximumRecordLength { get; }
     return:
       type: System.Int64
-      description: "The size of the largest record that can be appended to or read from this sequence, in bytes."
+      description: "추가 하거나 (바이트)이이 시퀀스에서 읽을 수 있는 가장 큰 레코드의 크기입니다."
   overload: System.IO.Log.IRecordSequence.MaximumRecordLength*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReadLogRecords(System.IO.Log.SequenceNumber,System.IO.Log.LogRecordEnumeratorType)
@@ -1079,8 +1079,8 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, returns an enumerable collection of records in the sequence."
-  remarks: "When overridden in a derived class, returns an enumerable collection of records in the sequence. The order of the enumerated records depends on the value of the `logRecordEnum` parameter."
+  summary: "파생된 클래스에서 재정의 되 면 시퀀스에 레코드의 열거 가능 컬렉션을 반환 합니다."
+  remarks: "파생된 클래스에서 재정의 되 면 시퀀스에 레코드의 열거 가능 컬렉션을 반환 합니다. 값에 따라 열거 되는 레코드의 순서는 `logRecordEnum` 매개 변수입니다."
   example:
   - "This sample demonstrates the use of the ReadLogRecords method.  \n  \n```c#  \nusing System;  \n using System.IO;  \n using System.IO.Log;  \n  \n class ReadRecordsSample  \n {  \n     static SequenceNumber AppendRecord(IRecordSequence sequence,  \n                                        string message,  \n                                        SequenceNumber user,  \n                                        SequenceNumber previous)  \n     {  \n         MemoryStream data = new MemoryStream();  \n         BinaryWriter writer = new BinaryWriter(data);  \n         writer.Write(message);  \n  \n         ArraySegment<byte>[] segments;  \n         segments = new ArraySegment<byte>[1];  \n         segments[0] = new ArraySegment(data.GetBuffer(),  \n                                        0,  \n                                        Data.Length);  \n  \n         return sequence.Append(segments,  \n                                user,  \n                                previous,  \n                                WriteFlags.None);  \n     }  \n  \n     public static void Main(string[] args)  \n     {  \n         IRecordSequence sequence;  \n         sequence = new FileIRecordSequence(args[0]);  \n  \n         SequenceNumber a, b, c, d;  \n  \n         a = AppendRecord(sequence,  \n                          \"This is record A\",  \n                          SequenceNumber.Invalid,  \n                          SequenceNumber.Invalid);  \n         Console.WriteLine(\"Record A has sequence number System.IO.Log\", a);  \n  \n         b = AppendRecord(sequence,  \n                          \"This is record B\",  \n                          a,  \n                          a);  \n         Console.WriteLine(\"Record B has sequence number System.IO.Log\", b);  \n  \n         c = AppendRecord(sequence,  \n                          \"This is record C\",  \n                          a,  \n                          a);  \n         Console.WriteLine(\"Record C has sequence number System.IO.Log\", c);  \n  \n         d = AppendRecord(sequence,  \n                          \"This is record D\",  \n                          b,  \n                          c);  \n         Console.WriteLine(\"Record D has sequence number System.IO.Log\", d);  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(a, ReadDirection.Forward))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(d, ReadDirection.User))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(d, ReadDirection.Previous))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n     }  \n       }  \n```"
   syntax:
@@ -1088,24 +1088,24 @@ items:
     parameters:
     - id: start
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the first record where the reading starts."
+      description: "읽기가 시작 되는 첫 번째 레코드의 시퀀스 번호입니다."
     - id: logRecordEnum
       type: System.IO.Log.LogRecordEnumeratorType
-      description: "A valid <xref href=&quot;System.IO.Log.LogRecordEnumeratorType&quot;></xref> value that specifies the manner (that is, forward or backward) in which records should be read from a <xref href=&quot;System.IO.Log.LogRecordSequence&quot;></xref>."
+      description: "유효한 <xref href=&quot;System.IO.Log.LogRecordEnumeratorType&quot;> </xref> 에서 레코드를 읽는에 (즉, 앞으로 또는 뒤로) 하는 방식을 지정 하는 값을 <xref href=&quot;System.IO.Log.LogRecordSequence&quot;> </xref>합니다."
     return:
       type: System.Collections.Generic.IEnumerable{System.IO.Log.LogRecord}
-      description: "An enumerable collection of records in the sequence."
+      description: "시퀀스에 있는 레코드의 열거 가능한 컬렉션입니다."
   overload: System.IO.Log.IRecordSequence.ReadLogRecords*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while reading the record."
+    description: "레코드를 읽는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReadRestartAreas
@@ -1120,25 +1120,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, returns an enumerable collection of the restart areas in the sequence."
-  remarks: "The restart areas are enumerated in reverse sequence number order, that is, from the highest sequence number to the lowest sequence number. Only restart areas with sequence numbers between the last sequence number and the base sequence number are enumerated.      > [!NOTE] >  If the log extent containing the <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> becomes corrupted, this method can throw an <xref:System.IO.IOException> with the error message &quot;The request could not be performed because of an unexpected I/O exception. The following error code was returned: &quot;80070026&quot;&quot;."
+  summary: "파생된 클래스에서 재정의 되 면 시퀀스에 있는 재시작 영역의 열거 가능한 컬렉션을 반환 합니다."
+  remarks: "재시작 영역의 가장 낮은 시퀀스 번호를 시퀀스 번호가 가장 높은에서 즉, 역방향 시퀀스 번호 순서에 열거 됩니다. 마지막 시퀀스 번호 사이의 시퀀스 번호를 가진 재시작 영역만 기준 시퀀스 번호를 열거 합니다.      > [!NOTE] > 경우 포함 된 로그 범위가 <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>가 손상 된 경우이 메서드가 throw 할 수는 <xref:System.IO.IOException>오류 메시지와 함께 &quot;예기치 않은 I/O 예외 때문에 요청을 수행할 수 없습니다.</xref:System.IO.IOException> </xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> 다음과 같은 오류 코드가 반환 되었습니다: &quot;80070026&quot; &quot;입니다."
   syntax:
     content: public System.Collections.Generic.IEnumerable<System.IO.Log.LogRecord> ReadRestartAreas ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.IO.Log.LogRecord}
-      description: "An enumerable collection of the restart areas in the sequence."
+      description: "시퀀스에 있는 재시작 영역의 열거 가능한 컬렉션입니다."
   overload: System.IO.Log.IRecordSequence.ReadRestartAreas*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while reading the record."
+    description: "레코드를 읽는 동안 I/O 오류가 발생 했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])
@@ -1153,46 +1153,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, automatically makes a single reservation and appends a record to the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 자동으로 단일 예약을 만들고 시퀀스에 레코드를 추가 합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 지정 된 예약은 레코드와 원자 단위 연산에서 컬렉션 추가 작업에 제공된 된 예약 합니다. 추가 실패, 없음 공간이 예약 됩니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 될 수 있습니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber ReserveAndAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the collection to make reservations in."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 예약을 만들 컬렉션이 포함 된 합니다."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "바이트 단위로 만들 예약 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.ReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "레코드 시퀀스에서 새 레코드를 포함 하거나 예약을 변경 하려면 충분 한 여유 공간을 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])
@@ -1207,46 +1207,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, automatically makes a single reservation and appends a record to the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "파생된 클래스에서 재정의 되 면 자동으로 단일 예약을 만들고 시퀀스에 레코드를 추가 합니다."
+  remarks: "에 포함 된 데이터는 `data` 매개 변수는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 그러나 레코드를 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       추가 된 지정 된 예약은 레코드와 원자 단위 연산에서 컬렉션 추가 작업에 제공된 된 예약 합니다. 추가 실패, 없음 공간이 예약 됩니다.       일반적으로이 메서드는 레코드를 쓰기 전에 완료 될 수 있습니다. 지정 하거나 기록 된 하려면는 <xref:System.IO.Log.RecordAppendOptions>플래그를 사용 하는 `recordAppendOptions` 매개 변수 또는 호출의 <xref:System.IO.Log.IRecordSequence.Flush%2A>메서드.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber ReserveAndAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "사용자가 지정한 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "이전 순서에서 다음 레코드의 시퀀스 번호입니다."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "유효한 값 <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> 데이터를 작성 하는 방법을 지정 하는 합니다."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "예약을 만들 예약 컬렉션입니다."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "바이트 단위로 만들 예약 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "추가 된 로그 레코드의 시퀀스 번호입니다."
   overload: System.IO.Log.IRecordSequence.ReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "레코드를 추가 하는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "레코드 시퀀스에서 새 레코드를 포함 하거나 예약을 변경 하려면 충분 한 여유 공간을 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReservedBytes
@@ -1261,17 +1261,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the total number of bytes that have been reserved."
+  summary: "파생된 클래스에서 재정의 되 면 예약 된 바이트의 총 수를 가져옵니다."
   syntax:
     content: public long ReservedBytes { get; }
     return:
       type: System.Int64
-      description: "The total size of all reservations made in this record sequence."
+      description: "이 레코드 시퀀스에서 만들어진 모든 예약의 총 크기입니다."
   overload: System.IO.Log.IRecordSequence.ReservedBytes*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.RestartSequenceNumber
@@ -1286,18 +1286,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the most recently written restart area."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process."
+  summary: "파생된 클래스에서 재정의 되 면 가장 최근에 쓴 재시작 영역의 시퀀스 번호를 가져옵니다."
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다."
   syntax:
     content: public System.IO.Log.SequenceNumber RestartSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the most recently written restart area."
+      description: "시퀀스 번호의 가장 최근에 기록 된 재시작 영역의."
   overload: System.IO.Log.IRecordSequence.RestartSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.RetryAppend
@@ -1312,18 +1312,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets or sets a value indicating whether appends are automatically retried if the log is full."
-  remarks: "If the value of this property is `true`, and an <xref:System.IO.Log.IRecordSequence.Append%2A> call fails because there is not enough space in the sequence, the record sequence will try to free space and retry the append."
+  summary: "나타내는 값을 가져오거나 여부 추가 로그가 꽉 찼을 경우 자동으로 다시 시도 합니다."
+  remarks: "이 속성의 값이 `true`, 및 <xref:System.IO.Log.IRecordSequence.Append%2A>시퀀스에 충분 한 공간이 없기 때문에 호출이 실패 하면, 레코드 시퀀스에서 공간을 확보 하 고 추가 다시 시도 하려고 합니다.</xref:System.IO.Log.IRecordSequence.Append%2A>"
   syntax:
     content: public bool RetryAppend { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if appends are automatically retried if the log is full; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>하는 경우 추가 로그가 꽉 경우 자동으로 다시 시도 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IO.Log.IRecordSequence.RetryAppend*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 속성에 액세스 합니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.TailPinned
@@ -1338,13 +1338,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Occurs when the record sequence determines that the tail must be moved forward."
-  remarks: "You can fire this event when the record sequence has run out of space. When this event is fired, the tail of the sequence (that is, the base sequence number) is moved forward to free up space."
+  summary: "레코드 시퀀스 꼬리를 앞으로 이동 해야 한다고 결정 하면 발생 합니다."
+  remarks: "레코드 시퀀스에 공간이 부족이 이벤트를 발생 시킬 수 있습니다. 이 이벤트는 발생 하는 경우 (즉, 기준 시퀀스 번호) 시퀀스의 테일이 공간을 확보 하 앞으로 이동 합니다."
   syntax:
     content: public event EventHandler<System.IO.Log.TailPinnedEventArgs> TailPinned;
     return:
       type: System.EventHandler{System.IO.Log.TailPinnedEventArgs}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1360,31 +1360,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. The Common Log File System (CLFS) maintains two restart areas to guarantee that at least one valid area is always available. When a recovery is necessary, the CLFS reads its restart area and all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process.       A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       The data in the byte array segments will be concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 공통 로그 파일 시스템 (CLFS)는 두 개의 재시작 영역 적어도 하나의 유효한 영역을 항상 사용할 수 있는지를 보장 하기 위해 유지 관리 합니다. 복구가 필요한 경우 CLFS 마지막 검사점 작업에서 재시작 영역을 모든 데이터를 읽습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다.       사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})
@@ -1399,31 +1399,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       The data in the byte array segments will be concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>합니다."
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다. 사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber)
@@ -1438,34 +1438,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> and updates the base sequence number"
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> 기준 시퀀스 번호를 업데이트"
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다. 사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       재시작 영역은 기록 되 면 바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       이 메서드가 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber)
@@ -1480,34 +1480,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> and updates the base sequence number."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> 기준 시퀀스 번호를 업데이트 합니다."
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다. 사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       재시작 영역은 기록 되 면 바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       이 메서드가 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)
@@ -1522,37 +1522,37 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> using a reservation, and updates the base sequence number"
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       If a reservation is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can contain the data, and that reservation will be removed from the collection.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> 기준 시퀀스 번호를 업데이트 하 고 예약을 사용 하 여"
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다. 사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       재시작 영역은 기록 되 면 바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       예약을 지정 하는 경우 쓴된 재시작 영역은 공간 이전에 예약 된, 컬렉션에 포함 된 예약을 사용 하 여을 사용 합니다. 메서드가 성공 하면 예약이 컬렉션에서 제거 됩니다 및 사용자 데이터를 포함할 수 있는 가장 작은 예약을 사용 합니다.       이 메서드가 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은.       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 재시작 영역에 사용 해야 하는 예약이 포함 된입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)
@@ -1567,37 +1567,37 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> using a reservation, and updates the base sequence number."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       If a reservation is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can contain the data, and that reservation will be removed from the collection.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "파생된 클래스에서 재정의 하는 경우 재시작 영역을 씁니다.는 <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> 예약을 사용 하 고 기준 시퀀스 번호를 업데이트 합니다."
+  remarks: "재시작 영역은 클라이언트의 마지막 검사점 작업이 포함 된 정보를 임시로 저장 하는 데 사용 됩니다. 복구가 필요한 경우 마지막 검사점 작업에서 모든 데이터를 검색할 재시작 영역을 구문 분석할 수 있습니다. 이 데이터를 복구 프로세스에서 사용할 수 있도록 트랜잭션 테이블, 더티 페이지 테이블 및 열린 파일 테이블 초기화 합니다. 사용 하 여 재시작 영역을 읽을 수는 <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>메서드.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       재시작 영역은 기록 되 면 바이트 배열 세그먼트의 데이터는 레코드로 추가 하기 위한 단일 바이트 배열로 연결 됩니다. 재시작 영역을 읽을 때 데이터를 배열 세그먼트로 다시 분할 하는 데 제공 되지 이루어집니다.       예약을 지정 하는 경우 쓴된 재시작 영역은 공간 이전에 예약 된, 컬렉션에 포함 된 예약을 사용 하 여을 사용 합니다. 메서드가 성공 하면 예약이 컬렉션에서 제거 됩니다 및 사용자 데이터를 포함할 수 있는 가장 작은 예약을 사용 합니다.       이 메서드가 성공적으로 완료 되 면 기준 세그먼트 번호가 업데이트 되었습니다. 모든 로그 레코드 시퀀스 번호를 가진 액세스할 수 없는 새 기준 시퀀스 번호 보다 작은.       레코드 시퀀스가 삭제 되었거나, 또는 잘못 된 인수를 전달 하는 경우이 작업 내에서 즉시 예외가 throw 됩니다. I/O 요청 중의 디스크 오류 예를 들어 비동기 추가 요청 중에 발생 한 오류 때 예외로 throw 됩니다는 <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>메서드를 호출 합니다.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "연결을 여 레코드로 추가할 바이트 배열 세그먼트의 목록."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "새 기준 시퀀스 번호입니다. 지정 된 시퀀스 수는 현재 기준 시퀀스 번호 보다 크거나 같아야 합니다."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> 이 재시작 영역에 사용 해야 하는 예약이 포함 된입니다."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "쓴의 시퀀스 번호 영역 다시 시작합니다."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "인수 중 하나 이상이 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "재시작 영역을 쓰는 동안 I/O 오류가 발생 했습니다."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "레코드 시퀀스에서 새 재시작 영역을 포함 하도록 충분 한 공간이 만들지 못했습니다."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "시퀀스의 삭제 된 후 메서드가 호출 되었습니다."
   platform:
   - net462
 references:

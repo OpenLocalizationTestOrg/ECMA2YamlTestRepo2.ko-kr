@@ -12,8 +12,8 @@ items:
   nameWithType: ProtectedConfigurationProvider
   fullName: System.Configuration.ProtectedConfigurationProvider
   type: Class
-  summary: "Is the base class to create providers for encrypting and decrypting protected-configuration data."
-  remarks: "You can encrypt sections of a configuration file to protect sensitive information used by your application. This improves security by making it difficult for unauthorized access even if an attacker gains access to your configuration file.       The .NET Framework includes two protected configuration providers that can be used to encrypt sections of a configuration file. The <xref:System.Configuration.RsaProtectedConfigurationProvider> class uses the <xref:System.Security.Cryptography.RSACryptoServiceProvider> to encrypt configuration sections. The <xref:System.Configuration.DpapiProtectedConfigurationProvider> class uses the Windows Data Protection API (DPAPI) to encrypt configuration sections.       You might have a requirement to encrypt sensitive information using an algorithm other than the RSA or DPAPI providers. In this case, you can build your own custom protected-configuration provider. The ProtectedConfigurationProvider is an abstract base class that you must inherit from to create your own protected-configuration provider.       Whether you use a standard or a custom provider, you must ensure that it is configured with the `add` element in the `providers` section of the `configProtectedData`  configuration section. (See next example.)       For details, see [Implementing a Protected Configuration Provider](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  When ASP.NET encounters encrypted configuration data, it performs decryption transparently using the configured provider. No action is required on your side other than making sure that you configure the required provider."
+  summary: "공급자를 만드는 보호 되는 구성 데이터 암호화 및 해독에 대 한 기본 클래스가입니다."
+  remarks: "응용 프로그램에서 사용 하는 중요 한 정보를 보호 하는 구성 파일의 섹션을 암호화할 수 있습니다. 이 없도록 하 여 무단된 액세스에 대 한 공격자 구성 파일에 액세스 하는 경우에 보안이 향상 됩니다.       .NET Framework 구성 파일의 섹션을 암호화 하는 데 사용할 수 있는 두 명의 보호 되는 구성 공급자가 포함 됩니다. <xref:System.Configuration.RsaProtectedConfigurationProvider>클래스에서 사용 하 여 <xref:System.Security.Cryptography.RSACryptoServiceProvider>구성 섹션을 암호화 하려면.</xref:System.Security.Cryptography.RSACryptoServiceProvider> </xref:System.Configuration.RsaProtectedConfigurationProvider> <xref:System.Configuration.DpapiProtectedConfigurationProvider>클래스 Windows 데이터 보호 API (DPAPI)를 사용 하 여 구성 섹션을 암호화 합니다.</xref:System.Configuration.DpapiProtectedConfigurationProvider>       DPAPI 또는 RSA 공급자가 아닌 알고리즘을 사용 하 여 중요 한 정보를 암호화 하는 요구 사항이 있을 수 있습니다. 이 경우 사용자 지정 보호 되는 구성 공급자를 빌드할 수 있습니다. ProtectedConfigurationProvider 직접 보호 되는 구성 공급자를 만들려면에서 상속 해야 하는 추상 기본 클래스입니다.       으로 구성 되어 있는지 확인 해야 하는 표준 또는 사용자 지정 공급자를 사용 하는지 여부를 `add` 요소에는 `providers` 의 섹션은 `configProtectedData` 구성 섹션입니다. (다음 예제 참조).       자세한 내용은 참조 [보호 구성 공급자를 구현](~/add/includes/ajax-current-ext-md.md)합니다.      > [!NOTE] > 암호화 된 구성 데이터를 발견 하는 경우 ASP.NET, 투명 하 게 구성 된 공급자를 사용 하 여 암호 해독을 수행 합니다. 필요한 공급자를 구성 하는 확인 이외의 편이 아무 작업도 필요 합니다."
   example:
   - "The following example shows how to implement a custom ProtectedConfigurationProvider.  \n  \n To be able to configure this provider, as shown in the next configuration excerpt, you must install it in the Global Assembly Cache (GAC). Refer to [Implementing a Protected Configuration Provider](../Topic/Implementing%20a%20Protected%20Configuration%20Provider.md) for more information.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#1](~/add/codesnippet/csharp/t-system.configuration.p_7_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#1](~/add/codesnippet/visualbasic/t-system.configuration.p_7_1.vb)]  \n  \n The following example shows how to use the previous custom ProtectedConfigurationProvider.  \n  \n [!code-vb[System.Configuration.UsingProtectedConfigurationProvider#11](~/add/codesnippet/visualbasic/t-system.configuration.p_7_2.vb)]\n [!code-cs[System.Configuration.UsingProtectedConfigurationProvider#11](~/add/codesnippet/csharp/t-system.configuration.p_7_2.cs)]  \n  \n The following is an excerpt of the configuration file used by the above examples.  \n  \n```  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<configuration>  \n  \n  <configProtectedData >  \n    <providers>  \n      <clear />  \n      <add keyContainerName=\"pcKey.txt\"   \n        name=\"TripleDESProtectedConfigurationProvider\"  \ntype=\"Samples.Aspnet.TripleDESProtectedConfigurationProvider, protectedconfigurationproviderlib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=79e01ae0f5cfc66f, processorArchitecture=MSIL\" />  \n    </providers>  \n  \n  </configProtectedData >  \n  \n  <connectionStrings>  \n    <add name=\"NorthwindConnectionString\"   \n      connectionString=\"Data Source=webnetue2;Initial Catalog=Northwind;User ID=aspnet_test;Password=test\"  \nproviderName=\"System.Data.SqlClient\" />  \n  </connectionStrings>  \n  \n</configuration>  \n```"
   syntax:
@@ -40,7 +40,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Configuration.ProtectedConfigurationProvider&quot;></xref> class using default settings."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Configuration.ProtectedConfigurationProvider&quot;> </xref> 클래스 기본 설정을 사용 합니다."
   syntax:
     content: protected ProtectedConfigurationProvider ();
     parameters: []
@@ -60,7 +60,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Decrypts the passed <xref href=&quot;System.Xml.XmlNode&quot;></xref> object from a configuration file."
+  summary: "전달 된 암호를 해독 <xref href=&quot;System.Xml.XmlNode&quot;> </xref> 구성 파일에서 개체입니다."
   remarks: ''
   example:
   - "The following example shows how to use Decrypt method to perform custom decryption.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#2](~/add/codesnippet/csharp/490b80fa-87ff-462a-bceb-_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#2](~/add/codesnippet/visualbasic/490b80fa-87ff-462a-bceb-_1.vb)]"
@@ -69,10 +69,10 @@ items:
     parameters:
     - id: encryptedNode
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object to decrypt."
+      description: "<xref href=&quot;System.Xml.XmlNode&quot;> </xref> 암호를 해독 하는 개체입니다."
     return:
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object containing decrypted data."
+      description: "<xref href=&quot;System.Xml.XmlNode&quot;> </xref> 암호 해독 된 데이터가 포함 된 개체입니다."
   overload: System.Configuration.ProtectedConfigurationProvider.Decrypt*
   exceptions: []
   platform:
@@ -89,7 +89,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Encrypts the passed <xref href=&quot;System.Xml.XmlNode&quot;></xref> object from a configuration file."
+  summary: "전달 된 암호화 <xref href=&quot;System.Xml.XmlNode&quot;> </xref> 구성 파일에서 개체입니다."
   remarks: ''
   example:
   - "The following example shows how to use Encrypt to perform custom encryption.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#3](~/add/codesnippet/csharp/1cc011d4-bc06-4499-99c2-_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#3](~/add/codesnippet/visualbasic/1cc011d4-bc06-4499-99c2-_1.vb)]"
@@ -98,10 +98,10 @@ items:
     parameters:
     - id: node
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object to encrypt."
+      description: "<xref href=&quot;System.Xml.XmlNode&quot;> </xref> 를 암호화 하는 개체입니다."
     return:
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object containing encrypted data."
+      description: "<xref href=&quot;System.Xml.XmlNode&quot;> </xref> 암호화 된 데이터를 포함 하는 개체입니다."
   overload: System.Configuration.ProtectedConfigurationProvider.Encrypt*
   exceptions: []
   platform:

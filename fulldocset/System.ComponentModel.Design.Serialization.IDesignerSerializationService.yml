@@ -11,8 +11,8 @@ items:
   nameWithType: IDesignerSerializationService
   fullName: System.ComponentModel.Design.Serialization.IDesignerSerializationService
   type: Interface
-  summary: "Provides an interface that can invoke serialization and deserialization."
-  remarks: "This service provides methods to convert a collection of objects to a serializable object that represents them, and to convert serialization data to the object or objects that it represents.       All components that support a designer must support serialization of each component&quot;s type. This occurs when the designer scans the public properties, methods, and events of each type and represents these within a type descriptor.       This interface uses the technique of scanning members to convert a collection of components into a single object that supports run-time serialization. This does not necessarily provide for the serialization of custom types that belong to the class. Many objects require a custom serializer to have their values serialized at run time. To specify a serializer for a custom type, use a <xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute> attribute or implement an <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider>."
+  summary: "Serialization 및 deserialization을 호출할 수 있는 인터페이스를 제공 합니다."
+  remarks: "이 서비스를 나타내는 개체를 직렬화 가능 개체의 컬렉션으로 변환 serialization 데이터를 나타내는 개체를 변환 하는 메서드를 제공 합니다.       디자이너를 지원 하는 모든 구성 요소는 각 구성 요소의 형식의 serialization을 지원 해야 합니다. 디자이너는 공용 속성, 메서드 및 각 유형의 이벤트를 검색 하 고 형식 설명자를 내에서이 나타내는 때 발생 합니다.       이 인터페이스는 구성 요소의 컬렉션을 지 원하는 런타임 serialization 단일 개체로 변환 하는 멤버를 검색 하는 방법을 사용 합니다. 반드시 클래스에 속하는 사용자 정의 형식의 serialization을 위해 제공 하지 않습니다. 많은 개체는 사용자 지정 직렬 변환기를 해당 값이 런타임에 serialize 필요 합니다. 사용자 지정 형식에 대 한 직렬 변환기를 지정 하려면는 <xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute> <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider>.</xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider> 구현 또는 특성</xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute> 을 사용 하 여"
   syntax:
     content: public interface IDesignerSerializationService
   implements: []
@@ -30,16 +30,16 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Deserializes the specified serialization data object and returns a collection of objects represented by that data."
+  summary: "지정 된 serialization 데이터 개체를 역직렬화 하 고 해당 데이터를 나타내는 개체의 컬렉션을 반환 합니다."
   syntax:
     content: public System.Collections.ICollection Deserialize (object serializationData);
     parameters:
     - id: serializationData
       type: System.Object
-      description: "An object consisting of serialized data."
+      description: "직렬화 된 데이터로 구성 된 개체입니다."
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of objects rebuilt from the specified serialization data object."
+      description: "<xref:System.Collections.ICollection>개체에서 지정 된 serialization 데이터 개체가 다시 작성 합니다.</xref:System.Collections.ICollection>"
   overload: System.ComponentModel.Design.Serialization.IDesignerSerializationService.Deserialize*
   exceptions: []
   platform:
@@ -56,17 +56,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Serializes the specified collection of objects and stores them in a serialization data object."
-  remarks: "The returned object fully supports run-time serialization.       The object returned from this method contains live references to objects in the collection. This object can then be passed to any run-time serialization mechanism. The object itself serializes components the same way designers write source for them, by storing their state, property by property."
+  summary: "개체의 지정 된 된 컬렉션을 serialize 하는 serialization 데이터 개체에 저장 합니다."
+  remarks: "반환된 된 개체는 완전히 런타임 serialization을 지원합니다.       이 메서드에서 반환 되는 개체 컬렉션의 개체에 대 한 라이브 참조를 포함 합니다. 이 개체는 런타임 serialization 메커니즘에 전달 될 수 있습니다. 개체 자체는 디자이너 속성별로 상태를 저장 하 여 고객을 위해 소스를 쓸 동일한 방식으로 구성 요소를 serialize 합니다."
   syntax:
     content: public object Serialize (System.Collections.ICollection objects);
     parameters:
     - id: objects
       type: System.Collections.ICollection
-      description: "A collection of objects to serialize."
+      description: "Serialize 할 개체의 컬렉션입니다."
     return:
       type: System.Object
-      description: "An object that contains the serialized state of the specified collection of objects."
+      description: "개체의 지정된 된 컬렉션의 serialize 된 상태를 포함 하는 개체입니다."
   overload: System.ComponentModel.Design.Serialization.IDesignerSerializationService.Serialize*
   exceptions: []
   platform:
