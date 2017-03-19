@@ -21,8 +21,8 @@ items:
   nameWithType: IUpdatable
   fullName: System.Data.Services.IUpdatable
   type: Interface
-  summary: "An interface used to insert or update a resource by the HTTP POST method."
-  remarks: "The IUpdatable interface is resource independent. The methods that return objects representing resources can return anything.       The returned object is an opaque object that represents the resource. To use the reference to read or update a value, the same opaque object is passed back to IUpdatable.       Implementation of IUpdatable must track the mapping between this opaque object to the object it represents. When the resource is serialized and a common language runtime (CLR) instance of the correct type is needed, the ResolveResource method on IUpdatable is called with the opaque object.       To serialize the object, call the <xref:System.Data.Services.IUpdatable.ResolveResource%2A> method on IUpdatable."
+  summary: "HTTP POST 메서드를 통해 삽입 하거나 리소스를 업데이트 하는 데 사용 되는 인터페이스입니다."
+  remarks: "IUpdatable 인터페이스는 리소스와 독립적입니다. 리소스를 나타내는 개체를 반환 하는 메서드는 아무 것도 반환할 수 있습니다.       반환 된 개체는 리소스를 나타내는 불투명 개체입니다. 읽기 또는 값을 업데이트 하는 참조를 사용 하려면 동일한 불투명 개체 IUpdatable 다시 전달 됩니다.       IUpdatable의 구현은이 불투명 개체를 나타내는 개체 간의 매핑을 추적 해야 합니다. 리소스를 serialize 하 고 올바른 형식의 공용 언어 런타임 (CLR) 인스턴스가 필요한 경우 불투명 개체와 IUpdatable의 ResolveResource 메서드 호출 됩니다.       호출 개체를 serialize 하는 <xref:System.Data.Services.IUpdatable.ResolveResource%2A>IUpdatable 메서드.</xref:System.Data.Services.IUpdatable.ResolveResource%2A>"
   syntax:
     content: public interface IUpdatable
   implements: []
@@ -40,19 +40,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Adds the specified value to the collection."
+  summary: "컬렉션에 지정된 된 값을 추가 합니다."
   syntax:
     content: public void AddReferenceToCollection (object targetResource, string propertyName, object resourceToBeAdded);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "Target object that defines the property."
+      description: "속성을 정의 하는 대상 개체입니다."
     - id: propertyName
       type: System.String
-      description: "The name of the collection property to which the resource should be added.."
+      description: "리소스를 추가할 컬렉션 속성의 이름입니다."
     - id: resourceToBeAdded
       type: System.Object
-      description: "The opaque object representing the resource to be added."
+      description: "추가할 리소스를 나타내는 불투명 개체입니다."
   overload: System.Data.Services.IUpdatable.AddReferenceToCollection*
   exceptions: []
   platform:
@@ -69,7 +69,7 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Cancels a change to the data."
+  summary: "데이터 변경 내용을 취소 합니다."
   syntax:
     content: public void ClearChanges ();
     parameters: []
@@ -89,20 +89,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Creates the resource of the specified type and that belongs to the specified container."
-  remarks: "CreateResource is called to insert a new resource by the HTTP POST method. The first parameter points to the container that the resource belongs to and the second parameter is the namespace-qualified name of the resource type that needs to be created.       The second parameter is most useful when using inheritance. The return type need not be the actual CLR instance of the resource. It can be anything, for example, a cookie, that the implementation requires."
+  summary: "지정된 된 리소스를 만듭니다가 형식과 지정된 된 컨테이너에 속합니다."
+  remarks: "CreateResource 새 리소스를 삽입 하는 HTTP POST 메서드에 의해 호출 됩니다. 두 번째 매개 변수는 리소스가 속한 컨테이너를 첫 번째 매개 변수 지점이 리소스 종류를 만들어야 하는 정규화 된 네임 스페이스 이름입니다.       두 번째 매개 변수 상속을 사용할 때 가장 유용 합니다. 반환 형식이 리소스의 실제 CLR 인스턴스일 필요 합니다. 예를 들어 쿠키를 구현 해야 하는 아무것도 수 있습니다."
   syntax:
     content: public object CreateResource (string containerName, string fullTypeName);
     parameters:
     - id: containerName
       type: System.String
-      description: "The name of the entity set to which the resource belongs."
+      description: "엔터티의 이름을 속한로 설정 합니다."
     - id: fullTypeName
       type: System.String
-      description: "The full namespace-qualified type name of the resource."
+      description: "리소스의 전체 네임 스페이스 정규화 된 유형 이름입니다."
     return:
       type: System.Object
-      description: "The object representing a resource of specified type and belonging to the specified container."
+      description: "지정 된 형식의 리소스를 나타내고 지정된 된 컨테이너에 속하는 개체입니다."
   overload: System.Data.Services.IUpdatable.CreateResource*
   exceptions: []
   platform:
@@ -119,14 +119,14 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Deletes the specified resource."
-  remarks: "The `targetResource` is the opaque object returned by <xref:System.Data.Services.IUpdatable.GetResource%2A> or <xref:System.Data.Services.IUpdatable.CreateResource%2A>."
+  summary: "지정된 된 리소스를 삭제합니다."
+  remarks: "`targetResource` <xref:System.Data.Services.IUpdatable.GetResource%2A>또는 <xref:System.Data.Services.IUpdatable.CreateResource%2A>.</xref:System.Data.Services.IUpdatable.CreateResource%2A> </xref:System.Data.Services.IUpdatable.GetResource%2A> 에서 반환 된 불투명 개체입니다"
   syntax:
     content: public void DeleteResource (object targetResource);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The resource to be deleted."
+      description: "삭제할 리소스입니다."
   overload: System.Data.Services.IUpdatable.DeleteResource*
   exceptions: []
   platform:
@@ -143,19 +143,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the resource of the specified type identified by a query and type name."
+  summary: "쿼리 및 형식 이름으로 식별 되는 지정 된 형식의 리소스를 가져옵니다."
   syntax:
     content: public object GetResource (System.Linq.IQueryable query, string fullTypeName);
     parameters:
     - id: query
       type: System.Linq.IQueryable
-      description: "Language integrated query (LINQ) pointing to a particular resource."
+      description: "언어 통합된 쿼리 (LINQ) 특정 리소스를 가리키는 합니다."
     - id: fullTypeName
       type: System.String
-      description: "The fully qualified type name of resource."
+      description: "리소스의 정규화 된 형식 이름입니다."
     return:
       type: System.Object
-      description: "An opaque object representing a resource of the specified type, referenced by the specified query."
+      description: "지정 된 쿼리에서 참조 하는 지정 된 형식의 리소스를 나타내는 불투명 개체입니다."
   overload: System.Data.Services.IUpdatable.GetResource*
   exceptions: []
   platform:
@@ -172,20 +172,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value of the specified property on the target object."
-  remarks: "This method is called for scalar properties or complex properties. For a scalar property, the returned object should be the actual value."
+  summary: "대상 개체에 지정된 된 속성의 값을 가져옵니다."
+  remarks: "이 메서드는 스칼라 속성 또는 복잡 한 속성에 대 한 호출 됩니다. 스칼라 속성에 대 한 반환된 된 개체에는 실제 값 이어야 합니다."
   syntax:
     content: public object GetValue (object targetResource, string propertyName);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "An opaque object that represents a resource."
+      description: "리소스를 나타내는 불투명 개체입니다."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be retrieved."
+      description: "값을 검색 해야 하는 속성의 이름입니다."
     return:
       type: System.Object
-      description: "The value of the object."
+      description: "개체의 값입니다."
   overload: System.Data.Services.IUpdatable.GetValue*
   exceptions: []
   platform:
@@ -202,20 +202,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Removes the specified value from the collection."
-  remarks: "Removes the specified resource from the collection identified by a navigation property on the target object. This operation deletes the relationship between the two resource objects bound by the relationship."
+  summary: "컬렉션에서 지정된 된 값을 제거합니다."
+  remarks: "대상 개체에는 탐색 속성으로 식별 된 컬렉션에서 지정된 된 리소스를 제거 합니다. 이 작업은 관계에 의해 바인딩된 두 리소스 개체 간의 관계를 삭제 합니다."
   syntax:
     content: public void RemoveReferenceFromCollection (object targetResource, string propertyName, object resourceToBeRemoved);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "속성을 정의 하는 대상 개체입니다."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "값을 업데이트 해야 하는 속성의 이름입니다."
     - id: resourceToBeRemoved
       type: System.Object
-      description: "The property value that needs to be removed."
+      description: "속성 값을 제거 해야 합니다."
   overload: System.Data.Services.IUpdatable.RemoveReferenceFromCollection*
   exceptions: []
   platform:
@@ -232,16 +232,16 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Resets the resource identified by the parameter <code>resource </code>to its default value."
+  summary: "매개 변수에 의해 식별 되는 리소스를 다시 설정 <code> resource  </code>기본값으로 합니다."
   syntax:
     content: public object ResetResource (object resource);
     parameters:
     - id: resource
       type: System.Object
-      description: "The resource to be updated."
+      description: "업데이트할 리소스입니다."
     return:
       type: System.Object
-      description: "The resource with its value reset to the default value."
+      description: "해당 값이 기본값으로 재설정 된 리소스입니다."
   overload: System.Data.Services.IUpdatable.ResetResource*
   exceptions: []
   platform:
@@ -258,17 +258,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Returns the instance of the resource represented by the specified resource object."
-  remarks: "This method is called to resolve the opaque object returned by the <xref:System.Data.Services.IUpdatable.CreateResource%2A> or <xref:System.Data.Services.IUpdatable.GetResource%2A> API into the CLR instance. This is normally called after <xref:System.Data.Services.IUpdatable.SaveChanges%2A> to serialize the resource for POST methods.       This method is also called if there are update interceptors invoked with the common language runtime (CLR) resource instances. It can be used if the provider supports optimistic concurrency and the resource type has concurrency tokens defined by <xref:System.Data.Services.ETagAttribute> in a CLR-based provider."
+  summary: "지정 된 리소스 개체로 나타낸 리소스의 인스턴스를 반환 합니다."
+  remarks: "이 메서드를 호출에서 반환 된 불투명 개체를 확인 하는 <xref:System.Data.Services.IUpdatable.CreateResource%2A>또는 <xref:System.Data.Services.IUpdatable.GetResource%2A>CLR 인스턴스로 API.</xref:System.Data.Services.IUpdatable.GetResource%2A> </xref:System.Data.Services.IUpdatable.CreateResource%2A> 이 일반적으로 호출 후 <xref:System.Data.Services.IUpdatable.SaveChanges%2A>POST 메서드에 대 한 리소스를 serialize 하는 데.</xref:System.Data.Services.IUpdatable.SaveChanges%2A>       이 메서드는 공용 언어 런타임 (CLR) 리소스 인스턴스를 사용 하 여 호출 된 업데이트 인터셉터가 있는 경우에 호출 됩니다. 공급자는 낙관적 동시성을 지원 하 고 리소스 형식에서 정의한 동시성 토큰이 사용할 수 있습니다 <xref:System.Data.Services.ETagAttribute>CLR 기반 공급자의.</xref:System.Data.Services.ETagAttribute>"
   syntax:
     content: public object ResolveResource (object resource);
     parameters:
     - id: resource
       type: System.Object
-      description: "The object representing the resource whose instance needs to be retrieved."
+      description: "인스턴스를 검색 해야 하는 리소스를 나타내는 개체입니다."
     return:
       type: System.Object
-      description: "Returns the instance of the resource represented by the specified resource object."
+      description: "지정 된 리소스 개체로 나타낸 리소스의 인스턴스를 반환 합니다."
   overload: System.Data.Services.IUpdatable.ResolveResource*
   exceptions: []
   platform:
@@ -285,8 +285,8 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Saves all the changes that have been made by using the <xref href=&quot;System.Data.Services.IUpdatable&quot;></xref> APIs."
-  remarks: "The <xref:System.Data.Services.IUpdatable> implementation must track all changes until SaveChanges is called and then save all changes when SaveChanges is called. The <xref:System.Data.Services.IUpdatable> implementation is expected to save all of the changes or to reject all of the changes together."
+  summary: "사용 하 여 적용 된 모든 변경 내용을 저장 하는 <xref href=&quot;System.Data.Services.IUpdatable&quot;> </xref> Api입니다."
+  remarks: "<xref:System.Data.Services.IUpdatable>구현 SaveChanges를 호출할 때까지 모든 변경 내용을 추적 하 고 SaveChanges를 호출할 때 다음 모든 변경 내용을 저장 해야 합니다.</xref:System.Data.Services.IUpdatable> <xref:System.Data.Services.IUpdatable>구현은 모든 변경 내용을 저장 하거나 모든 변경 내용을 함께 거부 합니다.</xref:System.Data.Services.IUpdatable>"
   syntax:
     content: public void SaveChanges ();
     parameters: []
@@ -306,19 +306,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the value of the specified reference property on the target object."
+  summary: "대상 개체에 지정된 된 참조 속성의 값을 설정 합니다."
   syntax:
     content: public void SetReference (object targetResource, string propertyName, object propertyValue);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "속성을 정의 하는 대상 개체입니다."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "값을 업데이트 해야 하는 속성의 이름입니다."
     - id: propertyValue
       type: System.Object
-      description: "The property value to be updated."
+      description: "업데이트할 속성 값입니다."
   overload: System.Data.Services.IUpdatable.SetReference*
   exceptions: []
   platform:
@@ -335,19 +335,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the value of the property with the specified name on the target resource to the specified property value."
+  summary: "지정된 된 속성 값을 대상 리소스에 대해 지정 된 이름의 속성 값을 설정합니다."
   syntax:
     content: public void SetValue (object targetResource, string propertyName, object propertyValue);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "속성을 정의 하는 대상 개체입니다."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "값을 업데이트 해야 하는 속성의 이름입니다."
     - id: propertyValue
       type: System.Object
-      description: "The property value for update."
+      description: "업데이트에 대 한 속성 값입니다."
   overload: System.Data.Services.IUpdatable.SetValue*
   exceptions: []
   platform:

@@ -58,8 +58,8 @@ items:
   nameWithType: SqlConnectionStringBuilder
   fullName: System.Data.SqlClient.SqlConnectionStringBuilder
   type: Class
-  summary: "Provides a simple way to create and manage the contents of connection strings used by the <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;></xref> class."
-  remarks: "The connection string builder lets developers programmatically create syntactically correct connection strings, and parse and rebuild existing connection strings, using properties and methods of the class. The connection string builder provides strongly typed properties corresponding to the known key/value pairs allowed by SQL Server. Developers needing to create connection strings as part of applications can use the SqlConnectionStringBuilder class to build and modify connection strings. The class also makes it easy to manage connection strings stored in an application configuration file.       The SqlConnectionStringBuilder performs checks for valid key/value pairs. Therefore, you cannot use this class to create invalid connection strings; trying to add invalid pairs will throw an exception. The class maintains a fixed collection of synonyms and can translate from a synonym to the corresponding well-known key name.       For example, when you use the **Item** property to retrieve a value, you can specify a string that contains any synonym for the key you need. For example, you can specify &quot;Network Address&quot;, &quot;addr&quot;, or any other acceptable synonym for this key within a connection string when you use any member that requires a string that contains the key name, such as the **Item** property or the <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Remove%2A> method. See the <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A> property for a full list of acceptable synonyms.       The **Item** property handles tries to insert malicious entries. For example, the following code, using the default Item property (the indexer, in C#) correctly escapes the nested key/value pair:       [Visual Basic]      ```   Dim builder As New System.Data.SqlClient.SqlConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;Integrated Security&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   Console.WriteLine(builder.ConnectionString)   ```       [C#]      ```   System.Data.SqlClient.SqlConnectionStringBuilder builder =     new System.Data.SqlClient.SqlConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   Console.WriteLine(builder.ConnectionString);      ```       The result is the following connection string that handles the invalid value in a safe manner:      ```   Source=(local);Initial Catalog=&quot;AdventureWorks;NewValue=Bad&quot;;   Integrated Security=True   ```"
+  summary: "만들기 및 사용 되는 연결 문자열의 내용을 관리 하는 간단한 방법을 제공는 <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;> </xref> 클래스입니다."
+  remarks: "연결 문자열 작성기 클래스의 메서드와 속성을 사용 하 여 프로그래밍 방식으로 올바른 구문의 연결 문자열을 만들고 및 구문 분석 하 고 기존 연결 문자열을 다시 작성 하는 개발자를 수 있습니다. 연결 문자열 작성기는 SQL Server에서 허용 하는 알려진된 키/값 쌍에 해당 하는 강력한 형식의 속성을 제공 합니다. 연결 문자열을 만드는 응용 프로그램의 일부로 개발자 SqlConnectionStringBuilder 클래스를 사용 작성 하 고 연결 문자열을 수정할 수 있습니다. 또한 클래스에서는 응용 프로그램 구성 파일에 저장 된 연결 문자열을 관리 하기가 쉽습니다.       SqlConnectionStringBuilder 유효한 키/값 쌍에 대 한 검사를 수행합니다. 따라서; 잘못 된 연결 문자열을 만드는이 클래스를 사용할 수 없습니다. 잘못 된 쌍을 추가 하려고 하면 예외가 throw 됩니다. 클래스는 고정 된 동의어 컬렉션을 유지 관리 하며 해당 잘 알려진 키 이름으로 동의어를 변환할 수 있습니다.       예를 들어, 사용 하는 경우는 **항목** 속성 값을 검색 하려면 필요한 키에 대 한 모든 동의어를 포함 하는 문자열을 지정할 수 있습니다. 예를 들어 지정할 수 있습니다 &quot;Network Address&quot;, &quot;addr&quot; 또는 연결 문자열 내에서이 키에 대 한 허용 가능한 다른 동의어와 같은 키 이름을 포함 하는 문자열에 필요한 멤버를 사용 하는 경우는 **항목** 속성 또는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Remove%2A>메서드.</xref:System.Data.SqlClient.SqlConnectionStringBuilder.Remove%2A> 참조는 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>허용 가능한 동의어의 전체 목록에 대 한 속성.</xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>       **항목** 속성을 악의적 항목을 삽입 하려는 시도 처리 합니다. 올바르게 기본 Item 속성 (C# 인덱서)을 사용 하 여 다음 코드에서는 중첩 된 키/값 쌍을 이스케이프 하는 예를 들어: [Visual Basic] ```   Dim builder As New System.Data.SqlClient.SqlConnectionStringBuilder   builder(&quot;Data Source&quot;) = &quot;(local)&quot;   builder(&quot;Integrated Security&quot;) = True   builder(&quot;Initial Catalog&quot;) = &quot;AdventureWorks;NewValue=Bad&quot;   Console.WriteLine(builder.ConnectionString)   ``` [C#] ```   System.Data.SqlClient.SqlConnectionStringBuilder builder =     new System.Data.SqlClient.SqlConnectionStringBuilder();   builder[&quot;Data Source&quot;] = &quot;(local)&quot;;   builder[&quot;integrated Security&quot;] = true;   builder[&quot;Initial Catalog&quot;] = &quot;AdventureWorks;NewValue=Bad&quot;;   Console.WriteLine(builder.ConnectionString);      ``` 결과 안전한 방법으로 잘못 된 값을 처리 하는 다음 연결 문자열:```   Source=(local);Initial Catalog=&quot;AdventureWorks;NewValue=Bad&quot;;   Integrated Security=True   ```"
   example:
   - "The following console application builds connection strings for a [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] database. The code uses a SqlConnectionStringBuilder class to create the connection string, and then passes the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property of the SqlConnectionStringBuilder instance to the constructor of the connection class. The example also parses an existing connection string and demonstrates various ways of manipulating the connection string's contents.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how SqlConnectionStringBuilder works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder#1](~/add/codesnippet/csharp/t-system.data.sqlclient._13_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder#1](~/add/codesnippet/visualbasic/t-system.data.sqlclient._13_1.vb)]"
   syntax:
@@ -119,7 +119,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 클래스입니다."
   syntax:
     content: public SqlConnectionStringBuilder ();
     parameters: []
@@ -139,8 +139,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> class. The provided connection string provides the data for the instance&quot;s internal connection information."
-  remarks: "The <xref:System.Data.SqlClient.SqlConnectionStringBuilder> class provides a fixed internal collection of key/value pairs. Even if you supply only a small subset of the possible connection string values in the constructor, the object always provides default values for each key/value pair. When the `ConnectionString` property of the object is retrieved, the string contains only key/value pairs in which the value is not the default value for the item."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 클래스입니다. 제공 된 연결 문자열은 인스턴스의 내부 연결 정보에 대 한 데이터를 제공 합니다."
+  remarks: "<xref:System.Data.SqlClient.SqlConnectionStringBuilder>클래스는 키/값 쌍의 고정된 된 내부 컬렉션을 제공 합니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder> 생성자에서 가능한 연결 문자열 값의 작은 하위 집합만 제공 하는 경우에 개체 각 키/값 쌍에 대 한 기본값을 항상 제공 합니다. 경우는 `ConnectionString` 개체의 속성을 검색, 문자열에 없는 값이 항목에 대 한 기본값 키/값 쌍만 포함 합니다."
   example:
   - "The following example supplies a simple SQL Server connection string in the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object's constructor, and then iterates through all the key/value pairs within the object. Note that the collection provides default values for each item. Also note that the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> class converts synonyms for the well-known keys so that they are consistent with the well-known names.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.SqlClient.SqlConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.Password#1](~/add/codesnippet/csharp/m-system.data.sqlclient._44_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.Password#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._44_1.vb)]"
   syntax:
@@ -148,18 +148,18 @@ items:
     parameters:
     - id: connectionString
       type: System.String
-      description: "The basis for the object&quot;s internal connection information. Parsed into name/value pairs. Invalid key names raise <xref:System.Collections.Generic.KeyNotFoundException>."
+      description: "개체의 내부 연결 정보에 대 한 기초로 사용 됩니다. 이름/값 쌍으로 구문 분석 합니다. 키 이름이 잘못 된 <xref:System.Collections.Generic.KeyNotFoundException>.를</xref:System.Collections.Generic.KeyNotFoundException> 를 발생 시킵니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.#ctor*
   exceptions:
   - type: System.Collections.Generic.KeyNotFoundException
     commentId: T:System.Collections.Generic.KeyNotFoundException
-    description: "Invalid key name within the connection string."
+    description: "연결 문자열 내의 키 이름이 잘못 되었습니다."
   - type: System.FormatException
     commentId: T:System.FormatException
-    description: "Invalid value within the connection string (specifically, when a Boolean or numeric value was expected but not supplied)."
+    description: "연결 문자열 내의 값이 잘못 되었습니다 (특히 때 부울 또는 숫자 값이 필요 하지만 제공 되지 않았습니다)입니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The supplied <code>connectionString</code> is not valid."
+    description: "제공 된 <code> connectionString </code> 올바르지 않습니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.ApplicationIntent
@@ -174,12 +174,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Declares the application workload type when connecting to a database in an SQL Server Availability Group. You can set the value of this property with <xref href=&quot;System.Data.SqlClient.ApplicationIntent&quot;></xref>. For more information about SqlClient support for Always On Availability Groups, see [SqlClient Support for High Availability, Disaster Recovery](~/add/includes/ajax-current-ext-md.md)."
+  summary: "SQL Server 가용성 그룹에 데이터베이스에 연결할 때 응용 프로그램 작업 유형을 선언 합니다. 이 속성의 값을 설정할 수 <xref href=&quot;System.Data.SqlClient.ApplicationIntent&quot;> </xref>합니다. Always On 가용성 그룹에 대 한 SqlClient 지원에 대 한 자세한 내용은 참조 [고가용성, 재해 복구에 대 한 SqlClient 지원](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public System.Data.SqlClient.ApplicationIntent ApplicationIntent { get; set; }
     return:
       type: System.Data.SqlClient.ApplicationIntent
-      description: "Returns the current value of the property (a value of type <xref href=&quot;System.Data.SqlClient.ApplicationIntent&quot;></xref>)."
+      description: "속성의 현재 값을 반환 합니다 (형식의 값 <xref href=&quot;System.Data.SqlClient.ApplicationIntent&quot;> </xref>)."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ApplicationIntent*
   exceptions: []
   platform:
@@ -196,20 +196,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the name of the application associated with the connection string."
-  remarks: "This property corresponds to the &quot;Application Name&quot; and &quot;app&quot; keys within the connection string."
+  summary: "연결 문자열과 관련 된 응용 프로그램의 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Application Name&quot; 및 &quot;app&quot; 키에 해당 합니다."
   example:
   - "The following example creates a new <xref:System.Data.SqlClient.SqlConnectionStringBuilder> and assigns a connection string in the object's constructor. The code displays the parsed and recreated version of the connection string, and then modifies the ApplicationName property of the object. Finally, the code displays the new connection string, including the new key/value pair.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.ApplicationName#1](~/add/codesnippet/csharp/p-system.data.sqlclient._44_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.ApplicationName#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._44_1.vb)]  \n  \n The sample displays the following text in the console window:  \n  \n```  \nOriginal: Data Source=(local);Initial Catalog=AdventureWorks;Integrated Security=True  \nApplicationName=\".Net SqlClient Data Provider\"  \nModified: Data Source=(local);Initial Catalog=AdventureWorks;Integrated Security=True;Application Name=\"My Application\"  \n```"
   syntax:
     content: public string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "The name of the application, or &quot;.NET SqlClient Data Provider&quot; if no name has been supplied."
+      description: "응용 프로그램 또는 &quot;.NET SqlClient Data Provider&quot; 제공 된 이름이 없는 경우의 이름입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ApplicationName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.AsynchronousProcessing
@@ -224,15 +224,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether asynchronous processing is allowed by the connection created by using this connection string."
-  remarks: "This property corresponds to the &quot;Asynchronous Processing&quot; and &quot;async&quot; keys within the connection string. In order to take advantage of the asynchronous processing provided by the <xref:System.Data.SqlClient.SqlCommand> object, this key/value pair must be included within the connection string of the associated <xref:System.Data.SqlClient.SqlConnection> object."
+  summary: "이 연결 문자열을 사용 하 여 만든 연결에서 비동기 처리를 허용 하는지 여부를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Asynchronous Processing&quot; 및 &quot;async&quot; 키에 해당 합니다. 제공 하는 비동기 처리를 활용 하기 위해는 <xref:System.Data.SqlClient.SqlCommand>개체를이 키/값 쌍의 관련 된 연결 문자열에 포함 되어야 합니다 <xref:System.Data.SqlClient.SqlConnection>개체입니다.</xref:System.Data.SqlClient.SqlConnection> </xref:System.Data.SqlClient.SqlCommand>"
   example:
   - "The following example retrieves a connection string and verifies that the connection string is configured to allow for asynchronous processing. (In this case, the string comes from a procedure within the application, but in a production application, the connection string might come from a configuration file, or some other source.) Then, the example performs an asynchronous operation, updating values within a sample database on a background thread.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.Async#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._47_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.Async#1](~/add/codesnippet/csharp/p-system.data.sqlclient._47_1.cs)]"
   syntax:
     content: public bool AsynchronousProcessing { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the AsynchronousProcessing property, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if no value has been supplied."
+      description: "AsynchronousProcessing 속성의 값 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 제공 된 값이 없으면 합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.AsynchronousProcessing*
   exceptions: []
   platform:
@@ -249,20 +249,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a string that contains the name of the primary data file. This includes the full path name of an attachable database."
-  remarks: "This property corresponds to the &quot;AttachDBFilename&quot;, &quot;extended properties&quot;, and &quot;initial file name&quot; keys within the connection string.       `AttachDBFilename` is only supported for primary data files with an .mdf extension.       An error will be generated if a log file exists in the same directory as the data file and the &quot;database&quot; keyword is used when attaching the primary data file. In this case, remove the log file. Once the database is attached, a new log file will be automatically generated based on the physical path."
+  summary: "주 데이터 파일의 이름을 포함 하는 문자열을 가져오거나 설정 합니다. 여기에 연결할 수 있는 데이터베이스의 전체 경로 이름을 포함 됩니다."
+  remarks: "이 속성은 &quot;AttachDBFilename&quot;, &quot;extended properties&quot; 및 연결 문자열 내의 &quot;initial file name&quot; 키에 해당 합니다.       `AttachDBFilename`.mdf 확장명이 주 데이터 파일에만 지원 됩니다.       로그 파일이 데이터 파일과 같은 디렉터리에 있고 주 데이터 파일을 연결할 때 &quot;database&quot; 키워드가 사용 되 면 오류가 생성 됩니다. 이 경우 로그 파일을 제거 합니다. 데이터베이스가 연결 되 면 실제 경로에 따라 새 로그 파일이 자동으로 생성 됩니다."
   example:
   - "The following example creates a new <xref:System.Data.SqlClient.SqlConnectionStringBuilder> instance, and sets the `AttachDBFilename` property in order to specify the name of an attached data file.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.AttachDBFilename#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._58_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.AttachDBFilename#1](~/add/codesnippet/csharp/p-system.data.sqlclient._58_1.cs)]"
   syntax:
     content: public string AttachDBFilename { get; set; }
     return:
       type: System.String
-      description: "The value of the <xref uid=&quot;langword_csharp_AttachDBFilename&quot; name=&quot;AttachDBFilename&quot; href=&quot;&quot;></xref> property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if no value has been supplied."
+      description: "값은 <xref uid=&quot;langword_csharp_AttachDBFilename&quot; name=&quot;AttachDBFilename&quot; href=&quot;&quot;> </xref> 속성 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 값이 없으면 합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.AttachDBFilename*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.Authentication
@@ -277,12 +277,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the authentication of the connection string."
+  summary: "연결 문자열의 인증을 가져옵니다."
   syntax:
     content: public System.Data.SqlClient.SqlAuthenticationMethod Authentication { get; set; }
     return:
       type: System.Data.SqlClient.SqlAuthenticationMethod
-      description: "The authentication of the connection string."
+      description: "연결 문자열의 인증입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Authentication*
   exceptions: []
   platform:
@@ -299,8 +299,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Clears the contents of the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> instance."
-  remarks: "The <xref:System.Data.Common.DbConnectionStringBuilder.Clear%2A> method removes all key/value pairs from the <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, and resets all corresponding properties. This includes setting the <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A> property to 0, and setting the <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> property to an empty string."
+  summary: "내용을 지웁니다는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "<xref:System.Data.Common.DbConnectionStringBuilder.Clear%2A>모든 키/값 쌍을 제거 하는 메서드는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, 해당 속성을 모두 다시 설정 합니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder> </xref:System.Data.Common.DbConnectionStringBuilder.Clear%2A> 이 포함 됩니다는 <xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>속성을 0으로 설정 된 <xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A>속성을 빈 문자열로.</xref:System.Data.Common.DbConnectionStringBuilder.ConnectionString%2A> </xref:System.Data.Common.DbConnectionStringBuilder.Count%2A>"
   example:
   - "The following example demonstrates calling the <xref:System.Data.Common.DbConnectionStringBuilder.Clear%2A> method. This example populates the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> with some key/value pairs, and then calls the <xref:System.Data.Common.DbConnectionStringBuilder.Clear%2A> method and shows the results.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.Clear#1](~/add/codesnippet/csharp/m-system.data.sqlclient._15_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.Clear#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._15_1.vb)]"
   syntax:
@@ -322,12 +322,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets and sets the column encryption settings for the connection string builder."
+  summary: "가져오고 열 암호화 설정 연결 문자열 작성기에 대 한 설정 합니다."
   syntax:
     content: public System.Data.SqlClient.SqlConnectionColumnEncryptionSetting ColumnEncryptionSetting { get; set; }
     return:
       type: System.Data.SqlClient.SqlConnectionColumnEncryptionSetting
-      description: "The column encryption settings for the connection string builder."
+      description: "연결 문자열 작성기에 대 한 열 암호화 설정입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ColumnEncryptionSetting*
   exceptions: []
   platform:
@@ -344,13 +344,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Obsolete. Gets or sets a Boolean value that indicates whether the connection is reset when drawn from the connection pool."
-  remarks: "This property corresponds to the &quot;Connection Reset&quot; key within the <xref:System.Data.SqlClient.SqlConnection> connection string, which has been removed from version 3.5 SP1 of the .NET Framework."
+  summary: "사용 되지 않습니다. 연결 풀에서 제거 하는 경우 연결이 다시 설정 하는지 여부를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 내의 &quot;Connection Reset&quot; 키에 해당는 <xref:System.Data.SqlClient.SqlConnection>연결 문자열로,.NET Framework 버전 3.5 s p 1에서에서 제거 되었습니다.</xref:System.Data.SqlClient.SqlConnection>"
   syntax:
     content: public bool ConnectionReset { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the ConnectionReset property, or true if no value has been supplied."
+      description: "ConnectionReset 속성 또는 제공 된 값이 없으면 true의 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectionReset*
   exceptions: []
   platform:
@@ -367,12 +367,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "[Supported in the .NET Framework 4.5.1 and later versions]       The number of reconnections attempted after identifying that there was an idle connection failure. This must be an integer between 0 and 255. Default is 1. Set to 0 to disable reconnecting on idle connection failures. An <xref:System.ArgumentException> will be thrown if set to a value outside of the allowed range."
+  summary: "[.NET Framework 4.5.1 이상 버전에서 지원 됨]       식별 한 후 시도 된 재연결 횟수는 유휴 연결 오류가 발생 했습니다. 이 0에서 255 사이의 정수 여야 합니다. 기본값은 1입니다. 유휴 연결 실패에 다시 연결 하지 않으려면 0으로 설정 합니다. <xref:System.ArgumentException>경우 설정 됩니다 허용 되는 범위를 벗어나는 값으로.</xref:System.ArgumentException>"
   syntax:
     content: public int ConnectRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The number of reconnections attempted after identifying that there was an idle connection failure."
+      description: "식별 한 후 시도 된 재연결 횟수는 유휴 연결 오류가 발생 했습니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectRetryCount*
   exceptions: []
   platform:
@@ -389,12 +389,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "[Supported in the .NET Framework 4.5.1 and later versions]       Amount of time (in seconds) between each reconnection attempt after identifying that there was an idle connection failure. This must be an integer between 1 and 60. The default is 10 seconds. An <xref:System.ArgumentException> will be thrown if set to a value outside of the allowed range."
+  summary: "[.NET Framework 4.5.1 이상 버전에서 지원 됨]       사이의 시간 (초)는 유휴 연결 오류가 발생 했음을 식별 한 후 각 다시 연결 시도의 양입니다. 이 1에서 60 사이의 정수 여야 합니다. 기본값은 10 초입니다. <xref:System.ArgumentException>경우 설정 됩니다 허용 되는 범위를 벗어나는 값으로.</xref:System.ArgumentException>"
   syntax:
     content: public int ConnectRetryInterval { get; set; }
     return:
       type: System.Int32
-      description: "Amount of time (in seconds) between each reconnection attempt after identifying that there was an idle connection failure."
+      description: "사이의 시간 (초)는 유휴 연결 오류가 발생 했음을 식별 한 후 각 다시 연결 시도의 양입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectRetryInterval*
   exceptions: []
   platform:
@@ -411,15 +411,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error."
-  remarks: "This property corresponds to the &quot;Connect Timeout&quot;, &quot;connection timeout&quot;, and &quot;timeout&quot; keys within the connection string.       When opening a connection to a Azure SQL Database, set the connection timeout to 30 seconds."
+  summary: "시도 종료 하 고 오류를 생성 하기 전에 서버에 연결 될 때까지 기다릴 시간 (초)의 길이 가져오거나 설정 합니다."
+  remarks: "이 속성은 &quot;Connect Timeout&quot;, &quot;connection timeout&quot; 및 연결 문자열 내의 &quot;timeout&quot; 키에 해당 합니다.       Azure SQL 데이터베이스에 대 한 연결을 열 때 연결 제한 시간을 30 초로 설정 합니다."
   example:
   - "The following example first displays the contents of a connection string that does not specify the \"Connect Timeout\" value, sets the ConnectTimeout property, and then displays the new connection string.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.ConnectTimeout#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._3_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.ConnectTimeout#1](~/add/codesnippet/csharp/p-system.data.sqlclient._3_1.cs)]"
   syntax:
     content: public int ConnectTimeout { get; set; }
     return:
       type: System.Int32
-      description: "The value of the ConnectTimeout property, or 15 seconds if no value has been supplied."
+      description: "ConnectTimeout 속성 또는 제공 된 값이 없으면 15 초 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ConnectTimeout*
   exceptions: []
   platform:
@@ -436,8 +436,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Determines whether the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> contains a specific key."
-  remarks: "Because the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> contains a fixed-size collection of key/value pairs, the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method determines only if a particular key name is valid."
+  summary: "결정 여부는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 특정 키가 들어 있습니다."
+  remarks: "때문에 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>키/값 쌍의 크기가 고정 된 컬렉션을 포함 된 <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>메서드는 특정 키 이름이 올바른지 경우만 확인 합니다.</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> </xref:System.Data.SqlClient.SqlConnectionStringBuilder>"
   example:
   - "The following example creates a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> instance, sets some of its properties, and then tries to determine whether various keys exist within the object by calling the **ContainsKey** method.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/csharp/m-system.data.sqlclient._9_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.ContainsKey#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._9_1.vb)]  \n  \n The example displays the following output in the console window:  \n  \n```  \nConnection string = Data Source=(local);Initial Catalog=AdventureWorks;Integrated Security=True  \nTrue  \nTrue  \nTrue  \nFalse  \n```"
   syntax:
@@ -445,15 +445,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
+      description: "찾을 수 있는 키의 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "true if the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> contains an element that has the specified key; otherwise, false."
+      description: "true 이면은 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> ; 지정된 된 키가 있는 요소가 들어 그렇지 않으면 false입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ContainsKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)"
+    description: "<code>keyword</code>null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)"
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.ContextConnection
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a value that indicates whether a client/server or in-process connection to SQL Server should be made."
-  remarks: "This property corresponds to the &quot;Context Connection&quot; key within the connection string.      > [!NOTE] >  The <xref:System.Data.SqlClient.SqlConnection.DataSource%2A> property returns `null` if the connection string for the <xref:System.Data.SqlClient.SqlConnection> is &quot;context connection=true&quot;."
+  summary: "클라이언트/서버 또는 SQL Server 프로세스에서 연결을 설정할 수 해야 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Context Connection&quot; 키에 해당 합니다.      > [!NOTE] >는 <xref:System.Data.SqlClient.SqlConnection.DataSource%2A>속성에서 반환 `null` 에 대 한 연결 문자열은 <xref:System.Data.SqlClient.SqlConnection>은 &quot;컨텍스트 연결 = true&quot;입니다.</xref:System.Data.SqlClient.SqlConnection> </xref:System.Data.SqlClient.SqlConnection.DataSource%2A>"
   syntax:
     content: public bool ContextConnection { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the ContextConnection property, or <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "ContextConnection 속성의 값 또는 <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ContextConnection*
   exceptions: []
   platform:
@@ -491,18 +491,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the SQL Server Language record name."
-  remarks: "This property corresponds to the &quot;Current Language&quot; and &quot;language&quot; keys within the connection string."
+  summary: "SQL Server 언어 레코드 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Current Language&quot; 및 &quot;language&quot; 키에 해당 합니다."
   syntax:
     content: public string CurrentLanguage { get; set; }
     return:
       type: System.String
-      description: "The value of the CurrentLanguage property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if no value has been supplied."
+      description: "CurrentLanguage 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 값이 없으면 합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.CurrentLanguage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.DataSource
@@ -517,20 +517,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the name or network address of the instance of SQL Server to connect to."
-  remarks: "This property corresponds to the &quot;Data Source&quot;, &quot;server&quot;, &quot;address&quot;, &quot;addr&quot;, and &quot;network address&quot; keys within the connection string. Regardless of which of these values has been supplied within the supplied connection string, the connection string created by the `SqlConnectionStringBuilder` will use the well-known &quot;Data Source&quot; key."
+  summary: "에 연결 하도록 SQL server 인스턴스의 이름이 나 네트워크 주소를 가져오거나 설정 합니다."
+  remarks: "이 속성은 &quot;Data Source&quot;, &quot;server&quot;, &quot;address&quot;, &quot;addr&quot; 및 연결 문자열 내의 &quot;network address&quot; 키에 해당 합니다. 제공된 된 연결 문자열 내에서 어떤이 값을 제공 하는 것에 관계 없이 연결 문자열에서 만든는 `SqlConnectionStringBuilder` 잘 알려진 &quot;데이터 원본&quot; 키를 사용 합니다."
   example:
   - "The following example demonstrates that the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> class converts synonyms for the \"Data Source\" connection string key into the well-known key:  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.DataSource#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._51_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.DataSource#1](~/add/codesnippet/csharp/p-system.data.sqlclient._51_1.cs)]"
   syntax:
     content: public string DataSource { get; set; }
     return:
       type: System.String
-      description: "The value of the DataSource property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "DataSource 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.DataSource*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.Encrypt
@@ -545,13 +545,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether SQL Server uses SSL encryption for all data sent between the client and server if the server has a certificate installed."
-  remarks: "This property corresponds to the &quot;Encrypt&quot; key within the connection string."
+  summary: "SQL Server에서 서버 인증서가 설치 되어 있으면 클라이언트와 서버 간에 전송 되는 모든 데이터에 대해 SSL 암호화를 사용 하는지를 지정 하는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Encrypt&quot; 키에 해당 합니다."
   syntax:
     content: public bool Encrypt { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the Encrypt property, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "Encrypt 속성의 값 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Encrypt*
   exceptions: []
   platform:
@@ -568,13 +568,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether the SQL Server connection pooler automatically enlists the connection in the creation thread&quot;s current transaction context."
-  remarks: "This property corresponds to the &quot;Enlist&quot; key within the connection string."
+  summary: "SQL Server 연결 풀에서 만들기 스레드의 현재 트랜잭션 컨텍스트에 연결을 자동으로 참여시킬지 여부를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Enlist&quot; 키에 해당 합니다."
   syntax:
     content: public bool Enlist { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the Enlist property, or <xref uid=&quot;langword_csharp_true &quot; name=&quot;true &quot; href=&quot;&quot;></xref>if none has been supplied."
+      description: "Enlist 속성의 값 또는 <xref uid=&quot;langword_csharp_true &quot; name=&quot;true &quot; href=&quot;&quot;> </xref>제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Enlist*
   exceptions: []
   platform:
@@ -591,17 +591,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the name or address of the partner server to connect to if the primary server is down."
+  summary: "이름이 나 주 서버가 다운 되었을 때 연결할 파트너 서버의 주소를 가져오거나 설정 합니다."
   syntax:
     content: public string FailoverPartner { get; set; }
     return:
       type: System.String
-      description: "The value of the FailoverPartner property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "FailoverPartner 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.FailoverPartner*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.GetProperties(System.Collections.Hashtable)
@@ -621,7 +621,7 @@ items:
     parameters:
     - id: propertyDescriptors
       type: System.Collections.Hashtable
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.GetProperties*
   exceptions: []
   platform:
@@ -638,20 +638,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the name of the database associated with the connection."
-  remarks: "This property corresponds to the &quot;Initial Catalog&quot; and &quot;database&quot; keys within the connection string."
+  summary: "연결과 관련 된 데이터베이스의 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Initial Catalog&quot; 및 &quot;database&quot; 키에 해당 합니다."
   example:
   - "The following example creates a simple connection string and then uses the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> class to add the name of the database to the connection string. The code displays the contents of the InitialCatalog property, just to verify that the class was able to convert from the synonym (\"Database\") to the appropriate property value.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.InitialCatalog#1](~/add/codesnippet/csharp/p-system.data.sqlclient._46_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.InitialCatalog#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._46_1.vb)]"
   syntax:
     content: public string InitialCatalog { get; set; }
     return:
       type: System.String
-      description: "The value of the InitialCatalog property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "InitialCatalog 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.InitialCatalog*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.IntegratedSecurity
@@ -666,15 +666,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether User ID and Password are specified in the connection (when <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>) or whether the current Windows account credentials are used for authentication (when <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>)."
-  remarks: "This property corresponds to the &quot;Integrated Security&quot; and &quot;trusted_connection&quot; keys within the connection string."
+  summary: "사용자 ID와 암호 연결에 지정 되었는지 여부를 나타내는 부울 값을 가져오거나 설정 합니다. (때 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>) 또는 현재 Windows 계정 자격 증명 인증에 사용 됩니다 (때 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>)."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Integrated Security&quot; 및 &quot;trusted_connection&quot; 키에 해당 합니다."
   example:
   - "The following example converts an existing connection string from using SQL Server Authentication to using integrated security. The example does its work by removing the user name and password from the connection string and then setting the IntegratedSecurity property of the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.SqlClient.SqlConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.IntegratedSecurity#1](~/add/codesnippet/csharp/p-system.data.sqlclient._35_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.IntegratedSecurity#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._35_1.vb)]"
   syntax:
     content: public bool IntegratedSecurity { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the IntegratedSecurity property, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "IntegratedSecurity 속성의 값 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.IntegratedSecurity*
   exceptions: []
   platform:
@@ -691,12 +691,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> has a fixed size."
+  summary: "나타내는 값을 가져옵니다 여부는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 크기가 고정된 되어 있습니다."
   syntax:
     content: public override bool IsFixedSize { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> in every case, because the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> supplies a fixed-size collection of key/value pairs."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>모든 경우에 때문에 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 키/값 쌍의 크기가 고정 된 컬렉션을 제공 합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.IsFixedSize*
   exceptions: []
   platform:
@@ -713,8 +713,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the value associated with the specified key. In C#, this property is the indexer."
-  remarks: "Because the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> contains a fixed-size dictionary, trying to add a key that does not exist within the dictionary throws a <xref:System.Collections.Generic.KeyNotFoundException>."
+  summary: "지정된 된 키와 연결 된 값을 가져오거나 설정 합니다. C#의 경우이 속성은 인덱서 합니다."
+  remarks: "때문에 <xref:System.Data.SqlClient.SqlConnectionStringBuilder> <xref:System.Collections.Generic.KeyNotFoundException>.</xref:System.Collections.Generic.KeyNotFoundException> 를 throw 하는 사전 내에서 존재 하지 않는 키를 추가 하는 고정 크기의 사전이 포함</xref:System.Data.SqlClient.SqlConnectionStringBuilder>"
   example:
   - "The following code, in a console application, creates a new <xref:System.Data.SqlClient.SqlConnectionStringBuilder> and adds key/value pairs to its connection string, using the Item property.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.Item#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._4_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.Item#1](~/add/codesnippet/csharp/p-system.data.sqlclient._4_1.cs)]"
   syntax:
@@ -722,21 +722,21 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to get or set."
+      description: "가져오거나 설정할 항목의 키입니다."
     return:
       type: System.Object
-      description: "The value associated with the specified key."
+      description: "지정된 된 키와 연결 된 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Item*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   - type: System.Collections.Generic.KeyNotFoundException
     commentId: T:System.Collections.Generic.KeyNotFoundException
-    description: "Tried to add a key that does not exist within the available keys."
+    description: "사용 가능한 키에 존재 하지 않는 키를 추가 하려고 했습니다."
   - type: System.FormatException
     commentId: T:System.FormatException
-    description: "Invalid value within the connection string (specifically, a Boolean or numeric value was expected but not supplied)."
+    description: "연결 문자열 내의 값이 잘못 되었습니다 (특히, 부울 또는 숫자 값이 필요 하지만 제공 되지 않았습니다)입니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.Keys
@@ -751,15 +751,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated values in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Values%2A> property."
+  summary: "가져옵니다는 <xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
+  remarks: "에 있는 값의 순서는 <xref:System.Collections.ICollection>지정 되어 있지에 연결 된 값과 순서가 동일 하지만 <xref:System.Collections.ICollection>에서 반환 되는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Values%2A>속성.</xref:System.Data.SqlClient.SqlConnectionStringBuilder.Values%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection>"
   example:
   - "The following console application example creates a new <xref:System.Data.SqlClient.SqlConnectionStringBuilder>. The code loops through the <xref:System.Collections.ICollection> returned by the Keys property displaying the key/value pairs.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.Keys#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._0_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.Keys#1](~/add/codesnippet/csharp/p-system.data.sqlclient._0_1.cs)]"
   syntax:
     content: public override System.Collections.ICollection Keys { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the keys in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>에 키를 포함 하는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Keys*
   exceptions: []
   platform:
@@ -776,13 +776,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the minimum time, in seconds, for the connection to live in the connection pool before being destroyed."
-  remarks: "This property corresponds to the &quot;Load Balance Timeout&quot; and &quot;connection lifetime&quot; keys within the connection string."
+  summary: "(초)를 연결 풀에서 연결이 제거 되기 전에 최소 시간을 가져오거나 설정 합니다."
+  remarks: "이 속성은 &quot;Load Balance Timeout&quot; 및 연결 문자열 내의 &quot;connection lifetime&quot; 키에 해당 합니다."
   syntax:
     content: public int LoadBalanceTimeout { get; set; }
     return:
       type: System.Int32
-      description: "The value of the LoadBalanceTimeout property, or 0 if none has been supplied."
+      description: "LoadBalanceTimeout 속성 또는 제공 된 경우 0의 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.LoadBalanceTimeout*
   exceptions: []
   platform:
@@ -799,13 +799,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the maximum number of connections allowed in the connection pool for this specific connection string."
-  remarks: "This property corresponds to the &quot;Max Pool Size&quot; key within the connection string."
+  summary: "이 특정 연결 문자열에 대 한 연결 풀에서 허용 되는 연결의 최대 수를 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Max Pool Size&quot; 키에 해당 합니다."
   syntax:
     content: public int MaxPoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The value of the MaxPoolSize property, or 100 if none has been supplied."
+      description: "MaxPoolSize 속성 또는 제공 된 경우 100의 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.MaxPoolSize*
   exceptions: []
   platform:
@@ -822,13 +822,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the minimum number of connections allowed in the connection pool for this specific connection string."
-  remarks: "This property corresponds to the &quot;Min Pool Size&quot; key within the connection string."
+  summary: "이 특정 연결 문자열에 대 한 연결 풀에서 허용 되는 연결의 최소 수를 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Min Pool Size&quot; 키에 해당 합니다."
   syntax:
     content: public int MinPoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The value of the MinPoolSize property, or 0 if none has been supplied."
+      description: "MinPoolSize 속성 또는 제공 된 경우 0의 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.MinPoolSize*
   exceptions: []
   platform:
@@ -845,15 +845,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "When true, an application can maintain multiple active result sets (MARS). When false, an application must process or cancel all result sets from one batch before it can execute any other batch on that connection.       For more information, see [Multiple Active Result Sets (MARS)](http://msdn.microsoft.com//library/cfa084cz.aspx)."
-  remarks: "This property corresponds to the &quot;MultipleActiveResultSets&quot; key within the connection string."
+  summary: "True 인 경우 응용 프로그램이 MARS ()를 설정 하는 여러 활성 결과 유지할 수 있습니다. False 인 경우 응용 프로그램을 처리 하거나 해당 연결에서 다른 일괄 처리를 실행 하기 전에 하나의 일괄 처리의 모든 결과 집합을 취소 해야 합니다.       자세한 내용은 참조 [결과 집합 MARS (Multiple Active)](http://msdn.microsoft.com//library/cfa084cz.aspx)합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;MultipleActiveResultSets&quot; 키에 해당 합니다."
   example:
   - "The following example explicitly disables the Multiple Active Result Sets feature.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.MARS#1](~/add/codesnippet/csharp/p-system.data.sqlclient._53_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.MARS#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._53_1.vb)]"
   syntax:
     content: public bool MultipleActiveResultSets { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the MultipleActiveResultSets property, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "MultipleActiveResultSets 속성의 값 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.MultipleActiveResultSets*
   exceptions: []
   platform:
@@ -870,12 +870,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "If your application is connecting to an AlwaysOn availability group (AG) on different subnets, setting MultiSubnetFailover=true provides faster detection of and connection to the (currently) active server. For more information about SqlClient support for Always On Availability Groups, see [SqlClient Support for High Availability, Disaster Recovery](~/add/includes/ajax-current-ext-md.md)."
+  summary: "응용 프로그램 MultiSubnetFailover 설정 하는 서로 다른 서브넷에 연결 AlwaysOn 가용성 그룹 (AG) 하는 경우 = true의 한 빠른 감지와 (현재) 활성 서버 연결을 제공 합니다. Always On 가용성 그룹에 대 한 SqlClient 지원에 대 한 자세한 내용은 참조 [고가용성, 재해 복구에 대 한 SqlClient 지원](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public bool MultiSubnetFailover { get; set; }
     return:
       type: System.Boolean
-      description: "Returns <xref:System.Boolean> indicating the current value of the property."
+      description: "반환 <xref:System.Boolean>속성의 현재 값을 나타내는.</xref:System.Boolean>"
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.MultiSubnetFailover*
   exceptions: []
   platform:
@@ -892,18 +892,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a string that contains the name of the network library used to establish a connection to the SQL Server."
-  remarks: "This property corresponds to the &quot;Network Library&quot;, &quot;network&quot;, and &quot;net&quot; keys within the connection string.       Supported values for this property include dbnmpntw (Named Pipes), dbmsrpcn (Multiprotocol), dbmsadsn (AppleTalk), dbmsgnet (VIA), dbmslpcn (Shared Memory) and dbmsspxn (IPX/SPX), and dbmssocn (TCP/IP). The corresponding network DLL must be installed on the system to which you connect. If you do not specify a network and you use a local server (for example, &quot;.&quot; or &quot;(local)&quot;), Shared Memory is used."
+  summary: "SQL Server에 연결 하는 데 사용 되는 네트워크 라이브러리의 이름을 포함 하는 문자열을 가져오거나 설정 합니다."
+  remarks: "이 속성은 &quot;Network Library&quot;, &quot;network&quot; 및 연결 문자열 내의 &quot;net&quot; 키에 해당 합니다.       이 속성에 대 한 지원 되는 값에는 dbnmpntw (명명 된 파이프), dbmsrpcn (멀티 프로토콜), dbmsadsn (AppleTalk), dbmsgnet (VIA), dbmslpcn (공유 메모리) 및 dbmsspxn (IPX/SPX) 및 dbmssocn (TCP/IP) 포함 됩니다. 해당 하는 네트워크 DLL 연결 하는 시스템에 설치 되어야 합니다. 네트워크를 지정 하지 않으면 및 로컬 서버를 사용 하는 경우 (예를 들어, &quot;.&quot; 또는 &quot;(local)&quot;), 공유 메모리가 사용 됩니다."
   syntax:
     content: public string NetworkLibrary { get; set; }
     return:
       type: System.String
-      description: "The value of the NetworkLibrary property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "NetworkLibrary 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.NetworkLibrary*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.PacketSize
@@ -918,13 +918,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the size in bytes of the network packets used to communicate with an instance of SQL Server."
-  remarks: "This property corresponds to the &quot;Packet Size&quot; key within the connection string."
+  summary: "SQL Server의 인스턴스와 통신 하는 데 사용 하는 네트워크 패킷의 바이트 크기를 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Packet Size&quot; 키에 해당 합니다."
   syntax:
     content: public int PacketSize { get; set; }
     return:
       type: System.Int32
-      description: "The value of the PacketSize property, or 8000 if none has been supplied."
+      description: "제공 된 경우 8000 PacketSize 속성의 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.PacketSize*
   exceptions: []
   platform:
@@ -941,20 +941,20 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the password for the SQL Server account."
-  remarks: "This property corresponds to the &quot;Password&quot; and &quot;pwd&quot; keys within the connection string.       If Password has not been set and you retrieve the value, the return value is <xref:System.String>. To reset the password for the connection string, pass null to the Item property."
+  summary: "SQL Server 계정에 대 한 암호를 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Password&quot; 및 &quot;pwd&quot; 키에 해당 합니다.       반환 값은 <xref:System.String>.</xref:System.String> 암호가 설정 되지 않은 값을 검색 하는 경우 연결 문자열에 대 한 암호를 재설정 하려면 항목 속성에 null을 전달 합니다."
   example:
   - "The following example shows how to set Password.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.Password.2#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._40_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.Password.2#1](~/add/codesnippet/csharp/p-system.data.sqlclient._40_1.cs)]"
   syntax:
     content: public string Password { get; set; }
     return:
       type: System.String
-      description: "The value of the Password property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "Password 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Password*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The password was incorrectly set to null.  See code sample below."
+    description: "암호가 잘못 설정 된 null로 합니다.  다음 코드 예제를 참조 하십시오."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.PersistSecurityInfo
@@ -969,13 +969,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state."
-  remarks: "This property corresponds to the &quot;Persist Security Info&quot; and &quot;persistsecurityinfo&quot; keys within the connection string."
+  summary: "암호와 같은 보안 관련 정보는 반환 여부는 연결의 일부로 연결이 현재 열려 있거나 열린 상태를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Persist Security Info&quot; 및 &quot;persistsecurityinfo&quot; 키에 해당 합니다."
   syntax:
     content: public bool PersistSecurityInfo { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the PersistSecurityInfo property, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "PersistSecurityInfo 속성의 값 또는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.PersistSecurityInfo*
   exceptions: []
   platform:
@@ -992,13 +992,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "The blocking period behavior for a connection pool."
-  remarks: "When connection pooling is enabled and  a timeout error or other login error occurs, an exception will be thrown and subsequent connection attempts will fail for the next five seconds, the &quot;blocking period&quot;. If the application attempts to connect within the blocking period, the first exception will be thrown again. Subsequent failures after a blocking period ends will result in a new blocking period that is twice as long as the previous blocking period, up to a maximum of one minute.       Attempting to connect to Azure SQL databases can fail with transient errors which are typically recovered within a few seconds. However, with the connection pool blocking period behavior, you may not be able to reach your database for extensive periods even though the database is  available. This is especially problematic for apps that need to render fast. The **PoolBlockingPeriod** enables you to select the blocking period best suited for your app. See the [PoolBlockingPeriod Enumeration](~/add/includes/ajax-current-ext-md.md) for available settings."
+  summary: "연결 풀에 대 한 차단 기간 동작 합니다."
+  remarks: "연결 풀링이 사용 되 고 시간 초과 오류나 기타 로그인 오류가 발생, 예외가 throw 됩니다 시점과 이후 연결 시도가 &quot;차단 기간&quot; 다음&5; 초 동안 실패 합니다. 응용 프로그램을 차단 기간 내에 연결 하려고 하는 경우 첫 번째 예외가 다시 throw 됩니다. 차단 기간이 끝난 후 또 다른 연결이 실패 새 차단 기간을 이전 차단 기간의&1; 분의 최대는 두 번 발생 합니다.       Azure SQL 데이터베이스에 연결을 시도 하는 몇 초 내에 일반적으로 복구 되는 일시적인 오류와 함께 실패할 수 있습니다. 않을 그러나 차단 기간 동작 하는 연결 풀과 있습니다 하지 수 있습니다는 데이터베이스를 사용할 수 있지만 광범위 한 기간에 대 한 데이터베이스에 연결할 수 있습니다. 이것이 빠른 렌더링 해야 하는 앱에 대 한 특히 문제가 될 수 있습니다. **PoolBlockingPeriod** 응용 프로그램에 가장 적합 하며 차단 기간을 선택할 수 있습니다. 참조는 [PoolBlockingPeriod 열거형](~/add/includes/ajax-current-ext-md.md) 사용 가능한 설정에 대 한 합니다."
   syntax:
     content: public System.Data.SqlClient.PoolBlockingPeriod PoolBlockingPeriod { get; set; }
     return:
       type: System.Data.SqlClient.PoolBlockingPeriod
-      description: "The available blocking period settings."
+      description: "사용 가능한 차단 기간 설정 합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.PoolBlockingPeriod*
   exceptions: []
   platform:
@@ -1015,13 +1015,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether the connection will be pooled or explicitly opened every time that the connection is requested."
-  remarks: "This property corresponds to the &quot;Pooling&quot; key within the connection string."
+  summary: "연결이 풀링 되거나 연결이 요청 될 때마다 명시적으로 열리는지 여부를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Pooling&quot; 키에 해당 합니다."
   syntax:
     content: public bool Pooling { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the Pooling property, or <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "풀링 속성의 값 또는 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Pooling*
   exceptions: []
   platform:
@@ -1038,8 +1038,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Removes the entry with the specified key from the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> instance."
-  remarks: "Because the **Remove** method returns a value that indicates its success, it is not required to look for a key before trying to remove the key/value pair from the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> instance. Because the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> maintains a fixed-size collection of key/value pairs, calling the Remove method simply resets the value of the key/value pair back to its default value.       Because the collection of keys supported by the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> is fixed, every item within the collection has a known default value. The following table lists the keys, and the value for each when the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> is first initialized, or after the Remove method has been called.      |Key|Default value|   |---------|-------------------|   |Application Name|&quot;.Net SqlClient Data Provider&quot;|   |Asynchronous Processing|False|   |AttachDBFilename|Empty string|   |Connection Timeout|15|   |Context Connection|False|   |Current Language|Empty string|   |Data Source|Empty string|   |Encrypt|False|   |Enlist|True|   |Failover Partner|Empty string|   |Initial Catalog|Empty string|   |Integrated Security|False|   |Load Balance Timeout|0|   |Max Pool Size|100|   |Min Pool Size|0|   |MultipleActiveResultSets|False|   |Network Library|Empty string|   |Packet Size|8000|   |Password|Empty string|   |Persist Security Info|False|   |Pooling|True|   |Replication|False|   |Transaction Binding|Implicit Unbind|   |User ID|Empty string|   |User Instance|False|   |Workstation ID|Empty string|"
+  summary: "지정된 된 키를 가지는 엔트리를 제거는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "때문에 **제거** 는 성공을 나타내는 값을 반환 하는 메서드, 키/값 쌍을 제거 하려고 하기 전에 키를 찾을 하지 않아도 됩니다는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>인스턴스.</xref:System.Data.SqlClient.SqlConnectionStringBuilder> 때문에 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>키/값 쌍의 값을 기본값으로 다시 재설정 단순히 Remove 메서드를 호출 하는 키/값 쌍의 크기가 고정 된 컬렉션을 유지 합니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder>       가 지 원하는 키 컬렉션이 있으므로 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>는 고정, 컬렉션 내의 모든 항목에는 알려진된 기본값이 있습니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder> 다음 표에서 각 경우에 대 한 키와 값을 나열는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>처음 초기화 Remove 메서드가 호출 된 후 또는.</xref:System.Data.SqlClient.SqlConnectionStringBuilder>      | 키 | 기본 값 |   |---------|-------------------|   | 응용 프로그램 이름 | &quot;입니다. SqlClient 데이터 공급자를 net &quot;|   | 비동기 처리 | False |   | AttachDBFilename | 빈 문자열 |   | 연결 제한 시간 |&15; |   | 컨텍스트 연결 | False |   | 현재 언어 | 빈 문자열 |   | 데이터 소스 | 빈 문자열 |   | 암호화 | False |   | 참여 | True |   | 장애 조치 파트너 | 빈 문자열 |   | 초기 카탈로그 | 빈 문자열 |   | 통합 보안 | False |   | Balance Timeout 로드 |&0; |   | 최대 풀 크기 |&100; |   | 최소 풀 크기 |&0; |   | MultipleActiveResultSets | False |   | 네트워크 라이브러리 | 빈 문자열 |   | 패킷 크기 |&8000; |   | 암호 | 빈 문자열 |   | 보안 정보 유지 | False |   | 풀링 | True |   | 복제 | False |   | 트랜잭션 바인딩 | 암시적 바인딩을 해제 |   | 사용자 ID | 빈 문자열 |   | 사용자 인스턴스 | False |   | 워크스테이션 ID | 빈 문자열 |"
   example:
   - "The following example converts an existing connection string from using Windows Authentication to using integrated security. The example works by removing the user name and password from the connection string, and then setting the <xref:System.Data.SqlClient.SqlConnectionStringBuilder.IntegratedSecurity%2A> property of the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> object.  \n  \n> [!NOTE]\n>  This example includes a password to demonstrate how <xref:System.Data.SqlClient.SqlConnectionStringBuilder> works with connection strings. In your applications, we recommend that you use Windows Authentication. If you must use a password, do not include a hard-coded password in your application.  \n  \n [!code-cs[DataWorks SqlConnectionStringBuilder.Remove#1](~/add/codesnippet/csharp/m-system.data.sqlclient._7_1.cs)]\n [!code-vb[DataWorks SqlConnectionStringBuilder.Remove#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._7_1.vb)]  \n  \n The example displays the following text in the console window:  \n  \n```  \nOriginal: Data Source=(local);Initial Catalog=AdventureWorks;User ID=ab;Password= a1Pass@@11  \nModified: Data Source=(local);Initial Catalog=AdventureWorks;Integrated Security=True  \nDatabase = AdventureWorks  \n```"
   syntax:
@@ -1047,15 +1047,15 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the key/value pair to be removed from the connection string in this <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
+      description: "이 연결 문자열에서 제거할 키/값 쌍의 키 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the key existed within the connection string and was removed; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the key did not exist."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>키 연결 문자열 내에 존재 하 고 제거 되었습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 존재 하지 않았습니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Remove*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> is null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)"
+    description: "<code>keyword</code>null (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)"
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.Replication
@@ -1070,13 +1070,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a Boolean value that indicates whether replication is supported using the connection."
-  remarks: "This property corresponds to the &quot;Replication&quot; key within the connection string."
+  summary: "복제 연결을 사용 하 여 지원 되는지 여부를 나타내는 부울 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Replication&quot; 키에 해당 합니다."
   syntax:
     content: public bool Replication { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the Replication property, or false if none has been supplied."
+      description: "복제 속성 또는 제공 된 경우 false 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Replication*
   exceptions: []
   platform:
@@ -1093,17 +1093,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Indicates whether the specified key exists in this <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> instance."
-  remarks: "This method behaves identically to the <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A> method."
+  summary: "이 지정된 된 키가 있는지 여부를 나타냅니다. <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 인스턴스."
+  remarks: "이 메서드는 동일 하 게 동작의 <xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>메서드.</xref:System.Data.Common.DbConnectionStringBuilder.ContainsKey%2A>"
   syntax:
     content: public override bool ShouldSerialize (string keyword);
     parameters:
     - id: keyword
       type: System.String
-      description: "The key to locate in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
+      description: "찾을 수 있는 키의 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref> contains an entry with the specified key; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref> 지정 된 항목이 고, 그렇지 않으면 키 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.ShouldSerialize*
   exceptions: []
   platform:
@@ -1120,13 +1120,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a string value that indicates how the connection maintains its association with an enlisted <xref uid=&quot;langword_csharp_System.Transactions&quot; name=&quot;System.Transactions&quot; href=&quot;&quot;></xref> transaction."
-  remarks: "The Transaction Binding keywords in a <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A> control how a <xref:System.Data.SqlClient.SqlConnection> binds to an enlisted <xref:System.Transactions.Transaction>.       The following table shows the possible values for the TransactionBinding property:      |Value|Description|   |-----------|-----------------|   |Implicit Unbind|The default. Causes the connection to detach from the transaction when it ends. After detaching, additional requests on the connection are performed in autocommit mode. The <xref:System.Transactions.Transaction.Current%2A> property is not checked when executing requests while the transaction is active. After the transaction has ended, additional requests are performed in autocommit mode.|   |Explicit Unbind|Causes the connection to remain attached to the transaction until the connection is closed or until <xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A> is called with a `null` (`Nothing` in Visual Basic) value. An <xref:System.InvalidOperationException> is thrown if <xref:System.Transactions.Transaction.Current%2A> is not the enlisted transaction or if the enlisted transaction is not active. This behavior enforces the strict scoping rules required for <xref:System.Transactions.TransactionScope> support.|"
+  summary: "연결의 연결을 참여 한 유지 되는 방식을 나타내는 문자열 값을 가져오거나 설정 합니다. <xref uid=&quot;langword_csharp_System.Transactions&quot; name=&quot;System.Transactions&quot; href=&quot;&quot;> </xref> 트랜잭션."
+  remarks: "Transaction Binding 키워드 <xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>방법 <xref:System.Data.SqlClient.SqlConnection>참여 한 <xref:System.Transactions.Transaction>.</xref:System.Transactions.Transaction> 이 스위치</xref:System.Data.SqlClient.SqlConnection> 를 제어합니다 합니다.</xref:System.Data.SqlClient.SqlConnection.ConnectionString%2A>       다음 표에 나와 TransactionBinding 속성에 대 한 가능한 값: | 값 | 설명 |   |-----------|-----------------|   | 암시적 바인딩을 해제 | 기본값입니다. 에서 분리 하 고 트랜잭션이 끝날 때에 대 한 연결을 하면 됩니다. 분리 후 연결에서 추가 요청은 자동 커밋 모드로 수행 됩니다. <xref:System.Transactions.Transaction.Current%2A>속성이 활성화 상태인 동안 트랜잭션이 요청을 실행할 때 검사 되지 않습니다.</xref:System.Transactions.Transaction.Current%2A> 트랜잭션이 종료 된 후 추가 요청은 자동 커밋 모드로 수행 됩니다. |   | 명시적 바인딩 해제 | 원인을 유지 하기 위한 연결에 연결 된 트랜잭션이 연결을 닫을 때까지 또는 될 때까지 <xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A>로 호출 되는 `null` (`Nothing` Visual basic에서) 값입니다.</xref:System.Data.SqlClient.SqlConnection.EnlistTransaction%2A> <xref:System.InvalidOperationException>없으면 예외가 <xref:System.Transactions.Transaction.Current%2A>참여 한 트랜잭션이 없는 참여 한 트랜잭션이 활성화 되지 않은 경우 또는.</xref:System.Transactions.Transaction.Current%2A> </xref:System.InvalidOperationException> 이 동작에 필요한 엄격한 범위 지정 규칙이 적용 <xref:System.Transactions.TransactionScope>지원 합니다. |</xref:System.Transactions.TransactionScope>"
   syntax:
     content: public string TransactionBinding { get; set; }
     return:
       type: System.String
-      description: "The value of the TransactionBinding property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "TransactionBinding 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.TransactionBinding*
   exceptions: []
   platform:
@@ -1143,12 +1143,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a boolean value."
+  summary: "부울 값을 가져오거나 설정 합니다."
   syntax:
     content: public bool TransparentNetworkIPResolution { get; set; }
     return:
       type: System.Boolean
-      description: "A boolean value."
+      description: "부울 값입니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.TransparentNetworkIPResolution*
   exceptions: []
   platform:
@@ -1165,8 +1165,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a value that indicates whether the channel will be encrypted while bypassing walking the certificate chain to validate trust."
-  remarks: "When `TrustServerCertificate` is set to `true`, the transport layer will use SSL to encrypt the channel and bypass walking the certificate chain to validate trust. If `TrustServerCertificate` is set to `true` and encryption is turned on, the encryption level specified on the server will be used even if `Encrypt` is set to `false`. The connection will fail otherwise.       For more information, see &quot;Encryption Hierarchy&quot; and &quot;Using Encryption Without Validation&quot; in SQL Server Books Online."
+  summary: "트러스트를 확인 하 고 인증서 체인을 무시 하는 동안는 채널이 암호화 될 지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "때 `TrustServerCertificate` 로 설정 된 `true`, 전송 계층 SSL을 사용 하 여 채널을 암호화 하 여 신뢰의 유효성을 검사 하 고 인증서 체인을 무시 합니다. 경우 `TrustServerCertificate` 로 설정 된 `true` 및 암호화가 설정, 서버에서 지정 된 암호화 수준이 사용 됩니다 경우에 `Encrypt` 로 설정 된 `false`합니다. 그렇지 않은 경우에 연결이 실패 합니다.       자세한 내용은 &quot;암호화 계층 구조&quot; 및 &quot;를 사용 하 여 유효성 검사 없이 암호화&quot; SQL Server 온라인 설명서의를 참조 하십시오."
   syntax:
     content: public bool TrustServerCertificate { get; set; }
     return:
@@ -1188,8 +1188,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves a value corresponding to the supplied key from this <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
-  remarks: "The TryGetValue method lets developers safely retrieve a value from a <xref:System.Data.SqlClient.SqlConnectionStringBuilder> without needing to verify that the supplied key name is a valid key name. Because **TryGetValue** does not raise an exception when you call it, passing in a nonexistent key, you do not have to look for a key before retrieving its value.  Calling **TryGetValue** with a nonexistent key will place the value null (`Nothing` in Visual Basic) in the `value` parameter."
+  summary: "이 제공된 된 키에 해당 하는 값을 검색 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>합니다."
+  remarks: "TryGetValue 메서드 값을 안전 하 게 검색할 수 있습니다는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>제공 된 키 이름이 올바른 키 이름 인지 확인할 필요 없이.</xref:System.Data.SqlClient.SqlConnectionStringBuilder> 때문에 **TryGetValue** 예외가 발생 하지 않으므로 호출 하면, 존재 하지 않는 키를 전달 하는 경우 해당 값을 검색 하기 전에 키를 찾이 필요가 없습니다.  호출 **TryGetValue** 존재 하지 않는 키와 값이 null을 배치 합니다 (`Nothing` Visual basic에서)에 `value` 매개 변수입니다."
   example:
   - "The following example demonstrates the behavior of the **TryGetValue** method.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/visualbasic/25aa2e92-0892-4821-a220-_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.TryGetValue#1](~/add/codesnippet/csharp/25aa2e92-0892-4821-a220-_1.cs)]  \n  \n The sample displays the following results:  \n  \n```  \nData Source=(local)  \nTrusted_Connection=True  \nUnable to retrieve value for 'InvalidKey'  \nUnable to retrieve value for null key.  \n```"
   syntax:
@@ -1197,18 +1197,18 @@ items:
     parameters:
     - id: keyword
       type: System.String
-      description: "The key of the item to retrieve."
+      description: "검색할 항목의 키입니다."
     - id: value
       type: System.Object
-      description: "The value corresponding to `keyword.`"
+      description: "해당 하는 값`keyword.`"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>keyword</code> was found within the connection string; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 <code> keyword </code> 그렇지 않으면 연결 문자열에 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.TryGetValue*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyword</code> contains a null value (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic)."
+    description: "<code>keyword</code>에 null 값 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> Visual basic에서)."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.TypeSystemVersion
@@ -1223,13 +1223,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a string value that indicates the type system the application expects."
-  remarks: "The `TypeSystemVersion` property can be used to specify a down-level version of [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] for applications written against that version. This avoids possible problems with incompatible types in a newer version of [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] that may cause the application to break."
+  summary: "응용 프로그램 형식 시스템에서는 나타내는 문자열 값을 가져오거나 설정 합니다."
+  remarks: "`TypeSystemVersion` 속성의 하위 수준 버전을 지정 하려면 사용할 수 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 해당 버전에 대해 작성 된 응용 프로그램에 대 한 합니다. 최신 버전의 호환 되지 않는 형식 문제를 방지할이 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 응용 프로그램이 중단을 야기할 수 있습니다."
   syntax:
     content: public string TypeSystemVersion { get; set; }
     return:
       type: System.String
-      description: "The following table shows the possible values for the TypeSystemVersion property:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 2005       </td><td> Uses the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 2005 type system. No conversions are made for the current version of ADO.NET.       </td></tr><tr><td> SQL Server 2008       </td><td> Uses the SQL Server 2008 type system.       </td></tr><tr><td> Latest       </td><td> Use the latest version than this client-server pair can handle. This will automatically move forward as the client and server components are upgraded.       </td></tr></tbody></table>"
+      description: "다음 표에서 TypeSystemVersion 속성에 대 한 가능한 값을 보여 줍니다.       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 2005       </td><td> 사용 하 여 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 2005 형식 시스템. 현재 버전의 ADO.NET에 대 한 변환이 만들어집니다.       </td></tr><tr><td> SQL Server 2008       </td><td> SQL Server 2008 형식 시스템을 사용합니다.       </td></tr><tr><td> 최신       </td><td> 이 클라이언트-서버 쌍에서 처리할 수 있는 보다 최신 버전을 사용 합니다. 클라이언트 및 서버 구성 요소가 업그레이드 되 앞으로 이동 자동으로 됩니다.       </td></tr></tbody></table>"
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.TypeSystemVersion*
   exceptions: []
   platform:
@@ -1246,18 +1246,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the user ID to be used when connecting to SQL Server."
-  remarks: "This property corresponds to the &quot;User ID&quot;, &quot;user&quot;, and &quot;uid&quot; keys within the connection string."
+  summary: "SQL Server에 연결할 때 사용할 사용자 ID를 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;User ID&quot;, &quot;user&quot; 및 &quot;uid&quot; 키에 해당 합니다."
   syntax:
     content: public string UserID { get; set; }
     return:
       type: System.String
-      description: "The value of the UserID property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "UserID 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.UserID*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.UserInstance
@@ -1272,18 +1272,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets a value that indicates whether to redirect the connection from the default SQL Server Express instance to a runtime-initiated instance running under the account of the caller."
-  remarks: "This property corresponds to the &quot;User Instance&quot; key within the connection string.      > [!NOTE] >  This feature is available only with the [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] Express Edition. For more information on user instances, see [SQL Server Express User Instances](~/add/includes/ajax-current-ext-md.md) and &quot;User Instances for Non-Administrators&quot; in [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] Books Online."
+  summary: "기본 SQL Server Express 인스턴스에서 호출자의 계정으로 실행 되는 런타임 시작 인스턴스로 연결을 리디렉션하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;User Instance&quot; 키에 해당 합니다.      > [!NOTE] >이 기능은 함께만 사용할 수는 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] Express Edition. 사용자 인스턴스에 대 한 자세한 내용은 참조 하십시오. [SQL Server Express 사용자 인스턴스](~/add/includes/ajax-current-ext-md.md) 및 &quot;사용자 인스턴스에 대 한 관리자가 아닌&quot;에서 [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] 온라인 설명서."
   syntax:
     content: public bool UserInstance { get; set; }
     return:
       type: System.Boolean
-      description: "The value of the UserInstance property, or <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "UserInstance 속성의 값 또는 <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.UserInstance*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlConnectionStringBuilder.Values
@@ -1298,15 +1298,15 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets an <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
-  remarks: "The order of the values in the <xref:System.Collections.ICollection> is unspecified, but it is the same order as the associated keys in the <xref:System.Collections.ICollection> returned by the <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Keys%2A> property. Because each instance of the <xref:System.Data.SqlClient.SqlConnectionStringBuilder> always contains the same fixed set of keys, the Values property always returns the values corresponding to the fixed set of keys, in the same order as the keys."
+  summary: "가져옵니다는 <xref:System.Collections.ICollection>값을 포함 하는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
+  remarks: "에 있는 값의 순서는 <xref:System.Collections.ICollection>지정 되어 있지는 연결 된 키와 순서가 동일 하지만 <xref:System.Collections.ICollection>에서 반환 되는 <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Keys%2A>속성.</xref:System.Data.SqlClient.SqlConnectionStringBuilder.Keys%2A> </xref:System.Collections.ICollection> </xref:System.Collections.ICollection> 때문에 각 인스턴스에 <xref:System.Data.SqlClient.SqlConnectionStringBuilder>항상 동일한 고정된 집합이 속성의 키와 동일한 순서로 키의 고정 된 집합에 해당 값은 항상 반환 값, 키를 포함 합니다.</xref:System.Data.SqlClient.SqlConnectionStringBuilder>"
   example:
   - "The following example first creates a new <xref:System.Data.SqlClient.SqlConnectionStringBuilder>, and then iterates through all the values within the object.  \n  \n [!code-vb[DataWorks SqlConnectionStringBuilder.Values#1](~/add/codesnippet/visualbasic/p-system.data.sqlclient._29_1.vb)]\n [!code-cs[DataWorks SqlConnectionStringBuilder.Values#1](~/add/codesnippet/csharp/p-system.data.sqlclient._29_1.cs)]"
   syntax:
     content: public override System.Collections.ICollection Values { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> that contains the values in the <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;></xref>."
+      description: "<xref:System.Collections.ICollection>값을 포함 하는 <xref href=&quot;System.Data.SqlClient.SqlConnectionStringBuilder&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.Values*
   exceptions: []
   platform:
@@ -1323,18 +1323,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets or sets the name of the workstation connecting to SQL Server."
-  remarks: "This property corresponds to the &quot;Workstation ID&quot; and &quot;wsid&quot; keys within the connection string."
+  summary: "SQL Server에 연결 하는 워크스테이션의 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성은 연결 문자열 내의 &quot;Workstation ID&quot; 및 &quot;wsid&quot; 키에 해당 합니다."
   syntax:
     content: public string WorkstationID { get; set; }
     return:
       type: System.String
-      description: "The value of the WorkstationID property, or <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;></xref> if none has been supplied."
+      description: "WorkstationID 속성의 값 또는 <xref uid=&quot;langword_csharp_String.Empty&quot; name=&quot;String.Empty&quot; href=&quot;&quot;> </xref> 제공 된 경우."
   overload: System.Data.SqlClient.SqlConnectionStringBuilder.WorkstationID*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "To set the value to null, use <xref href=&quot;System.DBNull.Value&quot;></xref>."
+    description: "null 값을 설정 하려면 <xref href=&quot;System.DBNull.Value&quot;> </xref>합니다."
   platform:
   - net462
 references:

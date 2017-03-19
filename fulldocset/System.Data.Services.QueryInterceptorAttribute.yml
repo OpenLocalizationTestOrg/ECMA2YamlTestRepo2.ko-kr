@@ -11,8 +11,8 @@ items:
   nameWithType: QueryInterceptorAttribute
   fullName: System.Data.Services.QueryInterceptorAttribute
   type: Class
-  summary: "The QueryInterceptorAttribute on a method annotates it as a query interceptor on the specified entity set."
-  remarks: "Entity set-level authorization and validation is implemented by methods annotated with the QueryInterceptorAttribute. [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]s do not implement security policies but instead provide the infrastructure required for service developers to write their own security rules and business validation.       Entity set access control and validation is enabled through query operations by using query composition. To control entity-based access, implement a method-per-entity set according to the following rules:       The method must have public scope and be annotated with the QueryInterceptorAttribute, taking the name of a entity set as a parameter.       The method must accept no parameters.       The method must return an expression of type `Expression<Func<T, bool>>` that is the filter to be composed for the entity set."
+  summary: "QueryInterceptorAttribute 메서드에 지정된 된 엔터티 집합에 쿼리 인터셉터로 주석 처리 합니다."
+  remarks: "엔터티 집합 수준 권한 부여 및 유효성 검사는 QueryInterceptorAttribute로 주석이 달려 있어야 하는 방법으로 구현 됩니다. [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]보안 정책을 구현 하지 않지만 대신 서비스 개발자가 자신의 보안 규칙 및 비즈니스 유효성 검사를 작성 하는 데 필요한 인프라를 제공 합니다.       엔터티 집합 액세스 제어 및 유효성 검사는 쿼리 구성을 사용 하 여 쿼리 작업을 통해 사용할 수 있습니다. 엔터티 기반 액세스를 제어 하려면 구현 된 메서드-엔터티 집합별 다음 규칙에 따라: 메서드 공용 범위가 있어야 하 고 매개 변수로 설정 엔터티의 이름을 사용 하는 QueryInterceptorAttribute로 주석을 달아야 합니다.       메서드 매개 변수 없이 동의 해야 합니다.       이 메서드는 형식의 식을 반환 해야 `Expression<Func<T, bool>>` 엔터티 집합에 대해 구성할 필터 인 합니다."
   example:
   - "The following example controls access to the `Customers` entity set. Each `Customer` can only see `Orders` associated with that `Customer`.  \n  \n```  \n[QueryInterceptor(\"Orders\")]  \npublic Expression<Func<Order, bool>> FilterOrders()   \n{  \n    return o => o.Customer.Name == /* Current principal name. */;  \n}   \n  \n// Insures that the user accessing the customer(s) has the appropriate  \n// rights as defined in the QueryRules object to access the customer  \n// resource(s).  \n  \n[QueryInterceptor (\"Customers\")]  \npublic Expression<Func<Customer, bool>> FilterCustomers()   \n{  \n  return c => c.Name == /* Current principal name. */ &&  \n              this.CurrentDataSource.QueryRules.Contains(  \n                rule => rule.Name == c.Name &&  \n                        rule.CustomerAllowedToQuery == true  \n              );  \n}  \n  \n```"
   syntax:
@@ -38,13 +38,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Services.QueryInterceptorAttribute&quot;></xref> class for the entity set specified by the <code>entitySetName</code> parameter."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Data.Services.QueryInterceptorAttribute&quot;> </xref> 엔터티 집합에 지정 된 내용에 대 한 클래스는 <code> entitySetName </code> 매개 변수입니다."
   syntax:
     content: public QueryInterceptorAttribute (string entitySetName);
     parameters:
     - id: entitySetName
       type: System.String
-      description: "The name of the entity set that contains the entity to which the interceptor applies."
+      description: "인터셉터가 적용 되는 엔터티가 포함 된 엔터티 집합의 이름입니다."
   overload: System.Data.Services.QueryInterceptorAttribute.#ctor*
   exceptions: []
   platform:
@@ -61,12 +61,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the name of the entity set that contains the entity to which the interceptor applies."
+  summary: "인터셉터가 적용 되는 엔터티를 포함 하는 엔터티 집합의 이름을 가져옵니다."
   syntax:
     content: public string EntitySetName { get; }
     return:
       type: System.String
-      description: "A string that indicates the name of the entity set that contains the entity to which the interceptor applies."
+      description: "인터셉터가 적용 되는 엔터티가 포함 된 엔터티 집합의 이름을 나타내는 문자열입니다."
   overload: System.Data.Services.QueryInterceptorAttribute.EntitySetName*
   exceptions: []
   platform:

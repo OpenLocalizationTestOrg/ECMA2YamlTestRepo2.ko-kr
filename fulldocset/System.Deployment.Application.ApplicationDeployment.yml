@@ -39,8 +39,8 @@ items:
   nameWithType: ApplicationDeployment
   fullName: System.Deployment.Application.ApplicationDeployment
   type: Class
-  summary: "Supports updates of the current deployment programmatically, and handles on-demand downloading of files. This class cannot be inherited."
-  remarks: "You can configure your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application to check for updates and install them automatically through the `subscription` element of the deployment manifest. Some applications, however, need finer control over their updates. You may want to install required updates programmatically, and prompt users to install optional updates at their convenience. By turning off subscription updates in the deployment manifest, you can take complete control of your application&quot;s update policies. Alternatively, you can use automatic subscription in conjunction with ApplicationDeployment, which enables [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] to update the application periodically, but uses ApplicationDeployment to download critical updates shortly after they are released.       You can test whether your deployment has an available update by using either the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A> or the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A> method; the latter method raises the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted> event on successful completion. <xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A> returns important information about the update, such as its version number and whether it is a required update for current users. If an update is available, you can install it by using <xref:System.Deployment.Application.ApplicationDeployment.Update%2A> or <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>; the latter method raises the <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted> event after installation of the update is complete. For large updates, you can receive progress notifications through the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateProgressChanged> and <xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged> events, and use the information in <xref:System.ComponentModel.ProgressChangedEventArgs> to notify the user of the download status.       You can also use ApplicationDeployment to download large files and assemblies on demand. These files must be marked as &quot;optional&quot; within the deployment&quot;s application manifest so that they are not downloaded during installation. You can download the files at any point during the application&quot;s duration by using the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> or the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> method. You can download assemblies before they are loaded into memory by supplying an event handler for the <xref:System.AppDomain.AssemblyResolve> event on the <xref:System.AppDomain> class. For more information, see [Walkthrough: Downloading Assemblies on Demand with the ClickOnce Deployment API Using the Designer](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  If you update a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application while the application is running, the user will not see the updates until you call the <xref:System.Windows.Forms.Application.Restart%2A> method of the <xref:System.Windows.Forms.Application>, which will close the current running instance of the application and immediately restart it.       ApplicationDeployment has no public constructor; you obtain instances of the class within a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application through the <xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A> property. You use the <xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A> property to verify that the current application is a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application.       ApplicationDeployment supports checking for updates and downloading updated files asynchronously by using the new [Event-based Asynchronous Pattern Overview](~/add/includes/ajax-current-ext-md.md), which exposes completion callbacks as class events. ApplicationDeployment starts and manages the threads for you, and calls your application back on the correct UI thread. Through this class, you can update without locking up the application, so that the user can continue working while the update installs. If the user must stop all work while an update takes place, consider using the synchronous methods instead.      > [!NOTE] >  Performing asynchronous updates requires that your application import both the <xref:System.Deployment.Application> and <xref:System.ComponentModel> namespaces."
+  summary: "현재 배포의 업데이트를 프로그래밍 방식으로 지원 하 고 요청 시의 파일 다운로드를 처리 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "구성할 수 있습니다 프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램 업데이트를 확인 하 고 통해 자동으로 설치 하는 `subscription` 배포 매니페스트의 요소입니다. 그러나 일부 응용 프로그램에 대 한 업데이트가 보다 자세히 제어 하려면 필요. 프로그래밍 방식으로 필수 업데이트를 설치 하 여 사용자 편의에 선택적 업데이트를 설치 하 게 좋습니다. 배포 매니페스트에 구독 업데이트를 해제 하 여 응용 프로그램의 업데이트 정책 완전히 제어를 걸릴 수 있습니다. 또는 자동 구독 매핑함으로써 ApplicationDeployment와 함께에서 사용할 수 있습니다 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 릴리스되는 직후 중요 업데이트를 다운로드 하려면 응용 프로그램을 정기적으로, 하지만 ApplicationDeployment 사용 하 여 업데이트 합니다.       배포 중 하나를 사용 하 여 사용 가능한 업데이트에 있는지 테스트할 수 있습니다는 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A>또는 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>방법으로, 두 번째 방법 발생은 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted>성공적으로 완료 되는 이벤트입니다.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted> </xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A> <xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A>버전 번호 및 여부와 현재 사용자에 대 한 필수 업데이트를 비롯 하 여 업데이트에 대 한 중요 한 정보를 반환 합니다.</xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A> 업데이트를 사용할 수 있는 경우 사용 하 여 설치할 수 있습니다 <xref:System.Deployment.Application.ApplicationDeployment.Update%2A>또는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>; 후자의 메서드는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted>업데이트의 설치가 완료 된 후 이벤트.</xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted> </xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.Update%2A> 대규모 업데이트를 통해 진행 상황 알림을 받을 수 있습니다는 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateProgressChanged>및 <xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged>이벤트의 정보를 사용 하 고 <xref:System.ComponentModel.ProgressChangedEventArgs>다운로드 하 여 상태의 사용자에 게 알리도록.</xref:System.ComponentModel.ProgressChangedEventArgs> </xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged> </xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateProgressChanged>       큰 파일 및 요청 시 어셈블리 다운로드 ApplicationDeployment를 사용할 수도 있습니다. 이러한 파일은 설치 하는 동안 다운로드 되지 않도록 배포의 응용 프로그램 매니페스트 내에서 &quot;optional&quot;로 표시 되어야 합니다. 사용 하 여 응용 프로그램의 기간 중 언제 든 지 파일을 다운로드할 수는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>또는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> <xref:System.AppDomain.AssemblyResolve> <xref:System.AppDomain>클래스</xref:System.AppDomain> 의 이벤트</xref:System.AppDomain.AssemblyResolve> 에 대 한 이벤트 처리기를 제공 하 여 메모리에 로드 하기 전에 어셈블리를 다운로드할 수 있습니다. 자세한 내용은 참조 [연습: ClickOnce 배포 API를 사용 하 여 디자이너는 요청 시 어셈블리 다운로드](~/add/includes/ajax-current-ext-md.md)합니다.      > [!NOTE] > 업데이트 하는 경우는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램이 실행 되는 동안 응용 프로그램에 사용자 표시 되지 것입니다는 업데이트 <xref:System.Windows.Forms.Application.Restart%2A> <xref:System.Windows.Forms.Application>응용 프로그램의 현재 실행 중인 인스턴스를 닫고 즉시 합니다. 다시 시작 됩니다는</xref:System.Windows.Forms.Application> 메서드</xref:System.Windows.Forms.Application.Restart%2A> 를 호출 하기 전에       ApplicationDeployment public 생성자를 없습니다. 내에서 클래스의 인스턴스를 가져올는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 를 통해 응용 프로그램의 <xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A>속성.</xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A> 사용 하면는 <xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A>속성을 현재 응용 프로그램 인지 확인 한 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램.</xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A>       업데이트 확인 및 새을 사용 하 여 업데이트 된 파일을 비동기적으로 다운로드 ApplicationDeployment 지원 [이벤트 기반 비동기 패턴 개요](~/add/includes/ajax-current-ext-md.md), 완료 콜백을 클래스 이벤트로 노출 하는 합니다. ApplicationDeployment 시작,는 스레드를 관리 하 고 올바른 UI 스레드에서 응용 프로그램을 다시 호출 합니다. 이 클래스를 통해 사용자에 업데이트가 설치 되는 동안 작업을 계속할 수 있도록 응용 프로그램을 잠그지 않고도 업데이트할 수 있습니다. 업데이트가 발생 하는 동안 모든 작업을 중단 해야, 동기 메서드를 대신 사용 하는 것이 좋습니다.      > [!NOTE] > 응용 프로그램 둘 다 가져옵니다 비동기 업데이트를 수행 하려면는 <xref:System.Deployment.Application>및 <xref:System.ComponentModel>네임 스페이스.</xref:System.ComponentModel> </xref:System.Deployment.Application>"
   example:
   - "The following code example determines at application load time whether a new update is available; if a required update is available, the code example installs the update asynchronously. This code should be added to a form that contains a <xref:System.Windows.Forms.TextBox> named `downloadStatus`.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/t-system.deployment.appl_4_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
@@ -63,15 +63,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the URL used to launch the deployment manifest of the application."
-  remarks: "This property will work in both fully trusted and partially trusted applications."
+  summary: "응용 프로그램의 배포 매니페스트를 시작 하는 데 사용 하는 URL을 가져옵니다."
+  remarks: "이 속성은 완전히 신뢰할 수 있는 및 부분적으로 신뢰할 수 있는 응용 프로그램에서 작동 합니다."
   example:
   - "The following code shows how to retrieve the URL parameters by using ActivationUri, and how to use the <xref:System.Web.HttpUtility> class to parse the query string safely. Multiple occurrences of the same query string variable are consolidated in one entry of the returned <xref:System.Collections.Specialized.NameValueCollection>.  \n  \n [!code-cs[ClickOnceQueryString#1](~/add/codesnippet/csharp/ClickOnceQueryString/Form1.cs#1)]\n [!code-vb[ClickOnceQueryString#1](~/add/codesnippet/visualbasic/ClickOnceQueryStringVB/Form1.vb#1)]"
   syntax:
     content: public Uri ActivationUri { get; }
     return:
       type: System.Uri
-      description: "A zero-length string if the `TrustUrlParameters` property in the deployment manifest is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, or if the user has supplied a UNC to open the deployment or has opened it locally. Otherwise, the return value is the full URL used to launch the application, including any parameters."
+      description: "길이가&0; 인 경우 문자열는 `TrustUrlParameters` 배포 매니페스트에 속성은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, 사용자가 제공한 배포를 열려는 UNC 또는 로컬 열에 있습니다. 그렇지 않으면 반환 값은 전체 URL 매개 변수를 포함 하 여 응용 프로그램을 시작 하는 데 사용 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.ActivationUri*
   exceptions: []
   platform:
@@ -88,8 +88,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Performs the same operation as <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>, but returns extended information about the available update."
-  remarks: "The CheckForDetailedUpdate method lets synchronous callers get the same extended information that asynchronous callers get using the <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs> class."
+  summary: "와 동일한 작업을 수행 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>, 사용 가능한 업데이트에 대 한 자세한 정보를 반환 하지만.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>"
+  remarks: "CheckForDetailedUpdate 메서드 사용 동기 호출자가 비동기 호출자가 <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs>클래스</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs> 를 사용 하 여 가져올 동일한 확장된 정보를 얻을 수 있습니다."
   example:
   - "The following code example uses CheckForDetailedUpdate to retrieve the information about the latest update. If an update exists, it installs it automatically only if it is a required update; otherwise, it prompts the user.  \n  \n [!code-cs[ClickOnceAPI#7](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#7)]\n [!code-cpp[ClickOnceAPI#7](~/add/codesnippet/cpp/m-system.deployment.appl_4_1.cpp)]\n [!code-vb[ClickOnceAPI#7](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#7)]"
   syntax:
@@ -97,18 +97,18 @@ items:
     parameters: []
     return:
       type: System.Deployment.Application.UpdateCheckInfo
-      description: "An <xref href=&quot;System.Deployment.Application.UpdateCheckInfo&quot;></xref> for the available update."
+      description: "<xref href=&quot;System.Deployment.Application.UpdateCheckInfo&quot;> </xref> 사용 가능한 업데이트에 대 한 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current application is either not configured to support updates, or there is another update check operation already in progress."
+    description: "현재 응용 프로그램 하거나 업데이트를 지원 하도록 구성 되지 않았거나 다른 업데이트 확인 작업이 진행 중에 이미 있습니다."
   - type: System.Deployment.Application.DeploymentDownloadException
     commentId: T:System.Deployment.Application.DeploymentDownloadException
-    description: "The deployment manifest cannot be downloaded. This exception will appear in the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*> property of the <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;></xref> event."
+    description: "배포 매니페스트를 다운로드할 수 없습니다. 이 예외에 표시 됩니다는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>의 속성은 <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;> </xref> 이벤트.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>"
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "The deployment manifest is corrupted. Regenerate the application&quot;s manifest before you attempt to deploy this application to users. This exception will appear in the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*> property of the <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;></xref> event."
+    description: "배포 매니페스트가 손상 되었습니다. 사용자에 게이 응용 프로그램을 배포 하기 전에 응용 프로그램의 매니페스트를 다시 생성 합니다. 이 예외에 표시 됩니다는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>의 속성은 <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;> </xref> 이벤트.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>"
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate(System.Boolean)
@@ -123,16 +123,16 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Performs the same operation as <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>, but returns extended information about the available update."
+  summary: "와 동일한 작업을 수행 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>, 사용 가능한 업데이트에 대 한 자세한 정보를 반환 하지만.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate*>"
   syntax:
     content: public System.Deployment.Application.UpdateCheckInfo CheckForDetailedUpdate (bool persistUpdateCheckResult);
     parameters:
     - id: persistUpdateCheckResult
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, the update will be applied silently and no dialog box will be displayed."
+      description: "경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>하면 업데이트가 자동으로 적용 하 고 대화 상자가 표시 됩니다."
     return:
       type: System.Deployment.Application.UpdateCheckInfo
-      description: "An <xref href=&quot;System.Deployment.Application.UpdateCheckInfo&quot;></xref> for the available update."
+      description: "<xref href=&quot;System.Deployment.Application.UpdateCheckInfo&quot;> </xref> 사용 가능한 업데이트에 대 한 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate*
   exceptions: []
   platform:
@@ -149,8 +149,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Checks <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*> to determine whether a new update is available."
-  remarks: "The CheckForUpdate method compares the version of the currently installed deployment with the version specified in the deployment manifest found at <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>. If the version on the server is different from the installed version, it returns `true`.       This method will block until the check has completed. To check for an update asynchronously, use the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A> method instead.      > [!NOTE] >  If CheckForUpdate discovers that an update is available, and the user chooses not to install it, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will prompt the user that an update is available the next time the application is run. There is no way to disable this prompting. (If the application is a required update, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will install it without prompting.)"
+  summary: "확인 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>새 업데이트를 사용할 수 있는지 여부를 확인 하려면.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>"
+  remarks: "CheckForUpdate 메서드 비교 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A> 에 배포 매니페스트에 지정 된 버전과 현재 설치 된 배포의 버전 서버에 버전와에서 다른 경우 설치 된 버전을 반환 `true`합니다.       이 메서드는 확인이 완료 될 때까지 차단 됩니다. 를 확인 하려면 업데이트를 위해 비동기적으로 사용 된 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>메서드 대신.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>      > [!NOTE] > 업데이트를 사용할 수 있으며 사용자가을 설치 하지 않도록 선택 하는 경우 CheckForUpdate 검색 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 업데이트가 사용할 수 있는 다음에 응용 프로그램이 실행 될 때 사용자에 게 확인 합니다. 이러한 메시지를 표시 하지 않으려면 방식은 없습니다. (응용 프로그램이 있는 경우 필요한 업데이트 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 확인 하지 않고 설치 됩니다.)"
   example:
   - "The following code example checks for an application update; if one is available, it installs it synchronously.  \n  \n [!code-cs[ClickOnceAPI#5](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#5)]\n [!code-cpp[ClickOnceAPI#5](~/add/codesnippet/cpp/m-system.deployment.appl_5_1.cpp)]\n [!code-vb[ClickOnceAPI#5](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#5)]"
   syntax:
@@ -158,18 +158,18 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a new update is available; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>새 업데이트는 사용할 수 있습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.CheckForUpdate*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: '[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] throws this exception immediately if you call the CheckForUpdate method while an update is already in progress.'
+    description: '[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]업데이트가 이미 진행 중이면 CheckForUpdate 메서드를 호출 하면 즉시이 예외를 throw 합니다.'
   - type: System.Deployment.Application.DeploymentDownloadException
     commentId: T:System.Deployment.Application.DeploymentDownloadException
-    description: "The deployment manifest cannot be downloaded."
+    description: "배포 매니페스트를 다운로드할 수 없습니다."
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "The deployment manifest is corrupted. You will likely need to redeploy the application to fix this problem."
+    description: "배포 매니페스트가 손상 되었습니다. 이 문제를 해결 하려면 응용 프로그램을 재배포 해야 합니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.CheckForUpdate(System.Boolean)
@@ -184,16 +184,16 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Checks <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*> to determine whether a new update is available."
+  summary: "확인 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>새 업데이트를 사용할 수 있는지 여부를 확인 하려면.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>"
   syntax:
     content: public bool CheckForUpdate (bool persistUpdateCheckResult);
     parameters:
     - id: persistUpdateCheckResult
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, the update will be applied silently and no dialog box will be displayed."
+      description: "경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>하면 업데이트가 자동으로 적용 하 고 대화 상자가 표시 됩니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a new update is available; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>새 업데이트는 사용할 수 있습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.CheckForUpdate*
   exceptions: []
   platform:
@@ -210,8 +210,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Checks <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*> asynchronously to determine whether a new update is available."
-  remarks: "CheckForUpdateAsync returns immediately and starts a separate thread for downloading the updated application. When the method completes or is canceled, it raises the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted> event. You can use <xref:System.ComponentModel.AsyncCompletedEventArgs> in this event handler to determine whether the operation was canceled, or if an exception was raised during update.       You can cancel an asynchronous update by calling <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsyncCancel%2A>.      > [!NOTE] >  If <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A> discovers that an update is available, and the user chooses not to install it, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will prompt the user that an update is available the next time the application is run. There is no way to disable this prompting. (If the application is a required update, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will install it without prompting.)"
+  summary: "확인 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>비동기적으로 새 업데이트를 사용할 수 있는지 여부를 확인 하려면.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation*>"
+  remarks: "CheckForUpdateAsync 즉시 반환 하 고 업데이트 된 응용 프로그램을 다운로드 하기 위한 별도 스레드를 시작 합니다. 메서드가 완료 되거나 취소를 발생 시킵니다는 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted>이벤트.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted> 사용할 수 있습니다 <xref:System.ComponentModel.AsyncCompletedEventArgs>작업이 취소 되었는지 여부 또는 업데이트 하는 동안 예외가 발생 하는 경우를 확인 하려면이 이벤트 처리기에서.</xref:System.ComponentModel.AsyncCompletedEventArgs>       <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsyncCancel%2A>.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsyncCancel%2A> 를 호출 하 여 비동기 업데이트를 취소할 수 있습니다.      > [!NOTE] > 경우 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A>업데이트를 사용할 수 있으며 사용자가을 설치 하지 않도록 선택은 검색 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 업데이트가 제공 되 고 다음에 응용 프로그램이 실행 될 때 사용자 묻습니다.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A> 이러한 메시지를 표시 하지 않으려면 방식은 없습니다. (응용 프로그램이 있는 경우 필요한 업데이트 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 확인 하지 않고 설치 됩니다.)"
   example:
   - "The following example checks for an update asynchronously, and installs the update if one exists.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/m-system.deployment.appl_3_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
@@ -221,13 +221,13 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: '[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] throws this exception immediately if you call the CheckForUpdateAsync method while an update is already in progress.'
+    description: '[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]업데이트가 이미 진행 중이면 CheckForUpdateAsync 메서드를 호출 하면 즉시이 예외를 throw 합니다.'
   - type: System.Deployment.Application.DeploymentDownloadException
     commentId: T:System.Deployment.Application.DeploymentDownloadException
-    description: "The deployment manifest cannot be downloaded. This exception appears in the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*> property of the <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;></xref> event."
+    description: "배포 매니페스트를 다운로드할 수 없습니다. 이 예외에 표시는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>의 속성은 <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;> </xref> 이벤트.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>"
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "The deployment manifest is corrupted. You will likely need to redeploy the application to fix this problem. This exception appears in the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*> property of the <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;></xref> event."
+    description: "배포 매니페스트가 손상 되었습니다. 이 문제를 해결 하려면 응용 프로그램을 재배포 해야 합니다. 이 예외에 표시는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>의 속성은 <xref href=&quot;System.Deployment.Application.ApplicationDeployment.CheckForUpdateCompleted&quot;> </xref> 이벤트.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error*>"
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsyncCancel
@@ -242,8 +242,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Cancels the asynchronous update check."
-  remarks: "Use this method to cancel an update check initiated with the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A> method.       This method will not cancel any background update that may already be in progress, such as an update started as part of a subscription. For more information about subscriptions, see [Choosing a ClickOnce Update Strategy](~/add/includes/ajax-current-ext-md.md)."
+  summary: "비동기 업데이트 확인을 취소합니다."
+  remarks: "이 메서드를 사용 하 여 업데이트 확인 된 시작 작업을 취소 하 고 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>       이 메서드는 백그라운드 업데이트 이미 진행 되는 취소 되지 것입니다 가입의 일환으로 시작 된 업데이트와 같은 합니다. 구독에 대 한 자세한 내용은 참조 [ClickOnce 업데이트 전략 선택](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public void CheckForUpdateAsyncCancel ();
     parameters: []
@@ -263,15 +263,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs when <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*> has completed."
-  remarks: "The <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs> class will tell you, among other things, the version of the update, how large the update is, and whether the available update is required or optional."
+  summary: "발생 경우 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>완료 되었습니다.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>"
+  remarks: "<xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs>클래스 쿼리를 확인할 수, 다른 작업, 업데이트의 버전, 업데이트는 크기 및 사용 가능한 업데이트를 필수 또는 선택적 여부.</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs>"
   example:
   - "The following code example uses CheckForUpdateCompleted to decide whether to ask the user to install the available application update. If the update is a mandatory upgrade, the CheckForUpdateCompleted event handler does not prompt the user. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/e-system.deployment.appl_2_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
     content: public event System.Deployment.Application.CheckForUpdateCompletedEventHandler CheckForUpdateCompleted;
     return:
       type: System.Deployment.Application.CheckForUpdateCompletedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -287,15 +287,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs when a progress update is available on a <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*> call."
-  remarks: "CheckForUpdateProgressChanged reports on the download status of the application&quot;s deployment manifest. This can be important information for users who are downloading the deployment over slow network connections."
+  summary: "진행 상황 업데이트에 사용할 수 있는 경우에 발생 한 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>호출.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>"
+  remarks: "응용 프로그램의 배포의 다운로드 상태에서 CheckForUpdateProgressChanged 보고서 매니페스트합니다. 이 사용자에 느린 네트워크 연결을 통해 배포를 다운로드 하는 게 중요 한 정보를 수 있습니다."
   example:
   - "The following code example uses the CheckForUpdateProgressChanged event to inform the user how much of the deployment manifest is left to download. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`..  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/d621aa2f-b92e-4e9d-b698-_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
     content: public event System.Deployment.Application.DeploymentProgressChangedEventHandler CheckForUpdateProgressChanged;
     return:
       type: System.Deployment.Application.DeploymentProgressChangedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -311,20 +311,20 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Returns the current <xref href=&quot;System.Deployment.Application.ApplicationDeployment&quot;></xref> for this deployment."
-  remarks: "You cannot create instances of <xref:System.Deployment.Application.ApplicationDeployment> directly in your application; you must retrieve a valid instance through the CurrentDeployment property.       The CurrentDeployment static property is valid only from within an application that was deployed using [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]. Attempts to call this property from non-[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] applications will throw an exception. If you are developing an application that may or may not be deployed using [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)], use the <xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A> property to test whether the current program is a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application."
+  summary: "현재 반환 <xref href=&quot;System.Deployment.Application.ApplicationDeployment&quot;> </xref> 이 배포에 대 한 합니다."
+  remarks: "인스턴스를 만들 수 <xref:System.Deployment.Application.ApplicationDeployment>직접; 응용 프로그램에 검색 해야 CurrentDeployment 속성을 통해 올바른 인스턴스.</xref:System.Deployment.Application.ApplicationDeployment>       CurrentDeployment 정적 속성은 사용 하 여 배포 된 응용 프로그램 내 에서만 유효 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]합니다. 비-에서이 속성을 호출 하려고[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램 예외를 throw 합니다. 수도 있습니다를 사용 하 여 배포 될 수 있는 응용 프로그램을 개발 하는 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]를 사용 하 여는 <xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A>속성은 현재 프로그램 인지를 테스트 하는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램.</xref:System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed%2A>"
   example:
   - "The following code example retrieves CurrentDeployment and checks to determine whether the application has been updated in the past three days.  \n  \n [!code-cs[ClickOnceAPI#3](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#3)]\n [!code-cpp[ClickOnceAPI#3](~/add/codesnippet/cpp/p-system.deployment.appl_12_1.cpp)]\n [!code-vb[ClickOnceAPI#3](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#3)]"
   syntax:
     content: public static System.Deployment.Application.ApplicationDeployment CurrentDeployment { get; }
     return:
       type: System.Deployment.Application.ApplicationDeployment
-      description: "The current deployment."
+      description: "현재 배포 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.CurrentDeployment*
   exceptions:
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "You attempted to call this static property from a non-[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application."
+    description: "비-에서이 정적 속성을 호출 하려고 했습니다.[!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램입니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.CurrentVersion
@@ -339,15 +339,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the version of the deployment for the current running instance of the application."
-  remarks: "CurrentVersion will differ from <xref:System.Deployment.Application.ApplicationDeployment.UpdatedVersion%2A> if a new update has been installed but you have not yet called <xref:System.Windows.Forms.Application.Restart%2A>. If the deployment manifest is configured to perform automatic updates, you can compare these two values to determine if you should restart the application."
+  summary: "응용 프로그램의 현재 실행 중인 인스턴스에 대 한 배포의 버전을 가져옵니다."
+  remarks: "CurrentVersion <xref:System.Deployment.Application.ApplicationDeployment.UpdatedVersion%2A>새 업데이트가 설치 되어 있지만 <xref:System.Windows.Forms.Application.Restart%2A>.</xref:System.Windows.Forms.Application.Restart%2A> 호출 되지 않은 경우</xref:System.Deployment.Application.ApplicationDeployment.UpdatedVersion%2A> 에서 달라 집니다. 배포 매니페스트는 자동 업데이트를 수행 하도록 구성 된, 경우에 응용 프로그램을 다시 시작 해야 하는 경우를 확인 하려면이 두 값을 비교할 수 있습니다."
   example:
   - "The following code example defines a method that determines whether [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] has updated the application.  \n  \n [!code-cs[ClickOnceAPI#3](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#3)]\n [!code-cpp[ClickOnceAPI#3](~/add/codesnippet/cpp/p-system.deployment.appl_7_1.cpp)]\n [!code-vb[ClickOnceAPI#3](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#3)]"
   syntax:
     content: public Version CurrentVersion { get; }
     return:
       type: System.Version
-      description: "The current deployment version."
+      description: "현재 배포 버전입니다."
   overload: System.Deployment.Application.ApplicationDeployment.CurrentVersion*
   exceptions: []
   platform:
@@ -364,12 +364,12 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the path to the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] data directory."
+  summary: "경로를 가져옵니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 데이터 디렉터리입니다."
   syntax:
     content: public string DataDirectory { get; }
     return:
       type: System.String
-      description: "A string containing the path to the application&quot;s data directory on the local disk."
+      description: "경로 로컬 디스크에 응용 프로그램의 데이터 디렉터리를 포함 하는 문자열입니다."
   overload: System.Deployment.Application.ApplicationDeployment.DataDirectory*
   exceptions: []
   platform:
@@ -386,8 +386,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Downloads a set of optional files on demand."
-  remarks: "In a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application, the files marked &quot;optional&quot; in the application manifest are not downloaded during initialization or update. You can use the DownloadFileGroup method to download all of the files belonging to a named group on demand, so that they do not consume network resources and disk space until you are sure the user requires them. For example, certain users may need to use a data analysis package included in your application on a daily basis, while other users may never invoke it.       To use an assembly you have downloaded with DownloadFileGroup, you attach an event listener to the <xref:System.AppDomain.AssemblyResolve> event on the <xref:System.AppDomain.CurrentDomain%2A>. For an example, see =[Walkthrough: Downloading Assemblies on Demand with the ClickOnce Deployment API Using the Designer](~/add/includes/ajax-current-ext-md.md).       All files are downloaded to the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application cache and are therefore isolated to the current version of the application. Let&quot;s say that after an application downloads a file group, the user installs a new version of the application, but later reverts to the previous version of the application. In this case, the previous version will still have the copies of the files it originally downloaded. For more information about accessing data files, see [Accessing Local and Remote Data in ClickOnce Applications](~/add/includes/ajax-current-ext-md.md).       DownloadFileGroup works in partially trusted applications, that is, in any [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application running with restricted permission. However, if you attempt to load assemblies dynamically, your application will require full trust.       On-demand downloading of data files is currently not supported.       Your application will not be responsive to user input until the DownloadFileGroup method returns. If you need to download files without interrupting the user&quot;s workflow, use the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> method instead.       You cannot download a single file by its file name alone. To download a single file, assign it a group name in your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] deployment and download the group using this method."
+  summary: "필요에 따라 선택적 파일 집합을 다운로드합니다."
+  remarks: "에 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램을 초기화 하거나 업데이트 하는 동안 응용 프로그램 매니페스트의 &quot;optional&quot;로 표시 하는 파일 다운로드 되지 않습니다. 사용 하지 않도록 네트워크 리소스와 디스크 공간이 사용자가 필요할 때까지 있도록 필요에 따라 명명된 된 그룹에 속하는 파일을 모두 다운로드 하는 DownloadFileGroup 메서드를 사용할 수 있습니다. 예를 들어 특정 사용자에 게 다른 사용자가를 호출 하지 않는 동안 매일, 응용 프로그램에 포함 된 데이터 분석 패키지를 사용 해야 합니다.       DownloadFileGroup 함께 다운로드 한 어셈블리를 사용, 이벤트 수신기를 연결 <xref:System.AppDomain.AssemblyResolve> <xref:System.AppDomain.CurrentDomain%2A>했습니다.</xref:System.AppDomain.CurrentDomain%2A> 이벤트</xref:System.AppDomain.AssemblyResolve> 예를 들어 참조 =[연습: ClickOnce 배포 API를 사용 하 여 디자이너는 요청 시 어셈블리 다운로드](~/add/includes/ajax-current-ext-md.md)합니다.       모든 파일에 다운로드 됩니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램 캐시 격리 됩니다 응용 프로그램의 현재 버전입니다. 응용 프로그램 파일 그룹을 다운로드 한 후 사용자는 응용 프로그램의 새 버전을 설치 하지만 나중에 응용 프로그램의 이전 버전으로 되돌립니다 가정해 봅니다. 이 경우 이전 버전은 계속 원래 다운로드 한 파일의 복사본을 보유 합니다. 데이터 파일에 액세스 하는 방법에 대 한 자세한 내용은 참조 [로컬 액세스 및 ClickOnce 응용 프로그램의 원격 데이터](~/add/includes/ajax-current-ext-md.md)합니다.       DownloadFileGroup 작동 하는 부분적으로 신뢰할 수 있는 응용 프로그램에서 즉, 모든 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 제한 된 권한으로 실행 응용 프로그램입니다. 그러나 어셈블리를 동적으로 로드 하려고 하면 응용 프로그램에 완전 신뢰가 필요 합니다.       요청 시 데이터 파일의 다운로드는 현재 지원 되지 않습니다.       응용 프로그램 사용자 DownloadFileGroup 메서드가 반환 될 때까지 입력에 응답 되지 않습니다. 사용자의 워크플로 사용 하 여 중단 하지 않고 파일을 다운로드 하는 경우는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>메서드 대신.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>       파일 이름 으로만 한 파일을 다운로드할 수 없습니다. 단일 파일을 다운로드 하려면 그룹 이름을 할당에 프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 배포 및 다운로드가이 메서드를 사용 하 여 그룹입니다."
   example:
   - "The following code example demonstrates how to load an assembly on demand by listening for the <xref:System.AppDomain.AssemblyResolve> event.  \n  \n [!code-cs[ClickOnceOnDemandCmdLine#2](~/add/codesnippet/csharp/6f3e5fcc-9a7b-4ff6-a5e4-_1.cs)]"
   syntax:
@@ -395,12 +395,12 @@ items:
     parameters:
     - id: groupName
       type: System.String
-      description: "The named group of files to download. All files marked &quot;optional&quot; in a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application require a group name."
+      description: "다운로드할 파일의 명명 된 그룹입니다. 모든 파일 표시 &quot;optional&quot;는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에는 그룹 이름이 필요 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.DownloadFileGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>groupName</code> parameter is null or zero-length."
+    description: "<code> groupName </code> 매개 변수는 null 또는 길이가&0;입니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync(System.String)
@@ -415,22 +415,22 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Downloads, on demand, a set of optional files in the background."
-  remarks: "In a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application, the files marked &quot;optional&quot; in the application manifest are not downloaded during initialization or update. You can use the DownloadFileGroupAsync method to download all of the files belonging to a named group on demand, so that they do not consume network resources and disk space until you are sure the user requires them. This approach works not only for static files, but also for assemblies that an application may or may not require. For example, certain users may need to use a data analysis package included in your application on a daily basis, while other users may never invoke it.       To download assemblies on demand, attach an event listener to the <xref:System.AppDomain.AssemblyResolve> event on the <xref:System.AppDomain.CurrentDomain%2A>. For an example, see [Walkthrough: Downloading Assemblies on Demand with the ClickOnce Deployment API](~/add/includes/ajax-current-ext-md.md).       All assemblies are downloaded to the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application cache.       All static files are downloaded to the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application&quot;s data directory and are therefore isolated to the current version of the application. Let&quot;s say that after an application downloads a file group, the user installs a new version of the application, but later reverts to the previous version of the application. In this case, the previous version will still have the copies of the files it originally downloaded. For more information about accessing static files, see [Accessing Local and Remote Data in ClickOnce Applications](~/add/includes/ajax-current-ext-md.md).       You can download multiple file groups simultaneously using <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>. You can distinguish among them by using the <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A> property of the <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs> class, which is passed to the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged> event. If you need to pass more complex state, you can use <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> to pass in a `state` object.       <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> works in partially trusted applications, that is, in any [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application running with restricted permission. However, if you are attempting to load assemblies dynamically, your application will require full trust.       On-demand downloading of data files is currently not supported.       You cannot download a single file by its file name alone. To download a single file, assign it a group name in your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] deployment and download the group using this method.       To cancel an asynchronous download, call the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A> method."
+  summary: "백그라운드에서 선택적 파일 집합을 필요에 따라 다운로드합니다."
+  remarks: "에 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램을 초기화 하거나 업데이트 하는 동안 응용 프로그램 매니페스트의 &quot;optional&quot;로 표시 하는 파일 다운로드 되지 않습니다. 사용 하지 않도록 네트워크 리소스와 디스크 공간이 사용자가 필요할 때까지 있도록 필요에 따라 명명된 된 그룹에 속하는 파일을 모두 다운로드 하는 DownloadFileGroupAsync 메서드를 사용할 수 있습니다. 이 방법은 정적 파일 뿐만 아니라 응용 프로그램 않거나 필요 하지 않을 수 있는 어셈블리에 대 한 작동 합니다. 예를 들어 특정 사용자에 게 다른 사용자가를 호출 하지 않는 동안 매일, 응용 프로그램에 포함 된 데이터 분석 패키지를 사용 해야 합니다.       요청 시 어셈블리를 다운로드 하려면 이벤트 수신기 연결 <xref:System.AppDomain.AssemblyResolve>에 <xref:System.AppDomain.CurrentDomain%2A>했습니다.</xref:System.AppDomain.CurrentDomain%2A> 이벤트</xref:System.AppDomain.AssemblyResolve> 예를 들어 참조 [연습: ClickOnce 배포 API를 사용 하 여 요청 시 어셈블리 다운로드](~/add/includes/ajax-current-ext-md.md)합니다.       모든 어셈블리에 다운로드 됩니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램 캐시 합니다.       모든 정적 파일에 다운로드 됩니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램의 데이터 디렉터리 격리 됩니다 응용 프로그램의 현재 버전입니다. 응용 프로그램 파일 그룹을 다운로드 한 후 사용자는 응용 프로그램의 새 버전을 설치 하지만 나중에 응용 프로그램의 이전 버전으로 되돌립니다 가정해 봅니다. 이 경우 이전 버전은 계속 원래 다운로드 한 파일의 복사본을 보유 합니다. 정적 파일에 액세스 하는 방법에 대 한 자세한 내용은 참조 [로컬 액세스 및 ClickOnce 응용 프로그램의 원격 데이터](~/add/includes/ajax-current-ext-md.md)합니다.       <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> 를 사용 하 여 동시에 여러 파일 그룹을 다운로드할 수 있습니다. 사용 하 여 파일 그룹을 구분할 수는 <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A>속성은 <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs>에 전달 되는 클래스는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged>이벤트.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged> </xref:System.Deployment.Application.DeploymentProgressChangedEventArgs> </xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A> 보다 복잡 한 상태를 전달 해야 하는 경우 사용할 수 있습니다 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>를 전달 하는 `state` 개체입니다.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>       <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>즉, 모든 부분적으로 신뢰할 수 있는 응용 프로그램에서 작동 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 제한 된 권한으로 실행 응용 프로그램입니다.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> 그러나 어셈블리를 동적으로 로드 하려는 응용 프로그램에 완전 신뢰가 필요 합니다.       요청 시 데이터 파일의 다운로드는 현재 지원 되지 않습니다.       파일 이름 으로만 한 파일을 다운로드할 수 없습니다. 단일 파일을 다운로드 하려면 그룹 이름을 할당에 프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 배포 및 다운로드가이 메서드를 사용 하 여 그룹입니다.       비동기 다운로드를 취소 하려면 호출 된 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A>"
   syntax:
     content: public void DownloadFileGroupAsync (string groupName);
     parameters:
     - id: groupName
       type: System.String
-      description: "The named group of files to download. All files marked &quot;optional&quot; in a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application require a group name."
+      description: "다운로드할 파일의 명명 된 그룹입니다. 모든 파일 표시 &quot;optional&quot;는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에는 그룹 이름이 필요 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>groupName</code> parameter is null or zero-length."
+    description: "<code> groupName </code> 매개 변수는 null 또는 길이가&0;입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "You cannot initiate more than one download of <code>groupName</code> at a time."
+    description: "여러 개 다운로드를 시작할 수 없습니다 <code> groupName </code> 한 번에 있습니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync(System.String,System.Object)
@@ -445,25 +445,25 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Downloads, on demand, a set of optional files in the background, and passes a piece of application state to the event callbacks."
-  remarks: "In a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application, the files marked &quot;optional&quot; in the application manifest are not downloaded during initialization or update. You can use the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> method to download all of the files belonging to a named group on demand, so that they do not consume network resources and disk space until you are sure the user requires them. This approach works not only for static files, but also for assemblies that an application may or may not require. For example, certain users may need to use a data analysis package included in your application on a daily basis, while other users may never invoke it. To download assemblies on demand, attach an event listener to the <xref:System.AppDomain.AssemblyResolve> event on the <xref:System.AppDomain.CurrentDomain%2A>.       You can download multiple file groups simultaneously by using the DownloadFileGroupAsync method. You can distinguish among them by using the <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A> property of the <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs> class, which is passed to the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged> event. If you need to pass a more complex state, you can use       DownloadFileGroupAsync to pass in a `state` object.       All static files are downloaded to the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application&quot;s data directory and are therefore isolated to the current version of the application. For more information about accessing static files, see [Accessing Local and Remote Data in ClickOnce Applications](~/add/includes/ajax-current-ext-md.md). . Let&quot;s say that after an application downloads a file group, the user installs a new version of the application, but later  user reverts to the previous version of the application. In this case, the previous version will still have the copies of the files it originally downloaded.       <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> works in partially trusted applications, that is, in any [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application running with restricted permission. However, if you are attempting to load assemblies dynamically, your application will require full trust.       On-demand downloading of data files is currently not supported.       To cancel an asynchronous download, call the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A> method."
+  summary: "필요에 따라 백그라운드에서 선택적 파일 집합을 다운로드 하 고 이벤트 콜백으로 응용 프로그램 상태를 전달 합니다."
+  remarks: "에 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램을 초기화 하거나 업데이트 하는 동안 응용 프로그램 매니페스트의 &quot;optional&quot;로 표시 하는 파일 다운로드 되지 않습니다. 사용할 수는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>메서드를 사용 하지 않도록 네트워크 리소스와 디스크 공간이 사용자가 필요할 때까지 있도록 필요에 따라 명명된 된 그룹에 속하는 파일을 모두 다운로드 합니다.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> 이 방법은 정적 파일 뿐만 아니라 응용 프로그램 않거나 필요 하지 않을 수 있는 어셈블리에 대 한 작동 합니다. 예를 들어 특정 사용자에 게 다른 사용자가를 호출 하지 않는 동안 매일, 응용 프로그램에 포함 된 데이터 분석 패키지를 사용 해야 합니다. 요청 시 어셈블리를 다운로드 하려면 이벤트 수신기 연결 <xref:System.AppDomain.AssemblyResolve>에 <xref:System.AppDomain.CurrentDomain%2A>했습니다.</xref:System.AppDomain.CurrentDomain%2A> 이벤트</xref:System.AppDomain.AssemblyResolve>       DownloadFileGroupAsync 메서드를 사용 하 여 여러 파일 그룹을 동시에 다운로드할 수 있습니다. 사용 하 여 파일 그룹을 구분할 수는 <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A>속성은 <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs>에 전달 되는 클래스는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged>이벤트.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupProgressChanged> </xref:System.Deployment.Application.DeploymentProgressChangedEventArgs> </xref:System.Deployment.Application.DeploymentProgressChangedEventArgs.Group%2A> 에 전달 하도록 DownloadFileGroupAsync 보다 복잡 한 상태를 전달 해야 하는 경우 사용할 수 있습니다는 `state` 개체입니다.       모든 정적 파일에 다운로드 됩니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램의 데이터 디렉터리 격리 됩니다 응용 프로그램의 현재 버전입니다. 정적 파일에 액세스 하는 방법에 대 한 자세한 내용은 참조 [로컬 액세스 및 ClickOnce 응용 프로그램의 원격 데이터](~/add/includes/ajax-current-ext-md.md)합니다. . 가정해 봅시다 다운로드 한 후 응용 프로그램에서 파일 그룹, 사용자는 응용 프로그램의 새 버전을 설치 하지만 이후 사용자는 응용 프로그램의 이전 버전으로 돌아갑니다. 이 경우 이전 버전은 계속 원래 다운로드 한 파일의 복사본을 보유 합니다.       <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>즉, 모든 부분적으로 신뢰할 수 있는 응용 프로그램에서 작동 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 제한 된 권한으로 실행 응용 프로그램입니다.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> 그러나 어셈블리를 동적으로 로드 하려는 응용 프로그램에 완전 신뢰가 필요 합니다.       요청 시 데이터 파일의 다운로드는 현재 지원 되지 않습니다.       비동기 다운로드를 취소 하려면 호출 된 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel%2A>"
   syntax:
     content: public void DownloadFileGroupAsync (string groupName, object userState);
     parameters:
     - id: groupName
       type: System.String
-      description: "The named group of files to download. All files marked &quot;optional&quot; in a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application require a group name."
+      description: "다운로드할 파일의 명명 된 그룹입니다. 모든 파일 표시 &quot;optional&quot;는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에는 그룹 이름이 필요 합니다."
     - id: userState
       type: System.Object
-      description: "An arbitrary object containing state information for the asynchronous operation."
+      description: "비동기 작업에 대 한 상태 정보를 포함 하는 임의 개체입니다."
   overload: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>groupName</code> parameter is null or zero-length."
+    description: "<code> groupName </code> 매개 변수는 null 또는 길이가&0;입니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "You cannot initiate more than one download of <code>groupName</code> at a time."
+    description: "여러 개 다운로드를 시작할 수 없습니다 <code> groupName </code> 한 번에 있습니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel(System.String)
@@ -478,18 +478,18 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Cancels an asynchronous file download."
+  summary: "비동기 파일 다운로드를 취소합니다."
   syntax:
     content: public void DownloadFileGroupAsyncCancel (string groupName);
     parameters:
     - id: groupName
       type: System.String
-      description: "The named group of files to download. All files marked &quot;optional&quot; in a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application require a group name."
+      description: "다운로드할 파일의 명명 된 그룹입니다. 모든 파일 표시 &quot;optional&quot;는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에는 그룹 이름이 필요 합니다."
   overload: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsyncCancel*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>groupName</code> cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>groupName</code>일 수 없습니다 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.DownloadFileGroupCompleted
@@ -504,15 +504,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs on the main application thread when a file download is complete."
-  remarks: "The DownloadFileGroupCompleted event is called on the main application thread. It is thread safe to call your application&quot;s Windows Forms controls directly within this callback.       Check the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> property of the <xref:System.ComponentModel.AsyncCompletedEventArgs> supplied to this callback. If this property is `null`, the download was successful; if it is not `null`, the installation did not succeed, and you can find more information about the installation failure through the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> property."
+  summary: "파일 다운로드가 완료 되 면 주 응용 프로그램 스레드에서 발생 합니다."
+  remarks: "DownloadFileGroupCompleted 이벤트는 주 응용 프로그램 스레드에서 호출 됩니다. 스레드로부터 안전 하 게이 콜백 내에서 직접 응용 프로그램의 Windows Forms 컨트롤을 호출할지 않습니다.       확인는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>의 속성은 <xref:System.ComponentModel.AsyncCompletedEventArgs>이 콜백은에 제공 된.</xref:System.ComponentModel.AsyncCompletedEventArgs> </xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> 이 속성이 `null`, 다운로드 작업이 성공적 없으면 `null`설치 실패 했으며, 및 절차를 통해 설치 문제에 대 한 자세한 정보를 찾을 수 있습니다는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>속성.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>"
   example:
   - "The following code example downloads a group of Help files in the background. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`..  \n  \n [!code-cs[ClickOnceAPI#8](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#8)]\n [!code-cpp[ClickOnceAPI#8](~/add/codesnippet/cpp/d8c90486-6b41-4c55-b911-_1.cpp)]\n [!code-vb[ClickOnceAPI#8](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#8)]"
   syntax:
     content: public event System.Deployment.Application.DownloadFileGroupCompletedEventHandler DownloadFileGroupCompleted;
     return:
       type: System.Deployment.Application.DownloadFileGroupCompletedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -528,15 +528,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs when status information is available on a file download operation initiated by a call to <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync*>."
-  remarks: "The DownloadFileGroupProgressChanged event is called on the main application thread. It is thread safe to call your application&quot;s Windows Forms controls directly within this callback.       Use the information supplied in <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs> to communicate progress information to your users."
+  summary: "상태 정보 파일 다운로드 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync*>.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync*> 를 호출 하 여 시작 된 작업에서 사용할 수 있는 경우에 발생"
+  remarks: "DownloadFileGroupProgressChanged 이벤트는 주 응용 프로그램 스레드에서 호출 됩니다. 스레드로부터 안전 하 게이 콜백 내에서 직접 응용 프로그램의 Windows Forms 컨트롤을 호출할지 않습니다.       에 제공 된 정보를 사용 하 여 <xref:System.Deployment.Application.DeploymentProgressChangedEventArgs>사용자에 게 진행률 정보를 전달 합니다.</xref:System.Deployment.Application.DeploymentProgressChangedEventArgs>"
   example:
   - "The following code example downloads a group of Help files in the background. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`.  \n  \n [!code-cs[ClickOnceAPI#8](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#8)]\n [!code-cpp[ClickOnceAPI#8](~/add/codesnippet/cpp/dd149587-df74-4c6a-9251-_1.cpp)]\n [!code-vb[ClickOnceAPI#8](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#8)]"
   syntax:
     content: public event System.Deployment.Application.DeploymentProgressChangedEventHandler DownloadFileGroupProgressChanged;
     return:
       type: System.Deployment.Application.DeploymentProgressChangedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -552,8 +552,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Checks whether the named file group has already been downloaded to the client computer."
-  remarks: "IsFileGroupDownloaded works in a partially trusted application without any security demands.       When you update an application, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] copies any on-demand data files from the previous version into the new version&quot;s data directory. If you download a new version of these files, you should remove any data you want to keep from the old version and move it into the new version."
+  summary: "클라이언트 컴퓨터에 명명된 된 파일 그룹이 이미 다운로드 되었는지 여부를 확인 합니다."
+  remarks: "IsFileGroupDownloaded 보안 요청 없이 부분적으로 신뢰할 수 있는 응용 프로그램에서 작동합니다.       응용 프로그램을 업데이트 하는 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 이전 버전의 모든 요청에 데이터 파일에서 새 버전의 데이터 디렉터리로 복사 합니다. 이러한 파일의 새 버전을 다운로드 하는 경우 이전 버전에서 유지 하 고 새 버전으로 이동 하려는 모든 데이터를 제거 해야 합니다."
   example:
   - "The following code example downloads all of the files in the `HelpFiles` group to disk.  \n  \n [!code-cs[ClickOnceAPI#8](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#8)]\n [!code-cpp[ClickOnceAPI#8](~/add/codesnippet/cpp/ff7c4993-a9b0-4966-b9a0-_1.cpp)]\n [!code-vb[ClickOnceAPI#8](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#8)]"
   syntax:
@@ -561,15 +561,15 @@ items:
     parameters:
     - id: groupName
       type: System.String
-      description: "The named group of files to download. All files marked &quot;optional&quot; in a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application require a group name."
+      description: "다운로드할 파일의 명명 된 그룹입니다. 모든 파일 표시 &quot;optional&quot;는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에는 그룹 이름이 필요 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the file group has already been downloaded for the current version of this application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If a new version of the application has been installed, and the new version has not added, removed, or altered files in the file group, IsFileGroupDownloaded returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>파일 그룹이 이미이 응용 프로그램의 현재 버전에 대 한 다운로드 된 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. IsFileGroupDownloaded 반환 하는 경우 새 버전의 응용 프로그램 설치가 완료 된 후 및 새 버전에 없는 추가, 제거 또는 파일 그룹의 파일 변경, <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.IsFileGroupDownloaded*
   exceptions:
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "<code>groupName</code> is not a file group defined in the application manifest."
+    description: "<code>groupName</code>파일 그룹이 아닌 응용 프로그램 매니페스트에서 정의 됩니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.IsFirstRun
@@ -584,15 +584,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets a value indicating whether this is the first time this application has run on the client computer."
-  remarks: "Use IsFirstRun to determine whether you need to perform any one-time initialization operations the first time your application runs.       Do not assume that a IsFirstRun setting of `true` indicates that this instance of an application is the first one to show its user interface to the user. Due to the way the system schedules processes, one instance of the application may have its IsFirstRun property set to `true`, but another instance may be the first to render on the screen. The value of this property is reset whenever the user upgrades from one version to the next. If you want to perform an operation only the very first time any version of the application is run, you will need to perform an additional test, such as checking for the existence of a file you created the first time, or storing a flag using **Application Settings**."
+  summary: "처음으로 클라이언트 컴퓨터에서이 응용 프로그램 실행 되었는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "IsFirstRun를 사용 하 여 처음으로 응용 프로그램이 실행 되는 한 번만 초기화 작업을 수행 해야 하는지 여부를 결정 합니다.       이라고 단정 하지 마십시오 IsFirstRun 설정인 `true` 이 인스턴스는 응용 프로그램의 사용자에 게 해당 사용자 인터페이스를 표시 하기 위한 첫 번째 임을 나타냅니다. 시스템 프로세스를 예약 하는 방식으로 인해 응용 프로그램의 한 인스턴스에 해당 IsFirstRun 속성이 설정 있을 수 있습니다 `true`, 되지만 다른 인스턴스는 처음 화면에 렌더링 될 수 있습니다. 이 속성의 값에는 다음 버전 간에 업그레이드 하는 사용자 될 때마다 다시 설정 됩니다. 처음의 모든 버전에만 작업을 수행 하려는 경우 응용 프로그램 실행, 처음으로 생성 되는 파일의 존재 여부를 확인 하는 플래그를 사용 하 여 저장 등의 추가 테스트를 수행 해야 합니다 **응용 프로그램 설정**합니다."
   example:
   - "The following code example uses IsFirstRun to decide whether to check for an update to the file group `HelpFiles`. If one or more of the files have been updated, it calls <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> to obtain the new versions.  \n  \n [!code-cs[ClickOnceAPI#9](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#9)]\n [!code-vb[ClickOnceAPI#9](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#9)]"
   syntax:
     content: public bool IsFirstRun { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this version of the application has never run on the client computer before; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>응용 프로그램의이 버전이; 하기 전에 클라이언트 컴퓨터에서 실행 된 적 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.IsFirstRun*
   exceptions: []
   platform:
@@ -609,15 +609,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets a value indicating whether the current application is a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application."
-  remarks: "If you want your application to run both inside and outside of a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] deployment (for example, if you need to debug your application on the local computer before deploying it), test IsNetworkDeployed before accessing the <xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A> property.       IsNetworkDeployed will return `true` regardless of whether the application is installed or hosted online, and regardless of whether it was installed from a Web site, file share, or CD-ROM."
+  summary: "현재 응용 프로그램 인지를 나타내는 값을 가져옵니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램입니다."
+  remarks: "응용 프로그램의 내부와 외부 모두에서 실행 되도록 하는 경우는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 배포 (예를 들어, 로컬 컴퓨터에 배포 하기 전에 응용 프로그램을 디버깅 하는 경우)에 액세스 하기 전에 IsNetworkDeployed 테스트는 <xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A>속성.</xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A>       IsNetworkDeployed 돌아갑니다 `true` 여부에 관계 없이 응용 프로그램은 설치 된 온라인 호스팅 및 웹 사이트, 파일 공유 또는 CD-ROM에서 설치 된 여부에 관계 없이 합니다."
   example:
   - "The following code example retrieves <xref:System.Deployment.Application.ApplicationDeployment.CurrentDeployment%2A> by using IsNetworkDeployed first to ensure that the reference is not `null`.  \n  \n [!code-cs[ClickOnceAPI#2](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#2)]\n [!code-cpp[ClickOnceAPI#2](~/add/codesnippet/cpp/p-system.deployment.appl_0_1.cpp)]"
   syntax:
     content: public static bool IsNetworkDeployed { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this is a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이것이 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 고, 그렇지 않으면 응용 프로그램 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed*
   exceptions: []
   platform:
@@ -634,15 +634,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the date and the time [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] last checked for an application update."
-  remarks: "A [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application can be configured for subscription updates. In this scenario, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] polls an application&quot;s deployment location automatically at intervals defined in the deployment manifest, and determines whether there is an update available. TimeOfLastUpdateCheck returns the time of the last update check regardless of whether it was initiated by a subscription or by an explicit check using the <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A>, <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>, <xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A>, <xref:System.Deployment.Application.ApplicationDeployment.Update%2A>, or <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A> method.       If no update check has been performed since the application was installed, TimeOfLastUpdateCheck returns the installation time."
+  summary: "날짜와 시간을 가져옵니다 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램 업데이트에 대 한 마지막으로 확인 합니다."
+  remarks: "A [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 구독 업데이트를 위해 응용 프로그램을 구성할 수 있습니다. 이 시나리오에서는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램의 배포 위치를 배포 매니페스트에 정의 된 간격으로 자동으로 폴링한 사용 가능한 업데이트가 있는지 여부를 결정 합니다. 또는 명시적인 확인 사용 하 여 구독에 의해 초기화 되었는지 여부에 관계 없이 마지막으로 업데이트 확인의 시간을 반환 하는 TimeOfLastUpdateCheck는 <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A>, <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>, <xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A>, <xref:System.Deployment.Application.ApplicationDeployment.Update%2A>, 또는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.Update%2A> </xref:System.Deployment.Application.ApplicationDeployment.CheckForDetailedUpdate%2A> </xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdate%2A>       업데이트 확인 응용 프로그램이 설치 된 이후 수행 된, TimeOfLastUpdateCheck 설치 시간을 반환 합니다."
   example:
   - "The following code example checks whether a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application has been checked for available updates in the past three days.  \n  \n [!code-cs[ClickOnceAPI#3](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#3)]\n [!code-cpp[ClickOnceAPI#3](~/add/codesnippet/cpp/p-system.deployment.appl_8_1.cpp)]\n [!code-vb[ClickOnceAPI#3](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#3)]"
   syntax:
     content: public DateTime TimeOfLastUpdateCheck { get; }
     return:
       type: System.DateTime
-      description: "The <xref:System.DateTime> of the last update check."
+      description: "<xref:System.DateTime>마지막 업데이트 확인 합니다.</xref:System.DateTime>"
   overload: System.Deployment.Application.ApplicationDeployment.TimeOfLastUpdateCheck*
   exceptions: []
   platform:
@@ -659,8 +659,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Starts a synchronous download and installation of the latest version of this application."
-  remarks: "An application is considered updated when you publish a new version of the application to the location specified by <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>, and the version number in the application&quot;s deployment manifest is greater than the version number of the application currently installed on the user&quot;s computer.       The Update call will block until the update has been downloaded to the client computer and installed into the [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] cache; during this time, the application will not be responsive to the user. If you want to maintain application responsiveness or display a progress report during download, use the <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A> method instead.       Update downloads all of the files that are not marked as &quot;optional&quot; in the application manifest. You can download optional files on demand by using the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> or the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> method.       [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] may already be updating the application automatically when you call the Update method; if that happens, calls to this method will throw an <xref:System.InvalidOperationException>.       If you have updated one or more files in your deployment, but you have not refreshed your application manifest, you will receive an <xref:System.Deployment.Application.InvalidDeploymentException>. Most of the time, redeploying your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application solves this problem. You will also receive this exception if a public-key signature on a deployment manifest or application manifest is invalid or missing.       An update may request a higher level of trust on the local computer than the previous version of the application. If the application uses Trusted Application Deployment, the common language runtime (CLR) trust manager examines the deployment manifest to determine whether it contains a valid trust license. If the deployment manifest does not contain a valid trust license, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] stops the installation and throws a <xref:System.Deployment.Application.TrustNotGrantedException>. The Update method will never display a prompt asking the user whether they want to grant the application permission to run."
+  summary: "동기 다운로드 및이 응용 프로그램의 최신 버전의 설치를 시작 합니다."
+  remarks: "응용 프로그램에서 지정한 위치에 응용 프로그램의 새 버전을 게시할 때 것으로 간주 됩니다 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>, 응용 프로그램의 배포 매니페스트에 버전 번호는 현재 사용자의 컴퓨터에 설치 된 응용 프로그램의 버전 번호 보다 큰 및.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>       업데이트 호출에서 업데이트가 클라이언트 컴퓨터에 다운로드 되어에 설치 될 때까지 차단 됩니다는 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 캐시할이 시간 동안 응용 프로그램 됩니다 사용자에 게 응답 합니다. 응용 프로그램의 응답성을 유지 하거나 다운로드를 사용 하는 동안 진행률 보고서를 표시 하려는 경우는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>메서드 대신.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>       업데이트를 다운로드 하의 모든 응용 프로그램 매니페스트의 &quot;optional&quot;로 표시 되지 않은 파일입니다. 사용 하 여 필요에 따라 선택적 파일을 다운로드할 수 있습니다는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>또는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>       [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]이미 하나일 수 응용 프로그램이 자동으로; Update 메서드를 호출 하는 경우 이 메서드를 호출 <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> 를 throw 합니다 이렇게 되 면       배포에 있는 하나 이상의 파일을 업데이트 하는 경우 응용 프로그램 매니페스트 새로 <xref:System.Deployment.Application.InvalidDeploymentException>.</xref:System.Deployment.Application.InvalidDeploymentException> 나타납니다. 대부분의 경우 재배포 프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 응용 프로그램에서는이 문제를 해결 합니다. 배포 매니페스트 또는 응용 프로그램 매니페스트에 공개 키 서명 잘못 되었거나 누락 된 경우이 예외를 발생 하기도 합니다.       업데이트에는 응용 프로그램의 이전 버전 보다 더 높은 수준의 신뢰 로컬 컴퓨터에 요청할 수 있습니다. 응용 프로그램에서 신뢰할 수 있는 응용 프로그램 배포를 사용 하는 경우 공용 언어 런타임 (CLR) 신뢰 관리자는 올바른 신뢰 라이선스가 포함 되어 있는지 확인 하려면 배포 매니페스트를 검사 합니다. 배포 매니페스트에 올바른 신뢰 라이선스가 없는 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 설치를 중지 하 고 <xref:System.Deployment.Application.TrustNotGrantedException>.</xref:System.Deployment.Application.TrustNotGrantedException> throw Update 메서드를 실행할 응용 프로그램 권한을 부여 하 게 할지를 사용자에 게 묻는 프롬프트를 표시 하지 않습니다."
   example:
   - "The following code example checks for an application update; if an update is available, it installs it synchronously.  \n  \n [!code-cs[ClickOnceAPI#6](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#6)]\n [!code-cpp[ClickOnceAPI#6](~/add/codesnippet/cpp/m-system.deployment.appl_6_1.cpp)]\n [!code-vb[ClickOnceAPI#6](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#6)]"
   syntax:
@@ -668,21 +668,21 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an application has been updated; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>응용 프로그램이 업데이트 되었습니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Deployment.Application.ApplicationDeployment.Update*
   exceptions:
   - type: System.Deployment.Application.TrustNotGrantedException
     commentId: T:System.Deployment.Application.TrustNotGrantedException
-    description: "The local computer did not grant the application the permission level it requested to execute."
+    description: "로컬 컴퓨터 응용 프로그램 실행 하도록 요청 하는 권한 수준을 부여 하지 않은 합니다."
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "Your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] deployment is corrupted. For tips on how to diagnose and correct the problem, see [Troubleshooting ClickOnce Deployments](~/add/includes/ajax-current-ext-md.md)."
+    description: "프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 배포 손상 되었습니다. 진단 및 문제를 해결 하는 방법에 대 한 팁을 참조 하십시오. [ClickOnce 배포 문제 해결](~/add/includes/ajax-current-ext-md.md)합니다."
   - type: System.Deployment.Application.DeploymentDownloadException
     commentId: T:System.Deployment.Application.DeploymentDownloadException
-    description: "The new deployment could not be downloaded from its location on the network."
+    description: "네트워크 위치에서 새 배포를 다운로드할 수 없습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The application is currently being updated."
+    description: "응용 프로그램이 현재 업데이트 중입니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.UpdateAsync
@@ -697,8 +697,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Starts an asynchronous download and installation of the latest version of this application."
-  remarks: "An application is considered updated when you publish a new version of the application to the location specified by <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>, and the version number in the application&quot;s deployment manifest is greater than the version number of the application currently installed on the user&quot;s computer.       While downloading the update, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will raise the <xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged> event handler on the main application thread to inform you of the status of the download. When the asynchronous update finishes or encounters an exception, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] will raise the <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted> event on the main application thread. Examine the <xref:System.ComponentModel.AsyncCompletedEventArgs> supplied to this event to determine whether the update succeeded.       If UpdateAsync throws an exception, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] calls <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted> and sets the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> property of <xref:System.ComponentModel.AsyncCompletedEventArgs> to the exception that was thrown.       UpdateAsync will download all files in a deployment not marked as &quot;optional&quot; in the application manifest. You can download optional files on demand by using the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A> or the <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> method.       [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] may already be updating the application automatically when you call the UpdateAsync method; if that happens, calls to this method will throw an <xref:System.InvalidOperationException>.       If you have updated one or more files in your deployment, but you have not refreshed your application manifest, you will receive an <xref:System.Deployment.Application.InvalidDeploymentException>. Most of the time, rebuilding your application manifest solves this problem. You will also receive this exception if a public-key signature on a deployment manifest or application manifest is invalid or missing.       An update may request a higher level of trust on the local computer than the previous version of the application. If the application uses Trusted Application Deployment, the common language runtime (CLR) trust manager examines the deployment manifest to determine whether it contains a valid trust license. If the deployment manifest does not contain a valid trust license, [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] stops the installation and throws a <xref:System.Deployment.Application.TrustNotGrantedException>. UpdateAsync will never display a prompt asking the user if they want to grant the application permission to run."
+  summary: "비동기 다운로드 및이 응용 프로그램의 최신 버전의 설치를 시작합니다."
+  remarks: "응용 프로그램에서 지정한 위치에 응용 프로그램의 새 버전을 게시할 때 것으로 간주 됩니다 <xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>, 응용 프로그램의 배포 매니페스트에 버전 번호는 현재 사용자의 컴퓨터에 설치 된 응용 프로그램의 버전 번호 보다 큰 및.</xref:System.Deployment.Application.ApplicationDeployment.UpdateLocation%2A>       업데이트를 다운로드 하는 동안 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 에서 발생 된 <xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged>다운로드의 상태에 대 한 주 응용 프로그램 스레드에서 이벤트 처리기.</xref:System.Deployment.Application.ApplicationDeployment.UpdateProgressChanged> 비동기 업데이트가 완료 되거나 예외가 발생 하면 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 시킵니다는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted>주 응용 프로그램 스레드에서 이벤트를.</xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted> 검사는 <xref:System.ComponentModel.AsyncCompletedEventArgs>업데이트가 성공 했는지 여부를 확인 하려면이 이벤트를 제공 합니다.</xref:System.ComponentModel.AsyncCompletedEventArgs>       UpdateAsync 예외를 throw 하는 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 호출 <xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted>설정 하 고는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>속성 <xref:System.ComponentModel.AsyncCompletedEventArgs>throw 된 예외에.</xref:System.ComponentModel.AsyncCompletedEventArgs> </xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> </xref:System.Deployment.Application.ApplicationDeployment.UpdateCompleted>       UpdateAsync 응용 프로그램 매니페스트의 &quot;optional&quot;로 표시 되지 배포의 모든 파일을 다운로드 합니다. 사용 하 여 필요에 따라 선택적 파일을 다운로드할 수 있습니다는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>또는 <xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A>메서드.</xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroupAsync%2A> </xref:System.Deployment.Application.ApplicationDeployment.DownloadFileGroup%2A>       [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)]이미 하나일 수 응용 프로그램이 자동으로 UpdateAsync 메서드를 호출 하는 경우 이 메서드를 호출 <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> 를 throw 합니다 이렇게 되 면       배포에 있는 하나 이상의 파일을 업데이트 하는 경우 응용 프로그램 매니페스트 새로 <xref:System.Deployment.Application.InvalidDeploymentException>.</xref:System.Deployment.Application.InvalidDeploymentException> 나타납니다. 대부분의 경우 응용 프로그램 매니페스트를 다시 빌드하면이 문제를 해결 합니다. 배포 매니페스트 또는 응용 프로그램 매니페스트에 공개 키 서명 잘못 되었거나 누락 된 경우이 예외를 발생 하기도 합니다.       업데이트에는 응용 프로그램의 이전 버전 보다 더 높은 수준의 신뢰 로컬 컴퓨터에 요청할 수 있습니다. 응용 프로그램에서 신뢰할 수 있는 응용 프로그램 배포를 사용 하는 경우 공용 언어 런타임 (CLR) 신뢰 관리자는 올바른 신뢰 라이선스가 포함 되어 있는지 확인 하려면 배포 매니페스트를 검사 합니다. 배포 매니페스트에 올바른 신뢰 라이선스가 없는 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 설치를 중지 하 고 <xref:System.Deployment.Application.TrustNotGrantedException>.</xref:System.Deployment.Application.TrustNotGrantedException> throw UpdateAsync에서 사용자에 게 응용 프로그램 실행에 필요한 권한을 부여 하기를 원하는 지 묻는 메시지를 표시 하지 않습니다."
   example:
   - "The following code example determines whether a new update is available at application load time; if a required update is available, it installs the update asynchronously. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/m-system.deployment.appl_2_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
@@ -708,13 +708,13 @@ items:
   exceptions:
   - type: System.Deployment.Application.TrustNotGrantedException
     commentId: T:System.Deployment.Application.TrustNotGrantedException
-    description: "The local computer did not grant this application the permission level it requested to execute."
+    description: "로컬 컴퓨터가 응용이 프로그램 실행 하도록 요청 하는 권한 수준을 부여 하지 않은 합니다."
   - type: System.Deployment.Application.InvalidDeploymentException
     commentId: T:System.Deployment.Application.InvalidDeploymentException
-    description: "Your [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] deployment is corrupted. For tips on how to diagnose and correct the problem, see [Troubleshooting ClickOnce Deployments](~/add/includes/ajax-current-ext-md.md)."
+    description: "프로그램 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 배포 손상 되었습니다. 진단 및 문제를 해결 하는 방법에 대 한 팁을 참조 하십시오. [ClickOnce 배포 문제 해결](~/add/includes/ajax-current-ext-md.md)합니다."
   - type: System.Deployment.Application.DeploymentDownloadException
     commentId: T:System.Deployment.Application.DeploymentDownloadException
-    description: "The new deployment could not be downloaded from its location on the network."
+    description: "네트워크 위치에서 새 배포를 다운로드할 수 없습니다."
   platform:
   - net462
 - uid: System.Deployment.Application.ApplicationDeployment.UpdateAsyncCancel
@@ -729,8 +729,8 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Cancels an asynchronous update initiated by <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>."
-  remarks: "UpdateAsyncCancel only cancels an update initiated by a call to <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>; it does not cancel an update started as part of a subscription."
+  summary: "<xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*> 에서 시작 된 비동기 업데이트를 취소"
+  remarks: "취소에 대 한 호출에서 시작 된 업데이트 UpdateAsyncCancel <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>; 가입의 일환으로 시작 하는 업데이트를 취소 하지 않습니다.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync%2A>"
   syntax:
     content: public void UpdateAsyncCancel ();
     parameters: []
@@ -750,15 +750,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs when [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] has finished upgrading the application as the result of a call to <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>."
-  remarks: "The UpdateCompleted event is called on the main application thread. You may call your application&quot;s Windows Forms controls directly within this callback without triggering an exception.       Check the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> property of the <xref:System.ComponentModel.AsyncCompletedEventArgs> supplied to this callback. If this property is `null`, the installation was successful; if it is not `null`, the installation did not succeed, and you can find more information about this installation failure through the <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> property. Once the update has been downloaded, you will need to call the <xref:System.Windows.Forms.Application.Restart%2A> method on the <xref:System.Windows.Forms.Application> to use the newer version of the application.       If the installation of the update was canceled by a call to <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsyncCancel%2A>, the <xref:System.ComponentModel.AsyncCompletedEventArgs.Cancelled%2A> property of the <xref:System.ComponentModel.AsyncCompletedEventArgs> class will be `true`.       To use this event handler, your application must import both the <xref:System.Deployment.Application> and <xref:System.ComponentModel> namespaces."
+  summary: "발생 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*> 에 대 한 호출의 결과로 응용 프로그램 업그레이드 완료 했습니다."
+  remarks: "UpdateCompleted 이벤트는 주 응용 프로그램 스레드에서 호출 됩니다. 예외를 트리거하지 않고이 콜백 내에서 직접 응용 프로그램의 Windows Forms 컨트롤을 호출할 수 있습니다.       확인는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>의 속성은 <xref:System.ComponentModel.AsyncCompletedEventArgs>이 콜백은에 제공 된.</xref:System.ComponentModel.AsyncCompletedEventArgs> </xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> 이 속성이 `null`, 설치가 성공적; 없으면 `null`설치 실패 했으며, 및 절차를 통해이 설치 문제에 대 한 자세한 정보를 찾을 수 있습니다는 <xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A>속성.</xref:System.ComponentModel.AsyncCompletedEventArgs.Error%2A> 업데이트를 다운로드 한 후 호출 해야 합니다는 <xref:System.Windows.Forms.Application.Restart%2A>에서 메서드는 <xref:System.Windows.Forms.Application>응용 프로그램의 최신 버전을 사용 합니다.</xref:System.Windows.Forms.Application> </xref:System.Windows.Forms.Application.Restart%2A>       업데이트의 설치를 호출 하 여 취소 되었습니다 <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsyncCancel%2A>, <xref:System.ComponentModel.AsyncCompletedEventArgs.Cancelled%2A>의 속성은 <xref:System.ComponentModel.AsyncCompletedEventArgs>클래스 됩니다 `true`.</xref:System.ComponentModel.AsyncCompletedEventArgs> </xref:System.ComponentModel.AsyncCompletedEventArgs.Cancelled%2A> </xref:System.Deployment.Application.ApplicationDeployment.UpdateAsyncCancel%2A>       이 이벤트 처리기를 사용 하려면 응용 프로그램 모두 가져와야는 <xref:System.Deployment.Application>및 <xref:System.ComponentModel>네임 스페이스.</xref:System.ComponentModel> </xref:System.Deployment.Application>"
   example:
   - "The following code example determines at application load time whether a new update is available; if a required update is available, it installs the update asynchronously. The example requires that you deploy a Windows Forms application that includes a <xref:System.Windows.Forms.StatusStrip> control, and that this control contain a <xref:System.Windows.Forms.ToolStripStatusLabel> control named `downloadStatus`.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/e-system.deployment.appl_3_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
     content: public event System.ComponentModel.AsyncCompletedEventHandler UpdateCompleted;
     return:
       type: System.ComponentModel.AsyncCompletedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -774,12 +774,12 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the full name of the application after it has been updated."
+  summary: "업데이트 된 후 응용 프로그램의 전체 이름을 가져옵니다."
   syntax:
     content: public string UpdatedApplicationFullName { get; }
     return:
       type: System.String
-      description: "A <xref:System.String> that contains the full name of the application."
+      description: "A <xref:System.String>응용 프로그램의 전체 이름을 포함 하는.</xref:System.String>"
   overload: System.Deployment.Application.ApplicationDeployment.UpdatedApplicationFullName*
   exceptions: []
   platform:
@@ -796,15 +796,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the version of the update that was recently downloaded."
-  remarks: "UpdatedVersion differs from <xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A> if a new update has been installed but you have not yet called <xref:System.Windows.Forms.Application.Restart%2A> on the <xref:System.Windows.Forms.Application>. If the application&quot;s deployment manifest is configured to perform automatic updates, you can compare these two values to determine whether you should restart the application.       If the application has not been updated, UpdatedVersion returns the same value as <xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A>."
+  summary: "최근에 다운로드 된 업데이트의 버전을 가져옵니다."
+  remarks: "<xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A>새 업데이트가 설치 되어 있지만 <xref:System.Windows.Forms.Application.Restart%2A> <xref:System.Windows.Forms.Application>.</xref:System.Windows.Forms.Application> </xref:System.Windows.Forms.Application.Restart%2A> 를 호출 하지 않은 경우</xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A> 에서 다른 UpdatedVersion 응용 프로그램의 배포 매니페스트는 자동 업데이트를 수행 하도록 구성 된, 경우에 응용 프로그램을 다시 시작 해야 하는지 여부를 확인 하려면이 두 값을 비교할 수 있습니다.       UpdatedVersion <xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A>.</xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A> 과 동일한 값을 반환 응용 프로그램 업데이트 되지 않은 경우"
   example:
   - "The following code example defines a method that determines whether [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] has updated the application.  \n  \n [!code-cs[ClickOnceAPI#4](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#4)]\n [!code-cpp[ClickOnceAPI#4](~/add/codesnippet/cpp/p-system.deployment.appl_5_1.cpp)]\n [!code-vb[ClickOnceAPI#4](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#4)]"
   syntax:
     content: public Version UpdatedVersion { get; }
     return:
       type: System.Version
-      description: "The <xref:System.Version> describing the version of the update."
+      description: "<xref:System.Version>업데이트의 버전을 설명 하는.</xref:System.Version>"
   overload: System.Deployment.Application.ApplicationDeployment.UpdatedVersion*
   exceptions: []
   platform:
@@ -821,13 +821,13 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the Web site or file share from which this application updates itself."
-  remarks: "UpdateLocation may be different from the Web site used to download the application initially if the application&quot;s deployment is configured to use update redirection.       This value can be changed only in the application&quot;s deployment manifest."
+  summary: "웹 사이트 또는 파일 공유를이 응용 프로그램 자동 업데이트를 가져옵니다."
+  remarks: "UpdateLocation은 업데이트 리디렉션을 사용 하도록 응용 프로그램의 배포를 구성한 경우 처음 응용 프로그램을 다운로드 하는 데 사용 되는 웹 사이트에서 다를 수 있습니다.       응용 프로그램의 배포 매니페스트에만이 값을 변경할 수 있습니다."
   syntax:
     content: public Uri UpdateLocation { get; }
     return:
       type: System.Uri
-      description: "The update path, expressed as an HTTP, HTTPS, or file URL; or as a Windows network file path (UNC)."
+      description: "HTTP, HTTPS 또는 파일 URL;으로 표시 되는 업데이트 경로 또는 Windows로 네트워크 파일 경로 (UNC)."
   overload: System.Deployment.Application.ApplicationDeployment.UpdateLocation*
   exceptions: []
   platform:
@@ -844,15 +844,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Occurs when [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] has new status information for an update operation initiated by calling the <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*> method."
-  remarks: "The UpdateProgressChanged event is called on the main application thread. You may call your application&quot;s Windows Forms controls directly within this callback without triggering an exception."
+  summary: "발생 경우 [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] 호출 하 여 시작 되는 업데이트 작업에 대 한 새 상태 정보는 <xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>메서드.</xref:System.Deployment.Application.ApplicationDeployment.UpdateAsync*>"
+  remarks: "UpdateProgressChanged 이벤트는 주 응용 프로그램 스레드에서 호출 됩니다. 예외를 트리거하지 않고이 콜백 내에서 직접 응용 프로그램의 Windows Forms 컨트롤을 호출할 수 있습니다."
   example:
   - "The following code example determines at application load time whether a new update is available; if a required update is available, it installs the update asynchronously.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/e-system.deployment.appl_1_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
     content: public event System.Deployment.Application.DeploymentProgressChangedEventHandler UpdateProgressChanged;
     return:
       type: System.Deployment.Application.DeploymentProgressChangedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

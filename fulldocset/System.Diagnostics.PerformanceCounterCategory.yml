@@ -35,7 +35,7 @@ items:
   nameWithType: PerformanceCounterCategory
   fullName: System.Diagnostics.PerformanceCounterCategory
   type: Class
-  summary: "Represents a performance object, which defines a category of performance counters."
+  summary: "성능 카운터의 범주를 정의 하는 성능 개체를 나타냅니다."
   remarks: "> [!IMPORTANT]\n>  Creating or deleting a performance counter requires synchronization of the underlying code by using a named mutex. If a highly privileged application locks the named mutex, attempts to create or delete a performance counter causes the application to stop responding until the lock is released. To help avoid this problem, never grant <xref:System.Security.Permissions.SecurityPermissionFlag> permission to untrusted code. In addition, <xref:System.Security.Permissions.SecurityPermissionFlag> permission potentially allows other permissions to be bypassed and should only be granted to highly trusted code.  \n  \n The PerformanceCounterCategory instance's <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> property is displayed in the Performance Object field of the Performance Viewer application's Add Counter dialog box.  \n  \n The PerformanceCounterCategory class provides several methods for interacting with counters and categories on the computer. The <xref:System.Diagnostics.PerformanceCounterCategory.Create%2A> methods enable you to define custom categories. The <xref:System.Diagnostics.PerformanceCounterCategory.Delete%2A> method provides a way to remove categories from the computer. The <xref:System.Diagnostics.PerformanceCounterCategory.GetCategories%2A> method enables you to view the list of categories, while <xref:System.Diagnostics.PerformanceCounterCategory.ReadCategory%2A> retrieves all the counter and instance data associated with a single category.  \n  \n A performance counter publishes performance data about an application. Categories include physical components (such as processors, disks, and memory) and system objects (such as processes and threads). System counters that are related to the same performance object are grouped into a category that indicates their common focus. When you create an instance of the <xref:System.Diagnostics.PerformanceCounter> class, you first indicate the category with which the component will interact, and then you choose a counter from that category.  \n  \n For example, one Windows counter category is the Memory category. System counters within this category track memory data such as the number of bytes available and the number of bytes cached. If you wanted to work with the bytes cached in your application, you would create an instance of the <xref:System.Diagnostics.PerformanceCounter> component, connect it to the Memory category, and then pick the appropriate counter (in this case, Cached Bytes) from that category.  \n  \n Although your system makes many more counter categories available, the categories that you will probably interact with most frequently are the Cache, Memory, Objects, PhysicalDisk, Process, Processor, Server, System, and Thread categories.  \n  \n> [!IMPORTANT]\n>  The <xref:System.Diagnostics.PerformanceCounter.RemoveInstance%2A> method in the <xref:System.Diagnostics.PerformanceCounter> class will release the counter and, if the reuse option is selected for that category, the instance of the counter will be reused. This could cause a race condition if another process or even another part of the code is trying to write to the counter instance.  \n  \n> [!NOTE]\n>  It is strongly recommended that new performance counter categories be created during the installation of the application, not during the execution of the application. This allows time for the operating system to refresh its list of registered performance counter categories. If the list has not been refreshed, the attempt to use the category will fail.  \n  \n> [!NOTE]\n>  Performance counter categories installed with the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] use separate shared memory, with each performance counter category having its own memory. You can specify the size of separate shared memory by creating a DWORD named FileMappingSize in the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\\\*\\<category name>*\\Performance. The FileMappingSize value is set to the shared memory size of the category. The default size is 131072 decimal. If the FileMappingSize value is not present, the `fileMappingSize` attribute value for the `performanceCounters` element specified in the Machine.config file is used, causing additional overhead for configuration file processing. You can realize a performance improvement for application startup by setting the file mapping size in the registry. For more information about the file mapping size, see [\\&lt;performanceCounters\\&gt;](../Topic/%3CperformanceCounters%3E%20Element.md)."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounter> and its PerformanceCounterCategory exist on the local computer or on another computer. If these objects do not exist on the local computer, the example optionally creates them. It uses the <xref:System.Diagnostics.PerformanceCounterCategory.Exists%2A> method to determine whether the PerformanceCounterCategory exists.  If the PerformanceCounterCategory does not exist and no counter name is specified, or if the computer is a remote machine, the example exits.  \n  \n If a <xref:System.Diagnostics.PerformanceCounter> name is provided, the example uses the <xref:System.Diagnostics.PerformanceCounterCategory.CounterExists%2A> method and displays the result to the user. If the <xref:System.Diagnostics.PerformanceCounter> does not exist, the user can delete and re-create the PerformanceCounterCategory with the new <xref:System.Diagnostics.PerformanceCounter>. If the user does so, the category is deleted using the <xref:System.Diagnostics.PerformanceCounterCategory.Delete%2A> method.  \n  \n If requested, the example now creates the new PerformanceCounterCategory and <xref:System.Diagnostics.PerformanceCounter> using the <xref:System.Diagnostics.PerformanceCounterCategory.Create%2A> method. If an instance name is specified, the example uses the <xref:System.Diagnostics.PerformanceCounterCategory.InstanceExists%2A> method and displays the result.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.Class#27](~/add/codesnippet/csharp/t-system.diagnostics.per_3_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.Class#27](~/add/codesnippet/visualbasic/t-system.diagnostics.per_3_1.vb)]"
@@ -59,8 +59,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> class, leaves the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property empty, and sets the <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> property to the local computer."
-  remarks: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> property must be set before associating this <xref:System.Diagnostics.PerformanceCounterCategory> instance with a performance object on the server. Otherwise, an exception is thrown."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> leaves 클래스는 <> </> *> 비어 있는 경우 속성을 설정은 <> </> *> 로컬 컴퓨터에는 속성입니다."
+  remarks: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>이 연결 하기 전에 속성을 설정 해야 <xref:System.Diagnostics.PerformanceCounterCategory>서버에서 성능 개체를 사용 하 여 인스턴스.</xref:System.Diagnostics.PerformanceCounterCategory> </xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> 그렇지 않으면 예외가 throw 됩니다."
   example:
   - "The following code example accepts a <xref:System.Diagnostics.PerformanceCounterCategory> name and a computer name from the command line.  It creates a <xref:System.Diagnostics.PerformanceCounterCategory> using the constructor overload appropriate for the number of parameters provided, then displays its properties.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/csharp/m-system.diagnostics.per_4_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/visualbasic/m-system.diagnostics.per_4_1.vb)]"
   syntax:
@@ -82,7 +82,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> class, sets the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property to the specified value, and sets the <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> property to the local computer."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 클래스 집합은 <> </> *> 속성을 지정 된 값이 설정의 <> </> *> 로컬 컴퓨터에 대 한 속성."
   remarks: ''
   example:
   - "The following code example accepts a <xref:System.Diagnostics.PerformanceCounterCategory> name and a computer name from the command line. It creates a <xref:System.Diagnostics.PerformanceCounterCategory> using the constructor overload that is appropriate for the number of parameters provided, then displays its properties.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/csharp/m-system.diagnostics.per_11_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/visualbasic/m-system.diagnostics.per_11_1.vb)]"
@@ -91,12 +91,12 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category, or performance object, with which to associate this <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> instance."
+      description: "성능 카운터 범주 또는이 연결 하는 성능 개체의 이름 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 인스턴스."
   overload: System.Diagnostics.PerformanceCounterCategory.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> is an empty string (&quot;&quot;)."
+    description: "<code> categoryName </code> 은 빈 문자열 (&quot;&quot;)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -114,7 +114,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> class and sets the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> properties to the specified values."
+  summary: "새 인스턴스를 초기화 합니다는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 클래스 및 집합은 <> </> *> 및 <> </> *> 속성을 지정 된 값입니다."
   remarks: ''
   example:
   - "The following code example accepts a <xref:System.Diagnostics.PerformanceCounterCategory> name and a computer name from the command line. It creates a <xref:System.Diagnostics.PerformanceCounterCategory> using the constructor overload that is appropriate for the number of parameters provided, then displays its properties.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/csharp/75b9896e-a505-4b53-afe2-_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#4](~/add/codesnippet/visualbasic/75b9896e-a505-4b53-afe2-_1.vb)]"
@@ -123,15 +123,15 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category, or performance object, with which to associate this <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> instance."
+      description: "성능 카운터 범주 또는이 연결 하는 성능 개체의 이름 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 인스턴스."
     - id: machineName
       type: System.String
-      description: "The computer on which the performance counter category and its associated counters exist."
+      description: "성능 카운터 범주 및 관련된 카운터가 존재 하는 컴퓨터입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> is an empty string (&quot;&quot;).       -or-       The <code>machineName</code> syntax is invalid."
+    description: "<code> categoryName </code> 은 빈 문자열 (&quot;&quot;).       -또는- <code> machineName </code> 구문이 잘못 되었습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -149,7 +149,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the category&quot;s help text."
+  summary: "도움말 텍스트를 범주를 가져옵니다."
   remarks: ''
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> with the <xref:System.Diagnostics.PerformanceCounterCategory.%23ctor>. It prompts the user for the <xref:System.Diagnostics.PerformanceCounterCategory> and computer names, then sets the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A> properties from the entered values. It then displays the values of the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>, <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A>, and CategoryHelp properties, or it displays an error message if the <xref:System.Diagnostics.PerformanceCounterCategory> cannot be accessed.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/csharp/p-system.diagnostics.per_5_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/visualbasic/p-system.diagnostics.per_5_1.vb)]"
@@ -157,15 +157,15 @@ items:
     content: public string CategoryHelp { get; }
     return:
       type: System.String
-      description: "A description of the performance object that this category measures."
+      description: "이 범주를 측정 하는 성능 개체에 대 한 설명"
   overload: System.Diagnostics.PerformanceCounterCategory.CategoryHelp*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The category name must be set before getting the category help."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> 범주 이름 범주 도움말을 가져오기 전에 설정 되어야 합니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.CategoryName
@@ -180,7 +180,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the name of the performance object that defines this category."
+  summary: "이 범주를 정의 하는 성능 개체의 이름을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> with the <xref:System.Diagnostics.PerformanceCounterCategory.%23ctor>. It prompts the user for the <xref:System.Diagnostics.PerformanceCounterCategory> and computer names, then sets the CategoryName and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A> properties from the entered values. It then displays the values of the CategoryName, <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A>, and <xref:System.Diagnostics.PerformanceCounterCategory.CategoryHelp%2A> properties, or it displays an error message if the <xref:System.Diagnostics.PerformanceCounterCategory> cannot be accessed.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/csharp/p-system.diagnostics.per_3_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/visualbasic/p-system.diagnostics.per_3_1.vb)]"
@@ -188,15 +188,15 @@ items:
     content: public string CategoryName { get; set; }
     return:
       type: System.String
-      description: "The name of the performance counter category, or performance object, with which to associate this <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> instance."
+      description: "성능 카운터 범주 또는이 연결 하는 성능 개체의 이름 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 인스턴스."
   overload: System.Diagnostics.PerformanceCounterCategory.CategoryName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The CategoryName is an empty string (&quot;&quot;)."
+    description: "CategoryName은 빈 문자열 (&quot;&quot;)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The CategoryName is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "CategoryName이 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.CategoryType
@@ -211,13 +211,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the performance counter category type."
-  remarks: "The CategoryType property indicates whether the <xref:System.Diagnostics.PerformanceCounterCategory> object can have multiple instances. The possible values are <xref:System.Diagnostics.PerformanceCounterCategoryType>, <xref:System.Diagnostics.PerformanceCounterCategoryType>, or <xref:System.Diagnostics.PerformanceCounterCategoryType>.       There are two types of performance counter categories: single-instance and multi-instance. By default, a category is single-instance when it is created and becomes multi-instance when another instance is added. Categories are created when an application is set up, and instances are added at run time. In the .NET Framework versions 1.0 and 1.1, it is not necessary to know if a performance counter category is multi-instance or single-instance. In the [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], the <xref:System.Diagnostics.PerformanceCounterCategoryType> enumeration is used to indicate whether a performance counter can have multiple instances."
+  summary: "성능 카운터 범주 유형을 가져옵니다."
+  remarks: "CategoryType 속성은 표시 여부는 <xref:System.Diagnostics.PerformanceCounterCategory>개체 인스턴스를 여러 개 있을 수 있습니다.</xref:System.Diagnostics.PerformanceCounterCategory> 가능한 값은 <xref:System.Diagnostics.PerformanceCounterCategoryType>, <xref:System.Diagnostics.PerformanceCounterCategoryType>, 또는 <xref:System.Diagnostics.PerformanceCounterCategoryType>.</xref:System.Diagnostics.PerformanceCounterCategoryType> </xref:System.Diagnostics.PerformanceCounterCategoryType> </xref:System.Diagnostics.PerformanceCounterCategoryType>       성능 카운터 범주에 두 가지: 단일 인스턴스 및 다중 인스턴스. 기본적으로 범주 있으면 단일 인스턴스를 만들어 다른 인스턴스가 추가 되 면 다중 인스턴스가 됩니다. 범주에는 응용 프로그램이 설치 되 고 런타임에 인스턴스가 추가 될 때 생성 됩니다. .NET Framework 버전 1.0 및 1.1에서는 않습니다 다중 인스턴스 성능 카운터 범주 인지 알아야 또는 단일 인스턴스. 에 [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], <xref:System.Diagnostics.PerformanceCounterCategoryType>열거형 성능 카운터를 사용 하는 여러 인스턴스를 가질 수 있는지 여부를 나타내는 데 사용 됩니다.</xref:System.Diagnostics.PerformanceCounterCategoryType>"
   syntax:
     content: public System.Diagnostics.PerformanceCounterCategoryType CategoryType { get; }
     return:
       type: System.Diagnostics.PerformanceCounterCategoryType
-      description: "One of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref> 값입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.CategoryType*
   exceptions: []
   platform:
@@ -234,8 +234,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the specified counter is registered to this category, which is indicated by the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> properties."
-  remarks: "You must set the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> property before calling this method. Otherwise, an exception is thrown.       If you have not set the <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A> property, this method uses the local computer (&quot;.&quot;).      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정한 카운터로 표시 되는이 범주에 등록 되었는지를 확인는 <> </> *> 및 <> </> *> 속성."
+  remarks: "설정 해야 합니다는 <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>이 메서드를 호출 하기 전에 속성.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> 그렇지 않으면 예외가 throw 됩니다.       설정 하지 않은 경우는 <xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A>속성을이 메서드는 로컬 컴퓨터를 사용 하 여 (&quot;.&quot;).</xref:System.Diagnostics.PerformanceCounterCategory.MachineName%2A>      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounter> exists. It gets a category name, counter name, and computer name from the command line, if they are given. It creates a <xref:System.Diagnostics.PerformanceCounterCategory> object using the appropriate <xref:System.Diagnostics.PerformanceCounterCategory.%23ctor%2A>. It then uses the CounterExists method to determine whether the specified <xref:System.Diagnostics.PerformanceCounter> exists, and informs the user.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#4](~/add/codesnippet/csharp/m-system.diagnostics.per_6_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#4](~/add/codesnippet/visualbasic/m-system.diagnostics.per_6_1.vb)]"
   syntax:
@@ -243,10 +243,10 @@ items:
     parameters:
     - id: counterName
       type: System.String
-      description: "The name of the performance counter to look for."
+      description: "찾으려는 성능 카운터의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the counter is registered to the category that is specified by the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> and <xref:System.Diagnostics.PerformanceCounterCategory.MachineName*> properties; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>카운터가 지정 된 범주에 등록 하는 경우는 <> </> *> 및 <> </> *> 속성, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
@@ -254,13 +254,13 @@ items:
     description: "The <code>counterName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property has not been set."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성이 설정 되지 않았습니다.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>"
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.CounterExists(System.String,System.String)
@@ -275,8 +275,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the specified counter is registered to the specified category on the local computer."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정된 된 카운터는 로컬 컴퓨터에 지정된 된 범주에 등록 되었는지 여부를 결정 합니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounter> exists. It gets a category name, counter name, and computer name from the command line, if they are given. It uses the static overloads of the <xref:System.Diagnostics.PerformanceCounterCategory.CounterExists%2A> method to determine whether the specified <xref:System.Diagnostics.PerformanceCounter> name exists in the <xref:System.Diagnostics.PerformanceCounterCategory>. The overload is selected based on whether a computer name is provided.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#8](~/add/codesnippet/csharp/ccefabf7-dd26-432c-91c0-_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#8](~/add/codesnippet/visualbasic/ccefabf7-dd26-432c-91c0-_1.vb)]"
   syntax:
@@ -284,13 +284,13 @@ items:
     parameters:
     - id: counterName
       type: System.String
-      description: "The name of the performance counter to look for."
+      description: "찾으려는 성능 카운터의 이름입니다."
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category, or performance object, with which the specified performance counter is associated."
+      description: "성능 카운터 범주 또는 지정된 된 성능 카운터와 관련 된 성능 개체의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the counter is registered to the specified category on the local computer; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 카운터는 로컬 컴퓨터에 지정된 된 범주에 등록 되어 있으면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
@@ -298,16 +298,16 @@ items:
     description: "The <code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <code>counterName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> is an empty string (&quot;&quot;)."
+    description: "<code> categoryName </code> 은 빈 문자열 (&quot;&quot;)."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category name does not exist."
+    description: "범주 이름이 존재 하지 않습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.CounterExists(System.String,System.String,System.String)
@@ -322,8 +322,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the specified counter is registered to the specified category on a remote computer."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정된 된 카운터는 원격 컴퓨터에서 지정된 된 범주에 등록 되었는지 여부를 결정 합니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounter> exists. It gets a category name, counter name, and computer name from the command line, if they are given. It uses the static overloads of the <xref:System.Diagnostics.PerformanceCounterCategory.CounterExists%2A> method to determine whether the specified <xref:System.Diagnostics.PerformanceCounter> name exists in the <xref:System.Diagnostics.PerformanceCounterCategory>. The overload is selected based on whether a computer name is provided.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#8](~/add/codesnippet/csharp/479fa6a9-538c-463f-94d2-_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#8](~/add/codesnippet/visualbasic/479fa6a9-538c-463f-94d2-_1.vb)]"
   syntax:
@@ -331,16 +331,16 @@ items:
     parameters:
     - id: counterName
       type: System.String
-      description: "The name of the performance counter to look for."
+      description: "찾으려는 성능 카운터의 이름입니다."
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category, or performance object, with which the specified performance counter is associated."
+      description: "성능 카운터 범주 또는 지정된 된 성능 카운터와 관련 된 성능 개체의 이름입니다."
     - id: machineName
       type: System.String
-      description: "The name of the computer on which the performance counter category and its associated counters exist."
+      description: "성능 카운터 범주 및 관련된 카운터가 존재 하는 컴퓨터의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the counter is registered to the specified category on the specified computer; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>카운터가 지정 된 컴퓨터에 지정된 된 범주에 등록 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.CounterExists*
   exceptions:
   - type: System.ArgumentNullException
@@ -348,16 +348,16 @@ items:
     description: "The <code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <code>counterName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> is an empty string (&quot;&quot;).       -or-       The <code>machineName</code> is invalid."
+    description: "<code> categoryName </code> 은 빈 문자열 (&quot;&quot;).       -또는- <code> machineName </code> 올바르지 않습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category name does not exist."
+    description: "범주 이름이 존재 하지 않습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Create(System.String,System.String,System.Diagnostics.CounterCreationDataCollection)
@@ -372,8 +372,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Registers the custom performance counter category containing the specified counters on the local computer."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "로컬 컴퓨터에 지정 된 카운터를 포함 하는 사용자 지정 성능 카운터 범주를 등록 합니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounterCategory> object named \"orders\" exists. If not, it creates the <xref:System.Diagnostics.PerformanceCounterCategory> object by using a <xref:System.Diagnostics.CounterCreationDataCollection> object that contains two performance counters.  \n  \n [!code-cpp[PerfCounter_ccd#1](~/add/codesnippet/cpp/9e4e5065-5efa-4558-a11f-_1.cpp)]\n [!code-vb[PerfCounter_ccd#1](~/add/codesnippet/visualbasic/9e4e5065-5efa-4558-a11f-_1.vb)]\n [!code-cs[PerfCounter_ccd#1](~/add/codesnippet/csharp/9e4e5065-5efa-4558-a11f-_1.cs)]"
   syntax:
@@ -381,16 +381,16 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the custom performance counter category to create and register with the system."
+      description: "사용자 지정 성능 카운터 범주를 만들어 등록 시스템으로의 이름입니다."
     - id: categoryHelp
       type: System.String
-      description: "A description of the custom category."
+      description: "사용자 지정 범주에 대 한 설명"
     - id: counterData
       type: System.Diagnostics.CounterCreationDataCollection
-      description: "A <xref href=&quot;System.Diagnostics.CounterCreationDataCollection&quot;></xref> that specifies the counters to create as part of the new category."
+      description: "A <xref href=&quot;System.Diagnostics.CounterCreationDataCollection&quot;> </xref> 만들 새 범주를 지정할 카운터를 지정 하는 합니다."
     return:
       type: System.Diagnostics.PerformanceCounterCategory
-      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> that is associated with the new custom category, or performance object."
+      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 새 사용자 지정 범주 또는 성능 개체와 연결 된입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Create*
   exceptions:
   - type: System.ArgumentException
@@ -401,13 +401,13 @@ items:
     description: "The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer.       -or-       The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type <xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_SampleCounter&quot; name=&quot;SampleCounter&quot; href=&quot;&quot;></xref> has to be immediately followed by one of the base counter types (<xref uid=&quot;langword_csharp_AverageBase&quot; name=&quot;AverageBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_MultiBase&quot; name=&quot;MultiBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawBase&quot; name=&quot;RawBase&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleBase&quot; name=&quot;SampleBase&quot; href=&quot;&quot;></xref>)."
+    description: "범주는 로컬 컴퓨터에 이미 있습니다.       -또는-의 레이아웃은 <code> counterData </code> 컬렉션 기본 카운터에 대해 올바르지 않습니다. A counter of type <xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_SampleCounter&quot; name=&quot;SampleCounter&quot; href=&quot;&quot;></xref> has to be immediately followed by one of the base counter types (<xref uid=&quot;langword_csharp_AverageBase&quot; name=&quot;AverageBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_MultiBase&quot; name=&quot;MultiBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawBase&quot; name=&quot;RawBase&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleBase&quot; name=&quot;SampleBase&quot; href=&quot;&quot;></xref>)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Create(System.String,System.String,System.Diagnostics.PerformanceCounterCategoryType,System.Diagnostics.CounterCreationDataCollection)
@@ -422,7 +422,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Registers the custom performance counter category containing the specified counters on the local computer."
+  summary: "로컬 컴퓨터에 지정 된 카운터를 포함 하는 사용자 지정 성능 카운터 범주를 등록 합니다."
   remarks: "The `categoryType` parameter specifies whether the performance counter category is single-instance or multi-instance. By default, a category is single-instance when it is created and becomes multi-instance when another instance is added. Categories are created when an application is set up, and instances are added at run time. In the  .NET Framework versions 1.0 and 1.1, it is not necessary to know if a performance counter category is multi-instance or single-instance. In the [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], the <xref:System.Diagnostics.PerformanceCounterCategoryType> enumeration is used to indicate whether a performance counter can have multiple instances.  \n  \n Performance counter categories installed with the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] use separate shared memory, with each performance counter category having its own memory.  You can specify the size of separate shared memory by creating a DWORD named FileMappingSize in the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\\\*\\<category name>*\\Performance. The FileMappingSize value is set to the shared memory size of the category. The default size is 131072 decimal. If the FileMappingSize value is not present, the `fileMappingSize` attribute value for the `performanceCounters` element specified in the Machine.config file is used, causing additional overhead for configuration file processing. You can realize a performance improvement for application startup by setting the file mapping size in the registry.  \n  \n> [!NOTE]\n>  It is strongly recommended that new performance counter categories be created during the installation of the application, not during the execution of the application. This allows time for the operating system to refresh its list of registered performance counter categories. If the list has not been refreshed, the attempt to use the category will fail.  \n  \n> [!NOTE]\n>  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.  \n>   \n>  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.  \n>   \n>  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
   example:
   - "The following code example shows the use of the Create method. The example shows how to create a custom, multi-instance performance counter category for the number of orders per second.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategoryType#2](~/add/codesnippet/csharp/38799c48-5863-4c7c-ac81-_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategoryType#2](~/add/codesnippet/visualbasic/38799c48-5863-4c7c-ac81-_1.vb)]"
@@ -431,19 +431,19 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the custom performance counter category to create and register with the system."
+      description: "사용자 지정 성능 카운터 범주를 만들어 등록 시스템으로의 이름입니다."
     - id: categoryHelp
       type: System.String
-      description: "A description of the custom category."
+      description: "사용자 지정 범주에 대 한 설명"
     - id: categoryType
       type: System.Diagnostics.PerformanceCounterCategoryType
-      description: "One of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref> 값입니다."
     - id: counterData
       type: System.Diagnostics.CounterCreationDataCollection
-      description: "A <xref href=&quot;System.Diagnostics.CounterCreationDataCollection&quot;></xref> that specifies the counters to create as part of the new category."
+      description: "A <xref href=&quot;System.Diagnostics.CounterCreationDataCollection&quot;> </xref> 만들 새 범주를 지정할 카운터를 지정 하는 합니다."
     return:
       type: System.Diagnostics.PerformanceCounterCategory
-      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> that is associated with the new custom category, or performance object."
+      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 새 사용자 지정 범주 또는 성능 개체와 연결 된입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Create*
   exceptions:
   - type: System.ArgumentException
@@ -451,19 +451,19 @@ items:
     description: "A counter name that is specified within the <code>counterData</code> collection is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string (\"\").  \n  \n -or-  \n  \n A counter that is specified within the <code>counterData</code> collection already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>categoryName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: '<code>categoryType</code> value is outside of the range of the following values: <xref uid=&quot;langword_csharp_MultiInstance&quot; name=&quot;MultiInstance&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SingleInstance&quot; name=&quot;SingleInstance&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_Unknown&quot; name=&quot;Unknown&quot; href=&quot;&quot;></xref>.'
+    description: '<code>categoryType</code>값이 다음 값의 범위를 벗어났습니다: <xref uid=&quot;langword_csharp_MultiInstance&quot; name=&quot;MultiInstance&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_SingleInstance&quot; name=&quot;SingleInstance&quot; href=&quot;&quot;> </xref>, 또는 <xref uid=&quot;langword_csharp_Unknown&quot; name=&quot;Unknown&quot; href=&quot;&quot;> </xref>합니다.'
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer.       -or-       The layout of the <code>counterData</code> collection is incorrect for base counters. A counter of type <xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleCounter&quot; name=&quot;SampleCounter&quot; href=&quot;&quot;></xref> must be immediately followed by one of the base counter types (<xref uid=&quot;langword_csharp_AverageBase&quot; name=&quot;AverageBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_MultiBase&quot; name=&quot;MultiBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawBase&quot; name=&quot;RawBase&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleBase&quot; name=&quot;SampleBase&quot; href=&quot;&quot;></xref>)."
+    description: "범주는 로컬 컴퓨터에 이미 있습니다.       -또는-의 레이아웃은 <code> counterData </code> 컬렉션 기본 카운터에 대해 올바르지 않습니다. A counter of type <xref uid=&quot;langword_csharp_AverageCount64&quot; name=&quot;AverageCount64&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_AverageTimer32&quot; name=&quot;AverageTimer32&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer&quot; name=&quot;CounterMultiTimer&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimerInverse&quot; name=&quot;CounterMultiTimerInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100Ns&quot; name=&quot;CounterMultiTimer100Ns&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_CounterMultiTimer100NsInverse&quot; name=&quot;CounterMultiTimer100NsInverse&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawFraction&quot; name=&quot;RawFraction&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SampleFraction&quot; name=&quot;SampleFraction&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleCounter&quot; name=&quot;SampleCounter&quot; href=&quot;&quot;></xref> must be immediately followed by one of the base counter types (<xref uid=&quot;langword_csharp_AverageBase&quot; name=&quot;AverageBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_MultiBase&quot; name=&quot;MultiBase&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_RawBase&quot; name=&quot;RawBase&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_SampleBase&quot; name=&quot;SampleBase&quot; href=&quot;&quot;></xref>)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Create(System.String,System.String,System.String,System.String)
@@ -478,8 +478,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Registers a custom performance counter category containing a single counter of type <xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;></xref> on the local computer."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "형식의 단일 카운터를 포함 하는 사용자 지정 성능 카운터 범주 등록 <xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;> </xref> 로컬 컴퓨터에 있습니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> and single <xref:System.Diagnostics.PerformanceCounter> with help text for each, using the Create method.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#2](~/add/codesnippet/visualbasic/012c8ef3-108d-4e71-bb01-_1.vb)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#2](~/add/codesnippet/csharp/012c8ef3-108d-4e71-bb01-_1.cs)]"
   syntax:
@@ -487,19 +487,19 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the custom performance counter category to create and register with the system."
+      description: "사용자 지정 성능 카운터 범주를 만들어 등록 시스템으로의 이름입니다."
     - id: categoryHelp
       type: System.String
-      description: "A description of the custom category."
+      description: "사용자 지정 범주에 대 한 설명"
     - id: counterName
       type: System.String
-      description: "The name of a new counter, of type <xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;></xref>, to create as part of the new category."
+      description: "형식의 새 카운터의 이름 <xref uid=&quot;langword_csharp_NumberOfItems32&quot; name=&quot;NumberOfItems32&quot; href=&quot;&quot;> </xref>, 새 범주의 만들 합니다."
     - id: counterHelp
       type: System.String
-      description: "A description of the counter that is associated with the new custom category."
+      description: "새 사용자 지정 범주와 관련 된 카운터의 설명입니다."
     return:
       type: System.Diagnostics.PerformanceCounterCategory
-      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> that is associated with the new system category, or performance object."
+      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 새 시스템 범주 또는 성능 개체와 연결 된입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Create*
   exceptions:
   - type: System.ArgumentException
@@ -507,16 +507,16 @@ items:
     description: "<code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer."
+    description: "범주는 로컬 컴퓨터에 이미 있습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterHelp</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>categoryName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterHelp</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Create(System.String,System.String,System.Diagnostics.PerformanceCounterCategoryType,System.String,System.String)
@@ -531,7 +531,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Registers the custom performance counter category containing a single counter of type <xref href=&quot;System.Diagnostics.PerformanceCounterType&quot;></xref> on the local computer."
+  summary: "형식의 단일 카운터를 포함 하는 사용자 지정 성능 카운터 범주가 등록 <xref href=&quot;System.Diagnostics.PerformanceCounterType&quot;> </xref> 로컬 컴퓨터에 있습니다."
   remarks: "The `categoryType` parameter specifies whether the performance counter category is single-instance or multi-instance. By default, a category is single-instance when it is created and becomes multi-instance when another instance is added. Categories are created when an application is set up, and instances are added at run time. In the .NET Framework versions 1.0 and 1.1, it is not necessary to know if a performance counter category is multi-instance or single-instance. In the [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], the <xref:System.Diagnostics.PerformanceCounterCategoryType> enumeration is used to indicate whether a performance counter can have multiple instances.  \n  \n Performance counter categories installed with the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] use separate shared memory, with each performance counter category having its own memory. You can specify the size of separate shared memory by creating a DWORD named FileMappingSize in the registry key HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\\\*\\<category name>*\\Performance. The FileMappingSize value is set to the shared memory size of the category. The default size is 131072 decimal. If the FileMappingSize value is not present, the `fileMappingSize` attribute value for the `performanceCounters` element specified in the Machine.config file is used, causing additional overhead for configuration file processing. You can realize a performance improvement for application startup by setting the file mapping size in the registry.  \n  \n> [!NOTE]\n>  It is strongly recommended that new performance counter categories be created during the installation of the application, not during the execution of the application. This allows time for the operating system to refresh its list of registered performance counter categories. If the list has not been refreshed, the attempt to use the category will fail.  \n  \n> [!NOTE]\n>  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.  \n>   \n>  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.  \n>   \n>  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
   example:
   - "The following code example shows the use of the Create method. The example shows how to create a custom, single instance performance counter category.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategoryType#3](~/add/codesnippet/csharp/f3ced94f-b6d8-4841-851d-_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategoryType#3](~/add/codesnippet/visualbasic/f3ced94f-b6d8-4841-851d-_1.vb)]"
@@ -540,22 +540,22 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the custom performance counter category to create and register with the system."
+      description: "사용자 지정 성능 카운터 범주를 만들어 등록 시스템으로의 이름입니다."
     - id: categoryHelp
       type: System.String
-      description: "A description of the custom category."
+      description: "사용자 지정 범주에 대 한 설명"
     - id: categoryType
       type: System.Diagnostics.PerformanceCounterCategoryType
-      description: "One of the <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref> values specifying whether the category is <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref>, <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref>, or <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;></xref>."
+      description: "중 하나는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref> 범주 인지 여부를 지정 하는 값 <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref>, <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref>, 또는 <xref href=&quot;System.Diagnostics.PerformanceCounterCategoryType&quot;> </xref>합니다."
     - id: counterName
       type: System.String
-      description: "The name of a new counter to create as part of the new category."
+      description: "새 범주의 일환으로 만들려는 새 카운터의 이름입니다."
     - id: counterHelp
       type: System.String
-      description: "A description of the counter that is associated with the new custom category."
+      description: "새 사용자 지정 범주와 관련 된 카운터의 설명입니다."
     return:
       type: System.Diagnostics.PerformanceCounterCategory
-      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> that is associated with the new system category, or performance object."
+      description: "A <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 새 시스템 범주 또는 성능 개체와 연결 된입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Create*
   exceptions:
   - type: System.ArgumentException
@@ -563,16 +563,16 @@ items:
     description: "<code>counterName</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or is an empty string (\"\").  \n  \n -or-  \n  \n The counter that is specified by <code>counterName</code> already exists.  \n  \n -or-  \n  \n <code>counterName</code> has invalid syntax. It might contain backslash characters (\"\\\\\") or have length greater than 80 characters."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category already exists on the local computer."
+    description: "범주는 로컬 컴퓨터에 이미 있습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>categoryName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterHelp</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>categoryName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>counterHelp</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Delete(System.String)
@@ -587,8 +587,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Removes the category and its associated counters from the local computer."
-  remarks: "You can delete only custom performance counter categories from the system. You cannot delete a counter from a category. To do so, delete the category and recreate the category with the counters you want to retain. To avoid an exception, confirm that the category exists before you attempt to delete it.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "로컬 컴퓨터에서 범주 및 관련된 카운터를 제거합니다."
+  remarks: "시스템에서만 사용자 지정 성능 카운터 범주를 삭제할 수 있습니다. 범주에서 카운터를 삭제할 수 없습니다. 이렇게 하려면 범주를 삭제 하 고 유지 하려면 카운터를 사용 하 여 범주를 다시 만듭니다. 예외를 방지 하려면 삭제 하기 전에 범주가 있는지 확인 하십시오.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example uses the Delete method to delete a <xref:System.Diagnostics.PerformanceCounterCategory> and the <xref:System.Diagnostics.PerformanceCounter> objects that it contains.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#6](~/add/codesnippet/csharp/m-system.diagnostics.per_10_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#6](~/add/codesnippet/visualbasic/m-system.diagnostics.per_10_1.vb)]"
   syntax:
@@ -596,7 +596,7 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the custom performance counter category to delete."
+      description: "삭제할 사용자 지정 성능 카운터 범주의 이름입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Delete*
   exceptions:
   - type: System.ArgumentNullException
@@ -604,16 +604,16 @@ items:
     description: "The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> parameter has invalid syntax. It might contain backslash characters (&quot;\\&quot;) or have length greater than 80 characters."
+    description: "<code> categoryName </code> 매개 변수의 구문이 잘못 되었습니다. 백슬래시 문자를 사용할 수 있습니다 (&quot;\\&quot;) 또는 길이 80 자 보다 커야 합니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category cannot be deleted because it is not a custom category."
+    description: "사용자 지정 범주 없기 때문에 범주를 삭제할 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Exists(System.String)
@@ -628,8 +628,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the category is registered on the local computer."
-  remarks: "Use of the Exists method can result in a noticeable performance penalty while all performance counters on the machine are checked for availability. If you are only writing to a performance counter, you can avoid the global search for performance counters by creating the performance counter when the application is installed and assuming the category exists when accessing the counter. There is no way to avoid the performance counter search when reading from performance counters.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "범주가 로컬 컴퓨터에 등록 되었는지 여부를 결정 합니다."
+  remarks: "Exists 메서드를 사용 하 컴퓨터에서 성능 카운터를 전혀 있는지 검사 하는 동안 성능이 상당히 저하 될 수 있습니다. 성능 카운터에만 작성 하는 경우에 응용 프로그램이 설치 되 고 범주가 있다고 가정 카운터에 액세스할 때 때 성능 카운터를 생성 하 여 성능 카운터에 대 한 전역 검색을 방지할 수 있습니다. 성능 카운터에서 읽을 때 성능 카운터 검색을 방지 하기 위해 방식은 없습니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounterCategory> object named \"orders\" exists. If not, it creates the <xref:System.Diagnostics.PerformanceCounterCategory> object by using a <xref:System.Diagnostics.CounterCreationDataCollection> object that contains two performance counters.  \n  \n [!code-cpp[PerfCounter_ccd#1](~/add/codesnippet/cpp/m-system.diagnostics.per_3_1.cpp)]\n [!code-vb[PerfCounter_ccd#1](~/add/codesnippet/visualbasic/m-system.diagnostics.per_3_1.vb)]\n [!code-cs[PerfCounter_ccd#1](~/add/codesnippet/csharp/m-system.diagnostics.per_3_1.cs)]"
   syntax:
@@ -637,10 +637,10 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category to look for."
+      description: "찾으려는 성능 카운터 범주의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the category is registered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>범주 등록 되 면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Exists*
   exceptions:
   - type: System.ArgumentNullException
@@ -648,13 +648,13 @@ items:
     description: "The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> parameter is an empty string (&quot;&quot;)."
+    description: "<code> categoryName </code> 매개 변수는 빈 문자열 (&quot;&quot;)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.Exists(System.String,System.String)
@@ -669,8 +669,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the category is registered on the specified computer."
-  remarks: "Use of the Exists method can result in a noticeable performance penalty while all performance counters on the machine are checked for availability. If you are only writing to a performance counter, you can avoid the global search for performance counters by creating the performance counter when the application is installed and assuming the category exists when accessing the counter. There is no way to avoid the performance counter search when reading from performance counters.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "범주를 지정된 된 컴퓨터에 등록 되었는지 여부를 결정 합니다."
+  remarks: "Exists 메서드를 사용 하 컴퓨터에서 성능 카운터를 전혀 있는지 검사 하는 동안 성능이 상당히 저하 될 수 있습니다. 성능 카운터에만 작성 하는 경우에 응용 프로그램이 설치 되 고 범주가 있다고 가정 카운터에 액세스할 때 때 성능 카운터를 생성 하 여 성능 카운터에 대 한 전역 검색을 방지할 수 있습니다. 성능 카운터에서 읽을 때 성능 카운터 검색을 방지 하기 위해 방식은 없습니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following example determines whether a <xref:System.Diagnostics.PerformanceCounterCategory> object named `Orders` exists. If it does not exist, the example creates the <xref:System.Diagnostics.PerformanceCounterCategory> object by using a <xref:System.Diagnostics.CounterCreationDataCollection> object that contains two performance counters.  \n  \n [!code-cpp[PerfCounter_ccd#1](~/add/codesnippet/cpp/a840bf9c-a22d-45eb-89a3-_1.cpp)]\n [!code-vb[PerfCounter_ccd#1](~/add/codesnippet/visualbasic/a840bf9c-a22d-45eb-89a3-_1.vb)]\n [!code-cs[PerfCounter_ccd#1](~/add/codesnippet/csharp/a840bf9c-a22d-45eb-89a3-_1.cs)]"
   syntax:
@@ -678,13 +678,13 @@ items:
     parameters:
     - id: categoryName
       type: System.String
-      description: "The name of the performance counter category to look for."
+      description: "찾으려는 성능 카운터 범주의 이름입니다."
     - id: machineName
       type: System.String
-      description: "The name of the computer to examine for the category."
+      description: "범주에 대해 검사 하는 컴퓨터의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the category is registered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>범주 등록 되 면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.Exists*
   exceptions:
   - type: System.ArgumentNullException
@@ -692,16 +692,16 @@ items:
     description: "The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> parameter is an empty string (&quot;&quot;).       -or-       The <code>machineName</code> parameter is invalid."
+    description: "<code> categoryName </code> 매개 변수는 빈 문자열 (&quot;&quot;).       -또는- <code> machineName </code> 매개 변수가 올바르지 않습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The network path cannot be found."
+    description: "네트워크 경로 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission.       -or-       Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "호출자에 게 필요한 권한이 없습니다.       -또는-관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.GetCategories
@@ -716,8 +716,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Retrieves a list of the performance counter categories that are registered on the local computer."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "로컬 컴퓨터에 등록 된 성능 카운터 범주 목록을 검색 합니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example uses the <xref:System.Diagnostics.PerformanceCounterCategory.GetCategories%2A> method to return an array of <xref:System.Diagnostics.PerformanceCounterCategory> objects from the local computer or a specified computer. It converts the <xref:System.Diagnostics.PerformanceCounterCategory> array into an array of category names, which it sorts and displays for the user. The <xref:System.Diagnostics.PerformanceCounterCategory.GetCategories%2A> overload is selected based on whether a computer name was specified.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/visualbasic/m-system.diagnostics.per_5_1.vb)]\n [!code-cpp[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/cpp/m-system.diagnostics.per_5_1.cpp)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/csharp/m-system.diagnostics.per_5_1.cs)]"
   syntax:
@@ -725,15 +725,15 @@ items:
     parameters: []
     return:
       type: System.Diagnostics.PerformanceCounterCategory[]
-      description: "An array of <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> objects indicating the categories that are registered on the local computer."
+      description: "배열을 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 로컬 컴퓨터에 등록 하는 범주를 나타내는 개체입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.GetCategories*
   exceptions:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.GetCategories(System.String)
@@ -748,8 +748,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Retrieves a list of the performance counter categories that are registered on the specified computer."
-  remarks: "To retrieve the categories on the local computer, use another overload or pass &quot;.&quot; as the `machineName` parameter.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정된 된 컴퓨터에 등록 된 성능 카운터 범주 목록을 검색 합니다."
+  remarks: "로컬 컴퓨터에서 범주를 검색 하려면 다른 오버 로드를 사용 하거나 &quot;.&quot;로 `machineName` 매개 변수입니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example uses the <xref:System.Diagnostics.PerformanceCounterCategory.GetCategories%2A> method to return an array of <xref:System.Diagnostics.PerformanceCounterCategory> objects from the local computer or a specified computer. It converts the <xref:System.Diagnostics.PerformanceCounterCategory> array into an array of category names, which it sorts and displays for the user. The <xref:System.Diagnostics.PerformanceCounterCategory.GetCategories%2A> overload is selected based on whether a computer name was specified.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/visualbasic/m-system.diagnostics.per_7_1.vb)]\n [!code-cpp[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/cpp/m-system.diagnostics.per_7_1.cpp)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.GetMembers#2](~/add/codesnippet/csharp/m-system.diagnostics.per_7_1.cs)]"
   syntax:
@@ -757,21 +757,21 @@ items:
     parameters:
     - id: machineName
       type: System.String
-      description: "The computer to look on."
+      description: "볼 수는 컴퓨터입니다."
     return:
       type: System.Diagnostics.PerformanceCounterCategory[]
-      description: "An array of <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> objects indicating the categories that are registered on the specified computer."
+      description: "배열을 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 지정된 된 컴퓨터에 등록 하는 범주를 나타내는 개체입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.GetCategories*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>machineName</code> parameter is invalid."
+    description: "<code> machineName </code> 매개 변수가 올바르지 않습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.GetCounters
@@ -786,8 +786,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Retrieves a list of the counters in a performance counter category that contains exactly one instance."
-  remarks: "For more information about performance object instances, see the <xref:System.Diagnostics.PerformanceCounter> class overview.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "정확히 하나의 인스턴스를 포함 하는 성능 카운터 범주에서 카운터의 목록을 검색 합니다."
+  remarks: "성능 개체 인스턴스에 대 한 자세한 내용은 참조는 <xref:System.Diagnostics.PerformanceCounter>클래스 개요.</xref:System.Diagnostics.PerformanceCounter>      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example gets a list of the <xref:System.Diagnostics.PerformanceCounter> objects in a <xref:System.Diagnostics.PerformanceCounterCategory>. It first creates a <xref:System.Diagnostics.PerformanceCounterCategory> with the appropriate constructor, based on whether a computer name was specified. It then uses the <xref:System.Diagnostics.PerformanceCounterCategory.GetCounters%2A> method to return an array of <xref:System.Diagnostics.PerformanceCounter> objects, selecting the <xref:System.Diagnostics.PerformanceCounterCategory.GetCounters%2A> overload based on whether an instance name was specified.  \n  \n This GetCounters overload fails unless it is used with a single-instance category.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/visualbasic/m-system.diagnostics.per_14_1.vb)]\n [!code-cpp[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/cpp/m-system.diagnostics.per_14_1.cpp)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/csharp/m-system.diagnostics.per_14_1.cs)]"
   syntax:
@@ -795,21 +795,21 @@ items:
     parameters: []
     return:
       type: System.Diagnostics.PerformanceCounter[]
-      description: "An array of <xref href=&quot;System.Diagnostics.PerformanceCounter&quot;></xref> objects indicating the counters that are associated with this single-instance performance counter category."
+      description: "배열을 <xref href=&quot;System.Diagnostics.PerformanceCounter&quot;> </xref> 이 단일 인스턴스 성능 카운터 범주와 관련 된 카운터를 나타내는 개체입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.GetCounters*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The category is not a single instance."
+    description: "범주는 단일 인스턴스가 아닙니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The category does not have an associated instance."
+    description: "범주에는 연관된 된 인스턴스가 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.GetCounters(System.String)
@@ -824,8 +824,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Retrieves a list of the counters in a performance counter category that contains one or more instances."
-  remarks: "To represent a single-instance category, pass an empty string (&quot;&quot;) for the `instanceName` parameter.       For more information about performance object instances, see the <xref:System.Diagnostics.PerformanceCounter> class overview.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "하나 이상의 인스턴스를 포함 하는 성능 카운터 범주에서 카운터의 목록을 검색 합니다."
+  remarks: "단일 인스턴스 범주를 나타내는 빈 문자열을 전달 (&quot;&quot;)에 대 한는 `instanceName` 매개 변수입니다.       성능 개체 인스턴스에 대 한 자세한 내용은 참조는 <xref:System.Diagnostics.PerformanceCounter>클래스 개요.</xref:System.Diagnostics.PerformanceCounter>      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example gets a list of the <xref:System.Diagnostics.PerformanceCounter> objects in a <xref:System.Diagnostics.PerformanceCounterCategory>. It first creates a <xref:System.Diagnostics.PerformanceCounterCategory> with the appropriate constructor, based on whether a computer name was specified. It then uses the <xref:System.Diagnostics.PerformanceCounterCategory.GetCounters%2A> method to return an array of <xref:System.Diagnostics.PerformanceCounter> objects, selecting the <xref:System.Diagnostics.PerformanceCounterCategory.GetCounters%2A> overload based on whether an instance name was specified.  \n  \n This GetCounters overload fails unless it is used with a category that contains instances.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/visualbasic/m-system.diagnostics.per_8_1.vb)]\n [!code-cpp[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/cpp/m-system.diagnostics.per_8_1.cpp)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.GetMembers#4](~/add/codesnippet/csharp/m-system.diagnostics.per_8_1.cs)]"
   syntax:
@@ -833,10 +833,10 @@ items:
     parameters:
     - id: instanceName
       type: System.String
-      description: "The performance object instance for which to retrieve the list of associated counters."
+      description: "와 관련 된 카운터의 목록을 검색 하려는 성능 개체 인스턴스."
     return:
       type: System.Diagnostics.PerformanceCounter[]
-      description: "An array of <xref href=&quot;System.Diagnostics.PerformanceCounter&quot;></xref> objects indicating the counters that are associated with the specified object instance of this performance counter category."
+      description: "배열을 <xref href=&quot;System.Diagnostics.PerformanceCounter&quot;> </xref> 이 성능 카운터 범주의 지정한 개체가 인스턴스와 연결 되는 카운터를 나타내는 개체입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.GetCounters*
   exceptions:
   - type: System.ArgumentNullException
@@ -844,13 +844,13 @@ items:
     description: "The <code>instanceName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property for this <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> instance has not been set.       -or-       The category does not contain the instance that is specified by the <code>instanceName</code> parameter."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>이 대 한 속성 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 인스턴스에 설정 되지 않았습니다.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>       -또는-범주에는 지정 된 인스턴스는 <code> instanceName </code> 매개 변수입니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.GetInstanceNames
@@ -865,8 +865,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Retrieves the list of performance object instances that are associated with this category."
-  remarks: "> [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "이 범주와 관련 된 성능 개체 인스턴스 목록을 검색 합니다."
+  remarks: "> [!NOTE]> 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 성능 모니터 사용자 그룹의 구성원 이어야 하거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example gets a list of the <xref:System.Diagnostics.PerformanceCounter> objects in a <xref:System.Diagnostics.PerformanceCounterCategory>. It first creates a <xref:System.Diagnostics.PerformanceCounterCategory> object, using the appropriate constructor based on whether a computer name was specified. It then uses GetInstanceNames to return the instance names as an array of <xref:System.String>, which it sorts and displays.  \n  \n [!code-cpp[System.Diagnostics.PerformanceCounterCategory.GetMembers#6](~/add/codesnippet/cpp/m-system.diagnostics.per_0_1.cpp)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.GetMembers#6](~/add/codesnippet/csharp/m-system.diagnostics.per_0_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.GetMembers#6](~/add/codesnippet/visualbasic/m-system.diagnostics.per_0_1.vb)]"
   syntax:
@@ -874,18 +874,18 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "An array of strings representing the performance object instance names that are associated with this category or, if the category contains only one performance object instance, a single-entry array that contains an empty string (&quot;&quot;)."
+      description: "이 범주와 연결 된 성능 개체 인스턴스 이름을 나타내는 문자열의 배열 또는 단일 항목 배열 하는 해당 범주에 성능 개체 인스턴스를 하나만 있으면 빈 문자열을 포함 (&quot;&quot;)."
   overload: System.Diagnostics.PerformanceCounterCategory.GetInstanceNames*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The property might not have been set.       -or-       The category does not have an associated instance."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> 속성이 설정 되지 수도 있습니다.       -또는-범주에서 연결 된 인스턴스는 없습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.InstanceExists(System.String)
@@ -900,8 +900,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the specified performance object instance exists in the category that is identified by this <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;></xref> object&quot;s <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property."
-  remarks: "This overload of InstanceExists is not `static`. It requires you to create a <xref:System.Diagnostics.PerformanceCounterCategory> object and to set the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> property.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정 된 성능 개체 인스턴스가이 식별 되는 범주에 있는지 여부를 결정 <xref href=&quot;System.Diagnostics.PerformanceCounterCategory&quot;> </xref> 개체의 <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>"
+  remarks: "InstanceExists의이 오버 로드는 `static`합니다. 만들어야 합니다는 <xref:System.Diagnostics.PerformanceCounterCategory>개체 및 설정 하는 <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>속성.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> </xref:System.Diagnostics.PerformanceCounterCategory>      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example determines whether a <xref:System.Diagnostics.PerformanceCounter> instance exists within a <xref:System.Diagnostics.PerformanceCounterCategory>. It first creates a <xref:System.Diagnostics.PerformanceCounterCategory> object, using the appropriate constructor based on whether a computer name was specified. It then uses InstanceExists to determine whether the specified instance exists, then informs the user. If no instance name is specified, the example uses the default single-instance name.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#2](~/add/codesnippet/csharp/m-system.diagnostics.per_1_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#2](~/add/codesnippet/visualbasic/m-system.diagnostics.per_1_1.vb)]"
   syntax:
@@ -909,24 +909,24 @@ items:
     parameters:
     - id: instanceName
       type: System.String
-      description: "The performance object instance in this performance counter category to search for."
+      description: "이 성능 카운터 범주를 검색할에서 성능 개체 인스턴스."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the category contains the specified performance object instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>범주에는 된 지정 된 성능 개체 인스턴스를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The property might not have been set."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> 속성이 설정 되지 수도 있습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>instanceName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.InstanceExists(System.String,System.String)
@@ -941,8 +941,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether a specified category on the local computer contains the specified performance object instance."
-  remarks: "It is not possible to determine whether a performance object instance exists on a computer without specifying a specific category to look in.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정 된 성능 개체 인스턴스는 로컬 컴퓨터에 지정된 된 범주에 포함 되는지 여부를 결정 합니다."
+  remarks: "성능 개체 인스턴스를 특정 범주를 찾는 위치를 지정 하지 않고 컴퓨터에 있는지 여부를 확인 하는 것이 불가능 합니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example uses the static overloads of <xref:System.Diagnostics.PerformanceCounterCategory.InstanceExists%2A> to determine whether the given <xref:System.Diagnostics.PerformanceCounter> instance exists in the <xref:System.Diagnostics.PerformanceCounterCategory>. The overload is selected based on whether a computer name is specified. If no instance name is specified, the example uses the default single-instance name.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#10](~/add/codesnippet/visualbasic/adb05d13-bcb8-4c81-ad06-_1.vb)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#10](~/add/codesnippet/csharp/adb05d13-bcb8-4c81-ad06-_1.cs)]"
   syntax:
@@ -950,13 +950,13 @@ items:
     parameters:
     - id: instanceName
       type: System.String
-      description: "The performance object instance to search for."
+      description: "검색할 성능 개체 인스턴스입니다."
     - id: categoryName
       type: System.String
-      description: "The performance counter category to search."
+      description: "성능 카운터 범주를 검색 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the category contains the specified performance object instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>범주에는 된 지정 된 성능 개체 인스턴스를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.ArgumentNullException
@@ -964,13 +964,13 @@ items:
     description: "The <code>instanceName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> parameter is an empty string (&quot;&quot;)."
+    description: "<code> categoryName </code> 매개 변수는 빈 문자열 (&quot;&quot;)."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.InstanceExists(System.String,System.String,System.String)
@@ -985,8 +985,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether a specified category on a specified computer contains the specified performance object instance."
-  remarks: "It is not possible to determine whether a performance object instance exists on a computer without specifying a specific category to look in.       You can use &quot;.&quot; to specify the local computer.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "지정 된 성능 개체 인스턴스는 특정된 컴퓨터의 지정된 된 범주에 포함 되는지 여부를 결정 합니다."
+  remarks: "성능 개체 인스턴스를 특정 범주를 찾는 위치를 지정 하지 않고 컴퓨터에 있는지 여부를 확인 하는 것이 불가능 합니다.       사용할 수 있습니다 &quot;.&quot; 로컬 컴퓨터를 지정 합니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example uses the static overloads of <xref:System.Diagnostics.PerformanceCounterCategory.InstanceExists%2A> to determine whether the given <xref:System.Diagnostics.PerformanceCounter> instance exists in the <xref:System.Diagnostics.PerformanceCounterCategory>. The overload is selected based on whether a computer name is specified. If no instance name is specified, the example uses the default single-instance name.  \n  \n [!code-vb[System.Diagnostics.PerformanceCounterCategory.ExistMembers#10](~/add/codesnippet/visualbasic/c05b631a-0e63-4d23-8d88-_1.vb)]\n [!code-cs[System.Diagnostics.PerformanceCounterCategory.ExistMembers#10](~/add/codesnippet/csharp/c05b631a-0e63-4d23-8d88-_1.cs)]"
   syntax:
@@ -994,16 +994,16 @@ items:
     parameters:
     - id: instanceName
       type: System.String
-      description: "The performance object instance to search for."
+      description: "검색할 성능 개체 인스턴스입니다."
     - id: categoryName
       type: System.String
-      description: "The performance counter category to search."
+      description: "성능 카운터 범주를 검색 합니다."
     - id: machineName
       type: System.String
-      description: "The name of the computer on which to look for the category instance pair."
+      description: "범주 인스턴스 쌍에 대 한 검색할 컴퓨터의 이름입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the category contains the specified performance object instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>범주에는 된 지정 된 성능 개체 인스턴스를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.InstanceExists*
   exceptions:
   - type: System.ArgumentNullException
@@ -1011,13 +1011,13 @@ items:
     description: "The <code>instanceName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <code>categoryName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>categoryName</code> parameter is an empty string (&quot;&quot;).       -or-       The <code>machineName</code> parameter is invalid."
+    description: "<code> categoryName </code> 매개 변수는 빈 문자열 (&quot;&quot;).       -또는- <code> machineName </code> 매개 변수가 올바르지 않습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.MachineName
@@ -1032,7 +1032,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the name of the computer on which this category exists."
+  summary: "이 범주 존재 하는 컴퓨터의 이름을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> with the <xref:System.Diagnostics.PerformanceCounterCategory.%23ctor> constructor. It prompts the user for the <xref:System.Diagnostics.PerformanceCounterCategory> and the computer names, then sets the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> and MachineName properties from the entered values. It then displays the values of the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>, MachineName, and <xref:System.Diagnostics.PerformanceCounterCategory.CategoryHelp%2A> properties, or it displays an error message if the <xref:System.Diagnostics.PerformanceCounterCategory> cannot be accessed.  \n  \n [!code-cs[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/csharp/p-system.diagnostics.per_1_1.cs)]\n [!code-vb[System.Diagnostics.PerformanceCounterCategory.OtherMembers#8](~/add/codesnippet/visualbasic/p-system.diagnostics.per_1_1.vb)]"
@@ -1040,12 +1040,12 @@ items:
     content: public string MachineName { get; set; }
     return:
       type: System.String
-      description: "The name of the computer on which the performance counter category and its associated counters exist."
+      description: "성능 카운터 범주 및 관련된 카운터가 존재 하는 컴퓨터의 이름입니다."
   overload: System.Diagnostics.PerformanceCounterCategory.MachineName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The MachineName syntax is invalid."
+    description: "MachineName 구문이 잘못 되었습니다."
   platform:
   - net462
 - uid: System.Diagnostics.PerformanceCounterCategory.ReadCategory
@@ -1060,8 +1060,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Reads all the counter and performance object instance data that is associated with this performance counter category."
-  remarks: "You must set the <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A> property before you call ReadCategory.       Reading the entire category at once can be as efficient as reading a single counter because of the way that the system provides the data.      > [!NOTE] >  To read performance counters in Windows Vista and later, Windows XP Professional x64 Edition, or Windows Server 2003, you must either be a member of the Performance Monitor Users group or have administrative privileges.   >    >  To avoid having to elevate your privileges to access performance counters in Windows Vista and later, add yourself to the Performance Monitor Users group.   >    >  In Windows Vista and later, User Account Control (UAC) determines the privileges of a user. If you are a member of the Built-in Administrators group, you are assigned two run-time access tokens: a standard user access token and an administrator access token. By default, you are in the standard user role. To execute the code that accesses performance counters, you must first elevate your privileges from standard user to administrator. You can do this when you start an application by right-clicking the application icon and indicating that you want to run as an administrator."
+  summary: "모든 카운터와 성능 개체 인스턴스 데이터를 읽고이 성능 카운터 범주와 연결 합니다."
+  remarks: "설정 해야 합니다는 <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>ReadCategory를 호출 하기 전에 속성.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName%2A>       한 번에 전체 범주를 읽는 시스템 데이터를 제공 하는 방식으로 인해 단일 카운터를 읽는 만큼 효율적 수 있습니다.      > [!NOTE] > 성능 카운터를 읽는 Windows Vista 이상 버전에서는 Windows XP Professional x64 Edition 또는 Windows Server 2003 있습니다 Performance Monitor Users 그룹의 구성원 이거나 관리자 권한이 있어야 합니다.   >>를 Windows Vista 및 이후 버전의 성능 카운터에 액세스 하려면 권한을 높일 필요가 없도록를 직접를 성능 모니터 사용자 그룹에 추가 합니다.   >> Windows Vista 이상에서 사용자 계정 컨트롤 (UAC)가 사용자 권한을 결정합니다. 두 개의 런타임 액세스 토큰에 할당 된 기본 제공 Administrators 그룹의 구성원 인 경우: 표준 사용자 액세스 토큰 및 관리자 액세스 토큰입니다. 기본적으로 표준 사용자 역할에 속합니다. 성능 카운터에 액세스 하는 코드를 실행 하려면 먼저 높여야 귀하의 권한을 표준 사용자에서 관리자에 게 있습니다. 응용 프로그램 아이콘을 마우스 오른쪽 단추로 클릭 하 고 관리자 권한으로 실행 되도록 지정 하 여 응용 프로그램을 시작 하는 경우이 수행할 수 있습니다."
   example:
   - "The following code example creates a <xref:System.Diagnostics.PerformanceCounterCategory> for a specified <xref:System.Diagnostics.PerformanceCounterCategory> name. It then uses ReadCategory to return an <xref:System.Diagnostics.InstanceDataCollectionCollection> that contains instance data for all the instances of the <xref:System.Diagnostics.PerformanceCounter> objects within the <xref:System.Diagnostics.PerformanceCounterCategory>.  \n  \n [!code-cs[System.Diagnostics.InstanceData.CopyTo#6](~/add/codesnippet/csharp/m-system.diagnostics.per_9_1.cs)]\n [!code-vb[System.Diagnostics.InstanceData.CopyTo#6](~/add/codesnippet/visualbasic/m-system.diagnostics.per_9_1.vb)]"
   syntax:
@@ -1069,18 +1069,18 @@ items:
     parameters: []
     return:
       type: System.Diagnostics.InstanceDataCollectionCollection
-      description: "An <xref href=&quot;System.Diagnostics.InstanceDataCollectionCollection&quot;></xref> that contains the counter and performance object instance data for the category."
+      description: "<xref href=&quot;System.Diagnostics.InstanceDataCollectionCollection&quot;> </xref> 범주에 대 한 카운터와 성능 개체 인스턴스 데이터를 포함 하는 합니다."
   overload: System.Diagnostics.PerformanceCounterCategory.ReadCategory*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The property might not have been set."
+    description: "<xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Diagnostics.PerformanceCounterCategory.CategoryName*> 속성이 설정 되지 수도 있습니다."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "A call to an underlying system API failed."
+    description: "내부 시스템 API에 대 한 호출에 실패 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Code that is executing without administrative privileges attempted to read a performance counter."
+    description: "관리자 권한 없이 실행 되는 코드는 성능 카운터를 읽으려고 했습니다."
   platform:
   - net462
 references:

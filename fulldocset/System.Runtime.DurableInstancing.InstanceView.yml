@@ -24,8 +24,8 @@ items:
   nameWithType: InstanceView
   fullName: System.Runtime.DurableInstancing.InstanceView
   type: Class
-  summary: "Represents a view of an instance. For example, the <xref:System.Runtime.DurableInstancing.InstanceStore.Execute*> method implementations return an InstanceView object that provides a view into the instance data in the persistence store."
-  remarks: "Each InstanceView object is associated with an InstanceHandle. For an InstanceView returned from InstanceStore.Execute, the associated handle is the one passed to Execute. For an InstanceView returned from InstancePersistenceContext.InstanceView, the associated handle is the one passed to TryCommand.       An InstanceHandle may have zero or more InstanceView objects associated with it at any given time. InstanceView objects returned from InstanceStore.Execute are immutable and represent a snapshot of the known instance state after the successful execution of that command. InstanceView objects returned from InstancePersistenceContext are mutable and represent the current known instance state as it is being updated during the execution of the command.  (If the command ultimately fails, this intermediate state is discarded)."
+  summary: "인스턴스 보기를 나타냅니다. 예를 들어는 <xref:System.Runtime.DurableInstancing.InstanceStore.Execute*>메서드 구현은 지 속성 저장소에서 인스턴스 데이터에 대 한 뷰를 제공 하는 InstanceView 개체를 반환 합니다.</xref:System.Runtime.DurableInstancing.InstanceStore.Execute*>"
+  remarks: "각 InstanceView 개체는 InstanceHandle에 연결 됩니다. InstanceStore.Execute에서 반환 된 InstanceView, 연결 된 핸들은 Execute에 전달 된 것입니다. InstancePersistenceContext.InstanceView에서 반환 된 InstanceView, 연결 된 핸들은 TryCommand에 전달 된 것입니다.       InstanceHandle에는&0; 개 이상의 InstanceView 개체가 지정된 된 시간에 연결 되어 있을 수 있습니다. InstanceStore.Execute에서 반환 된 InstanceView 개체는 변경할 수 없습니다 및 해당 명령이 성공적으로 실행 한 후 알려진된 인스턴스 상태의 스냅숏을 나타냅니다. InstancePersistenceContext에서 반환 된 InstanceView 개체 변경 가능 하며 명령 실행 중 업데이트 됨에 따라 현재 알려진된 인스턴스 상태를 나타냅니다.  (최종적으로 명령이 실패 하면이 중간 상태는 삭제) 합니다."
   syntax:
     content: public sealed class InstanceView
   inheritance:
@@ -46,12 +46,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets instance data as a dictionary of names and values."
+  summary: "이름 및 값의 사전으로 인스턴스 데이터를 가져옵니다."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceData { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The instance data."
+      description: "인스턴스 데이터입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceData*
   exceptions: []
   platform:
@@ -68,12 +68,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceData property."
+  summary: "InstanceData 속성의 일관성 상태를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceDataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency (None, In Doubt, and Partial) of the instance data. InstanceValueConsistency.None indicates that the InstanceData property holds a fully populated and locked set of instance data."
+      description: "일관성 (None, In Doubt 및 Partial) 인스턴스 데이터입니다. InstanceValueConsistency.None은 InstanceData 속성이 완전히 채워지고 잠긴 인스턴스 데이터 집합이 함을 나타냅니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceDataConsistency*
   exceptions: []
   platform:
@@ -90,12 +90,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the identifier (ID) of the instance as a GUID."
+  summary: "인스턴스 식별자를 (ID)를 GUID로 가져옵니다."
   syntax:
     content: public Guid InstanceId { get; }
     return:
       type: System.Guid
-      description: "The ID of the instance or Guid.Empty if the associated instance handle is not bound to an instance."
+      description: "인스턴스 또는 연결된 된 인스턴스 핸들이 인스턴스에 바인딩되지 않은 경우 Guid.Empty의 ID입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceId*
   exceptions: []
   platform:
@@ -112,12 +112,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the instance keys as a dictionary of instance key identifiers and associated <xref href=&quot;System.Runtime.DurableInstancing.InstanceKeyView&quot;></xref> objects."
+  summary: "인스턴스 키 식별자의 사전으로 인스턴스 키를 가져오고 연관 된 <xref href=&quot;System.Runtime.DurableInstancing.InstanceKeyView&quot;> </xref> 개체입니다."
   syntax:
     content: public System.Collections.Generic.IDictionary<Guid,System.Runtime.DurableInstancing.InstanceKeyView> InstanceKeys { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Guid,System.Runtime.DurableInstancing.InstanceKeyView}
-      description: "A dictionary of instance key identifiers and their associated instance key view objects."
+      description: "인스턴스 키 식별자와 데이터베이스의 연결 된 인스턴스 키 뷰 개체의 사전입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceKeys*
   exceptions: []
   platform:
@@ -134,12 +134,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceKeys property."
+  summary: "InstanceKeys 속성의 일관성 상태를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceKeysConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency value of instance keys. InstanceValueConsistency.None indicates that the InstanceKeys property holds a fully populated and locked set of instance keys (though not necessarily each key’s metadata)."
+      description: "인스턴스 키의 일관성 값입니다. InstanceValueConsistency.None은 InstanceKeys 속성이 완전히 채워지고 잠긴 인스턴스 키 집합이 함을 나타냅니다 (없을 각 키의 메타 데이터)."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceKeysConsistency*
   exceptions: []
   platform:
@@ -156,12 +156,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the metadata of an instance as a dictionary of names and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+  summary: "인스턴스의 메타 데이터 이름의 사전으로 가져옵니다 및 <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> 개체입니다."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceMetadata { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata of the instance."
+      description: "인스턴스의 메타 데이터입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceMetadata*
   exceptions: []
   platform:
@@ -178,12 +178,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceMetadata property."
+  summary: "InstanceMetadata 속성의 일관성 상태를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceMetadataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency of the instance metadata. InstanceValueConsistency.None indicates that the InstanceMetadata property holds a fully populated and locked set of instance metadata."
+      description: "인스턴스 메타 데이터의 일관성입니다. InstanceValueConsistency.None은 InstanceMetadata 속성이 완전히 채워지고 잠긴 인스턴스 메타 데이터 집합이 함을 나타냅니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceMetadataConsistency*
   exceptions: []
   platform:
@@ -200,12 +200,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the owner of the instance."
+  summary: "인스턴스 소유자를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceOwner InstanceOwner { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The owner of the instance. Returns null if the associated instance handle is not bound to an instance owner."
+      description: "인스턴스 소유자입니다. 연결된 된 인스턴스 핸들이 인스턴스 소유자에 바인딩되지 않은 경우 null을 반환 합니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwner*
   exceptions: []
   platform:
@@ -222,12 +222,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the metadata for an instance owner as a dictionary of names and values."
+  summary: "인스턴스 소유자에 대 한 이름 및 값의 사전으로 서의 메타 데이터를 가져옵니다."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceOwnerMetadata { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "A dictionary containing instance-owner metadata."
+      description: "인스턴스 소유자 메타 데이터를 포함 하는 사전입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadata*
   exceptions: []
   platform:
@@ -244,12 +244,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceOwnerMetadata property."
+  summary: "InstanceOwnerMetadata 속성의 일관성 상태를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceOwnerMetadataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency of the instance owner metadata.  Returns null if the associated instance handle is not bound to an instance owner."
+      description: "인스턴스 소유자 메타 데이터의 일관성입니다.  연결된 된 인스턴스 핸들이 인스턴스 소유자에 바인딩되지 않은 경우 null을 반환 합니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadataConsistency*
   exceptions: []
   platform:
@@ -266,12 +266,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the state of the instance (Unknown, Uninitialized, Initialized, or Completed)."
+  summary: "인스턴스 (Unknown, Uninitialized, Initialized 또는 완료 됨)의 상태를 가져옵니다."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceState InstanceState { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceState
-      description: "The state of the instance."
+      description: "인스턴스의 상태입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceState*
   exceptions: []
   platform:
@@ -288,12 +288,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets a collection of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects. The collection is automatically reset to empty each time a command is executed against the associated instance handle."
+  summary: "컬렉션을 가져옵니다 <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> 개체입니다. 컬렉션은 자동으로 빈 상태로 다시 설정 된 연결 된 인스턴스 핸들에 대해 명령이 실행 될 때마다 합니다."
   syntax:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<System.Runtime.DurableInstancing.InstanceStoreQueryResult> InstanceStoreQueryResults { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Runtime.DurableInstancing.InstanceStoreQueryResult}
-      description: "A collection of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects."
+      description: "컬렉션 <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> 개체입니다."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceStoreQueryResults*
   exceptions: []
   platform:
@@ -310,12 +310,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance."
+  summary: "연결된 된 인스턴스 핸들이 인스턴스에 바인딩되어 있는지 여부를 나타내는 값을 반환 합니다."
   syntax:
     content: public bool IsBoundToInstance { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>인스턴스;에 연결 된 인스턴스를 처리 하는 경우 바인딩된 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToInstance*
   exceptions: []
   platform:
@@ -332,12 +332,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance owner."
+  summary: "연결된 된 인스턴스 핸들이 인스턴스 소유자에 바인딩되어 있는지 여부를 나타내는 값을 반환 합니다."
   syntax:
     content: public bool IsBoundToInstanceOwner { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance owner; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>인스턴스 소유자;에 연결 된 인스턴스를 처리 하는 경우 바인딩된 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToInstanceOwner*
   exceptions: []
   platform:
@@ -354,12 +354,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance lock."
+  summary: "연결된 된 인스턴스 핸들이 인스턴스 잠금에 바인딩되어 있는지 여부를 나타내는 값을 반환 합니다."
   syntax:
     content: public bool IsBoundToLock { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance lock; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>인스턴스 잠금;에 연결 된 인스턴스를 처리 하는 경우 바인딩된 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToLock*
   exceptions: []
   platform:

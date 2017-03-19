@@ -16,7 +16,7 @@ items:
   nameWithType: MethodRental
   fullName: System.Reflection.Emit.MethodRental
   type: Class
-  summary: "Provides a fast way to swap method body implementation given a method of a class."
+  summary: "클래스의 메서드를 제공 하는 메서드 본문 구현 바꿔 빠른 방법을 제공 합니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ClassInterface(System.Runtime.InteropServices.ClassInterfaceType.None)]
@@ -45,12 +45,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Specifies that the method should be just-in-time (JIT) compiled immediately."
+  summary: "메서드-just-in-time (JIT) 즉시 컴파일된 되어야 함을 지정 합니다."
   syntax:
     content: public const int JitImmediate = 1;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -66,12 +66,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Specifies that the method should be just-in-time (JIT) compiled when needed."
+  summary: "메서드-just-in-time (JIT) 필요할 때 컴파일된 되어야 함을 지정 합니다."
   syntax:
     content: public const int JitOnDemand = 0;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -87,8 +87,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Swaps the body of a method."
-  remarks: "You cannot use this method to swap the body of a global method.       The method can only be called by the client that created the dynamic module that contains the type whose method&quot;s body is being swapped."
+  summary: "메서드의 본문을 바꿉니다."
+  remarks: "전역 메서드의 본문을 바꿀이 메서드를 사용할 수 없습니다.       메서드는 해당 메서드의 본문을 바꿀 형식을 포함 하는 동적 모듈을 만든 클라이언트에 의해만 호출할 수 있습니다."
   example:
   - "The following example illustrates how to swap a method body for a new body. It also illustrates how to obtain a method token for an existing method and how to construct a blob of bytes representing the Microsoft Intermediate Language (MSIL) code to be passed to `SwapMethodBody`.  \n  \n [!code-cpp[Classic MethodRental.SwapMethodBody Example#1](~/add/codesnippet/cpp/cc436dde-ab12-4c7e-9169-_1.cpp)]\n [!code-cs[Classic MethodRental.SwapMethodBody Example#1](~/add/codesnippet/csharp/cc436dde-ab12-4c7e-9169-_1.cs)]\n [!code-vb[Classic MethodRental.SwapMethodBody Example#1](~/add/codesnippet/visualbasic/cc436dde-ab12-4c7e-9169-_1.vb)]"
   syntax:
@@ -96,30 +96,30 @@ items:
     parameters:
     - id: cls
       type: System.Type
-      description: "The class containing the method."
+      description: "메서드를 포함 하는 클래스입니다."
     - id: methodtoken
       type: System.Int32
-      description: "The token for the method."
+      description: "메서드에 대 한 토큰입니다."
     - id: rgIL
       type: System.IntPtr
-      description: "A pointer to the method. This should include the method header."
+      description: "메서드에 대 한 포인터입니다. 이 메서드 헤더가 포함 되어야 합니다."
     - id: methodSize
       type: System.Int32
-      description: "The size of the new method body in bytes."
+      description: "크기 (바이트)는 새 메서드 본문입니다."
     - id: flags
       type: System.Int32
-      description: "Flags that control the swapping. See the definitions of the constants."
+      description: "교환 제어 플래그입니다. 상수 정의 참조 하십시오."
   overload: System.Reflection.Emit.MethodRental.SwapMethodBody*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>cls</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>cls</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The type <code>cls</code> is not complete."
+    description: "형식 <code> cls </code> 완전 하지 않습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>methodSize</code> is less than one or greater than 4128767 (3effff hex)."
+    description: "<code>methodSize</code>가 1 보다 작거나 4128767 (3effff 16 진수) 보다 큰 경우"
   platform:
   - net462
 - uid: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetIDsOfNames(System.Guid@,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)
@@ -135,31 +135,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Maps a set of names to a corresponding set of dispatch identifiers."
-  remarks: "This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetIDsOfNames`, see the MSDN Library."
+  summary: "이름 집합을 해당 디스패치 식별자 집합에 매핑합니다."
+  remarks: "이 메서드는 비관리 코드에서 액세스를 위한 관리 되는 클래스는 하며 관리 코드에서 호출할 수 없습니다. 에 대 한 자세한 내용은 `IDispatch::GetIDsOfNames`, MSDN Library를 참조 합니다."
   syntax:
     content: void _MethodRental.GetIDsOfNames (ref Guid riid, IntPtr rgszNames, uint cNames, uint lcid, IntPtr rgDispId);
     parameters:
     - id: riid
       type: System.Guid
-      description: "Reserved for future use. Must be IID_NULL."
+      description: "나중에 사용하도록 예약되어 있습니다. IID_NULL 이어야 합니다."
     - id: rgszNames
       type: System.IntPtr
-      description: "Passed-in array of names to be mapped."
+      description: "전달 된 이름의 배열을 매핑할 수 있습니다."
     - id: cNames
       type: System.UInt32
-      description: "Count of the names to be mapped."
+      description: "매핑할 이름의 수입니다."
     - id: lcid
       type: System.UInt32
-      description: "The locale context in which to interpret the names."
+      description: "이름을 해석할 로캘 컨텍스트."
     - id: rgDispId
       type: System.IntPtr
-      description: "Caller-allocated array which receives the IDs corresponding to the names."
+      description: "이름에 해당 하는 Id를 받는 호출자가 할당 된 배열입니다."
   overload: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetIDsOfNames*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "The method is called late-bound using the COM `IDispatch` interface."
+    description: "런타임에 바인딩된 COM을 사용 하 여 메서드는 `IDispatch` 인터페이스입니다."
   platform:
   - net462
 - uid: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetTypeInfo(System.UInt32,System.UInt32,System.IntPtr)
@@ -175,25 +175,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Retrieves the type information for an object, which can then be used to get the type information for an interface."
-  remarks: "This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetTypeInfo`, see the MSDN Library."
+  summary: "인터페이스에 대 한 형식 정보를 얻으려면 다음 사용할 수 있는 개체에 대 한 형식 정보를 검색 합니다."
+  remarks: "이 메서드는 비관리 코드에서 액세스를 위한 관리 되는 클래스는 하며 관리 코드에서 호출할 수 없습니다. 에 대 한 자세한 내용은 `IDispatch::GetTypeInfo`, MSDN Library를 참조 합니다."
   syntax:
     content: void _MethodRental.GetTypeInfo (uint iTInfo, uint lcid, IntPtr ppTInfo);
     parameters:
     - id: iTInfo
       type: System.UInt32
-      description: "The type information to return."
+      description: "반환할 형식 정보입니다."
     - id: lcid
       type: System.UInt32
-      description: "The locale identifier for the type information."
+      description: "형식 정보에 대 한 로캘 식별자입니다."
     - id: ppTInfo
       type: System.IntPtr
-      description: "Receives a pointer to the requested type information object."
+      description: "요청 된 형식 정보 개체에 대 한 포인터를 받습니다."
   overload: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetTypeInfo*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "The method is called late-bound using the COM `IDispatch` interface."
+    description: "런타임에 바인딩된 COM을 사용 하 여 메서드는 `IDispatch` 인터페이스입니다."
   platform:
   - net462
 - uid: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetTypeInfoCount(System.UInt32@)
@@ -209,19 +209,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Retrieves the number of type information interfaces that an object provides (either 0 or 1)."
-  remarks: "This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::GetTypeInfoCount`, see the MSDN Library."
+  summary: "개체 (0 또는 1)를 제공 하는 형식 정보 인터페이스의 수를 검색 합니다."
+  remarks: "이 메서드는 비관리 코드에서 액세스를 위한 관리 되는 클래스는 하며 관리 코드에서 호출할 수 없습니다. 에 대 한 자세한 내용은 `IDispatch::GetTypeInfoCount`, MSDN Library를 참조 합니다."
   syntax:
     content: void _MethodRental.GetTypeInfoCount (out uint pcTInfo);
     parameters:
     - id: pcTInfo
       type: System.UInt32
-      description: "Points to a location that receives the number of type information interfaces provided by the object."
+      description: "개체에서 제공 하는 형식 정보 인터페이스의 수를 받는 위치를 가리킵니다."
   overload: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#GetTypeInfoCount*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "The method is called late-bound using the COM `IDispatch` interface."
+    description: "런타임에 바인딩된 COM을 사용 하 여 메서드는 `IDispatch` 인터페이스입니다."
   platform:
   - net462
 - uid: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#Invoke(System.UInt32,System.Guid@,System.UInt32,System.Int16,System.IntPtr,System.IntPtr,System.IntPtr,System.IntPtr)
@@ -237,40 +237,40 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection.Emit
-  summary: "Provides access to properties and methods exposed by an object."
-  remarks: "This method is for access to managed classes from unmanaged code, and should not be called from managed code. For more information about `IDispatch::Invoke`, see the MSDN Library."
+  summary: "개체에서 노출 하는 메서드와 속성에 대 한 액세스를 제공 합니다."
+  remarks: "이 메서드는 비관리 코드에서 액세스를 위한 관리 되는 클래스는 하며 관리 코드에서 호출할 수 없습니다. 에 대 한 자세한 내용은 `IDispatch::Invoke`, MSDN Library를 참조 합니다."
   syntax:
     content: void _MethodRental.Invoke (uint dispIdMember, ref Guid riid, uint lcid, short wFlags, IntPtr pDispParams, IntPtr pVarResult, IntPtr pExcepInfo, IntPtr puArgErr);
     parameters:
     - id: dispIdMember
       type: System.UInt32
-      description: "Identifies the member."
+      description: "멤버를 식별 합니다."
     - id: riid
       type: System.Guid
-      description: "Reserved for future use. Must be IID_NULL."
+      description: "나중에 사용하도록 예약되어 있습니다. IID_NULL 이어야 합니다."
     - id: lcid
       type: System.UInt32
-      description: "The locale context in which to interpret arguments."
+      description: "인수를 해석할 로캘 컨텍스트입니다."
     - id: wFlags
       type: System.Int16
-      description: "Flags describing the context of the call."
+      description: "호출의 컨텍스트를 설명 하는 플래그입니다."
     - id: pDispParams
       type: System.IntPtr
-      description: "Pointer to a structure containing an array of arguments, an array of argument DISPIDs for named arguments, and counts for the number of elements in the arrays."
+      description: "인수의 배열, 명명 된 인수 및 배열에 있는 요소 수에 대 한 수에 대 한 인수 Dispid의 배열에 포함 된 구조체에 대 한 포인터입니다."
     - id: pVarResult
       type: System.IntPtr
-      description: "Pointer to the location where the result is to be stored."
+      description: "결과 저장 될 위치에 대 한 포인터입니다."
     - id: pExcepInfo
       type: System.IntPtr
-      description: "Pointer to a structure that contains exception information."
+      description: "예외 정보가 포함 된 구조에 대 한 포인터입니다."
     - id: puArgErr
       type: System.IntPtr
-      description: "The index of the first argument that has an error."
+      description: "오류가 있는 첫 번째 인수의 인덱스입니다."
   overload: System.Reflection.Emit.MethodRental.System#Runtime#InteropServices#_MethodRental#Invoke*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "The method is called late-bound using the COM `IDispatch` interface."
+    description: "런타임에 바인딩된 COM을 사용 하 여 메서드는 `IDispatch` 인터페이스입니다."
   platform:
   - net462
 references:
