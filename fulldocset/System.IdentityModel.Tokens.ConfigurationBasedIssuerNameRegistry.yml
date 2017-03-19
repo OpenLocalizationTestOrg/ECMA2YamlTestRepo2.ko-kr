@@ -14,7 +14,7 @@ items:
   nameWithType: ConfigurationBasedIssuerNameRegistry
   fullName: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry
   type: Class
-  summary: "Represents an issuer name registry that maintains a list of trusted issuers loaded from elements in the application configuration file that associate each issuer name to the X.509 certificate that is needed to verify the signature of tokens produced by the issuer."
+  summary: "X.509 인증서의 발급자에 의해 생성 되는 토큰의 서명을 확인 하는 데 필요한 각 발급자 이름을 연결 하는 응용 프로그램 구성 파일의 요소에서 로드 된 신뢰할 수 있는 발급자 목록을 관리 하는 발급자 이름 레지스트리를 나타냅니다."
   remarks: "The ConfigurationBasedIssuerNameRegistry class maintains a dictionary of trusted issuers by mapping the certificate of each trusted issuer to a name that refers to that issuer. The certificates are specified using the ASN.1 encoded form of the thumbprint. The issuer name can be any string, as long as it is unique within the scope of the application. This dictionary can be accessed through the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> property. The class can only resolve X.509 certificates.  \n  \n The map of trusted issuers is specified in a configuration file by adding entries under the [\\&lt;trustedIssuers\\&gt;](../Topic/%3CtrustedIssuers%3E.md) element. The `<trustedIssuers>` element is a child element of the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element and it is valid when the ConfigurationBasedIssuerNameRegistry class is specified in the `type` attribute of that element. For more information, see the documentation for each of these elements in the [WIF Configuration Schema](~/add/includes/ajax-current-ext-md.md). For more information about issuer name registries, see the <xref:System.IdentityModel.Tokens.IssuerNameRegistry> class.  \n  \n You can derive from ConfigurationBasedIssuerNameRegistry to implement your own configuration based issuer name registry. Which methods you override will depend upon your implementation. For example, you can override the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A> method to load configuration from a custom configuration schema."
   example:
   - "The following XML shows configuration for a ConfigurationBasedIssuerNameRegistry added for a collection of security token handlers. The `<trustedIssuers>` element behaves like a classic .NET configuration collection, allowing the `<add>`, `<delete>` and `<clear>` elements as child elements.  \n  \n```  \n<system.identityModel>  \n  <identityConfiguration>  \n    <securityTokenHandlersCollection>  \n      <securityTokenHandlerConfiguration>  \n        <issuerNameRegistry type=\"System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry, System.IdentityModel\">  \n          <trustedIssuers>  \n             <add thumbprint=\"97249e … 158de\" name=\"contoso.com\" />  \n         </trustedIssuers>  \n        </issuerNameRegistry>  \n      </securityTokenHandlerConfiguration>  \n  </identityConfiguration>  \n</system.identityModel>  \n```"
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry&quot;> </xref> 클래스입니다."
   syntax:
     content: public ConfigurationBasedIssuerNameRegistry ();
     parameters: []
@@ -61,25 +61,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Adds an issuer to the dictionary of trusted issuers."
-  remarks: "You can call this method to add issuers to the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> dictionary. In derived classes, you can call this method from the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A> method to add issuers to the dictionary."
+  summary: "발급자를 신뢰할 수 있는 발급자의 사전에 추가합니다."
+  remarks: "발급자를 추가 하려면이 메서드를 호출할 수는 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A>사전.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> 파생된 클래스에서이 메서드를 호출할 수 있습니다는 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A>발급자 사전에 추가 하는 방법을.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A>"
   syntax:
     content: public void AddTrustedIssuer (string certificateThumbprint, string name);
     parameters:
     - id: certificateThumbprint
       type: System.String
-      description: "ASN.1 encoded form of the issuer&quot;s certificate thumbprint."
+      description: "ASN.1 인코딩된 발급자의 인증서 지문입니다."
     - id: name
       type: System.String
-      description: "The name of the issuer."
+      description: "발급자의 이름입니다."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>certificateThumbprint</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>certificateThumbprint</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 이거나 비어 있습니다.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The issuer specified by <code>certificateThumbprint</code> has already been configured. (The issuer already exists in the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*> dictionary.)"
+    description: "로 지정 된 발급자 <code> certificateThumbprint </code> 이미 구성 되었습니다. (발급자에 이미 있습니다.는 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>사전입니다.)</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers
@@ -94,13 +94,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the dictionary of trusted issuers that have been configured for this instance."
-  remarks: "The key to the dictionary is the ASN.1 encoded form of the thumbprint of the trusted issuer&quot;s certificate and the value is the issuer name. The dictionary contains the issuers that were specified in configuration and any additional issuers that have been added with the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A> method."
+  summary: "이 인스턴스에 대 한 사전을 구성 된 신뢰할 수 있는 발급자를 가져옵니다."
+  remarks: "사전에 키 ASN.1 인코딩 형식을 신뢰할 수 있는 발급자의 인증서의 지문 이며 값은 발급자 이름입니다. 구성에 지정 된 발급자 및 모든 추가 발급자와 추가 된 사전에 포함 되어는 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A>메서드.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A>"
   syntax:
     content: public System.Collections.Generic.IDictionary<string,string> ConfiguredTrustedIssuers { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "A dictionary that contains the trusted issuers."
+      description: "신뢰할 수 있는 발급자를 포함 하는 사전입니다."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*
   exceptions: []
   platform:
@@ -117,22 +117,22 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns the issuer name associated with the specified <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;></xref> by mapping the certificate thumbprint to a name in the trusted issuers dictionary."
-  remarks: "The default implementation searches the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> dictionary for the thumbprint of the X.509 certificate specified in `securityToken`. If an entry is found, the issuer name is returned; otherwise, `null` is returned. If `securityToken` is not assignable from <xref:System.IdentityModel.Tokens.X509SecurityToken>, `null` is returned."
+  summary: "지정 된 연결 된 발급자 이름을 반환 <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;> </xref> 인증서 지문을 신뢰할 수 있는 발급자 사전에 있는 이름에 매핑하는 방법으로 합니다."
+  remarks: "기본 구현 검색은 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A>사전에 지정 된 X.509 인증서의 지문에 대 한 `securityToken`.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> 항목이 발견 되는 경우 발급자 이름이 반환 됩니다. 그렇지 않으면 `null` 반환 됩니다. 경우 `securityToken` 에서 할당할 수 없으면 <xref:System.IdentityModel.Tokens.X509SecurityToken>, `null` 반환 됩니다.</xref:System.IdentityModel.Tokens.X509SecurityToken>"
   syntax:
     content: public override string GetIssuerName (System.IdentityModel.Tokens.SecurityToken securityToken);
     parameters:
     - id: securityToken
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "The security token for which the issuer name is requested. Should be assignable as <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;></xref>."
+      description: "발급자 이름이 요청 된 보안 토큰입니다. 으로 할당할 수 있어야 <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;> </xref>합니다."
     return:
       type: System.String
-      description: "The issuer name if an entry for the certificate thumbprint of the token exists in the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*> dictionary; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "발급자 이름에는 토큰의 인증서 지문에 대 한 항목이 있는 경우는 <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>사전, 그렇지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>"
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.GetIssuerName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>securityToken</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>securityToken</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration(System.Xml.XmlNodeList)
@@ -147,22 +147,22 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Loads the trusted issuers from configuration."
+  summary: "구성에서 신뢰할 수 있는 발급자를 로드합니다."
   remarks: "The LoadCustomConfiguration method is called by the configuration infrastructure. When this method is called, the `nodelist` will contain the top-level child elements of the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element from the configuration file. Each of these may, in turn, contain attributes or child elements depending on the configuration schema you define for your derived class.  \n  \n This method is called by the configuration infrastructure. The default implementation loads configuration from a [\\&lt;trustedIssuers\\&gt;](../Topic/%3CtrustedIssuers%3E.md) element (configured under the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element). You can override this method to provide support for your own custom configuration elements in derived classes."
   syntax:
     content: public override void LoadCustomConfiguration (System.Xml.XmlNodeList customConfiguration);
     parameters:
     - id: customConfiguration
       type: System.Xml.XmlNodeList
-      description: "The XML that represents the map of trusted issuers that is specified in the configuration file."
+      description: "구성 파일에 지정 된 맵을 신뢰할 수 있는 발급자를 나타내는 XML입니다."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>customConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>customConfiguration</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The configuration contains one or more elements that are not recognized."
+    description: "구성에 인식 되지 않는 요소가 하나 이상 있습니다."
   platform:
   - net462
 references:

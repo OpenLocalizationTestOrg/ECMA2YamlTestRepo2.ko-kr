@@ -33,8 +33,8 @@ items:
   nameWithType: SessionSecurityToken
   fullName: System.IdentityModel.Tokens.SessionSecurityToken
   type: Class
-  summary: "Defines a security token that contains data associated with a session."
-  remarks: "A session token stores the <xref:System.Security.Claims.ClaimsPrincipal> of the user that is associated with a session as well as other parameters that define the session; for example the session start and end times.       In passive scenarios, the <xref:System.IdentityModel.Services.WSFederationAuthenticationModule> calls into the <xref:System.IdentityModel.Services.SessionAuthenticationModule> (SAM) from the authentication pipeline to create a session token from the <xref:System.Security.Claims.ClaimsPrincipal> that represents the authenticated user. The SAM uses its configured <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> to create the token and to serialize it into a cookie (and to deserialize the token from a cookie on subsequent requests). The SAM uses an instance of its configured <xref:System.IdentityModel.Services.CookieHandler> class to write the cookie back to the HTTP Response. This cookie is then returned to the client and on subsequent requests the client can present the cookie rather than making a round trip back to the identity provider to re-obtain a security token. For more information about how sessions operate with WIF, see [WIF Session Management](~/add/includes/ajax-current-ext-md.md). For information about using sessions in Web farm scenarios, see [WIF and Web Farms](~/add/includes/ajax-current-ext-md.md).       A session token can operate in either reference mode or not. If the session token is not operating in reference mode, the entire token is serialized into the session cookie that is stored on the client. The serialized session token can be quite large and thus the cookie stored on the client can also be quite sizeable. In reference mode, rather than serializing the entire session token into the cookie, the token is stored in a session security token cache and only the information used to generate the key necessary to retrieve the token from the cache is stored in the cookie. This can greatly reduce the size of the cookie. The session token cache is implemented by a class derived from <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> and the cache key is implemented by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> class. The <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> and <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> properties are used in the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> class to generate the cache key.       The <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> property determines whether the session token is in reference mode or not.      > [!IMPORTANT] >  To operate in reference mode, Microsoft recommends providing a handler for the <xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> event in the global.asax.cs file and setting the <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> property on the token passed in the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> property. This will ensure that the session token operates in reference mode for every request and is favored over merely setting the <xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName> property on the Session Authentication Module.       The <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class provided with WIF serializes the session token as a WS-Secure Conversation `<wsc:SecurityContextToken>` element."
+  summary: "세션과 연결 된 데이터를 포함 하는 보안 토큰을 정의 합니다."
+  remarks: "세션 토큰에 저장 된 <xref:System.Security.Claims.ClaimsPrincipal>; 세션을 정의 하는 다른 매개 변수 뿐만 아니라 세션에 연관 된 사용자의 예를 들어 세션 시작 및 종료 시간.</xref:System.Security.Claims.ClaimsPrincipal>       수동 시나리오에서는 <xref:System.IdentityModel.Services.WSFederationAuthenticationModule>호출는 <xref:System.IdentityModel.Services.SessionAuthenticationModule>(SAM)에서 세션 토큰을 만드는 인증 파이프라인에서는 <xref:System.Security.Claims.ClaimsPrincipal>인증된 된 사용자를 나타내는입니다.</xref:System.Security.Claims.ClaimsPrincipal> </xref:System.IdentityModel.Services.SessionAuthenticationModule> </xref:System.IdentityModel.Services.WSFederationAuthenticationModule> SAM를 사용 하 여 구성 된 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>토큰을 만드는 쿠키로 serialize (고 이후 요청에서 쿠키에서 토큰을 deserialize 하는 데).</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> SAM 구성한의 인스턴스를 사용 하 여 <xref:System.IdentityModel.Services.CookieHandler>HTTP 응답에 쿠키를 다시 작성 하는 클래스입니다.</xref:System.IdentityModel.Services.CookieHandler> 이 쿠키는 클라이언트에 반환 되 고 이후 요청에서 클라이언트 수 라운드트립이 다시 보안 토큰을 가져오는 데 id 공급자를 다시 수행 하지 않고 쿠키 제공 합니다. Wif 세션의 작동 방식에 대 한 자세한 내용은 참조 [WIF 세션 관리](~/add/includes/ajax-current-ext-md.md)합니다. 웹 팜 시나리오에 세션을 사용 하는 방법에 대 한 정보를 참조 하십시오. [WIF 및 웹 팜](~/add/includes/ajax-current-ext-md.md)합니다.       세션 토큰 여부 참조 모드에서 작동할 수 있습니다. 세션 토큰 참조 모드에서 작동 되지 않으면 전체 토큰 클라이언트에 저장 된 세션 쿠키로 직렬화 됩니다. Serialize 된 세션 토큰 매우 커질 수 되었고 클라이언트에 저장 된 쿠키를 매우 많은 수 있습니다 따라서 합니다. 참조 모드 전체 세션을 직렬화 하는 대신 쿠키로 토큰을 토큰 세션 보안 토큰 캐시에 저장 되 고 캐시에서 토큰을 검색 하는 데 필요한 키를 생성 하는 데 사용 정보에만 쿠키에 저장 됩니다. 쿠키의 크기를 크게 줄일 수 있습니다이 있습니다. 세션 토큰 캐시 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>및 캐시 키가 구현 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>클래스</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> 에서 파생 된 클래스에 의해 구현 됩니다. <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>및 <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>속성에 사용 되는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>캐시 키를 생성 하는 클래스입니다.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>       <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>속성 여부 참조 모드에서 세션 토큰 인지를 확인 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>      > [!IMPORTANT] >를 제공 하는 것이 좋습니다 참조 모드에서 작동 하는 <xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName>global.asax.cs 파일 및 설정에 대 한 이벤트는 <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>전달 된 토큰에 대 한 속성의 <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName>속성.</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> 이렇게 하면 세션 토큰 모든 요청에 대 한 참조 모드로 작동 있으며 단순히 설정 보다 우선 적용 됩니다는 <xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName>속성 세션 인증 모듈에 저장 합니다.</xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName>       <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>WIF와 함께 제공 되는 클래스도 Ws-secure Conversation 세션 토큰을 serialize `<wsc:SecurityContextToken>` 요소.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: 'public class SessionSecurityToken : System.IdentityModel.Tokens.SecurityToken, System.Runtime.Serialization.ISerializable'
   inheritance:
@@ -61,19 +61,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class from the specified principal."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|<xref:System.String.Empty?displayProperty=fullName>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|<xref:System.DateTime.UtcNow%2A> plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|<xref:System.DateTime.UtcNow%2A> plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 클래스에서 지정된 된 보안 주체입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| <xref:System.String.Empty?displayProperty=fullName>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| <xref:System.DateTime.UtcNow%2A> <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성 더하기. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 생성 된 128 비트 대칭 키를 포함 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.String.Empty?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| <xref:System.DateTime.UtcNow%2A>과 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성입니다. |</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal from which to initialize the token."
+      description: "토큰을 초기화 하는 클레임 주체입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -88,16 +88,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class with serialized data."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> serialize 된 데이터 클래스입니다."
   syntax:
     content: protected SessionSecurityToken (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The serialized object data."
+      description: "직렬화 된 개체 데이터입니다."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "Contextual information about the source."
+      description: "원본에 대 한 컨텍스트 정보입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions: []
   platform:
@@ -114,22 +114,22 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class from the specified principal and bootstrap token."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|<xref:System.String.Empty?displayProperty=fullName>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|<xref:System.DateTime.UtcNow%2A> plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|<xref:System.DateTime.UtcNow%2A> plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 클래스에서 지정된 된 주 및 부트스트랩 토큰입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| <xref:System.String.Empty?displayProperty=fullName>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| <xref:System.DateTime.UtcNow%2A> <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성 더하기. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 생성 된 128 비트 대칭 키를 포함 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.String.Empty?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| <xref:System.DateTime.UtcNow%2A>과 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성입니다. |</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, string context);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that was generated from the bootstrap token."
+      description: "부트스트랩 토큰에서 생성 된 클레임 주체입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.TimeSpan)
@@ -144,25 +144,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class from the specified principal. The new token is valid from <xref:System.DateTime.UtcNow*> through the specified lifetime."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|<xref:System.String.Empty?displayProperty=fullName>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|<xref:System.DateTime.UtcNow%2A> plus `lifetime`.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|<xref:System.DateTime.UtcNow%2A> plus `lifetime`.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 클래스에서 지정된 된 보안 주체입니다. 새 토큰 유효 <xref:System.DateTime.UtcNow*>지정된 된 lifetime을 통해.</xref:System.DateTime.UtcNow*>"
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| <xref:System.String.Empty?displayProperty=fullName>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| <xref:System.DateTime.UtcNow%2A> plus `lifetime`.|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 생성 된 128 비트 대칭 키를 포함 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.String.Empty?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| <xref:System.DateTime.UtcNow%2A> plus `lifetime`.|</xref:System.DateTime.UtcNow%2A></xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A></xref:System.DateTime.UtcNow%2A></xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A></xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, TimeSpan lifetime);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal from which to initialize the token."
+      description: "토큰을 초기화 하는 클레임 주체입니다."
     - id: lifetime
       type: System.TimeSpan
-      description: "The period from the current time during which the token is valid. The <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*> property will be set to <xref:System.DateTime.UtcNow*> and the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo*> property will be set to <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*> plus the period specified by this parameter."
+      description: "토큰은 유효 현재 시간에서 사용 되는 기간입니다. <> </> *> 속성으로 설정 됩니다 <> </> *> 및 <> </> *> 속성으로 설정 됩니다 <> </> *> 또한이 매개 변수에서 지정 된 기간입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>lifetime</code> is less than or equal to <xref:System.TimeSpan.Zero>."
+    description: "<code>lifetime</code>보다 작거나 같음 <xref:System.TimeSpan.Zero>합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})
@@ -177,31 +177,31 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class from the specified principal and bootstrap token; and with the specified start time and expiration time."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|<xref:System.String.Empty?displayProperty=fullName>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|Set to the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property as determined by the `ValidFrom` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|The value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> property as determined by the `ValidTo` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|The value of the `validFrom` parameter, or, if `validFrom` is `null`, <xref:System.DateTime.UtcNow%2A>.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|The value of the `validFrom` parameter. If `validFrom` is `null`, the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property (as determined by the `validFrom` parameter) plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 부트스트랩 토큰이; 고 지정 된 보안 주체에서 클래스 및 지정 된 시작 시간 및 만료 시간입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| <xref:System.String.Empty?displayProperty=fullName>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성의 값으로 설정 된 `ValidFrom` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>속성의 값은 `ValidTo` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 생성 된 128 비트 대칭 키를 포함 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.String.Empty?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| 값은 `validFrom` 매개 변수를 하거나, 있는 경우 `validFrom` 은 `null`, <xref:System.DateTime.UtcNow%2A>. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| 값은 `validFrom` 매개 변수.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 경우 `validFrom` 은 `null`의 값은 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성 (기준으로 `validFrom` 매개 변수)과 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성. |</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, string context, Nullable<DateTime> validFrom, Nullable<DateTime> validTo);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that was generated from the bootstrap token."
+      description: "부트스트랩 토큰에서 생성 된 클레임 주체입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
     - id: validFrom
       type: System.Nullable{System.DateTime}
-      description: "The time instant at which the token becomes valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify <xref:System.DateTime.UtcNow*>"
+      description: "토큰 유효 해지는 시간 인스턴트입니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>지정 하려면<xref:System.DateTime.UtcNow*></xref:System.DateTime.UtcNow*>"
     - id: validTo
       type: System.Nullable{System.DateTime}
-      description: "The time instant after which the token is no longer valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify that the value should be determined by adding the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; property to the time specified by the `validFrom` parameter."
+      description: "시간이 지나면 인스턴트 토큰은 더 이상 유효 합니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>값을 추가 하 여 값을 결정 해야 되도록 지정 하는 &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; 속성에 지정 된 시간을는 `validFrom` 매개 변수입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>validFrom</code> and <code>validTo</code> parameters cannot be validated; for example, <code>validTo</code> specifies a time that occurs earlier than <code>validFrom</code>."
+    description: "<code> validFrom </code> 및 <code> validTo </code> 매개 변수를 확인할 수 없습니다; 예를 들어 <code> validTo </code> 발생 하는 시간을 지정 이전의 <code> validFrom </code>합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})
@@ -216,34 +216,34 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class from the specified principal and bootstrap token; and with the specified start time and expiration time. The new token is scoped to the specified endpoint."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|`endpointId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|Set to the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property as determined by the `ValidFrom` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|The value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> property as determined by the `ValidTo` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|The value of the `validFrom` parameter, or, if `validFrom` is `null`, <xref:System.DateTime.UtcNow%2A>.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|The value of the `validFrom` parameter. If `validFrom` is `null`, the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property (as determined by the `validFrom` parameter) plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 부트스트랩 토큰이; 고 지정 된 보안 주체에서 클래스 및 지정 된 시작 시간 및 만료 시간입니다. 새 토큰의 범위 지정된 된 끝점으로 지정 됩니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| `endpointId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성의 값으로 설정 된 `ValidFrom` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>속성의 값은 `ValidTo` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 생성 된 128 비트 대칭 키를 포함 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| 값은 `validFrom` 매개 변수를 하거나, 있는 경우 `validFrom` 은 `null`, <xref:System.DateTime.UtcNow%2A>. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| 값은 `validFrom` 매개 변수.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 경우 `validFrom` 은 `null`의 값은 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성 (기준으로 `validFrom` 매개 변수)과 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성. |</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, string context, string endpointId, Nullable<DateTime> validFrom, Nullable<DateTime> validTo);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that was generated from the bootstrap token."
+      description: "부트스트랩 토큰에서 생성 된 클레임 주체입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
     - id: endpointId
       type: System.String
-      description: "The endpoint to which this token is bound. An empty string creates an unscoped token."
+      description: "이 토큰이 연결 된 끝점입니다. 빈 문자열 범위가 지정 되지 않은 토큰을 만듭니다."
     - id: validFrom
       type: System.Nullable{System.DateTime}
-      description: "The time instant at which the token becomes valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify <xref:System.DateTime.UtcNow*>."
+      description: "토큰 유효 해지는 시간 인스턴트입니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref><xref:System.DateTime.UtcNow*>.</xref:System.DateTime.UtcNow*> 지정 하려면"
     - id: validTo
       type: System.Nullable{System.DateTime}
-      description: "The time instant after which the token is no longer valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify that the value should be determined by adding the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; property to the time specified by the  `validFrom` parameter."
+      description: "시간이 지나면 인스턴트 토큰은 더 이상 유효 합니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>값을 추가 하 여 값을 결정 해야 되도록 지정 하는 &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; 속성에 지정 된 시간을는 `validFrom` 매개 변수입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>validFrom</code> and <code>validTo</code> parameters cannot be validated; for example, <code>validTo</code> specifies a time that occurs earlier than <code>validFrom</code>."
+    description: "<code> validFrom </code> 및 <code> validTo </code> 매개 변수를 확인할 수 없습니다; 예를 들어 <code> validTo </code> 발생 하는 시간을 지정 이전의 <code> validFrom </code>합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.Xml.UniqueId,System.String,System.String,System.TimeSpan,System.IdentityModel.Tokens.SymmetricSecurityKey)
@@ -258,37 +258,37 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class by using the specified principal, context ID, context, endpoint, lifetime, and key."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|`contextId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|`endpointId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|<xref:System.DateTime.UtcNow%2A> plus `lifetime`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains single element that is either `key` or, if `key` is `null`, a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|<xref:System.DateTime.UtcNow%2A>|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|<xref:System.DateTime.UtcNow%2A> plus `lifetime`|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 지정한 보안 주체가, 컨텍스트 ID, 컨텍스트, 끝점, 수명 및 키를 사용 하 여 클래스입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| `contextId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| `endpointId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| <xref:System.DateTime.UtcNow%2A> plus `lifetime`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 단일 요소 중 하나를 포함 `key` 하거나, 있는 경우 `key` 은 `null`, 생성 된 128 비트 대칭 키를.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| <xref:System.DateTime.UtcNow%2A>|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| <xref:System.DateTime.UtcNow%2A> plus `lifetime`|</xref:System.DateTime.UtcNow%2A></xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A></xref:System.DateTime.UtcNow%2A></xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A></xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, TimeSpan lifetime, System.IdentityModel.Tokens.SymmetricSecurityKey key);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that is associated with this session."
+      description: "이 세션에 연관 된 클레임 주체입니다."
     - id: contextId
       type: System.Xml.UniqueId
-      description: "The context identifier associated with this token."
+      description: "이 토큰에 연결 된 컨텍스트 식별자입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
     - id: endpointId
       type: System.String
-      description: "The endpoint to which this token is bound. An empty string creates an unscoped token."
+      description: "이 토큰이 연결 된 끝점입니다. 빈 문자열 범위가 지정 되지 않은 토큰을 만듭니다."
     - id: lifetime
       type: System.TimeSpan
-      description: "The lifetime of the session token. The <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*> property will be set to <xref:System.DateTime.UtcNow*> and the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo*> property will be set to <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*> plus the period specified by this parameter."
+      description: "세션 토큰의 수명입니다. <> </> *> 속성으로 설정 됩니다 <> </> *> 및 <> </> *> 속성으로 설정 됩니다 <> </> *> 또한이 매개 변수에서 지정 된 기간입니다."
     - id: key
       type: System.IdentityModel.Tokens.SymmetricSecurityKey
-      description: "An optional symmetric session key."
+      description: "선택적 대칭 세션 키입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>lifetime</code> is less than or equal to <xref:System.TimeSpan.Zero>."
+    description: "<code>lifetime</code>보다 작거나 같음 <xref:System.TimeSpan.Zero>합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.Xml.UniqueId,System.String,System.String,System.DateTime,System.TimeSpan,System.IdentityModel.Tokens.SymmetricSecurityKey)
@@ -303,40 +303,40 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class by using the specified principal, context ID, context, endpoint, valid timestamp, lifetime, and key."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|`contextId` or, if `contextId` is `null`, a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|`endpointId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|`validFrom`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|`validFrom` plus `lifetime`.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains single element that is either `key` or, if `key` is `null`, a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|`validFrom`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|`validFrom` plus `lifetime`.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 지정한 보안 주체가, 컨텍스트 ID, 컨텍스트, 끝점, 유효한 타임 스탬프, 수명 및 키를 사용 하 여 클래스입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| `contextId` 하거나, 있는 경우 `contextId` 은 `null`, 고유 ID를 생성 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| `endpointId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| `validFrom`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| `validFrom` plus `lifetime`.|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 단일 요소 중 하나를 포함 `key` 하거나, 있는 경우 `key` 은 `null`, 생성 된 128 비트 대칭 키를.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| `validFrom`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| `validFrom` plus `lifetime`.|</xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A></xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A></xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, DateTime validFrom, TimeSpan lifetime, System.IdentityModel.Tokens.SymmetricSecurityKey key);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that is associated with this session."
+      description: "이 세션에 연관 된 클레임 주체입니다."
     - id: contextId
       type: System.Xml.UniqueId
-      description: "The context identifier associated with this token."
+      description: "이 토큰에 연결 된 컨텍스트 식별자입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
     - id: endpointId
       type: System.String
-      description: "The endpoint to which this token is bound. An empty string creates an unscoped token."
+      description: "이 토큰이 연결 된 끝점입니다. 빈 문자열 범위가 지정 되지 않은 토큰을 만듭니다."
     - id: validFrom
       type: System.DateTime
-      description: "The time at which the token becomes valid."
+      description: "토큰이 유효 해지는 시간입니다."
     - id: lifetime
       type: System.TimeSpan
-      description: "The lifetime of the session token. The <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo*> property will be set to <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*> plus the period specified by this parameter."
+      description: "세션 토큰의 수명입니다. <> </> *> 속성으로 설정 됩니다 <> </> *> 또한이 매개 변수에서 지정 된 기간입니다."
     - id: key
       type: System.IdentityModel.Tokens.SymmetricSecurityKey
-      description: "An optional symmetric session key."
+      description: "선택적 대칭 세션 키입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>endpointId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>lifetime</code> is less than or equal to <xref:System.TimeSpan.Zero>."
+    description: "<code>lifetime</code>보다 작거나 같음 <xref:System.TimeSpan.Zero>합니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.#ctor(System.Security.Claims.ClaimsPrincipal,System.Xml.UniqueId,System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.IdentityModel.Tokens.SymmetricSecurityKey)
@@ -351,40 +351,40 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;></xref> class by using the specified principal, context ID, context, endpoint, start time, expiration time, and key."
-  remarks: "The following table shows initial property values for an instance of the <xref:System.IdentityModel.Tokens.SessionSecurityToken> class.      |Property|Initial Value|   |--------------|-------------------|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>|`claimsPrincipal`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>|`context`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>|`contextId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>|`endpointId`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>|Set to a generated unique ID.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>|`false`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>|Set to the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property as determined by the `ValidFrom` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>|The value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> property as determined by the `ValidTo` parameter.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>|`null`|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>|Contains single element that is either `key` or, if `key` is `null`, a generated 128 bit symmetric key. **Note:**  The default implementation does not use this property. Signing and encryption keys are dictated by the cookie transforms applied by the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> that processes the token.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>|The value of the `validFrom` parameter, or, if `validFrom` is `null`, <xref:System.DateTime.UtcNow%2A>.|   |<xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>|The value of the `validFrom` parameter. If `validFrom` is `null`, the value of the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> property (as determined by the `validFrom` parameter) plus the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> property.|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityToken&quot;> </xref> 지정한 보안 주체가, 컨텍스트 ID, 컨텍스트, 끝점, 시작 시간, 만료 시간 및 키를 사용 하 여 클래스입니다."
+  remarks: "다음 표에서 <xref:System.IdentityModel.Tokens.SessionSecurityToken>클래스</xref:System.IdentityModel.Tokens.SessionSecurityToken> 의 인스턴스에 대 한 초기 속성 값을 보여 줍니다.      | 속성 | 초기 값 |   |--------------|-------------------|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A>| `claimsPrincipal`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A>| `context`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>| `contextId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>| `endpointId`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A>| 생성 된 고유 ID로 설정 |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A>| `false`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성의 값으로 설정 된 `ValidFrom` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A>| 에 따른 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>속성의 값은 `ValidTo` 매개 변수입니다. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>| `null`|   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A>| 단일 요소 중 하나를 포함 `key` 하거나, 있는 경우 `key` 은 `null`, 생성 된 128 비트 대칭 키를.</xref:System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Id%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.Context%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal%2A> **참고:** 기본 구현에서는이 속성을 사용 하지 않습니다. 서명 및 암호화 키가 지정 됩니다는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>에 의해 적용 된 쿠키 변환으로 토큰을 처리 하는. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>| 값은 `validFrom` 매개 변수를 하거나, 있는 경우 `validFrom` 은 `null`, <xref:System.DateTime.UtcNow%2A>. |   | <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A>| 값은 `validFrom` 매개 변수.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidTo%2A> </xref:System.DateTime.UtcNow%2A> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 경우 `validFrom` 은 `null`의 값은 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>속성 (기준으로 `validFrom` 매개 변수)과 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName>속성. |</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom%2A>"
   syntax:
     content: public SessionSecurityToken (System.Security.Claims.ClaimsPrincipal claimsPrincipal, System.Xml.UniqueId contextId, string context, string endpointId, Nullable<DateTime> validFrom, Nullable<DateTime> validTo, System.IdentityModel.Tokens.SymmetricSecurityKey key);
     parameters:
     - id: claimsPrincipal
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal that is associated with this session."
+      description: "이 세션에 연관 된 클레임 주체입니다."
     - id: contextId
       type: System.Xml.UniqueId
-      description: "The context identifier associated with this token."
+      description: "이 토큰에 연결 된 컨텍스트 식별자입니다."
     - id: context
       type: System.String
-      description: "An optional, application-specific context string."
+      description: "상황에 맞는 옵션, 응용 프로그램별 문자열입니다."
     - id: endpointId
       type: System.String
-      description: "The endpoint to which this token is bound. An empty string creates an unscoped token."
+      description: "이 토큰이 연결 된 끝점입니다. 빈 문자열 범위가 지정 되지 않은 토큰을 만듭니다."
     - id: validFrom
       type: System.Nullable{System.DateTime}
-      description: "The time instant at which the token becomes valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify <xref:System.DateTime.UtcNow*>"
+      description: "토큰 유효 해지는 시간 인스턴트입니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>지정 하려면<xref:System.DateTime.UtcNow*></xref:System.DateTime.UtcNow*>"
     - id: validTo
       type: System.Nullable{System.DateTime}
-      description: "The time instant after which the token is no longer valid. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify that the value should be determined by adding the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; property to the time specified by the `validFrom` parameter."
+      description: "시간이 지나면 인스턴트 토큰은 더 이상 유효 합니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>값을 추가 하 여 값을 결정 해야 되도록 지정 하는 &lt;xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.DefaultTokenLifetime%2A?displayProperty=fullName&gt; 속성에 지정 된 시간을는 `validFrom` 매개 변수입니다."
     - id: key
       type: System.IdentityModel.Tokens.SymmetricSecurityKey
-      description: "An optional symmetric session key."
+      description: "선택적 대칭 세션 키입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>claimsPrincipal</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <xref:System.Security.Claims.ClaimsPrincipal.Identities*> property of <code>claimsPrincipal</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>contextId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>validFrom</code> is greater than or equal to <code>validTo</code>.       -or-       <code>validTo</code> is less than the current time."
+    description: "<code>validFrom</code>보다 크거나 같으면 <code>validTo</code>합니다.       -또는- <code>validTo</code> 현재 시간 보다 작습니다."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal
@@ -399,12 +399,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the claims principal associated with the session."
+  summary: "세션과 관련 된 클레임 주체를 가져옵니다."
   syntax:
     content: public System.Security.Claims.ClaimsPrincipal ClaimsPrincipal { get; }
     return:
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The claims principal."
+      description: "클레임 주체입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.ClaimsPrincipal*
   exceptions: []
   platform:
@@ -421,13 +421,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets a user specified context value."
-  remarks: "You can use this property to store application-specific context."
+  summary: "컨텍스트 값을 지정 하는 사용자는 가져옵니다."
+  remarks: "응용 프로그램 관련 컨텍스트를 저장 하려면이 속성을 사용할 수 있습니다."
   syntax:
     content: public string Context { get; }
     return:
       type: System.String
-      description: "The user specified context value."
+      description: "사용자는 컨텍스트 값을 지정 합니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.Context*
   exceptions: []
   platform:
@@ -444,13 +444,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the session context identifier"
-  remarks: "The context identifier is unique across all session tokens.       The <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> class uses both the context ID and the key generation to generate a key for the token in the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>.       The <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class serializes this property as the `<Identifier>` child element of the `<wsc:SecurityContextToken>` element. For more information, see the documentation for the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName> method."
+  summary: "세션 컨텍스트 식별자를 가져옵니다."
+  remarks: "컨텍스트 식별자는 모든 세션 토큰에서 고유 합니다.       <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>클래스에 컨텍스트 ID와 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> 토큰에 대 한 키를 생성 하는 키 생성을 모두 사용 하 여</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>       <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>클래스에는이 속성으로 직렬화는 `<Identifier>` 의 자식 요소는 `<wsc:SecurityContextToken>` 요소.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 자세한 내용은 참조에 대 한 설명서는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>메서드.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>"
   syntax:
     content: public System.Xml.UniqueId ContextId { get; }
     return:
       type: System.Xml.UniqueId
-      description: "The session context identifier."
+      description: "세션 컨텍스트 식별자입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.ContextId*
   exceptions: []
   platform:
@@ -467,7 +467,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the ID of the endpoint to which this token is scoped."
+  summary: "이 토큰은 범위가 지정 된 끝점의 ID를 가져옵니다."
   remarks: >-
     > [!IMPORTANT]
 
@@ -476,7 +476,7 @@ items:
     content: public string EndpointId { get; }
     return:
       type: System.String
-      description: "The ID of the endpoint."
+      description: "끝점의 ID입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.EndpointId*
   exceptions: []
   platform:
@@ -493,16 +493,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Sets the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> with information necessary to serialize the session security token."
+  summary: "설정의 <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> 세션 보안 토큰을 serialize 하는 데 필요한 정보로 합니다."
   syntax:
     content: public virtual void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The serialized object data."
+      description: "직렬화 된 개체 데이터입니다."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The contextual information about the source or destination."
+      description: "소스 또는 대상에 대 한 컨텍스트 정보입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.GetObjectData*
   exceptions: []
   platform:
@@ -519,13 +519,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the unique identifier of this token."
-  remarks: "The <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class serializes this property as the `Id` attribute of the `<wsc:SecurityContextToken>` element. For more information, see the documentation for the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName> method."
+  summary: "이 토큰의 고유 식별자를 가져옵니다."
+  remarks: "<xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>클래스에는이 속성으로 직렬화는 `Id` 의 특성은 `<wsc:SecurityContextToken>` 요소.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 자세한 내용은 참조에 대 한 설명서는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>메서드.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>"
   syntax:
     content: public override string Id { get; }
     return:
       type: System.String
-      description: "The token ID."
+      description: "토큰 id입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.Id*
   exceptions: []
   platform:
@@ -542,13 +542,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets a value that indicates whether the cookie represented by this token is persistent."
-  remarks: "If the IsPersistent property is `true`, the cookie is written as a persistent cookie. Persistent cookies remain valid after the browser is closed until they expire."
+  summary: "이 토큰이 나타내는 쿠키를 저장할지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "IsPersistent 속성이 `true`, 쿠키 영구 쿠키로 기록 됩니다. 영구 쿠키 만료 될 때까지 브라우저를 닫은 후 유효한 상태를 유지 합니다."
   syntax:
     content: public bool IsPersistent { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cookie is persistent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>쿠키 되; 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.IsPersistent*
   exceptions: []
   platform:
@@ -565,13 +565,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets a value that indicates whether the session security token is operating in reference mode."
-  remarks: "In reference mode, a simple artifact is produced during serialization and the token material is stored in the token cache that is associated with the token handler. The token cache is an instance of a class that derives from <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>. For Web Farm scenarios, the token cache must operate across all nodes in the farm.      > [!IMPORTANT] >  To operate in reference mode, Microsoft recommends providing a handler for the <xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> event in the global.asax.cs file and setting the IsReferenceMode property on the token passed in the <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> property. This will ensure that the session token operates in reference mode for every request and is favored over merely setting the <xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName> property on the Session Authentication Module."
+  summary: "세션 보안 토큰 참조 모드에서 작동 하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "참조 모드 간단한 아티팩트 serialization 중에 생성 되 고 토큰 자료 토큰 처리기와 연결 된 토큰 캐시에 저장 됩니다. 토큰 캐시 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> 에서 파생 되는 클래스의 인스턴스가 웹 팜 시나리오에 대 한 토큰 캐시는 팜의 모든 노드에 걸쳐 작동 해야 합니다.      > [!IMPORTANT] >를 제공 하는 것이 좋습니다 참조 모드에서 작동 하는 <xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName>전달 된 토큰의 IsReferenceMode 속성을 설정 하 고 global.asax.cs 파일에서 이벤트는 <xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName>속성.</xref:System.IdentityModel.Services.SessionSecurityTokenCreatedEventArgs.SessionToken%2A?displayProperty=fullName> </xref:System.IdentityModel.Services.WSFederationAuthenticationModule.SessionSecurityTokenCreated?displayProperty=fullName> 이렇게 하면 세션 토큰 모든 요청에 대 한 참조 모드로 작동 있으며 단순히 설정 보다 우선 적용 됩니다는 <xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName>속성 세션 인증 모듈에 저장 합니다.</xref:System.IdentityModel.Services.SessionAuthenticationModule.IsReferenceMode%2A?displayProperty=fullName>"
   syntax:
     content: public bool IsReferenceMode { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the token is operating in session mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>토큰이; 세션 모드에서 작동 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.IsReferenceMode*
   exceptions: []
   platform:
@@ -588,12 +588,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the time instant from which the key in this token is valid."
+  summary: "이 토큰에 키가 유효한 있는 인스턴트 시간을 가져옵니다."
   syntax:
     content: public DateTime KeyEffectiveTime { get; }
     return:
       type: System.DateTime
-      description: "The time instant from which the key is effective."
+      description: "키가 유효 시간 인스턴트입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.KeyEffectiveTime*
   exceptions: []
   platform:
@@ -610,12 +610,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the time instant after which the key in this token is no longer valid."
+  summary: "이후에이 토큰에서 키가 더 이상 유효 시간을 인스턴트를 가져옵니다."
   syntax:
     content: public DateTime KeyExpirationTime { get; }
     return:
       type: System.DateTime
-      description: "The time instant at which the key expires."
+      description: "키가 만료 시간 인스턴트입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.KeyExpirationTime*
   exceptions: []
   platform:
@@ -632,13 +632,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the identifier for the key generation in this token"
-  remarks: "The KeyGeneration property is unique within a session token. When a session token is issued it has only a context ID, which is accessible through the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> property. When the session token is renewed, the key generation is added.       The <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey> class uses both the context ID and the key generation to generate a key for the token in the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>.       The <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class serializes this property as the `<Instance>` child element of the `<wsc:SecurityContextToken>` element. For more information, see the documentation for the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName> method."
+  summary: "이 토큰에 키 생성에 대 한 식별자를 가져옵니다."
+  remarks: "KeyGeneration 속성은 세션 토큰 내에서 고유 합니다. 세션 토큰을 발급 하는 경우에 컨텍스트 ID를 통해 액세스할 수 있는 <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>속성.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> 세션 토큰 갱신 되 면 키 생성 추가 됩니다.       <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>클래스에 컨텍스트 ID와 <xref:System.IdentityModel.Tokens.SessionSecurityTokenCache>.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCache> 토큰에 대 한 키를 생성 하는 키 생성을 모두 사용 하 여</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey>       <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>클래스에는이 속성으로 직렬화는 `<Instance>` 의 자식 요소는 `<wsc:SecurityContextToken>` 요소.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> 자세한 내용은 참조에 대 한 설명서는 <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>메서드.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler.WriteToken%2A?displayProperty=fullName>"
   syntax:
     content: public System.Xml.UniqueId KeyGeneration { get; }
     return:
       type: System.Xml.UniqueId
-      description: "The unique identifier for the key generation in this token."
+      description: "이 토큰에 키 생성에 대 한 고유 식별자입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration*
   exceptions: []
   platform:
@@ -655,13 +655,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets a URI that identifies the version of WS-Secure Conversation that is used to serialize this session security token."
-  remarks: "The <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> base class supports WS-Secure Conversation Feb2005 and WS-Secure Conversation 1.3. The URIs for these versions of WS-Secure Conversation are “http://schemas.xmlsoap.org/ws/2005/02/sc” and &quot;http://docs.oasis-open.org/ws-sx/ws-secureconversation/200512&quot; respectively."
+  summary: "토큰의 Ws-secure Conversation 세션 보안이를 serialize 하는 데 사용 되는 버전을 식별 하는 URI를 가져옵니다."
+  remarks: "<xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>Ws-secure Conversation Feb2005 및 Ws-secure Conversation 1.3 기본 클래스를 지원 합니다.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> Ws-secure Conversation을 이러한 버전에 대 한 Uri는 각각 &quot;http://schemas.xmlsoap.org/ws/2005/02/sc&quot; 및 &quot;http://docs.oasis-open.org/ws-sx/ws-secureconversation/200512&quot;입니다."
   syntax:
     content: public Uri SecureConversationVersion { get; }
     return:
       type: System.Uri
-      description: "The URI that identifies the version of WS-Secure Conversation that is used to serialize this token."
+      description: "이 토큰을 serialize 하는 데 사용 되는 Ws-secure Conversation의 버전을 식별 하는 URI입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.SecureConversationVersion*
   exceptions: []
   platform:
@@ -678,7 +678,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the keys associated with this session. This is usually a single key."
+  summary: "이 세션에 연결 된 키를 가져옵니다. 이 일반적으로 단일 키입니다."
   remarks: >-
     > [!NOTE]
 
@@ -687,7 +687,7 @@ items:
     content: public override System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityKey> SecurityKeys { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Tokens.SecurityKey}
-      description: "The keys associated with the session. There is usually a single key."
+      description: "세션에 연결 된 키입니다. 일반적으로 단일 키가입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.SecurityKeys*
   exceptions: []
   platform:
@@ -704,12 +704,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the time instant from which the token is valid."
+  summary: "토큰이 유효 않은 인스턴트 시간을 가져옵니다."
   syntax:
     content: public override DateTime ValidFrom { get; }
     return:
       type: System.DateTime
-      description: "The time from which the token is valid."
+      description: "토큰이 잘못 된 시간입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.ValidFrom*
   exceptions: []
   platform:
@@ -726,12 +726,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the time instant after which the token is no longer valid."
+  summary: "인스턴트 지나면 토큰은 더 이상 유효 시간을 가져옵니다."
   syntax:
     content: public override DateTime ValidTo { get; }
     return:
       type: System.DateTime
-      description: "The time after which the token is no longer valid."
+      description: "토큰은 더 이상 유효 시간입니다."
   overload: System.IdentityModel.Tokens.SessionSecurityToken.ValidTo*
   exceptions: []
   platform:

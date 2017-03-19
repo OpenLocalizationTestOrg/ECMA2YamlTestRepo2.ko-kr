@@ -37,7 +37,7 @@ items:
   nameWithType: FileInfo
   fullName: System.IO.FileInfo
   type: Class
-  summary: "Provides properties and instance methods for the creation, copying, deletion, moving, and opening of files, and aids in the creation of <xref href=&quot;System.IO.FileStream&quot;></xref> objects. This class cannot be inherited.       To browse the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#mscorlib/system/io/fileinfo.cs#4ee673c1a4ecad41)."
+  summary: "속성 및 만들기, 복사, 삭제, 이동 및 파일을 열기 위한 인스턴스 메서드를 제공 하 고의 만들기를 지원 <xref href=&quot;System.IO.FileStream&quot;> </xref> 개체입니다. 이 클래스는 상속 될 수 없습니다.       이 형식에 대 한.NET Framework 소스 코드를 찾아보려면 참조는 [참조 소스](http://referencesource.microsoft.com/#mscorlib/system/io/fileinfo.cs#4ee673c1a4ecad41)합니다."
   remarks: "> [!NOTE]\n>  To view the .NET Framework source code for this type, see the [Reference Source](http://referencesource.microsoft.com/#mscorlib/system/io/fileinfo.cs#4ee673c1a4ecad41). You can browse through the source code online, download the reference for offline viewing, and step through the sources (including patches and updates) during debugging; see [instructions](http://referencesource.microsoft.com/).  \n  \n Use the FileInfo class for typical operations such as copying, moving, renaming, creating, opening, deleting, and appending to files.  \n  \n If you are performing multiple operations on the same file, it can be more efficient to use FileInfo instance methods instead of the corresponding static methods of the <xref:System.IO.File> class, because a security check will not always be necessary.  \n  \n Many of the FileInfo methods return other I/O types when you create or open files. You can use these other types to further manipulate a file. For more information, see specific FileInfo members such as <xref:System.IO.FileInfo.Open%2A>, <xref:System.IO.FileInfo.OpenRead%2A>, <xref:System.IO.FileInfo.OpenText%2A>, <xref:System.IO.FileInfo.CreateText%2A>, or <xref:System.IO.FileInfo.Create%2A>.  \n  \n By default, full read/write access to new files is granted to all users.  \n  \n The following table describes the enumerations that are used to customize the behavior of various FileInfo methods.  \n  \n|Enumeration|Description|  \n|-----------------|-----------------|  \n|<xref:System.IO.FileAccess>|Specifies read and write access to a file.|  \n|<xref:System.IO.FileShare>|Specifies the level of access permitted for a file that is already in use.|  \n|<xref:System.IO.FileMode>|Specifies whether the contents of an existing file are preserved or overwritten, and whether requests to create an existing file cause an exception.|  \n  \n> [!NOTE]\n>  In members that accept a path as an input string, that path must be well-formed or an exception is raised. For example, if a path is fully qualified but begins with a space, the path is not trimmed in methods of the class. Therefore, the path is malformed and an exception is raised. Similarly, a path or a combination of paths cannot be fully qualified twice. For example, \"c:\\temp c:\\windows\" also raises an exception in most cases. Ensure that your paths are well-formed when using methods that accept a path string.  \n  \n In members that accept a path, the path can refer to a file or just a directory. The specified path can also refer to a relative path or a Universal Naming Convention (UNC) path for a server and share name. For example, all the following are acceptable paths:  \n  \n-   \"c:\\\\\\MyDir\\\\\\MyFile.txt\" in C#, or \"c:\\MyDir\\MyFile.txt\" in Visual Basic.  \n  \n-   \"c:\\\\\\MyDir\" in C#, or \"c:\\MyDir\" in Visual Basic.  \n  \n-   \"MyDir\\\\\\MySubdir\" in C#, or \"MyDir\\MySubDir\" in Visual Basic.  \n  \n-   \"\\\\\\\\\\\\\\MyServer\\\\\\MyShare\" in C#, or \"\\\\\\MyServer\\MyShare\" in Visual Basic.  \n  \n The FileInfo class provides the following properties that enable you to retrieve information about a file. For an example of how to use each property, see the property pages.  \n  \n-   The <xref:System.IO.FileInfo.Directory%2A> property retrieves an object that represents the parent directory of a file.  \n  \n-   The <xref:System.IO.FileInfo.DirectoryName%2A> property retrieves the full path of the parent directory of a file.  \n  \n-   The <xref:System.IO.FileInfo.Exists%2A> property checks for the presence of a file before operating on it.  \n  \n-   The <xref:System.IO.FileInfo.IsReadOnly%2A> property retrieves or sets a value that specifies whether a file can be modified.  \n  \n-   The <xref:System.IO.FileInfo.Length%2A> retrieves the size of a file.  \n  \n-   The <xref:System.IO.FileInfo.Name%2A> retrieves the name of a file."
   example:
   - "The following example demonstrates some of the main members of the `FileInfo` class.  \n  \n When the properties are first retrieved, FileInfo calls the <xref:System.IO.FileSystemInfo.Refresh%2A> method and caches information about the file. On subsequent calls, you must call <xref:System.IO.FileSystemInfo.Refresh%2A> to get the latest copy of the information.  \n  \n [!code-cs[FInfo Class#1](~/add/codesnippet/csharp/t-system.io.fileinfo_1.cs)]\n [!code-cpp[FInfo Class#1](~/add/codesnippet/cpp/t-system.io.fileinfo_1.cpp)]\n [!code-vb[FInfo Class#1](~/add/codesnippet/visualbasic/t-system.io.fileinfo_1.vb)]  \n  \n This example produces output similar to the following.  \n  \n```  \nHello  \nAnd  \nWelcome  \nC:\\Users\\userName\\AppData\\Local\\Temp\\tmp70AB.tmp was copied to C:\\Users\\userName\\AppData\\Local\\Temp\\tmp70CB.tmp.  \nC:\\Users\\userName\\AppData\\Local\\Temp\\tmp70CB.tmp was successfully deleted.  \n```"
@@ -83,8 +83,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.FileInfo&quot;></xref> class, which acts as a wrapper for a file path."
-  remarks: "You can specify either the fully qualified or the relative file name, but the security check gets the fully qualified name."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 파일 경로의 래퍼 역할을 하는 클래스입니다."
+  remarks: "정규화 된 이름 또는 상대 파일 이름을 지정할 수 있지만 보안 검사는 정규화 된 이름을 가져옵니다."
   example:
   - "The following example uses this constructor to create two files, which are then written to, read from, copied, and deleted.  \n  \n [!code-cpp[finfo ctor#1](~/add/codesnippet/cpp/m-system.io.fileinfo.sha_1.cpp)]\n [!code-cs[finfo ctor#1](~/add/codesnippet/csharp/m-system.io.fileinfo.sha_1.cs)]\n [!code-vb[finfo ctor#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.sha_1.vb)]  \n  \n The following example opens an existing file or creates a file, appends text to the file, and displays the results.  \n  \n [!code-cpp[fileinfomain#1](~/add/codesnippet/cpp/m-system.io.fileinfo.sha_2.cpp)]\n [!code-cs[fileinfomain#1](~/add/codesnippet/csharp/m-system.io.fileinfo.sha_2.cs)]\n [!code-vb[fileinfomain#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.sha_2.vb)]"
   syntax:
@@ -92,27 +92,27 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The fully qualified name of the new file, or the relative file name. Do not end the path with the directory separator character."
+      description: "새 파일의 정규화 된 이름 또는 상대 파일 이름입니다. 경로가 디렉터리 구분 기호 문자로 종료 하지 마십시오."
   overload: System.IO.FileInfo.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>fileName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>fileName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The file name is empty, contains only white spaces, or contains invalid characters."
+    description: "파일 이름이 비어, 공백만 포함 또는 잘못 된 문자가 있습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access to <code>fileName</code> is denied."
+    description: "에 대 한 액세스 <code> fileName </code> 거부 되었습니다."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters."
+    description: "지정된 된 경로, 파일 이름 또는 둘 다에 시스템 정의 최대 길이 초과 합니다. 예를 들어 Windows 기반 플랫폼에서 경로 248 자 미만, 이어야 하 고 파일 이름은 260 자 미만 이어야 합니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>fileName</code> contains a colon (:) in the middle of the string."
+    description: "<code>fileName</code>문자열 중간에 콜론 (:)을 포함합니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.AppendText
@@ -127,7 +127,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a <xref:System.IO.StreamWriter> that appends text to the file represented by this instance of the <xref href=&quot;System.IO.FileInfo&quot;></xref>."
+  summary: "만듭니다는 <xref:System.IO.StreamWriter>의이 인스턴스가 나타내는 파일에 텍스트를 추가 하는 <xref href=&quot;System.IO.FileInfo&quot;> </xref>.</xref:System.IO.StreamWriter>"
   remarks: ''
   example:
   - "The following example appends text to a file and reads from the file.  \n  \n [!code-vb[finfo appendtext#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.app_1.vb)]\n [!code-cpp[finfo appendtext#1](~/add/codesnippet/cpp/m-system.io.fileinfo.app_1.cpp)]\n [!code-cs[finfo appendtext#1](~/add/codesnippet/csharp/m-system.io.fileinfo.app_1.cs)]  \n  \n The following example demonstrates appending text to the end of a file and also displays the result of the append operation to the console. The first time this routine is called, the file is created if it does not exist. After that, the specified text is appended to the file.  \n  \n [!code-vb[fileinfoappendtext#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.app_2.vb)]\n [!code-cpp[fileinfoappendtext#1](~/add/codesnippet/cpp/m-system.io.fileinfo.app_2.cpp)]\n [!code-cs[fileinfoappendtext#1](~/add/codesnippet/csharp/m-system.io.fileinfo.app_2.cs)]"
@@ -153,8 +153,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Copies an existing file to a new file, disallowing the overwriting of an existing file."
-  remarks: "Use the <xref:System.IO.FileInfo.CopyTo%2A> method to allow overwriting of an existing file.      > [!CAUTION] >  Whenever possible, avoid using short file names (such as XXXXXX~1.XXX) with this method. If two files have equivalent short file names then this method may fail and raise an exception and/or result in undesirable behavior"
+  summary: "기존 파일을 덮어쓸 수 없도록 하는 새 파일에 기존 파일을 복사 합니다."
+  remarks: "사용 된 <xref:System.IO.FileInfo.CopyTo%2A>메서드를 기존 파일을 덮어쓸 수 있도록 합니다.</xref:System.IO.FileInfo.CopyTo%2A>      > [!CAUTION] > 가능 하면이 메서드로 짧은 파일 이름 (예: XXXXXX~1.XXX)를 사용 하지 마십시오. 두 개의 파일이 짧은 해당 하는 경우 파일 이름은 다음이 메서드 수 실패와 예외를 발생 시키는 및/또는 인해 예기치 않은 동작이"
   example:
   - "The following example demonstrates both overloads of the `CopyTo` method.  \n  \n [!code-cpp[finfo copyto2#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cop_1_1.cpp)]\n [!code-cs[finfo copyto2#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cop_1_1.cs)]\n [!code-vb[finfo copyto2#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cop_1_1.vb)]  \n  \n The following example demonstrates copying one file to another file, throwing an exception if the destination file already exists.  \n  \n [!code-cpp[FileInfoCopyTo1#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cop_1_2.cpp)]\n [!code-cs[FileInfoCopyTo1#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cop_1_2.cs)]\n [!code-vb[FileInfoCopyTo1#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cop_1_2.vb)]"
   syntax:
@@ -162,36 +162,36 @@ items:
     parameters:
     - id: destFileName
       type: System.String
-      description: "The name of the new file to copy to."
+      description: "복사할 새 파일의 이름입니다."
     return:
       type: System.IO.FileInfo
-      description: "A new file with a fully qualified path."
+      description: "정규화 된 경로와 새 파일입니다."
   overload: System.IO.FileInfo.CopyTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>destFileName</code> is empty, contains only white spaces, or contains invalid characters."
+    description: "<code>destFileName</code>비어, 공백만 포함 또는 잘못 된 문자가 있습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An error occurs, or the destination file already exists."
+    description: "오류가 발생 하거나 대상 파일이 이미 존재 합니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>destFileName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>destFileName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "A directory path is passed in, or the file is being moved to a different drive."
+    description: "디렉터리 경로 거 치거나 파일이 다른 드라이브로 이동은 또는 합니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The directory specified in <code>destFileName</code> does not exist."
+    description: "에 지정 된 디렉터리 <code> destFileName </code> 존재 하지 않습니다."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters."
+    description: "지정된 된 경로, 파일 이름 또는 둘 다에 시스템 정의 최대 길이 초과 합니다. 예를 들어 Windows 기반 플랫폼에서 경로 248 자 미만, 이어야 하 고 파일 이름은 260 자 미만 이어야 합니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>destFileName</code> contains a colon (:) within the string but does not specify the volume."
+    description: "<code>destFileName</code>문자열 내에 콜론 (:)을 포함 하지만 볼륨을 지정 하지 않습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.CopyTo(System.String,System.Boolean)
@@ -206,8 +206,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Copies an existing file to a new file, allowing the overwriting of an existing file."
-  remarks: "Use this method to allow or prevent overwriting of an existing file. Use the <xref:System.IO.FileInfo.CopyTo%2A> method to prevent overwriting of an existing file by default.      > [!CAUTION] >  Whenever possible, avoid using short file names (such as XXXXXX~1.XXX) with this method. If two files have equivalent short file names then this method may fail and raise an exception and/or result in undesirable behavior"
+  summary: "기존 파일을 덮어쓸 수 있도록 하는 새 파일에 기존 파일을 복사 합니다."
+  remarks: "이 메서드를 사용 하 여를 허용 하거나 기존 파일 덮어쓰지 않도록 합니다. 사용 된 <xref:System.IO.FileInfo.CopyTo%2A>메서드를 기본적으로 기존 파일 덮어쓰지 않도록 합니다.</xref:System.IO.FileInfo.CopyTo%2A>      > [!CAUTION] > 가능 하면이 메서드로 짧은 파일 이름 (예: XXXXXX~1.XXX)를 사용 하지 마십시오. 두 개의 파일이 짧은 해당 하는 경우 파일 이름은 다음이 메서드 수 실패와 예외를 발생 시키는 및/또는 인해 예기치 않은 동작이"
   example:
   - "The following example demonstrates both overloads of the `CopyTo` method.  \n  \n [!code-cpp[finfo copyto2#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cop_0_1.cpp)]\n [!code-cs[finfo copyto2#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cop_0_1.cs)]\n [!code-vb[finfo copyto2#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cop_0_1.vb)]  \n  \n The following example demonstrates copying one file to another file, specifying whether to overwrite a file that already exists.  \n  \n [!code-cs[fileinfocopyto#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cop_0_2.cs)]\n [!code-cpp[fileinfocopyto#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cop_0_2.cpp)]\n [!code-vb[fileinfocopyto#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cop_0_2.vb)]"
   syntax:
@@ -215,39 +215,39 @@ items:
     parameters:
     - id: destFileName
       type: System.String
-      description: "The name of the new file to copy to."
+      description: "복사할 새 파일의 이름입니다."
     - id: overwrite
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to allow an existing file to be overwritten; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>기존 파일을 덮어쓸 수 있도록 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.IO.FileInfo
-      description: "A new file, or an overwrite of an existing file if <code>overwrite</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>. If the file exists and <code>overwrite</code> is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, an <xref:System.IO.IOException> is thrown."
+      description: "경우에 새 파일 또는 기존 덮어쓰기 파일 <code> overwrite </code> 은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다. 파일이 있으면 및 <code> overwrite </code> 은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, <xref:System.IO.IOException>throw 됩니다.</xref:System.IO.IOException>"
   overload: System.IO.FileInfo.CopyTo*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>destFileName</code> is empty, contains only white spaces, or contains invalid characters."
+    description: "<code>destFileName</code>비어, 공백만 포함 또는 잘못 된 문자가 있습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An error occurs, or the destination file already exists and <code>overwrite</code> is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+    description: "오류가 발생 했거나 대상 파일이 이미 존재 하 고 <code> overwrite </code> 은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>destFileName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>destFileName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The directory specified in <code>destFileName</code> does not exist."
+    description: "에 지정 된 디렉터리 <code> destFileName </code> 존재 하지 않습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "A directory path is passed in, or the file is being moved to a different drive."
+    description: "디렉터리 경로 거 치거나 파일이 다른 드라이브로 이동은 또는 합니다."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters."
+    description: "지정된 된 경로, 파일 이름 또는 둘 다에 시스템 정의 최대 길이 초과 합니다. 예를 들어 Windows 기반 플랫폼에서 경로 248 자 미만, 이어야 하 고 파일 이름은 260 자 미만 이어야 합니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>destFileName</code> contains a colon (:) in the middle of the string."
+    description: "<code>destFileName</code>문자열 중간에 콜론 (:)을 포함합니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Create
@@ -262,8 +262,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a file."
-  remarks: "By default, full read/write access to new files is granted to all users.       This method is a wrapper for the functionality provided by <xref:System.IO.File.Create%2A?displayProperty=fullName>."
+  summary: "파일을 만듭니다."
+  remarks: "새 파일에 대 한 모든 읽기/쓰기 액세스는 기본적으로 모든 사용자에 게 부여 됩니다.       이 메서드는 <xref:System.IO.File.Create%2A?displayProperty=fullName>.</xref:System.IO.File.Create%2A?displayProperty=fullName> 제공 하는 기능에 대 한 래퍼"
   example:
   - "The following example creates a reference to a file, and then creates the file on disk using `FileInfo.Create()`.  \n  \n [!code-cpp[fileinfodelete#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cre_0_1.cpp)]\n [!code-vb[fileinfodelete#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cre_0_1.vb)]\n [!code-cs[fileinfodelete#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cre_0_1.cs)]  \n  \n The following example creates a file, adds some text to it, and reads from the file.  \n  \n [!code-vb[finfo create#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cre_0_2.vb)]\n [!code-cs[finfo create#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cre_0_2.cs)]\n [!code-cpp[finfo create#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cre_0_2.cpp)]"
   syntax:
@@ -271,7 +271,7 @@ items:
     parameters: []
     return:
       type: System.IO.FileStream
-      description: "A new file."
+      description: "새 파일입니다."
   overload: System.IO.FileInfo.Create*
   exceptions: []
   platform:
@@ -288,8 +288,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a <xref:System.IO.StreamWriter> that writes a new text file."
-  remarks: "By default, full read/write access to new files is granted to all users."
+  summary: "만듭니다는 <xref:System.IO.StreamWriter>새 텍스트 파일을 쓰는.</xref:System.IO.StreamWriter>"
+  remarks: "새 파일에 대 한 모든 읽기/쓰기 액세스는 기본적으로 모든 사용자에 게 부여 됩니다."
   example:
   - "The following example demonstrates the `CreateText` method.  \n  \n [!code-cpp[finfo createtext#1](~/add/codesnippet/cpp/m-system.io.fileinfo.cre_1_1.cpp)]\n [!code-vb[finfo createtext#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.cre_1_1.vb)]\n [!code-cs[finfo createtext#1](~/add/codesnippet/csharp/m-system.io.fileinfo.cre_1_1.cs)]"
   syntax:
@@ -302,13 +302,13 @@ items:
   exceptions:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The file name is a directory."
+    description: "파일 이름에는 디렉터리입니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The disk is read-only."
+    description: "디스크는 읽기 전용입니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Decrypt
@@ -323,8 +323,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Decrypts a file that was encrypted by the current account using the <xref:System.IO.FileInfo.Encrypt*> method."
-  remarks: "The Decrypt method allows you to decrypt a file that was encrypted using the <xref:System.IO.FileInfo.Encrypt%2A> method.  The Decrypt method can decrypt only files that were encrypted using the current user account.       Both the <xref:System.IO.FileInfo.Encrypt%2A> method and the Decrypt method use the cryptographic service provider (CSP) installed on the computer and the file encryption keys of the process calling the method.       The current file system must be formatted as NTFS and the current operating system must be Microsoft Windows NT or later."
+  summary: "현재 계정 사용 하 여 암호화 된 파일을 암호 해독 된 <xref:System.IO.FileInfo.Encrypt*>메서드.</xref:System.IO.FileInfo.Encrypt*>"
+  remarks: "암호 해독 메서드를 사용 하 여 암호화 된 파일을 암호 해독할 수 있습니다는 <xref:System.IO.FileInfo.Encrypt%2A>메서드.</xref:System.IO.FileInfo.Encrypt%2A>  암호 해독 메서드는 현재 사용자 계정을 사용 하 여 암호화 된 파일에만 해독할 수 있습니다.       둘 다는 <xref:System.IO.FileInfo.Encrypt%2A>메서드 및 암호 해독 메서드를 사용 하는 컴퓨터와 메서드를 호출 하는 프로세스의 파일 암호화 키에 설치 된 암호화 서비스 공급자 (CSP)를 사용 합니다.</xref:System.IO.FileInfo.Encrypt%2A>       현재 파일 시스템 NTFS 및 현재 운영 체제가 Microsoft Windows NT 이루어야 서식이 지정 되거나 이상 이어야 합니다."
   example:
   - "The following code example uses the <xref:System.IO.FileInfo.Encrypt%2A> method and the Decrypt method to encrypt and then decrypt a file.  \n  \n [!code-cpp[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/cpp/m-system.io.fileinfo.dec_1.cpp)]\n [!code-cs[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/csharp/m-system.io.fileinfo.dec_1.cs)]\n [!code-vb[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.dec_1.vb)]"
   syntax:
@@ -334,22 +334,22 @@ items:
   exceptions:
   - type: System.IO.DriveNotFoundException
     commentId: T:System.IO.DriveNotFoundException
-    description: "An invalid drive was specified."
+    description: "잘못 된 드라이브를 지정 했습니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object could not be found."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 찾을 수 없습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while opening the file."
+    description: "파일을 여는 동안 I/O 오류가 발생 했습니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The file system is not NTFS."
+    description: "파일 시스템이 NTFS가 아닙니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows NT or later."
+    description: "현재 운영 체제가 지원 되지 않은 Microsoft Windows NT 이상입니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object is read-only.       -or-       This operation is not supported on the current platform.       -or-       The caller does not have the required permission."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체가 읽기 전용입니다.       -또는-이 작업은 현재 플랫폼에서 지원 되지 않습니다.       -또는-호출자에 게는 필요한 사용 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Delete
@@ -364,8 +364,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Permanently deletes a file."
-  remarks: "If the file does not exist, this method does nothing."
+  summary: "파일을 영구적으로 삭제 합니다."
+  remarks: "파일이 없으면이 메서드는 아무 작업도 수행 하지 않습니다."
   example:
   - "The following example demonstrates the `Delete` method.  \n  \n [!code-cpp[finfo delete#1](~/add/codesnippet/cpp/m-system.io.fileinfo.del_1.cpp)]\n [!code-cs[finfo delete#1](~/add/codesnippet/csharp/m-system.io.fileinfo.del_1.cs)]\n [!code-vb[finfo delete#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.del_1.vb)]  \n  \n The following example creates, closes, and deletes a file.  \n  \n [!code-cpp[fileinfodelete#1](~/add/codesnippet/cpp/m-system.io.fileinfo.del_2.cpp)]\n [!code-vb[fileinfodelete#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.del_2.vb)]\n [!code-cs[fileinfodelete#1](~/add/codesnippet/csharp/m-system.io.fileinfo.del_2.cs)]"
   syntax:
@@ -375,13 +375,13 @@ items:
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The target file is open or memory-mapped on a computer running Microsoft Windows NT.       -or-       There is an open handle on the file, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see [How to: Enumerate Directories and Files](~/add/includes/ajax-current-ext-md.md)."
+    description: "대상 파일이 열려 있거나 Microsoft Windows NT를 실행 하는 컴퓨터에 메모리 매핑된입니다.       -또는-파일에 대해 열린 핸들이 있고 운영 체제가 Windows XP 또는 이전 버전입니다. 이 열린 핸들은 디렉터리 및 파일을 열거 하면 발생할 수 있습니다. 자세한 내용은 참조 [하는 방법: 디렉터리 및 파일 열거](~/add/includes/ajax-current-ext-md.md)합니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The path is a directory."
+    description: "경로가 디렉터리입니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Directory
@@ -396,23 +396,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets an instance of the parent directory."
-  remarks: "To get the parent directory as a string, use the <xref:System.IO.FileInfo.DirectoryName%2A> property."
+  summary: "부모 디렉터리의 인스턴스를 가져옵니다."
+  remarks: "문자열로 서 부모 디렉터리를 가져오려면는 <xref:System.IO.FileInfo.DirectoryName%2A>속성.</xref:System.IO.FileInfo.DirectoryName%2A>"
   example:
   - "The following example opens or creates a file, determines its full path, and determines and displays the full contents of the directory.  \n  \n [!code-cs[fileinfodirectory#1](~/add/codesnippet/csharp/p-system.io.fileinfo.dir_0_1.cs)]\n [!code-vb[fileinfodirectory#1](~/add/codesnippet/visualbasic/p-system.io.fileinfo.dir_0_1.vb)]\n [!code-cpp[fileinfodirectory#1](~/add/codesnippet/cpp/p-system.io.fileinfo.dir_0_1.cpp)]"
   syntax:
     content: public System.IO.DirectoryInfo Directory { get; }
     return:
       type: System.IO.DirectoryInfo
-      description: "A <xref href=&quot;System.IO.DirectoryInfo&quot;></xref> object representing the parent directory of this file."
+      description: "A <xref href=&quot;System.IO.DirectoryInfo&quot;> </xref> 이 파일의 부모 디렉터리를 나타내는 개체입니다."
   overload: System.IO.FileInfo.Directory*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.DirectoryName
@@ -427,26 +427,26 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets a string representing the directory&quot;s full path."
-  remarks: "To get the parent directory as a <xref:System.IO.DirectoryInfo> object, use the <xref:System.IO.FileInfo.Directory%2A> property.       When first called, <xref:System.IO.FileInfo> calls <xref:System.IO.FileSystemInfo.Refresh%2A> and caches information about the file. On subsequent calls, you must call <xref:System.IO.FileSystemInfo.Refresh%2A> to get the latest copy of the information."
+  summary: "디렉터리의 전체 경로 나타내는 문자열을 가져옵니다."
+  remarks: "부모 디렉터리는 <xref:System.IO.DirectoryInfo>개체를 가져오려면는 <xref:System.IO.FileInfo.Directory%2A>속성.</xref:System.IO.FileInfo.Directory%2A> </xref:System.IO.DirectoryInfo>       처음 호출 될 때 <xref:System.IO.FileInfo>호출 <xref:System.IO.FileSystemInfo.Refresh%2A>파일에 대 한 정보를 캐시 합니다.</xref:System.IO.FileSystemInfo.Refresh%2A> </xref:System.IO.FileInfo> 후속 호출에서 호출 해야 <xref:System.IO.FileSystemInfo.Refresh%2A>정보의 최신 복사본을 가져오려면.</xref:System.IO.FileSystemInfo.Refresh%2A>"
   example:
   - "The following example retrieves the full path of the specified file.  \n  \n [!code-cs[System.IO.FileInfo members#3](~/add/codesnippet/csharp/p-system.io.fileinfo.dir_1_1.cs)]\n [!code-cpp[System.IO.FileInfo members#3](~/add/codesnippet/cpp/p-system.io.fileinfo.dir_1_1.cpp)]\n [!code-vb[System.IO.FileInfo members#3](~/add/codesnippet/visualbasic/p-system.io.fileinfo.dir_1_1.vb)]"
   syntax:
     content: public string DirectoryName { get; }
     return:
       type: System.String
-      description: "A string representing the directory&quot;s full path."
+      description: "디렉터리의 전체 경로 나타내는 문자열입니다."
   overload: System.IO.FileInfo.DirectoryName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> was passed in for the directory name."
+    description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>디렉터리 이름에 전달 되었습니다."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The fully qualified path is 260 or more characters."
+    description: "정규화 된 경로가 260 자 이상입니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Encrypt
@@ -461,8 +461,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Encrypts a file so that only the account used to encrypt the file can decrypt it."
-  remarks: "The Encrypt method allows you to encrypt a file so that only the account used to call this method can decrypt it.  Use the <xref:System.IO.FileInfo.Decrypt%2A> method to decrypt a file encrypted by the Encrypt method.       Both the Encrypt method and the <xref:System.IO.FileInfo.Decrypt%2A> method use the cryptographic service provider (CSP) installed on the computer and the file encryption keys of the process calling the method.       The current file system must be formatted as NTFS and the current operating system must be Microsoft Windows NT or later."
+  summary: "파일을 암호화 하는 데 사용 하는 계정 으로만 해독할 수 있도록 파일을 암호화 합니다."
+  remarks: "암호화 메서드를 사용 하면이 메서드를 호출 하는 데 사용 하는 계정 으로만 해독할 수 있도록 파일을 암호화할 수 있습니다.  사용 하 여는 <xref:System.IO.FileInfo.Decrypt%2A>암호화 방법으로 암호화 된 파일의 암호를 해독 하는 메서드.</xref:System.IO.FileInfo.Decrypt%2A>       암호화 메서드 및 <xref:System.IO.FileInfo.Decrypt%2A>메서드에서 컴퓨터와 메서드를 호출 하는 프로세스의 파일 암호화 키에 설치 된 암호화 서비스 공급자 (CSP)을 사용 합니다.</xref:System.IO.FileInfo.Decrypt%2A>       현재 파일 시스템 NTFS 및 현재 운영 체제가 Microsoft Windows NT 이루어야 서식이 지정 되거나 이상 이어야 합니다."
   example:
   - "The following code example uses the Encrypt method and the <xref:System.IO.FileInfo.Decrypt%2A> method to encrypt a file and then decrypt it.  \n  \n [!code-cpp[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/cpp/m-system.io.fileinfo.enc_1.cpp)]\n [!code-cs[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/csharp/m-system.io.fileinfo.enc_1.cs)]\n [!code-vb[IO.FileInfo.Encrypt-Decrypt#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.enc_1.vb)]"
   syntax:
@@ -472,22 +472,22 @@ items:
   exceptions:
   - type: System.IO.DriveNotFoundException
     commentId: T:System.IO.DriveNotFoundException
-    description: "An invalid drive was specified."
+    description: "잘못 된 드라이브를 지정 했습니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object could not be found."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 찾을 수 없습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while opening the file."
+    description: "파일을 여는 동안 I/O 오류가 발생 했습니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The file system is not NTFS."
+    description: "파일 시스템이 NTFS가 아닙니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows NT or later."
+    description: "현재 운영 체제가 지원 되지 않은 Microsoft Windows NT 이상입니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object is read-only.       -or-       This operation is not supported on the current platform.       -or-       The caller does not have the required permission."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체가 읽기 전용입니다.       -또는-이 작업은 현재 플랫폼에서 지원 되지 않습니다.       -또는-호출자에 게는 필요한 사용 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Exists
@@ -502,15 +502,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets a value indicating whether a file exists."
-  remarks: "When first called, <xref:System.IO.FileInfo> calls <xref:System.IO.FileSystemInfo.Refresh%2A> and caches information about the file. On subsequent calls, you must call <xref:System.IO.FileSystemInfo.Refresh%2A> to get the latest copy of the information.       The Exists property returns `false` if any error occurs while trying to determine if the specified file exists. This can occur in situations that raise exceptions such as passing a file name with invalid characters or too many characters, a failing or missing disk, or if the caller does not have permission to read the file."
+  summary: "파일이 있는지를 나타내는 값을 가져옵니다."
+  remarks: "처음 호출 될 때 <xref:System.IO.FileInfo>호출 <xref:System.IO.FileSystemInfo.Refresh%2A>파일에 대 한 정보를 캐시 합니다.</xref:System.IO.FileSystemInfo.Refresh%2A> </xref:System.IO.FileInfo> 후속 호출에서 호출 해야 <xref:System.IO.FileSystemInfo.Refresh%2A>정보의 최신 복사본을 가져오려면.</xref:System.IO.FileSystemInfo.Refresh%2A>       Exists 속성은 반환 `false` 지정한 파일이 있는지 확인 하는 동안 오류가 발생 하는 경우. 이 파일 이름에 잘못 된 문자 또는 실패 나 누락 된 디스크에 문자가 너무 많습니다. 전달할 때 예외를 발생 시키는 상황에서 발생할 수 있습니다 또는 호출자에 게 파일을 읽을 수 있는 사용 권한이 없습니다."
   example:
   - "The following code example uses the Exists property ensure a file exists before opening it.  You can use this technique to throw a custom exception when the file is not found.  \n  \n [!code-cpp[IO.FileInfo.Exists#1](~/add/codesnippet/cpp/p-system.io.fileinfo.exi_1.cpp)]\n [!code-cs[IO.FileInfo.Exists#1](~/add/codesnippet/csharp/p-system.io.fileinfo.exi_1.cs)]\n [!code-vb[IO.FileInfo.Exists#1](~/add/codesnippet/visualbasic/p-system.io.fileinfo.exi_1.vb)]"
   syntax:
     content: public override bool Exists { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the file exists; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the file does not exist or if the file is a directory."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>파일이 있으면; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 파일이 디렉터리 또는 파일이 존재 하지 않는 경우."
   overload: System.IO.FileInfo.Exists*
   exceptions: []
   platform:
@@ -527,8 +527,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets a <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object that encapsulates the access control list (ACL) entries for the file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object."
-  remarks: "Use the GetAccessControl method to retrieve the access control list (ACL) entries for the current file.       An ACL describes individuals and/or groups who have, or do not have, rights to specific actions on the given file. For more information, see [How to: Add or Remove Access Control List Entries](~/add/includes/ajax-current-ext-md.md)."
+  summary: "가져옵니다는 <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재 설명 하는 파일에 대 한 액세스 제어 목록 (ACL) 항목을 캡슐화 하는 개체 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체입니다."
+  remarks: "현재 파일에 대 한 액세스 제어 목록 (ACL) 항목을 검색 하려면 두 개의 새로운 메서드 메서드를 사용 합니다.       개인 및/또는 나 갖지 않고에 지정된 된 파일에서 특정 작업을 수행할 권한을 그룹이 ACL에 설명 합니다. 자세한 내용은 참조 [하는 방법: 액세스 제어 목록 항목 추가 또는 제거](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following code example uses the GetAccessControl method and the <xref:System.IO.FileInfo.SetAccessControl%2A> method to add and then remove an access control list (ACL) entry from a file.  You must supply a valid user or group account to run this example.  \n  \n [!code-cpp[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/cpp/m-system.io.fileinfo.get_1.cpp)]\n [!code-vb[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.get_1.vb)]\n [!code-cs[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/csharp/m-system.io.fileinfo.get_1.cs)]"
   syntax:
@@ -536,24 +536,24 @@ items:
     parameters: []
     return:
       type: System.Security.AccessControl.FileSecurity
-      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object that encapsulates the access control rules for the current file."
+      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재 파일에 대 한 액세스 제어 규칙을 캡슐화 하는 개체입니다."
   overload: System.IO.FileInfo.GetAccessControl*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while opening the file."
+    description: "파일을 여는 동안 I/O 오류가 발생 했습니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows 2000 or later."
+    description: "현재 운영 체제가 Microsoft Windows 2000 이상이 아닌 경우"
   - type: System.Security.AccessControl.PrivilegeNotHeldException
     commentId: T:System.Security.AccessControl.PrivilegeNotHeldException
-    description: "The current system account does not have administrative privileges."
+    description: "현재 시스템 계정에 관리자 권한이 없습니다."
   - type: System.SystemException
     commentId: T:System.SystemException
-    description: "The file could not be found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "This operation is not supported on the current platform.       -or-       The caller does not have the required permission."
+    description: "이 작업은 현재 플랫폼에서 지원 되지 않습니다.       -또는-호출자에 게는 필요한 사용 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.GetAccessControl(System.Security.AccessControl.AccessControlSections)
@@ -568,34 +568,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets a <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object that encapsulates the specified type of access control list (ACL) entries for the file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object."
-  remarks: "Use the GetAccessControl method to retrieve the access control list (ACL) entries for the current file.       An ACL describes individuals and/or groups who have, or do not have, rights to specific actions on the given file. For more information, see [How to: Add or Remove Access Control List Entries](~/add/includes/ajax-current-ext-md.md)."
+  summary: "가져옵니다는 <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재 설명 하는 파일에 대 한 액세스 제어 목록 (ACL) 항목의 지정된 된 형식을 캡슐화 하는 개체 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체입니다."
+  remarks: "현재 파일에 대 한 액세스 제어 목록 (ACL) 항목을 검색 하려면 두 개의 새로운 메서드 메서드를 사용 합니다.       개인 및/또는 나 갖지 않고에 지정된 된 파일에서 특정 작업을 수행할 권한을 그룹이 ACL에 설명 합니다. 자세한 내용은 참조 [하는 방법: 액세스 제어 목록 항목 추가 또는 제거](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public System.Security.AccessControl.FileSecurity GetAccessControl (System.Security.AccessControl.AccessControlSections includeSections);
     parameters:
     - id: includeSections
       type: System.Security.AccessControl.AccessControlSections
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlSections&quot;></xref> values that specifies which group of access control entries to retrieve."
+      description: "중 하나는 <xref href=&quot;System.Security.AccessControl.AccessControlSections&quot;> </xref> 액세스 그룹을 지정 하는 값은 검색할 항목을 제어 합니다."
     return:
       type: System.Security.AccessControl.FileSecurity
-      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object that encapsulates the access control rules for the current file."
+      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재 파일에 대 한 액세스 제어 규칙을 캡슐화 하는 개체입니다."
   overload: System.IO.FileInfo.GetAccessControl*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while opening the file."
+    description: "파일을 여는 동안 I/O 오류가 발생 했습니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows 2000 or later."
+    description: "현재 운영 체제가 Microsoft Windows 2000 이상이 아닌 경우"
   - type: System.Security.AccessControl.PrivilegeNotHeldException
     commentId: T:System.Security.AccessControl.PrivilegeNotHeldException
-    description: "The current system account does not have administrative privileges."
+    description: "현재 시스템 계정에 관리자 권한이 없습니다."
   - type: System.SystemException
     commentId: T:System.SystemException
-    description: "The file could not be found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "This operation is not supported on the current platform.       -or-       The caller does not have the required permission."
+    description: "이 작업은 현재 플랫폼에서 지원 되지 않습니다.       -또는-호출자에 게는 필요한 사용 권한이 없습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.IsReadOnly
@@ -610,29 +610,29 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets or sets a value that determines if the current file is read only."
-  remarks: "Use the IsReadOnly property to quickly determine or change whether the current file is read only.       When first called, <xref:System.IO.FileInfo> calls <xref:System.IO.FileSystemInfo.Refresh%2A> and caches information about the file. On subsequent calls, you must call <xref:System.IO.FileSystemInfo.Refresh%2A> to get the latest copy of the information."
+  summary: "현재 파일이 읽기 전용일 경우를 결정 하는 값을 가져오거나 설정 합니다."
+  remarks: "IsReadOnly 속성을 사용 하 여 신속 하 게 결정 하거나 현재 파일이 읽기 전용인 지 여부를 변경 합니다.       처음 호출 될 때 <xref:System.IO.FileInfo>호출 <xref:System.IO.FileSystemInfo.Refresh%2A>파일에 대 한 정보를 캐시 합니다.</xref:System.IO.FileSystemInfo.Refresh%2A> </xref:System.IO.FileInfo> 후속 호출에서 호출 해야 <xref:System.IO.FileSystemInfo.Refresh%2A>정보의 최신 복사본을 가져오려면.</xref:System.IO.FileSystemInfo.Refresh%2A>"
   example:
   - "The following example uses the IsReadOnly property to mark a file as read only and then mark it as read-write.  \n  \n [!code-cs[IO.FileInfo.IsReadOnly#1](~/add/codesnippet/csharp/p-system.io.fileinfo.isr_1.cs)]\n [!code-vb[IO.FileInfo.IsReadOnly#1](~/add/codesnippet/visualbasic/p-system.io.fileinfo.isr_1.vb)]\n [!code-cpp[IO.FileInfo.IsReadOnly#1](~/add/codesnippet/cpp/p-system.io.fileinfo.isr_1.cpp)]"
   syntax:
     content: public bool IsReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current file is read only; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>현재 파일이 읽기 전용 이면 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.IO.FileInfo.IsReadOnly*
   exceptions:
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object could not be found."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 찾을 수 없습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while opening the file."
+    description: "파일을 여는 동안 I/O 오류가 발생 했습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "This operation is not supported on the current platform.       -or-       The caller does not have the required permission."
+    description: "이 작업은 현재 플랫폼에서 지원 되지 않습니다.       -또는-호출자에 게는 필요한 사용 권한이 없습니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The user does not have write permission, but attempted to set this property to <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+    description: "사용자에이 속성을 설정 하려고 했지만 쓰기 권한이 없는 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Length
@@ -647,23 +647,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets the size, in bytes, of the current file."
-  remarks: "The value of the Length property is pre-cached if the current instance of the <xref:System.IO.FileInfo> object was returned from any of the following <xref:System.IO.DirectoryInfo>methods:      -   <xref:System.IO.DirectoryInfo.GetDirectories%2A>      -   <xref:System.IO.DirectoryInfo.GetFiles%2A>      -   <xref:System.IO.DirectoryInfo.GetFileSystemInfos%2A>      -   <xref:System.IO.DirectoryInfo.EnumerateDirectories%2A>      -   <xref:System.IO.DirectoryInfo.EnumerateFiles%2A>      -   <xref:System.IO.DirectoryInfo.EnumerateFileSystemInfos%2A>       To get the latest value, call the <xref:System.IO.FileSystemInfo.Refresh%2A> method."
+  summary: "현재 파일의 바이트 단위로 크기를 가져옵니다."
+  remarks: "Length 속성의 값은 경우에 미리 캐시의 현재 인스턴스는 <xref:System.IO.FileInfo>다음 중 하나에서 개체를 반환 했습니다 <xref:System.IO.DirectoryInfo>메서드:- <xref:System.IO.DirectoryInfo.GetDirectories%2A>- <xref:System.IO.DirectoryInfo.GetFiles%2A>- <xref:System.IO.DirectoryInfo.GetFileSystemInfos%2A>- <xref:System.IO.DirectoryInfo.EnumerateDirectories%2A>- <xref:System.IO.DirectoryInfo.EnumerateFiles%2A>- <xref:System.IO.DirectoryInfo.EnumerateFileSystemInfos%2A>최신 값을 가져오려면 호출는 <xref:System.IO.FileSystemInfo.Refresh%2A>메서드.</xref:System.IO.FileSystemInfo.Refresh%2A> </xref:System.IO.DirectoryInfo.EnumerateFileSystemInfos%2A> </xref:System.IO.DirectoryInfo.EnumerateFiles%2A> </xref:System.IO.DirectoryInfo.EnumerateDirectories%2A> </xref:System.IO.DirectoryInfo.GetFileSystemInfos%2A> </xref:System.IO.DirectoryInfo.GetFiles%2A> </xref:System.IO.DirectoryInfo.GetDirectories%2A> </xref:System.IO.DirectoryInfo> </xref:System.IO.FileInfo>"
   example:
   - "The following example displays the size of the specified files.  \n  \n [!code-cpp[FileLength#1](~/add/codesnippet/cpp/p-system.io.fileinfo.len_1.cpp)]\n [!code-cs[FileLength#1](~/add/codesnippet/csharp/p-system.io.fileinfo.len_1.cs)]\n [!code-vb[FileLength#1](~/add/codesnippet/visualbasic/p-system.io.fileinfo.len_1.vb)]"
   syntax:
     content: public long Length { get; }
     return:
       type: System.Int64
-      description: "The size of the current file in bytes."
+      description: "바이트에서 현재 파일의 크기입니다."
   overload: System.IO.FileInfo.Length*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "<xref:System.IO.FileSystemInfo.Refresh*> cannot update the state of the file or directory."
+    description: "<xref:System.IO.FileSystemInfo.Refresh*>파일 또는 디렉터리의 상태를 업데이트할 수 없습니다.</xref:System.IO.FileSystemInfo.Refresh*>"
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file does not exist.       -or-       The <xref uid=&quot;langword_csharp_Length&quot; name=&quot;Length&quot; href=&quot;&quot;></xref> property is called for a directory."
+    description: "파일이 존재 하지 않습니다.       -또는- <xref uid=&quot;langword_csharp_Length&quot; name=&quot;Length&quot; href=&quot;&quot;> </xref> 속성 디렉터리에 대해 호출 됩니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.MoveTo(System.String)
@@ -678,8 +678,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Moves a specified file to a new location, providing the option to specify a new file name."
-  remarks: "This method works across disk volumes. For example, the file c:\\MyFile.txt can be moved to d:\\public and renamed NewFile.txt."
+  summary: "지정된 된 파일을 새 파일 이름을 지정 하는 옵션을 제공 하는 새 위치로 이동 합니다."
+  remarks: "이 방법은 디스크 볼륨에 걸쳐 작동합니다. 예를 들어 파일 c:\\MyFile.txt d:\\public로 이동할 수 있습니다 및 NewFile.txt 이름을 변경 합니다."
   example:
   - "The following example demonstrates moving a file to a different location and renaming the file.  \n  \n [!code-cs[IO.FileInfo.MoveTo#1](~/add/codesnippet/csharp/m-system.io.fileinfo.mov_1.cs)]\n [!code-vb[IO.FileInfo.MoveTo#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.mov_1.vb)]"
   syntax:
@@ -687,36 +687,36 @@ items:
     parameters:
     - id: destFileName
       type: System.String
-      description: "The path to move the file to, which can specify a different file name."
+      description: "다른 파일 이름을 지정할 수 있는 파일을 이동할 경로입니다."
   overload: System.IO.FileInfo.MoveTo*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs, such as the destination file already exists or the destination device is not ready."
+    description: "대상 파일이 이미 존재 하거나 대상 장치가 준비 되지 않았습니다.와 같은 I/O 오류가 발생 합니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>destFileName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>destFileName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>destFileName</code> is empty, contains only white spaces, or contains invalid characters."
+    description: "<code>destFileName</code>비어, 공백만 포함 또는 잘못 된 문자가 있습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "<code>destFileName</code> is read-only or is a directory."
+    description: "<code>destFileName</code>읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file is not found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters."
+    description: "지정된 된 경로, 파일 이름 또는 둘 다에 시스템 정의 최대 길이 초과 합니다. 예를 들어 Windows 기반 플랫폼에서 경로 248 자 미만, 이어야 하 고 파일 이름은 260 자 미만 이어야 합니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "<code>destFileName</code> contains a colon (:) in the middle of the string."
+    description: "<code>destFileName</code>문자열 중간에 콜론 (:)을 포함합니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Name
@@ -731,15 +731,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Gets the name of the file."
-  remarks: "When first called, <xref:System.IO.FileInfo> calls <xref:System.IO.FileSystemInfo.Refresh%2A> and caches information about the file. On subsequent calls, you must call <xref:System.IO.FileSystemInfo.Refresh%2A> to get the latest copy of the information.       The name of the file includes the file extension."
+  summary: "파일의 이름을 가져옵니다."
+  remarks: "처음 호출 될 때 <xref:System.IO.FileInfo>호출 <xref:System.IO.FileSystemInfo.Refresh%2A>파일에 대 한 정보를 캐시 합니다.</xref:System.IO.FileSystemInfo.Refresh%2A> </xref:System.IO.FileInfo> 후속 호출에서 호출 해야 <xref:System.IO.FileSystemInfo.Refresh%2A>정보의 최신 복사본을 가져오려면.</xref:System.IO.FileSystemInfo.Refresh%2A>       파일 확장명을 포함 하는 파일의 이름입니다."
   example:
   - "The following example uses the `Name` property to display the names of files in the current directory.  \n  \n [!code-cs[fileinfoname#1](~/add/codesnippet/csharp/p-system.io.fileinfo.name_1.cs)]\n [!code-cpp[fileinfoname#1](~/add/codesnippet/cpp/p-system.io.fileinfo.name_1.cpp)]\n [!code-vb[fileinfoname#1](~/add/codesnippet/visualbasic/p-system.io.fileinfo.name_1.vb)]"
   syntax:
     content: public override string Name { get; }
     return:
       type: System.String
-      description: "The name of the file."
+      description: "파일의 이름입니다."
   overload: System.IO.FileInfo.Name*
   exceptions: []
   platform:
@@ -756,7 +756,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Opens a file in the specified mode."
+  summary: "지정 된 모드로 파일을 엽니다."
   remarks: ''
   example:
   - "The following example opens a file, adds some information to the file, and reads the file.  \n  \n [!code-cs[finfo open1#1](~/add/codesnippet/csharp/m-system.io.fileinfo.ope_0_1.cs)]\n [!code-cpp[finfo open1#1](~/add/codesnippet/cpp/m-system.io.fileinfo.ope_0_1.cpp)]\n [!code-vb[finfo open1#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.ope_0_1.vb)]"
@@ -765,24 +765,24 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: "A <xref href=&quot;System.IO.FileMode&quot;></xref> constant specifying the mode (for example, <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;></xref>) in which to open the file."
+      description: "A <xref href=&quot;System.IO.FileMode&quot;> </xref> 모드를 지정 하는 상수 (예를 들어 <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;> </xref>) 파일을 열 수는 있습니다."
     return:
       type: System.IO.FileStream
-      description: "A file opened in the specified mode, with read/write access and unshared."
+      description: "및 공유 권한 없이 읽기/쓰기 권한으로 지정된 된 모드에서 열린 파일입니다."
   overload: System.IO.FileInfo.Open*
   exceptions:
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file is not found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The file is read-only or is a directory."
+    description: "파일은 읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The file is already open."
+    description: "파일이 이미 열려 있습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Open(System.IO.FileMode,System.IO.FileAccess)
@@ -797,7 +797,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Opens a file in the specified mode with read, write, or read/write access."
+  summary: "읽기, 쓰기 또는 읽기/쓰기 권한이 지정된 된 모드에서 파일을 엽니다."
   remarks: ''
   example:
   - "The following example opens a file as read-only and reads from the file.  \n  \n [!code-vb[finfo open2#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.ope_2_1.vb)]\n [!code-cpp[finfo open2#1](~/add/codesnippet/cpp/m-system.io.fileinfo.ope_2_1.cpp)]\n [!code-cs[finfo open2#1](~/add/codesnippet/csharp/m-system.io.fileinfo.ope_2_1.cs)]"
@@ -806,30 +806,30 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: "A <xref href=&quot;System.IO.FileMode&quot;></xref> constant specifying the mode (for example, <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;></xref>) in which to open the file."
+      description: "A <xref href=&quot;System.IO.FileMode&quot;> </xref> 모드를 지정 하는 상수 (예를 들어 <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;> </xref>) 파일을 열 수는 있습니다."
     - id: access
       type: System.IO.FileAccess
-      description: "A <xref href=&quot;System.IO.FileAccess&quot;></xref> constant specifying whether to open the file with <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_ReadWrite&quot; name=&quot;ReadWrite&quot; href=&quot;&quot;></xref> file access."
+      description: "A <xref href=&quot;System.IO.FileAccess&quot;> </xref> 사용 하 여 파일을 열지 여부를 지정 하는 상수 <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;> </xref>, 또는 <xref uid=&quot;langword_csharp_ReadWrite&quot; name=&quot;ReadWrite&quot; href=&quot;&quot;> </xref> 파일 액세스 합니다."
     return:
       type: System.IO.FileStream
-      description: "A <xref href=&quot;System.IO.FileStream&quot;></xref> object opened in the specified mode and access, and unshared."
+      description: "A <xref href=&quot;System.IO.FileStream&quot;> </xref> 개체에서 지정 된 모드와 액세스, 열 및 공유 해제 합니다."
   overload: System.IO.FileInfo.Open*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file is not found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "<code>path</code> is read-only or is a directory."
+    description: "<code>path</code>읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The file is already open."
+    description: "파일이 이미 열려 있습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Open(System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
@@ -844,7 +844,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Opens a file in the specified mode with read, write, or read/write access and the specified sharing option."
+  summary: "읽기, 쓰기 또는 읽기/쓰기 액세스 및 지정 된 공유 옵션을 사용 하 여 지정 된 모드에서 파일을 엽니다."
   remarks: ''
   example:
   - "The following example demonstrates opening a file for reading and writing, but disallowing access to other users or processes.  \n  \n [!code-cpp[fileinfoopen#1](~/add/codesnippet/cpp/8bd38f9d-a8ac-4cea-8fda-_1.cpp)]\n [!code-cs[fileinfoopen#1](~/add/codesnippet/csharp/8bd38f9d-a8ac-4cea-8fda-_1.cs)]\n [!code-vb[fileinfoopen#1](~/add/codesnippet/visualbasic/8bd38f9d-a8ac-4cea-8fda-_1.vb)]"
@@ -853,33 +853,33 @@ items:
     parameters:
     - id: mode
       type: System.IO.FileMode
-      description: "A <xref href=&quot;System.IO.FileMode&quot;></xref> constant specifying the mode (for example, <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;></xref>) in which to open the file."
+      description: "A <xref href=&quot;System.IO.FileMode&quot;> </xref> 모드를 지정 하는 상수 (예를 들어 <xref uid=&quot;langword_csharp_Open&quot; name=&quot;Open&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_Append&quot; name=&quot;Append&quot; href=&quot;&quot;> </xref>) 파일을 열 수는 있습니다."
     - id: access
       type: System.IO.FileAccess
-      description: "A <xref href=&quot;System.IO.FileAccess&quot;></xref> constant specifying whether to open the file with <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_ReadWrite&quot; name=&quot;ReadWrite&quot; href=&quot;&quot;></xref> file access."
+      description: "A <xref href=&quot;System.IO.FileAccess&quot;> </xref> 사용 하 여 파일을 열지 여부를 지정 하는 상수 <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Write&quot; name=&quot;Write&quot; href=&quot;&quot;> </xref>, 또는 <xref uid=&quot;langword_csharp_ReadWrite&quot; name=&quot;ReadWrite&quot; href=&quot;&quot;> </xref> 파일 액세스 합니다."
     - id: share
       type: System.IO.FileShare
-      description: "A <xref href=&quot;System.IO.FileShare&quot;></xref> constant specifying the type of access other <xref uid=&quot;langword_csharp_FileStream&quot; name=&quot;FileStream&quot; href=&quot;&quot;></xref> objects have to this file."
+      description: "A <xref href=&quot;System.IO.FileShare&quot;> </xref> 의 형식을 지정 하는 상수에 액세스 다른 <xref uid=&quot;langword_csharp_FileStream&quot; name=&quot;FileStream&quot; href=&quot;&quot;> </xref> 이 파일에 대 한 개체입니다."
     return:
       type: System.IO.FileStream
-      description: "A <xref href=&quot;System.IO.FileStream&quot;></xref> object opened with the specified mode, access, and sharing options."
+      description: "A <xref href=&quot;System.IO.FileStream&quot;> </xref> 액세스, 지정된 된 모드를 사용 하 여 열린 개체 및 공유 옵션입니다."
   overload: System.IO.FileInfo.Open*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file is not found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "<code>path</code> is read-only or is a directory."
+    description: "<code>path</code>읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The file is already open."
+    description: "파일이 이미 열려 있습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.OpenRead
@@ -894,8 +894,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a read-only <xref href=&quot;System.IO.FileStream&quot;></xref>."
-  remarks: "This method returns a read-only <xref:System.IO.FileStream> object with the <xref:System.IO.FileShare> mode set to <xref:System.IO.FileShare>."
+  summary: "읽기 전용 만듭니다 <xref href=&quot;System.IO.FileStream&quot;> </xref>합니다."
+  remarks: "이 메서드는 읽기 전용 <xref:System.IO.FileStream> <xref:System.IO.FileShare>모드가 <xref:System.IO.FileShare>.</xref:System.IO.FileShare> 로 설정</xref:System.IO.FileShare> 하는 개체</xref:System.IO.FileStream> 반환"
   example:
   - "The following example opens a file as read-only and reads from it.  \n  \n [!code-vb[finfo openread#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.ope_4_1.vb)]\n [!code-cs[finfo openread#1](~/add/codesnippet/csharp/m-system.io.fileinfo.ope_4_1.cs)]\n [!code-cpp[finfo openread#1](~/add/codesnippet/cpp/m-system.io.fileinfo.ope_4_1.cpp)]"
   syntax:
@@ -903,18 +903,18 @@ items:
     parameters: []
     return:
       type: System.IO.FileStream
-      description: "A new read-only <xref href=&quot;System.IO.FileStream&quot;></xref> object."
+      description: "새 읽기 전용 <xref href=&quot;System.IO.FileStream&quot;> </xref> 개체입니다."
   overload: System.IO.FileInfo.OpenRead*
   exceptions:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "<code>path</code> is read-only or is a directory."
+    description: "<code>path</code>읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The file is already open."
+    description: "파일이 이미 열려 있습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.OpenText
@@ -929,7 +929,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a <xref:System.IO.StreamReader> with UTF8 encoding that reads from an existing text file."
+  summary: "만듭니다는 <xref:System.IO.StreamReader>기존 텍스트 파일에서 읽는 UTF8 인코딩 방식을 사용 합니다.</xref:System.IO.StreamReader>"
   remarks: ''
   example:
   - "The following example reads text from a file.  \n  \n [!code-cpp[finfo opentext#1](~/add/codesnippet/cpp/m-system.io.fileinfo.ope_1_1.cpp)]\n [!code-cs[finfo opentext#1](~/add/codesnippet/csharp/m-system.io.fileinfo.ope_1_1.cs)]\n [!code-vb[finfo opentext#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.ope_1_1.vb)]"
@@ -938,21 +938,21 @@ items:
     parameters: []
     return:
       type: System.IO.StreamReader
-      description: "A new <xref uid=&quot;langword_csharp_StreamReader&quot; name=&quot;StreamReader&quot; href=&quot;&quot;></xref> with UTF8 encoding."
+      description: "새 <xref uid=&quot;langword_csharp_StreamReader&quot; name=&quot;StreamReader&quot; href=&quot;&quot;> </xref> UTF8 인코딩 방식을 사용 합니다."
   overload: System.IO.FileInfo.OpenText*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file is not found."
+    description: "파일을 찾을 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "<code>path</code> is read-only or is a directory."
+    description: "<code>path</code>읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified path is invalid, such as being on an unmapped drive."
+    description: "지정된 된 경로 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.OpenWrite
@@ -967,8 +967,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Creates a write-only <xref href=&quot;System.IO.FileStream&quot;></xref>."
-  remarks: "The OpenWrite method opens a file if one already exists for the file path, or creates a new file if one does not exist. For an existing file, it does not append the new text to the existing text. Instead, it overwrites the existing characters with the new characters. If you overwrite a longer string (such as &quot;This is a test of the OpenWrite method&quot;) with a shorter string (like &quot;Second run&quot;), the file will contain a mix of the strings (&quot;Second runtest of the OpenWrite method&quot;)."
+  summary: "쓰기 전용 만듭니다 <xref href=&quot;System.IO.FileStream&quot;> </xref>합니다."
+  remarks: "OpenWrite 메서드 하나 이미 파일 경로 대 한 존재 하거나 존재 하지 않는 경우 새 파일을 만듭니다는 파일을 엽니다. 기존 파일에 대 한 추가 하지 않습니다 새 텍스트를 기존 텍스트입니다. 대신, 새 문자를 사용한 기존 문자를 덮어씁니다. 파일에 문자열을 혼합 하 여 포함 됩니다을 덮어쓴 경우 긴 문자열 (예: &quot;있는 그대로&quot;이 OpenWrite 메서드의 테스트) (예: &quot;두 번째 실행&quot;) 짧은 문자열 (&quot;OpenWrite 메서드의 두 번째 runtest&quot;)."
   example:
   - "The following example opens a file for writing and then reads from the file.  \n  \n [!code-cs[finfo openwrite#1](~/add/codesnippet/csharp/m-system.io.fileinfo.ope_3_1.cs)]\n [!code-vb[finfo openwrite#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.ope_3_1.vb)]\n [!code-cpp[finfo openwrite#1](~/add/codesnippet/cpp/m-system.io.fileinfo.ope_3_1.cpp)]"
   syntax:
@@ -976,15 +976,15 @@ items:
     parameters: []
     return:
       type: System.IO.FileStream
-      description: "A write-only unshared <xref href=&quot;System.IO.FileStream&quot;></xref> object for a new or existing file."
+      description: "공유 되지 않는 쓰기 전용 <xref href=&quot;System.IO.FileStream&quot;> </xref> 는 새로운 또는 기존 파일에 대 한 개체입니다."
   overload: System.IO.FileInfo.OpenWrite*
   exceptions:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The path specified when creating an instance of the <xref href=&quot;System.IO.FileInfo&quot;></xref> object is read-only or is a directory."
+    description: "인스턴스를 만들 때 지정 된 경로 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체는 읽기 전용 이거나 디렉터리입니다."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The path specified when creating an instance of the <xref href=&quot;System.IO.FileInfo&quot;></xref> object is invalid, such as being on an unmapped drive."
+    description: "인스턴스를 만들 때 지정 된 경로 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체가 예: 매핑되지 않은 드라이브에 올바르지 않습니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Replace(System.String,System.String)
@@ -999,8 +999,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Replaces the contents of a specified file with the file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object, deleting the original file, and creating a backup of the replaced file."
-  remarks: "The Replace method replaces the contents of a specified file with the contents of the file described by the current <xref:System.IO.FileInfo> object.  It also creates a backup of the file that was replaced.  Finally, it returns a new <xref:System.IO.FileInfo> object that describes the overwritten file.      > [!CAUTION] >  This method will succeed in Windows 2000 environments if the `destFileName` is read-only and will not raise an exception. Use the <xref:System.IO.FileInfo.IsReadOnly%2A> property to check if the destination file is read-only before attempting to replace it.       Pass `null` to the `destBackupFileName` parameter if you do not want to create a backup of the file being replaced."
+  summary: "현재 설명 하는 파일에 지정된 된 파일의 내용을 바꿉니다 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 원래 파일은 삭제 되 고 대체 된 파일의 백업이 만들어집니다."
+  remarks: "Replace 메서드는 현재 설명 하는 파일의 내용이 지정된 된 파일의 내용을 바꿉니다 <xref:System.IO.FileInfo>개체입니다.</xref:System.IO.FileInfo>  또한 대체 된 파일의 백업을 만듭니다.  마지막으로 새 반환 <xref:System.IO.FileInfo>덮어쓴된 파일을 설명 하는 개체입니다.</xref:System.IO.FileInfo>      > [!CAUTION] > 경우 Windows 2000 환경에서이 메서드가 성공 하는 `destFileName` 읽기 전용 이며 예외가 발생 하지 것입니다. <xref:System.IO.FileInfo.IsReadOnly%2A>확인할 경우 대상 파일은 합니다. 교체를 시도 하기 전에 읽기 전용 속성</xref:System.IO.FileInfo.IsReadOnly%2A> 을 사용 하 여       전달 `null` 에 `destBackupFileName` 교체 중인 파일의 백업을 만드는 하지 않을 경우 매개 변수입니다."
   example:
   - "The following example uses the <xref:System.IO.File.Replace%2A> method to replace a file with another file and create a backup of the replaced file.  \n  \n [!code-cs[IO.FileInfo.Replace#1](~/add/codesnippet/csharp/m-system.io.fileinfo.rep_0_1.cs)]\n [!code-vb[IO.FileInfo.Replace#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.rep_0_1.vb)]\n [!code-cpp[IO.FileInfo.Replace#1](~/add/codesnippet/cpp/m-system.io.fileinfo.rep_0_1.cpp)]"
   syntax:
@@ -1008,27 +1008,27 @@ items:
     parameters:
     - id: destinationFileName
       type: System.String
-      description: "The name of a file to replace with the current file."
+      description: "현재 파일로 대체할 파일의 이름입니다."
     - id: destinationBackupFileName
       type: System.String
-      description: "The name of a file with which to create a backup of the file described by the `destFileName` parameter."
+      description: "설명 하는 파일의 백업을 만드는 데 사용할 파일의 이름에서 `destFileName` 매개 변수입니다."
     return:
       type: System.IO.FileInfo
-      description: "A <xref href=&quot;System.IO.FileInfo&quot;></xref> object that encapsulates information about the file described by the <code>destFileName</code> parameter."
+      description: "A <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체에서 설명 하는 파일에 대 한 정보를 캡슐화 하는 <code> destFileName </code> 매개 변수입니다."
   overload: System.IO.FileInfo.Replace*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The path described by the <code>destFileName</code> parameter was not of a legal form.       -or-       The path described by the <code>destBackupFileName</code> parameter was not of a legal form."
+    description: "설명 하는 경로 <code> destFileName </code> 매개 변수가 올바른 형식이 없습니다.       -또는-에서 설명 하는 경로 <code> destBackupFileName </code> 매개 변수가 올바른 형식이 없습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>destFileName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object could not be found.       -or-       The file described by the <code>destinationFileName</code> parameter could not be found."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 찾을 수 없습니다.       -또는-기술 된 파일의 <code> destinationFileName </code> 매개 변수를 찾을 수 없습니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows NT or later."
+    description: "현재 운영 체제가 지원 되지 않은 Microsoft Windows NT 이상입니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.Replace(System.String,System.String,System.Boolean)
@@ -1043,8 +1043,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Replaces the contents of a specified file with the file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object, deleting the original file, and creating a backup of the replaced file.  Also specifies whether to ignore merge errors."
-  remarks: "The Replace method replaces the contents of a specified file with the contents of the file described by the current <xref:System.IO.FileInfo> object.  It also creates a backup of the file that was replaced.  Finally, it returns a new <xref:System.IO.FileInfo> object that describes the overwritten file.      > [!CAUTION] >  This method will succeed in Windows 2000 environments if the `destFileName` is read-only and will not raise an exception. Use the <xref:System.IO.FileInfo.IsReadOnly%2A> property to check if the destination file is read-only before attempting to replace it.       Pass `null` to the `destBackupFileName` parameter if you do not want to create a backup of the file being replaced."
+  summary: "현재 설명 하는 파일에 지정된 된 파일의 내용을 바꿉니다 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 원래 파일은 삭제 되 고 대체 된 파일의 백업이 만들어집니다.  병합 오류를 무시할지 여부도 지정 합니다."
+  remarks: "Replace 메서드는 현재 설명 하는 파일의 내용이 지정된 된 파일의 내용을 바꿉니다 <xref:System.IO.FileInfo>개체입니다.</xref:System.IO.FileInfo>  또한 대체 된 파일의 백업을 만듭니다.  마지막으로 새 반환 <xref:System.IO.FileInfo>덮어쓴된 파일을 설명 하는 개체입니다.</xref:System.IO.FileInfo>      > [!CAUTION] > 경우 Windows 2000 환경에서이 메서드가 성공 하는 `destFileName` 읽기 전용 이며 예외가 발생 하지 것입니다. <xref:System.IO.FileInfo.IsReadOnly%2A>확인할 경우 대상 파일은 합니다. 교체를 시도 하기 전에 읽기 전용 속성</xref:System.IO.FileInfo.IsReadOnly%2A> 을 사용 하 여       전달 `null` 에 `destBackupFileName` 교체 중인 파일의 백업을 만드는 하지 않을 경우 매개 변수입니다."
   example:
   - "The following example uses the <xref:System.IO.File.Replace%2A> method to replace a file with another file and create a backup of the replaced file.  \n  \n [!code-cs[IO.FileInfo.Replace#1](~/add/codesnippet/csharp/m-system.io.fileinfo.rep_1_1.cs)]\n [!code-vb[IO.FileInfo.Replace#1](~/add/codesnippet/visualbasic/m-system.io.fileinfo.rep_1_1.vb)]\n [!code-cpp[IO.FileInfo.Replace#1](~/add/codesnippet/cpp/m-system.io.fileinfo.rep_1_1.cpp)]"
   syntax:
@@ -1052,30 +1052,30 @@ items:
     parameters:
     - id: destinationFileName
       type: System.String
-      description: "The name of a file to replace with the current file."
+      description: "현재 파일로 대체할 파일의 이름입니다."
     - id: destinationBackupFileName
       type: System.String
-      description: "The name of a file with which to create a backup of the file described by the `destFileName` parameter."
+      description: "설명 하는 파일의 백업을 만드는 데 사용할 파일의 이름에서 `destFileName` 매개 변수입니다."
     - id: ignoreMetadataErrors
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to ignore merge errors (such as attributes and ACLs) from the replaced file to the replacement file; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>않으면에 대체 된 파일에서 병합 오류 (예: 특성 및 Acl)를 무시 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.IO.FileInfo
-      description: "A <xref href=&quot;System.IO.FileInfo&quot;></xref> object that encapsulates information about the file described by the <code>destFileName</code> parameter."
+      description: "A <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체에서 설명 하는 파일에 대 한 정보를 캡슐화 하는 <code> destFileName </code> 매개 변수입니다."
   overload: System.IO.FileInfo.Replace*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The path described by the <code>destFileName</code> parameter was not of a legal form.       -or-       The path described by the <code>destBackupFileName</code> parameter was not of a legal form."
+    description: "설명 하는 경로 <code> destFileName </code> 매개 변수가 올바른 형식이 없습니다.       -또는-에서 설명 하는 경로 <code> destBackupFileName </code> 매개 변수가 올바른 형식이 없습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>destFileName</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object could not be found.       -or-       The file described by the <code>destinationFileName</code> parameter could not be found."
+    description: "현재 설명 하는 파일 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체를 찾을 수 없습니다.       -또는-기술 된 파일의 <code> destinationFileName </code> 매개 변수를 찾을 수 없습니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows NT or later."
+    description: "현재 운영 체제가 지원 되지 않은 Microsoft Windows NT 이상입니다."
   platform:
   - net462
 - uid: System.IO.FileInfo.SetAccessControl(System.Security.AccessControl.FileSecurity)
@@ -1090,8 +1090,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Applies access control list (ACL) entries described by a <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object to the file described by the current <xref href=&quot;System.IO.FileInfo&quot;></xref> object."
-  remarks: "The SetAccessControl method applies access control list (ACL) entries to the current file that represents the noninherited ACL list.       Use the SetAccessControl method whenever you need to add or remove ACL entries from a file.      > [!CAUTION] >  The ACL specified for the `fileSecurity` parameter replaces the existing ACL for the file. To add permissions for a new user, use the <xref:System.IO.Directory.GetAccessControl%2A> method to obtain the existing ACL, modify it, and then use SetAccessControl to apply it back to the file.       An ACL describes individuals and/or groups who have, or do not have, rights to specific actions on the given file. For more information, see [How to: Add or Remove Access Control List Entries](~/add/includes/ajax-current-ext-md.md).       The SetAccessControl method persists only <xref:System.Security.AccessControl.FileSecurity> objects that have been modified after object creation.  If a <xref:System.Security.AccessControl.FileSecurity> object has not been modified, it will not be persisted to a file.  Therefore, it is not possible to retrieve a <xref:System.Security.AccessControl.FileSecurity> object from one file and reapply the same object to another file.       To copy ACL information from one file to another:      1.  Use the <xref:System.IO.FileInfo.GetAccessControl%2A> method to retrieve the <xref:System.Security.AccessControl.FileSecurity> object from the source file.      2.  Create a new <xref:System.Security.AccessControl.FileSecurity> object for the destination file.      3.  Use the <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorBinaryForm%2A> or <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> method of the source <xref:System.Security.AccessControl.FileSecurity> object to retrieve the ACL information.      4.  Use the <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorBinaryForm%2A> or <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> method to copy the information retrieved in step 3 to the destination <xref:System.Security.AccessControl.FileSecurity> object.      5.  Set the destination <xref:System.Security.AccessControl.FileSecurity> object to the destination file using the SetAccessControl method."
+  summary: "설명 하는 액세스 제어 목록 (ACL) 항목을 적용 한 <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재에서 설명 하는 파일에 개체 <xref href=&quot;System.IO.FileInfo&quot;> </xref> 개체입니다."
+  remarks: "가집니다 메서드는 상속 되지 않은 ACL 목록을 표시 하는 현재 파일에 액세스 제어 목록 (ACL) 항목을 적용 됩니다.       추가 하거나 파일에서 ACL 항목을 제거 해야 할 경우 가집니다 메서드를 사용 합니다.      > [!CAUTION] > The ACL에 지정 된 된 `fileSecurity` 매개 변수는 파일에 대 한 기존 ACL을 대체 합니다. 새 사용자에 대 한 권한을 추가 하려면 사용 된 <xref:System.IO.Directory.GetAccessControl%2A>메서드를 추가 하려면 수정 하 고 다음 가집니다를 사용 하 여 적용 하는 파일에 다시.</xref:System.IO.Directory.GetAccessControl%2A>       개인 및/또는 나 갖지 않고에 지정된 된 파일에서 특정 작업을 수행할 권한을 그룹이 ACL에 설명 합니다. 자세한 내용은 참조 [하는 방법: 액세스 제어 목록 항목 추가 또는 제거](~/add/includes/ajax-current-ext-md.md)합니다.       가집니다 메서드만 계속 되 면 <xref:System.Security.AccessControl.FileSecurity>개체를 만든 후 수정 된 개체입니다.</xref:System.Security.AccessControl.FileSecurity>  경우는 <xref:System.Security.AccessControl.FileSecurity>개체가 수정 되지 않은, 파일에 유지 되지 것입니다.</xref:System.Security.AccessControl.FileSecurity>  검색할 수 없으면 따라서는 <xref:System.Security.AccessControl.FileSecurity>한 파일에서 개체를 다른 파일에 동일한 개체를 다시 적용 합니다.</xref:System.Security.AccessControl.FileSecurity>       한 파일에서 ACL 정보 복사: 1입니다.  사용 하 여는 <xref:System.IO.FileInfo.GetAccessControl%2A>를 검색할 메서드는 <xref:System.Security.AccessControl.FileSecurity>개체 소스 파일에서.</xref:System.Security.AccessControl.FileSecurity> </xref:System.IO.FileInfo.GetAccessControl%2A>      2.  새 <xref:System.Security.AccessControl.FileSecurity>대상 파일에 대 한 개체입니다.</xref:System.Security.AccessControl.FileSecurity>      3.  사용 하 여는 <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorBinaryForm%2A>또는 <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A>소스의 메서드 <xref:System.Security.AccessControl.FileSecurity>ACL 정보를 검색 하는 개체입니다.</xref:System.Security.AccessControl.FileSecurity> </xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorBinaryForm%2A>      4.  사용 된 <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorBinaryForm%2A>또는 <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A>대상에 3 단계에서 검색 메서드 정보를 복사 하려면 <xref:System.Security.AccessControl.FileSecurity>개체입니다.</xref:System.Security.AccessControl.FileSecurity> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorBinaryForm%2A>      5.  대상을 설정 <xref:System.Security.AccessControl.FileSecurity>가집니다 메서드를 사용 하 여 대상 파일에는 개체입니다.</xref:System.Security.AccessControl.FileSecurity>"
   example:
   - "The following code example uses the <xref:System.IO.FileInfo.GetAccessControl%2A> method and the SetAccessControl method to add and then remove an ACL entry from a file.  You must supply a valid user or group account to run this example.  \n  \n [!code-cpp[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/cpp/c24a4717-31ac-4834-901c-_1.cpp)]\n [!code-vb[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/visualbasic/c24a4717-31ac-4834-901c-_1.vb)]\n [!code-cs[IO.FileInfo.GetAccessControl-SetAccessControl#1](~/add/codesnippet/csharp/c24a4717-31ac-4834-901c-_1.cs)]"
   syntax:
@@ -1099,7 +1099,7 @@ items:
     parameters:
     - id: fileSecurity
       type: System.Security.AccessControl.FileSecurity
-      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;></xref> object that describes an access control list (ACL) entry to apply to the current file."
+      description: "A <xref href=&quot;System.Security.AccessControl.FileSecurity&quot;> </xref> 현재 파일에 적용할 액세스 제어 목록 (ACL) 항목을 설명 하는 개체입니다."
   overload: System.IO.FileInfo.SetAccessControl*
   exceptions:
   - type: System.ArgumentNullException
@@ -1107,13 +1107,13 @@ items:
     description: "The <code>fileSecurity</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.SystemException
     commentId: T:System.SystemException
-    description: "The file could not be found or modified."
+    description: "파일을 찾을 또는 수정할 수 없습니다."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current process does not have access to open the file."
+    description: "현재 프로세스에는 파일을 열 수 있는 권한이 없습니다."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current operating system is not Microsoft Windows 2000 or later."
+    description: "현재 운영 체제가 Microsoft Windows 2000 이상이 아닌 경우"
   platform:
   - net462
 - uid: System.IO.FileInfo.ToString
@@ -1128,14 +1128,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.IO
-  summary: "Returns the path as a string."
-  remarks: "The string returned by the ToString method represents path that was passed to the constructor.  When you create a <xref:System.IO.FileInfo> object using the constructors, the ToString method returns the fully qualified path.  However, there are cases where the string returned by the ToString method does not represent the fully qualified path.  For example, when you create a <xref:System.IO.FileInfo> object using the <xref:System.IO.DirectoryInfo.GetFiles%2A> method, the ToString method does not represent the fully qualified path."
+  summary: "경로 문자열로 반환 합니다."
+  remarks: "ToString 메서드에 의해 반환 되는 문자열을 생성자에 전달 된 경로 나타냅니다.  만들 때 한 <xref:System.IO.FileInfo>개체의 생성자를 사용 하 여 정규화 된 경로 반환 하는 ToString 메서드</xref:System.IO.FileInfo>  그러나 ToString 메서드에 의해 반환 되는 문자열의 정규화 된 경로 나타내지 않는 경우가 있습니다.  예를 들어, <xref:System.IO.FileInfo> <xref:System.IO.DirectoryInfo.GetFiles%2A>메서드, ToString 메서드는 정규화 된 경로 나타내지 않는</xref:System.IO.DirectoryInfo.GetFiles%2A> 를 사용 하 여 개체</xref:System.IO.FileInfo> 를 만들 때"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representing the path."
+      description: "경로 나타내는 문자열입니다."
   overload: System.IO.FileInfo.ToString*
   exceptions: []
   platform:
