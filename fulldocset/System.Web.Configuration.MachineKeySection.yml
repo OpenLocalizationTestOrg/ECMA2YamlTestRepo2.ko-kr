@@ -21,8 +21,8 @@ items:
   nameWithType: MachineKeySection
   fullName: System.Web.Configuration.MachineKeySection
   type: Class
-  summary: "Defines the configuration settings that control the key generation and algorithms that are used in encryption, decryption, and message authentication code (MAC) operations in Windows Forms authentication, view-state validation, and session-state application isolation. This class cannot be inherited."
-  remarks: "The MachineKeySection class provides a way to programmatically access and modify the content of the `MachineKey` section in the configuration file. The `MachineKey` section can be configured at the machine (Machine.config) or application (Web.config) level and controls the keys and algorithms that are used for Windows Forms authentication, view-state validation, and session-state application isolation. For any of these features to work across a network of Web servers (a Web farm), the `DecryptionKey` and `ValidationKey` attributes of the `MachineKey` section must be configured explicitly and identically with valid key values. The `AutoGenerate` value does not work for Web farms, because it relies on a cryptographically random secret, which is persisted using machine-local protection and will not be the same across more than one computer."
+  summary: "암호화, 해독 및 Windows Forms 인증, 뷰 상태 유효성 검사 및 응용 프로그램별 세션 상태 격리 메시지 인증 코드 (MAC) 작업에 사용 되는 알고리즘과 키 생성을 제어 하는 구성 설정을 정의 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "MachineKeySection 클래스에는 프로그래밍 방식으로 액세스 하 고의 내용을 수정 하는 방법을 제공는 `MachineKey` 구성 파일의 섹션입니다. `MachineKey` 섹션 (Machine.config) 컴퓨터 또는 응용 프로그램 (Web.config) 수준에서 구성할 수 있으며, 키 및 Windows Forms 인증, 뷰 상태 유효성 검사 및 응용 프로그램별 세션 상태 격리에 사용 되는 알고리즘을 제어 합니다. 웹 서버 (웹 팜) 네트워크를 통해 작업에 이러한 기능에 대 한는 `DecryptionKey` 및 `ValidationKey` 의 특성은 `MachineKey` 섹션으로 구성 해야 명시적 동일 하 게 하 고 올바른 키 값입니다. `AutoGenerate` 암호화 된 난수 비밀 정보를 로컬 컴퓨터 보호를 사용 하 여 유지 되 고 됩니다 동일한 여러 컴퓨터에서 사용 하기 때문에 웹 팜에 대 한 값 작동 하지 않습니다."
   example:
   - "The example in this section demonstrates how to specify values declaratively for several attributes of the  section, which can also be accessed as members of the MachineKeySection class.  \n  \n The following example from a configuration file shows how to specify values declaratively for the  section.  \n  \n```  \n<system.web>  \n  <machineKey validationKey=\"AutoGenerate,IsolateApps\"   \n    decryptionKey=\"AutoGenerate,IsolateApps\"   \n    validation=\"SHA1\"/>  \n</system.web>  \n```  \n  \n The following example demonstrates how to use the MachineKeySection class in code.  \n  \n [!code-vb[System.Web.Configuration.MachineKeySection#1](~/add/codesnippet/visualbasic/t-system.web.configurati_5_1.vb)]\n [!code-cs[System.Web.Configuration.MachineKeySection#1](~/add/codesnippet/csharp/t-system.web.configurati_5_1.cs)]"
   syntax:
@@ -86,8 +86,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Configuration.MachineKeySection&quot;></xref> class by using default settings."
-  remarks: "The constructor is not intended to be used directly from your code. It is called by the ASP.NET configuration system. You obtain an instance of the <xref:System.Web.Configuration.MachineKeySection> class by using the <xref:System.Configuration.Configuration.GetSection%2A> method."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Configuration.MachineKeySection&quot;> </xref> 기본 설정을 사용 하 여 클래스입니다."
+  remarks: "생성자는 사용자 코드에서 직접 사용할 수 없습니다. ASP.NET 구성 시스템에 의해 호출 됩니다. 인스턴스를 가져올 수는 <xref:System.Web.Configuration.MachineKeySection>클래스를 사용 하 여는 <xref:System.Configuration.Configuration.GetSection%2A>메서드.</xref:System.Configuration.Configuration.GetSection%2A> </xref:System.Web.Configuration.MachineKeySection>"
   syntax:
     content: public MachineKeySection ();
     parameters: []
@@ -107,13 +107,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name of the application."
-  remarks: "This property must be set if you set the <xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A> property. The property value is passed to the <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName> factory method."
+  summary: "응용 프로그램의 이름을 가져오거나 설정 합니다."
+  remarks: "이 속성을 설정 하는 경우 설정 해야 합니다는 <xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A>속성.</xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A> 속성 값이 전달 된 <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName>팩터리 메서드입니다.</xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName>"
   syntax:
     content: public string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "The name of the application. The default is &lt;xref:System.String?displayProperty=fullName&gt;."
+      description: "응용 프로그램의 이름입니다. 기본값은 &lt;xref:System.String?displayProperty=fullName&gt;합니다."
   overload: System.Web.Configuration.MachineKeySection.ApplicationName*
   exceptions: []
   platform:
@@ -130,13 +130,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets a value that specifies whether upgraded encryption methods for view state that were introduced after the .NET Framework version 2.0 Service Pack 1 release are used."
-  remarks: "The upgraded encryption methods in later versions of the .NET Framework reduce the risk that an attacker can successfully reverse-engineer the `DecryptionKey` value. The older encryption methods are available in order to maintain backward compatibility.       All servers in a Web farm should have the CompatibilityMode property set to the same value. If the server that reads a forms authentication ticket has a different CompatibilityMode setting than the server that created the ticket, the ticket won&quot;t be recognized.       The following values can be specified for the CompatibilityMode property:      -   `Framework20SP1`. This value specifies that ASP.NET uses encryption methods that were available in versions of ASP.NET earlier than 2.0 SP2. Use this value for all servers in a web farm if any server has a version of the .NET Framework earlier than 2.0 SP2. This is the default value unless the application Web.config file has the `targetFramework` attribute of the `httpRuntime` element set to &quot;4.5&quot;.      -   `Framework20SP2`. This value specifies that ASP.NET uses upgraded encryption methods that were introduced in the .NET Framework 2.0 SP2. Use this value for all servers in a web farm if all servers have the .NET Framework 2.0 SP2 or later but at least one does not have the .NET Framework 4.5.      -   `Framework45`. Cryptographic enhancements for ASP.NET 4.5 are in effect. This is the default value if the application Web.config file has the `targetFramework` attribute of the `httpRuntime` element set to &quot;4.5&quot;.       When this property is set to `Framework45`, the following restrictions are in effect:      -   If the <xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A> property has a value, the <xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A> property must also have a value. The <xref:System.Security.Cryptography.DataProtector> class mandates that a non-empty application name be provided.      -   The <xref:System.Web.Configuration.MachineKeySection.Validation%2A> attribute must be an actual validation algorithm (for example, MD5, SHA1, HMACSHA256, HMACSHA384, HMACSHA512) or a custom algorithm that subclasses the <xref:System.Security.Cryptography.KeyedHashAlgorithm> type. The values AES and 3DES are forbidden.      -   The framework will not produce signed-only payloads. Forms authentication tickets will always be both encrypted and signed, regardless of how the `protection` attribute of the `forms` element is set in the Web.config file. View state will always be both encrypted and signed if either `EnableViewStateMac` or `RequireViewStateEncryption` is set for a given page.       As a result of the security update that is described in [Microsoft security bulletin MS10-070](http://technet.microsoft.com/security/bulletin/MS10-070), the default encryption behavior is the same for the `Framework20SP1` and `Framework20SP2` settings. Changing the default behavior is not recommended, but if you want to do that, see [How to configure legacy encryption mode in ASP.NET](http://support.microsoft.com/kb/2425938)."
+  summary: "보기에 대 한 업데이트 된 암호화 방법을 사용 되는.NET Framework 버전 2.0 서비스 팩 1 릴리스 후에 도입 된는 상태 여부를 지정 하는 값을 가져오거나 설정 합니다."
+  remarks: ".NET Framework의 이후 버전에서 업그레이드 된 암호화 방법을 공격의 위험을 줄이려면 리버스 엔지니어링은 `DecryptionKey` 값입니다. 이전 암호화 메서드는 이전 버전과 호환성을 유지 하기 위해 사용할 수 있습니다.       웹 팜의 모든 서버에에서 동일한 값으로 설정 하는 y CompatibilityMode 속성이 있어야 합니다. 폼 인증 티켓을 읽을 수 있는 서버 티켓을 생성 하는 서버 보다 다른 y CompatibilityMode 설정을 있으면 티켓 인식 되지 않습니다.       Y CompatibilityMode 속성에 대해 다음 값을 지정할 수 있습니다.- `Framework20SP1`합니다. 이 값 ASP.NET 2.0 s p 2 보다 이전 버전의 ASP.NET에서 사용할 수 있는 암호화 방법을 사용 하도록 지정 합니다. 모든 서버는 버전의.NET Framework 2.0 s p 2 보다 이전에 웹 팜의 모든 서버에 대 한이 값을 사용 합니다. 응용 프로그램 Web.config 파일에 없는 경우이 기본값은 `targetFramework` 특성에는 `httpRuntime` 요소가 &quot;4.5&quot;로 설정 합니다.      -   `Framework20SP2`. 이 값은 asp.NET Framework 2.0 s p 2에서 도입 된 업그레이드 된 암호화 방법을 지정 합니다. 모든 서버에.NET Framework 2.0 s p 2가 있지만 적어도 하나 이상에 없는.NET Framework 4.5 또는 경우 웹 팜의 모든 서버에 대 한이 값을 사용 합니다.      -   `Framework45`. 암호화 향상 된 기능 ASP.NET 4.5에 대해 적용 됩니다. 응용 프로그램 Web.config 파일에 있는 경우 이것이 기본값은 `targetFramework` 특성에는 `httpRuntime` 요소가 &quot;4.5&quot;로 설정 합니다.       로이 속성이 설정 된 경우 `Framework45`, 다음과 같은 제한 사항이 적용 됩니다:-경우는 <xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A>속성 값,이 <xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A>속성 값을 있어야 합니다.</xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A> </xref:System.Web.Configuration.MachineKeySection.DataProtectorType%2A> <xref:System.Security.Cryptography.DataProtector>클래스 요구 하는 경우 비어 있지 않은 응용 프로그램 이름을 지정할 수 있습니다.</xref:System.Security.Cryptography.DataProtector>      - <xref:System.Web.Configuration.MachineKeySection.Validation%2A>해야 특성 실제 유효성 검사 알고리즘 (예: MD5, SHA1, HMACSHA256, HMACSHA384, HMACSHA512) 또는 사용자 지정 알고리즘 해당 서브 클래스 여야는 <xref:System.Security.Cryptography.KeyedHashAlgorithm>유형.</xref:System.Security.Cryptography.KeyedHashAlgorithm> </xref:System.Web.Configuration.MachineKeySection.Validation%2A> AES 및 3DES 값을 사용할 수 없습니다.      -프레임 워크는 서명 전용 페이로드를 생성 하지 않습니다. 폼 인증 티켓 항상 모두 암호화 되거나 서명 됩니다, 방식과 관계 없이 `protection` 특성에는 `forms` 요소는 Web.config 파일에 설정 합니다. 뷰 상태는 항상 모두 암호화 및 서명을 경우 `EnableViewStateMac` 또는 `RequireViewStateEncryption` 지정한 페이지에 대해 설정 됩니다.       에 설명 된 보안 업데이트 결과로 [Microsoft 보안 공지 MS10-070](http://technet.microsoft.com/security/bulletin/MS10-070), 기본 암호화 동작에 대해 같습니다는 `Framework20SP1` 및 `Framework20SP2` 설정 합니다. 기본 동작 변경 것은 좋지 살펴보려는 경우을 참조 하십시오 [ASP.NET에서 레거시 암호화 모드를 구성 하는 방법](http://support.microsoft.com/kb/2425938)합니다."
   syntax:
     content: public System.Web.Configuration.MachineKeyCompatibilityMode CompatibilityMode { get; set; }
     return:
       type: System.Web.Configuration.MachineKeyCompatibilityMode
-      description: "A value that indicates whether encryption methods that were introduced after the .NET Framework 2.0 SP1 release are used."
+      description: ".NET Framework 2.0 s p 1 이후 도입 된 암호화 방법을 해제 여부를 나타내는 값이 사용 됩니다."
   overload: System.Web.Configuration.MachineKeySection.CompatibilityMode*
   exceptions: []
   platform:
@@ -153,13 +153,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name of the data protector type. The default is &lt;xref:System.String.Empty?displayProperty=fullName&gt;."
-  remarks: "To specify custom data protection algorithms for ASP.NET, set the <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> property to <xref:System.Web.Configuration.MachineKeyCompatibilityMode> and set this property to a string that represents a class that derives from the <xref:System.Security.Cryptography.DataProtector> class. This string corresponds to the `providerClass` parameter that is passed to the static <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName> factory method. The class you specify is used by the <xref:System.Web.Security.MachineKey.Protect%2A?displayProperty=fullName> and <xref:System.Web.Security.MachineKey.Unprotect%2A?displayProperty=fullName> methods even if you do not specify the <xref:System.Web.Configuration.MachineKeyCompatibilityMode> option.       If you set this property, you must also set the <xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A> property."
+  summary: "데이터 보호자 형식의 이름을 가져오거나 설정 합니다. 기본값은 &lt;xref:System.String.Empty?displayProperty=fullName&gt;합니다."
+  remarks: "ASP.NET에 대 한 사용자 지정 데이터 보호 알고리즘을 지정 하려면 <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> <xref:System.Web.Configuration.MachineKeyCompatibilityMode>이 속성을 <xref:System.Security.Cryptography.DataProtector>클래스</xref:System.Security.Cryptography.DataProtector> 에서 파생 된 클래스를 나타내는 문자열로 설정</xref:System.Web.Configuration.MachineKeyCompatibilityMode> 하는 속성</xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> 설정 이 문자열에 해당 하는 `providerClass` 정적에 전달 되는 매개 변수 <xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName>팩터리 메서드입니다.</xref:System.Security.Cryptography.DataProtector.Create%2A?displayProperty=fullName> 지정 하는 클래스에서 사용 되는 <xref:System.Web.Security.MachineKey.Protect%2A?displayProperty=fullName>및 <xref:System.Web.Security.MachineKey.Unprotect%2A?displayProperty=fullName>지정 하지 않은 경우에 메서드는 <xref:System.Web.Configuration.MachineKeyCompatibilityMode>옵션.</xref:System.Web.Configuration.MachineKeyCompatibilityMode> </xref:System.Web.Security.MachineKey.Unprotect%2A?displayProperty=fullName> </xref:System.Web.Security.MachineKey.Protect%2A?displayProperty=fullName>       이 속성을 설정 하는 경우 설정 해야는 <xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A>속성.</xref:System.Web.Configuration.MachineKeySection.ApplicationName%2A>"
   syntax:
     content: public string DataProtectorType { get; set; }
     return:
       type: System.String
-      description: "The name of the data protector type."
+      description: "데이터 보호자 형식의 이름입니다."
   overload: System.Web.Configuration.MachineKeySection.DataProtectorType*
   exceptions: []
   platform:
@@ -176,18 +176,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Specifies the encryption algorithm that is used for encrypting and decrypting forms authentication data."
-  remarks: "The Decryption property supports the following decryption values:      -   `Auto`, which is the default value, specifies that ASP.NET determines which encryption algorithm to use based on configuration default settings.      -   `AES`, which specifies that ASP.NET uses the <xref:System.Web.Configuration.MachineKeyValidation> algorithm to encrypt data. `AES` is the default algorithm to encrypt data.      -   `3DES`, which specifies that ASP.NET uses the <xref:System.Web.Configuration.MachineKeyValidation> algorithm to encrypt data.      -   A custom algorithm.       This property is  typically set declaratively in the `decryption` attribute of the  element of the Web.config file. For more information, see the  element."
+  summary: "폼 인증 데이터 암호화 및 해독에 사용 되는 암호화 알고리즘을 지정 합니다."
+  remarks: "다음 암호 해독 값을 지원 하는 암호 해독 속성:- `Auto`, 값을 기본값으로 지정 ASP.NET 확인 하는 암호화 알고리즘을 사용 하 여 구성 기본 설정에 따라 합니다.      - `AES`, ASP.NET을 사용 하도록 지정 하는 <xref:System.Web.Configuration.MachineKeyValidation>데이터를 암호화 하는 알고리즘입니다.</xref:System.Web.Configuration.MachineKeyValidation> `AES`데이터를 암호화 하는 기본 알고리즘이입니다.      - `3DES`, ASP.NET을 사용 하도록 지정 하는 <xref:System.Web.Configuration.MachineKeyValidation>데이터를 암호화 하는 알고리즘입니다.</xref:System.Web.Configuration.MachineKeyValidation>      -사용자 지정 알고리즘입니다.       이 속성은에서 선언적으로 설정 일반적으로 `decryption` 특성 Web.config 파일의 요소입니다. 자세한 내용은 요소를 참조 하십시오."
   syntax:
     content: public string Decryption { get; set; }
     return:
       type: System.String
-      description: "A value that indicates the algorithm that is used to encrypt and decrypt forms authentication data. (For information about how to specify the algorithm that is used when view state is encrypted, see the <xref:System.Web.Configuration.MachineKeySection.Validation*> property.) <xref uid=&quot;langword_csharp_Auto&quot; name=&quot;Auto&quot; href=&quot;&quot;></xref> is the default value."
+      description: "폼 인증 데이터를 암호화 및 암호 해독 하는 데 사용 되는 알고리즘을 나타내는 값입니다. (뷰 상태를 암호화할 때 사용 되는 알고리즘을 지정 하는 방법에 대 한 내용은 <xref:System.Web.Configuration.MachineKeySection.Validation*>속성 참조). <xref uid=&quot;langword_csharp_Auto&quot; name=&quot;Auto&quot; href=&quot;&quot;> </xref> 기본값입니다.</xref:System.Web.Configuration.MachineKeySection.Validation*>"
   overload: System.Web.Configuration.MachineKeySection.Decryption*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "The selected value is not one of the decryption values."
+    description: "선택한 값이 암호 해독 값 중 하나입니다."
   platform:
   - net462
 - uid: System.Web.Configuration.MachineKeySection.DecryptionKey
@@ -202,15 +202,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the key that is used to encrypt and decrypt data, or the process by which the key is generated."
-  remarks: "The DecryptionKey property is used for encryption and decryption, such as in Windows Forms authentication, and for view state when the <xref:System.Web.Configuration.MachineKeySection.Validation%2A> property is set to &quot;3DES&quot; or &quot;AES&quot;.       Use the &quot;AutoGenerate&quot; option to specify that ASP.NET generates a random key and stores it in the Local Security Authority. The &quot;AutoGenerate&quot; option is part of the default value.       If you add the &quot;IsolateApps&quot; modifier to the &quot;AutoGenerate&quot; <xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A> value, ASP.NET generates a unique encrypted key for each application by using each application&quot;s <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>. This is the default setting.       If you add the &quot;IsolateByAppId&quot; modifier to the &quot;AutoGenerate&quot; <xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A> value, ASP.NET generates a unique encrypted key for each application by using each application&quot;s <xref:System.Web.HttpRuntime.AppDomainAppId%2A>. If two distinct applications share a virtual path (perhaps because those applications are running on different ports), this flag can be used to further distinguish them from one another. The “IsolateByAppId” flag is understood only by ASP.NET 4.5, but it can be used regardless of the <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName> setting.       If you need to support configuration across a network of Web servers (a Web farm), set the DecryptionKey property manually to ensure consistent configuration. For information about how to manually generate values for the `DecryptionKey` attribute, see [How To: Configure MachineKey in ASP.NET 2.0](http://go.microsoft.com/fwlink/?linkid=155113).       This property is  typically set declaratively in the `DecryptionKey` attribute of the  element of the Web.config file. For more information, see the  element."
+  summary: "데이터를 암호화 및 해독 하는 데 사용 되는 키 또는 키가 생성 되는 프로세스를 가져오거나 설정 합니다."
+  remarks: "DecryptionKey 속성 보기에 대 한 암호화 및 암호 해독, 예: Windows Forms 인증에 사용 됩니다 상태의 <xref:System.Web.Configuration.MachineKeySection.Validation%2A>속성을 &quot;3DES&quot; 또는 &quot;AES&quot;로 설정 합니다.</xref:System.Web.Configuration.MachineKeySection.Validation%2A>       ASP.NET는 임의 키를 생성 하 고 로컬 보안 기관에 저장 되도록 지정할 &quot;AutoGenerate&quot; 옵션을 사용 합니다. &quot;AutoGenerate&quot; 옵션에 기본값의 일부입니다.       &quot;AutoGenerate&quot; <xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A>값을 ASP.NET 각 응용 프로그램의 <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> 를 사용 하 여 각 응용 프로그램에 대 한 고유 암호화 된 키를 생성</xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A> 하는 &quot;IsolateApps&quot; 한정자를 추가 하는 경우 이것이 기본 설정입니다.       &quot;AutoGenerate&quot; <xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A>값을 ASP.NET 각 응용 프로그램의 <xref:System.Web.HttpRuntime.AppDomainAppId%2A>.</xref:System.Web.HttpRuntime.AppDomainAppId%2A> 를 사용 하 여 각 응용 프로그램에 대 한 고유 암호화 된 키를 생성</xref:System.Web.Configuration.MachineKeySection.ValidationKey%2A> 하는 &quot;IsolateByAppId&quot; 한정자를 추가 하는 경우 두 개의 별개 응용 프로그램 가상 경로 공유 하는 경우 (아마도 해당 응용 프로그램의 서로 다른 포트에서 실행 하기 때문에), 더 이상 서로 구분 하기 위해이 플래그를 사용할 수 있습니다. ASP.NET 4.5에 의해서만 &quot;IsolateByAppId&quot; 플래그를 인식 하지만에 관계 없이 사용할 수 있는 <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName>설정.</xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName>       웹 서버 (웹 팜) 네트워크 전체에서 구성을 지원 하려면 일관 된 구성을 유지 하도록 수동으로 DecryptionKey 속성을 설정 합니다. 수동으로 대 한 값을 생성 하는 방법에 대 한 내용은 `DecryptionKey` 특성을 참조 하십시오. [방법: ASP.NET 2.0에서 MachineKey 구성](http://go.microsoft.com/fwlink/?linkid=155113)합니다.       이 속성은에서 선언적으로 설정 일반적으로 `DecryptionKey` 특성 Web.config 파일의 요소입니다. 자세한 내용은 요소를 참조 하십시오."
   example:
   - "The following example demonstrates how to set the DecryptionKey property by using code. This example is part of a larger example provided for the <xref:System.Web.Configuration.MachineKeySection> class.  \n  \n [!code-vb[System.Web.Configuration.MachineKeySection#3](~/add/codesnippet/visualbasic/p-system.web.configurati_32_1.vb)]\n [!code-cs[System.Web.Configuration.MachineKeySection#3](~/add/codesnippet/csharp/p-system.web.configurati_32_1.cs)]"
   syntax:
     content: public string DecryptionKey { get; set; }
     return:
       type: System.String
-      description: "A key value, or a value that indicates how the key is generated. The default is &quot;AutoGenerate,IsolateApps&quot;."
+      description: "키 값 또는 키가 생성 하는 방법을 나타내는 값입니다. 기본값은 &quot;AutoGenerate, IsolateApps&quot;입니다."
   overload: System.Web.Configuration.MachineKeySection.DecryptionKey*
   exceptions: []
   platform:
@@ -231,7 +231,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Web.Configuration.MachineKeySection.Properties*
   exceptions: []
   platform:
@@ -253,7 +253,7 @@ items:
     parameters:
     - id: parentElement
       type: System.Configuration.ConfigurationElement
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.Web.Configuration.MachineKeySection.Reset*
   exceptions: []
   platform:
@@ -289,15 +289,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Specifies the hashing algorithm that is used for validating forms authentication and view state data."
-  remarks: "The Validation property supports encryption algorithms that are defined by the <xref:System.Web.Configuration.MachineKeyValidation> enumeration. This property is typically set declaratively in the `decryption` attribute of the  element of the Web.config file. For more information, see the  element."
+  summary: "유효성을 검사할 폼 인증 및 뷰 상태 데이터에 사용 되는 해시 알고리즘을 지정 합니다."
+  remarks: "유효성 검사 속성에 정의 된 암호화 알고리즘을 지원는 <xref:System.Web.Configuration.MachineKeyValidation>열거형.</xref:System.Web.Configuration.MachineKeyValidation> 이 속성은에서 선언적으로 설정 일반적으로 `decryption` 특성 Web.config 파일의 요소입니다. 자세한 내용은 요소를 참조 하십시오."
   example:
   - "The following example demonstrates how to set the Validation property by using code. This example is part of a larger example provided for the <xref:System.Web.Configuration.MachineKeySection> class.  \n  \n [!code-vb[System.Web.Configuration.MachineKeySection#4](~/add/codesnippet/visualbasic/p-system.web.configurati_184_1.vb)]\n [!code-cs[System.Web.Configuration.MachineKeySection#4](~/add/codesnippet/csharp/p-system.web.configurati_184_1.cs)]"
   syntax:
     content: public System.Web.Configuration.MachineKeyValidation Validation { get; set; }
     return:
       type: System.Web.Configuration.MachineKeyValidation
-      description: "A value that indicates the hashing algorithm that is used to validate forms authentication and view state data."
+      description: "유효성을 검사 하는 데 사용 되는 해시 알고리즘을 지정 하는 값은 인증 및 뷰 상태 데이터를 형성 합니다."
   overload: System.Web.Configuration.MachineKeySection.Validation*
   exceptions: []
   platform:
@@ -314,13 +314,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name of a custom algorithm that is used to validate forms authentication and view state data."
-  remarks: "The predefined algorithms that are available are defined by the <xref:System.Web.Configuration.MachineKeyValidation> enumeration. If you want to use a custom algorithm, you do not have to set this property. Set the <xref:System.Web.Configuration.MachineKeySection.Validation%2A> property the to the name of the custom algorithm. When you do that, this property will automatically be set to <xref:System.Web.Configuration.MachineKeyValidation>.       You can set the ValidationAlgorithm property declaratively in the Web.config file or programmatically in code.       To set this property declaratively, you use the `validationAlgorithm` attribute of the  element in the configuration file. This attribute can be set to the name of a predefined algorithm or of a custom algorithm. The predefined algorithms are defined by the <xref:System.Web.Configuration.MachineKeyValidation> enumeration. Custom algorithms are specified in the `validationAlgorithm` attribute by using the &quot;alg:&quot; prefix followed by the name of the algorithm. If you use this format to specify a custom algorithm, the <xref:System.Web.Configuration.MachineKeySection.Validation%2A> property is set to <xref:System.Web.Configuration.MachineKeyValidation> and this property is set to the name that follows the &quot;alg:&quot; prefix.       To set this property programmatically, use the value of one of the predefined algorithms that are defined by the <xref:System.Web.Configuration.MachineKeyValidation> enumeration, or set this property to a custom algorithm name. If you set this property to the name of a custom algorithm, set the <xref:System.Web.Configuration.MachineKeySection.Validation%2A> property to <xref:System.Web.Configuration.MachineKeyValidation>."
+  summary: "폼 인증의 유효성을 검사 하 고 뷰 상태 데이터에 사용 되는 사용자 지정 알고리즘의 이름을 가져오거나 설정 합니다."
+  remarks: "사용할 수 있는 미리 정의 된 알고리즘에 의해 정의 됩니다는 <xref:System.Web.Configuration.MachineKeyValidation>열거형.</xref:System.Web.Configuration.MachineKeyValidation> 사용자 지정 알고리즘을 사용 하려는 경우이 속성을 설정할 필요가 없습니다. 설정 된 <xref:System.Web.Configuration.MachineKeySection.Validation%2A>속성은 사용자 지정 알고리즘의 이름으로.</xref:System.Web.Configuration.MachineKeySection.Validation%2A> 그렇게 하면이 속성은 자동으로 설정 됩니다 <xref:System.Web.Configuration.MachineKeyValidation>.</xref:System.Web.Configuration.MachineKeyValidation>       Web.config 파일에서 또는 프로그래밍 방식으로 코드에서 선언적으로 ValidationAlgorithm 속성을 설정할 수 있습니다.       이 속성을 선언적으로 설정 하려면는 `validationAlgorithm` 특성 구성 파일의 요소입니다. 이 특성은 사용자 지정 알고리즘 또는 미리 정의 된 알고리즘의 이름으로 설정할 수 있습니다. 미리 정의 된 알고리즘에 의해 정의 됩니다는 <xref:System.Web.Configuration.MachineKeyValidation>열거형.</xref:System.Web.Configuration.MachineKeyValidation> 에 지정 된 사용자 지정 알고리즘의 `validationAlgorithm` 를 사용 하 여 특성의 &quot;alg:&quot; 접두사 알고리즘의 이름이 차례로 나옵니다. 사용자 지정 알고리즘을 지정 하려면이 형식을 사용 하는 경우는 <xref:System.Web.Configuration.MachineKeySection.Validation%2A>속성이 <xref:System.Web.Configuration.MachineKeyValidation>뒤에 오는 이름과 속성은이 고는 &quot;alg:&quot; 접두사.</xref:System.Web.Configuration.MachineKeyValidation> </xref:System.Web.Configuration.MachineKeySection.Validation%2A>       이 속성을 프로그래밍 방식으로 설정 하려면에 정의 된 미리 정의 된 알고리즘 중 하나의 값을 사용 하 여는 <xref:System.Web.Configuration.MachineKeyValidation>열거를 사용자 지정 알고리즘 이름으로이 속성을 설정 하거나.</xref:System.Web.Configuration.MachineKeyValidation> 사용자 지정 알고리즘의 이름으로이 속성을 설정 하는 경우 <xref:System.Web.Configuration.MachineKeySection.Validation%2A> <xref:System.Web.Configuration.MachineKeyValidation>사이로</xref:System.Web.Configuration.MachineKeyValidation> 속성</xref:System.Web.Configuration.MachineKeySection.Validation%2A> 을 설정 합니다."
   syntax:
     content: public string ValidationAlgorithm { get; set; }
     return:
       type: System.String
-      description: "A string that contains the name of a predefined algorithm or the name of a custom algorithm."
+      description: "미리 정의 된 알고리즘의 이름 또는 사용자 지정 알고리즘의 이름을 포함 하는 문자열입니다."
   overload: System.Web.Configuration.MachineKeySection.ValidationAlgorithm*
   exceptions: []
   platform:
@@ -337,15 +337,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the key that is used to validate forms authentication and view state data, or the process by which the key is generated."
-  remarks: "The ValidationKey property is used when `enableViewStateMAC` is `true` to create a message authentication code (MAC) to enable ASP.NET to determine whether view state has been tampered with. The ValidationKey property is also used to generate out-of-process, application-specific session IDs to ensure that session state variables are isolated between applications.       Use the &quot;AutoGenerate&quot; option to specify that ASP.NET generates a random key and stores it in the Local Security Authority. The &quot;AutoGenerate&quot; option is part of the default value.       If you add the &quot;IsolateApps&quot; modifier to the &quot;AutoGenerate&quot; ValidationKey value, ASP.NET generates a unique encrypted key for each application by using each application&quot;s <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>. This is the default setting.       If you add the &quot;IsolateByAppId&quot; modifier to the &quot;AutoGenerate&quot; ValidationKey value, ASP.NET generates a unique encrypted key for each application by using each application&quot;s <xref:System.Web.HttpRuntime.AppDomainAppId%2A>. If two distinct applications share a virtual path (perhaps because those applications are running on different ports), this flag can be used to further distinguish them from one another. The “IsolateByAppId” flag is understood only by ASP.NET 4.5, but it can be used regardless of the <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName> setting.       If you need to support configuration across a network of Web servers (a Web farm), set the ValidationKey property manually to ensure consistent configuration. For information about how to manually generate values for the `DecryptionKey` attribute, see [How To: Configure MachineKey in ASP.NET 2.0](http://go.microsoft.com/fwlink/?linkid=155113).       This property is typically set declaratively in the `validationKey` attribute of the  element of the Web.config file."
+  summary: "폼 인증 및 뷰 상태 데이터 또는 키가 생성 되는 프로세스의 유효성을 검사 하는 데 사용 되는 키를 가져오거나 설정 합니다."
+  remarks: "ValidationKey 속성은 사용 때 `enableViewStateMAC` 은 `true` 메시지 인증 코드 (MAC) ASP.NET 뷰 상태와 훼손 되었는지 여부를 확인을 사용할 수 있도록 합니다. 작업 중이 아닌, 응용 프로그램별 세션 격리 된 응용 프로그램 간에 세션 상태 변수 인지 확인 하는 Id를 생성 하는 ValidationKey 속성도 사용 됩니다.       ASP.NET는 임의 키를 생성 하 고 로컬 보안 기관에 저장 되도록 지정할 &quot;AutoGenerate&quot; 옵션을 사용 합니다. &quot;AutoGenerate&quot; 옵션에 기본값의 일부입니다.       ASP.NET 각 응용 프로그램의 <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> 를 사용 하 여 각 응용 프로그램에 대 한 고유 암호화 된 키를 생성 &quot;AutoGenerate&quot; ValidationKey 값으로 &quot;IsolateApps&quot; 한정자를 추가 하는 경우 이것이 기본 설정입니다.       ASP.NET 각 응용 프로그램의 <xref:System.Web.HttpRuntime.AppDomainAppId%2A>.</xref:System.Web.HttpRuntime.AppDomainAppId%2A> 를 사용 하 여 각 응용 프로그램에 대 한 고유 암호화 된 키를 생성 &quot;AutoGenerate&quot; ValidationKey 값으로 &quot;IsolateByAppId&quot; 한정자를 추가 하는 경우 두 개의 별개 응용 프로그램 가상 경로 공유 하는 경우 (아마도 해당 응용 프로그램의 서로 다른 포트에서 실행 하기 때문에), 더 이상 서로 구분 하기 위해이 플래그를 사용할 수 있습니다. ASP.NET 4.5에 의해서만 &quot;IsolateByAppId&quot; 플래그를 인식 하지만에 관계 없이 사용할 수 있는 <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName>설정.</xref:System.Web.Configuration.MachineKeySection.CompatibilityMode?displayProperty=fullName>       웹 서버 (웹 팜) 네트워크 전체에서 구성을 지원 하려면 일관 된 구성을 유지 하도록 수동으로 ValidationKey 속성을 설정 합니다. 수동으로 대 한 값을 생성 하는 방법에 대 한 내용은 `DecryptionKey` 특성을 참조 하십시오. [방법: ASP.NET 2.0에서 MachineKey 구성](http://go.microsoft.com/fwlink/?linkid=155113)합니다.       이 속성은에서 선언적으로 설정 일반적으로 `validationKey` 특성 Web.config 파일의 요소입니다."
   example:
   - "The following example shows how to set the ValidationKey property by using code. This example is part of a larger example provided for the <xref:System.Web.Configuration.MachineKeySection> class.  \n  \n [!code-vb[System.Web.Configuration.MachineKeySection#2](~/add/codesnippet/visualbasic/p-system.web.configurati_69_1.vb)]\n [!code-cs[System.Web.Configuration.MachineKeySection#2](~/add/codesnippet/csharp/p-system.web.configurati_69_1.cs)]"
   syntax:
     content: public string ValidationKey { get; set; }
     return:
       type: System.String
-      description: "A key value, or a value that indicates how the key is generated. The default is &quot;AutoGenerate,IsolateApps&quot;."
+      description: "키 값 또는 키가 생성 하는 방법을 나타내는 값입니다. 기본값은 &quot;AutoGenerate, IsolateApps&quot;입니다."
   overload: System.Web.Configuration.MachineKeySection.ValidationKey*
   exceptions: []
   platform:

@@ -27,8 +27,8 @@ items:
   nameWithType: WebBaseEvent
   fullName: System.Web.Management.WebBaseEvent
   type: Class
-  summary: "Defines the base class for the ASP.NET health-monitoring events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebBaseEvent class is the root of the inheritance tree for all the ASP.NET health-monitoring event types. It uses the <xref:System.Web.Management.WebApplicationInformation> class to obtain application information that is available to its derived class.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `<healthMonitoring>` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of deriving from the WebBaseEvent class, see the example provided in this topic."
+  summary: "ASP.NET 상태 모니터링 이벤트에 대 한 기본 클래스를 정의합니다."
+  remarks: "ASP.NET 상태 모니터링 생산 및 운영 담당자를 웹 응용 프로그램 배포를 관리할 수 있습니다. <xref:System.Web.Management>네임 스페이스 응용 프로그램 상태 데이터와이 데이터를 처리 하는 공급자 유형을 패키지 하는 상태 이벤트 형식을 포함 합니다.</xref:System.Web.Management> 또한 상태 이벤트를 관리 하는 동안 유용한 지 원하는 형식을 포함 합니다.       WebBaseEvent 클래스가 있는 모든 ASP.NET 상태 모니터링 이벤트 형식의 상속 트리의 루트입니다. <xref:System.Web.Management.WebApplicationInformation>해당 파생 클래스로 사용 되는 응용 프로그램 정보를 가져오는 클래스</xref:System.Web.Management.WebApplicationInformation> 를 사용 하 여      > [!NOTE] > 대부분의 경우에서 있습니다 수 구현 된 대로 ASP.NET 상태 모니터링 형식을 사용할 수 있으며 값을 지정 하 여 상태 모니터링 시스템을 제어 합니다는 `<healthMonitoring>` 구성 섹션입니다. 사용자 고유의 사용자 지정 이벤트와 공급자를 만들 상태 모니터링 유형에 서 파생할 수 있습니다. WebBaseEvent 클래스에서 파생의 예를 들어이 항목에서 제공 하는 예제를 참조 하십시오."
   example:
   - "The following example shows how to derive from the WebBaseEvent class to create a custom health-monitoring event.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#1](~/add/codesnippet/csharp/t-system.web.management._27_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._27_1.vb)]  \n  \n The following example is an excerpt of the configuration file that enables ASP.NET to use the custom event.  \n  \n```  \n<healthMonitoring enabled=\"true\" heartBeatInterval=\"0\">  \n  <eventMappings>  \n    <add  name=\"SampleWebBaseEvent\"   \n      type=\"SamplesAspNet.SampleWebBaseEvent,   \n      webbaseevent, Version=1.0.1573.24438, Culture=neutral,   \n      PublicKeyToken=2f5f337ae5c9bdaa,   \n      processorArchitecture=MSIL\" />  \n  </eventMappings>  \n  \n  <rules>  \n    <add   \n      name=\"CustomWebBaseEvent\"  \n      eventName=\"SampleWebBaseEvent\"   \n      provider=\"EventLogProvider\"   \n      profile=\"Critical\"/>      \n  </rules>  \n</healthMonitoring>  \n```"
   syntax:
@@ -51,8 +51,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> class using the supplied parameters."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to create an instance of the <xref:System.Web.Management.WebBaseEvent> class, but you can call this constructor when you implement your own event type that inherits from this class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref> 클래스 제공된 된 매개 변수를 사용 합니다."
+  remarks: "이 생성자는 ASP.NET 상태 모니터링 시스템에서 내부적으로 사용 됩니다. <xref:System.Web.Management.WebBaseEvent>클래스, 있지만이 클래스에서 상속 되는 이벤트 형식을 구현 하는 경우이 생성자를 호출할 수</xref:System.Web.Management.WebBaseEvent> 의 인스턴스를 만들 사용 하지 않습니다."
   example:
   - "The following code example shows how to use this constructor.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#2](~/add/codesnippet/csharp/fc50a84c-c72b-48b6-a127-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#2](~/add/codesnippet/visualbasic/fc50a84c-c72b-48b6-a127-_1.vb)]"
   syntax:
@@ -60,13 +60,13 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The description of the event."
+      description: "이벤트의 설명입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that raised the event."
+      description: "이벤트를 발생 시킨 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "이벤트와 연결 된 코드입니다. 이벤트 코드 보다 커야 사용자 지정 이벤트를 구현할 때 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
   overload: System.Web.Management.WebBaseEvent.#ctor*
   exceptions: []
   platform:
@@ -83,8 +83,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> class using the supplied parameters."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to create an instance of the <xref:System.Web.Management.WebBaseEvent> class, but you can call this constructor when you implement your own event type that inherits from this class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref> 클래스 제공된 된 매개 변수를 사용 합니다."
+  remarks: "이 생성자는 ASP.NET 상태 모니터링 시스템에서 내부적으로 사용 됩니다. <xref:System.Web.Management.WebBaseEvent>클래스, 있지만이 클래스에서 상속 되는 이벤트 형식을 구현 하는 경우이 생성자를 호출할 수</xref:System.Web.Management.WebBaseEvent> 의 인스턴스를 만들 사용 하지 않습니다."
   example:
   - "The following code example shows how to use this constructor.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#3](~/add/codesnippet/csharp/fc8e8b3f-50ad-4886-9ab1-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#3](~/add/codesnippet/visualbasic/fc8e8b3f-50ad-4886-9ab1-_1.vb)]"
   syntax:
@@ -92,16 +92,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The description of the raised event."
+      description: "발생된 한 이벤트의 설명입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that raised the event."
+      description: "이벤트를 발생 시킨 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "이벤트와 연결 된 코드입니다. 이벤트 코드 보다 커야 사용자 지정 이벤트를 구현할 때 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
     - id: eventDetailCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> value that specifies the detailed identifier for the event."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 이벤트에 대 한 상세 식별자를 지정 하는 값입니다."
   overload: System.Web.Management.WebBaseEvent.#ctor*
   exceptions: []
   platform:
@@ -118,7 +118,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a <xref href=&quot;System.Web.Management.WebApplicationInformation&quot;></xref> object that contains information about the current application being monitored."
+  summary: "가져옵니다는 <xref href=&quot;System.Web.Management.WebApplicationInformation&quot;> </xref> 모니터링 되 고 현재 응용 프로그램에 대 한 정보를 포함 하는 개체입니다."
   remarks: ''
   example:
   - "The following code example shows how to get the application information.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#13](~/add/codesnippet/csharp/p-system.web.management._13_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#13](~/add/codesnippet/visualbasic/p-system.web.management._13_1.vb)]"
@@ -126,7 +126,7 @@ items:
     content: public static System.Web.Management.WebApplicationInformation ApplicationInformation { get; }
     return:
       type: System.Web.Management.WebApplicationInformation
-      description: "A <xref href=&quot;System.Web.Management.WebApplicationInformation&quot;></xref> object that contains information about the application being monitored."
+      description: "A <xref href=&quot;System.Web.Management.WebApplicationInformation&quot;> </xref> 모니터링 중인 응용 프로그램에 대 한 정보를 포함 하는 개체입니다."
   overload: System.Web.Management.WebBaseEvent.ApplicationInformation*
   exceptions: []
   platform:
@@ -143,15 +143,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the code value associated with the event."
-  remarks: "More information about the event is contained in the related <xref:System.Web.Management.WebBaseEvent.Message%2A> value.      > [!NOTE] >  If you inherit from the <xref:System.Web.Management.WebBaseEvent> class, the event code you specify for your custom event must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>."
+  summary: "이벤트와 연결 된 코드 값을 가져옵니다."
+  remarks: "이벤트에 대 한 자세한 내용은 포함 된 관련의 <xref:System.Web.Management.WebBaseEvent.Message%2A>값.</xref:System.Web.Management.WebBaseEvent.Message%2A>      > [!NOTE] > <xref:System.Web.Management.WebBaseEvent>클래스를 사용자 지정 이벤트에 대해 지정 하는 이벤트 코드 보다 커야 <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.</xref:System.Web.Management.WebEventCodes.WebExtendedBase> </xref:System.Web.Management.WebBaseEvent> 에서 상속 하는 경우"
   example:
   - "The following code example shows how to obtain the event code.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#6](~/add/codesnippet/csharp/p-system.web.management._53_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#6](~/add/codesnippet/visualbasic/p-system.web.management._53_1.vb)]"
   syntax:
     content: public int EventCode { get; }
     return:
       type: System.Int32
-      description: "One of the <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 값입니다."
   overload: System.Web.Management.WebBaseEvent.EventCode*
   exceptions: []
   platform:
@@ -168,7 +168,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the event detail code."
+  summary: "이벤트 정보 코드를 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows how to obtain the event detail code.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#7](~/add/codesnippet/csharp/p-system.web.management._30_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#7](~/add/codesnippet/visualbasic/p-system.web.management._30_1.vb)]"
@@ -176,7 +176,7 @@ items:
     content: public int EventDetailCode { get; }
     return:
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> value that specifies the detailed identifier for the event."
+      description: "<xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> 이벤트에 대 한 상세 식별자를 지정 하는 값입니다."
   overload: System.Web.Management.WebBaseEvent.EventDetailCode*
   exceptions: []
   platform:
@@ -193,12 +193,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the identifier associated with the event."
+  summary: "이벤트와 연결 된 식별자를 가져옵니다."
   syntax:
     content: public Guid EventID { get; }
     return:
       type: System.Guid
-      description: "The identifier associated with the event."
+      description: "이벤트와 연결 된 식별자입니다."
   overload: System.Web.Management.WebBaseEvent.EventID*
   exceptions: []
   platform:
@@ -215,13 +215,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a counter that represents the number of times the event has occurred."
-  remarks: "This property is read-only and is incremented as a result of calls to an internal method."
+  summary: "이벤트가 발생 한 수를 나타내는 카운터를 가져옵니다."
+  remarks: "이 속성은 읽기 전용 이며 내부 메서드를 호출한 결과로 증가 합니다."
   syntax:
     content: public long EventOccurrence { get; }
     return:
       type: System.Int64
-      description: "A counter that represents the number of times the event has occurred."
+      description: "카운터는 이벤트가 발생 한 횟수를 나타내는입니다."
   overload: System.Web.Management.WebBaseEvent.EventOccurrence*
   exceptions: []
   platform:
@@ -238,15 +238,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the number of times the event has been raised by the application."
-  remarks: "This is a counter that indicates how many instances of the event have been raised by the application."
+  summary: "이벤트가 응용 프로그램에서 발생 하는 횟수를 가져옵니다."
+  remarks: "응용 프로그램에 의해 발생 했을 이벤트의 인스턴스 수를 나타내는 카운터입니다."
   example:
   - "The following code example shows how to obtain the EventSequence value.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#8](~/add/codesnippet/csharp/p-system.web.management._33_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#8](~/add/codesnippet/visualbasic/p-system.web.management._33_1.vb)]"
   syntax:
     content: public long EventSequence { get; }
     return:
       type: System.Int64
-      description: "The number of times the event has been raised."
+      description: "이벤트가 발생 한 횟수입니다."
   overload: System.Web.Management.WebBaseEvent.EventSequence*
   exceptions: []
   platform:
@@ -263,7 +263,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the object that raises the event."
+  summary: "이벤트를 발생 시키는 개체를 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows how to obtain the EventSource value.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#9](~/add/codesnippet/csharp/p-system.web.management._23_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#9](~/add/codesnippet/visualbasic/p-system.web.management._23_1.vb)]"
@@ -271,7 +271,7 @@ items:
     content: public object EventSource { get; }
     return:
       type: System.Object
-      description: "The object that raised the event."
+      description: "이벤트를 발생 시킨 개체입니다."
   overload: System.Web.Management.WebBaseEvent.EventSource*
   exceptions: []
   platform:
@@ -288,7 +288,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the time when the event was raised."
+  summary: "이벤트가 발생 한 시간을 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows how to obtain the EventTime value.  \n  \n System.Web.Management.WebBaseEvent#10"
@@ -296,7 +296,7 @@ items:
     content: public DateTime EventTime { get; }
     return:
       type: System.DateTime
-      description: "The time that the event was raised."
+      description: "이벤트가 발생 하는 시간입니다."
   overload: System.Web.Management.WebBaseEvent.EventTime*
   exceptions: []
   platform:
@@ -313,7 +313,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the time when the event was raised."
+  summary: "이벤트가 발생 한 시간을 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows how to get the EventTimeUtc value.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#11](~/add/codesnippet/csharp/p-system.web.management._16_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#11](~/add/codesnippet/visualbasic/p-system.web.management._16_1.vb)]"
@@ -321,7 +321,7 @@ items:
     content: public DateTime EventTimeUtc { get; }
     return:
       type: System.DateTime
-      description: "The time of the event in Coordinated Universal Time (UTC) format."
+      description: "Utc (협정 세계시) 형식으로 이벤트의 시간입니다."
   overload: System.Web.Management.WebBaseEvent.EventTimeUtc*
   exceptions: []
   platform:
@@ -338,8 +338,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Provides standard formatting of the event information."
-  remarks: "The FormatCustomEventDetails method provides a uniform format for event information, which is useful if the event data must be logged and later presented to the user. It is called internally when the provider invokes one of the <xref:System.Web.Management.WebBaseEvent.ToString%2A> methods.      > [!NOTE] >  When you format your custom event information for display, override the FormatCustomEventDetails method rather than the <xref:System.Web.Management.WebBaseEvent.ToString%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "이벤트 정보에 대 한 표준 서식을 제공 합니다."
+  remarks: "FormatCustomEventDetails 메서드는 이벤트 데이터를 기록 하 고 나중에 사용자에 게 표시 해야 하는 경우에 유용 하는 이벤트 정보에 대 한 일관 된 형식을 제공 합니다. 공급자 중 하나를 호출 하는 경우 내부적으로 호출 됩니다는 <xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드.</xref:System.Web.Management.WebBaseEvent.ToString%2A>      > [!NOTE] > 디스플레이 대 한 사용자 지정 이벤트 정보를 포맷할 때 FormatCustomEventDetails 메서드를 재정의 하지 않고 <xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드.</xref:System.Web.Management.WebBaseEvent.ToString%2A> 이렇게 하면 중요 한 시스템 정보를 덮어쓰거나 훼손 필요가 없습니다."
   example:
   - "The following code example shows how to customize the FormatCustomEventDetails method.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#17](~/add/codesnippet/csharp/a03cb3e9-dc34-4fef-aa66-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#17](~/add/codesnippet/visualbasic/a03cb3e9-dc34-4fef-aa66-_1.vb)]"
   syntax:
@@ -347,7 +347,7 @@ items:
     parameters:
     - id: formatter
       type: System.Web.Management.WebEventFormatter
-      description: "A <xref href=&quot;System.Web.Management.WebEventFormatter&quot;></xref> object that contains the formatted event information."
+      description: "A <xref href=&quot;System.Web.Management.WebEventFormatter&quot;> </xref> 서식이 지정 된 이벤트 정보를 포함 하는 개체입니다."
   overload: System.Web.Management.WebBaseEvent.FormatCustomEventDetails*
   exceptions: []
   platform:
@@ -364,7 +364,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Used internally to increment performance counters."
+  summary: "성능 카운터를 증가 시키기 위해 내부적으로 사용 합니다."
   syntax:
     content: protected virtual void IncrementPerfCounters ();
     parameters: []
@@ -384,15 +384,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the message that describes the event."
-  remarks: "This property describes the meaning of the <xref:System.Web.Management.WebEventCodes> code value associated with the raised event."
+  summary: "이벤트를 설명 하는 메시지를 가져옵니다."
+  remarks: "이 속성의 의미를 설명 합니다.는 <xref:System.Web.Management.WebEventCodes>코드 발생된 된 이벤트와 연결 된 값.</xref:System.Web.Management.WebEventCodes>"
   example:
   - "The following code example shows how to obtain the Message value.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#8](~/add/codesnippet/csharp/p-system.web.management._41_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#8](~/add/codesnippet/visualbasic/p-system.web.management._41_1.vb)]"
   syntax:
     content: public string Message { get; }
     return:
       type: System.String
-      description: "The description of the event."
+      description: "이벤트의 설명입니다."
   overload: System.Web.Management.WebBaseEvent.Message*
   exceptions: []
   platform:
@@ -409,8 +409,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Raises an event by notifying any configured provider that the event has occurred."
-  remarks: "If you override this method, the event raised is your custom event.      > [!NOTE] >  Medium trust or higher is required to raise an event."
+  summary: "이벤트가 발생 했음이 구성된 된 공급자에 게 알려 이벤트가 발생 합니다."
+  remarks: "이 메서드를 재정의 하는 경우 발생 하는 이벤트는 사용자 지정 이벤트가입니다.      > [!NOTE] > 보통 신뢰 수준 이벤트를 발생 시키는 이상이 필요 합니다."
   example:
   - "The following code example shows how to use the Raise method.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#4](~/add/codesnippet/csharp/m-system.web.management._1_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#4](~/add/codesnippet/visualbasic/m-system.web.management._1_1.vb)]"
   syntax:
@@ -432,8 +432,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Raises the specified event by notifying any configured provider that the event has occurred."
-  remarks: "This method raises the specified event by notifying any configured provider that the event has occurred.      > [!NOTE] >  Medium trust or higher is required to raise an event."
+  summary: "이벤트가 발생 했음이 구성된 된 공급자에 게 알려 지정 된 이벤트를 발생 합니다."
+  remarks: "이 메서드를 이벤트 발생 했음이 구성된 된 공급자에 게 알려 지정된 된 이벤트를 발생 시킵니다.      > [!NOTE] > 보통 신뢰 수준 이벤트를 발생 시키는 이상이 필요 합니다."
   example:
   - "The following code example shows how to use the Raise method.  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#5](~/add/codesnippet/csharp/m-system.web.management._7_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#5](~/add/codesnippet/visualbasic/m-system.web.management._7_1.vb)]"
   syntax:
@@ -446,7 +446,7 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The <xref:System.Web.Management.WebBaseEvent.EventCode*> property of <code>eventRaised</code> has a value that is reserved for ASP.NET."
+    description: "<xref:System.Web.Management.WebBaseEvent.EventCode*>속성 <code> eventRaised </code> ASP.NET에 예약 된 값.</xref:System.Web.Management.WebBaseEvent.EventCode*>"
   platform:
   - net462
 - uid: System.Web.Management.WebBaseEvent.ToString
@@ -461,8 +461,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats event information for display purposes."
-  remarks: "The ToString method is generally invoked by the provider that processes the event. The method ensures that the standard <xref:System.Web.Management.WebApplicationInformation> object is provided with the event-specific data. It formats event information by calling the event-specific <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method.      > [!NOTE] >  When you format your custom event information for display, override the <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method rather than the <xref:System.Web.Management.WebBaseEvent.ToString%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "표시 용으로 이벤트 정보를 형식을 지정 합니다."
+  remarks: "ToString 메서드는 일반적으로 이벤트를 처리 하는 공급자에서 호출 됩니다. 메서드를 사용 하면는 표준 <xref:System.Web.Management.WebApplicationInformation>개체는 이벤트별 데이터와 함께 제공 됩니다.</xref:System.Web.Management.WebApplicationInformation> 관련 이벤트를 호출 하 여 이벤트 정보 서식을 <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>메서드.</xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>      > [!NOTE] > 디스플레이 대 한 사용자 지정 이벤트 정보를 포맷할 때 재정의 <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>메서드 보다는 <xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드.</xref:System.Web.Management.WebBaseEvent.ToString%2A> </xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> 이렇게 하면 중요 한 시스템 정보를 덮어쓰거나 훼손 필요가 없습니다."
   example:
   - "The following code example shows how to use the ToString method  \n  \n [!code-cs[System.Web.Management.WebBaseEvent#14](~/add/codesnippet/csharp/m-system.web.management._3_1.cs)]\n [!code-vb[System.Web.Management.WebBaseEvent#14](~/add/codesnippet/visualbasic/m-system.web.management._3_1.vb)]"
   syntax:
@@ -470,7 +470,7 @@ items:
     parameters: []
     return:
       type: System.String
-      description: "The event information."
+      description: "이벤트 정보입니다."
   overload: System.Web.Management.WebBaseEvent.ToString*
   exceptions: []
   platform:
@@ -487,20 +487,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats event information for display purposes."
-  remarks: "The <xref:System.Web.Management.WebBaseEvent.ToString%2A> method is generally invoked by the provider that processes the event. It formats event information by calling the event-specific <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method. If `includeAppInfo` is `true`, the standard <xref:System.Web.Management.WebApplicationInformation> object is provided with the event-specific data.      > [!NOTE] >  When you format your custom event information for display, override the <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method rather than the <xref:System.Web.Management.WebBaseEvent.ToString%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "표시 용으로 이벤트 정보를 형식을 지정 합니다."
+  remarks: "<xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드 일반적으로 이벤트를 처리 하는 공급자에서 호출 됩니다.</xref:System.Web.Management.WebBaseEvent.ToString%2A> 관련 이벤트를 호출 하 여 이벤트 정보 서식을 <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>메서드.</xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> 경우 `includeAppInfo` 은 `true`, 표준 <xref:System.Web.Management.WebApplicationInformation>개체는 이벤트별 데이터와 함께 제공 됩니다.</xref:System.Web.Management.WebApplicationInformation>      > [!NOTE] > 디스플레이 대 한 사용자 지정 이벤트 정보를 포맷할 때 재정의 <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>메서드 보다는 <xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드.</xref:System.Web.Management.WebBaseEvent.ToString%2A> </xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> 이렇게 하면 중요 한 시스템 정보를 덮어쓰거나 훼손 필요가 없습니다."
   syntax:
     content: public virtual string ToString (bool includeAppInfo, bool includeCustomEventDetails);
     parameters:
     - id: includeAppInfo
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if standard application information must be displayed as part of the event information; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이벤트 정보;의 일부로 표준 응용 프로그램 정보를 표시 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: includeCustomEventDetails
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if custom information must be displayed as part of the event information; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이벤트 정보;의 일부로 사용자 지정 정보를 표시 해야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.String
-      description: "The event information."
+      description: "이벤트 정보입니다."
   overload: System.Web.Management.WebBaseEvent.ToString*
   exceptions: []
   platform:

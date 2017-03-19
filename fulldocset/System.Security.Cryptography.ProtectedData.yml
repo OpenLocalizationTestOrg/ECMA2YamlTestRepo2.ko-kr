@@ -11,7 +11,7 @@ items:
   nameWithType: ProtectedData
   fullName: System.Security.Cryptography.ProtectedData
   type: Class
-  summary: "Provides methods for encrypting and decrypting data. This class cannot be inherited."
+  summary: "데이터 암호화 및 해독에 대 한 메서드를 제공 합니다. 이 클래스는 상속 될 수 없습니다."
   remarks: "This class provides access to the Data Protection API (DPAPI) available in Microsoft Windows 2000 and later operating systems. This is a service that is provided by the operating system and does not require additional libraries. It provides protection using the user or machine credentials to encrypt or decrypt data.  \n  \n The class consists of two wrappers for the unmanaged DPAPI, [Protect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True) and [Unprotect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True). These two methods can be used to encrypt and decrypt data such as passwords, keys, and connection strings.  \n  \n If you use these methods during impersonation, you may receive the following error: \"Key not valid for use in specified state.\" This occurs because the DPAPI stores the key data in user profiles. If the profile is not loaded, DPAPI won’t be able to perform the decryption. To prevent this error, load the profile of the user you want to impersonate before calling either method. Using DPAPI with impersonation can incur significant complication and requires careful design choices."
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/t-system.security.crypto_126_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/t-system.security.crypto_126_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/t-system.security.crypto_126_1.vb)]"
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Encrypts the data in a specified byte array and returns a byte array that contains the encrypted data."
-  remarks: "This method can be used to encrypt data such as passwords, keys, or connection strings. The `optionalEntropy` parameter enables you to add data to increase the complexity of the encryption; specify `null` for no additional complexity. If provided, this information must also be used when decrypting the data using the <xref:System.Security.Cryptography.ProtectedData.Unprotect%2A> method.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "지정된 된 바이트 배열에 데이터를 암호화 하 고 암호화 된 데이터가 포함 된 바이트 배열을 반환 합니다."
+  remarks: "암호, 키 또는 연결 문자열에 같은 데이터를 암호화할이 메서드를 사용할 수 있습니다. `optionalEntropy` 매개 변수 암호화의 복잡성을 증가 시킬 데이터를 추가할 수 있습니다; 지정 `null` 복잡성이 없는 추가 합니다. 제공 된 경우이 정보 사용 해야 사용 하 여 데이터를 암호 해독할 때의 <xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>메서드.</xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>      > [!NOTE] > 가장 하는 동안이 메서드를 사용 하는 경우에 다음과 같은 오류가 나타날 수 있습니다: &quot;키에 사용 하기에 유효 하지 않은 상태를 지정 합니다.&quot; 이 오류를 방지 하려면 메서드를 호출 하기 전에 가장할 사용자의 프로필을 로드 합니다."
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/95867340-d3f0-4c9c-82ca-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/95867340-d3f0-4c9c-82ca-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/95867340-d3f0-4c9c-82ca-_1.vb)]"
   syntax:
@@ -44,16 +44,16 @@ items:
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "A byte array that contains data to encrypt."
+      description: "데이터 암호화를 포함 하는 바이트 배열입니다."
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array used to increase the complexity of the encryption, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for no additional complexity."
+      description: "암호화의 복잡성이 증가 하는 데 사용 되는 선택적 추가 바이트 배열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 복잡성이 없는 추가 합니다."
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of encryption."
+      description: "암호화의 범위를 지정 하는 열거형 값 중 하나입니다."
     return:
       type: System.Byte[]
-      description: "A byte array representing the encrypted data."
+      description: "암호화 된 데이터를 나타내는 바이트 배열입니다."
   overload: System.Security.Cryptography.ProtectedData.Protect*
   exceptions:
   - type: System.ArgumentNullException
@@ -61,13 +61,13 @@ items:
     description: "The <code>userData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The encryption failed."
+    description: "암호화 하지 못했습니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "운영 체제에서이 메서드를 지원 하지 않습니다."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "The system ran out of memory while encrypting the data."
+    description: "시스템은 데이터를 암호화 하는 동안 메모리 부족 합니다."
   platform:
   - net462
 - uid: System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Decrypts the data in a specified byte array and returns a byte array that contains the decrypted data."
-  remarks: "This method can be used to unprotect data that was encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect%2A> method. If the `optionalEntropy` parameter was used during encryption, it must be supplied to unencrypt the data.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "지정된 된 바이트 배열에 데이터를 해독 하 고 해독된 된 데이터가 포함 된 바이트 배열을 반환 합니다."
+  remarks: "이 메서드를 사용 하 여 암호화 된 데이터를 보호 해제를 사용할 수는 <xref:System.Security.Cryptography.ProtectedData.Protect%2A>메서드.</xref:System.Security.Cryptography.ProtectedData.Protect%2A> 경우는 `optionalEntropy` 매개 변수가 암호화 하는 동안 사용 되었으므로, 데이터 보호를 해제할 제공 해야 합니다.      > [!NOTE] > 가장 하는 동안이 메서드를 사용 하는 경우에 다음과 같은 오류가 나타날 수 있습니다: &quot;키에 사용 하기에 유효 하지 않은 상태를 지정 합니다.&quot; 이 오류를 방지 하려면 메서드를 호출 하기 전에 가장할 사용자의 프로필을 로드 합니다."
   example:
   - "The following code example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/52a5e76e-1631-47b1-9e44-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/52a5e76e-1631-47b1-9e44-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/52a5e76e-1631-47b1-9e44-_1.vb)]"
   syntax:
@@ -91,16 +91,16 @@ items:
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "A byte array containing data encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect*> method."
+      description: "사용 하 여 암호화 된 데이터를 포함 하는 바이트 배열에서 <xref:System.Security.Cryptography.ProtectedData.Protect*>메서드.</xref:System.Security.Cryptography.ProtectedData.Protect*>"
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array that was used to encrypt the data, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the additional byte array was not used."
+      description: "데이터를 암호화 하는 데 사용 된 선택적 추가 바이트 배열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 추가 바이트 배열을 사용 되지 않은 경우."
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of data protection that was used to encrypt the data."
+      description: "데이터를 암호화 하는 데 사용한 데이터 보호의 범위를 지정 하는 열거형 값 중 하나입니다."
     return:
       type: System.Byte[]
-      description: "A byte array representing the decrypted data."
+      description: "암호 해독 된 데이터를 나타내는 바이트 배열입니다."
   overload: System.Security.Cryptography.ProtectedData.Unprotect*
   exceptions:
   - type: System.ArgumentNullException
@@ -108,13 +108,13 @@ items:
     description: "The <code>encryptedData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The decryption failed."
+    description: "암호 해독에 실패 했습니다."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "운영 체제에서이 메서드를 지원 하지 않습니다."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "Out of memory."
+    description: "메모리가 부족 합니다."
   platform:
   - net462
 references:

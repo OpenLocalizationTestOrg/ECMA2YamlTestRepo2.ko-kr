@@ -13,8 +13,8 @@ items:
   nameWithType: WebBaseErrorEvent
   fullName: System.Web.Management.WebBaseErrorEvent
   type: Class
-  summary: "Serves as the base class for all the health-monitoring error events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebBaseErrorEvent class is the base class for the health-monitoring events that represent error conditions. ASP.NET uses WebBaseErrorEvent and its derived types to indicate error conditions during the lifetime of a Web application.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of deriving from the WebBaseErrorEvent class, see the example provided in this topic."
+  summary: "모든 상태 모니터링 오류 이벤트에 대 한 기본 클래스로 사용 됩니다."
+  remarks: "ASP.NET 상태 모니터링 생산 및 운영 담당자를 웹 응용 프로그램 배포를 관리할 수 있습니다. <xref:System.Web.Management>네임 스페이스 응용 프로그램 상태 데이터와이 데이터를 처리 하는 공급자 유형을 패키지 하는 상태 이벤트 형식을 포함 합니다.</xref:System.Web.Management> 또한 상태 이벤트를 관리 하는 동안 유용한 지 원하는 형식을 포함 합니다.       WebBaseErrorEvent 클래스는 오류 조건을 나타내는 상태 모니터링 이벤트에 대 한 기본 클래스입니다. ASP.NET 웹 응용 프로그램의 수명 동안 오류 조건을 나타내기 위해 WebBaseErrorEvent 및 파생된 형식을 사용 합니다.      > [!NOTE] > 대부분의 경우에서 있습니다 수 구현 될 때 ASP.NET 상태 모니터링 형식을 사용할 수 있으며 값을 지정 하 여 상태 모니터링 시스템을 제어 합니다는 `healthMonitoring` 구성 섹션입니다. 사용자 고유의 사용자 지정 이벤트와 공급자를 만들 상태 모니터링 유형에 서 파생할 수 있습니다. WebBaseErrorEvent 클래스에서 파생의 예를 들어이 항목에서 제공 하는 예제를 참조 하십시오."
   example:
   - "The following code example has two parts. The first is an excerpt of a configuration file that enables ASP.NET health monitoring to use an event derived from the WebBaseErrorEvent class. The second shows how to derive from the WebBaseErrorEvent class to create the custom event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  \n  <providers>  \n    <!-- Define the custom provider that   \n         processes custom Web request events. -->  \n    <add name=\"SampleWebEventProvider\"   \n      type=\"SamplesAspNet.SampleEventProvider,  \n      webeventprovider,Version=1.0.1573.18094,   \n      Culture=neutral, PublicKeyToken=b5a57a9a9d487cf4,   \n      processorArchitecture=MSIL\"/>  \n  </providers>  \n  \n  <eventMappings>  \n  \n    <!--  Define the event source that issues custom events.   -->  \n    <add  name=\"SampleWebBaseErrorEvent\"      \n      type=\"SamplesAspNet.SampleWebBaseErrorEvent,  \n      webbaseerrorevent,Version=1.0.1573.21549, Culture=neutral,     \n      PublicKeyToken=2a0b23915ac7352b, processorArchitecture=MSIL\"/>  \n  </eventMappings>  \n  \n  <rules>  \n    <!-- Associate custom event with related   \n      custom provider -->  \n    <add   \n       name=\"Custom Web Base Errors\"  \n       eventName=\"SampleWebBaseErrorEvent\"   \n       provider=\"SampleWebEventProvider\"   \n       profile=\"Custom\"/>    \n  </rules>  \n  \n</healthMonitoring>  \n```  \n  \n The following code shows how to derive from the WebBaseErrorEvent class to create a custom event.  \n  \n [!code-cs[System.Web.Management.WebErrorEvent#1](~/add/codesnippet/csharp/t-system.web.management._23_1.cs)]\n [!code-vb[System.Web.Management.WebErrorEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._23_1.vb)]"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You can call this constructor when implementing your own event type that inherits from this class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;> </xref> 클래스입니다."
+  remarks: "이 생성자는 ASP.NET 상태 모니터링 시스템에서 내부적으로 사용 됩니다. 이 클래스에서 상속 되는 이벤트 형식을 구현 하는 경우이 생성자를 호출할 수 있습니다."
   example:
   - "The following code example shows how to call this constructor from a constructor for the `SampleWebBaseErrorEvent` class, a class that derives from the <xref:System.Web.Management.WebBaseErrorEvent> class.  \n  \n [!code-cs[System.Web.Management.WebBaseErrorEvent#2](~/add/codesnippet/csharp/490f1ed0-2b88-4f74-b1da-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseErrorEvent#2](~/add/codesnippet/visualbasic/490f1ed0-2b88-4f74-b1da-_1.vb)]"
   syntax:
@@ -64,16 +64,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "이벤트 설명입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "이벤트의 원본인 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "이벤트와 연결 된 코드입니다. 이벤트 코드 보다 커야 사용자 지정 이벤트를 구현할 때 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
     - id: e
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "<xref:System.Exception>의 오류와 관련 된.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.#ctor*
   exceptions: []
   platform:
@@ -90,8 +90,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You can call this constructor when implementing your own event type that inherits from this class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;> </xref> 클래스입니다."
+  remarks: "이 생성자는 ASP.NET 상태 모니터링 시스템에서 내부적으로 사용 됩니다. 이 클래스에서 상속 되는 이벤트 형식을 구현 하는 경우이 생성자를 호출할 수 있습니다."
   example:
   - "The following code example shows how to call this constructor from a constructor for the `SampleWebBaseErrorEvent` class, a class that derives from the <xref:System.Web.Management.WebBaseErrorEvent> class.  \n  \n [!code-cs[System.Web.Management.WebBaseErrorEvent#3](~/add/codesnippet/csharp/d926271b-b6dc-48d8-931e-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseErrorEvent#3](~/add/codesnippet/visualbasic/d926271b-b6dc-48d8-931e-_1.vb)]"
   syntax:
@@ -99,19 +99,19 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "이벤트 설명입니다."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "이벤트의 원본인 개체입니다."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "이벤트와 연결 된 코드입니다. 이벤트 코드 보다 커야 사용자 지정 이벤트를 구현할 때 <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>합니다."
     - id: eventDetailCode
       type: System.Int32
-      description: "The detailed identifier for the event."
+      description: "이벤트에 대 한 자세한 식별자입니다."
     - id: e
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "<xref:System.Exception>의 오류와 관련 된.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.#ctor*
   exceptions: []
   platform:
@@ -128,13 +128,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the <xref:System.Exception> associated with the error."
-  remarks: "If you implement a custom <xref:System.Web.Management.WebBaseErrorEvent>, you must ensure that your custom error event handles this exception."
+  summary: "가져옵니다는 <xref:System.Exception>의 오류와 관련 된.</xref:System.Exception>"
+  remarks: "사용자 지정을 구현 하는 경우 <xref:System.Web.Management.WebBaseErrorEvent>, 사용자 지정 오류 이벤트에서이 예외를 처리 하는지 확인 해야 합니다.</xref:System.Web.Management.WebBaseErrorEvent>"
   syntax:
     content: public Exception ErrorException { get; }
     return:
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "<xref:System.Exception>의 오류와 관련 된.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.ErrorException*
   exceptions: []
   platform:
@@ -151,8 +151,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Increments the event-error performance-related counters."
-  remarks: "This method increments the following performance counters:      -   Infrastructure Error Events Raised. This is a global counter that tracks the error events raised.      -   Error Events Raised. This is an application-specific counter that tracks the number of error events raised since the application started.       This method also calls the parent <xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A>, which increments the Events Raised counter. This counter tracks the total number of events raised.       To view these performance counters in System Monitor (PerfMon), in the **Add Counters** window select **ASP.NET** in the **Performance object** drop-down list, select the performance counter you want to view, and click the **Add** button. For more information, see [Using the System Monitor (PerfMon) with ASP.NET Applications](http://go.microsoft.com/fwlink/?linkid=36882&clcid=0x409) in the IIS documentation on MSDN."
+  summary: "이벤트 오류 관련 성능 카운터를 증가 시킵니다."
+  remarks: "이 메서드는 다음 성능 카운터를 증가 시키는:-인프라 오류 이벤트가 발생 합니다. 발생 한 오류 이벤트를 추적 하는 전역 카운터입니다.      발생 한 오류 이벤트입니다. 응용 프로그램이 시작 된 이후에 발생 한 오류 이벤트의 수를 추적 하는 응용 프로그램 관련 카운터입니다.       또한이 메서드 호출 부모 <xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A>는 이벤트 발생 카운터를 증가 시킵니다.</xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A> 이 카운터는 발생 한 이벤트의 총 수를 추적 합니다.       시스템 모니터 (PerfMon)에서 이러한 성능 카운터를 볼 수는 **카운터 추가** 창 선택 **ASP.NET** 에 **성능 개체** 드롭 다운 목록에서 클릭 하 고 보려는 원하는 성능 카운터를 선택는 **추가** 단추입니다. 자세한 내용은 참조 [시스템 모니터 (PerfMon)를 사용 하 여 ASP.NET 응용 프로그램으로](http://go.microsoft.com/fwlink/?linkid=36882&clcid=0x409) MSDN에 있는 IIS 설명서에 있습니다."
   syntax:
     content: protected override void IncrementPerfCounters ();
     parameters: []
