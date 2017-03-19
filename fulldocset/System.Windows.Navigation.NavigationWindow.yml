@@ -50,8 +50,8 @@ items:
   nameWithType: NavigationWindow
   fullName: System.Windows.Navigation.NavigationWindow
   type: Class
-  summary: "Represents a window that supports content navigation."
-  remarks: "NavigationWindow derives from <xref:System.Windows.Window> and extends it with the ability to navigate to and display content.       Content can be any [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] object or [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] file. In general, however, a <xref:System.Windows.Controls.Page> object is the preferred way to package content for navigation.       Content can be navigated to by setting the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content. Additionally, content can be navigated to by using one of the following overloads of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>       When content is navigated to by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow will return an object that contains the content.      > [!NOTE] >  Navigation by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] also supports navigation to a content fragment. See <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Alternatively, content can be navigated to by using one of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method overloads that accepts an object:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>       The lifetime of a navigation can be tracked through the following events:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigating>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigated>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>      -   <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>      -   <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Not all events are raised each time that a navigation occurs; the set of events that are raised is determined by the type of navigation that occurs (content or content fragment) and how the navigation completes (canceled, stopped, or failed).       The following figure illustrates the sequence in which these events will fire:       ![Page navigation flow chart](~/add/media/navigationoverviewfigure11.png &quot;Page navigation flow chart&quot;)       During or after a navigation, NavigationWindow provides information about the content that is being navigated to, including the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the content being navigated to (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the current content (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), and an object that contains the content that was navigated to (<xref:System.Windows.Controls.ContentControl.Content%2A>).       When content is navigated to, NavigationWindow records the navigation as an entry in navigation history. An entry is added to back navigation history when either a new navigation occurs, by calling the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method, or by navigating to an entry in forward navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>. An entry is added to forward navigation history by navigating to an entry in back navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>. <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A> and <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A> report whether there are entries in back and forward navigation history, respectively.       The first time that one piece of content is navigated to from another piece of content, NavigationWindow automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that allows users to navigate back and forwards through navigation history. You can configure when the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is shown by setting the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A> property.       The most recent entry in back navigation history can be removed by calling <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.       NavigationWindow does not store an instance of a content object in navigation history. Instead, NavigationWindow creates a new instance of the content object each time it is navigated to by using navigation history. This behavior is designed to avoid excessive memory consumption when large numbers and large pieces of content are being navigated to. Consequently, the state of the content is not remembered from one navigation to the next. However, [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] provides several techniques by which you can store a piece of state for a piece of content in navigation history.       Using <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, you can also remember multiple sets of state for a single page instance.       NavigationWindow is one of two navigators in [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)], the other being <xref:System.Windows.Controls.Frame>. Essentially, navigator is a class supports navigation and navigation history. Visually, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] use [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] as a navigator, to provide an integrated user experience. However, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] actually use NavigationWindow as the navigator; the <xref:System.Windows.Application.MainWindow%2A> property of an [!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)] running in [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] will return a reference to the NavigationWindow, and the navigation history that is managed by the NavigationWindow is integrated with the navigation history that is managed by [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].       **Content Model:**  NavigationWindow is a <xref:System.Windows.Controls.ContentControl>, which means that NavigationWindow can contain content such as text, images, or panels. Also, NavigationWindow is a root element and, consequently, cannot be part of another element&quot;s content. For more information about the content model for <xref:System.Windows.Controls.Button>, see [WPF Content Model](~/add/includes/ajax-current-ext-md.md).      ## Customizing the NavigationWindow Control    To apply the same property settings to multiple NavigationWindow controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](~/add/includes/ajax-current-ext-md.md).  To see the parts and states that are specific to the NavigationWindow, see [NavigationWindow Styles and Templates](~/add/includes/ajax-current-ext-md.md).       Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).      > [!NOTE] >  Setting a visual property will only have an effect if that property is both present in NavigationWindow control&quot;s default template and is set by using a . You can find a list of visual properties in the &quot;Changing the Visual Structure of a Control&quot; section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)."
+  summary: "콘텐츠 탐색을 지 원하는 창을 나타냅니다."
+  remarks: "파생 된 NavigationWindow <xref:System.Windows.Window>탐색 하 고 콘텐츠를 표시 하는 기능을 사용 하도록 확장 합니다.</xref:System.Windows.Window>       콘텐츠 하나가 될 수 있습니다 [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] 개체 또는 [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] 파일입니다. 그러나, 일반적으로 <xref:System.Windows.Controls.Page>개체를 사용 하 여 콘텐츠를 탐색 합니다.</xref:System.Windows.Controls.Page>       설정 하 여 콘텐츠를 탐색할 수 있습니다는 <xref:System.Windows.Navigation.NavigationWindow.Source%2A>된 속성의 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 원하는 콘텐츠에 대 한.</xref:System.Windows.Navigation.NavigationWindow.Source%2A> 또한 콘텐츠 탐색할 수 있습니다 다음 오버 로드 중 하나를 사용 하 여는 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>메서드:- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>하 여 콘텐츠를 탐색 하는 경우 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow에 콘텐츠를 포함 하는 개체가 반환 됩니다.</xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>      > [!NOTE] > 탐색 하 여 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 도 콘텐츠 조각 탐색을 지원 합니다. <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.</xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation> 를 참조 하십시오.       또는 콘텐츠 탐색할 수 있습니다 중 하나를 사용 하 여는 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>메서드 오버 로드는 개체를 받아들이는:- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>다음 이벤트를 통해 탐색 수명을 추적할 수 있습니다:- <xref:System.Windows.Navigation.NavigationWindow.Navigating>- <xref:System.Windows.Navigation.NavigationWindow.Navigated>- <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>- <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>- <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>- <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>- <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.</xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation> </xref:System.Windows.Navigation.NavigationWindow.LoadCompleted> </xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> </xref:System.Windows.Navigation.NavigationWindow.NavigationFailed> </xref:System.Windows.Navigation.NavigationWindow.NavigationProgress> </xref:System.Windows.Navigation.NavigationWindow.Navigated> </xref:System.Windows.Navigation.NavigationWindow.Navigating> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>       일부 이벤트가 발생 될 때마다 탐색에는 다음이 발생 합니다. 발생 하는 이벤트 집합이 (취소, 중지, 또는 실패) 형식 (콘텐츠 또는 콘텐츠 조각) 발생 하는 탐색 및 탐색이 완료 되는 방식에 따라 결정 됩니다.       다음 그림은 이러한 이벤트는 발생 순서: ![페이지 탐색 흐름 차트](~/add/media/navigationoverviewfigure11.png &quot;페이지 탐색 흐름 차트&quot;) NavigationWindow 되 고 탐색을 포함 하 여 콘텐츠에 대 한 정보를 제공 하는 동안 또는 탐색 후의 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 탐색 중인 콘텐츠에의 (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 현재 콘텐츠의 (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), 및 탐색 하는 콘텐츠를 포함 하는 개체 (<xref:System.Windows.Controls.ContentControl.Content%2A>).</xref:System.Windows.Controls.ContentControl.Content%2A> </xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A> </xref:System.Windows.Navigation.NavigationWindow.Source%2A>       콘텐츠 탐색 NavigationWindow 탐색 기록의 항목으로 탐색을 기록 합니다. 호출 하 여 새 탐색 발생 될 때 탐색 기록을 다시에 항목이 추가 되는 <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>메서드, 또는 <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>.</xref:System.Windows.Navigation.NavigationWindow.GoForward%2A> 를 호출 하 여 앞으로 탐색 기록의 항목으로 이동 하 여</xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> 항목 기록에 추가 됩니다 앞으로 탐색 뒤에 항목으로 이동 하 여 탐색 기록은 <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>.</xref:System.Windows.Navigation.NavigationWindow.GoBack%2A> 를 호출 하 여 <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>및 <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>있는지 여부를 보고 하 고 앞으로 탐색 기록 항목 뒤에 각각.</xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A></xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>       처음으로의 콘텐츠는 한 부분을 탐색 하는 콘텐츠의 다른 부분에서 NavigationWindow 탐색을 자동으로 표시 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] 사용자가 다시 이동할 수 있도록 하 고 탐색 기록을 통해 전달 합니다. 시점을 구성할 수는 탐색 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] 설정 하 여 표시 되는 <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>속성.</xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>       뒤로 탐색 기록의 가장 최근 항목 <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.</xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A> 를 호출 하 여 제거할 수 있습니다.       NavigationWindow 탐색 기록의 콘텐츠 개체의 인스턴스를 저장 하지 않습니다. 대신, NavigationWindow 탐색 기록을 사용 하 여 탐색할 될 때마다 콘텐츠 개체의 새 인스턴스를 만듭니다. 이 문제는 많은 수 및 대규모 콘텐츠를 탐색할 때 과도 한 메모리 소비를 방지 하도록 설계 되었습니다. 따라서 콘텐츠 상태는 다음 탐색에서 저장 되지 않습니다. 그러나 [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] 탐색 기록의 콘텐츠의 부분에 대 한 상태를 저장할 수 있는 몇 가지 방법을 제공 합니다.       사용 하 여 <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, 여러 인스턴스를 단일 페이지에 대 한 상태 집합을 기억할 수도 있습니다.</xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>       NavigationWindow의 두 탐색기 중 하나는 [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)], 다른 되 고 <xref:System.Windows.Controls.Frame>.</xref:System.Windows.Controls.Frame> 기본적으로, 탐색기 탐색 및 탐색 기록을 지 원하는 클래스입니다. 시각적으로 [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] 사용 [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] 통합 된 사용자 환경을 제공할 수 있도록을 탐색기로 합니다. 그러나 [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] 실제로 NavigationWindow를 탐색기;로 사용 하는 <xref:System.Windows.Application.MainWindow%2A>속성의는 [!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)] 에서 실행 중인 [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] 의 NavigationWindow에 대 한 참조 반환 하 고 탐색 기록의 NavigationWindow가 관리 하는 탐색 기록에서 관리 되는 통합 [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].</xref:System.Windows.Application.MainWindow%2A>       **콘텐츠 모델:** NavigationWindow가는 <xref:System.Windows.Controls.ContentControl>, 즉, NavigationWindow가 같은 텍스트, 이미지 또는 패널 콘텐츠를 포함할 수 있습니다.</xref:System.Windows.Controls.ContentControl> 또한 NavigationWindow는 루트 요소 이며, 결과적으로, 다른 요소 내용이 포함 될 수 없습니다. 콘텐츠 모델에 대 한 자세한 내용은 <xref:System.Windows.Controls.Button>, 참조 [WPF 콘텐츠 모델](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Controls.Button>      ## 여러 개의 NavigationWindow 컨트롤을 사용 하 여 동일한 속성 설정을 적용할의 NavigationWindow 컨트롤을 사용자 지정의 <xref:System.Windows.FrameworkElement.Style%2A>속성.</xref:System.Windows.FrameworkElement.Style%2A> 기본값을 수정할 수 <xref:System.Windows.Controls.ControlTemplate>고유한 모양을 제어할 수 있습니다.</xref:System.Windows.Controls.ControlTemplate> 만들기에 대 한 자세한 내용은 <xref:System.Windows.Controls.ControlTemplate>, 참조 [는 ControlTemplate을 만들어 기존 컨트롤의 모양 사용자 지정](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Controls.ControlTemplate>  부분 및의 NavigationWindow에만 적용 되는 상태를 보려면 참조 [NavigationWindow 스타일 및 템플릿](~/add/includes/ajax-current-ext-md.md)합니다.       종속성 속성을이 컨트롤은 컨트롤의 기본 스타일으로 설정할 수 있습니다.  기본 스타일 속성은 응용 프로그램에이 컨트롤이 표시 하는 경우 속성이 기본값에서 변경 될 수 있습니다. 기본 스타일 응용 프로그램이 실행 중인 때 사용 되는 데스크톱 테마에 따라 결정 됩니다.  자세한 내용은 참조 [기본 WPF 테마](http://go.microsoft.com/fwlink/?LinkID=158252)합니다.      > [!NOTE] > 시각적 속성을 설정만 영향을 미칠 속성 시각적 NavigationWindow 컨트롤의 기본 서식 파일에 속성이 있으며를 사용 하 여 설정 된 경우는 합니다. &quot;변경의 시각적 구조의 정도 제어&quot; 섹션의 시각적 속성 목록을 찾을 수 있습니다 [는 ControlTemplate을 만들어 기존 컨트롤의 모양 사용자 지정](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)합니다."
   example:
   - "The following example shows how to create a NavigationWindow.  \n  \n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/t-system.windows.navigat_3_1.xaml)]\n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/csharp/mainwindow.xaml#navigationwindowandsource)]"
   syntax:
@@ -767,7 +767,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 클래스입니다."
   syntax:
     content: public NavigationWindow ();
     parameters: []
@@ -787,19 +787,19 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds an entry to back navigation history that contains a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>."
+  summary: "포함 된 탐색 기록에 항목을 추가 하는 <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> 개체입니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public void AddBackEntry (System.Windows.Navigation.CustomContentState state);
     parameters:
     - id: state
       type: System.Windows.Navigation.CustomContentState
-      description: "A <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object that represents application-defined state that is associated with a specific piece of content."
+      description: "A <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> 콘텐츠의 특정 부분에 연관 된 응용 프로그램 정의 상태를 나타내는 개체입니다."
   overload: System.Windows.Navigation.NavigationWindow.AddBackEntry*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>state</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, and a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object isn&quot;t returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>."
+    description: "<code>state</code><xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 및 <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> 개체에서 반환 되지 않은 <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>합니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddChild(System.Object)
@@ -814,18 +814,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds a child object."
+  summary: "자식 개체를 추가 합니다."
   syntax:
     content: protected override void AddChild (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The child object to add."
+      description: "추가할 자식 개체입니다."
   overload: System.Windows.Navigation.NavigationWindow.AddChild*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "when this method is called. This prevents content from being added to <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> using [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
+    description: "이 메서드가 호출 될 때를 나타냅니다. 에 추가 되지 않도록 이렇게 하면 콘텐츠 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 를 사용 하 여 [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]합니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddText(System.String)
@@ -840,18 +840,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds text to the object."
+  summary: "개체에 텍스트를 추가합니다."
   syntax:
     content: protected override void AddText (string text);
     parameters:
     - id: text
       type: System.String
-      description: "The text to add to the object."
+      description: "개체에 추가할 텍스트입니다."
   overload: System.Windows.Navigation.NavigationWindow.AddText*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "if the text parameter value contains non-whitespace characters."
+    description: "경우 텍스트 매개 변수 값에 공백이 아닌 문자가 있습니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.BackStack
@@ -866,13 +866,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "The entries that are returned by BackStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowBackStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|BackStack|   |Metadata properties set to `true`|None|"
+  summary: "가져옵니다는 <xref:System.Collections.IEnumerable>뒤로 탐색 기록에서 항목을 열거 하는 데 사용 하는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>.</xref:System.Collections.IEnumerable>"
+  remarks: "백 스택에에서 반환 되는 항목에는 전체 콘텐츠, 조각 탐색 및 사용자 지정 상태 포함 됩니다.      <a name=&quot;dependencyPropertyInfo_NavigationWindowBackStack&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | 백 스택에 |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public System.Collections.IEnumerable BackStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to back navigation history, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are not entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref:System.Collections.IEnumerable>탐색 기록에 적어도 하나의 항목이 추가한 경우 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 항목이 있는 경우 또는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 자체 탐색 기록을 소유 하지 않습니다.</xref:System.Collections.IEnumerable>"
   overload: System.Windows.Navigation.NavigationWindow.BackStack*
   exceptions: []
   platform:
@@ -889,12 +889,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.BackStack*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.BackStack*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.BackStack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty BackStackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -910,13 +910,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets a value that indicates whether there is at least one entry in back navigation history."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.      <a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoBack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoBack|   |Metadata properties set to `true`|None|"
+  summary: "뒤로 탐색 기록에서 하나 이상의 항목이 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName> 를 참조 하십시오.      <a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoBack&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | CanGoBack |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public bool CanGoBack { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in back navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in back navigation history or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>뒤로 탐색 기록에 적어도 하나의 항목이 없는 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 뒤로 탐색 기록의 항목이 없는 경우 또는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 자체 탐색 기록을 소유 하지 않습니다."
   overload: System.Windows.Navigation.NavigationWindow.CanGoBack*
   exceptions: []
   platform:
@@ -933,12 +933,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoBack*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.CanGoBack*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.CanGoBack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoBackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -954,13 +954,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets a value that indicates whether there is at least one entry in forward navigation history."
-  remarks: "<a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoForward&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoForward|   |Metadata properties set to `true`|None|"
+  summary: "앞으로 탐색 기록에서 하나 이상의 항목이 있는지 여부를 나타내는 값을 가져옵니다."
+  remarks: "<a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoForward&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | CanGoForward |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public bool CanGoForward { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in forward navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in forward navigation history, or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>앞으로 탐색 기록에 적어도 하나의 항목이 없는 경우 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 앞으로 탐색 기록의 항목이 없는 경우 또는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 자체 탐색 기록을 소유 하지 않습니다."
   overload: System.Windows.Navigation.NavigationWindow.CanGoForward*
   exceptions: []
   platform:
@@ -977,12 +977,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoForward*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.CanGoForward*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.CanGoForward*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoForwardProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -998,13 +998,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the content that was last navigated to."
-  remarks: "See CurrentSource."
+  summary: "가져옵니다는 [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] 마지막으로 탐색 되는 콘텐츠의 합니다."
+  remarks: "CurrentSource를 참조 하십시오."
   syntax:
     content: public Uri CurrentSource { get; }
     return:
       type: System.Uri
-      description: "The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the content that was last navigated to, if navigated to by using a [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)]; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "[!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 를 사용 하 여 탐색 한 경우 마지막으로 탐색 하는 콘텐츠에 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], 그렇지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.CurrentSource*
   exceptions: []
   platform:
@@ -1021,13 +1021,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "The entries that are returned by ForwardStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowForwardStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ForwardStack|   |Metadata properties set to `true`|None|"
+  summary: "가져옵니다는 <xref:System.Collections.IEnumerable>뒤로 탐색 기록에서 항목을 열거 하는 데 사용 하는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>.</xref:System.Collections.IEnumerable>"
+  remarks: "ForwardStack에서 반환 되는 항목에는 전체 콘텐츠, 조각 탐색 및 사용자 지정 상태 포함 됩니다.      <a name=&quot;dependencyPropertyInfo_NavigationWindowForwardStack&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | ForwardStack |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public System.Collections.IEnumerable ForwardStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to forward navigation history, or null if there are no entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref:System.Collections.IEnumerable>적어도 하나의 항목이 항목이 없는 경우 앞으로 탐색 기록 또는 null로 추가 된 경우 또는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 자체 탐색 기록을 소유 하지 않습니다.</xref:System.Collections.IEnumerable>"
   overload: System.Windows.Navigation.NavigationWindow.ForwardStack*
   exceptions: []
   platform:
@@ -1044,12 +1044,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ForwardStack*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.ForwardStack*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.ForwardStack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ForwardStackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1065,13 +1065,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when navigation to a content fragment begins, which occurs immediately, if the desired fragment is in the current content, or after the source [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] content has been loaded, if the desired fragment is in different content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>."
+  summary: "시작 될 때 발생 콘텐츠 조각 탐색, 즉시 발생 하 원하는 조각이 되었거나 현재 콘텐츠에 원본 뒤 [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] 콘텐츠가 로드 됨, 다른 콘텐츠에 있으면 하는 경우."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.FragmentNavigationEventHandler FragmentNavigation;
     return:
       type: System.Windows.Navigation.FragmentNavigationEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1087,7 +1087,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates to the most recent item in back navigation history."
+  summary: "탐색 기록에서 가장 최근 항목으로 이동합니다."
   syntax:
     content: public void GoBack ();
     parameters: []
@@ -1095,7 +1095,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "GoBack is called when there are no entries in back navigation history."
+    description: "GoBack 뒤로 탐색 기록의 항목이 있을 때 호출 됩니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.GoForward
@@ -1110,7 +1110,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates to the most recent item in forward navigation history."
+  summary: "앞으로 탐색 기록에서 가장 최근 항목으로 이동합니다."
   syntax:
     content: public void GoForward ();
     parameters: []
@@ -1118,7 +1118,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "GoForward is called when there are no entries in forward navigation history."
+    description: "GoForward 앞으로 탐색 기록의 항목이 있을 때 호출 됩니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.LoadCompleted
@@ -1133,13 +1133,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when content that was navigated to has been loaded, parsed, and has begun rendering."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>."
+  summary: "콘텐츠 탐색 된 로드 된 구문 분석 하 고 렌더링 되기 시작할 때 발생 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.LoadCompletedEventHandler LoadCompleted;
     return:
       type: System.Windows.Navigation.LoadCompletedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1155,8 +1155,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is contained by an object."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>."
+  summary: "개체에 포함 된 콘텐츠를 비동기적으로 이동 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName> 를 참조 하십시오."
   example:
   - "The following example shows how to navigate to content that is contained by an object.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopageobjcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopageobjcode)]"
   syntax:
@@ -1164,10 +1164,10 @@ items:
     parameters:
     - id: content
       type: System.Object
-      description: "An <xref:System.Object> that contains the content to navigate to."
+      description: "<xref:System.Object>이동할 콘텐츠가 들어 있는.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>탐색; 취소 되지 않은 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1184,8 +1184,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is specified by a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md)."
+  summary: "지정 된 콘텐츠를 비동기적으로 탐색 한 [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName> 를 참조 하십시오.      > [!NOTE]  >   [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] 상대 또는 절대 일 수 있습니다. 자세한 내용은 참조 [WPF의 Pack Uri](~/add/includes/ajax-current-ext-md.md)합니다."
   example:
   - "The following example shows how to use the Navigate method to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)].  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagenavcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagenavcode)]"
   syntax:
@@ -1193,10 +1193,10 @@ items:
     parameters:
     - id: source
       type: System.Uri
-      description: "A <xref:System.Uri> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content."
+      description: "A <xref:System.Uri>사용 하 여 개체 초기화는 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 해당 콘텐츠의.</xref:System.Uri>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>탐색; 취소 되지 않은 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1213,20 +1213,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is contained by an object, and passes an object that contains data to be used for processing during navigation."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>."
+  summary: "개체에 포함 하 고 탐색 하는 동안 처리에 사용할 데이터를 포함 하는 개체를 전달 하는 콘텐츠를 비동기적으로 이동 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public bool Navigate (object content, object extraData);
     parameters:
     - id: content
       type: System.Object
-      description: "An <xref:System.Object> that contains the content to navigate to."
+      description: "<xref:System.Object>이동할 콘텐츠가 들어 있는.</xref:System.Object>"
     - id: extraData
       type: System.Object
-      description: "A <xref:System.Object> that contains data to be used for processing during navigation."
+      description: "A <xref:System.Object>탐색 하는 동안 처리에 사용 되는 데이터가 들어 있는.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>탐색; 취소 되지 않은 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1243,20 +1243,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to source content located at a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)], and pass an object that contains data to be used for processing during navigation."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>."
+  summary: "에 있는 원본 콘텐츠를 비동기적으로 탐색 한 [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]를 탐색 하는 동안 처리를 위해 사용할 데이터를 포함 하는 개체를 전달 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public bool Navigate (Uri source, object extraData);
     parameters:
     - id: source
       type: System.Uri
-      description: "A <xref:System.Uri> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content."
+      description: "A <xref:System.Uri>사용 하 여 개체 초기화는 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 해당 콘텐츠의.</xref:System.Uri>"
     - id: extraData
       type: System.Object
-      description: "A <xref:System.Object> that contains data to be used for processing during navigation."
+      description: "A <xref:System.Object>탐색 하는 동안 처리에 사용 되는 데이터가 들어 있는.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>탐색; 취소 되지 않은 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1273,13 +1273,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when the content that is being navigated to has been found, and is available from the <xref:System.Windows.Controls.ContentControl.Content*> property, although it may not have completed loading."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>."
+  summary: "탐색 중인 콘텐츠에 발견 되었습니다에서 사용할 수 있을 때 발생 된 <xref:System.Windows.Controls.ContentControl.Content*>속성을 아직 완전히 로드 되지 않았지만.</xref:System.Windows.Controls.ContentControl.Content*>"
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.NavigatedEventHandler Navigated;
     return:
       type: System.Windows.Navigation.NavigatedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1295,13 +1295,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when a new navigation is requested."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>."
+  summary: "새 탐색 요청 될 때 발생 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.NavigatingCancelEventHandler Navigating;
     return:
       type: System.Windows.Navigation.NavigatingCancelEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1317,13 +1317,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when an error is raised while navigating to the requested content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>."
+  summary: "요청 된 콘텐츠를 탐색 하는 동안 오류가 발생 하는 경우 발생 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.NavigationFailedEventHandler NavigationFailed;
     return:
       type: System.Windows.Navigation.NavigationFailedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1339,13 +1339,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs periodically during a download to provide navigation progress information."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>."
+  summary: "탐색 진행 정보를 제공 하기 위해 다운로드 하는 동안에 주기적으로 발생 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.NavigationProgressEventHandler NavigationProgress;
     return:
       type: System.Windows.Navigation.NavigationProgressEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1361,13 +1361,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets the <xref href=&quot;System.Windows.Navigation.NavigationService&quot;></xref> that is used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> to provide navigation services to its content."
-  remarks: "<xref:System.Windows.Navigation.NavigationWindow> uses a <xref:System.Windows.Navigation.NavigationService> to provide navigation services to content that is hosted by <xref:System.Windows.Navigation.NavigationWindow>. The NavigationService property is useful for code in a custom <xref:System.Windows.Navigation.NavigationWindow> to get a reference to the <xref:System.Windows.Navigation.NavigationService>, to handle navigation events, for example.       Content that is hosted by a <xref:System.Windows.Navigation.NavigationWindow>, such as <xref:System.Windows.Controls.Page>, should use the <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> method or <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> property to get a reference to the <xref:System.Windows.Navigation.NavigationService>."
+  summary: "가져옵니다는 <xref href=&quot;System.Windows.Navigation.NavigationService&quot;> </xref> 이 사용 되는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 콘텐츠에 맞게 탐색 서비스를 제공 하도록 합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationWindow>사용 하 여는 <xref:System.Windows.Navigation.NavigationService>탐색 서비스 <xref:System.Windows.Navigation.NavigationWindow>.</xref:System.Windows.Navigation.NavigationWindow> 호스팅되는 콘텐츠를 제공 하려면</xref:System.Windows.Navigation.NavigationService></xref:System.Windows.Navigation.NavigationWindow> NavigationService 속성은 사용자 지정의 코드에 대 한 유용 <xref:System.Windows.Navigation.NavigationWindow>에 대 한 참조를 얻으려고는 <xref:System.Windows.Navigation.NavigationService>로, 예를 들어 탐색 이벤트를 처리 합니다.</xref:System.Windows.Navigation.NavigationService> </xref:System.Windows.Navigation.NavigationWindow>       에 호스트 된 콘텐츠는 <xref:System.Windows.Navigation.NavigationWindow>, 예: <xref:System.Windows.Controls.Page>는 <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName>메서드 또는 <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> <xref:System.Windows.Navigation.NavigationService>.</xref:System.Windows.Navigation.NavigationService> 에 대 한 참조를 가져올 속성을</xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> 사용 해야 하는,</xref:System.Windows.Controls.Page> </xref:System.Windows.Navigation.NavigationWindow>"
   syntax:
     content: public System.Windows.Navigation.NavigationService NavigationService { get; }
     return:
       type: System.Windows.Navigation.NavigationService
-      description: "The navigation service used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
+      description: "사용 하는 탐색 서비스 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.NavigationService*
   exceptions: []
   platform:
@@ -1384,13 +1384,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when the <xref:System.Windows.Navigation.NavigationWindow.StopLoading*> method is called, or when a new navigation is requested while a current navigation is in progress."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>."
+  summary: "발생 경우는 <xref:System.Windows.Navigation.NavigationWindow.StopLoading*>메서드를 호출 하거나 새 탐색 요청 될 경우에 현재 탐색 진행 중인 동안.</xref:System.Windows.Navigation.NavigationWindow.StopLoading*>"
+  remarks: "<xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public event System.Windows.Navigation.NavigationStoppedEventHandler NavigationStopped;
     return:
       type: System.Windows.Navigation.NavigationStoppedEventHandler
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1406,7 +1406,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Called when the template generation for the visual tree is created."
+  summary: "서식 파일 생성에 대 한 시각적 트리를 만들 때 호출 됩니다."
   syntax:
     content: public override void OnApplyTemplate ();
     parameters: []
@@ -1426,14 +1426,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Raises the <xref href=&quot;System.Windows.Window.Closed&quot;></xref> event."
-  remarks: "OnClosed releases the <xref:System.Windows.Navigation.NavigationService> object that it is using to manage navigation, before raising <xref:System.Windows.Window.Closed> event."
+  summary: "발생 된 <xref href=&quot;System.Windows.Window.Closed&quot;> </xref> 이벤트입니다."
+  remarks: "OnClosed 해제는 <xref:System.Windows.Navigation.NavigationService>탐색 발생 하기 전에 관리 하는 데 사용 중인 개체 <xref:System.Windows.Window.Closed>이벤트.</xref:System.Windows.Window.Closed> </xref:System.Windows.Navigation.NavigationService>"
   syntax:
     content: protected override void OnClosed (EventArgs args);
     parameters:
     - id: args
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "<xref:System.EventArgs>이벤트 데이터를 포함 하는.</xref:System.EventArgs>"
   overload: System.Windows.Navigation.NavigationWindow.OnClosed*
   exceptions: []
   platform:
@@ -1450,8 +1450,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Creates and returns a <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;></xref> object for this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "This method overrides <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>."
+  summary: "만들고 반환는 <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;> </xref> 이 대 한 개체 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>합니다."
+  remarks: "이 메서드를 재정의 <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>.</xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>"
   syntax:
     content: protected override System.Windows.Automation.Peers.AutomationPeer OnCreateAutomationPeer ();
     parameters: []
@@ -1474,8 +1474,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Reloads the current content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>."
+  summary: "현재 콘텐츠를 다시 로드합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName> 를 참조 하십시오."
   example:
   - "The following example shows how to call the Refresh method to reload the content in a <xref:System.Windows.Navigation.NavigationWindow>.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigaterefreshcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigaterefreshcode)]"
   syntax:
@@ -1497,14 +1497,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Removes the most recent journal entry from back history."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>."
+  summary: "뒤로 기록에서 가장 최근의 업무 일지 항목을 제거합니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName> 를 참조 하십시오."
   syntax:
     content: public System.Windows.Navigation.JournalEntry RemoveBackEntry ();
     parameters: []
     return:
       type: System.Windows.Navigation.JournalEntry
-      description: "The most recent <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;></xref> in back navigation history, if there is one."
+      description: "가장 최근의 <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;> </xref> 탐색 기록, 있는 경우에 합니다."
   overload: System.Windows.Navigation.NavigationWindow.RemoveBackEntry*
   exceptions: []
   platform:
@@ -1521,18 +1521,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> isolates external [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] content within a partial trust security sandbox (with default Internet zone permission set)."
-  remarks: "External content is [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] content that is not included with an application as either a resource file or a content file (for more information, see [WPF Application Resource, Content, and Data Files](~/add/includes/ajax-current-ext-md.md)).       When SandboxExternalContent is true, and the content of the <xref:System.Windows.Navigation.NavigationWindow> is an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file, the content is loaded into a partial trust security sandbox that is limited to the default Internet zone permission set. Additionally, the external content is loaded into a separate process. Consequently, the external content becomes isolated and does not have access to application-scope resources, such as resource dictionaries (for more information, see <xref:System.Windows.ResourceDictionary>).      > [!NOTE] >  <xref:System.Windows.Navigation.NavigationWindow> contains external content only when the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property is set to the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file. <xref:System.Windows.Navigation.NavigationWindow> content that is provided using the <xref:System.Windows.Controls.ContentControl.Content%2A> property is considered internal content and, subsequently, is not isolated.      <a name=&quot;dependencyPropertyInfo_NavigationWindowSandboxExternalContent&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|SandboxExternalContent|   |Metadata properties set to `true`|None|"
+  summary: "표시 하는 값을 가져오거나 설정 합니다. 여부는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 격리 외부 [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] 부분 신뢰 보안 샌드박스에서 (사용 하 여 콘텐츠 기본 인터넷 영역 권한 집합)."
+  remarks: "외부 콘텐츠는 [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] 응용 프로그램 리소스 파일 또는 콘텐츠 파일로 포함 되지 않은 콘텐츠입니다 (자세한 내용은 참조 [WPF 응용 프로그램 리소스, 내용 및 데이터 파일](~/add/includes/ajax-current-ext-md.md)).       SandboxExternalContent가 true 고의 콘텐츠는 <xref:System.Windows.Navigation.NavigationWindow>외부 [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] 파일을 콘텐츠는 인터넷 영역 권한 집합으로 기본 제한 된 부분 신뢰 보안 샌드박스에 로드 됩니다.</xref:System.Windows.Navigation.NavigationWindow> 또한 외부 콘텐츠를 별도 프로세스에 로드 됩니다. 따라서 외부 콘텐츠 격리 되며 리소스 사전 등의 응용 프로그램 범위 리소스에 액세스할 수 없는 (자세한 내용은 참조 <xref:System.Windows.ResourceDictionary>).</xref:System.Windows.ResourceDictionary>      > [!NOTE] > <xref:System.Windows.Navigation.NavigationWindow>외부 콘텐츠 경우에만 포함 되어는 <xref:System.Windows.Navigation.NavigationWindow.Source%2A>속성이로 설정 되는 [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] 외부 [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] 파일.</xref:System.Windows.Navigation.NavigationWindow.Source%2A> </xref:System.Windows.Navigation.NavigationWindow> <xref:System.Windows.Navigation.NavigationWindow>사용 하 여 제공 되는 콘텐츠는 <xref:System.Windows.Controls.ContentControl.Content%2A>내부 콘텐츠로 간주 되며 속성과, 그 다음 격리 되지 않은.</xref:System.Windows.Controls.ContentControl.Content%2A></xref:System.Windows.Navigation.NavigationWindow>      <a name=&quot;dependencyPropertyInfo_NavigationWindowSandboxExternalContent&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | SandboxExternalContent |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public bool SandboxExternalContent { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if content is isolated within a partial trust security sandbox; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>콘텐츠를 부분 신뢰 보안 샌드박스; 내에 격리 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.SandboxExternalContent*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "SandboxExternalContent is set when an application is executing in partial trust."
+    description: "응용 프로그램이 부분 신뢰에서 실행 중일 때 SandboxExternalContent 설정 됩니다."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
@@ -1547,12 +1547,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SandboxExternalContentProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1568,14 +1568,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Indicates whether the <xref:System.Windows.Controls.ContentControl.Content*> property should be persisted."
-  remarks: "This `ShouldSerialize` method is provided because the <xref:System.Windows.Controls.ContentControl.Content%2A> property does not have a simple default value. This method indicates whether the property has changed from its default value. You typically call this method if you are either developing a designer for the <xref:System.Windows.Navigation.NavigationWindow> or developing your own control incorporating the <xref:System.Windows.Navigation.NavigationWindow>."
+  summary: "표시 여부는 <xref:System.Windows.Controls.ContentControl.Content*>속성을 유지 해야 합니다.</xref:System.Windows.Controls.ContentControl.Content*>"
+  remarks: "이 `ShouldSerialize` 메서드가 때문에 제공 되는 <xref:System.Windows.Controls.ContentControl.Content%2A>속성 간단한 기본 값이 없는.</xref:System.Windows.Controls.ContentControl.Content%2A> 이 메서드는 속성이 기본값에서 변경 되었는지 여부를 나타냅니다. <xref:System.Windows.Navigation.NavigationWindow>또는 <xref:System.Windows.Navigation.NavigationWindow>.</xref:System.Windows.Navigation.NavigationWindow> 통합 제어 자체 개발</xref:System.Windows.Navigation.NavigationWindow> 에 대 한 디자이너를 하거나 개발 하는 경우 일반적으로이 메서드를 호출"
   syntax:
     content: public override bool ShouldSerializeContent ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>속성 값이 기본값에서 변경 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent*
   exceptions: []
   platform:
@@ -1592,13 +1592,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> shows its navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]."
-  remarks: "To aid back and forward navigation, <xref:System.Windows.Navigation.NavigationWindow> automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]       Navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed whether or not navigation has occurred.      <a name=&quot;dependencyPropertyInfo_NavigationWindowShowsNavigationUI&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ShowsNavigationUI|   |Metadata properties set to `true`|None|"
+  summary: "표시 하는 값을 가져오거나 설정 합니다. 여부는 <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> 의 탐색을 표시 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]합니다."
+  remarks: "뒤로 / 앞으로 탐색을 지원 하기 위해 <xref:System.Windows.Navigation.NavigationWindow>탐색을 자동으로 표시 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] 탐색 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] 탐색이 발생 하는지 여부를 표시 됩니다.</xref:System.Windows.Navigation.NavigationWindow>      <a name=&quot;dependencyPropertyInfo_NavigationWindowShowsNavigationUI&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | ShowsNavigationUI |   | 메타 데이터 속성이 `true`| None |"
   syntax:
     content: public bool ShowsNavigationUI { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 탐색 [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] 표시 되 고, 그러지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*
   exceptions: []
   platform:
@@ -1615,12 +1615,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ShowsNavigationUIProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1636,15 +1636,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the current content, or the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of new content that is currently being navigated to."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_NavigationWindowSource&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|Source|   |Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|"
+  summary: "가져오거나는 [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] 현재 콘텐츠의 또는 [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 현재 탐색 되 고 있는 새 콘텐츠입니다."
+  remarks: "<xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName> 를 참조 하십시오.      > [!NOTE]  >   [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] 상대 또는 절대 일 수 있습니다. 자세한 내용은 참조 [WPF의 Pack Uri](~/add/includes/ajax-current-ext-md.md)합니다.      <a name=&quot;dependencyPropertyInfo_NavigationWindowSource&quot;></a># # 종속성 속성 정보 | | |   |-|-|   | 식별자 필드 | 소스 |   | 메타 데이터 속성이 `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|</xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>"
   example:
   - "The following example shows how to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] by setting the Source property.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagesrccode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagesrccode)]"
   syntax:
     content: public Uri Source { get; set; }
     return:
       type: System.Uri
-      description: "The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the current content, or the content that is currently being navigated to."
+      description: "[!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] 현재 콘텐츠 또는 현재 탐색 중인 콘텐츠에 대 한 합니다."
   overload: System.Windows.Navigation.NavigationWindow.Source*
   exceptions: []
   platform:
@@ -1661,12 +1661,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.Source*> dependency property."
+  summary: "식별 된 <xref:System.Windows.Navigation.NavigationWindow.Source*>종속성 속성입니다.</xref:System.Windows.Navigation.NavigationWindow.Source*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SourceProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1682,8 +1682,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Stops further downloading of content for the current navigation request."
-  remarks: "StopLoading stops the download of the requested content, and causes the <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> event to be raised.       See <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>."
+  summary: "더 이상 현재 탐색 요청에 대 한 콘텐츠 다운로드를 중지 합니다."
+  remarks: "StopLoading 요청 된 콘텐츠의 다운로드를 중지 하 고 하면는 <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>이벤트를 발생 합니다.</xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>       <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName> 를 참조 하십시오."
   example:
   - "The following example shows how to call the StopLoading method to stop navigation to content before it has finished being downloaded.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatestoploadingcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatestoploadingcode)]"
   syntax:
@@ -1706,13 +1706,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the base uniform resource identifier (URI) of the current context."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Navigation.NavigationWindow> instance is cast to an <xref:System.Windows.Markup.IUriContext> interface."
+  summary: "현재 컨텍스트의 기본 uniform resource identifier (URI)를 가져오거나 설정 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있습니다 경우에만 <xref:System.Windows.Navigation.NavigationWindow>인스턴스로 캐스팅 되는 <xref:System.Windows.Markup.IUriContext>인터페이스.</xref:System.Windows.Markup.IUriContext> </xref:System.Windows.Navigation.NavigationWindow>"
   syntax:
     content: Uri System.Windows.Markup.IUriContext.BaseUri { get; set; }
     return:
       type: System.Uri
-      description: "The base URI of the current context."
+      description: "현재 컨텍스트의 기본 URI입니다."
   overload: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri*
   exceptions: []
   platform:

@@ -12,8 +12,8 @@ items:
   nameWithType: ProfileServiceManager
   fullName: System.Web.UI.ProfileServiceManager
   type: Class
-  summary: "Configures a set of preloaded profile properties and the location of a custom implementation of the profile service."
-  remarks: "The ProfileServiceManager class corresponds to the <xref:System.Web.UI.ScriptManager.ProfileService%2A> property that can be added to the <xref:System.Web.UI.ScriptManager> or <xref:System.Web.UI.ScriptManagerProxy> control.       You can use ProfileServiceManager to specify a set of profile properties that will be preloaded when the page is rendered and will be available to client script. Also, instead of using the built-in profile Web service provided by AJAX features of ASP.NET, you can use this class to provide the path of an alternative implementation of the Web service that will be used for loading or saving profile properties from script.       To use the profile service in your application, you must enable it in the configuration file. If you use the built-in profile Web service and do not have to preload properties, you do not have to explicitly declare the profile service manager on the page.       To declaratively specify a set of preloaded properties, or a custom profile Web service, include a `<ProfileService>` element inside the `<asp:ScriptManager>` element on the page, as shown in the following example.      ```   <asp:ScriptManager ID=&quot;SM1&quot; runat=&quot;server&quot;>     <ProfileService LoadProperties=&quot;propertyA,propertyB&quot; Path=&quot;MyProfileService.asmx&quot; />   </asp:ScriptManager>   ```       You can also programmatically configure the profile service to preload properties or to use a custom profile Web service.       The following example shows the basic class structure that must be implemented in a custom profile Web service.       [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
+  summary: "미리 로드 프로필 속성 집합 및 프로필 서비스의 사용자 지정 구현의 위치를 구성합니다."
+  remarks: "ProfileServiceManager 클래스에 해당 하는 <xref:System.Web.UI.ScriptManager.ProfileService%2A>에 추가할 수 있는 속성은 <xref:System.Web.UI.ScriptManager>또는 <xref:System.Web.UI.ScriptManagerProxy>컨트롤.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> </xref:System.Web.UI.ScriptManager.ProfileService%2A>       페이지를 렌더링 하 고 클라이언트 스크립트에서 사용할 수 있습니다 때 미리 로드 해야 하는 프로필 속성을 지정 하려면 ProfileServiceManager를 사용할 수 있습니다. 또한 기본 제공 프로필의 ASP.NET AJAX 기능에서 제공 하는 웹 서비스를 사용 하지 않고 로드 하거나 스크립트에서 프로필 속성을 저장 하기 위해 사용할 수 있는 웹 서비스의 대체 구현의 경로 제공 하려면이 클래스를 사용할 수 있습니다.       프로필 서비스에서 응용 프로그램을 사용 하려면 구성 파일에 설정 해야 합니다. 기본 제공 프로필 웹 서비스를 사용 하 고 속성을 미리 로드할 필요가 없습니다 페이지에서 프로필 서비스 관리자를 명시적으로 선언할 필요가 없습니다.       집합 미리 로드 된 속성 또는 사용자 지정 프로필 웹 서비스를 선언적으로 지정 하려면 포함는 `<ProfileService>` 요소 안에 `<asp:ScriptManager>` 페이지에서 다음 예제와 같이 요소입니다.      ```   <asp:ScriptManager ID=&quot;SM1&quot; runat=&quot;server&quot;>     <ProfileService LoadProperties=&quot;propertyA,propertyB&quot; Path=&quot;MyProfileService.asmx&quot; />   </asp:ScriptManager>   ```또한 프로그래밍 방식으로 속성을 미리 로드 하거나 웹 서비스는 사용자 지정 프로필을 사용 하도록 프로필 서비스를 구성할 수 있습니다.       다음 예제에서는 사용자 지정 프로필 웹 서비스에서에서 구현 해야 하는 기본 클래스 구조를 보여 줍니다.       [!code-cs[XpsCreate #XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: >-
       [System.ComponentModel.DefaultProperty("Path")]
@@ -39,7 +39,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.ProfileServiceManager&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.UI.ProfileServiceManager&quot;> </xref> 클래스입니다."
   syntax:
     content: public ProfileServiceManager ();
     parameters: []
@@ -59,18 +59,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets an array that contains the profile properties that will be made available to client script."
-  remarks: "If LoadProperties contains at least one string that corresponds to the name of a profile property, then the built-in profile service in the Web application retrieves the current user&quot;s profile data for each of the specified profile properties. The profile property values are serialized and then made available to client script through the [properties Field](~/add/includes/ajax-current-ext-md.md) collection.      > [!NOTE] >  To set this property declaratively, use a comma-separated list of property names. For grouped property values, use the syntax *GroupName*.*PropertyName*.       When LoadProperties is an empty array, no profile data is preloaded.       The LoadProperties property can be specified in the <xref:System.Web.UI.ScriptManager> control or in an associated <xref:System.Web.UI.ScriptManagerProxy> control. When LoadProperties is set on both the <xref:System.Web.UI.ScriptManager> control and on one or more <xref:System.Web.UI.ScriptManagerProxy> controls, the set of properties is determined by merging all the specified properties. Duplicate properties are ignored."
+  summary: "클라이언트 스크립트에서 사용 가능 하 게 하는 프로필 속성을 포함 하는 배열을 가져오거나 설정 합니다."
+  remarks: "프로필 속성의 이름에 해당 하는 하나 이상의 문자열을 포함 하는 LoadProperties, 웹 응용 프로그램에서 기본 제공 프로필 서비스 각 지정된 된 프로필 속성에 대 한 현재 사용자의 프로필 데이터를 검색 합니다. 프로필 속성 값으로 serialize 되 고 클라이언트 스크립트를 통해 사용할 수 있게 됩니다는 [속성 필드](~/add/includes/ajax-current-ext-md.md) 컬렉션입니다.      > [!NOTE] >이 속성을 선언적으로 설정 하려면 속성 이름의 쉼표로 구분 된 목록을 사용 합니다. 그룹화 된 속성 값에 대 한 구문을 사용 하 여 *GroupName*.* PropertyName*합니다.       LoadProperties은 빈 배열, 프로필 데이터가 미리 로드 되어 있습니다.       LoadProperties 속성에 지정할 수 있습니다는 <xref:System.Web.UI.ScriptManager>제어 나 관련 <xref:System.Web.UI.ScriptManagerProxy>컨트롤.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> LoadProperties 모두에 대해 설정 된 경우는 <xref:System.Web.UI.ScriptManager>제어 및 하나 이상의 <xref:System.Web.UI.ScriptManagerProxy>컨트롤 속성 집합이 지정된 된 모든 속성을 병합 하 여 결정 됩니다.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> 중복 된 속성은 무시 됩니다."
   syntax:
     content: public string[] LoadProperties { get; set; }
     return:
       type: System.String[]
-      description: "A string array that contains the names of the profile properties that will be preloaded and made available to client script. The default is an empty array."
+      description: "미리 로드 되 고 클라이언트 스크립트에서 사용할 수 있는 프로필 속성의 이름이 포함 된 문자열 배열입니다. 기본값은 빈 배열입니다."
   overload: System.Web.UI.ProfileServiceManager.LoadProperties*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The LoadProperties property includes property names that are not in the current application’s profile schema."
+    description: "LoadProperties 속성에는 현재 응용 프로그램의 프로필 스키마에 없는 속성 이름이 포함 됩니다."
   platform:
   - net462
 - uid: System.Web.UI.ProfileServiceManager.Path
@@ -85,18 +85,18 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the path of a custom implementation of the profile Web service."
-  remarks: "Relative virtual paths, absolute virtual paths, and fully-qualified paths are allowed.       If the Path property is not set, the return value is <xref:System.String>. In this case, the AJAX features of ASP.NET will then use the built-in profile Web service that corresponds to the following internal default path: ~/ScriptServices_ProfileService.asmx. The same behavior occurs if you set Path to be an empty value or `null`.       Path can be specified in the <xref:System.Web.UI.ScriptManager> control or in an associated <xref:System.Web.UI.ScriptManagerProxy> control. When Path is set at the <xref:System.Web.UI.ScriptManagerProxy> level, the following caveats apply:      -   If there are multiple proxies in the control hierarchy, Path does not have to be set on each proxy instance.      -   If Path is explicitly set on a proxy instance, the value must be the same for all other proxies on which this property is explicitly set."
+  summary: "사용자 지정 구현 프로필 웹 서비스의 경로 가져오거나 설정 합니다."
+  remarks: "정규화 된 경로 및 절대 가상 경로 상대 가상 경로 허용 됩니다.       반환 값은 <xref:System.String>.</xref:System.String> Path 속성을 설정 하지 이 경우의 ASP.NET AJAX 기능 됩니다 다음 사용 하 여 기본 제공 프로필 다음 내부 기본 경로에 해당 하는 웹 서비스: ~ / ScriptServices_ProfileService.asmx 합니다. 빈 값에 대 한 경로 설정 하는 경우 동일한 동작이 수행 또는 `null`합니다.       에 경로 지정할 수 있습니다는 <xref:System.Web.UI.ScriptManager>제어 나 관련 <xref:System.Web.UI.ScriptManagerProxy>컨트롤.</xref:System.Web.UI.ScriptManagerProxy> </xref:System.Web.UI.ScriptManager> 경로에 설정 된 경우는 <xref:System.Web.UI.ScriptManagerProxy>수준으로 다음과 같은 제한 사항이 적용 됩니다:-경로 컨트롤 계층 구조에서 여러 프록시가 있는 경우 각 프록시 인스턴스에서 설정할 필요가 없습니다.</xref:System.Web.UI.ScriptManagerProxy>      -경로가 프록시 인스턴스에서 명시적으로 설정 하는 경우이 속성은 명시적으로 설정 하는 다른 모든 프록시에 대해 동일한 값 이어야 합니다."
   syntax:
     content: public string Path { get; set; }
     return:
       type: System.String
-      description: "The path of a custom implementation of the profile Web service."
+      description: "프로필 웹 서비스의 사용자 지정 구현의 경로입니다."
   overload: System.Web.UI.ProfileServiceManager.Path*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "More than one unique path was set in the control hierarchy."
+    description: "둘 이상의 고유 경로 컨트롤 계층 구조에 설정 되었습니다."
   platform:
   - net462
 references:
