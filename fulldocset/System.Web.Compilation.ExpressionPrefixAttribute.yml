@@ -11,8 +11,8 @@ items:
   nameWithType: ExpressionPrefixAttribute
   fullName: System.Web.Compilation.ExpressionPrefixAttribute
   type: Class
-  summary: "Specifies the prefix attribute to use for the expression builder. This class cannot be inherited."
-  remarks: "The ExpressionPrefixAttribute class is used at design time with expressions that are not defined in the configuration file. Use the <xref:System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix%2A> property to get the name of the prefix that is associated with the ExpressionPrefixAttribute object. An expression builder looks for any statements with the following form:       `<%$ [expressionPrefix]:[expressionValue] %>`       Then the expression builder, based on the prefix of the expression, generates code for the property assignment. The `expressionPrefix` parameter refers to a configured expression builder, which is defined in the configuration file or through an ExpressionPrefixAttribute object."
+  summary: "식 작성기에 사용할 접두사 특성을 지정 합니다. 이 클래스는 상속 될 수 없습니다."
+  remarks: "ExpressionPrefixAttribute 클래스는 구성 파일에 정의 되어 있지 않은 식 사용 하 여 디자인 타임에 사용 됩니다. 사용 하 여는 <xref:System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix%2A>속성 ExpressionPrefixAttribute 개체와 연결 된 접두사의 이름을 가져오지 못했습니다.</xref:System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix%2A> 식 작성기는 다음 형식의 문을 찾습니다: `<%$ [expressionPrefix]:[expressionValue] %>` 식 작성기는 식의 접두사에 따라 속성 할당에 대 한 코드를 생성 합니다. `expressionPrefix` 매개 변수 또는 ExpressionPrefixAttribute 개체를 통해 구성 파일에 정의 된 하는 구성 된 식 작성기를 참조 합니다."
   example:
   - "The following code examples demonstrate how to use the ExpressionPrefixAttribute class. The attribute is applied to a custom expression builder that implements the <xref:System.Web.Compilation.ExpressionBuilder> abstract class. This implementation of <xref:System.Web.Compilation.ExpressionBuilder> returns an evaluated statement that is passed to the expression. To run this example, you must first register the custom expression builder in the Web.config file. The first code example demonstrates how to register the custom expression builder in the Web.config file.  \n  \n```  \n<configuration>  \n    <system.web>  \n       <compilation>  \n          <expressionBuilders>  \n              <add expressionPrefix=\"MyCustomExpression\"  \n               type=\"MyCustomExpressionBuilder\"/>  \n          </expressionBuilders>  \n       </compilation>  \n    </system.web>  \n</configuration>  \n```  \n  \n The second code example demonstrates how to reference the expression in an .aspx file.  \n  \n```  \n<asp:Label ID=\"Label1\" runat=\"server\"   \nText=\"<%$ MyCustomExpression:Hello, world! %>\" />  \n```  \n  \n The third code example demonstrates how to develop a customized expression builder by deriving from <xref:System.Web.Compilation.ExpressionBuilder>. To run this code example, you must place the class in the App_Code folder.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -38,19 +38,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Compilation.ExpressionPrefixAttribute&quot;></xref> class."
-  remarks: "Use the ExpressionPrefixAttribute constructor to initialize an instance of the <xref:System.Web.Compilation.ExpressionPrefixAttribute> class using a prefix identifier. The ExpressionPrefixAttribute is the default constructor for the <xref:System.Web.Compilation.ExpressionPrefixAttribute> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Web.Compilation.ExpressionPrefixAttribute&quot;> </xref> 클래스입니다."
+  remarks: "ExpressionPrefixAttribute 생성자의 인스턴스를 초기화를 사용 하 여 <xref:System.Web.Compilation.ExpressionPrefixAttribute>접두사 식별자를 사용 하 여 클래스.</xref:System.Web.Compilation.ExpressionPrefixAttribute> ExpressionPrefixAttribute은 <xref:System.Web.Compilation.ExpressionPrefixAttribute>클래스</xref:System.Web.Compilation.ExpressionPrefixAttribute> 에 대 한 기본 생성자"
   syntax:
     content: public ExpressionPrefixAttribute (string expressionPrefix);
     parameters:
     - id: expressionPrefix
       type: System.String
-      description: "The prefix of the current <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;></xref>."
+      description: "현재 접두사 <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;> </xref>합니다."
   overload: System.Web.Compilation.ExpressionPrefixAttribute.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>expressionPrefix</code> is null or an empty string (&quot;&quot;)."
+    description: "<code>expressionPrefix</code>가 null 이거나 빈 문자열 (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix
@@ -65,13 +65,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets the prefix value for the current <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;></xref> object."
-  remarks: "Use the ExpressionPrefix property to retrieve the name of the prefix that is associated with a given attribute."
+  summary: "현재에 대 한 접두사 값을 가져옵니다 <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;> </xref> 개체입니다."
+  remarks: "ExpressionPrefix 속성을 사용 하 여 연결 된 지정된 된 특성의 접두사 이름을 검색할 수 있습니다."
   syntax:
     content: public string ExpressionPrefix { get; }
     return:
       type: System.String
-      description: "The expression prefix for the configured <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;></xref>."
+      description: "구성 된 식 접두사 <xref href=&quot;System.Web.Compilation.ExpressionBuilder&quot;> </xref>합니다."
   overload: System.Web.Compilation.ExpressionPrefixAttribute.ExpressionPrefix*
   exceptions: []
   platform:

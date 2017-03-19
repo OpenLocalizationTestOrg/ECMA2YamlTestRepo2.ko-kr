@@ -15,8 +15,8 @@ items:
   nameWithType: WebRequestInformation
   fullName: System.Web.Management.WebRequestInformation
   type: Class
-  summary: "Provides information about the current Web request."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       Instances of the WebRequestInformation class contain information that is obtained using the <xref:System.Web.Management.WebRequestEvent>, <xref:System.Web.Management.WebAuditEvent>, <xref:System.Web.Management.WebErrorEvent>, or <xref:System.Web.Management.WebRequestErrorEvent> types.       Your application needs the appropriate permissions to access protected information provided by this type.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom event class, see the example provided in this topic."
+  summary: "현재 웹 요청에 대 한 정보를 제공합니다."
+  remarks: "ASP.NET 상태 모니터링 생산 및 운영 담당자를 웹 응용 프로그램 배포를 관리할 수 있습니다. <xref:System.Web.Management>네임 스페이스 응용 프로그램 상태 데이터와이 데이터를 처리 하는 공급자 유형을 패키지 하는 상태 이벤트 형식을 포함 합니다.</xref:System.Web.Management> 또한 상태 이벤트를 관리 하는 동안 유용한 지 원하는 형식을 포함 합니다.       WebRequestInformation 클래스의 인스턴스를 사용 하 여 얻은 정보를 포함 된 <xref:System.Web.Management.WebRequestEvent>, <xref:System.Web.Management.WebAuditEvent>, <xref:System.Web.Management.WebErrorEvent>, 또는 <xref:System.Web.Management.WebRequestErrorEvent>형식.</xref:System.Web.Management.WebRequestErrorEvent> </xref:System.Web.Management.WebErrorEvent> </xref:System.Web.Management.WebAuditEvent> </xref:System.Web.Management.WebRequestEvent>       응용 프로그램에이 형식에서 제공 하는 보호 된 정보에 액세스 하려면 적절 한 권한이 있어야 합니다.      > [!NOTE] > 대부분의 경우에서 있습니다 수 구현 된 대로 ASP.NET 상태 모니터링 형식을 사용할 수 있으며 값을 지정 하 여 상태 모니터링 시스템을 제어 합니다는 `healthMonitoring` 구성 섹션입니다. 사용자 고유의 사용자 지정 이벤트와 공급자를 만들 상태 모니터링 유형에 서 파생할 수 있습니다. 사용자 지정 이벤트 클래스를 만드는 예를 들어이 항목에서 제공 하는 예제를 참조 하십시오."
   example:
   - "The following code example shows how to implement a custom event that uses the WebRequestInformation type.  \n  \n Also shown is an excerpt of the configuration file that enables ASP.NET to use this custom event.  \n  \n Ensure that your custom event is raised at the proper time, that is, when the equivalent system health event it replaces would be raised.  \n  \n```  \n<healthMonitoring  \n  heartBeatInterval=\"0\" enabled=\"true\">  \n  \n  <profiles>  \n    <add name=\"Custom\"   \n      minInstances=\"1\"   \n      maxLimit=\"Infinite\"   \n      minInterval=\"00:00:00\" />  \n  </profiles>  \n  \n  <eventMappings>  \n  \n    <add   \n      name=\"SampleWebRequestInformation\"   \n      type=\"SamplesAspNet.SampleWebRequestInformation,webrequestinformation,Version=1.0.1782.28745, Culture=neutral, PublicKeyToken=79955d9b8521c250,processorArchitecture=MSIL\" />  \n  \n  </eventMappings>  \n  \n  <rules>  \n  \n    <add name=\"Custom Web Request Info Event\"   \n      eventName=\"SampleWebRequestInformation\"   \n      provider=\"EventLogProvider\"  \n      profile=\"Custom\" />  \n  \n  </rules>  \n  \n</healthMonitoring>  \n```  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#1](~/add/codesnippet/csharp/t-system.web.management._11_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#1](~/add/codesnippet/visualbasic/t-system.web.management._11_1.vb)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats the Web-request information."
-  remarks: "The FormatToString method provides a uniform format for event information, which is useful if the event data must be logged and later presented to the user. It is called internally when the provider invokes one of the <xref:System.Web.Management.WebBaseEvent.ToString%2A> methods."
+  summary: "웹 요청 정보 형식을 지정합니다."
+  remarks: "FormatToString 메서드는 이벤트 데이터를 기록 하 고 나중에 사용자에 게 표시 해야 하는 경우에 유용 하는 이벤트 정보에 대 한 일관 된 형식을 제공 합니다. 공급자 중 하나를 호출 하는 경우 내부적으로 호출 됩니다는 <xref:System.Web.Management.WebBaseEvent.ToString%2A>메서드.</xref:System.Web.Management.WebBaseEvent.ToString%2A>"
   example:
   - "The following code example shows how to format custom information.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#9](~/add/codesnippet/csharp/ca29f60b-9b94-4c78-a2ae-_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#9](~/add/codesnippet/visualbasic/ca29f60b-9b94-4c78-a2ae-_1.vb)]"
   syntax:
@@ -48,7 +48,7 @@ items:
     parameters:
     - id: formatter
       type: System.Web.Management.WebEventFormatter
-      description: "The <xref href=&quot;System.Web.Management.WebEventFormatter&quot;></xref> that contains the tab and indentation settings used to format the Web health event information."
+      description: "<xref href=&quot;System.Web.Management.WebEventFormatter&quot;> </xref> 웹 상태 이벤트 정보 형식을 지정 하는 데 사용 탭 및 들여쓰기 설정이 들어 있는입니다."
   overload: System.Web.Management.WebRequestInformation.FormatToString*
   exceptions: []
   platform:
@@ -65,15 +65,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the instance of the managed-code principal associated with the Web request."
-  remarks: "The principal refers to the authenticated entity that issued the Web request."
+  summary: "웹 요청과 연결 된 관리 코드 주 서버 인스턴스를 가져옵니다."
+  remarks: "주 서버를 웹 요청을 발급 한 인증 된 엔터티를 나타냅니다."
   example:
   - "The following code example shows how to use the principal associated with the Web request.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#8](~/add/codesnippet/csharp/p-system.web.management._39_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#8](~/add/codesnippet/visualbasic/p-system.web.management._39_1.vb)]"
   syntax:
     content: public System.Security.Principal.IPrincipal Principal { get; }
     return:
       type: System.Security.Principal.IPrincipal
-      description: "The <xref:System.Security.Principal.IPrincipal> instance that is associated with the request event."
+      description: "<xref:System.Security.Principal.IPrincipal>요청 이벤트와 연결 된 인스턴스.</xref:System.Security.Principal.IPrincipal>"
   overload: System.Web.Management.WebRequestInformation.Principal*
   exceptions: []
   platform:
@@ -90,7 +90,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the physical path of the Web request."
+  summary: "웹 요청의 실제 경로 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows how to get the Web-request path.  \n  \n [!code-cs[System.Web.Management.WebRequestInformation#5](~/add/codesnippet/csharp/p-system.web.management._0_1.cs)]\n [!code-vb[System.Web.Management.WebRequestInformation#5](~/add/codesnippet/visualbasic/p-system.web.management._0_1.vb)]"
@@ -98,7 +98,7 @@ items:
     content: public string RequestPath { get; }
     return:
       type: System.String
-      description: "The physical path of the request."
+      description: "요청의 실제 경로입니다."
   overload: System.Web.Management.WebRequestInformation.RequestPath*
   exceptions: []
   platform:
@@ -115,13 +115,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the logical path of the request."
-  remarks: "The following code example shows how to get the Web-request logical path.       [!code-cs[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/csharp/p-system.web.management._10_1.cs)]  [!code-vb[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/visualbasic/p-system.web.management._10_1.vb)]"
+  summary: "요청의 논리 경로 가져옵니다."
+  remarks: "다음 코드 예제에서는 웹 요청 논리 경로를 가져오는 방법을 보여 줍니다.       [!code-cs[System.Web.Management.WebRequestInformation#6](~/add/codesnippet/csharp/p-system.web.management._10_1.cs)][!code-vb[System.Web.Management.WebRequestInformation#6  ](~/add/codesnippet/visualbasic/p-system.web.management._10_1.vb)]"
   syntax:
     content: public string RequestUrl { get; }
     return:
       type: System.String
-      description: "The logical path of the request."
+      description: "요청의 논리 경로입니다."
   overload: System.Web.Management.WebRequestInformation.RequestUrl*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a string that represents the Windows logon name of the user on whose behalf the code is being run."
-  remarks: "The value of this property is determined by the current <xref:System.Security.Principal.WindowsIdentity> object&quot;s <xref:System.Security.Principal.WindowsIdentity.Name%2A> property."
+  summary: "대신 코드를 실행 하 고는 사용자의 Windows 로그온 이름을 나타내는 문자열을 가져옵니다."
+  remarks: "현재이 속성의 값이 결정 <xref:System.Security.Principal.WindowsIdentity>개체의 <xref:System.Security.Principal.WindowsIdentity.Name%2A>속성.</xref:System.Security.Principal.WindowsIdentity.Name%2A> </xref:System.Security.Principal.WindowsIdentity>"
   syntax:
     content: public string ThreadAccountName { get; }
     return:
       type: System.String
-      description: "The Windows logon name of the user on whose behalf the code is being run."
+      description: "대신 코드를 실행 중인 사용자의 Windows 로그온 이름입니다."
   overload: System.Web.Management.WebRequestInformation.ThreadAccountName*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the user host address."
-  remarks: "The following code example shows how to get the user host address.       [!code-cs[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/csharp/p-system.web.management._4_1.cs)]  [!code-vb[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/visualbasic/p-system.web.management._4_1.vb)]"
+  summary: "사용자 호스트 주소를 가져옵니다."
+  remarks: "다음 코드 예제에는 사용자 호스트 주소를 가져오는 방법을 보여 줍니다.       [!code-cs[System.Web.Management.WebRequestInformation#7](~/add/codesnippet/csharp/p-system.web.management._4_1.cs)][!code-vb[System.Web.Management.WebRequestInformation#7  ](~/add/codesnippet/visualbasic/p-system.web.management._4_1.vb)]"
   syntax:
     content: public string UserHostAddress { get; }
     return:
       type: System.String
-      description: "The user host address."
+      description: "사용자 호스트 주소입니다."
   overload: System.Web.Management.WebRequestInformation.UserHostAddress*
   exceptions: []
   platform:

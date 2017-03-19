@@ -69,8 +69,8 @@ items:
   nameWithType: HttpRequest
   fullName: System.Web.HttpRequest
   type: Class
-  summary: "Enables ASP.NET to read the HTTP values sent by a client during a Web request."
-  remarks: "The methods and properties of the HttpRequest class are exposed through the `Request` properties of the <xref:System.Web.HttpApplication>, <xref:System.Web.HttpContext>, <xref:System.Web.UI.Page>, and <xref:System.Web.UI.UserControl> classes.       To access data from the <xref:System.Web.HttpRequest.QueryString%2A>, <xref:System.Web.HttpRequest.Form%2A>, <xref:System.Web.HttpRequest.Cookies%2A>, or <xref:System.Web.HttpRequest.ServerVariables%2A> collections, you can write `Request[&quot;key&quot;]`, as shown in the example for the <xref:System.Web.HttpRequest.QueryString%2A> property.      > [!NOTE] >  Unicode support for HttpRequest class members requires IIS version 6.0 or later."
+  summary: "ASP.NET을 웹 요청 중에 클라이언트에서 보낸 HTTP 값을 읽을 수 있습니다."
+  remarks: "메서드와 HttpRequest 클래스의 속성을 통해 노출 되는 `Request` 의 속성은 <xref:System.Web.HttpApplication>, <xref:System.Web.HttpContext>, <xref:System.Web.UI.Page>, 및 <xref:System.Web.UI.UserControl>클래스.</xref:System.Web.UI.UserControl> </xref:System.Web.UI.Page> </xref:System.Web.HttpContext> </xref:System.Web.HttpApplication>       데이터에 액세스 하는 <xref:System.Web.HttpRequest.QueryString%2A>, <xref:System.Web.HttpRequest.Form%2A>, <xref:System.Web.HttpRequest.Cookies%2A>, 또는 <xref:System.Web.HttpRequest.ServerVariables%2A>작성할 수 있습니다 컬렉션, `Request[&quot;key&quot;]`의 예에 나온 것 처럼는 <xref:System.Web.HttpRequest.QueryString%2A>속성.</xref:System.Web.HttpRequest.QueryString%2A> </xref:System.Web.HttpRequest.ServerVariables%2A> </xref:System.Web.HttpRequest.Cookies%2A> </xref:System.Web.HttpRequest.Form%2A> </xref:System.Web.HttpRequest.QueryString%2A>      > [!NOTE] > HttpRequest 클래스 멤버에 대 한 유니코드 지원에는 IIS 버전 6.0 이상이 필요 합니다."
   example:
   - "The following examples access the HttpRequest instance for the current request by using the <xref:System.Web.UI.Page.Request%2A> property of the <xref:System.Web.UI.Page> class.  \n  \n You can use simplified syntax for accessing data from the <xref:System.Web.HttpRequest.QueryString%2A>, <xref:System.Web.HttpRequest.Form%2A>, <xref:System.Web.HttpRequest.Cookies%2A>, or <xref:System.Web.HttpRequest.ServerVariables%2A> collections. You can write `Request[\"key\"]`.  \n  \n The first example shows how to retrieve a query string value when loading a page.  \n  \n```c#  \npublic partial class AddToCart : Page  \n{  \n    protected void Page_Load(object sender, EventArgs e)  \n    {  \n        string rawId = Request[\"ProductID\"];  \n        int productId;  \n        if (!String.IsNullOrEmpty(rawId) && int.TryParse(rawId, out productId))  \n        {  \n            using (ShoppingCartActions usersShoppingCart = new ShoppingCartActions())  \n            {  \n                usersShoppingCart.AddToCart(productId);  \n            }  \n        }  \n        else  \n        {  \n            throw new Exception(\"Tried to call AddToCart.aspx without setting a ProductId.\");  \n        }  \n        Response.Redirect(\"ShoppingCart.aspx\");  \n    }  \n}  \n```  \n  \n```vb  \nPublic Class AddToCart  \n    Inherits Page  \n  \n    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load  \n        Dim rawId = Request(\"ProductID\")  \n        Dim productId As Integer  \n        If Not String.IsNullOrEmpty(rawId) And Integer.TryParse(rawId, productId) Then  \n            Using usersShoppingCart As New ShoppingCartActions()  \n                usersShoppingCart.AddToCart(productId)  \n            End Using  \n  \n        Else  \n            Throw New Exception(\"Tried to call AddToCart.aspx without setting a ProductId.\")  \n        End If  \n        Response.Redirect(\"ShoppingCart.aspx\")  \n    End Sub  \nEnd Class  \n```  \n  \n The next example shows how to check if the request is authenticated and retrieve the raw URL.  \n  \n```c#  \npublic partial class RestrictedPage : Page  \n{  \n    protected void Page_Load(object sender, EventArgs e)  \n    {  \n        if (!Request.IsAuthenticated)  \n        {  \n            var rawUrl = Request.RawUrl;  \n            Response.Redirect(\"/Account/Login?ru=\" + Server.HtmlEncode(rawUrl));  \n        }  \n    }  \n}  \n```  \n  \n```vb  \nPublic Class RestrictedPage  \n    Inherits Page  \n  \n    Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load  \n        If Not Request.IsAuthenticated Then  \n            Dim rawUrl = Request.RawUrl  \n            Response.Redirect(\"/Account/Login?ru=\" + Server.HtmlEncode(rawUrl))  \n        End If  \n    End Sub  \nEnd Class  \n```  \n  \n A Visual Studio Web site project with source code is available to accompany this topic: [Download](http://go.microsoft.com/fwlink/?LinkID=191455).  \n  \n This example uses the <xref:System.IO.StreamWriter> class to write the values of several HttpRequest class properties to a file. For properties that are of type string, the values are HTML encoded as they are written to the file. Properties that represent a collection are looped through, and each key/value pair that they contain is written to the file.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#1](~/add/codesnippet/visualbasic/t-system.web.httprequest_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#1](~/add/codesnippet/csharp/t-system.web.httprequest_1.aspx)]"
   syntax:
@@ -93,20 +93,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes an <xref href=&quot;System.Web.HttpRequest&quot;></xref> object."
-  remarks: "You do not need to create your own instance of the <xref:System.Web.HttpRequest> class. The methods and properties of the <xref:System.Web.HttpRequest> class are exposed through the `Request` property of the <xref:System.Web.HttpApplication>, <xref:System.Web.HttpContext>, <xref:System.Web.UI.Page>, and <xref:System.Web.UI.UserControl> classes."
+  summary: "초기화는 <xref href=&quot;System.Web.HttpRequest&quot;> </xref> 개체입니다."
+  remarks: "<xref:System.Web.HttpRequest>클래스</xref:System.Web.HttpRequest> 의 인스턴스를 직접 만들 필요가 없습니다. 메서드 및 속성의는 <xref:System.Web.HttpRequest>클래스를 통해 노출 되는 `Request` 의 속성은 <xref:System.Web.HttpApplication>, <xref:System.Web.HttpContext>, <xref:System.Web.UI.Page>, 및 <xref:System.Web.UI.UserControl>클래스.</xref:System.Web.UI.UserControl> </xref:System.Web.UI.Page> </xref:System.Web.HttpContext> </xref:System.Web.HttpApplication> </xref:System.Web.HttpRequest>"
   syntax:
     content: public HttpRequest (string filename, string url, string queryString);
     parameters:
     - id: filename
       type: System.String
-      description: "The name of the file associated with the request."
+      description: "이 요청과 관련 된 파일의 이름입니다."
     - id: url
       type: System.String
-      description: "The information regarding the URL of the current request."
+      description: "현재 요청의 URL에 대 한 정보입니다."
     - id: queryString
       type: System.String
-      description: "The entire query string sent with the request (everything after the`&quot;?&quot;`)."
+      description: "요청과 함께 보내는 전체 쿼리 문자열 (다음에 오는 모든는`&quot;?&quot;`)."
   overload: System.Web.HttpRequest.#ctor*
   exceptions: []
   platform:
@@ -123,8 +123,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Forcibly terminates the underlying TCP connection, causing any outstanding I/O to fail. You might use this method in response to an attack by a malicious HTTP client."
-  remarks: "This method is thread-safe. Any thread may call it at any time.       This method can only be used in integrated mode. If you invoke it in classic mode, an exception is thrown. To determine the pipeline mode, use <xref:System.Web.HttpRuntime.UsingIntegratedPipeline%2A>."
+  summary: "실패를 처리 중인 i/o 내부 TCP 연결을 강제로 종료 합니다. 악성 HTTP 클라이언트 공격에 대 한 응답으로이 메서드를 사용할 수 있습니다."
+  remarks: "이 메서드는 스레드로부터 안전 합니다. 모든 스레드가 언제 든 지 호출할 수 있습니다.       이 메서드 통합된 모드에서 사용할 수 있습니다. 클래식 모드에서 호출 하는 경우 예외가 throw 됩니다. 파이프라인 모드를 확인 하려면 <xref:System.Web.HttpRuntime.UsingIntegratedPipeline%2A>.</xref:System.Web.HttpRuntime.UsingIntegratedPipeline%2A> 사용"
   syntax:
     content: public void Abort ();
     parameters: []
@@ -144,7 +144,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a string array of client-supported MIME accept types."
+  summary: "문자열 배열을 클라이언트에서 지 원하는 MIME 허용 형식의 가져옵니다."
   remarks: ''
   example:
   - "The following code example captures the multiple values returned by the AcceptTypes property into an object variable and writes the number and name of each valueto a separate line of HTTP output.  \n  \n [!code-vb[Classic HttpRequest.AcceptTypes Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_0_1.vb)]\n [!code-cs[Classic HttpRequest.AcceptTypes Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_0_1.cs)]"
@@ -152,7 +152,7 @@ items:
     content: public string[] AcceptTypes { get; }
     return:
       type: System.String[]
-      description: "A string array of client-supported MIME accept types."
+      description: "클라이언트에서 이루어진 문자열 배열 형식을 허용 합니다."
   overload: System.Web.HttpRequest.AcceptTypes*
   exceptions: []
   platform:
@@ -169,15 +169,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the anonymous identifier for the user, if present."
-  remarks: "The AnonymousID property assigns a long-lived unique identifier to a non-authenticated user, which can be used to track the user or assign profile properties to that user without storing data in a `Session` object. By default, the AnonymousID property is tracked using a cookie, but it can be set to use the URI when the <xref:System.Web.Configuration.SessionStateSection.Cookieless%2A> attribute in the anonymous identification configuration section is set to either the <xref:System.Web.HttpCookieMode>, <xref:System.Web.HttpCookieMode>, or <xref:System.Web.HttpCookieMode> value. You must explicitly clear the cookie if you no longer want it available, for example when an anonymous user is authenticated.       Anonymous identification is used when there is a need to identify entities that are not authenticated and when authorization is required. For more information, see [anonymousIdentification Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/2bd927ef-9057-4703-9c55-4cfb6d7d0929)"
+  summary: "있는 경우 사용자에 대 한 익명 식별자를 가져옵니다."
+  remarks: "AnonymousID 속성에서 사용자를 추적 또는의 데이터를 저장 하지 않고 해당 사용자 프로필 속성 할당에 사용할 수 있는 인증 되지 않은 사용자에 게 수명이 긴 고유 식별자가 할당 한 `Session` 개체입니다. 쿠키를 사용 하 여 AnonymousID 속성은 추적 하는 기본적으로 이지만 URI를 사용 하도록 설정할 수 있습니다 때는 <xref:System.Web.Configuration.SessionStateSection.Cookieless%2A>익명 id 구성 섹션에는 특성으로 설정 되어는 <xref:System.Web.HttpCookieMode>, <xref:System.Web.HttpCookieMode>, 또는 <xref:System.Web.HttpCookieMode>값.</xref:System.Web.HttpCookieMode> </xref:System.Web.HttpCookieMode> </xref:System.Web.HttpCookieMode> </xref:System.Web.Configuration.SessionStateSection.Cookieless%2A> 더 이상 원할 경우 사용할 수 있는 익명 사용자가 인증 하는 경우에 예를 들어를 명시적으로 쿠키를 지워야 합니다.       익명 id는 필요한 인증 되지 않은 엔터티를 식별 하 고 인증이 필요한 경우 사용 됩니다. 자세한 내용은 참조 [anonymousIdentification 요소 (ASP.NET 설정 스키마)](http://msdn.microsoft.com/en-us/2bd927ef-9057-4703-9c55-4cfb6d7d0929)"
   example:
   - "The following example shows how to use the AnonymousID property by handling the <xref:System.Web.Security.AnonymousIdentificationModule.Creating> event in the Global.asax file. This example has two parts:  \n  \n-   A method in the Global.asax file that handles the <xref:System.Web.Security.AnonymousIdentificationModule.Creating> event.  \n  \n-   A Web Forms page.  \n  \n The first part of the code example shows how to set the AnonymousID property by handling the <xref:System.Web.Security.AnonymousIdentificationModule.Creating> event in the Global.asax file. The method that is named `AnonymousIdentification_Creating` sets the AnonymousID property when an anonymous ID is created.  \n  \n [!code-cs[System.Web.HttpRequest_AnonymousID#2](~/add/codesnippet/csharp/p-system.web.httprequest_5_1.cs)]\n [!code-vb[System.Web.HttpRequest_AnonymousID#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_5_1.vb)]  \n  \n The second part of the code example shows how to display the new AnonymousID that is created by the `AnonymousIdentification_Creating` event handler in the preceding example.  \n  \n [!code-cs[System.Web.HttpRequest_AnonymousID#1](~/add/codesnippet/csharp/p-system.web.httprequest_5_2.aspx)]\n [!code-vb[System.Web.HttpRequest_AnonymousID#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_5_2.aspx)]"
   syntax:
     content: public string AnonymousID { get; }
     return:
       type: System.String
-      description: "A string representing the current anonymous user identifier."
+      description: "현재 익명 사용자 id를 나타내는 문자열입니다."
   overload: System.Web.HttpRequest.AnonymousID*
   exceptions: []
   platform:
@@ -194,15 +194,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the ASP.NET application&quot;s virtual application root path on the server."
-  remarks: "Use this property to construct a URL relative to the application root from a page or Web user control that is not in the root directory. This allows pages and shared controls that exist at different levels of a directory structure to use the same code to link to resources at fixed locations in the application."
+  summary: "서버에서 ASP.NET 응용 프로그램의 가상 응용 프로그램 루트 경로를 가져옵니다."
+  remarks: "이 속성을 사용 하 여 페이지 또는 루트 디렉터리에 있지 않은 웹 사용자 정의 컨트롤에서 응용 프로그램 루트를 기준으로 URL을 생성 합니다. 이렇게 하면 페이지 및 서로 다른 수준의 동일한 코드를 사용 하 여 응용 프로그램에서 고정 된 위치에서 리소스에 연결 하는 디렉터리 구조에 존재 하는 컨트롤을 공유 합니다."
   example:
   - "The following example uses the <xref:System.IO.StreamWriter.Write%2A> method to HTML-encode and then write the value of the ApplicationPath property to a text file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class. It assumes the existence of a <xref:System.IO.StreamWriter> object named `sw`.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_6_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/csharp/p-system.web.httprequest_6_1.aspx)]  \n  \n The following example uses the ApplicationPath property to programmatically construct a path to a resource that is in a fixed location in the application. The page that references the resource does not have to be located in the same directory as the resource.  \n  \n [!code-cs[System.Web.HttpRequest.ApplicationPath#2](~/add/codesnippet/csharp/p-system.web.httprequest_6_2.aspx)]\n [!code-vb[System.Web.HttpRequest.ApplicationPath#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_6_2.aspx)]  \n  \n If you run this example in a Web application that is named WebSite1,  `/WebSite1` will be displayed as the value of the ApplicationPath property and `/WebSite1/images/Image1.gif` will be displayed as the complete path of the image."
   syntax:
     content: public string ApplicationPath { get; }
     return:
       type: System.String
-      description: "The virtual path of the current application."
+      description: "현재 응용 프로그램의 가상 경로입니다."
   overload: System.Web.HttpRequest.ApplicationPath*
   exceptions: []
   platform:
@@ -219,15 +219,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the virtual path of the application root and makes it relative by using the tilde (~) notation for the application root (as in &quot;~/page.aspx&quot;)."
-  remarks: "Use this property to provide URL information that will stay the same even if the application changes location. This allows the same URL-mapping code to be used in a test environment and in the final deployment environment, or to be used by copies of Web applications in different domains."
+  summary: "응용 프로그램 루트의 가상 경로 가져오고 응용 프로그램 루트를 물결표 (~)로 표시를 사용 하 여 상대 만듭니다 (에서 같이 &quot;~ / page.aspx&quot;)."
+  remarks: "이 속성을 사용 하 여 응용 프로그램 위치를 변경 하는 경우에 그대로 유지 됩니다 URL 정보를 제공 합니다. 따라서 동일한 URL 매핑 코드를 테스트 환경에서 및 최종 배포 환경에서 사용할 또는 서로 다른 도메인에 웹 응용 프로그램의 복사본에서 사용할 수 있습니다."
   example:
   - "The following example uses the AppRelativeCurrentExecutionFilePath property to set the URL of an <xref:System.Web.UI.WebControls.Image> control to an image in the same directory as the page. Run this page at different levels of a directory structure to see the resulting AppRelativeCurrentExecutionFilePath property values.  \n  \n [!code-vb[System.Web.HttpRequest.AppRelativeCurrentExecutionPath#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_31_1.aspx)]\n [!code-cs[System.Web.HttpRequest.AppRelativeCurrentExecutionPath#1](~/add/codesnippet/csharp/p-system.web.httprequest_31_1.aspx)]  \n  \n The following example uses the AppRelativeCurrentExecutionFilePath property to programmatically set the path to a resource, based on the current path of the page.  \n  \n [!code-cs[System.Web.HttpRequest.ApplicationPath#1](~/add/codesnippet/csharp/p-system.web.httprequest_31_2.aspx)]\n [!code-vb[System.Web.HttpRequest.ApplicationPath#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_31_2.aspx)]"
   syntax:
     content: public string AppRelativeCurrentExecutionFilePath { get; }
     return:
       type: System.String
-      description: "The virtual path of the application root for the current request."
+      description: "현재 요청에 대 한 응용 프로그램 루트의 가상 경로입니다."
   overload: System.Web.HttpRequest.AppRelativeCurrentExecutionFilePath*
   exceptions: []
   platform:
@@ -244,17 +244,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Performs a binary read of a specified number of bytes from the current input stream."
-  remarks: "The BinaryRead method is provided for compatibility with ASP."
+  summary: "현재 입력 스트림에서 지정 된 바이트 수에 대 한 이진 읽기를 수행합니다."
+  remarks: "BinaryRead 메서드 ASP와의 호환성을 위해 제공 됩니다."
   syntax:
     content: public byte[] BinaryRead (int count);
     parameters:
     - id: count
       type: System.Int32
-      description: "The number of bytes to read."
+      description: "읽을 바이트 수입니다."
     return:
       type: System.Byte[]
-      description: "A byte array."
+      description: "바이트 배열입니다."
   overload: System.Web.HttpRequest.BinaryRead*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -274,7 +274,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets information about the requesting client&quot;s browser capabilities."
+  summary: "요청 클라이언트의 브라우저 기능에 대 한 정보를 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example sends a list of the browser's capabilities back to the client in an HTML page.  \n  \n [!code-vb[Classic HttpRequest.Browser Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_14_1.vb)]\n [!code-cs[Classic HttpRequest.Browser Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_14_1.cs)]"
@@ -282,7 +282,7 @@ items:
     content: public System.Web.HttpBrowserCapabilities Browser { get; set; }
     return:
       type: System.Web.HttpBrowserCapabilities
-      description: "An <xref href=&quot;System.Web.HttpBrowserCapabilities&quot;></xref> object listing the capabilities of the client&quot;s browser."
+      description: "<xref href=&quot;System.Web.HttpBrowserCapabilities&quot;> </xref> 클라이언트 브라우저의 기능을 나열 하는 개체입니다."
   overload: System.Web.HttpRequest.Browser*
   exceptions: []
   platform:
@@ -299,7 +299,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the current request&quot;s client security certificate."
+  summary: "현재 가져옵니다 요청의 클라이언트 보안 인증서입니다."
   remarks: ''
   example:
   - "The following code example sends the client's certificate settings back to the client in an HTML page.  \n  \n [!code-vb[Classic HttpRequest.ClientCertificate Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_12_1.vb)]\n [!code-cs[Classic HttpRequest.ClientCertificate Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_12_1.cs)]"
@@ -307,7 +307,7 @@ items:
     content: public System.Web.HttpClientCertificate ClientCertificate { get; }
     return:
       type: System.Web.HttpClientCertificate
-      description: "An <xref href=&quot;System.Web.HttpClientCertificate&quot;></xref> object containing information about the client&quot;s security certificate settings."
+      description: "<xref href=&quot;System.Web.HttpClientCertificate&quot;> </xref> 클라이언트의 보안 인증서 설정에 대 한 정보가 들어 있는 개체입니다."
   overload: System.Web.HttpRequest.ClientCertificate*
   exceptions: []
   platform:
@@ -324,15 +324,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the character set of the entity-body."
-  remarks: "Default content encoding can be specified in the [globalization Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/e2dffc8e-ebd2-439b-a2fd-e3ac5e620da7) of a configuration file. If content encoding is also specified by the client, the default configuration settings are overridden."
+  summary: "엔터티 본문의 문자 집합을 가져오거나 설정 합니다."
+  remarks: "에 기본 콘텐츠 인코딩을 지정할 수 있습니다는 [세계화 요소 (ASP.NET 설정 스키마)](http://msdn.microsoft.com/en-us/e2dffc8e-ebd2-439b-a2fd-e3ac5e620da7) 구성 파일입니다. 콘텐츠 인코딩을 지정 되어 클라이언트에서의 기본 구성 설정은 재정의 됩니다."
   example:
   - "The following code example assigns a value representing the description of the current HTTP encoding to a string variable.  \n  \n [!code-cs[Classic HttpRequest.ContentEncoding Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_18_1.cs)]\n [!code-vb[Classic HttpRequest.ContentEncoding Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_18_1.vb)]"
   syntax:
     content: public System.Text.Encoding ContentEncoding { get; set; }
     return:
       type: System.Text.Encoding
-      description: "An <xref:System.Text.Encoding> object representing the client&quot;s character set."
+      description: "<xref:System.Text.Encoding>클라이언트의 문자 집합을 나타내는 개체입니다.</xref:System.Text.Encoding>"
   overload: System.Web.HttpRequest.ContentEncoding*
   exceptions: []
   platform:
@@ -349,7 +349,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Specifies the length, in bytes, of content sent by the client."
+  summary: "(바이트) 클라이언트에서 보낸 콘텐츠의 길이 지정 합니다."
   remarks: ''
   example:
   - "The following code example assigns the value representing the content length of the incoming request to an integer variable.  \n  \n [!code-vb[Classic HttpRequest.ContentLength Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_17_1.vb)]\n [!code-cs[Classic HttpRequest.ContentLength Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_17_1.cs)]"
@@ -357,7 +357,7 @@ items:
     content: public int ContentLength { get; }
     return:
       type: System.Int32
-      description: "The length, in bytes, of content sent by the client."
+      description: "클라이언트에서 보낸 콘텐츠의 길이 (바이트)를 합니다."
   overload: System.Web.HttpRequest.ContentLength*
   exceptions: []
   platform:
@@ -374,7 +374,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the MIME content type of the incoming request."
+  summary: "들어오는 요청의 MIME 콘텐츠 형식을 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example assigns the value representing the content type of the incoming request to a string variable.  \n  \n [!code-vb[Classic HttpRequest.ContentType Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_33_1.vb)]\n [!code-cs[Classic HttpRequest.ContentType Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_33_1.cs)]  \n  \n The following example shows output that might be produced by this code.  \n  \n `GET`  \n  \n `127.0.0.1`  \n  \n `127.0.0.1`  \n  \n `GET`"
@@ -382,7 +382,7 @@ items:
     content: public string ContentType { get; set; }
     return:
       type: System.String
-      description: "A string representing the MIME content type of the incoming request, for example, &quot;text/html&quot;. Additional common MIME types include &quot;audio.wav&quot;, &quot;image/gif&quot;, and &quot;application/pdf&quot;."
+      description: "예를 들어 &quot;텍스트/html&quot; 들어오는 요청의 MIME 콘텐츠 형식을 나타내는 문자열입니다. 일반적인 MIME 형식에 추가로 &quot;audio.wav&quot;, &quot;image/gif&quot; 및 &quot;application/pdf&quot;에 포함 됩니다."
   overload: System.Web.HttpRequest.ContentType*
   exceptions: []
   platform:
@@ -399,15 +399,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a collection of cookies sent by the client."
-  remarks: "ASP.NET includes two intrinsic cookie collections. The collection accessed through the Cookies collection of <xref:System.Web.HttpRequest> contains cookies transmitted by the client to the server in the `Cookie` header. The collection accessed through the <xref:System.Web.HttpResponse.Cookies%2A> collection of <xref:System.Web.HttpResponse> contains new cookies created on the server and transmitted to the client in the `Set-Cookie` header.      > [!NOTE] >  After you add a cookie by using the <xref:System.Web.HttpResponse.Cookies%2A?displayProperty=fullName> collection, the cookie is immediately available in the Cookies collection, even if the response has not been sent to the client."
+  summary: "클라이언트에서 보낸 쿠키의 컬렉션을 가져옵니다."
+  remarks: "ASP.NET 두 내장 쿠키 컬렉션을 포함합니다. 쿠키 컬렉션을 통해 액세스할 수 있는 컬렉션 <xref:System.Web.HttpRequest>서버에 클라이언트에서 전송 되는 쿠키가 포함는 `Cookie` 헤더.</xref:System.Web.HttpRequest> 통해 액세스할 수 있는 컬렉션의 <xref:System.Web.HttpResponse.Cookies%2A>의 컬렉션 <xref:System.Web.HttpResponse>서버에 만든 및 클라이언트에 전송 된 새 쿠키를 포함 합니다.는 `Set-Cookie` 헤더.</xref:System.Web.HttpResponse> </xref:System.Web.HttpResponse.Cookies%2A>      > [!NOTE] >를 사용 하 여 쿠키를 추가한 후의 <xref:System.Web.HttpResponse.Cookies%2A?displayProperty=fullName>컬렉션, 응답이 클라이언트에 전송 되지 않은 경우에 쿠키 쿠키 컬렉션에서 즉시 사용할 수는 있습니다.</xref:System.Web.HttpResponse.Cookies%2A?displayProperty=fullName>"
   example:
   - "The following code example loops through all cookies sent by the client and sends the name, expiration date, security parameter, and values of each cookie to the HTTP output.  \n  \n [!code-cs[Classic HttpRequest.Cookies Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_21_1.cs)]\n [!code-vb[Classic HttpRequest.Cookies Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_21_1.vb)]"
   syntax:
     content: public System.Web.HttpCookieCollection Cookies { get; }
     return:
       type: System.Web.HttpCookieCollection
-      description: "An <xref href=&quot;System.Web.HttpCookieCollection&quot;></xref> object representing the client&quot;s cookie variables."
+      description: "<xref href=&quot;System.Web.HttpCookieCollection&quot;> </xref> 클라이언트의 쿠키 변수를 나타내는 개체입니다."
   overload: System.Web.HttpRequest.Cookies*
   exceptions: []
   platform:
@@ -424,15 +424,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the virtual path of the current request."
-  remarks: "CurrentExecutionFilePath returns the file path to the currently executing page handler. For redirect scenarios using <xref:System.Web.HttpServerUtility.Execute%2A> and <xref:System.Web.HttpServerUtility.Transfer%2A> methods this means that the CurrentExecutionFilePath property returns the path to the page redirected to (child page). However, when the client is redirected to another page, the <xref:System.Web.HttpRequest.FilePath%2A> property returns the path to the original page."
+  summary: "현재 요청의 가상 경로 가져옵니다."
+  remarks: "CurrentExecutionFilePath를 현재 실행 중인 페이지 처리기의 파일 경로 반환합니다. 사용 하 여 리디렉션 시나리오에 대 한 <xref:System.Web.HttpServerUtility.Execute%2A>및 <xref:System.Web.HttpServerUtility.Transfer%2A>메서드 즉, CurrentExecutionFilePath 속성 페이지로 리디렉션됩니다 (자식) 페이지에 경로 반환 합니다.</xref:System.Web.HttpServerUtility.Transfer%2A> </xref:System.Web.HttpServerUtility.Execute%2A> 그러나 클라이언트가 다른 페이지로 리디렉션 되었습니다는 <xref:System.Web.HttpRequest.FilePath%2A>속성의 경로 원본 페이지를 반환 합니다.</xref:System.Web.HttpRequest.FilePath%2A>"
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the CurrentExecutionFilePath property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_3_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/csharp/p-system.web.httprequest_3_1.aspx)]"
   syntax:
     content: public string CurrentExecutionFilePath { get; }
     return:
       type: System.String
-      description: "The virtual path of the current request."
+      description: "현재 요청의 가상 경로입니다."
   overload: System.Web.HttpRequest.CurrentExecutionFilePath*
   exceptions: []
   platform:
@@ -449,12 +449,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the extension of the file name that is specified in the <xref:System.Web.HttpRequest.CurrentExecutionFilePath*> property."
+  summary: "에 지정 된 파일 이름 확장명을 가져옵니다는 <xref:System.Web.HttpRequest.CurrentExecutionFilePath*>속성.</xref:System.Web.HttpRequest.CurrentExecutionFilePath*>"
   syntax:
     content: public string CurrentExecutionFilePathExtension { get; }
     return:
       type: System.String
-      description: "The extension of the file name that is specified in the <xref:System.Web.HttpRequest.CurrentExecutionFilePath*> property."
+      description: "에 지정 된 파일 이름의 확장명은 <xref:System.Web.HttpRequest.CurrentExecutionFilePath*>속성.</xref:System.Web.HttpRequest.CurrentExecutionFilePath*>"
   overload: System.Web.HttpRequest.CurrentExecutionFilePathExtension*
   exceptions: []
   platform:
@@ -471,15 +471,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the virtual path of the current request."
-  remarks: "The FilePath property does not include the <xref:System.Web.HttpRequest.PathInfo%2A> trailer. For example, for the URL http://www.contoso.com/virdir/page.html/tail, the FilePath value is /virdir/page.html."
+  summary: "현재 요청의 가상 경로 가져옵니다."
+  remarks: "FilePath 속성은 포함 하지 않습니다는 <xref:System.Web.HttpRequest.PathInfo%2A>트레일러.</xref:System.Web.HttpRequest.PathInfo%2A> 예를 들어 URL http://www.contoso.com/virdir/page.html/tail FilePath 값은 /virdir/page.html입니다."
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the FilePath property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_27_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/csharp/p-system.web.httprequest_27_1.aspx)]"
   syntax:
     content: public string FilePath { get; }
     return:
       type: System.String
-      description: "The virtual path of the current request."
+      description: "현재 요청의 가상 경로입니다."
   overload: System.Web.HttpRequest.FilePath*
   exceptions: []
   platform:
@@ -496,15 +496,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the collection of files uploaded by the client, in multipart MIME format."
-  remarks: "The file collection is populated only when the HTTP request `Content-Type` value is &quot;multipart/form-data&quot;."
+  summary: "Multipart MIME 형식에서 클라이언트에서 업로드 한 파일 컬렉션을 가져옵니다."
+  remarks: "파일 컬렉션만 채워지는 HTTP 요청 하는 경우 `Content-Type` 값은 &quot;multipart/폼 데이터&quot;."
   example:
   - "The following code example displays the names of all files in the Files collection.  \n  \n [!code-cs[Classic HttpRequest.Files Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_28_1.cs)]\n [!code-vb[Classic HttpRequest.Files Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_28_1.vb)]"
   syntax:
     content: public System.Web.HttpFileCollection Files { get; }
     return:
       type: System.Web.HttpFileCollection
-      description: "An <xref href=&quot;System.Web.HttpFileCollection&quot;></xref> object representing a collection of files uploaded by the client. The items of the <xref href=&quot;System.Web.HttpFileCollection&quot;></xref> object are of type <xref href=&quot;System.Web.HttpPostedFile&quot;></xref>."
+      description: "<xref href=&quot;System.Web.HttpFileCollection&quot;> </xref> 클라이언트에서 업로드 파일의 컬렉션을 나타내는 개체입니다. 항목은 <xref href=&quot;System.Web.HttpFileCollection&quot;> </xref> 형식의 개체는 <xref href=&quot;System.Web.HttpPostedFile&quot;> </xref>합니다."
   overload: System.Web.HttpRequest.Files*
   exceptions: []
   platform:
@@ -521,7 +521,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the filter to use when reading the current input stream."
+  summary: "현재 입력된 스트림의 읽을 때 사용할 필터를 가져오거나 설정 합니다."
   remarks: ''
   example:
   - "The following code example creates two new classes, `QQQ1` and `QQQ2` that filter the <xref:System.Web.HttpRequest.InputStream%2A>. Put the classes into the Global.asax file in an ASP.NET application's directory so that all input for all ASP.NET Web pages in the application will be filtered.  \n  \n [!code-vb[System.Web.HttpRequest.Filter#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_4_1.aspx)]\n [!code-cs[System.Web.HttpRequest.Filter#1](~/add/codesnippet/csharp/p-system.web.httprequest_4_1.aspx)]"
@@ -529,12 +529,12 @@ items:
     content: public System.IO.Stream Filter { get; set; }
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object to be used as the filter."
+      description: "A <xref:System.IO.Stream>필터로 사용할 개체입니다.</xref:System.IO.Stream>"
   overload: System.Web.HttpRequest.Filter*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The specified <xref:System.IO.Stream> is invalid."
+    description: "지정 된 <xref:System.IO.Stream>올바르지 않습니다.</xref:System.IO.Stream>"
   platform:
   - net462
 - uid: System.Web.HttpRequest.Form
@@ -549,15 +549,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a collection of form variables."
-  remarks: "The Form property is populated when the HTTP request `Content-Type` value is either &quot;application/x-www-form-urlencoded&quot; or &quot;multipart/form-data&quot;."
+  summary: "폼 변수의 컬렉션을 가져옵니다."
+  remarks: "Form 속성은 HTTP 요청 하는 경우 `Content-Type` 값은 &quot;응용 프로그램/x-www-형식-urlencoded&quot; 또는 &quot;multipart/폼 데이터&quot;."
   example:
   - "The following example shows how to read the values in the form collection posted from a browser. Each name/value pair in the collection represents a control in the form and its value.  \n  \n [!code-vb[Classic HttpRequest.Form Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_32_1.vb)]\n [!code-cs[Classic HttpRequest.Form Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_32_1.cs)]"
   syntax:
     content: public System.Collections.Specialized.NameValueCollection Form { get; }
     return:
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> representing a collection of form variables."
+      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> 폼 변수의 컬렉션을 나타내는입니다."
   overload: System.Web.HttpRequest.Form*
   exceptions: []
   platform:
@@ -574,19 +574,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body."
-  remarks: "This method is identical to <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A> except that it also copies the bytes that are read to the internal storage that is used by ASP.NET to populate the <xref:System.Web.HttpRequest.Form%2A>, <xref:System.Web.HttpRequest.Files%2A>, and <xref:System.Web.HttpRequest.InputStream%2A> properties. Because this information is preserved, downstream code such as ASP.NET Web Forms pages (.aspx files) will run successfully. This is not the case with the <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A> method."
+  summary: "가져옵니다는 <xref:System.IO.Stream>들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체입니다.</xref:System.IO.Stream>"
+  remarks: "이 메서드는 동일 <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A>ASP.NET에서 채우는 데 사용 되는 내부 저장소를 한 읽은 바이트를 복사 하는 점을 제외 하 고는 <xref:System.Web.HttpRequest.Form%2A>, <xref:System.Web.HttpRequest.Files%2A>, 및 <xref:System.Web.HttpRequest.InputStream%2A>속성.</xref:System.Web.HttpRequest.InputStream%2A> </xref:System.Web.HttpRequest.Files%2A> </xref:System.Web.HttpRequest.Form%2A> </xref:System.Web.HttpRequest.GetBufferlessInputStream%2A> 이 정보가 보존 되기 때문에 ASP.NET Web Forms 페이지 (.aspx 파일)와 같은 다운스트림 코드가 성공적으로 실행 됩니다. 경우 이것이 <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A>메서드.</xref:System.Web.HttpRequest.GetBufferlessInputStream%2A>"
   syntax:
     content: public System.IO.Stream GetBufferedInputStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body."
+      description: "A <xref:System.IO.Stream>들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체입니다.</xref:System.IO.Stream>"
   overload: System.Web.HttpRequest.GetBufferedInputStream*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The request&quot;s entity body has already been loaded and parsed. Examples of properties that cause the entity body to be loaded and parsed include the following:      -   The <xref:System.Web.HttpRequest.Form*> property.      -   The <xref:System.Web.HttpRequest.Files*> property.      -   The <xref:System.Web.HttpRequest.InputStream*> property.      -   The <xref:System.Web.HttpRequest.GetBufferlessInputStream*> method.       To avoid this exception, call the <xref:System.Web.HttpRequest.ReadEntityBodyMode*> method first. This exception is also thrown if the client disconnects while the entity body is being read."
+    description: "요청의 엔터티 본문을 이미 로드 되어 구문 분석 합니다. 엔터티 본문을 로드 하 고 구문 분석 하도록 하는 속성의 예로 다음:- <> </> *> 속성.      - <> </> *> 속성.      - <> </> *> 속성.      - <> </> *> 메서드.       이 예외를 방지 하려면 호출 된 <xref:System.Web.HttpRequest.ReadEntityBodyMode*>메서드 첫 번째.</xref:System.Web.HttpRequest.ReadEntityBodyMode*> 엔터티 본문을 읽는 동안 클라이언트의 연결이 끊어지면이 예외가 throw 됩니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.GetBufferlessInputStream
@@ -601,19 +601,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body."
-  remarks: "This method provides an alternative to using the <xref:System.Web.HttpRequest.InputStream%2A> property. The <xref:System.Web.HttpRequest.InputStream%2A> property waits until the whole request has been received before it returns a <xref:System.IO.Stream> object. In contrast, the GetBufferlessInputStream method returns the <xref:System.IO.Stream> object immediately. You can use the method to begin processing the entity body before the complete contents of the body have been received.       The entity body (or as much of it as you request and has been received) is returned only when you use the object that is returned by this method to read the stream, by calling methods such as the <xref:System.IO.Stream.Read%2A> method. You use parameters of the <xref:System.IO.Stream.Read%2A> method to specify how much of the entity body to read.       The <xref:System.IO.Stream> object returned by ASP.NET from this method supports both synchronous and asynchronous read methods. The <xref:System.IO.Stream> object implements both the <xref:System.IO.Stream.BeginRead%2A> and <xref:System.IO.Stream.EndRead%2A> methods. The asynchronous methods let you asynchronously read the request entity in chunks, while ASP.NET releases the current thread in between each iteration of an asynchronous read loop.       This method can be useful if the request is uploading a large file and you want to begin accessing the file contents before the upload is finished. However, you should only use this method for scenarios where you want to take over all processing of the entity body. This means that you cannot use this method from an .aspx page, because by the time an .aspx page runs, the entity body has already been read."
+  summary: "가져옵니다는 <xref:System.IO.Stream>들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체입니다.</xref:System.IO.Stream>"
+  remarks: "이 메서드를 사용 하는 대신 제공는 <xref:System.Web.HttpRequest.InputStream%2A>속성.</xref:System.Web.HttpRequest.InputStream%2A> <xref:System.Web.HttpRequest.InputStream%2A>속성을 반환 하기 전에 전체 요청을 받을 때까지 대기는 <xref:System.IO.Stream>개체입니다.</xref:System.IO.Stream> </xref:System.Web.HttpRequest.InputStream%2A> GetBufferlessInputStream 메서드가 반환 하는 반면,는 <xref:System.IO.Stream>개체를 즉시.</xref:System.IO.Stream> 본문의 전체 내용을 받기 전에 엔터티 본문을 처리를 시작 하는 메서드를 사용할 수 있습니다.       엔터티 본문 (하 고 만큼 많이 요청 하 고 수신한) 개체를 사용 하는 경우에 반환 됩니다와 같은 메서드를 호출 하 여 스트림을 읽어이 메서드에서 반환 되는 <xref:System.IO.Stream.Read%2A>메서드.</xref:System.IO.Stream.Read%2A> 매개 변수를 사용 하는 <xref:System.IO.Stream.Read%2A>메서드를 엔터티 본문을 읽었는지 영역을 지정 합니다.</xref:System.IO.Stream.Read%2A>       <xref:System.IO.Stream>ASP.NET이 메서드에서 반환한 개체는 동기 및 비동기 읽기 메서드를 지원 합니다.</xref:System.IO.Stream> <xref:System.IO.Stream>개체 모두를 구현 하는 <xref:System.IO.Stream.BeginRead%2A>및 <xref:System.IO.Stream.EndRead%2A>메서드.</xref:System.IO.Stream.EndRead%2A> </xref:System.IO.Stream.BeginRead%2A> </xref:System.IO.Stream> 비동기 메서드는 비동기적으로 사이는 비동기 읽기 루프 반복 마다 현재 스레드를 해제 하는 ASP.NET의 청크를 요청 엔터티를 읽을 수 있습니다.       이 메서드는 요청을 큰 파일을 업로드 하 고 시작 고 업로드가 완료 되기 전에 파일 내용에 액세스 하려는 경우 유용할 수 있습니다. 그러나만이 메서드를 사용 해야이 시나리오에 대 한 엔터티 본문의 모든 처리를 위임 하려면. 즉,.aspx 페이지를 사용 하는 실행 시간까지 엔터티 본문 이미 읽혔습니다 하기 때문에 프로그램.aspx 페이지에서이 메서드를 사용할 수 없습니다."
   syntax:
     content: public System.IO.Stream GetBufferlessInputStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body."
+      description: "A <xref:System.IO.Stream>들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체입니다.</xref:System.IO.Stream>"
   overload: System.Web.HttpRequest.GetBufferlessInputStream*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The request&quot;s entity body has already been loaded and parsed. Examples of properties that cause the entity body to be loaded and parsed include the following:      -   <xref:System.Web.HttpRequest.Form*>      -   <xref:System.Web.HttpRequest.InputStream*>      -   <xref:System.Web.HttpRequest.Files*>      -   <xref:System.Web.HttpRequest.GetBufferedInputStream*>       To avoid this exception, call the <xref:System.Web.HttpRequest.ReadEntityBodyMode*> method first. This exception is also thrown if the client disconnects while the entity body is being read."
+    description: "요청의 엔터티 본문을 이미 로드 되어 구문 분석 합니다. 엔터티 본문을 로드 하 고 구문 분석 하도록 하는 속성의 예는 다음과 같습니다:- <> </> *>- <> </> *>- <> </> *>- <> </> *>이 예외를 방지 하려면 호출 된 <xref:System.Web.HttpRequest.ReadEntityBodyMode*>메서드 첫 번째.</xref:System.Web.HttpRequest.ReadEntityBodyMode*> 엔터티 본문을 읽는 동안 클라이언트의 연결이 끊어지면이 예외가 throw 됩니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.GetBufferlessInputStream(System.Boolean)
@@ -628,22 +628,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body, optionally disabling the request-length limit that is set in the <xref:System.Web.Configuration.HttpRuntimeSection.MaxRequestLength*> property."
-  remarks: "For more information about this method, see the <xref:System.Web.HttpRequest.GetBufferlessInputStream> overload."
+  summary: "가져옵니다는 <xref:System.IO.Stream>에 설정 되어 있는 요청 길이 제한을 선택적으로 해제 들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체는 <xref:System.Web.Configuration.HttpRuntimeSection.MaxRequestLength*>속성.</xref:System.Web.Configuration.HttpRuntimeSection.MaxRequestLength*> </xref:System.IO.Stream>"
+  remarks: "이 메서드에 대 한 자세한 내용은 참조는 <xref:System.Web.HttpRequest.GetBufferlessInputStream>오버 로드.</xref:System.Web.HttpRequest.GetBufferlessInputStream>"
   syntax:
     content: public System.IO.Stream GetBufferlessInputStream (bool disableMaxRequestLength);
     parameters:
     - id: disableMaxRequestLength
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to disable the request-length limit; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>요청 길이 한계를 비활성화 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object that can be used to read the incoming HTTP entity body."
+      description: "A <xref:System.IO.Stream>들어오는 HTTP 엔터티 본문을 읽는 데 사용할 수 있는 개체입니다.</xref:System.IO.Stream>"
   overload: System.Web.HttpRequest.GetBufferlessInputStream*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The request&quot;s entity body has already been loaded and parsed. Examples of properties that cause the entity body to be loaded and parsed include the following:      -   The <xref:System.Web.HttpRequest.Form*> property.      -   The <xref:System.Web.HttpRequest.Files*> property.      -   The <xref:System.Web.HttpRequest.InputStream*> property.      -   The <xref:System.Web.HttpRequest.GetBufferedInputStream*> method.       To avoid this exception, call the <xref:System.Web.HttpRequest.ReadEntityBodyMode*> method first. This exception is also thrown if the client disconnects while the entity body is being read."
+    description: "요청의 엔터티 본문을 이미 로드 되어 구문 분석 합니다. 엔터티 본문을 로드 하 고 구문 분석 하도록 하는 속성의 예로 다음:- <> </> *> 속성.      - <> </> *> 속성.      - <> </> *> 속성.      - <> </> *> 메서드.       이 예외를 방지 하려면 호출 된 <xref:System.Web.HttpRequest.ReadEntityBodyMode*>메서드 첫 번째.</xref:System.Web.HttpRequest.ReadEntityBodyMode*> 엔터티 본문을 읽는 동안 클라이언트의 연결이 끊어지면이 예외가 throw 됩니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.Headers
@@ -658,15 +658,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a collection of HTTP headers."
-  remarks: "For a listing of all possible headers, see [Request Header Fields](http://go.microsoft.com/fwlink/?LinkId=73147) on the W3C Web site."
+  summary: "HTTP 헤더의 컬렉션을 가져옵니다."
+  remarks: "모든 가능한 헤더의 해당 항목을 참조 하십시오. [요청 헤더 필드](http://go.microsoft.com/fwlink/?LinkId=73147) W3C 웹 사이트에 있습니다."
   example:
   - "The following code example displays the names and values of all headers in the HTTP request.  \n  \n [!code-cs[Classic HttpRequest.Headers Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_24_1.cs)]\n [!code-vb[Classic HttpRequest.Headers Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_24_1.vb)]"
   syntax:
     content: public System.Collections.Specialized.NameValueCollection Headers { get; }
     return:
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> of headers."
+      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> 헤더입니다."
   overload: System.Web.HttpRequest.Headers*
   exceptions: []
   platform:
@@ -683,17 +683,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the <xref:System.Security.Authentication.ExtendedProtection.ChannelBinding> object of the current <xref href=&quot;System.Web.HttpWorkerRequest&quot;></xref> instance."
+  summary: "가져옵니다는 <xref:System.Security.Authentication.ExtendedProtection.ChannelBinding>현재 개체 <xref href=&quot;System.Web.HttpWorkerRequest&quot;> </xref> 인스턴스.</xref:System.Security.Authentication.ExtendedProtection.ChannelBinding>"
   syntax:
     content: public System.Security.Authentication.ExtendedProtection.ChannelBinding HttpChannelBinding { get; }
     return:
       type: System.Security.Authentication.ExtendedProtection.ChannelBinding
-      description: "The <xref:System.Security.Authentication.ExtendedProtection.ChannelBinding> object of the current <xref href=&quot;System.Web.HttpWorkerRequest&quot;></xref> instance."
+      description: "<xref:System.Security.Authentication.ExtendedProtection.ChannelBinding>현재 개체 <xref href=&quot;System.Web.HttpWorkerRequest&quot;> </xref> 인스턴스.</xref:System.Security.Authentication.ExtendedProtection.ChannelBinding>"
   overload: System.Web.HttpRequest.HttpChannelBinding*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The current <xref href=&quot;System.Web.HttpWorkerRequest&quot;></xref> object is not a <xref uid=&quot;langword_csharp_System.Web.Hosting.IIS7WorkerRequest&quot; name=&quot;System.Web.Hosting.IIS7WorkerRequest&quot; href=&quot;&quot;></xref> object or a <xref uid=&quot;langword_csharp_System.Web.Hosting.ISAPIWorkerRequestInProc&quot; name=&quot;System.Web.Hosting.ISAPIWorkerRequestInProc&quot; href=&quot;&quot;></xref> object."
+    description: "현재 <xref href=&quot;System.Web.HttpWorkerRequest&quot;> </xref> 개체가 않습니다는 <xref uid=&quot;langword_csharp_System.Web.Hosting.IIS7WorkerRequest&quot; name=&quot;System.Web.Hosting.IIS7WorkerRequest&quot; href=&quot;&quot;> </xref> 개체 또는 <xref uid=&quot;langword_csharp_System.Web.Hosting.ISAPIWorkerRequestInProc&quot; name=&quot;System.Web.Hosting.ISAPIWorkerRequestInProc&quot; href=&quot;&quot;> </xref> 개체입니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.HttpMethod
@@ -708,7 +708,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the HTTP data transfer method (such as <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_HEAD&quot; name=&quot;HEAD&quot; href=&quot;&quot;></xref>) used by the client."
+  summary: "HTTP 데이터 전송 메서드를 가져옵니다 (예: <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;> </xref>, 또는 <xref uid=&quot;langword_csharp_HEAD&quot; name=&quot;HEAD&quot; href=&quot;&quot;> </xref>) 클라이언트에서 사용 합니다."
   remarks: ''
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the HttpMethod property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/visualbasic/p-system.web.httprequest_2_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/csharp/p-system.web.httprequest_2_1.aspx)]  \n  \n The following example shows output that is produced by this code.  \n  \n `GET`  \n  \n `127.0.0.1`  \n  \n `127.0.0.1`  \n  \n `GET`"
@@ -716,7 +716,7 @@ items:
     content: public string HttpMethod { get; }
     return:
       type: System.String
-      description: "The HTTP data transfer method used by the client."
+      description: "HTTP 데이터 전송 클라이언트에서 사용 하는 메서드입니다."
   overload: System.Web.HttpRequest.HttpMethod*
   exceptions: []
   platform:
@@ -733,7 +733,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the contents of the incoming HTTP entity body."
+  summary: "들어오는 HTTP 엔터티 본문의 내용을 가져옵니다."
   remarks: ''
   example:
   - "The following code example copies the contents of an InputStream into a string.  \n  \n [!code-cs[Classic HttpRequest.InputStream Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_10_1.aspx)]\n [!code-vb[Classic HttpRequest.InputStream Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_10_1.vb)]"
@@ -741,7 +741,7 @@ items:
     content: public System.IO.Stream InputStream { get; }
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object representing the contents of the incoming HTTP content body."
+      description: "A <xref:System.IO.Stream>내용의 들어오는 HTTP 콘텐츠 본문을 나타내는 개체입니다.</xref:System.IO.Stream>"
   overload: System.Web.HttpRequest.InputStream*
   exceptions: []
   platform:
@@ -758,8 +758,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides IIS with a copy of the HTTP request entity body."
-  remarks: "IIS does not maintain a copy of the request after it has been read. Therefore, it is recommended that only the handler for an HTTP request should read the request entity.       The InsertEntityBody method overload provides IIS with a copy of the request entity if it was previously read by ASP.NET. This method overload is useful for cases where ASP.NET has read the entity request and you want to reuse the existing request data."
+  summary: "IIS에 HTTP 요청 엔터티 본문의 사본을 제공합니다."
+  remarks: "읽은 후 IIS 요청의 복사본을 유지 하지 않습니다. 따라서 HTTP 요청에 대 한 처리기만 요청 엔터티가 읽어야 하는 것이 좋습니다.       InsertEntityBody 메서드 오버 로드 ASP.NET에서 이전에 읽은 경우 IIS 요청 엔터티가의 복사본을 제공 합니다. 이 메서드 오버 로드는 ASP.NET 엔터티 요청을 읽고에 대 한 기존 요청 데이터를 다시 사용 하려는 경우 유용 합니다."
   syntax:
     content: public void InsertEntityBody ();
     parameters: []
@@ -767,7 +767,7 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The method was invoked on a version of IIS earlier than IIS 7.0."
+    description: "IIS 7.0 이전 버전의 IIS에 메서드가 호출 되었습니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.InsertEntityBody(System.Byte[],System.Int32,System.Int32)
@@ -782,34 +782,34 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides IIS with a copy of the HTTP request entity body and with information about the request entity object."
-  remarks: "IIS does not maintain a copy of the request after it has been read. Therefore, it is recommended that only the handler for an HTTP request should read the request entity.       The InsertEntityBody method overload is useful when you want to perform custom processing, such as inserting a different entity body into memory."
+  summary: "HTTP 요청 엔터티 본문의 사본 및 요청 엔터티 개체에 대 한 정보와 함께 IIS를 제공합니다."
+  remarks: "읽은 후 IIS 요청의 복사본을 유지 하지 않습니다. 따라서 HTTP 요청에 대 한 처리기만 요청 엔터티가 읽어야 하는 것이 좋습니다.       InsertEntityBody 메서드 오버 로드는 서로 다른 엔터티 본문을 메모리에 삽입 하는 등의 사용자 지정 처리를 수행 하려는 경우에 유용 합니다."
   syntax:
     content: public void InsertEntityBody (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array that contains the request entity data."
+      description: "요청 엔터티 데이터가 포함 된 배열입니다."
     - id: offset
       type: System.Int32
-      description: "The zero-based position in `buffer` at which to begin storing the request entity data."
+      description: "0부터 시작 위치 `buffer` 요청 엔터티 데이터 저장을 시작 하는 합니다."
     - id: count
       type: System.Int32
-      description: "The number of bytes to read into the `buffer` array."
+      description: "읽을 바이트 수는 `buffer` 배열입니다."
   overload: System.Web.HttpRequest.InsertEntityBody*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The method was invoked on a version of IIS earlier than IIS 7.0."
+    description: "IIS 7.0 이전 버전의 IIS에 메서드가 호출 되었습니다."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>buffer</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is a negative value."
+    description: "<code>offset</code>음수 값이입니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The number of items in <code>count</code> is larger than the available space in <code>buffer</code>, given the <code>offset</code> value."
+    description: "항목 수가 <code> count </code> 사용 가능한 공간 보다 큽니다. <code> buffer </code>지정는 <code> offset </code> 값입니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.IsAuthenticated
@@ -824,7 +824,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value indicating whether the request has been authenticated."
+  summary: "요청이 인증 되었는지 여부를 나타내는 값을 가져옵니다."
   remarks: ''
   example:
   - "The following code example uses the IsAuthenticated property to determine whether the current request has been authenticated. If it has not been authenticated, the request is redirected to another page where users can enter their credentials into the Web application. This is a common technique used in the default page for an application.  \n  \n [!code-vb[System.Web.HttpRequest_Sample3#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_15_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample3#1](~/add/codesnippet/csharp/p-system.web.httprequest_15_1.aspx)]"
@@ -832,7 +832,7 @@ items:
     content: public bool IsAuthenticated { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the request is authenticated; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>요청이 인증 됩니다. 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.HttpRequest.IsAuthenticated*
   exceptions: []
   platform:
@@ -849,13 +849,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value indicating whether the request is from the local computer."
-  remarks: "The IsLocal property returns `true` if the IP address of the request originator is 127.0.0.1 or if the IP address of the request is the same as the server&quot;s IP address."
+  summary: "로컬 컴퓨터의 요청 인지를 나타내는 값을 가져옵니다."
+  remarks: "속성은 IsLocal 반환 `true` 은 요청을 보낸의 IP 주소 127.0.0.1 아니면 요청의 IP 주소는 서버의 IP 주소와 같습니다."
   syntax:
     content: public bool IsLocal { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the request is from the local computer; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>로컬 컴퓨터에서 요청이 시작 된 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.HttpRequest.IsLocal*
   exceptions: []
   platform:
@@ -872,7 +872,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value indicating whether the HTTP connection uses secure sockets (that is, HTTPS)."
+  summary: "HTTP 연결에서 보안 소켓 (즉, HTTPS)을 사용 하는지 여부를 나타내는 값을 가져옵니다."
   remarks: ''
   example:
   - "The following code example determines whether the IsSecureConnection property is set to false. If it is, the <xref:System.Web.HttpResponse.SuppressContent%2A> property is set to true to stop the response from being sent.  \n  \n [!code-cs[System.Web.HttpResponse_Sample5#3](~/add/codesnippet/csharp/p-system.web.httprequest_13_1.aspx)]\n [!code-vb[System.Web.HttpResponse_Sample5#3](~/add/codesnippet/visualbasic/p-system.web.httprequest_13_1.aspx)]"
@@ -880,7 +880,7 @@ items:
     content: public bool IsSecureConnection { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection is an SSL connection; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>연결이 SSL 연결이; 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Web.HttpRequest.IsSecureConnection*
   exceptions: []
   platform:
@@ -897,16 +897,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the specified object from the <xref:System.Web.HttpRequest.QueryString*>, <xref:System.Web.HttpRequest.Form*>, <xref:System.Web.HttpRequest.Cookies*>, or <xref:System.Web.HttpRequest.ServerVariables*> collections."
+  summary: "지정된 된 개체를 가져옵니다는 <> </> *>, <> </> *>, <> </> *>, 또는 <> </> *> 컬렉션입니다."
   syntax:
     content: public string this[string key] { get; }
     parameters:
     - id: key
       type: System.String
-      description: "The name of the collection member to get."
+      description: "가져올 컬렉션 멤버의 이름입니다."
     return:
       type: System.String
-      description: "The <xref:System.Web.HttpRequest.QueryString*>, <xref:System.Web.HttpRequest.Form*>, <xref:System.Web.HttpRequest.Cookies*>, or <xref:System.Web.HttpRequest.ServerVariables*> collection member specified in the <code>key</code> parameter. If the specified <code>key</code> is not found, then <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned."
+      description: "<> </> *>, <> </> *>, <> </> *>, 또는 <> </> *>에 지정 된 컬렉션 멤버는 <code> key </code> 매개 변수입니다. 하는 경우 지정 된 <code> key </code> 발견 되지 않으면 다음 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 반환 됩니다."
   overload: System.Web.HttpRequest.Item*
   exceptions: []
   platform:
@@ -923,20 +923,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> type for the current user."
-  remarks: "The LogonUserIdentity property exposes the properties and methods of the <xref:System.Security.Principal.WindowsIdentity> object for the currently connected user to Microsoft Internet Information Services (IIS). The instance of the <xref:System.Security.Principal.WindowsIdentity> class that is exposed by LogonUserIdentity tracks the IIS request token and provides easy access to this token for the current HTTP request being processed inside of ASP.NET. An instance of the <xref:System.Security.Principal.WindowsIdentity> class is automatically created so it does not need to be constructed to in order to gain access to its methods and properties."
+  summary: "가져옵니다는 <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> 현재 사용자에 대 한 유형입니다."
+  remarks: "LogonUserIdentity 속성의 메서드와 속성을 노출 된 <xref:System.Security.Principal.WindowsIdentity>Microsoft 인터넷 정보 서비스 (IIS)에 현재 연결 된 사용자에 대 한 개체입니다.</xref:System.Security.Principal.WindowsIdentity> 인스턴스는 <xref:System.Security.Principal.WindowsIdentity>LogonUserIdentity에 의해 노출 되는 클래스는 IIS 요청 토큰을 추적 하 고 ASP.NET 내부에서 처리 되는 현재 HTTP 요청에 대 한이 토큰에 쉽게 액세스할 수를 제공 합니다.</xref:System.Security.Principal.WindowsIdentity> 인스턴스는 <xref:System.Security.Principal.WindowsIdentity>클래스는 자동으로 생성 되므로 해당 메서드 및 속성에 액세스 하기 위해 작성할 필요는 없습니다.</xref:System.Security.Principal.WindowsIdentity>"
   example:
   - "The following code example shows how to retrieve the LogonUserIdentity property for the current user and write out the values of each item in a text file. Place this code on the ASP.NET page referenced by the form's `ACTION` attribute.  \n  \n [!code-vb[System.Web.HttpRequest_LogonUserIdentity#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_35_1.aspx)]\n [!code-cs[System.Web.HttpRequest_LogonUserIdentity#1](~/add/codesnippet/csharp/p-system.web.httprequest_35_1.aspx)]"
   syntax:
     content: public System.Security.Principal.WindowsIdentity LogonUserIdentity { get; }
     return:
       type: System.Security.Principal.WindowsIdentity
-      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> object for the current Microsoft Internet Information Services (IIS) authentication settings."
+      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> 현재 Microsoft 인터넷 정보 서비스 (IIS) 인증 설정에 대 한 개체입니다."
   overload: System.Web.HttpRequest.LogonUserIdentity*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The Web application is running in IIS 7 integrated mode and the <xref href=&quot;System.Web.HttpApplication.PostAuthenticateRequest&quot;></xref> event has not yet been raised."
+    description: "웹 응용 프로그램은 IIS 7 통합 모드로 실행 되 고 <xref href=&quot;System.Web.HttpApplication.PostAuthenticateRequest&quot;> </xref> 이벤트가 발생 하지 아직 합니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.MapImageCoordinates(System.String)
@@ -951,16 +951,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Maps an incoming image-field form parameter to appropriate x-coordinate and y-coordinate values."
+  summary: "적절 한 x-좌표와 y 좌표 값으로 지도 들어오는 이미지 필드 폼 매개 변수입니다."
   syntax:
     content: public int[] MapImageCoordinates (string imageFieldName);
     parameters:
     - id: imageFieldName
       type: System.String
-      description: "The name of the form image map."
+      description: "폼 이미지 맵의 이름입니다."
     return:
       type: System.Int32[]
-      description: "A two-dimensional array of integers."
+      description: "정수의&2; 차원 배열입니다."
   overload: System.Web.HttpRequest.MapImageCoordinates*
   exceptions: []
   platform:
@@ -977,7 +977,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Maps the specified virtual path to a physical path."
+  summary: "실제 경로에 지정된 된 가상 경로 매핑합니다."
   remarks: >-
     > [!CAUTION]
 
@@ -989,15 +989,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path (absolute or relative) for the current request."
+      description: "가상 경로 (절대 또는 상대) 현재 요청에 대 한 합니다."
     return:
       type: System.String
-      description: "The physical path on the server specified by <code>virtualPath</code>."
+      description: "지정한 서버 상의 실제 경로 <code> virtualPath </code>합니다."
   overload: System.Web.HttpRequest.MapPath*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "No <xref href=&quot;System.Web.HttpContext&quot;></xref> object is defined for the request."
+    description: "더 <xref href=&quot;System.Web.HttpContext&quot;> </xref> 개체는 요청에 대해 정의 됩니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.MapPath(System.String,System.String,System.Boolean)
@@ -1012,7 +1012,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Maps the specified virtual path to a physical path."
+  summary: "실제 경로에 지정된 된 가상 경로 매핑합니다."
   remarks: >-
     > [!CAUTION]
 
@@ -1022,21 +1022,21 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path (absolute or relative) for the current request."
+      description: "가상 경로 (절대 또는 상대) 현재 요청에 대 한 합니다."
     - id: baseVirtualDir
       type: System.String
-      description: "The virtual base directory path used for relative resolution."
+      description: "상대 주소 확인에 사용 되는 가상 기본 디렉터리 경로입니다."
     - id: allowCrossAppMapping
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that `virtualPath` may belong to another application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>나타내기 위해 `virtualPath` 다른 응용 프로그램에 속할 수, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.String
-      description: "The physical path on the server."
+      description: "서버 상의 실제 경로입니다."
   overload: System.Web.HttpRequest.MapPath*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "No <xref href=&quot;System.Web.HttpContext&quot;></xref> object is defined for the request."
+    description: "더 <xref href=&quot;System.Web.HttpContext&quot;> </xref> 개체는 요청에 대해 정의 됩니다."
   platform:
   - net462
 - uid: System.Web.HttpRequest.MapRawImageCoordinates(System.String)
@@ -1051,16 +1051,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Maps an incoming image field form parameter into appropriate x and y coordinate values."
+  summary: "들어오는 이미지 필드 폼 매개 변수를를 적절 한 x 좌표와 y 좌표 값에 매핑합니다."
   syntax:
     content: public double[] MapRawImageCoordinates (string imageFieldName);
     parameters:
     - id: imageFieldName
       type: System.String
-      description: "The name of the image field."
+      description: "이미지 필드의 이름입니다."
     return:
       type: System.Double[]
-      description: "The x and y coordinate values."
+      description: "X 및 y 좌표 값입니다."
   overload: System.Web.HttpRequest.MapRawImageCoordinates*
   exceptions: []
   platform:
@@ -1077,8 +1077,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a combined collection of <xref:System.Web.HttpRequest.QueryString*>, <xref:System.Web.HttpRequest.Form*>, <xref:System.Web.HttpRequest.Cookies*>, and <xref:System.Web.HttpRequest.ServerVariables*> items."
-  remarks: "Name-value pairs are added to the collection in the following order:      1.  Query-string parameters.      2.  Form fields.      3.  Cookies.      4.  Server variables."
+  summary: "조합된 컬렉션을 가져옵니다 <> </> *>, <> </> *>, <> </> *>, 및 <> </> *> 항목입니다."
+  remarks: "이름-값 쌍은 다음 순서 대로 컬렉션에 추가 됩니다: 1입니다.  쿼리 문자열 매개 변수입니다.      2.  필드를 형성 합니다.      3.  쿠키입니다.      4.  서버 변수입니다."
   example:
   - "The following code example shows how to loop through the Params property for a page and how to display each key/value pair.  \n  \n [!code-cs[System.Web.HttpRequest.Params#1](~/add/codesnippet/csharp/p-system.web.httprequest_7_1.aspx)]\n [!code-vb[System.Web.HttpRequest.Params#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_7_1.aspx)]"
   syntax:
@@ -1102,15 +1102,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the virtual path of the current request."
-  remarks: "The Path is the concatenation of the <xref:System.Web.HttpRequest.FilePath%2A> and the <xref:System.Web.HttpRequest.PathInfo%2A> trailer. For example, for the URL http://www.contoso.com/virdir/page.html/tail, the Path is /virdir/page.html/tail."
+  summary: "현재 요청의 가상 경로 가져옵니다."
+  remarks: "경로 연결 된 <xref:System.Web.HttpRequest.FilePath%2A>및 <xref:System.Web.HttpRequest.PathInfo%2A>트레일러.</xref:System.Web.HttpRequest.PathInfo%2A> </xref:System.Web.HttpRequest.FilePath%2A> 예를 들어 URL http://www.contoso.com/virdir/page.html/tail는 경로 /virdir/page.html/tail입니다."
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the Path property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/visualbasic/p-system.web.httprequest_29_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#2](~/add/codesnippet/csharp/p-system.web.httprequest_29_1.aspx)]"
   syntax:
     content: public string Path { get; }
     return:
       type: System.String
-      description: "The virtual path of the current request."
+      description: "현재 요청의 가상 경로입니다."
   overload: System.Web.HttpRequest.Path*
   exceptions: []
   platform:
@@ -1127,15 +1127,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the additional path information for a resource with a URL extension."
-  remarks: "For the URL Http://www.contoso.com/virdir/page.html/tail, the PathInfo value is /tail."
+  summary: "URL 확장이 있는 리소스에 대 한 추가 경로 정보를 가져옵니다."
+  remarks: "URL Http://www.contoso.com/virdir/page.html/tail PathInfo 값은 /tail입니다."
   example:
   - "The following code example determines whether the PathInfo property contains an empty string. If it does, the <xref:System.IO.StreamWriter.Write%2A> method writes a string indicating this to a file. If it does not, the <xref:System.Web.HttpUtility.HtmlEncode%2A> method HTML-encodes the value of the PathInfo property and the <xref:System.IO.TextWriter.WriteLine%2A> method writes the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#4](~/add/codesnippet/visualbasic/p-system.web.httprequest_19_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#4](~/add/codesnippet/csharp/p-system.web.httprequest_19_1.aspx)]"
   syntax:
     content: public string PathInfo { get; }
     return:
       type: System.String
-      description: "The additional path information for a resource."
+      description: "리소스에 대 한 추가 경로 정보입니다."
   overload: System.Web.HttpRequest.PathInfo*
   exceptions: []
   platform:
@@ -1152,7 +1152,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the physical file system path of the currently executing server application&quot;s root directory."
+  summary: "현재 실행 중인 서버 응용 프로그램의 루트 디렉터리의 실제 파일 시스템 경로를 가져옵니다."
   remarks: ''
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the PhysicalApplicationPath property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/visualbasic/p-system.web.httprequest_1_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/csharp/p-system.web.httprequest_1_1.aspx)]"
@@ -1160,7 +1160,7 @@ items:
     content: public string PhysicalApplicationPath { get; }
     return:
       type: System.String
-      description: "The file system path of the current application&quot;s root directory."
+      description: "현재 응용 프로그램의 루트 디렉터리의 파일 시스템 경로입니다."
   overload: System.Web.HttpRequest.PhysicalApplicationPath*
   exceptions: []
   platform:
@@ -1177,15 +1177,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the physical file system path corresponding to the requested URL."
-  remarks: "In redirect scenarios using <xref:System.Web.HttpServerUtility.Execute%2A> and <xref:System.Web.HttpServerUtility.Transfer%2A>, the PhysicalPath property returns the path to the original page. To find the physical path of the currently executing page use the <xref:System.Web.HttpRequest.MapPath%2A> method with the input argument set as the <xref:System.Web.HttpRequest.CurrentExecutionFilePath%2A> property."
+  summary: "요청 된 URL에 해당 하는 실제 파일 시스템 경로를 가져옵니다."
+  remarks: "사용 하 여 리디렉션 시나리오에서 <xref:System.Web.HttpServerUtility.Execute%2A>및 <xref:System.Web.HttpServerUtility.Transfer%2A>, PhysicalPath 속성의 경로 원본 페이지를 반환 합니다.</xref:System.Web.HttpServerUtility.Transfer%2A> </xref:System.Web.HttpServerUtility.Execute%2A> 현재 실행 중인 페이지 사용의 실제 경로 찾을 수는 <xref:System.Web.HttpRequest.MapPath%2A>으로 설정 된 입력 인수 메서드는 <xref:System.Web.HttpRequest.CurrentExecutionFilePath%2A>속성.</xref:System.Web.HttpRequest.CurrentExecutionFilePath%2A> </xref:System.Web.HttpRequest.MapPath%2A>"
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the PhysicalPath property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/visualbasic/p-system.web.httprequest_20_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/csharp/p-system.web.httprequest_20_1.aspx)]"
   syntax:
     content: public string PhysicalPath { get; }
     return:
       type: System.String
-      description: "The file system path of the current request."
+      description: "현재 요청의 파일 시스템 경로입니다."
   overload: System.Web.HttpRequest.PhysicalPath*
   exceptions: []
   platform:
@@ -1202,7 +1202,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the collection of HTTP query string variables."
+  summary: "HTTP 쿼리 문자열 변수의 컬렉션을 가져옵니다."
   remarks: ''
   example:
   - "The following code example shows two ways to get the value of a query string variable named “fullname”. In each case, if the URL is `http://www.contoso.com/default.aspx?fullname=Fadi%20Fakhouri`, then the value returned is \"Fadi Fakhouri\" because the `%20` is URL-decoded into a space character. If the URL doesn’t have a `fullname` query string ID, the returned value would be `null`.  \n  \n The first line of code looks for the key “fullname” only in the query string; the second line looks for the key “fullname” in all of the HTTP request collections. For more information about the second line, see <xref:System.Web.HttpRequest.Item%2A>.  \n  \n```c#  \nstring fullname1 = Request.QueryString[\"fullname\"];  \nstring fullname2 = Request[\"fullname\"];  \n  \n```  \n  \n```vb  \nDim fullname1 As String = Request.QueryString(\"fullname\")  \nDim fullname2 As String = Request(\"fullname\")  \n```"
@@ -1210,7 +1210,7 @@ items:
     content: public System.Collections.Specialized.NameValueCollection QueryString { get; }
     return:
       type: System.Collections.Specialized.NameValueCollection
-      description: "The query string variables sent by the client. Keys and values are URL-decoded."
+      description: "클라이언트에서 보낸 쿼리 문자열 변수입니다. 키와 값은 URL로 디코딩됩니다."
   overload: System.Web.HttpRequest.QueryString*
   exceptions: []
   platform:
@@ -1227,15 +1227,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the raw URL of the current request."
-  remarks: "The raw URL is defined as the part of the URL following the domain information. In the URL string http://www.contoso.com/articles/recent.aspx, the raw URL is /articles/recent.aspx. The raw URL includes the query string, if present."
+  summary: "현재 요청의 원시 URL을 가져옵니다."
+  remarks: "원시 URL은 도메인 정보 다음에 URL의 일부분으로 정의 됩니다. URL 문자열 http://www.contoso.com/articles/recent.aspx 원시 URL은 /articles/recent.aspx 합니다. 있는 경우 원시 URL 쿼리 문자열을 포함 합니다."
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the RawUrl property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/visualbasic/p-system.web.httprequest_22_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#5](~/add/codesnippet/csharp/p-system.web.httprequest_22_1.aspx)]"
   syntax:
     content: public string RawUrl { get; }
     return:
       type: System.String
-      description: "The raw URL of the current request."
+      description: "현재 요청의 원시 URL입니다."
   overload: System.Web.HttpRequest.RawUrl*
   exceptions: []
   platform:
@@ -1252,13 +1252,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value that indicates whether the request entity body has been read, and if so, how it was read."
-  remarks: "This method is used to avoid the exception that is thrown if the entity body has already been read and an attempt is made to read it by using an incompatible method. Methods and properties that read the entity body include the following:      -   The <xref:System.Web.HttpRequest.Form%2A> property.      -   The <xref:System.Web.HttpRequest.Files%2A> property.      -   The <xref:System.Web.HttpRequest.InputStream%2A> property.      -   The <xref:System.Web.HttpRequest.GetBufferedInputStream%2A> method.      -   The <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A> method."
+  summary: "요청 엔터티 본문을 읽은 여부와 그럴 경우 읽은 방법을 나타내는 값을 가져옵니다."
+  remarks: "이 메서드는 이미 읽은 엔터티 본문 및 호환 되지 않는 메서드를 사용 하 여 읽을 하려고 시도 하는 경우 throw 되는 예외를 방지 하기 위해 사용 됩니다. 엔터티 본문을 읽는 하는 메서드와 속성에는 다음과 같습니다.- <xref:System.Web.HttpRequest.Form%2A>속성.</xref:System.Web.HttpRequest.Form%2A>      - <xref:System.Web.HttpRequest.Files%2A>속성.</xref:System.Web.HttpRequest.Files%2A>      - <xref:System.Web.HttpRequest.InputStream%2A>속성.</xref:System.Web.HttpRequest.InputStream%2A>      - <xref:System.Web.HttpRequest.GetBufferedInputStream%2A>메서드.</xref:System.Web.HttpRequest.GetBufferedInputStream%2A>      - <xref:System.Web.HttpRequest.GetBufferlessInputStream%2A>메서드.</xref:System.Web.HttpRequest.GetBufferlessInputStream%2A>"
   syntax:
     content: public System.Web.ReadEntityBodyMode ReadEntityBodyMode { get; }
     return:
       type: System.Web.ReadEntityBodyMode
-      description: "The value that indicates how the request entity body was read, or that it has not been read."
+      description: "요청 엔터티 본문 읽기 또는 읽기 하지에 어 떠 여부를 나타내는 값입니다."
   overload: System.Web.HttpRequest.ReadEntityBodyMode*
   exceptions: []
   platform:
@@ -1275,13 +1275,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the <xref:System.Web.Routing.RequestContext> instance of the current request."
-  remarks: "This property provides access to the <xref:System.Web.Routing.RouteData> object for the current request. For more information about ASP.NET routing, see.[ASP.NET Routing](~/add/includes/ajax-current-ext-md.md)."
+  summary: "가져옵니다는 <xref:System.Web.Routing.RequestContext>현재 요청의 인스턴스.</xref:System.Web.Routing.RequestContext>"
+  remarks: "이 속성에 대 한 액세스를 제공는 <xref:System.Web.Routing.RouteData>현재 요청에 대 한 개체입니다.</xref:System.Web.Routing.RouteData> ASP.NET 라우팅에 대 한 자세한 내용은 다음을 참조 합니다. [ASP.NET 라우팅에서](~/add/includes/ajax-current-ext-md.md)합니다."
   syntax:
     content: public System.Web.Routing.RequestContext RequestContext { get; set; }
     return:
       type: System.Web.Routing.RequestContext
-      description: "The <xref:System.Web.Routing.RequestContext> instance of the current request. For non-routed requests, the <xref:System.Web.Routing.RequestContext> object that is returned is empty."
+      description: "<xref:System.Web.Routing.RequestContext>현재 요청의 인스턴스.</xref:System.Web.Routing.RequestContext> 라우팅되지 않는 요청의 경우는 <xref:System.Web.Routing.RequestContext>반환 되는 개체가 비어 있습니다.</xref:System.Web.Routing.RequestContext>"
   overload: System.Web.HttpRequest.RequestContext*
   exceptions: []
   platform:
@@ -1298,7 +1298,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the HTTP data transfer method (<xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;></xref>) used by the client."
+  summary: "HTTP 데이터 전송 메서드를 가져오거나 설정 합니다. (<xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;> </xref> 또는 <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;> </xref>) 클라이언트에서 사용 합니다."
   remarks: ''
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the RequestType property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/visualbasic/p-system.web.httprequest_25_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/csharp/p-system.web.httprequest_25_1.aspx)]"
@@ -1306,7 +1306,7 @@ items:
     content: public string RequestType { get; set; }
     return:
       type: System.String
-      description: "A string representing the HTTP invocation type sent by the client."
+      description: "클라이언트에서 보낸 HTTP 호출 형식을 나타내는 문자열입니다."
   overload: System.Web.HttpRequest.RequestType*
   exceptions: []
   platform:
@@ -1323,8 +1323,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Saves an HTTP request to disk."
-  remarks: "Saving the request context to disk can be useful in debugging."
+  summary: "HTTP 요청을 디스크에 저장 합니다."
+  remarks: "요청 컨텍스트를 디스크에 저장 하는 디버깅에 유용할 수 있습니다."
   example:
   - "The following code example calls the SaveAs method when a page is loaded. The call specifies that the request be saved as a text file in a directory where the ASP.NET process identity has been granted write permissions, and that any header information included in the request is included in the file.  \n  \n [!code-cs[System.Web.HttpRequest_Sample6#1](~/add/codesnippet/csharp/m-system.web.httprequest_1_1.aspx)]\n [!code-vb[System.Web.HttpRequest_Sample6#1](~/add/codesnippet/visualbasic/m-system.web.httprequest_1_1.aspx)]"
   syntax:
@@ -1332,15 +1332,15 @@ items:
     parameters:
     - id: filename
       type: System.String
-      description: "The physical drive path."
+      description: "실제 드라이브 경로입니다."
     - id: includeHeaders
       type: System.Boolean
-      description: "A Boolean value specifying whether an HTTP header should be saved to disk."
+      description: "HTTP 헤더를 저장할지 여부를 지정 하는 부울 값 디스크에 있습니다."
   overload: System.Web.HttpRequest.SaveAs*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The <xref:System.Web.Configuration.HttpRuntimeSection.RequireRootedSaveAsPath*> property of the <xref href=&quot;System.Web.Configuration.HttpRuntimeSection&quot;></xref> is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> but <code>filename</code> is not an absolute path."
+    description: "<xref:System.Web.Configuration.HttpRuntimeSection.RequireRootedSaveAsPath*>의 속성은 <xref href=&quot;System.Web.Configuration.HttpRuntimeSection&quot;> </xref> 로 설정 된 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> 하지만 <code> filename </code> 은 절대 경로가 아닙니다.</xref:System.Web.Configuration.HttpRuntimeSection.RequireRootedSaveAsPath*>"
   platform:
   - net462
 - uid: System.Web.HttpRequest.ServerVariables
@@ -1355,15 +1355,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a collection of Web server variables."
-  remarks: "For a list of server variables supported by IIS, see [IIS Server Variables](http://go.microsoft.com/fwlink/?LinkId=52471)."
+  summary: "웹 서버 변수의 컬렉션을 가져옵니다."
+  remarks: "IIS에서 지 원하는 서버 변수 목록, 참조 [IIS 서버 변수](http://go.microsoft.com/fwlink/?LinkId=52471)합니다."
   example:
   - "The following code example displays the names and values of all named server variables.  \n  \n [!code-cs[Classic HttpRequest.ServerVariables Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_30_1.cs)]\n [!code-vb[Classic HttpRequest.ServerVariables Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_30_1.vb)]"
   syntax:
     content: public System.Collections.Specialized.NameValueCollection ServerVariables { get; }
     return:
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> of server variables."
+      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> 서버 변수입니다."
   overload: System.Web.HttpRequest.ServerVariables*
   exceptions: []
   platform:
@@ -1380,13 +1380,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a <xref:System.Threading.CancellationToken> object that is tripped when a request times out."
-  remarks: "The timeout period can be specified in the Web.config file (see <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A?displayProperty=fullName>) or programmatically (see <xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName>). The timeout period is measured from the time the request comes in. If the default timeout of 110 seconds is in effect, the cancellation token will be tripped no earlier than 110 seconds after request processing begins. You can change the <xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName> property value, and as long this token hasn&quot;t tripped yet, the new timeout value will be respected.       Currently the token only provides 15 second granularity, which means that if the timeout value is 110 seconds, the token will be tripped sometime between 110 and 125 seconds after request processing begins. The granularity may change in the future.       Even though this property is thread-safe, there are restrictions on its use. For more information, see <xref:System.Web.HttpResponse.ClientDisconnectedToken%2A?displayProperty=fullName>.       This property is meaningless if WebSockets request processing has started."
+  summary: "가져옵니다는 <xref:System.Threading.CancellationToken>요청이 시간 초과 될 때 발생 하는 개체입니다.</xref:System.Threading.CancellationToken>"
+  remarks: "Web.config 파일에 제한 시간을 지정할 수 있습니다 (참조 <xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A?displayProperty=fullName>) 또는 프로그래밍 방식으로 (참조 <xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName>).</xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName> </xref:System.Web.Configuration.HttpRuntimeSection.ExecutionTimeout%2A?displayProperty=fullName> 제한 시간에 요청 하는 시간에서 측정 됩니다. 110 초의 기본 제한 시간을 적용 하는 경우 취소 토큰 요청 처리가 시작 된 후 110 초 보다 더 이전에 발생 됩니다. 변경할 수는 <xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName>속성 값이이 토큰에 긴 아직 발생 하지 않은,으로 새로운 제한 시간 값을 적용 하 고.</xref:System.Web.HttpServerUtility.ScriptTimeout%2A?displayProperty=fullName>       요청 처리가 시작 된 후 110에서 125 초 사이의 잠시 토큰을 중단점이 됩니다, 그리고 즉 제한 시간 값은 110 초 토큰 15 두 번째 세분성만 제공 되는 현재 합니다. 세분성은 나중에 변경할 수 있습니다.       이 속성은 스레드로부터 안전한, 경우에 사용에 대 한 제한 사항이 있습니다. 자세한 내용은 <xref:System.Web.HttpResponse.ClientDisconnectedToken%2A?displayProperty=fullName>.</xref:System.Web.HttpResponse.ClientDisconnectedToken%2A?displayProperty=fullName> 을 참조 하십시오.       이 속성은 Websocket 요청 처리가 시작 된 경우에 의미가 없습니다."
   syntax:
     content: public System.Threading.CancellationToken TimedOutToken { get; }
     return:
       type: System.Threading.CancellationToken
-      description: "The cancellation token."
+      description: "취소 토큰입니다."
   overload: System.Web.HttpRequest.TimedOutToken*
   exceptions: []
   platform:
@@ -1403,13 +1403,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the TLS token binding information. The property enables applications to retrieve token information from incoming HTTP requests for enhanced authentication."
-  remarks: "This property returns `null` on non-windows10 platforms."
+  summary: "TLS 토큰 바인딩 정보를 가져옵니다. 속성을 사용 하면 응용 프로그램에서 들어오는 HTTP 요청에 대 한 향상 된 인증 토큰 정보를 검색 합니다."
+  remarks: "이 속성은 반환 `null` 및 windows10 아닌 플랫폼입니다."
   syntax:
     content: public System.Web.ITlsTokenBindingInfo TlsTokenBindingInfo { get; }
     return:
       type: System.Web.ITlsTokenBindingInfo
-      description: "The binding token for the current connection."
+      description: "현재 연결에 대 한 바인딩 토큰입니다."
   overload: System.Web.HttpRequest.TlsTokenBindingInfo*
   exceptions: []
   platform:
@@ -1426,7 +1426,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the number of bytes in the current input stream."
+  summary: "현재 입력 스트림의 바이트 수를 가져옵니다."
   remarks: ''
   example:
   - "The following code example determines whether the TotalBytes property value is greater than 1000 bytes and writes that information to a file.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#6](~/add/codesnippet/visualbasic/p-system.web.httprequest_23_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#6](~/add/codesnippet/csharp/p-system.web.httprequest_23_1.aspx)]"
@@ -1434,7 +1434,7 @@ items:
     content: public int TotalBytes { get; }
     return:
       type: System.Int32
-      description: "The number of bytes in the input stream."
+      description: "입력 스트림의 바이트 수입니다."
   overload: System.Web.HttpRequest.TotalBytes*
   exceptions: []
   platform:
@@ -1451,13 +1451,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the HTTP request values without triggering request validation."
-  remarks: "Request validation checks for HTML markup and script that might indicate a potential cross-site scripting attack. By default, all values are checked using request validation and if any values contain markup or script, ASP.NET throws an <xref:System.Web.HttpRequestValidationException> exception. Use this method if you anticipate that the request will contain markup (for example, you are allowing users to post content that contains markup) and you want to get the raw value of a request.      > [!IMPORTANT] >  If you use this property, you must manually check the data for potential cross-site scripting attacks."
+  summary: "요청 유효성 검사를 트리거하지 않고 HTTP 요청 값을 가져옵니다."
+  remarks: "HTML 태그 및 사이트 간 스크립팅 공격이 발생할를 나타낼 수 있는 스크립트에 대 한 유효성 검사를 요청 합니다. 기본적으로 모든 값 요청 유효성 검사를 사용 하 여 확인 되 고 ASP.NET에서 모든 값 태그 또는 스크립트가 들어 있으면는 <xref:System.Web.HttpRequestValidationException>예외.</xref:System.Web.HttpRequestValidationException> 요청에 태그가 포함 되어 있음을 예상 되는 경우이 메서드를 사용 하 여 (예를 들어 태그를 포함 하는 콘텐츠를 게시 하는 사용자 수) 요청의 원시 값을 가져오는 중이 고 합니다.      > [!IMPORTANT] >이 속성을 사용 하는 경우 수동으로 잠재적인 교차 사이트 스크립팅 공격에 대 한 데이터를 확인 해야 합니다."
   syntax:
     content: public System.Web.UnvalidatedRequestValues Unvalidated { get; }
     return:
       type: System.Web.UnvalidatedRequestValues
-      description: "The HTTP request values that have not been checked using request validation."
+      description: "요청 유효성 검사를 사용 하 여 확인 되지 않은 HTTP 요청 값입니다."
   overload: System.Web.HttpRequest.Unvalidated*
   exceptions: []
   platform:
@@ -1474,7 +1474,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets information about the URL of the current request."
+  summary: "현재 요청의 URL에 대 한 정보를 가져옵니다."
   remarks: ''
   example:
   - "The following code example assigns the <xref:System.Uri> object of the current request to an object variable and displays the value of two properties of the URL object to the HTTP output.  \n  \n [!code-cs[Classic HttpRequest.Url Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_34_1.cs)]\n [!code-vb[Classic HttpRequest.Url Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_34_1.vb)]"
@@ -1482,7 +1482,7 @@ items:
     content: public Uri Url { get; }
     return:
       type: System.Uri
-      description: "A <xref:System.Uri> object that contains the URL of the current request."
+      description: "A <xref:System.Uri>현재 요청의 URL이 포함 된 개체입니다.</xref:System.Uri>"
   overload: System.Web.HttpRequest.Url*
   exceptions: []
   platform:
@@ -1499,7 +1499,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets information about the URL of the client&quot;s previous request that linked to the current URL."
+  summary: "현재 URL에 연결 된 클라이언트의 이전 요청 URL에 대 한 정보를 가져옵니다."
   remarks: ''
   example:
   - "The following code example displays the value of two properties of the URL that referred the client to the current application.  \n  \n [!code-cs[Classic HttpRequest.UrlReferrer Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_8_1.cs)]\n [!code-vb[Classic HttpRequest.UrlReferrer Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_8_1.vb)]"
@@ -1507,12 +1507,12 @@ items:
     content: public Uri UrlReferrer { get; }
     return:
       type: System.Uri
-      description: "A <xref:System.Uri> object."
+      description: "A <xref:System.Uri>개체입니다.</xref:System.Uri>"
   overload: System.Web.HttpRequest.UrlReferrer*
   exceptions:
   - type: System.UriFormatException
     commentId: T:System.UriFormatException
-    description: "The HTTP <xref uid=&quot;langword_csharp_Referer&quot; name=&quot;Referer&quot; href=&quot;&quot;></xref> request header is malformed and cannot be converted to a <xref:System.Uri> object."
+    description: "HTTP <xref uid=&quot;langword_csharp_Referer&quot; name=&quot;Referer&quot; href=&quot;&quot;> </xref> 요청 헤더가 잘못 되었으며로 변환할 수 없는 <xref:System.Uri>개체입니다.</xref:System.Uri>"
   platform:
   - net462
 - uid: System.Web.HttpRequest.UserAgent
@@ -1527,7 +1527,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the raw user agent string of the client browser."
+  summary: "클라이언트 브라우저의 원시 사용자 에이전트 문자열을 가져옵니다."
   remarks: ''
   example:
   - "The following code example assigns the type identification of the requesting browser to a string variable.  \n  \n [!code-cs[Classic HttpRequest.UserAgent Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_26_1.cs)]\n [!code-vb[Classic HttpRequest.UserAgent Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_26_1.vb)]"
@@ -1535,7 +1535,7 @@ items:
     content: public string UserAgent { get; }
     return:
       type: System.String
-      description: "The raw user agent string of the client browser."
+      description: "클라이언트 브라우저의 원시 사용자 에이전트 문자열입니다."
   overload: System.Web.HttpRequest.UserAgent*
   exceptions: []
   platform:
@@ -1552,7 +1552,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the IP host address of the remote client."
+  summary: "원격 클라이언트의 IP 호스트 주소를 가져옵니다."
   remarks: ''
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the UserHostAddress property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/visualbasic/p-system.web.httprequest_9_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/csharp/p-system.web.httprequest_9_1.aspx)]"
@@ -1560,7 +1560,7 @@ items:
     content: public string UserHostAddress { get; }
     return:
       type: System.String
-      description: "The IP address of the remote client."
+      description: "원격 클라이언트의 IP 주소입니다."
   overload: System.Web.HttpRequest.UserHostAddress*
   exceptions: []
   platform:
@@ -1577,7 +1577,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the DNS name of the remote client."
+  summary: "원격 클라이언트의 DNS 이름을 가져옵니다."
   remarks: ''
   example:
   - "The following code example uses the <xref:System.Web.HttpUtility.HtmlEncode%2A> method to HTML-encode the value of the UserHostName property and the <xref:System.IO.TextWriter.WriteLine%2A> method to write the encoded value to the file. This code example is part of a larger example provided for the <xref:System.Web.HttpRequest> class.  \n  \n [!code-vb[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/visualbasic/p-system.web.httprequest_11_1.aspx)]\n [!code-cs[System.Web.HttpRequest_Sample1#7](~/add/codesnippet/csharp/p-system.web.httprequest_11_1.aspx)]"
@@ -1585,7 +1585,7 @@ items:
     content: public string UserHostName { get; }
     return:
       type: System.String
-      description: "The DNS name of the remote client."
+      description: "원격 클라이언트의 DNS 이름입니다."
   overload: System.Web.HttpRequest.UserHostName*
   exceptions: []
   platform:
@@ -1602,7 +1602,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a sorted string array of client language preferences."
+  summary: "클라이언트 언어 기본 설정의 정렬 된 문자열 배열을 가져옵니다."
   remarks: ''
   example:
   - "The following code example captures the multiple values returned by the UserLanguages property into a string array and writes each language name to a separate line of HTTP output.  \n  \n The language names are provided by the browser, and there is no definitive list of all possible codes.  Typically these consist of a two-character codes for the language, a hyphen, and a two-character code for the culture, such as \"en-us\" for U.S. English and \"fr-ca\" for Canadian French.  \n  \n [!code-vb[Classic HttpRequest.UserLanguages Example#1](~/add/codesnippet/visualbasic/p-system.web.httprequest_16_1.vb)]\n [!code-cs[Classic HttpRequest.UserLanguages Example#1](~/add/codesnippet/csharp/p-system.web.httprequest_16_1.cs)]"
@@ -1610,7 +1610,7 @@ items:
     content: public string[] UserLanguages { get; }
     return:
       type: System.String[]
-      description: "A sorted string array of client language preferences, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if empty."
+      description: "클라이언트 언어 기본 설정의 정렬 된 문자열 배열 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 비어 있는 경우."
   overload: System.Web.HttpRequest.UserLanguages*
   exceptions: []
   platform:
@@ -1627,8 +1627,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Causes validation to occur for the collections accessed through the <xref:System.Web.HttpRequest.Cookies*>, <xref:System.Web.HttpRequest.Form*>, and <xref:System.Web.HttpRequest.QueryString*> properties."
-  remarks: "The <xref:System.Web.HttpRequest> class uses input validation flags to track whether to perform validation on the request collections accessed through the <xref:System.Web.HttpRequest.Cookies%2A>, <xref:System.Web.HttpRequest.Form%2A>, and <xref:System.Web.HttpRequest.QueryString%2A> properties. The ValidateInput method sets these flags so that when the get accessors for the <xref:System.Web.HttpRequest.Cookies%2A>, <xref:System.Web.HttpRequest.Form%2A>, or <xref:System.Web.HttpRequest.QueryString%2A> property are invoked, input validation is performed. Validation works by checking all input data against a hard-coded list of potentially dangerous data.       If the validation feature is enabled by page directive or configuration, this method is called during the page&quot;s `ProcessRequest` processing phase. The ValidateInput method can be called by your code if the validation feature is not enabled."
+  summary: "통해 액세스 되는 컬렉션에 대 한 유효성 검사는 <> </> *>, <> </> *>, 및 <xref:System.Web.HttpRequest.QueryString*>속성.</xref:System.Web.HttpRequest.QueryString*>"
+  remarks: "<xref:System.Web.HttpRequest>클래스 입력된 유효성 검사 플래그를 사용 하 여를 통해 액세스 되는 요청이 컬렉션에 유효성 검사를 수행할지 여부를 추적 하는 <xref:System.Web.HttpRequest.Cookies%2A>, <xref:System.Web.HttpRequest.Form%2A>, 및 <xref:System.Web.HttpRequest.QueryString%2A>속성.</xref:System.Web.HttpRequest.QueryString%2A> </xref:System.Web.HttpRequest.Form%2A> </xref:System.Web.HttpRequest.Cookies%2A> </xref:System.Web.HttpRequest> ValidateInput 메서드 이러한 플래그를 설정 하도록 때에 대 한 get 접근자는 <xref:System.Web.HttpRequest.Cookies%2A>, <xref:System.Web.HttpRequest.Form%2A>, 또는 <xref:System.Web.HttpRequest.QueryString%2A>속성 호출 되는, 입력된 유효성 검사가 수행 됩니다.</xref:System.Web.HttpRequest.QueryString%2A> </xref:System.Web.HttpRequest.Form%2A> </xref:System.Web.HttpRequest.Cookies%2A> 유효성 검사는 하드 코드 된 잠재적으로 위험한 데이터 목록 기준으로 모든 입력된 데이터를 확인 하 여 작동 합니다.       Page 지시문 또는 구성을 통해 유효성 검사 기능을 사용 하면이 메서드는 페이지의 `ProcessRequest` 처리 단계입니다. 유효성 검사 기능을 사용 하지 않는 경우 ValidateInput 메서드 코드에서 호출할 수 있습니다."
   syntax:
     content: public void ValidateInput ();
     parameters: []
@@ -1636,7 +1636,7 @@ items:
   exceptions:
   - type: System.Web.HttpRequestValidationException
     commentId: T:System.Web.HttpRequestValidationException
-    description: "Potentially dangerous data was received from the client."
+    description: "클라이언트에서 잠재적으로 위험한 데이터를 받았습니다."
   platform:
   - net462
 references:

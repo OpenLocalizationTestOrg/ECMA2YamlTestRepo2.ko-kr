@@ -11,8 +11,8 @@ items:
   nameWithType: IResourceProvider
   fullName: System.Web.Compilation.IResourceProvider
   type: Interface
-  summary: "Defines the interface a class must implement to act as a resource provider."
-  remarks: 'A resource provider facilitates the retrieving of values from a resource file. When an expression of the form `<%$ Resources: classKey, resourceKey %>` is encountered during page parsing, the resource provider returns the localized value for the resource. The <xref:System.Web.Compilation.ResourceProviderFactory> class creates instances of IResourceProvider objects for use in retrieving the values.'
+  summary: "리소스 공급자 역할을 하는 클래스를 구현 해야 하는 인터페이스를 정의 합니다."
+  remarks: '리소스 공급자를 리소스 파일에서 값의 검색을 지원 합니다. 폼의 식이 `<%$ Resources: classKey, resourceKey %>` 발생 리소스 공급자 페이지 구문 분석 하는 동안 리소스에 대 한 지역화 된 값을 반환 합니다. <xref:System.Web.Compilation.ResourceProviderFactory>클래스 값을 검색에 사용 하기 위해 IResourceProvider 개체의 인스턴스를 만듭니다.</xref:System.Web.Compilation.ResourceProviderFactory>'
   example:
   - "The following code example shows a customized resource provider factory that retrieves cached values. The resource provider factory creates an instance of a class that implements IResourceProvider.  \n  \n [!code-vb[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/visualbasic/t-system.web.compilation_5_1.vb)]\n [!code-cs[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/csharp/t-system.web.compilation_5_1.cs)]"
   syntax:
@@ -32,8 +32,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a resource object for the key and culture."
-  remarks: "When implemented, the GetObject method returns the localized value for a resource key based on the current culture. The implementing class could retrieve the <xref:System.Globalization.CultureInfo.CurrentUICulture%2A> property if a value for the `culture` parameter is not passed in."
+  summary: "키와 문화권에 대 한 리소스 개체를 반환합니다."
+  remarks: "구현 시 GetObject 메서드는 현재 문화권을 기반으로 한 리소스 키에 대 한 지역화 된 값을 반환 합니다. 구현 하는 클래스를 검색할 수는 <xref:System.Globalization.CultureInfo.CurrentUICulture%2A>속성에 대 한 값은 `culture` 인치 매개 변수가 전달 되지 않거나</xref:System.Globalization.CultureInfo.CurrentUICulture%2A>"
   example:
   - "The following code example shows a customized resource provider factory that retrieves cached values. The resource provider factory creates an instance of a customized resource provider that implements <xref:System.Web.Compilation.IResourceProvider>. The resource provider includes a customized GetObject method.  \n  \n [!code-vb[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/visualbasic/2a0e17d4-2039-481b-ab7e-_1.vb)]\n [!code-cs[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/csharp/2a0e17d4-2039-481b-ab7e-_1.cs)]"
   syntax:
@@ -41,13 +41,13 @@ items:
     parameters:
     - id: resourceKey
       type: System.String
-      description: "The key identifying a particular resource."
+      description: "특정 리소스를 식별 하는 키입니다."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The culture identifying a localized value for the resource."
+      description: "리소스에 대 한 지역화 된 값을 식별 하는 문화권입니다."
     return:
       type: System.Object
-      description: "An <xref:System.Object> that contains the resource value for the <code>resourceKey</code> and <code>culture</code>."
+      description: "<xref:System.Object>에 대 한 리소스 값을 포함 하는 <code> resourceKey </code> 및 <code> culture </code>.</xref:System.Object>"
   overload: System.Web.Compilation.IResourceProvider.GetObject*
   exceptions: []
   platform:
@@ -64,15 +64,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets an object to read resource values from a source."
-  remarks: "An <xref:System.Resources.IResourceReader> object reads sequential name/value pairs from a source. The <xref:System.Resources.ResourceReader> and <xref:System.Resources.ResXResourceReader> classes provide default <xref:System.Resources.IResourceReader> interface implementation for reading from .resources and .resx files, respectively. Other implementations of the <xref:System.Web.Compilation.IResourceProvider> interface could read from any source containing resource values."
+  summary: "원본에서 리소스 값을 읽기 위한 개체를 가져옵니다."
+  remarks: "<xref:System.Resources.IResourceReader>개체 소스에서 순차적 이름/값 쌍을 읽습니다.</xref:System.Resources.IResourceReader> <xref:System.Resources.ResourceReader>및 <xref:System.Resources.ResXResourceReader>클래스는 기본 제공 <xref:System.Resources.IResourceReader>인터페이스.resx 및.resources 파일 읽기에 대 한 구현에 각각.</xref:System.Resources.IResourceReader> </xref:System.Resources.ResXResourceReader> </xref:System.Resources.ResourceReader> 다른 구현과 <xref:System.Web.Compilation.IResourceProvider>인터페이스 리소스 값이 포함 된 모든 원본에서 읽을 수 없습니다.</xref:System.Web.Compilation.IResourceProvider>"
   example:
   - "The following code example shows a customized resource provider factory that retrieves cached values. The resource provider factory creates an instance of a customized resource provider that implements <xref:System.Web.Compilation.IResourceProvider>. The resource provider includes a customized ResourceReader property.  \n  \n [!code-vb[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/visualbasic/p-system.web.compilation_5_1.vb)]\n [!code-cs[System.Web.Compilation.ResourceProviderFactory#2](~/add/codesnippet/csharp/p-system.web.compilation_5_1.cs)]"
   syntax:
     content: public System.Resources.IResourceReader ResourceReader { get; }
     return:
       type: System.Resources.IResourceReader
-      description: "The <xref href=&quot;System.Resources.IResourceReader&quot;></xref> associated with the current resource provider."
+      description: "<xref href=&quot;System.Resources.IResourceReader&quot;> </xref> 현재 리소스 공급자와 연결 합니다."
   overload: System.Web.Compilation.IResourceProvider.ResourceReader*
   exceptions: []
   platform:
