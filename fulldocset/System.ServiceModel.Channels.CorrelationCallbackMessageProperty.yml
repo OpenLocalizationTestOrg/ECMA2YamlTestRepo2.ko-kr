@@ -24,8 +24,8 @@ items:
   nameWithType: CorrelationCallbackMessageProperty
   fullName: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
   type: Class
-  summary: "Provides an abstract base class for deferring correlation key calculation until all of the correlation data is available."
-  remarks: "This is typically used to allow other channels to provide correlation data before a message is sent on the wire."
+  summary: "모든 상관 관계 데이터를 사용할 때까지 상관 관계 키 계산을 지연에 대 한 추상 기본 클래스를 제공 합니다."
+  remarks: "이 값은 다른 채널이를 통신 중에 메시지를 보내기 전에 상관 관계 데이터를 제공할 수 있도록 일반적으로 사용 됩니다."
   syntax:
     content: 'public abstract class CorrelationCallbackMessageProperty : System.ServiceModel.Channels.IMessageProperty'
   inheritance:
@@ -47,13 +47,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the specified collection of correlation data that is required to calculate the correlation."
+  summary: "상관 관계를 계산 하는 데 필요한 상관 관계 데이터의 지정된 된 컬렉션을 사용 하 여 파생된 클래스의 새 인스턴스를 초기화 하는 파생된 클래스에서 호출 됩니다."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.Collections.Generic.ICollection<string> neededData);
     parameters:
     - id: neededData
       type: System.Collections.Generic.ICollection{System.String}
-      description: "The correlation data required to calculate the correlation."
+      description: "상관 관계를 계산 하는 데 필요한 상관 관계 데이터입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -70,13 +70,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the required correlation data from another <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance."
+  summary: "필요한 상관 관계 데이터를 다른를 사용 하 여 파생된 클래스의 새 인스턴스를 초기화 하는 파생된 클래스에서 호출 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 파생 클래스 인스턴스입니다."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.ServiceModel.Channels.CorrelationCallbackMessageProperty callback);
     parameters:
     - id: callback
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "The <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance to copy."
+      description: "<xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 파생 클래스 인스턴스를 복사 합니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Adds required correlation data to the property."
-  remarks: "When required correlation data is added, it is removed from the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list. When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> returns `true`."
+  summary: "속성에 필요한 상관 관계 데이터를 추가합니다."
+  remarks: "필요한 상관 관계 데이터를 추가할 때에서 제거 됩니다는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>목록.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> 데이터를 추가한 필요한 모든는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>목록은 비어 있으며 및 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A>반환 `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public void AddData (string name, Func<string> value);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the correlation data value."
+      description: "상관 관계 데이터 값의 이름입니다."
     - id: value
       type: System.Func{System.String}
-      description: "Provides the value of the correlation data."
+      description: "상관 관계 데이터의 값을 제공합니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.AddData*
   exceptions: []
   platform:
@@ -120,26 +120,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to asynchronously construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, which asynchronously performs the correlation calculation of the specified message.       To be notified when the asynchronous operation is complete, call <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> from the `callback` method. If <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation does not complete within the specified time-out interval a <xref:System.TimeoutException> is thrown.       This method is an asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "모든 상관 관계 정보를 비동기적으로 상관 관계를 생성에 사용할 수 있는 상관 관계 프로토콜에서 호출 됩니다."
+  remarks: "이 메서드를 호출 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>상관 관계를 생성 하려면.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> 응용 프로그램의 구현을 제공 해야 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, 지정된 된 메시지의 상관 관계 계산을 비동기적으로 수행 하는.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>       비동기 작업이 완료 될 때 알림을 받을 수 호출 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>에서 `callback` 메서드.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> 경우 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>은 작업이 완료 될 때까지 차단 비동기 작업이 완료 되기 전에 호출 됩니다.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> 지정한 시간 제한 간격 내에서 작업이 완료 되지 않는 경우는 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>       이 메서드는 비동기 버전을 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>를 사용 하 여 <xref:System.IAsyncResult>비동기 디자인 패턴.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][비동기 프로그래밍 개요](http://go.microsoft.com/fwlink/?LinkId=141764)합니다."
   syntax:
     content: public IAsyncResult BeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "상관 관계에 사용 되는 메시지입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which correlation must be finalized or else a <xref:System.TimeoutException> is thrown."
+      description: "완료 상관 관계 수 있어야 하는 간격을 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation is completed."
+      description: "상관 관계 계산이 완료 되 면 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보를 포함 하는 선택적 응용 프로그램 관련 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "현재 비동기 작업에 대 한 참조입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, initializes and returns a copy of the derived message property instance."
+  summary: "파생된 클래스에서 재정의 하는 경우 초기화 하 고 파생 된 메시지 속성 인스턴스의 복사본을 반환 합니다."
   syntax:
     content: public abstract System.ServiceModel.Channels.IMessageProperty CreateCopy ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.IMessageProperty
-      description: "A copy of the derived message property instance."
+      description: "파생 된 메시지 속성 인스턴스의 복사본입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.CreateCopy*
   exceptions: []
   platform:
@@ -179,17 +179,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Returns the message that was prepared asynchronously for correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> to retrieve the message. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, which returns the message that was prepared for correlation.       If EndFinalizeCorrelation is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation did not complete within the time-out interval specified in the call to <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A> a <xref:System.TimeoutException> is thrown when this method is called.       This method completes the asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "상관 관계를 위해 비동기적으로 준비 된 메시지를 반환 합니다."
+  remarks: "이 메서드를 호출 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>메시지를 검색 합니다.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> 응용 프로그램의 구현을 제공 해야 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, 상관 관계를 위해 준비 된 메시지를 반환 하는.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>       EndFinalizeCorrelation 비동기 작업이 되기 전에 호출 되 면 완료 될 때까지 작업을 차단할 완료 합니다. 에 대 한 호출에 지정 된 시간 제한 간격 내에 작업이 완료 되지 않은 경우 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>는 <xref:System.TimeoutException>이 메서드를 호출할 때 throw 됩니다.</xref:System.TimeoutException> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>       이 메서드가 완료 되는 비동기 버전의 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>를 사용 하 여 <xref:System.IAsyncResult>비동기 디자인 패턴.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][비동기 프로그래밍 개요](http://go.microsoft.com/fwlink/?LinkId=141764)합니다."
   syntax:
     content: public System.ServiceModel.Channels.Message EndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "<xref:System.IAsyncResult>참조 하는 비동기 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>작업.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The message that was prepared for correlation."
+      description: "상관 관계를 위해 준비 된 메시지입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -206,20 +206,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, which performs the correlation calculation of the specified message."
+  summary: "모든 상관 관계 정보를 사용할 수 있는 상관 관계를 생성 하는 경우 상관 관계 프로토콜에서 호출 됩니다."
+  remarks: "이 메서드를 호출 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>상관 관계를 생성 하려면.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> 응용 프로그램의 구현을 제공 해야 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, 지정된 된 메시지의 상관 관계 계산을 수행 하는.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>"
   syntax:
     content: public System.ServiceModel.Channels.Message FinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "상관 관계에 사용 되는 메시지입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "상관 관계 계산이 완료 되어야 다른 간격은 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "상호 관련 된 메시지입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation*
   exceptions: []
   platform:
@@ -236,13 +236,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Determines whether the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> has all of the required correlation data."
-  remarks: "When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and IsFullyDefined returns `true`."
+  summary: "결정 여부는 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 필요한 상관 관계 데이터의 모든 합니다."
+  remarks: "데이터를 추가한 필요한 모든는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>목록이 비어 있고 IsFullyDefined 반환 `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public bool IsFullyDefined { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all of the required correlation data is present; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>필요한 상관 관계 데이터의 모든 경우에 존재 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined*
   exceptions: []
   platform:
@@ -259,12 +259,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: 'Gets the name of this message property: “CorrelationCallbackMessageProperty”.'
+  summary: '이 메시지 속성의 이름을 가져옵니다: &quot;CorrelationCallbackMessageProperty&quot;입니다.'
   syntax:
     content: public static string Name { get; }
     return:
       type: System.String
-      description: "The string value “CorrelationCallbackMessageProperty”."
+      description: "문자열 값 &quot;CorrelationCallbackMessageProperty&quot;입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.Name*
   exceptions: []
   platform:
@@ -281,12 +281,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a list of correlation data that is required before correlation can be applied."
+  summary: "상관 관계를 적용 하기 전에 필요한 상관 관계 데이터의 목록을 가져옵니다."
   syntax:
     content: public System.Collections.Generic.IEnumerable<string> NeededData { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "A list of required correlation data."
+      description: "필요한 상관 관계 데이터의 목록입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData*
   exceptions: []
   platform:
@@ -303,26 +303,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, asynchronously performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>."
+  summary: "파생된 클래스에서 재정의 되 면 비동기적으로 지정된 된 메시지에 대 한 상관 관계 계산을 수행 합니다."
+  remarks: "이 메서드는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract IAsyncResult OnBeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "상관 관계에 사용 되는 메시지입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "상관 관계 계산이 완료 되어야 다른 간격은 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation has been completed."
+      description: "상관 관계 계산이 완료 되 면 호출 될 메서드."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "비동기 작업에 대 한 정보를 포함 하는 선택적 응용 프로그램 관련 개체입니다."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "현재 비동기 작업에 대 한 참조입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -339,17 +339,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, returns the message that was prepared asynchronously for correlation."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>."
+  summary: "파생된 클래스에서 재정의 되 면 상관 관계를 위해 비동기적으로 준비 된 메시지를 반환 합니다."
+  remarks: "이 메서드는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnEndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "<xref:System.IAsyncResult>참조 하는 비동기 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>작업.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "상호 관련 된 메시지입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -366,20 +366,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>."
+  summary: "파생된 클래스에서 재정의 되 면 지정된 된 메시지에 대 한 상관 관계 계산을 수행 합니다."
+  remarks: "이 메서드는 <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "상관 관계에 사용 되는 메시지입니다."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "상관 관계 계산이 완료 되어야 다른 간격은 <xref:System.TimeoutException>throw 됩니다.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "상호 관련 된 메시지입니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation*
   exceptions: []
   platform:
@@ -396,19 +396,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>."
+  summary: "가져오려고 시도 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 지정한 메시지 <xref:System.ServiceModel.Channels.Message.Properties*>.</xref:System.ServiceModel.Channels.Message.Properties*> 에서"
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message that contains the <xref:System.ServiceModel.Channels.Message.Properties*> to inspect."
+      description: "포함 된 메시지는 <xref:System.ServiceModel.Channels.Message.Properties*>검사할.</xref:System.ServiceModel.Channels.Message.Properties*>"
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때 포함 된 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 지정된 된 메시지에 포함 된 <xref:System.ServiceModel.Channels.Message.Properties*>, 그렇지 않으면 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*> 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message’s <xref:System.ServiceModel.Channels.Message.Properties*> contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>경우 메시지의 <xref:System.ServiceModel.Channels.Message.Properties*>포함 한 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*>"
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:
@@ -425,19 +425,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message properties."
+  summary: "가져오려고 시도 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 지정된 된 메시지 속성에서 합니다."
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: properties
       type: System.ServiceModel.Channels.MessageProperties
-      description: "The message properties to inspect."
+      description: "검사할 메시지 속성입니다."
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message properties; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때 포함 된 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> 고, 그렇지 않으면 지정된 된 메시지 속성에 포함 된 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message properties contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지 속성을 포함 하는 경우는 <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:

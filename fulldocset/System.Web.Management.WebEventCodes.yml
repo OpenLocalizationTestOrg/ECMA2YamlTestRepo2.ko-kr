@@ -74,8 +74,8 @@ items:
   nameWithType: WebEventCodes
   fullName: System.Web.Management.WebEventCodes
   type: Class
-  summary: "Defines the codes associated with the ASP.NET health monitoring events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebEventCodes class contains codes that identify types of health-monitoring events. Two types of codes are defined within the class: major codes, which identify the ASP.NET health-monitoring events; and detail codes, which provide more information about a related major code. These codes are implemented as integers, rather than as an enumeration, to allow for extensibility.       When a health-monitoring event is raised, it is associated with a major event code. The following list identifies the categories of major event codes that are defined within the WebEventCodes class:      -   **Application codes**. Application codes identify events in the lifetime of an application, such as startup and shutdown events. Their values are greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> field constant. They are associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> event type. The heartbeat event is a special kind of application event. It identifies events raised at periodic intervals to provide information relative to the state of the running process. It is associated with the <xref:System.Web.Management.WebHeartbeatEvent> event type.      -   **Request codes**. Request codes identify non-error events that provide per-request information. Their values are greater than the <xref:System.Web.Management.WebEventCodes.RequestCodeBase> field constant. They are associated with the <xref:System.Web.Management.WebRequestEvent> event type.      -   **Error codes**. Error codes identify events that contain information about two kinds of errors: errors specifically related to a Web request and systemic errors. The errors related to Web requests include unhandled exceptions, view-state errors, and input-validation errors. They are associated with the <xref:System.Web.Management.WebRequestErrorEvent> event type. The systemic errors relate to configuration or application code, including parser errors and compilation errors. They are associated with the <xref:System.Web.Management.WebErrorEvent> event type. Both kinds of errors have values greater than the <xref:System.Web.Management.WebEventCodes.ErrorCodeBase> field constant.      -   **Audit codes**. Audit codes identify events that contain auditable information such as login attempts, access security violations, and authorization violations. Their values are greater than <xref:System.Web.Management.WebEventCodes.AuditCodeBase>. They are associated with <xref:System.Web.Management.WebAuditEvent> and its derived event types.      -   **Miscellaneous codes**. Miscellaneous codes do not identify events but are used to flag nonstandard event information. Their values are greater than <xref:System.Web.Management.WebEventCodes.MiscCodeBase>. Refer also to <xref:System.Web.Management.WebEventCodes.WebEventProviderInformation> for more information.       You can create your own custom event code by choosing code values above <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.       In the `eventMappings` health-monitoring configuration element, you can optionally specify an event-code range.  If the event code range is specified, the mapping only applies to the events that have an event code within that range; otherwise, it applies to all the event codes. The following configuration file excerpt shows the <xref:System.Web.Management.EventLogWebEventProvider> configured to handle <xref:System.Web.Management.WebFailureAuditEvent> events whose event codes belong to the audit category.      ```   <healthMonitoring>     <eventMappings>        <add name=&quot;Failure Audits&quot; type=         &quot;System.Web.Management.WebFailureAuditEvent,System.Web, Version=2.0.3600.0,Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; />     </eventMappings>        <rules>       <add name=&quot;Failure Audits Default&quot;         eventName=&quot;Failure Audits&quot;         provider=&quot;EventLogProvider&quot;         profile=&quot;Default&quot;         minInterval=&quot;00:01:00&quot; />     </rules>   </healthMonitoring>   ```       You can create your own custom event code by choosing code values above <xref:System.Web.Management.WebEventCodes.WebExtendedBase>."
+  summary: "ASP.NET 상태 모니터링 이벤트와 연결 된 코드를 정의 합니다."
+  remarks: "ASP.NET 상태 모니터링 생산 및 운영 담당자를 웹 응용 프로그램 배포를 관리할 수 있습니다. <xref:System.Web.Management>네임 스페이스 응용 프로그램 상태 데이터와이 데이터를 처리 하는 공급자 유형을 패키지 하는 상태 이벤트 형식을 포함 합니다.</xref:System.Web.Management> 또한 상태 이벤트를 관리 하는 동안 유용한 지 원하는 형식을 포함 합니다.       상태 모니터링의 형식을 식별 하는 코드를 포함 하는 WebEventCodes 클래스 이벤트입니다. 두 가지 유형의 코드는 클래스 내에서 정의 됩니다: ASP.NET 상태 모니터링 이벤트를 식별 하는 주요 코드 및 관련된 주요 코드에 대 한 자세한 정보를 제공 하는 코드에 자세히 설명 합니다. 이러한 코드는 높은 확장성을 허용 하는 열거형이 아니라 정수,으로 구현 됩니다.       상태 모니터링 이벤트가 발생 하는 경우에 주요 이벤트 코드와 연결 됩니다. 다음 목록은 WebEventCodes 클래스 내에 정의 된 주요 이벤트 코드의 범주:- **응용 프로그램 코드**합니다. 응용 프로그램 코드의 예: 시작 응용 프로그램의 수명 이벤트와 종료 이벤트를 식별합니다. 요소의 값은 보다 큰는 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>필드는 상수입니다.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> 연관 된 <xref:System.Web.Management.WebApplicationLifetimeEvent>이벤트 유형.</xref:System.Web.Management.WebApplicationLifetimeEvent> 하트 비트 이벤트는 특수 한 유형의 응용 프로그램 이벤트입니다. 실행 중인 프로세스의 상태를 기준으로 정보를 제공 하는 정기적으로 발생 하는 이벤트를 식별 합니다. 과 연관 된 <xref:System.Web.Management.WebHeartbeatEvent>이벤트 유형.</xref:System.Web.Management.WebHeartbeatEvent>      - **요청 코드**합니다. 요청 코드 요청 정보를 제공 하는 오류가 아닌 이벤트를 식별 합니다. 요소의 값은 보다 큰는 <xref:System.Web.Management.WebEventCodes.RequestCodeBase>필드는 상수입니다.</xref:System.Web.Management.WebEventCodes.RequestCodeBase> 연관 된 <xref:System.Web.Management.WebRequestEvent>이벤트 유형.</xref:System.Web.Management.WebRequestEvent>      - **오류 코드**합니다. 두 종류의 오류에 대 한 정보를 포함 하는 이벤트를 식별 하는 오류 코드: 오류 특별히 관련이 웹 요청 및 시스템 오류입니다. 웹 요청에 관련 된 오류는 처리 되지 않은 예외, 뷰 상태 오류 및 입력 유효성 검사 오류를 포함 합니다. 연관 된 <xref:System.Web.Management.WebRequestErrorEvent>이벤트 유형.</xref:System.Web.Management.WebRequestErrorEvent> 시스템 오류는 파서 오류 및 컴파일 오류를 포함 하 여 구성 또는 응용 프로그램 코드와 관련이 있습니다. 연관 된 <xref:System.Web.Management.WebErrorEvent>이벤트 유형.</xref:System.Web.Management.WebErrorEvent> 보다 큰 값을 가져야 하는 두 종류의 오류는 <xref:System.Web.Management.WebEventCodes.ErrorCodeBase>필드는 상수입니다.</xref:System.Web.Management.WebEventCodes.ErrorCodeBase>      - **감사 코드**합니다. 감사 코드 로그인 시도, 액세스 보안 위반 및 권한 부여 위반 등의 감사 가능한 정보를 포함 하는 이벤트를 식별 합니다. 요소의 값은 <xref:System.Web.Management.WebEventCodes.AuditCodeBase>.</xref:System.Web.Management.WebEventCodes.AuditCodeBase> 보다 큰 할당 된 <xref:System.Web.Management.WebAuditEvent>및 파생된 이벤트 유형은.</xref:System.Web.Management.WebAuditEvent>      - **기타 코드**합니다. 기타 코드 이벤트를 식별 하지 않는 있지만 표준이 아닙니다 이벤트 정보를 지정 하기 사용 됩니다. 요소의 값은 <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.</xref:System.Web.Management.WebEventCodes.MiscCodeBase> 보다 큰 도 참조 <xref:System.Web.Management.WebEventCodes.WebEventProviderInformation>자세한 내용은.</xref:System.Web.Management.WebEventCodes.WebEventProviderInformation>       코드 <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.</xref:System.Web.Management.WebEventCodes.WebExtendedBase> 보다 큰 값을 선택 하 여 사용자 고유의 사용자 지정 이벤트 코드를 만들 수 있습니다.       에 `eventMappings` 구성 요소 상태 모니터링 이벤트 코드 범위를 선택적으로 지정할 수 있습니다.  매핑을; 범위 내에서 이벤트 코드를 있는 이벤트에만 적용 됩니다 이벤트 코드 범위를 지정 하는 경우 그렇지 않은 경우 모든 이벤트 코드에 적용 됩니다. 다음 구성 파일 인용한는 <xref:System.Web.Management.EventLogWebEventProvider>처리 하도록 구성 <xref:System.Web.Management.WebFailureAuditEvent>이벤트 코드가 감사 범주에 속하는 이벤트.</xref:System.Web.Management.WebFailureAuditEvent> </xref:System.Web.Management.EventLogWebEventProvider>      ```   <healthMonitoring>     <eventMappings>        <add name=&quot;Failure Audits&quot; type=         &quot;System.Web.Management.WebFailureAuditEvent,System.Web, Version=2.0.3600.0,Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; />     </eventMappings>        <rules>       <add name=&quot;Failure Audits Default&quot;         eventName=&quot;Failure Audits&quot;         provider=&quot;EventLogProvider&quot;         profile=&quot;Default&quot;         minInterval=&quot;00:01:00&quot; />     </rules>   </healthMonitoring>   ```코드 <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.</xref:System.Web.Management.WebEventCodes.WebExtendedBase> 보다 큰 값을 선택 하 여 사용자 고유의 사용자 지정 이벤트 코드를 만들 수 있습니다."
   syntax:
     content: public sealed class WebEventCodes
   inheritance:
@@ -96,13 +96,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring application event codes. This field is constant."
-  remarks: "The ApplicationCodeBase value represents the offset for major event codes associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application codes are assigned values greater than ApplicationCodeBase."
+  summary: "ASP.NET 상태 모니터링 응용 프로그램 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationCodeBase 값와 관련 된 주요 이벤트 코드에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebApplicationLifetimeEvent>유형.</xref:System.Web.Management.WebApplicationLifetimeEvent> 모든 응용 프로그램 코드 ApplicationCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int ApplicationCodeBase = 1000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the compilation of the application has finished. This field is constant."
-  remarks: "The ApplicationCompilationEnd value is a major code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> value. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the compilation of the application ends."
+  summary: "응용 프로그램의 컴파일 완료 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationCompilationEnd 값은 주 코드 및 해당 값 보다 크면는 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>값.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> Asp <xref:System.Web.Management.WebApplicationLifetimeEvent>응용 프로그램의 컴파일 끝나면.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationCompilationEnd = 1004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -140,13 +140,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the compilation of the application has started. This field is constant."
-  remarks: "The ApplicationCompilationStart value is a major code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> value. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the compilation of the application starts."
+  summary: "응용 프로그램의 컴파일이 시작 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationCompilationStart 값은 주 코드 및 해당 값 보다 크면는 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>값.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> Asp <xref:System.Web.Management.WebApplicationLifetimeEvent>응용 프로그램의 컴파일을 시작 될 때 이벤트.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationCompilationStart = 1003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -162,13 +162,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the application detail event codes. This field is constant."
-  remarks: "The ApplicationDetailCodeBase value represents the offset for the detail event code range associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application detail codes are assigned values greater than ApplicationDetailCodeBase."
+  summary: "응용 프로그램 세부 정보 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationDetailCodeBase 값와 관련 된 세부 이벤트 코드 범위에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebApplicationLifetimeEvent>유형.</xref:System.Web.Management.WebApplicationLifetimeEvent> 모든 응용 프로그램 정보 코드 ApplicationDetailCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int ApplicationDetailCodeBase = 50000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -184,13 +184,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a heartbeat event occurred. This field is constant."
-  remarks: "The ApplicationHeartbeat is a major code and its value is greater than <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>. ASP.NET raises the related <xref:System.Web.Management.WebHeartbeatEvent> event at a periodic interval, as defined by the configuration file."
+  summary: "하트 비트 이벤트가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationHeartbeat 주요 코드 이며 해당 값이 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> 보다 크면 Asp <xref:System.Web.Management.WebHeartbeatEvent>구성 파일에 정의 된 대로 일정 한 간격으로 이벤트.</xref:System.Web.Management.WebHeartbeatEvent>"
   syntax:
     content: public const int ApplicationHeartbeat = 1005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -206,13 +206,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an application has shut down. This field is constant."
-  remarks: "ApplicationShutdown is a major code and its value is greater than <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the application shuts down."
+  summary: "응용 프로그램 시간이 종료 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdown 주요 코드 이며 해당 값이 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> 보다 크면 Asp <xref:System.Web.Management.WebApplicationLifetimeEvent>응용 프로그램이 종료 될 때 이벤트.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdown = 1002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -228,13 +228,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the application&quot;s Bin directory was changed or renamed. This field is constant."
-  remarks: "The ApplicationShutdownBinDirChangeOrDirectoryRename is the detail code that specifies the causes of the shutdown.       When a subdirectory in the application&quot;s Bin directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBinDirChangeOrDirectoryRename."
+  summary: "응용 프로그램의 Bin 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownBinDirChangeOrDirectoryRename 종료의 원인을 지정 하는 정보 코드입니다.       응용 프로그램의 Bin 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경을 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownBinDirChangeOrDirectoryRename의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBinDirChangeOrDirectoryRename = 50007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -250,13 +250,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the Browsers application directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownBrowsersDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the Browsers application directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBrowsersDirChangeOrDirectoryRename."
+  summary: "브라우저 응용 프로그램 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownBrowsersDirChangeOrDirectoryRename 종료의 원인을 지정 하는 정보 코드입니다.       브라우저 응용 프로그램 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경을 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownBrowsersDirChangeOrDirectoryRename의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBrowsersDirChangeOrDirectoryRename = 50008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -272,13 +272,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the build manager has made a change that requires the application domain to be shut down."
-  remarks: "ApplicationShutdownBuildManagerChange is the detail code that specifies the cause of the shutdown.       When the build manager has made a change that requires the application domain to be shut down, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBuildManagerChange."
+  summary: "빌드 관리자가 종료 되어야 하는 응용 프로그램 도메인에 필요한 변경 했는지를 나타내는 이벤트 코드를 나타냅니다."
+  remarks: "ApplicationShutdownBuildManagerChange 종료의 원인을 지정 하는 정보 코드입니다.       종료 해야 응용 프로그램 도메인, asp 필요한 경우 빌드 관리자 수정한 후에 한 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownBuildManagerChange의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBuildManagerChange = 50017;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -294,13 +294,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Global.asax file has changed. This field is constant."
-  remarks: "ApplicationShutdownChangeInGlobalAsax is the detail code that specifies the cause of the shutdown.       When the Global.asax file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownChangeInGlobalAsax."
+  summary: "Global.asax 파일 변경 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownChangeInGlobalAsax 종료의 원인을 지정 하는 정보 코드입니다.       Global.asax 파일을 변경 하면는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownChangeInGlobalAsax의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownChangeInGlobalAsax = 50003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -316,13 +316,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the security policy file has changed. This field is constant."
-  remarks: "ApplicationShutdownChangeInSecurityPolicyFile is the detail code that specifies the cause of the shutdown.       When the security policy file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownChangeInSecurityPolicyFile."
+  summary: "보안 정책 파일이 변경 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownChangeInSecurityPolicyFile 종료의 원인을 지정 하는 정보 코드입니다.       보안 정책 파일이 변경 되 면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownChangeInSecurityPolicyFile의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownChangeInSecurityPolicyFile = 50006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -338,13 +338,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the App_Code directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownCodeDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the App_Code directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownCodeDirChangeOrDirectoryRename."
+  summary: "App_Code 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownCodeDirChangeOrDirectoryRename 종료의 원인을 지정 하는 정보 코드입니다.       App_Code 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경을 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownCodeDirChangeOrDirectoryRename의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownCodeDirChangeOrDirectoryRename = 50009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -360,13 +360,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the configuration file has changed. This field is constant."
-  remarks: "ApplicationShutdownConfigurationChange is the detail code that specifies the cause of the shutdown.       When the configuration file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownConfigurationChange."
+  summary: "구성 파일 변경 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownConfigurationChange 종료의 원인을 지정 하는 정보 코드입니다.       구성 파일이 변경 되 면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownConfigurationChange의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownConfigurationChange = 50004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -382,13 +382,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the hosting environment is shutting down. This field is constant."
-  remarks: "The ApplicationShutdownHostingEnvironment is the detail code that specifies the cause of the shutdown.       When the hosting environment is shutting down, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownHostingEnvironment."
+  summary: "호스팅 환경에서 종료 되 고 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownHostingEnvironment 종료의 원인을 지정 하는 정보 코드입니다.       호스팅 환경에서 종료 되 면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownHostingEnvironment의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownHostingEnvironment = 50002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -404,13 +404,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the ASP.NET run time was explicitly closed. This field is constant."
-  remarks: "ApplicationShutdownHttpRuntimeClose is the detail code that specifies the cause of the shutdown.       When the ASP.NET run time is explicitly closed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownHttpRuntimeClose."
+  summary: "ASP.NET 런타임에 명시적으로 닫았습니다 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownHttpRuntimeClose 종료의 원인을 지정 하는 정보 코드입니다.       ASP.NET 런타임에 명시적으로 닫으면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownHttpRuntimeClose의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownHttpRuntimeClose = 50013;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -426,13 +426,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the idle time-out was exceeded. This field is constant."
-  remarks: "The ApplicationShutdownIdleTimeout is the detail code that specifies the cause of the shutdown.       When the idle time-out is exceeded, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownIdleTimeout."
+  summary: "유휴 제한 시간이 초과 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownIdleTimeout 종료의 원인을 지정 하는 정보 코드입니다.       유휴 제한 시간이 초과 되는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownIdleTimeout의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownIdleTimeout = 50011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -448,13 +448,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating an application-initialization error occurred. This field is constant."
-  remarks: "ApplicationShutdownInitializationError is the detail code that specifies the cause of the shutdown.       When an application-initialization error occurs, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownInitializationError."
+  summary: "응용 프로그램 초기화 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownInitializationError 종료의 원인을 지정 하는 정보 코드입니다.       응용 프로그램 초기화 오류가 발생 한 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownInitializationError의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownInitializationError = 50014;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -470,13 +470,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the maximum number of recompilations was reached. This field is constant."
-  remarks: "ApplicationShutdownMaxRecompilationsReached is the detail code that specifies the cause of the shutdown.       When the maximum number of recompilations is reached, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownMaxRecompilationsReached."
+  summary: "최대 다시 컴파일 수에 도달 했습니다 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownMaxRecompilationsReached 종료의 원인을 지정 하는 정보 코드입니다.       최대 다시 컴파일 수에 도달 하면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownMaxRecompilationsReached의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownMaxRecompilationsReached = 50015;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -492,13 +492,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the physical path of the application has changed. This field is constant."
-  remarks: "ApplicationShutdownPhysicalApplicationPathChanged is the detail code that specifies the cause of the shutdown.       When the physical path of the application is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownPhysicalApplicationPathChanged."
+  summary: "응용 프로그램의 실제 경로 변경 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownPhysicalApplicationPathChanged 종료의 원인을 지정 하는 정보 코드입니다.       응용 프로그램의 실제 경로가 변경 되 면 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownPhysicalApplicationPathChanged의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownPhysicalApplicationPathChanged = 50012;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -514,13 +514,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the App_Resources directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownResourcesDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the App_Resources directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownResourcesDirChangeOrDirectoryRename."
+  summary: "App_Resources 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownResourcesDirChangeOrDirectoryRename 종료의 원인을 지정 하는 정보 코드입니다.       App_Resources 디렉터리의 하위 디렉터리가 변경 되거나 이름이 변경을 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownResourcesDirChangeOrDirectoryRename의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownResourcesDirChangeOrDirectoryRename = 50010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -536,13 +536,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the application shutdown reason is unknown. This field is constant."
-  remarks: "ApplicationShutdownUnknown is the detail code that specifies the causes of the shutdown.       When the application shuts down for an unknown reason, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownUnknown."
+  summary: "응용 프로그램 종료 원인을 알려져 있지 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownUnknown 종료의 원인을 지정 하는 정보 코드입니다.       알 수 없는 이유로 응용 프로그램이 종료 하면는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownUnknown의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownUnknown = 50001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -558,13 +558,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the application domain was explicitly unloaded. This field is constant."
-  remarks: "ApplicationShutdownUnloadAppDomainCalled is the detail code that specifies the cause of the shutdown.       When the application domain is explicitly unloaded, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownUnloadAppDomainCalled."
+  summary: "응용 프로그램 도메인이 명시적으로 로드 되지 않았음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationShutdownUnloadAppDomainCalled 종료의 원인을 지정 하는 정보 코드입니다.       응용 프로그램 도메인을 명시적으로 asp는 <xref:System.Web.Management.WebApplicationLifetimeEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>및 ApplicationShutdownUnloadAppDomainCalled의.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownUnloadAppDomainCalled = 50005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -580,13 +580,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an application has started. This field is constant."
-  remarks: "ApplicationStart is the major code that refers to the start of an application. When the application starts, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of ApplicationStart."
+  summary: "응용 프로그램이 시작 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ApplicationStart는 주요 코드 응용 프로그램의 시작 부분에 대 한 참조입니다. 응용 프로그램을 시작 하면 한 <xref:System.Web.Management.WebApplicationLifetimeEvent>ApplicationStart의 주 코드.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationStart = 1001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -602,13 +602,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring audit event codes. This field is constant."
-  remarks: "The AuditCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>, <xref:System.Web.Management.WebSuccessAuditEvent>, <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>, <xref:System.Web.Management.WebFailureAuditEvent>, and <xref:System.Web.Management.WebViewStateFailureAuditEvent> types.       All audit codes are assigned values greater than AuditCodeBase."
+  summary: "ASP.NET 상태 모니터링 감사 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditCodeBase 값와 관련 된 주요 이벤트 코드 범위에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>, <xref:System.Web.Management.WebSuccessAuditEvent>, <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>, <xref:System.Web.Management.WebFailureAuditEvent>, 및 <xref:System.Web.Management.WebViewStateFailureAuditEvent>형식.</xref:System.Web.Management.WebViewStateFailureAuditEvent> </xref:System.Web.Management.WebFailureAuditEvent> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent> </xref:System.Web.Management.WebSuccessAuditEvent> </xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>       모든 감사 코드 AuditCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int AuditCodeBase = 4000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -624,13 +624,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET audit-detail event codes. This field is constant."
-  remarks: "AuditDetailCodeBase represents the offset for the detail-event-code range associated with audit events. All audit detail codes are assigned values greater than AuditDetailCodeBase."
+  summary: "ASP.NET 세부 감사 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditDetailCodeBase 감사 이벤트와 관련 된 세부 정보 이벤트 코드 범위에 대 한 오프셋을 나타냅니다. 모든 감사 정보 코드 AuditDetailCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int AuditDetailCodeBase = 50200;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -646,13 +646,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a file-authorization failure occurred during a Web request. This field is constant."
-  remarks: "AuditFileAuthorizationFailure is the major code for the health event related to the access of a file for which authorization is not granted. When a file-authorization failure occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditFileAuthorizationFailure."
+  summary: "웹 요청 중에 파일 권한 부여 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditFileAuthorizationFailure는 권한 부여 부여 되지 않은 파일의 액세스와 관련 된 상태 이벤트에 대 한 주 코드입니다. 파일 권한 부여 오류가 발생 한 <xref:System.Web.Management.WebFailureAuditEvent>AuditFileAuthorizationFailure의 주 코드.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditFileAuthorizationFailure = 4008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -668,13 +668,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a file-authorization success occurred during a Web request. This field is constant."
-  remarks: "AuditFileAuthorizationSuccess is the major code for the health event related to the access of a file for which authorization is granted. When a file authorization is successful, ASP.NET raises a <xref:System.Web.Management.WebSuccessAuditEvent> with a major code of AuditFileAuthorizationSuccess."
+  summary: "웹 요청 중 파일에 대 한 권한이 부여 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditFileAuthorizationSuccess를 부여 하는 파일의 액세스와 관련 된 상태 이벤트에 대 한 주요 코드입니다. 파일 권한 부여에 성공 하면는 <xref:System.Web.Management.WebSuccessAuditEvent>AuditFileAuthorizationSuccess의 주 코드.</xref:System.Web.Management.WebSuccessAuditEvent>"
   syntax:
     content: public const int AuditFileAuthorizationSuccess = 4004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -690,13 +690,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a form authentication failure occurred during a Web request. This field is constant."
-  remarks: "AuditFormsAuthenticationFailure is the major code for the health event related to user&quot;s authentication failure. When this event happens, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of AuditFormsAuthenticationFailure."
+  summary: "웹 요청 중 발생 한 폼 인증이 실패를 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditFormsAuthenticationFailure는 사용자의 인증 실패와 관련 된 상태 이벤트에 대 한 주 코드. 이 이벤트가 발생 하면 한 <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>AuditFormsAuthenticationFailure의 주 코드.</xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int AuditFormsAuthenticationFailure = 4005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -712,13 +712,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a form-authentication success occurred during a Web request. This field is constant."
-  remarks: "The AuditFormsAuthenticationSuccess is the major code for the health event related to a user&quot;s authentication success. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent> with a major code of AuditFormsAuthenticationSuccess."
+  summary: "웹 요청 중 폼 인증 성공 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditFormsAuthenticationSuccess는 사용자의 인증 성공으로 관련 상태 이벤트에 대 한 주 코드. 이 이벤트가 발생 한 <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>AuditFormsAuthenticationSuccess의 주 코드.</xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>"
   syntax:
     content: public const int AuditFormsAuthenticationSuccess = 4001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the view-state verification failed. This field is constant."
-  remarks: "AuditInvalidViewStateFailure is the major code for the health event related to view-state verification failure. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of AuditInvalidViewStateFailure."
+  summary: "뷰 상태 확인 실패 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditInvalidViewStateFailure 뷰 상태 확인 실패와 관련 된 상태 이벤트에 대 한 주요 코드입니다. 이 이벤트가 발생 한 <xref:System.Web.Management.WebViewStateFailureAuditEvent>AuditInvalidViewStateFailure의 주 코드.</xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int AuditInvalidViewStateFailure = 4009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -756,13 +756,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a membership-authentication failure occurred during a Web request. This field is constant."
-  remarks: "The AuditMembershipAuthenticationFailure is the major code for the health event related to a user&quot;s membership-authentication failure. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of AuditMembershipAuthenticationFailure."
+  summary: "웹 요청 중 구성원 인증 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditMembershipAuthenticationFailure는 사용자의 멤버 자격-인증 실패와 관련 된 상태 이벤트에 대 한 주 코드. 이 이벤트가 발생 한 <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>AuditMembershipAuthenticationFailure의 주 코드.</xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int AuditMembershipAuthenticationFailure = 4006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -778,13 +778,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a membership-authentication success occurred during a Web request. This field is constant."
-  remarks: "AuditMembershipAuthenticationSuccess is the major code for the health event related to a user&quot;s membership-authentication success. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent> with a major code of AuditMembershipAuthenticationSuccess."
+  summary: "웹 요청 중 구성원 인증 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditMembershipAuthenticationSuccess는 사용자의 구성원 인증 성공으로 관련 상태 이벤트에 대 한 주 코드. 이 이벤트가 발생 한 <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>AuditMembershipAuthenticationSuccess의 주 코드.</xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>"
   syntax:
     content: public const int AuditMembershipAuthenticationSuccess = 4002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -800,13 +800,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unhandled access exception occurred during a Web request. This field is constant."
-  remarks: "AuditUnhandledAccessException is the major code for the unhandled health event related to the access of a resource for which authorization is not granted. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUnhandledAccessException."
+  summary: "웹 요청 중에 처리 되지 않은 액세스 예외가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditUnhandledAccessException는 권한 부여 부여 되지 않은 리소스 액세스와 관련 된 처리 되지 않은 상태 이벤트에 대 한 주 코드입니다. 이 이벤트가 발생 한 <xref:System.Web.Management.WebFailureAuditEvent>AuditUnhandledAccessException의 주 코드.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUnhandledAccessException = 4011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -822,13 +822,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unhandled security exception occurred during a Web request. This field is constant."
-  remarks: "AuditUnhandledSecurityException is the major code of the unhandled health event related to a security violation. When an unhandled security exception is thrown, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUnhandledSecurityException."
+  summary: "웹 요청 중에 처리 되지 않은 보안 예외가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditUnhandledSecurityException 처리 되지 않은 상태 이벤트와 관련 된 보안 위반의 주요 코드입니다. 처리 되지 않은 보안 예외가 발생 하면 한 <xref:System.Web.Management.WebFailureAuditEvent>AuditUnhandledSecurityException의 주 코드.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUnhandledSecurityException = 4010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -844,13 +844,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a URL-authorization failure occurred during a Web request. This field is constant."
-  remarks: "AuditUrlAuthorizationFailure is the major code for the health event related to the use of a URL for which authorization is not granted. When the URL-authorization failure occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUrlAuthorizationFailure."
+  summary: "웹 요청 중 URL 권한 부여 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditUrlAuthorizationFailure는 권한 부여 부여 되지 않은 URL의 사용과 관련 된 상태 이벤트에 대 한 주 코드입니다. URL 권한 부여 오류가 발생 한 <xref:System.Web.Management.WebFailureAuditEvent>AuditUrlAuthorizationFailure의 주 코드.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUrlAuthorizationFailure = 4007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -866,13 +866,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a URL-authorization success occurred during a Web request. This field is constant."
-  remarks: "AuditUrlAuthorizationSuccess is the major code for the health event related to the use of a URL for which authorization is granted. When a URL is successfully authorized, ASP.NET raises a <xref:System.Web.Management.WebSuccessAuditEvent> with a major code of AuditUrlAuthorizationSuccess."
+  summary: "웹 요청 중 URL 권한 부여 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "AuditUrlAuthorizationSuccess를 부여 하는 URL의 사용과 관련 된 상태 이벤트에 대 한 주요 코드입니다. URL에 게 권한이 성공적으로 asp는 <xref:System.Web.Management.WebSuccessAuditEvent>AuditUrlAuthorizationSuccess의 주 코드.</xref:System.Web.Management.WebSuccessAuditEvent>"
   syntax:
     content: public const int AuditUrlAuthorizationSuccess = 4003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -888,13 +888,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring error event codes. This field is constant."
-  remarks: "The ErrorCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebRequestErrorEvent> and <xref:System.Web.Management.WebErrorEvent> types. All error codes are assigned values greater than ErrorCodeBase."
+  summary: "ASP.NET 상태 모니터링 오류 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ErrorCodeBase 값와 관련 된 주요 이벤트 코드 범위에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebRequestErrorEvent>및 <xref:System.Web.Management.WebErrorEvent>형식.</xref:System.Web.Management.WebErrorEvent> </xref:System.Web.Management.WebRequestErrorEvent> 모든 오류 코드 ErrorCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int ErrorCodeBase = 3000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -910,13 +910,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied ticket is expired. This field is constant."
-  remarks: "ExpiredTicketFailure is the detail code that specifies the cause of the user&quot;s authentication failure.       When the user&quot;s authentication fails due to an expired ticket, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> and a detail code of ExpiredTicketFailure."
+  summary: "제공한 티켓이 만료 된 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "ExpiredTicketFailure 하는 사용자의 인증 실패의 원인을 지정 하는 정보 코드입니다.       티켓이 만료 사용자의 인증에 실패 하면는 <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure>및 ExpiredTicketFailure의.</xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int ExpiredTicketFailure = 50202;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -932,13 +932,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the event code value is not allowed. This field is constant."
-  remarks: "The InvalidEventCode represents the use of a code value that is not allowed by the system. For instance, this can happen if you customize an ASP.NET health-monitoring event and use a code value that is already assigned by the system."
+  summary: "이벤트 코드 값은 허용 되지 않음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "InvalidEventCode 시스템에서 허용 되지 않는 코드 값의 사용을 나타냅니다. 예를 들어, ASP.NET 상태 모니터링 이벤트를 사용자 지정 하 고 시스템에서 이미 할당 된 코드 값을 사용 하는 경우 발생할 수 있습니다."
   syntax:
     content: public const int InvalidEventCode = -1;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -954,13 +954,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied ticket is invalid. This field is constant."
-  remarks: "InvalidTicketFailure is the detail code that specifies the cause of the user&quot;s authentication failure.       When the user&quot;s authentication fails due to an invalid ticket, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> and a detail code of InvalidTicketFailure."
+  summary: "제공한 티켓이 잘못 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "InvalidTicketFailure 하는 사용자의 인증 실패의 원인을 지정 하는 정보 코드입니다.       티켓이 잘못 사용자의 인증에 실패 하면는 <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure>및 InvalidTicketFailure의.</xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int InvalidTicketFailure = 50201;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -976,13 +976,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied view state is invalid. This field is constant."
-  remarks: "InvalidViewState is the detail code that specifies the cause of the view-state failure.       When the view-state error occurs, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> and a detail code of InvalidViewState."
+  summary: "제공 된 뷰 상태가 올바르지 않음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "InvalidViewState 뷰 상태 실패의 원인을 지정 하는 정보 코드입니다.       뷰 상태 오류가 발생 한 <xref:System.Web.Management.WebViewStateFailureAuditEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure>및 InvalidViewState의.</xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> </xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int InvalidViewState = 50204;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -998,13 +998,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied view state failed the integrity check. This field is constant."
-  remarks: "InvalidViewStateMac is the detail code that specifies the cause of the view-state failure.       When the supplied view state fails the integrity check, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> and a detail code of InvalidViewStateMac."
+  summary: "제공 된 뷰 상태 무결성 검사 실패 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "InvalidViewStateMac 뷰 상태 실패의 원인을 지정 하는 정보 코드입니다.       제공 된 뷰 상태 무결성 검사가 실패 하면는 <xref:System.Web.Management.WebViewStateFailureAuditEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure>및 InvalidViewStateMac의.</xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> </xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int InvalidViewStateMac = 50203;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1020,13 +1020,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web miscellaneous event codes. This field is constant."
-  remarks: "The MiscCodeBase value represents the offset for the major event code range associated with health events that have not been categorized. All miscellaneous codes are assigned values greater than MiscCodeBase."
+  summary: "ASP.NET 상태 모니터링 웹 기타 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "MiscCodeBase 값 분류 되지 상태 이벤트와 관련 된 주요 이벤트 코드 범위에 대 한 오프셋을 나타냅니다. 기타 모든 코드 MiscCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int MiscCodeBase = 6000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1042,13 +1042,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web-request event codes. This field is constant."
-  remarks: "The RequestCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebRequestEvent> type. All request codes are assigned values greater than RequestCodeBase."
+  summary: "ASP.NET 상태 모니터링 웹 요청 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RequestCodeBase 값와 관련 된 주요 이벤트 코드 범위에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebRequestEvent>유형.</xref:System.Web.Management.WebRequestEvent> 모든 요청 코드 RequestCodeBase 보다 큰 값이 할당 됩니다."
   syntax:
     content: public const int RequestCodeBase = 2000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1064,13 +1064,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request was aborted. This field is constant."
-  remarks: "RequestTransactionAbort is the major code that refers to a Web-request abnormal termination. When a Web request aborts, ASP.NET raises a <xref:System.Web.Management.WebRequestEvent> with a major code of RequestTransactionAbort."
+  summary: "웹 요청이 중단 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RequestTransactionAbort는 주요 코드는 웹 요청 비정상적인 종료를 나타내는입니다. 웹 요청을 중단 한 <xref:System.Web.Management.WebRequestEvent>RequestTransactionAbort의 주 코드.</xref:System.Web.Management.WebRequestEvent>"
   syntax:
     content: public const int RequestTransactionAbort = 2002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1086,13 +1086,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request was completed. This field is constant."
-  remarks: "RequestTransactionComplete is the major code that refers to a Web request normal termination. When the Web request completes normally, ASP.NET raises a <xref:System.Web.Management.WebRequestEvent> with a major code of RequestTransactionComplete."
+  summary: "웹 요청이 완료 되었음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RequestTransactionComplete 웹 요청의 정상적인 종료를 참조 하는 주요 코드입니다. 웹 요청이 완료 되 면 일반적으로 ASP.NET 발생 한 <xref:System.Web.Management.WebRequestEvent>RequestTransactionComplete의 주 코드.</xref:System.Web.Management.WebRequestEvent>"
   syntax:
     content: public const int RequestTransactionComplete = 2001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1108,13 +1108,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the size of the posted information exceeded the allowed limits. This field is constant."
-  remarks: "RuntimeErrorPostTooLarge is the major code that refers to a data posting whose size exceeds the allowed limits. When a form posts data that exceeds the allowed limits, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorPostTooLarge."
+  summary: "게시 된 정보 크기에서 허용 된 한계를 초과 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RuntimeErrorPostTooLarge는 필요에 따라 크기가 허용 된 한계를 초과 했습니다. 게시 데이터를 참조 하는 주 코드. 폼에서 허용 된 한계를 초과 하는 데이터를 게시 하면는 <xref:System.Web.Management.WebRequestErrorEvent>RuntimeErrorPostTooLarge의 주 코드.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorPostTooLarge = 3004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1130,13 +1130,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request has been aborted."
-  remarks: "RuntimeErrorRequestAbort is the major code that refers to the abnormal termination of the Web request. When the Web request aborts, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorRequestAbort."
+  summary: "웹 요청이 중단 되었습니다. 나타내는 이벤트 코드를 나타냅니다."
+  remarks: "RuntimeErrorRequestAbort 웹 요청의 비정상적인 종료를 참조 하는 주요 코드입니다. 웹 요청 중단 한 <xref:System.Web.Management.WebRequestErrorEvent>RuntimeErrorRequestAbort의 주 코드.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorRequestAbort = 3001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1152,13 +1152,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating an unhandled exception occurred. This field is constant."
-  remarks: "RuntimeErrorUnhandledException is the major code that refers to the occurrence of an exception that is not handled by ASP.NET. When the exception occurs, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorUnhandledException."
+  summary: "처리 되지 않은 예외가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RuntimeErrorUnhandledException 참조의 ASP.NET에서 처리 되지 않은 예외가 발생 하는 주요 코드입니다. 예외가 발생 한 <xref:System.Web.Management.WebRequestErrorEvent>RuntimeErrorUnhandledException의 주 코드.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorUnhandledException = 3005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1174,13 +1174,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a validation error occurred. This field is constant."
-  remarks: "RuntimeErrorValidationFailure is the major code that refers to the occurrence of a validation exception that is not handled by ASP.NET. When this exception occurs, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorValidationFailure."
+  summary: "유효성 검사 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RuntimeErrorValidationFailure 참조의 ASP.NET에서 처리 되지 않은 유효성 검사 예외가 발생 하는 주요 코드입니다. 이 예외가 발생 한 <xref:System.Web.Management.WebRequestErrorEvent>RuntimeErrorValidationFailure의 주 코드.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorValidationFailure = 3003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1196,13 +1196,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a view-state failure occurred. This field is constant."
-  remarks: "RuntimeErrorViewStateFailure is the major code that refers to a view-state failure. When this happens, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorViewStateFailure."
+  summary: "뷰 상태 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "RuntimeErrorViewStateFailure 참조 뷰 상태 실패 하는 주요 코드입니다. 이런 경우가 발생 하면 한 <xref:System.Web.Management.WebRequestErrorEvent>RuntimeErrorViewStateFailure의 주 코드.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorViewStateFailure = 3002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1218,12 +1218,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error accessing a web resource. This field is constant."
+  summary: "웹 리소스에 액세스 하는 오류가 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
   syntax:
     content: public const int RuntimeErrorWebResourceFailure = 3012;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1239,13 +1239,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the SQL provider dropped events. This field is constant."
-  remarks: "When the notification occurs after the one during which events have been dropped, a special warning row is written to the SQL server. This row is written before all other events in the notification, and is not counted in the total number of events as far as the configured flush size is concerned."
+  summary: "SQL 공급자 이벤트를 삭제 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "이벤트가 삭제 되었습니다 한 후 알림이 발생 하는 경우에 특별 한 경고 행 SQL server에 기록 됩니다. 이 행에서 알림, 다른 모든 이벤트 앞 쓰고 구성 플러시 크기와 관련해 서 총 이벤트 수에 포함 되지 않습니다."
   syntax:
     content: public const int SqlProviderEventsDropped = 50301;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1261,13 +1261,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an error occurred while communicating with the state server. This field is constant."
-  remarks: "When a connection error occurs while communicating with the state server, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of <xref:System.Web.Management.WebEventCodes.WebErrorOtherError> and detail code of StateServerConnectionError.       The StateServerConnectionError is a detail code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>."
+  summary: "상태 서버와 통신 하는 동안 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "상태 서버와 통신 하는 동안 연결 오류가 발생 하면 한 <xref:System.Web.Management.WebErrorEvent>주 코드의 <xref:System.Web.Management.WebEventCodes.WebErrorOtherError>고 StateServerConnectionError의 코드를 자세히 설명 합니다.</xref:System.Web.Management.WebEventCodes.WebErrorOtherError> </xref:System.Web.Management.WebErrorEvent>       StateServerConnectionError 정보 코드 이며 해당 값이 있는 <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> 보다 크면"
   syntax:
     content: public const int StateServerConnectionError = 50016;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1283,13 +1283,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the major event code value is not defined. This field is constant."
-  remarks: "UndefinedEventCode represents the use of a major code value that is not defined by the system."
+  summary: "주요 이벤트 코드 값이 정의 되지 않았음을 나타내는 이벤트 코드입니다. 이 필드는 상수입니다."
+  remarks: "UndefinedEventCode는 시스템에 의해 정의 되지 않은 주 코드 값의 사용을 나타냅니다."
   syntax:
     content: public const int UndefinedEventCode = 0;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1305,13 +1305,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the detail event code value is not defined. This field is constant."
-  remarks: "<xref:System.Web.Management.WebEventCodes.UndefinedEventCode> represents the use of a detail code value that is not defined by the system."
+  summary: "세부 정보 이벤트 코드 값이 정의 되지 않았음을 나타내는 이벤트 코드입니다. 이 필드는 상수입니다."
+  remarks: "<xref:System.Web.Management.WebEventCodes.UndefinedEventCode>시스템에 의해 정의 되지 않은 정보 코드 값의 사용을 나타냅니다.</xref:System.Web.Management.WebEventCodes.UndefinedEventCode>"
   syntax:
     content: public const int UndefinedEventDetailCode = 0;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1327,13 +1327,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Indicates that a compilation error occurred."
-  remarks: "WebErrorCompilationError is the major code that refers to an error that happened during the application compilation phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorCompilationError."
+  summary: "컴파일 오류가 발생 했음을 나타냅니다."
+  remarks: "WebErrorCompilationError 응용 프로그램 컴파일 단계 중 발생 한 오류를 참조 하는 주요 코드입니다. 이 오류가 발생 한 <xref:System.Web.Management.WebErrorEvent>WebErrorCompilationError의 주 코드.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorCompilationError = 3007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1349,13 +1349,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Indicates that a configuration error occurred. This field is constant."
-  remarks: "WebErrorConfigurationError is the major code that refers to an error that happened during the application-configuring phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorConfigurationError."
+  summary: "구성 오류가 발생 했음을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "WebErrorConfigurationError 응용 프로그램 구성 단계 중에 발생 한 오류를 참조 하는 주요 코드입니다. 이 오류가 발생 한 <xref:System.Web.Management.WebErrorEvent>WebErrorConfigurationError의 주 코드.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorConfigurationError = 3008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1371,12 +1371,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error during the deserialization of the type or value of an object. This field is constant."
+  summary: "개체의 값 또는 형식의 deserialization 하는 동안 오류가 발생 했습니다 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
   syntax:
     content: public const int WebErrorObjectStateFormatterDeserializationError = 3011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1392,13 +1392,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unclassified error occurred. This field is constant."
-  remarks: "WebErrorOtherError is the major code for an unclassified error. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorOtherError."
+  summary: "분류 되지 않은 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "WebErrorOtherError 분류 되지 않은 오류에 대 한 주요 코드입니다. 이 오류가 발생 한 <xref:System.Web.Management.WebErrorEvent>WebErrorOtherError의 주 코드.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorOtherError = 3009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1414,13 +1414,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a parser error occurred."
-  remarks: "WebErrorParserError is the major code that refers to an error that happened during the application-parsing phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorParserError."
+  summary: "파서 오류가 발생 했음을 나타내는 이벤트 코드를 나타냅니다."
+  remarks: "WebErrorParserError 응용 프로그램을 구문 분석 단계 중에 발생 한 오류를 참조 하는 주요 코드입니다. 이 오류가 발생 한 <xref:System.Web.Management.WebErrorEvent>WebErrorParserError의 주 코드.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorParserError = 3006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1436,12 +1436,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error during the deserialization of a property. This field is constant."
+  summary: "속성을 역직렬화 하는 동안 오류가 발생 했음을 나타내는 이벤트 코드입니다. 이 필드는 상수입니다."
   syntax:
     content: public const int WebErrorPropertyDeserializationError = 3010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1457,13 +1457,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web-detail event codes."
-  remarks: "The WebEventDetailCodeBase value represents the offset for the detail-event code range associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application detail codes are assigned values greater than <xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase>."
+  summary: "ASP.NET 상태 모니터링 웹 세부 이벤트 코드에 대 한 오프셋을 나타냅니다."
+  remarks: "WebEventDetailCodeBase 값와 관련 된 세부 정보 이벤트 코드 범위에 대 한 오프셋을 나타내는 <xref:System.Web.Management.WebApplicationLifetimeEvent>유형.</xref:System.Web.Management.WebApplicationLifetimeEvent> 모든 응용 프로그램 정보 코드 <xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase> 보다 큰 값 할당"
   syntax:
     content: public const int WebEventDetailCodeBase = 50300;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1479,13 +1479,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code used by providers to record nonstandard information about an event. This field is constant."
-  remarks: "WebEventProviderInformation is the major code used by providers to store nonstandard health event information. Its value is greater than <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.       For example, if ASP.NET health events are dropped during buffering, the <xref:System.Web.Management.SimpleMailWebEventProvider> adds a warning to the top of the messages without using the WebEventProviderInformation.But  the only way for the <xref:System.Web.Management.SqlWebEventProvider> to write this warning is to create a record in the database. Because every record in the database needs an event ID, the provider uses the WebEventProviderInformation as its major code and <xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped> as the detail code to create this ID.      > [!NOTE] >  As you can see from the above discussion, the WebEventProviderInformation is not associated with any ASP.NET health event."
+  summary: "이벤트에 대 한 비표준 정보를 기록 하려면 공급자가 사용 되는 이벤트 코드를 나타냅니다. 이 필드는 상수입니다."
+  remarks: "WebEventProviderInformation는 비표준 상태 이벤트 정보를 저장 하기 위해 공급자 사용 주 코드. 해당 값 <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.</xref:System.Web.Management.WebEventCodes.MiscCodeBase> 보다 큽니다.       예를 들어, ASP.NET 상태 이벤트를 버퍼링 하는 동안 삭제 되는 <xref:System.Web.Management.SimpleMailWebEventProvider>WebEventProviderInformation.But는 유일한 방법은 사용 하지 않고 경고 메시지의 맨 위에 추가 <xref:System.Web.Management.SqlWebEventProvider>이 경고는 레코드를 만들 데이터베이스에 쓰려고 합니다.</xref:System.Web.Management.SqlWebEventProvider> </xref:System.Web.Management.SimpleMailWebEventProvider> 데이터베이스의 모든 레코드는 이벤트 ID가 필요 하므로 공급자는는 WebEventProviderInformation 주요 코드, <xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped>세부 정보 코드를 만듭니다이.</xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped>      > [!NOTE] > 이와에서 보시는 WebEventProviderInformation을 모든 ASP.NET 상태 이벤트와 연결 되어 있지 않습니다."
   syntax:
     content: public const int WebEventProviderInformation = 6001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -1501,13 +1501,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the custom event codes. This field is constant."
-  remarks: "If you create your own custom event, you must use an event code with a value greater than WebExtendedBase."
+  summary: "사용자 지정 이벤트 코드에 대 한 오프셋을 나타냅니다. 이 필드는 상수입니다."
+  remarks: "사용자 고유의 사용자 지정 이벤트를 만드는 경우 이벤트 코드 WebExtendedBase 보다 큰 값으로 사용 해야 합니다."
   syntax:
     content: public const int WebExtendedBase = 100000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462

@@ -14,8 +14,8 @@ items:
   nameWithType: CipherMode
   fullName: System.Security.Cryptography.CipherMode
   type: Enum
-  summary: "Specifies the block cipher mode to use for encryption."
-  remarks: "Block cipher algorithms encrypt data in block units, rather than a single byte at a time. The most common block size is 8 bytes. Because each block is heavily processed, block ciphers provide a higher level of security than stream ciphers. However, block cipher algorithms tend to execute more slowly than stream ciphers.       Block ciphers use the same encryption algorithm for each block. Because of this, a block of plain text will always return the same cipher text when encrypted with the same key and algorithm. Because this behavior can be used to crack a cipher, cipher modes are introduced that modify the encryption process based on feedback from earlier block encryptions. The resulting encryption provides a higher level of security than a simple block encryption."
+  summary: "암호화에 사용할 블록 암호화 모드를 지정 합니다."
+  remarks: "블록 암호화 알고리즘에는 한 번에 단일 바이트 보다는 데이터를 블록 단위로 암호화합니다. 가장 일반적인 블록 크기는 8 바이트입니다. 각 블록 게 처리 하기 때문에 블록 암호화 스트림 암호화 보다 더 높은 수준의 보안을 제공 합니다. 그러나 블록 암호화 알고리즘은 스트림 암호화 보다 느리게 실행 됩니다.       각 블록에 대 한 동일한 암호화 알고리즘을 사용 하는 블록 암호화 합니다. 이 때문에 일반 텍스트 블록을 항상 동일한 암호화 텍스트는 동일한 키 및 알고리즘을 사용 하 여 암호화를 반환 합니다. 이 문제는 암호 해독에 사용할 수 있으므로 이전 블록 암호화에서에서 피드백에 따라 암호화 프로세스를 수정 하는 암호화 모드가 사용 됩니다. 암호화 결과 단순 블록 암호화 보다 더 높은 수준의 보안을 제공합니다."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,12 +37,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Block Chaining (<xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref>) mode introduces feedback. Before each plain text block is encrypted, it is combined with the cipher text of the previous block by a bitwise exclusive OR operation. This ensures that even if the plain text contains many identical blocks, they will each encrypt to a different cipher text block. The initialization vector is combined with the first plain text block by a bitwise exclusive OR operation before the block is encrypted. If a single bit of the cipher text block is mangled, the corresponding plain text block will also be mangled. In addition, a bit in the subsequent block, in the same position as the original mangled bit, will be mangled."
+  summary: "암호 블록 체인 (<xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref>) 모드 피드백을 소개 합니다. 각 일반 텍스트 블록은 암호화 되기 전에 결합 된 암호화 텍스트는 이전 블록의 비트 배타적 OR 연산 하 여 합니다. 이렇게 하면는 여러 개의 동일한 블록이 포함 하는 일반 텍스트, 경우에는 각 암호화를 다른 암호화 텍스트 블록입니다. 초기화 벡터 블록이 암호화 되기 전에 첫 번째 일반 텍스트 블록과 배타적 비트 OR 연산 하 여 결합 됩니다. 암호 텍스트 블록의 단일 비트 라도 손상 되 면 해당 하는 일반 텍스트 블록 손상 됩니다. 또한 원래 바뀐된 비트와 같은 위치에 있는 다음 블록에 비트 손상 됩니다."
   syntax:
     content: CBC
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -58,12 +58,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Feedback (<xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>) mode processes small increments of plain text into cipher text, instead of processing an entire block at a time. This mode uses a shift register that is one block in length and is divided into sections. For example, if the block size is 8 bytes, with one byte processed at a time, the shift register is divided into eight sections. If a bit in the cipher text is mangled, one plain text bit is mangled and the shift register is corrupted. This results in the next several plain text increments being mangled until the bad bit is shifted out of the shift register. The default feedback size can vary by algorithm, but is typically either 8 bits or the number of bits of the block size. You can alter the number of feedback bits by using the <xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*> property. Algorithms that support CFB use this property to set the feedback."
+  summary: "Cipher Feedback (<xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>) 암호화 텍스트를 한 번에 전체 블록을 처리 하는 대신에 일반 텍스트의 증가 폭이 작을수록를 처리 하는 모드입니다. 이 모드에서는 구간으로 분할 한 블록 길이 이며 나누어져 있는 시프트 레지스터를 사용 합니다. 예를 들어 블록 크기 8 바이트 이며, 한 번에 처리 1 바이트씩 시프트 레지스터는 8 개의 단계로 구성 됩니다. 비트 암호화에서 텍스트 라도 손상 되 면 하나의 일반 텍스트 비트가 손상 되 고 시프트 레지스터 손상 되었습니다. 따라서 다음으로 몇 가지 일반 텍스트 비트는 잘못 된 비트 시프트 레지스터 밖으로 이동 될 때까지 손상 됩니다. 기본 피드백 크기 알고리즘에 따라 달라질 수 있습니다. 있지만 일반적으로 8 비트 또는 블록 크기의 비트 수 있습니다. 사용 하 여 피드백 비트 수를 변경할 수는 <xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*>속성.</xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*> CFB를 지 원하는 알고리즘 피드백을 설정 하려면이 속성을 사용 합니다."
   syntax:
     content: CFB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -79,12 +79,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Text Stealing (<xref uid=&quot;langword_csharp_CTS&quot; name=&quot;CTS&quot; href=&quot;&quot;></xref>) mode handles any length of plain text and produces cipher text whose length matches the plain text length. This mode behaves like the <xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref> mode for all but the last two blocks of the plain text."
+  summary: "암호 텍스트 가로채기 (<xref uid=&quot;langword_csharp_CTS&quot; name=&quot;CTS&quot; href=&quot;&quot;></xref>) 모드는 일반 텍스트의 길이 처리 하 고 암호화 길이가 일반 텍스트 길이 일치 하는 텍스트를 생성 합니다. 처럼 작동 하며이 모드는 <xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;> </xref> 모두에 대 한 모드는 일반 텍스트의 마지막 두 개의 차단 합니다."
   syntax:
     content: CTS
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -100,12 +100,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: 'The Electronic Codebook (<xref uid=&quot;langword_csharp_ECB&quot; name=&quot;ECB&quot; href=&quot;&quot;></xref>) mode encrypts each block individually. Any blocks of plain text that are identical and in the same message, or that are in a different message encrypted with the same key, will be transformed into identical cipher text blocks. **Important**:  This mode is not recommended because it opens the door for multiple security exploits. If the plain text to be encrypted contains substantial repetition, it is feasible for the cipher text to be broken one block at a time. It is also possible to use block analysis to determine the encryption key. Also, an active adversary can substitute and exchange individual blocks without detection, which allows blocks to be saved and inserted into the stream at other points without detection.'
+  summary: 'Electronic Codebook (<xref uid=&quot;langword_csharp_ECB&quot; name=&quot;ECB&quot; href=&quot;&quot;></xref>) 모드는 각 블록을 개별적으로 암호화 합니다. 모든 블록의 일반 텍스트를 동일 하 고 같은 메시지에 있거나 있는 동일한 키로 암호화 된 다른 메시지에 동일한 암호화 텍스트 블록으로 변환 됩니다. **중요 한**:이 모드는 여러 보안 위험에 노출 될 수 있으므로 권장 되지 않습니다. 암호화할 일반 텍스트 반복 있으면을 한 번에 한 블록씩 분할 되어야 암호화 텍스트입니다. 블록 분석에 암호화 키를 사용 하는 것도 가능 합니다. 또한 사용자는 대체 하 고 개별 블록을 블록 저장 하 고 검색 하지 않고 다른 지점에서 스트림에 삽입을 교환할 수 있습니다.'
   syntax:
     content: ECB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
@@ -121,12 +121,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Output Feedback (<xref uid=&quot;langword_csharp_OFB&quot; name=&quot;OFB&quot; href=&quot;&quot;></xref>) mode processes small increments of plain text into cipher text instead of processing an entire block at a time. This mode is similar to <xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>; the only difference between the two modes is the way that the shift register is filled. If a bit in the cipher text is mangled, the corresponding bit of plain text will be mangled. However, if there are extra or missing bits from the cipher text, the plain text will be mangled from that point on."
+  summary: "출력 피드백 (<xref uid=&quot;langword_csharp_OFB&quot; name=&quot;OFB&quot; href=&quot;&quot;></xref>) 모드를 한 번에 전체 블록을 처리 하는 대신 일반 텍스트의 증가 폭이 작을수록를 처리 합니다. 이 모드는 비슷합니다 <xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;> </xref>; 교대조 등록 하는 방법은 두 가지 모드 간의 차이점에만 채워집니다. 비트 암호화의 텍스트 손상, 일반 텍스트의 해당 비트 손상 됩니다. 그러나 암호 텍스트의 비트를 더 있거나 없는 경우 일반 텍스트 손상 됩니다 해당 지점에서에서."
   syntax:
     content: OFB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "추가할 수 있습니다."
   exceptions: []
   platform:
   - net462
