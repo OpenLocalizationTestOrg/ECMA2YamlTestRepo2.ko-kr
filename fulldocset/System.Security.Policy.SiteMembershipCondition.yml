@@ -20,7 +20,7 @@ items:
   nameWithType: SiteMembershipCondition
   fullName: System.Security.Policy.SiteMembershipCondition
   type: Class
-  summary: "Determines whether an assembly belongs to a code group by testing the site from which it originated. This class cannot be inherited."
+  summary: "백업이 시작 된 사이트를 테스트 하 여 어셈블리 코드 그룹에 속하는지 여부를 결정 합니다. 이 클래스는 상속 될 수 없습니다."
   remarks: "A code assembly satisfies a site membership condition if that code originates from the Web site specified by <xref:System.Security.Policy.SiteMembershipCondition.Site%2A>. Site identity is defined for code from URLs with any protocol except FILE. A site is the string between the \"//\" after the protocol of a URL and the following \"/\", if present. For example, www.fourthcoffee.com is the site identity in the URL http://www.fourthcoffee.com/process/grind.htm. This excludes port numbers. If a given URL is http://www.fourthcoffee.com:8000/, the site is www.fourthcoffee.com, not www.fourthcoffee.com:8000.  \n  \n Sites can be matched exactly, or by a wildcard (\"*\") prefix at the dot delimiter. For example, the site name \\*.fourthcoffee.com matches fourthcoffee.com as well as www.fourthcoffee.com. Without a wildcard, the site name must be a precise match. The site name \\* will match any site, but will not match code that has no site evidence."
   syntax:
     content: >-
@@ -45,14 +45,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref> class with name of the site that determines membership."
-  remarks: "Code satisfies this membership condition if it is downloaded from a site whose DNS name matches the site specified by <xref:System.Security.Policy.SiteMembershipCondition.Site%2A>."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref> 멤버 자격을 결정 하는 사이트의 이름으로 클래스입니다."
+  remarks: "DNS 이름이 일치 <xref:System.Security.Policy.SiteMembershipCondition.Site%2A>.</xref:System.Security.Policy.SiteMembershipCondition.Site%2A> 지정 된 사이트는 사이트에서 다운로드 된 경우이 멤버 자격 조건을 충족 하는 코드"
   syntax:
     content: public SiteMembershipCondition (string site);
     parameters:
     - id: site
       type: System.String
-      description: "The site name or wildcard expression."
+      description: "사이트 이름 또는 와일드 카드 식입니다."
   overload: System.Security.Policy.SiteMembershipCondition.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -60,7 +60,7 @@ items:
     description: "The <code>site</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>site</code> parameter is not a valid <xref href=&quot;System.Security.Policy.Site&quot;></xref>."
+    description: "<code> site </code> 매개 변수가 유효 하지 않거나 <xref href=&quot;System.Security.Policy.Site&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.Check(System.Security.Policy.Evidence)
@@ -75,22 +75,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the specified evidence satisfies the membership condition."
-  remarks: "This membership condition tests only <xref:System.Security.Policy.Site> evidence."
+  summary: "지정된 된 증명 정보와 멤버 자격 조건을 충족 하는지 여부를 결정 합니다."
+  remarks: "이 멤버 조건 테스트 <xref:System.Security.Policy.Site>증거.</xref:System.Security.Policy.Site>"
   syntax:
     content: public bool Check (System.Security.Policy.Evidence evidence);
     parameters:
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "The <xref href=&quot;System.Security.Policy.Evidence&quot;></xref> against which to make the test."
+      description: "<xref href=&quot;System.Security.Policy.Evidence&quot;> </xref> 테스트입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified evidence satisfies the membership condition; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>지정한 증명 정보에는 멤버 자격 조건을; 만족 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Security.Policy.SiteMembershipCondition.Check*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.Copy
@@ -105,18 +105,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates an equivalent copy of the membership condition."
+  summary: "멤버 자격 조건의 동일한 복사본을 만듭니다."
   syntax:
     content: public System.Security.Policy.IMembershipCondition Copy ();
     parameters: []
     return:
       type: System.Security.Policy.IMembershipCondition
-      description: "A new, identical copy of the current membership condition."
+      description: "현재 멤버 조건의 동일한 새 복사본입니다."
   overload: System.Security.Policy.SiteMembershipCondition.Copy*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.Equals(System.Object)
@@ -131,21 +131,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the site from the specified <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref> object is equivalent to the site contained in the current <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref>."
+  summary: "확인 여부를 지정 된 위치에서 사이트 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref> 개체에 현재 포함 된 사이트에 해당 하는 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref>합니다."
   syntax:
     content: public override bool Equals (object o);
     parameters:
     - id: o
       type: System.Object
-      description: "The <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref> object to compare to the current <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref>."
+      description: "<xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref> 현재 비교할 개체를 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref>합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the site from the specified <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref> object is equivalent to the site contained in the current <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>하는 경우 지정 된 위치에서 사이트 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref> 개체가 현재에 포함 된 사이트와 같으면 <xref href=&quot;System.Security.Policy.SiteMembershipCondition&quot;> </xref>, 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Security.Policy.SiteMembershipCondition.Equals*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property for the current object or the specified object is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>현재 개체 또는 지정된 된 개체에 대 한 속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.FromXml(System.Security.SecurityElement)
@@ -160,13 +160,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Reconstructs a security object with a specified state from an XML encoding."
+  summary: "포함 된 XML 인코딩에서 지정된 된 상태의 보안 개체를 다시 만듭니다."
   syntax:
     content: public void FromXml (System.Security.SecurityElement e);
     parameters:
     - id: e
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "XML은 보안 개체를 다시 만드는 데 사용할 인코딩입니다."
   overload: System.Security.Policy.SiteMembershipCondition.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -174,7 +174,7 @@ items:
     description: "The <code>e</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>e</code> parameter is not a valid membership condition element."
+    description: "<code> e </code> 매개 변수가 잘못 된 멤버 자격 조건 요소가 없습니다."
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.FromXml(System.Security.SecurityElement,System.Security.Policy.PolicyLevel)
@@ -189,16 +189,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Reconstructs a security object with a specified state from an XML encoding."
+  summary: "포함 된 XML 인코딩에서 지정된 된 상태의 보안 개체를 다시 만듭니다."
   syntax:
     content: public void FromXml (System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level);
     parameters:
     - id: e
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "XML은 보안 개체를 다시 만드는 데 사용할 인코딩입니다."
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The <xref href=&quot;System.Security.Policy.PolicyLevel&quot;></xref> context, used to resolve <xref href=&quot;System.Security.NamedPermissionSet&quot;></xref> references."
+      description: "<xref href=&quot;System.Security.Policy.PolicyLevel&quot;> </xref> 컨텍스트를 확인 하는 데 <xref href=&quot;System.Security.NamedPermissionSet&quot;> </xref> 참조 합니다."
   overload: System.Security.Policy.SiteMembershipCondition.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -206,7 +206,7 @@ items:
     description: "The <code>e</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>e</code> parameter is not a valid membership condition element."
+    description: "<code> e </code> 매개 변수가 잘못 된 멤버 자격 조건 요소가 없습니다."
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.GetHashCode
@@ -221,18 +221,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the hash code for the current membership condition."
+  summary: "현재 멤버 조건에 대 한 해시 코드를 가져옵니다."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The hash code for the current membership condition."
+      description: "현재 멤버 조건에 대 한 해시 코드입니다."
   overload: System.Security.Policy.SiteMembershipCondition.GetHashCode*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.Site
@@ -247,21 +247,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets the site for which the membership condition tests."
-  remarks: "This property is matched against the site from which a code assembly originates to test the membership condition."
+  summary: "멤버 자격 조건에서 테스트할 수 있는 사이트를 가져오거나 설정 합니다."
+  remarks: "이 속성은 코드 어셈블리의 멤버 자격 조건을 테스트 하려면 원본 사이트와 일치 합니다."
   syntax:
     content: public string Site { get; set; }
     return:
       type: System.String
-      description: "The site for which the membership condition tests."
+      description: "사이트 멤버 자격 조건에서 테스트할입니다."
   overload: System.Security.Policy.SiteMembershipCondition.Site*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt is made to set Site to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "사이트를 설정 하려고 시도 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt is made to set Site to an invalid <xref href=&quot;System.Security.Policy.Site&quot;></xref>."
+    description: "잘못 된 사이트 설정 하려고 시도 <xref href=&quot;System.Security.Policy.Site&quot;> </xref>합니다."
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.ToString
@@ -276,18 +276,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates and returns a string representation of the membership condition."
+  summary: "만들고 멤버 자격 조건의 문자열 표현을 반환 합니다."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representation of the membership condition."
+      description: "멤버 자격 조건의 문자열 표현입니다."
   overload: System.Security.Policy.SiteMembershipCondition.ToString*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.ToXml
@@ -302,18 +302,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates an XML encoding of the security object and its current state."
+  summary: "보안 개체 및 현재 상태에 대 한 XML 인코딩을 만듭니다."
   syntax:
     content: public System.Security.SecurityElement ToXml ();
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the security object, including any state information."
+      description: "모든 상태 정보를 포함 하는 보안 개체의 XML 인코딩입니다."
   overload: System.Security.Policy.SiteMembershipCondition.ToXml*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 - uid: System.Security.Policy.SiteMembershipCondition.ToXml(System.Security.Policy.PolicyLevel)
@@ -328,21 +328,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates an XML encoding of the security object and its current state with the specified <xref href=&quot;System.Security.Policy.PolicyLevel&quot;></xref>."
+  summary: "보안 개체 및 지정 된 현재 상태에 대 한 XML 인코딩을 만듭니다 <xref href=&quot;System.Security.Policy.PolicyLevel&quot;> </xref>합니다."
   syntax:
     content: public System.Security.SecurityElement ToXml (System.Security.Policy.PolicyLevel level);
     parameters:
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The <xref href=&quot;System.Security.Policy.PolicyLevel&quot;></xref> context, used to resolve <xref href=&quot;System.Security.NamedPermissionSet&quot;></xref> references."
+      description: "<xref href=&quot;System.Security.Policy.PolicyLevel&quot;> </xref> 컨텍스트를 확인 하는 데 <xref href=&quot;System.Security.NamedPermissionSet&quot;> </xref> 참조 합니다."
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the security object, including any state information."
+      description: "모든 상태 정보를 포함 하는 보안 개체의 XML 인코딩입니다."
   overload: System.Security.Policy.SiteMembershipCondition.ToXml*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.Security.Policy.SiteMembershipCondition.Site*> property is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<xref:System.Security.Policy.SiteMembershipCondition.Site*>속성은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Policy.SiteMembershipCondition.Site*>"
   platform:
   - net462
 references:

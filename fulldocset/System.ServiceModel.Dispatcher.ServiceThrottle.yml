@@ -12,8 +12,8 @@ items:
   nameWithType: ServiceThrottle
   fullName: System.ServiceModel.Dispatcher.ServiceThrottle
   type: Class
-  summary: "Controls the throughput of a service to optimize availability and performance."
-  remarks: "Use the ServiceThrottle to tune the performance characteristics of a service. The easiest way to configure the ServiceThrottle for a service is to use the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior>, especially from an application configuration file.       The <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentCalls%2A> property specifies the maximum number of messages actively processing across all the dispatcher objects in a <xref:System.ServiceModel.ServiceHost> object.       The <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A> property specifies the maximum number of <xref:System.ServiceModel.InstanceContext> objects in the service.       The <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentSessions%2A> property specifies the maximum number of sessions a <xref:System.ServiceModel.ServiceHost> can accept.      > [!NOTE] >  A trace is written when the first call, <xref:System.ServiceModel.InstanceContext>, or session is queued on the waitlist. The first trace is written as a warning."
+  summary: "가용성 및 성능을 최적화 하기 위해 서비스의 처리량을 제어 합니다."
+  remarks: "ServiceThrottle를 사용 하 여 서비스의 성능 특성을 조정 합니다. 서비스를 사용 하는 것은 ServiceThrottle를 구성 하는 가장 쉬운 방법은 <xref:System.ServiceModel.Description.ServiceThrottlingBehavior>, 응용 프로그램 구성 파일에서 특히.</xref:System.ServiceModel.Description.ServiceThrottlingBehavior>       <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentCalls%2A>속성의 모든 디스패처 개체에서 동시에 처리할 메시지의 최대 수를 지정 된 <xref:System.ServiceModel.ServiceHost>개체입니다.</xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentCalls%2A>       <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A>속성의 최대 수를 지정 <xref:System.ServiceModel.InstanceContext>개체는 서비스에서.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A>       <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentSessions%2A>세션의 최대 수를 지정 하는 속성을 <xref:System.ServiceModel.ServiceHost>허용할 수 있습니다.</xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentSessions%2A>      > [!NOTE] > 때 추적이 기록 되며 첫 번째 호출에서 <xref:System.ServiceModel.InstanceContext>, 또는 세션이 대기 목록의에 큐에 대기 됩니다.</xref:System.ServiceModel.InstanceContext> 첫 번째 추적이 경고로 기록 됩니다."
   example:
   - "The following code example shows the typical use of the ServiceThrottle by referencing the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior> in an application configuration file. In this case, the values that are specified establish, at most, one message processing at one time from one connection to one <xref:System.ServiceModel.InstanceContext>. Real-world usage must be determined through experience.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -36,15 +36,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the maximum number of messages actively processing across all dispatcher objects in a <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref>."
-  remarks: "The MaxConcurrentCalls property specifies the maximum number of messages actively processing across all the dispatcher objects in a <xref:System.ServiceModel.ServiceHost> object. Each channel can have one pending message that does not count against the value of MaxConcurrentCalls until [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] begins to process it.      > [!NOTE] >  A trace is written every time the value of this property is exceeded."
+  summary: "모든 디스패처 개체에서 동시에 처리할 메시지의 최대 수를 가져오거나 설정 합니다.는 <xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref>합니다."
+  remarks: "MaxConcurrentCalls 속성의 모든 디스패처 개체에서 동시에 처리할 메시지의 최대 수를 지정 된 <xref:System.ServiceModel.ServiceHost>개체입니다.</xref:System.ServiceModel.ServiceHost> 각 채널 하나의 보류 중까지 MaxConcurrentCalls의 값에 포함 되지 않는 메시지를 가질 수 있습니다 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] 처리 하기 시작 합니다.      > [!NOTE] >이 속성의 값이 초과 될 때마다 추적이 기록 됩니다."
   example:
   - "The following code example shows the typical use of the <xref:System.ServiceModel.Dispatcher.ServiceThrottle> by referencing the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior> in an application configuration file. In this case, the values that are specified establish, at most, one message processing at one time from one connection to one <xref:System.ServiceModel.InstanceContext>. Real-world usage must be determined through experience.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public int MaxConcurrentCalls { get; set; }
     return:
       type: System.Int32
-      description: "The upper limit of active messages in the service. The default is 16 * number of processors in the computer."
+      description: "서비스에서의 활성 메시지의 상한값입니다. 기본값은 16 * 프로세서 컴퓨터의 수입니다."
   overload: System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentCalls*
   exceptions: []
   platform:
@@ -61,15 +61,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the maximum number of service objects that can execute at one time."
-  remarks: "The MaxConcurrentInstances property specifies the maximum number of <xref:System.ServiceModel.InstanceContext> objects in the service. It is important to keep in mind the relationship between the MaxConcurrentInstances property and the <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> property. If <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> is <xref:System.ServiceModel.InstanceContextMode> the resulting value is the total number of sessions. If <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> is <xref:System.ServiceModel.InstanceContextMode>, the resulting value is the number of concurrent calls. If a message arrives while the maximum number of <xref:System.ServiceModel.InstanceContext> objects already exist, the message is held until an <xref:System.ServiceModel.InstanceContext> object closes.      > [!NOTE] >  A trace is written every time the value of this property is exceeded. The first trace is written as a warning."
+  summary: "한 번에 실행할 수 있는 서비스 개체의 최대 수를 가져오거나 설정 합니다."
+  remarks: "최대 수를 지정 하는 MaxConcurrentInstances 속성 <xref:System.ServiceModel.InstanceContext>개체는 서비스에서.</xref:System.ServiceModel.InstanceContext> MaxConcurrentInstances 속성 간의 관계를 염두에 반드시 및 <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A>속성.</xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> 경우 <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A>은 <xref:System.ServiceModel.InstanceContextMode>결과 값은 세션의 총 수입니다.</xref:System.ServiceModel.InstanceContextMode> </xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> 경우 <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A>은 <xref:System.ServiceModel.InstanceContextMode>, 결과 값은 동시 호출 수입니다.</xref:System.ServiceModel.InstanceContextMode> </xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A> 동안 최대 수의 메시지가 도착 하면 <xref:System.ServiceModel.InstanceContext>개체가 아직 존재, 메시지 될 때까지 보유 됩니다는 <xref:System.ServiceModel.InstanceContext>개체가 닫힐.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.InstanceContext>      > [!NOTE] >이 속성의 값이 초과 될 때마다 추적이 기록 됩니다. 첫 번째 추적이 경고로 기록 됩니다."
   example:
   - "The following code example shows the typical use of the <xref:System.ServiceModel.Dispatcher.ServiceThrottle> by referencing the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior> in an application configuration file. In this case, the values that are specified establish, at most, one message processing at one time from one connection to one <xref:System.ServiceModel.InstanceContext>. Real-world usage must be determined through experience.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public int MaxConcurrentInstances { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of <xref:System.ServiceModel.InstanceContext> objects in the service at one time. The default is Maximum Concurrent Calls + Maximum Concurrent Sessions."
+      description: "최대 <xref:System.ServiceModel.InstanceContext>에 서비스를 한 번에 있는 개체입니다.</xref:System.ServiceModel.InstanceContext> 기본값은 최대 동시 호출 + 최대 동시 세션입니다."
   overload: System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances*
   exceptions: []
   platform:
@@ -86,15 +86,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets a value that specifies the maximum number of sessions a <xref href=&quot;System.ServiceModel.ServiceHost&quot;></xref> object can accept at one time."
-  remarks: "The MaxConcurrentSessions property specifies the maximum number of channels a <xref:System.ServiceModel.ServiceHost> can accept. Each listener object can have one pending channel that does not count against the value of MaxConcurrentSessions until [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] accepts the channel and begins processing messages on it. This property is most useful in scenarios that make use of sessions.      > [!NOTE] >  A trace is written every time the value of this property is exceeded. The first trace is written as a warning.       For more information about sessions, see [Using Sessions](~/add/includes/ajax-current-ext-md.md).       Typically, this property is set using the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior.MaxConcurrentSessions%2A?displayProperty=fullName> property."
+  summary: "최대 세션 수를 지정 하는 값을 가져오거나 설정 합니다.는 <xref href=&quot;System.ServiceModel.ServiceHost&quot;> </xref> 개체에서 한 번에 수락할 수 있습니다."
+  remarks: "채널의 최대 수를 지정 하는 MaxConcurrentSessions 속성은 <xref:System.ServiceModel.ServiceHost>허용할 수 있습니다.</xref:System.ServiceModel.ServiceHost> 각 수신기 개체까지 MaxConcurrentSessions의 값에 포함 되지 않는 채널 보류 중 하나일 수 있습니다 [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] 에서 채널을 수락한 후 메시지 처리를 시작 합니다. 이 속성에 가장 유용 세션 활용 하는 시나리오를 사용 합니다.      > [!NOTE] >이 속성의 값이 초과 될 때마다 추적이 기록 됩니다. 첫 번째 추적이 경고로 기록 됩니다.       세션에 대 한 자세한 내용은 참조 [를 사용 하 여 세션](~/add/includes/ajax-current-ext-md.md)합니다.       일반적으로 사용 하 여이 속성은 설정 된 <xref:System.ServiceModel.Description.ServiceThrottlingBehavior.MaxConcurrentSessions%2A?displayProperty=fullName>속성.</xref:System.ServiceModel.Description.ServiceThrottlingBehavior.MaxConcurrentSessions%2A?displayProperty=fullName>"
   example:
   - "The following code example shows the typical use of the <xref:System.ServiceModel.Dispatcher.ServiceThrottle> by referencing the <xref:System.ServiceModel.Description.ServiceThrottlingBehavior> in an application configuration file. In this case, the values that are specified establish, at most, one message processing at one time from one connection to one <xref:System.ServiceModel.InstanceContext>. Real-world usage must be determined through experience.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public int MaxConcurrentSessions { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of sessions a service host accepts. The default is 100 * number of processors in the computer."
+      description: "서비스 호스트가 수락 하는 세션의 최대 수입니다. 기본값은 100 * 프로세서 컴퓨터의 수입니다."
   overload: System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentSessions*
   exceptions: []
   platform:

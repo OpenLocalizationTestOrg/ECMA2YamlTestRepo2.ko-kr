@@ -24,7 +24,7 @@ items:
   nameWithType: BinaryFormatter
   fullName: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
   type: Class
-  summary: "Serializes and deserializes an object, or an entire graph of connected objects, in binary format."
+  summary: "또는 그 반대로 serialize 하 고 개체 또는 이진 형식으로 연결 된 개체에 대 한 전체 그래프를 역직렬화 합니다."
   remarks: "The <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter> and BinaryFormatter classes implement the <xref:System.Runtime.Remoting.Messaging.IRemotingFormatter> interface to support remote procedure calls (RPCs), and the <xref:System.Runtime.Serialization.IFormatter> interface (inherited by the <xref:System.Runtime.Remoting.Messaging.IRemotingFormatter>) to support serialization of a graph of objects. The <xref:System.Runtime.Serialization.Formatters.Soap.SoapFormatter> class also supports RPCs with <xref:System.Runtime.Serialization.Formatters.ISoapMessage> objects, without using the <xref:System.Runtime.Remoting.Messaging.IRemotingFormatter> functionality.  \n  \n During RPCs, the <xref:System.Runtime.Remoting.Messaging.IRemotingFormatter> interface allows the specification of two separate object graphs: the graph of objects to serialize, and an additional graph that contains an array of header objects that convey information about the remote function call (for example, transaction ID or a method signature).  \n  \n RPCs that use the BinaryFormatter separate into two distinct parts: method calls, which are sent to the server with the remote object that contains the method called, and method responses, which are sent from the server to the client with the status and response information from the called method.  \n  \n During serialization of a method call the first object of the object graph must support the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> interface. To deserialize a method call, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A> method with the <xref:System.Runtime.Remoting.Messaging.HeaderHandler> parameter. The remoting infrastructure uses the <xref:System.Runtime.Remoting.Messaging.HeaderHandler> delegate to produce an object that supports the <xref:System.Runtime.Serialization.ISerializable> interface. When the BinaryFormatter invokes the <xref:System.Runtime.Remoting.Messaging.HeaderHandler> delegate, it returns the URI of the remote object with the method that is being called. The first object in the graph returned supports the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> interface.  \n  \n The serialization procedure for a method response is identical to that of a method call, except the first object of the object graph must support the <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> interface. To deserialize a method response, use the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> method. To save time, details about the caller object are not sent to the remote object during the method call. These details are instead obtained from the original method call, which is passed to the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> method in the <xref:System.Runtime.Remoting.Messaging.IMethodCallMessage> parameter. The first object in the graph returned by the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> method supports the <xref:System.Runtime.Remoting.Messaging.IMethodReturnMessage> interface.  \n  \n> [!IMPORTANT]\n>  Using binary serialization to deserialize untrusted data can lead to security risks. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378).  \n  \n## Unpaired Surrogates  \n Any unpaired surrogate characters are lost in binary serialization. For example, the following string contains a high surrogate Unicode character `(\\ud800`) in between the two `Test` words:  \n  \n `Test\\ud800Test`  \n  \n Before serialization, the byte array of the string is as follows:  \n  \n|Byte Array Value|Character|  \n|----------------------|---------------|  \n|84|T|  \n|101|e|  \n|115|s|  \n|116|t|  \n|55296|\\ud800|  \n|84|T|  \n|101|e|  \n|115|s|  \n|116|t|  \n  \n After deserialization, the high surrogate Unicode character is lost:  \n  \n|Byte Array Value|Character|  \n|----------------------|---------------|  \n|84|T|  \n|101|e|  \n|115|s|  \n|116|t|  \n|84|T|  \n|101|e|  \n|115|s|  \n|116|t|"
   example:
   - >-
@@ -55,8 +55,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;></xref> class with default values."
-  remarks: "This constructor sets the properties of the <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> object as follows:      |Property Type|Condition|   |-------------------|---------------|   |<xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector%2A>|`null`|   |<xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Context%2A>|A <xref:System.Runtime.Serialization.StreamingContext> with a value that indicates that serialized data can be transmitted to or received from any of the other contexts. (<xref:System.Runtime.Serialization.StreamingContextStates?displayProperty=fullName>)|"
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;> </xref> 클래스 기본값을 사용 합니다."
+  remarks: "이 생성자 <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter>개체의 속성을 다음과 같이 설정: | 속성 형식 | 조건 |   |-------------------|---------------|   | <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector%2A>| `null`|   | <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Context%2A>| A <xref:System.Runtime.Serialization.StreamingContext>serialize 된 데이터 전송 또는 다른 컨텍스트에서 수신 될 수를 나타내는 값을 가진.</xref:System.Runtime.Serialization.StreamingContext> </xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Context%2A> </xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector%2A> </xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter> (<xref:System.Runtime.Serialization.StreamingContextStates?displayProperty=fullName>)|</xref:System.Runtime.Serialization.StreamingContextStates?displayProperty=fullName>"
   example:
   - >-
     [!code-cpp[BinaryFormatterClass Example#1](~/add/codesnippet/cpp/m-system.runtime.seriali_4_1.cpp)]
@@ -81,8 +81,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;></xref> class with a given surrogate selector and streaming context."
-  remarks: "Initializes a new `BinaryFormatter` for serialization or deserialization of objects from the specified <xref:System.IO.Stream>.       The serialization or deserialization process uses the specified <xref:System.Runtime.Serialization.ISurrogateSelector> to search for surrogates that are registered for the object types you want to deserialize. Surrogates are helpers that serialize and deserialize objects of specific classes. The default <xref:System.Runtime.Serialization.ISurrogateSelector> cannot handle the serialization of objects that derive from the <xref:System.MarshalByRefObject> for remoting purposes. In a remoting situation the specified <xref:System.Runtime.Serialization.ISurrogateSelector> replaces the object derived from <xref:System.MarshalByRefObject> with a <xref:System.Runtime.Remoting.ObjRef> object that is serialized by the specified surrogate selector. Therefore, if you want to use remote objects, set the `selector` parameter to an instance of <xref:System.Runtime.Remoting.Messaging.RemotingSurrogateSelector>. If you do not need surrogates, set the `selector` parameter to be `null`."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;> </xref> 주어진된 서로게이트 선택기 및 스트리밍 컨텍스트를 사용 하 여 클래스입니다."
+  remarks: "새 초기화 `BinaryFormatter` <xref:System.IO.Stream>.</xref:System.IO.Stream> 지정 된 개체의 직렬화 또는 역직렬화에 대 한       Serialization 또는 deserialization 프로세스를 사용 하 여 지정 된 <xref:System.Runtime.Serialization.ISurrogateSelector>개체 형식에 등록 된 서로게이트를 deserialize 하려면을 검색 합니다.</xref:System.Runtime.Serialization.ISurrogateSelector> 서로게이트를 포함 하는 도우미 serialize 및 deserialize 특정 클래스의 개체입니다. 기본 <xref:System.Runtime.Serialization.ISurrogateSelector>에서 파생 된 개체의 serialization을 처리할 수 없는 <xref:System.MarshalByRefObject>원격 작업을 위해.</xref:System.MarshalByRefObject> </xref:System.Runtime.Serialization.ISurrogateSelector> 지정 된 원격 상황에서 <xref:System.Runtime.Serialization.ISurrogateSelector>에서 파생 된 개체를 대체 <xref:System.MarshalByRefObject>와 <xref:System.Runtime.Remoting.ObjRef>지정된 서로게이트 선택기에서 직렬화 할 개체입니다.</xref:System.Runtime.Remoting.ObjRef> </xref:System.MarshalByRefObject> </xref:System.Runtime.Serialization.ISurrogateSelector> 따라서 원격 개체를 사용 하려는 경우 설정의 `selector` <xref:System.Runtime.Remoting.Messaging.RemotingSurrogateSelector>.</xref:System.Runtime.Remoting.Messaging.RemotingSurrogateSelector> 인스턴스에 매개 변수 서로게이트를 필요 하지 않은 경우 설정의 `selector` 매개 변수를 `null`합니다."
   syntax:
     content: public BinaryFormatter (System.Runtime.Serialization.ISurrogateSelector selector, System.Runtime.Serialization.StreamingContext context);
     parameters:
@@ -91,7 +91,7 @@ items:
       description: "The <xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;></xref> to use. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The source and destination for the serialized data."
+      description: "원본 및 대상 serialize 된 데이터에 대 한 합니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.#ctor*
   exceptions: []
   platform:
@@ -108,12 +108,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets the behavior of the deserializer with regards to finding and loading assemblies."
+  summary: "찾기 및 어셈블리를 로드할 때 역직렬 변환기의 동작을 가져오거나 설정 합니다."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterAssemblyStyle AssemblyFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "One of the <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;></xref> values that specifies the deserializer behavior."
+      description: "중 하나는 <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;> </xref> deserializer 동작을 지정 하는 값입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.AssemblyFormat*
   exceptions: []
   platform:
@@ -130,7 +130,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets an object of type <xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;></xref> that controls the binding of a serialized object to a type."
+  summary: "형식의 개체를 가져오거나 설정 합니다. <xref href=&quot;System.Runtime.Serialization.SerializationBinder&quot;> </xref> 형식으로 직렬화 된 개체의 바인딩을 제어 하는 합니다."
   remarks: ''
   example:
   - >-
@@ -141,7 +141,7 @@ items:
     content: public System.Runtime.Serialization.SerializationBinder Binder { get; set; }
     return:
       type: System.Runtime.Serialization.SerializationBinder
-      description: "The serialization binder to use with this formatter."
+      description: "이 포맷터를 사용 하면 serialization 바인더입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Binder*
   exceptions: []
   platform:
@@ -158,13 +158,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets the <xref:System.Runtime.Serialization.StreamingContext> for this formatter."
-  remarks: "The <xref:System.Runtime.Serialization.StreamingContext> provides an enumeration that describes the source and the destination for a given serialized stream, as well as a way for serialization to retain that context and an additional caller-defined context."
+  summary: "가져오거나는 <xref:System.Runtime.Serialization.StreamingContext>이 포맷터에 대 한.</xref:System.Runtime.Serialization.StreamingContext>"
+  remarks: "<xref:System.Runtime.Serialization.StreamingContext>원본 서버와 지정된 된 직렬화 된 스트림에 대 한 대상 뿐 아니라 해당 컨텍스트 및 추가 호출자 정의 컨텍스트를 유지 하는 serialization 하는 방법을 설명 하는 열거형을 제공 합니다.</xref:System.Runtime.Serialization.StreamingContext>"
   syntax:
     content: public System.Runtime.Serialization.StreamingContext Context { get; set; }
     return:
       type: System.Runtime.Serialization.StreamingContext
-      description: "The streaming context to use with this formatter."
+      description: "이 포맷터와 함께 사용 하려면 스트리밍 컨텍스트입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Context*
   exceptions: []
   platform:
@@ -181,8 +181,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Deserializes the specified stream into an object graph."
-  remarks: "For successful deserialization, the current position in the stream must be at the beginning of the object graph.      > [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "개체 그래프에 지정된 된 스트림을 역직렬화합니다."
+  remarks: "성공적인 deserialization에 대 한 스트림 내의 현재 위치 개체 그래프의 시작 부분에 있어야 합니다.      > [!IMPORTANT] > 신뢰할 수 없는 데이터로이 메서드를 호출 하는 것은 보안상 위험 합니다. 신뢰할 수 있는 데이터에만이 메서드를 호출 합니다. 자세한 내용은 참조 [신뢰할 수 없는 데이터 보안 위험](http://go.microsoft.com/fwlink/?LinkId=330378)합니다."
   example:
   - >-
     [!code-cpp[BinaryFormatterClass Example#1](~/add/codesnippet/cpp/25da6ad1-942f-4638-a2d8-_1.cpp)]
@@ -193,10 +193,10 @@ items:
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream from which to deserialize the object graph."
+      description: "개체 그래프를 역직렬화 할 스트림."
     return:
       type: System.Object
-      description: "The top (root) of the object graph."
+      description: "개체 그래프의 최상위 (루트)입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize*
   exceptions:
   - type: System.ArgumentNullException
@@ -204,10 +204,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <code>serializationStream</code> supports seeking, but its length is 0.       -or-       The target type is a <xref:System.Decimal>, but the value is out of range of the <xref:System.Decimal> type."
+    description: "<code> serializationStream </code> 검색을 지원 하지만 길이 0입니다.       또는 대상 유형이 <xref:System.Decimal>, 하지만 값의 범위를 벗어났습니다.이 <xref:System.Decimal>유형.</xref:System.Decimal> </xref:System.Decimal>"
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(System.IO.Stream,System.Runtime.Remoting.Messaging.HeaderHandler)
@@ -222,20 +222,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Deserializes the specified stream into an object graph. The provided <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> handles any headers in that stream."
-  remarks: "Headers are used only for specific remoting applications.       In order for deserialization to succeed the current position in the stream must be at the beginning of the object graph.      > [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "개체 그래프에 지정된 된 스트림을 역직렬화합니다. 제공 된 <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 해당 스트림에서 모든 헤더를 처리 합니다."
+  remarks: "헤더는 특정 원격 응용 프로그램에 대해서만 사용 됩니다.       Deserialization 성공 하기 위해에서 스트림의 현재 위치 개체 그래프의 시작 부분에 있어야 합니다.      > [!IMPORTANT] > 신뢰할 수 없는 데이터로이 메서드를 호출 하는 것은 보안상 위험 합니다. 신뢰할 수 있는 데이터에만이 메서드를 호출 합니다. 자세한 내용은 참조 [신뢰할 수 없는 데이터 보안 위험](http://go.microsoft.com/fwlink/?LinkId=330378)합니다."
   syntax:
     content: public object Deserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream from which to deserialize the object graph."
+      description: "개체 그래프를 역직렬화 할 스트림."
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> that handles any headers in the `serializationStream`. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 모든 헤더를 처리 하는 `serializationStream`합니다. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The deserialized object or the top object (root) of the object graph."
+      description: "Deserialize 된 개체 또는 개체 그래프의 최상위 개체 (루트)."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize*
   exceptions:
   - type: System.ArgumentNullException
@@ -243,10 +243,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <code>serializationStream</code> supports seeking, but its length is 0.       -or-       The target type is a <xref:System.Decimal>, but the value is out of range of the <xref:System.Decimal> type."
+    description: "<code> serializationStream </code> 검색을 지원 하지만 길이 0입니다.       또는 대상 유형이 <xref:System.Decimal>, 하지만 값의 범위를 벗어났습니다.이 <xref:System.Decimal>유형.</xref:System.Decimal> </xref:System.Decimal>"
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse(System.IO.Stream,System.Runtime.Remoting.Messaging.HeaderHandler,System.Runtime.Remoting.Messaging.IMethodCallMessage)
@@ -261,23 +261,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Deserializes a response to a remote method call from the provided <xref:System.IO.Stream>."
-  remarks: "Details about the caller object are not sent to the remote object during the method call. Instead, these details are obtained from the original method call that is passed to the current method in the `methodCallMessage` parameter.       In order for deserialization to succeed the current position in the stream must be at the beginning of the object graph."
+  summary: "제공 된 <xref:System.IO.Stream>.</xref:System.IO.Stream> 원격 메서드 호출에 대 한 응답을 역직렬화합니다."
+  remarks: "호출자에 게 개체에 대 한 세부 정보 메서드를 호출 하는 동안 원격 개체에 보내지지 않습니다. 대신, 이러한 세부 정보에서 현재 메서드로 전달 되는 원래 메서드 호출에서 가져온는 `methodCallMessage` 매개 변수입니다.       Deserialization 성공 하기 위해에서 스트림의 현재 위치 개체 그래프의 시작 부분에 있어야 합니다."
   syntax:
     content: public object DeserializeMethodResponse (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler, System.Runtime.Remoting.Messaging.IMethodCallMessage methodCallMessage);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream from which to deserialize the object graph."
+      description: "개체 그래프를 역직렬화 할 스트림."
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> that handles any headers in the `serializationStream`. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 모든 헤더를 처리 하는 `serializationStream`합니다. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     - id: methodCallMessage
       type: System.Runtime.Remoting.Messaging.IMethodCallMessage
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;></xref> that contains details about where the call came from."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;> </xref> 에서 호출한 위치에 대 한 정보가 포함 된 합니다."
     return:
       type: System.Object
-      description: "The deserialized response to the remote method call."
+      description: "원격 메서드 호출에 deserialize 된 응답입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse*
   exceptions:
   - type: System.ArgumentNullException
@@ -285,10 +285,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <code>serializationStream</code> supports seeking, but its length is 0."
+    description: "<code> serializationStream </code> 검색을 지원 하지만 길이 0입니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.FilterLevel
@@ -303,13 +303,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets the <xref href=&quot;System.Runtime.Serialization.Formatters.TypeFilterLevel&quot;></xref> of automatic deserialization the <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;></xref> performs."
-  remarks: "Supported values are <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> and <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> (the default). For details about deserialization levels, see [&#91;\\<topic://cpconAutomaticDeserializationInNETRemoting>&#93;](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b)."
+  summary: "가져오거나는 <xref href=&quot;System.Runtime.Serialization.Formatters.TypeFilterLevel&quot;> </xref> 는 자동 deserialization는 <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;> </xref> 수행 합니다."
+  remarks: "지원 되는 값은 <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel>및 <xref:System.Runtime.Serialization.Formatters.TypeFilterLevel>(기본값).</xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> </xref:System.Runtime.Serialization.Formatters.TypeFilterLevel> Deserialization 수준에 대 한 세부 정보를 참조 하십시오. [[\\<topic://cpconAutomaticDeserializationInNETRemoting >]](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b)합니다."
   syntax:
     content: public System.Runtime.Serialization.Formatters.TypeFilterLevel FilterLevel { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.TypeFilterLevel
-      description: "The <xref href=&quot;System.Runtime.Serialization.Formatters.TypeFilterLevel&quot;></xref> that represents the current automatic deserialization level."
+      description: "<xref href=&quot;System.Runtime.Serialization.Formatters.TypeFilterLevel&quot;> </xref> 현재 자동 deserialization 수준을 나타내는입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.FilterLevel*
   exceptions: []
   platform:
@@ -326,7 +326,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Serializes the object, or graph of objects with the specified top (root), to the given stream."
+  summary: "지정 된 스트림에 개체 또는 지정된 된 최상위 (루트)를 사용 하 여 개체의 그래프를 serialize합니다."
   remarks: ''
   example:
   - >-
@@ -338,10 +338,10 @@ items:
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream to which the graph is to be serialized."
+      description: "그래프를 serialize 할 스트림."
     - id: graph
       type: System.Object
-      description: "The object at the root of the graph to serialize."
+      description: "직렬화 하는 데 그래프의 루트에 대 한 개체입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize*
   exceptions:
   - type: System.ArgumentNullException
@@ -349,10 +349,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The <code>graph</code> is null."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "An error has occurred during serialization, such as if an object in the <code>graph</code> parameter is not marked as serializable."
+    description: "개체의 경우와 같이 직렬화 하는 동안 오류가 발생 했습니다는 <code> graph </code> 매개 변수가 serializable로 표시 되어 있지 않습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(System.IO.Stream,System.Object,System.Runtime.Remoting.Messaging.Header[])
@@ -367,20 +367,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Serializes the object, or graph of objects with the specified top (root), to the given stream attaching the provided headers."
-  remarks: "The serialization process includes the information supplied in the `headers` parameter at the front of the serialized stream.       Headers are used only for specific remoting applications."
+  summary: "제공 된 헤더를 첨부 하에서 지정 된 스트림에 개체 또는 지정된 된 최상위 (루트)를 사용 하 여 개체의 그래프를 serialize 합니다."
+  remarks: "Serialization 프로세스에 제공 된 정보가 포함 됩니다는 `headers` serialize 된 스트림의 맨 앞에 매개 변수입니다.       헤더는 특정 원격 응용 프로그램에 대해서만 사용 됩니다."
   syntax:
     content: public void Serialize (System.IO.Stream serializationStream, object graph, System.Runtime.Remoting.Messaging.Header[] headers);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream to which the object is to be serialized."
+      description: "개체를 serialize 할 스트림."
     - id: graph
       type: System.Object
-      description: "The object at the root of the graph to serialize."
+      description: "직렬화 하는 데 그래프의 루트에 대 한 개체입니다."
     - id: headers
       type: System.Runtime.Remoting.Messaging.Header[]
-      description: "Remoting headers to include in the serialization. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Serialization에 포함할 원격 헤더입니다. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize*
   exceptions:
   - type: System.ArgumentNullException
@@ -388,10 +388,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "An error has occurred during serialization, such as if an object in the <code>graph</code> parameter is not marked as serializable."
+    description: "개체의 경우와 같이 직렬화 하는 동안 오류가 발생 했습니다는 <code> graph </code> 매개 변수가 serializable로 표시 되어 있지 않습니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector
@@ -406,13 +406,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets a <xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;></xref> that controls type substitution during serialization and deserialization."
-  remarks: "The surrogate selector is used by <xref:System.Runtime.Remoting> to generate <xref:System.Runtime.Remoting.ObjRef> instances for objects that derive from <xref:System.MarshalByRefObject>."
+  summary: "가져오거나는 <xref href=&quot;System.Runtime.Serialization.ISurrogateSelector&quot;> </xref> 컨트롤 serialization 및 deserialization 중에 대체를 입력 합니다."
+  remarks: "<xref:System.Runtime.Remoting> <xref:System.Runtime.Remoting.ObjRef> <xref:System.MarshalByRefObject>.</xref:System.MarshalByRefObject> 에서 파생 되는 개체에 대 한 인스턴스</xref:System.Runtime.Remoting.ObjRef> 를 생성 하</xref:System.Runtime.Remoting> 여 서로게이트 선택기를 사용 하는"
   syntax:
     content: public System.Runtime.Serialization.ISurrogateSelector SurrogateSelector { get; set; }
     return:
       type: System.Runtime.Serialization.ISurrogateSelector
-      description: "The surrogate selector to use with this formatter."
+      description: "이 포맷터를 사용 하면 서로게이트 선택기입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.SurrogateSelector*
   exceptions: []
   platform:
@@ -429,12 +429,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Gets or sets the format in which type descriptions are laid out in the serialized stream."
+  summary: "Serialize 된 스트림으로에 유형 설명으로 배치 된 형식을 가져오거나 설정 합니다."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "The style of type layouts to use."
+      description: "사용할 형식 레이아웃의 스타일입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.TypeFormat*
   exceptions: []
   platform:
@@ -451,20 +451,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Deserializes the specified stream into an object graph. The provided <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> handles any headers in that stream."
-  remarks: "Headers are used only for specific remoting applications.       This method uses <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> to prevent it from being called from untrusted code; only the immediate caller is required to have <xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName> permission. Do not use this method if your code can be called from partially trusted code. In partially trusted scenarios, use <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A> instead. In full trust scenarios, UnsafeDeserialize provides better performance than <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A>.       For successful deserialization, the current position in the stream must be at the beginning of the object graph.      > [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "개체 그래프에 지정된 된 스트림을 역직렬화합니다. 제공 된 <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 해당 스트림에서 모든 헤더를 처리 합니다."
+  remarks: "헤더는 특정 원격 응용 프로그램에 대해서만 사용 됩니다.       이 방법은 사용 하 여 <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>신뢰할 수 없는 코드에서 호출 되 고 하지 못하도록; 직접 실행 호출자만 포함 해야 합니다. <xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName>권한.</xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> 부분적으로 신뢰할 수 있는 코드에서 코드를 호출할 수 있는 경우이 메서드를 사용 하지 마십시오. 부분적으로 신뢰할 수 있는 시나리오에서 사용 하 여 <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A>대신.</xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A> 완전 신뢰 시나리오 UnsafeDeserialize <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A>.</xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize%2A> 보다 더 나은 성능을 제공.       성공적인 deserialization에 대 한 스트림 내의 현재 위치 개체 그래프의 시작 부분에 있어야 합니다.      > [!IMPORTANT] > 신뢰할 수 없는 데이터로이 메서드를 호출 하는 것은 보안상 위험 합니다. 신뢰할 수 있는 데이터에만이 메서드를 호출 합니다. 자세한 내용은 참조 [신뢰할 수 없는 데이터 보안 위험](http://go.microsoft.com/fwlink/?LinkId=330378)합니다."
   syntax:
     content: public object UnsafeDeserialize (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream from which to deserialize the object graph."
+      description: "개체 그래프를 역직렬화 할 스트림."
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> that handles any headers in the `serializationStream`. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 모든 헤더를 처리 하는 `serializationStream`합니다. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The deserialized object or the top object (root) of the object graph."
+      description: "Deserialize 된 개체 또는 개체 그래프의 최상위 개체 (루트)."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.UnsafeDeserialize*
   exceptions:
   - type: System.ArgumentNullException
@@ -472,10 +472,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <code>serializationStream</code> supports seeking, but its length is 0."
+    description: "<code> serializationStream </code> 검색을 지원 하지만 길이 0입니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 - uid: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.UnsafeDeserializeMethodResponse(System.IO.Stream,System.Runtime.Remoting.Messaging.HeaderHandler,System.Runtime.Remoting.Messaging.IMethodCallMessage)
@@ -490,23 +490,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization.Formatters.Binary
-  summary: "Deserializes a response to a remote method call from the provided <xref:System.IO.Stream>."
-  remarks: "Details about the caller object are not sent to the remote object during the method call. Instead, these details are obtained from the original method call that is passed to the current method in the `methodCallMessage` parameter.       This method uses <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> to prevent it from being called from untrusted code; only the immediate caller is required to have <xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName> permission. Do not use this method if your code can be called from partially trusted code. In partially trusted scenarios, use <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> instead. In full trust scenarios, UnsafeDeserializeMethodResponse provides better performance than <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A>.       For successful deserialization, the current position in the stream must be at the beginning of the object graph.      > [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
+  summary: "제공 된 <xref:System.IO.Stream>.</xref:System.IO.Stream> 원격 메서드 호출에 대 한 응답을 역직렬화합니다."
+  remarks: "호출자에 게 개체에 대 한 세부 정보 메서드를 호출 하는 동안 원격 개체에 보내지지 않습니다. 대신, 이러한 세부 정보에서 현재 메서드로 전달 되는 원래 메서드 호출에서 가져온는 `methodCallMessage` 매개 변수입니다.       이 방법은 사용 하 여 <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>신뢰할 수 없는 코드에서 호출 되 고 하지 못하도록; 직접 실행 호출자만 포함 해야 합니다. <xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName>권한.</xref:System.Security.Permissions.SecurityPermissionAttribute.SerializationFormatter%2A?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> 부분적으로 신뢰할 수 있는 코드에서 코드를 호출할 수 있는 경우이 메서드를 사용 하지 마십시오. 부분적으로 신뢰할 수 있는 시나리오에서 사용 하 여 <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A>대신.</xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> 완전 신뢰 시나리오 UnsafeDeserializeMethodResponse <xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A>.</xref:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.DeserializeMethodResponse%2A> 보다 더 나은 성능을 제공.       성공적인 deserialization에 대 한 스트림 내의 현재 위치 개체 그래프의 시작 부분에 있어야 합니다.      > [!IMPORTANT] > 신뢰할 수 없는 데이터로이 메서드를 호출 하는 것은 보안상 위험 합니다. 신뢰할 수 있는 데이터에만이 메서드를 호출 합니다. 자세한 내용은 참조 [신뢰할 수 없는 데이터 보안 위험](http://go.microsoft.com/fwlink/?LinkId=330378)합니다."
   syntax:
     content: public object UnsafeDeserializeMethodResponse (System.IO.Stream serializationStream, System.Runtime.Remoting.Messaging.HeaderHandler handler, System.Runtime.Remoting.Messaging.IMethodCallMessage methodCallMessage);
     parameters:
     - id: serializationStream
       type: System.IO.Stream
-      description: "The stream from which to deserialize the object graph."
+      description: "개체 그래프를 역직렬화 할 스트림."
     - id: handler
       type: System.Runtime.Remoting.Messaging.HeaderHandler
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;></xref> that handles any headers in the `serializationStream`. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.HeaderHandler&quot;> </xref> 모든 헤더를 처리 하는 `serializationStream`합니다. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     - id: methodCallMessage
       type: System.Runtime.Remoting.Messaging.IMethodCallMessage
-      description: "The <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;></xref> that contains details about where the call came from."
+      description: "<xref href=&quot;System.Runtime.Remoting.Messaging.IMethodCallMessage&quot;> </xref> 에서 호출한 위치에 대 한 정보가 포함 된 합니다."
     return:
       type: System.Object
-      description: "The deserialized response to the remote method call."
+      description: "원격 메서드 호출에 deserialize 된 응답입니다."
   overload: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.UnsafeDeserializeMethodResponse*
   exceptions:
   - type: System.ArgumentNullException
@@ -514,10 +514,10 @@ items:
     description: "The <code>serializationStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Runtime.Serialization.SerializationException
     commentId: T:System.Runtime.Serialization.SerializationException
-    description: "The <code>serializationStream</code> supports seeking, but its length is 0."
+    description: "<code> serializationStream </code> 검색을 지원 하지만 길이 0입니다."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "호출자에 게 필요한 권한이 없습니다."
   platform:
   - net462
 references:

@@ -26,8 +26,8 @@ items:
   nameWithType: ReliableSessionBindingElement
   fullName: System.ServiceModel.Channels.ReliableSessionBindingElement
   type: Class
-  summary: "Represents the binding element that can produce the sending and receiving channels required for a reliable session between endpoints."
-  remarks: "Provides sessions and optionally provides ordered message delivery. This implemented session can cross SOAP and transport intermediaries.       Each binding element represents a processing step when sending or receiving messages. At runtime, binding elements create the channel factories and listeners that are necessary to build outgoing and incoming channel stacks required to send and receive messages. The ReliableSessionBindingElement provides an optional layer in the stack that can establish a reliable session between endpoints and configure the behavior of this session.       The ReliableSessionBindingElement is provided on the standard bindings in the following table.      |Binding|Default|   |-------------|-------------|   |<xref:System.ServiceModel.NetTcpBinding>|Off|   |<xref:System.ServiceModel.WSHttpBinding>|Off|   |<xref:System.ServiceModel.WSDualHttpBinding>|On (required)|"
+  summary: "송신 및 수신 채널 끝점 간에 신뢰할 수 있는 세션에 필요한 생성할 수 있는 바인딩 요소를 나타냅니다."
+  remarks: "세션을 제공 하 고 필요에 따라 메시지를 순서 대로 배달을 제공 합니다. 이 구현 된 세션은 SOAP 및 전송 매개자에 적용 될 매개자 수 있습니다.       각 바인딩 요소는 메시지를 받거나 보낼 때의 처리 단계를 나타냅니다. 런타임에 바인딩 요소는 채널 팩터리 및 채널 수신기는 메시지를 받거나 보내기 위해 필요한 나가고 들어오는 채널 스택을 빌드하는 데 필요한를 만듭니다. ReliableSessionBindingElement 스택의 끝점 간에 신뢰할 수 있는 세션을 설정 하 고이 세션의 동작을 구성할 수 있는 선택적 계층을 제공 합니다.       ReliableSessionBindingElement 다음 표에 나와 있는 표준 바인딩에 제공 됩니다.      | 바인딩 | 기본 |   |-------------|-------------|   | <xref:System.ServiceModel.NetTcpBinding>| Off |   | <xref:System.ServiceModel.WSHttpBinding>| Off |   | <xref:System.ServiceModel.WSDualHttpBinding>| (필수) |</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding> </xref:System.ServiceModel.NetTcpBinding>"
   example:
   - "The ReliableSessionBindingElement can be added to any custom binding. This is done using the following configuration elements.  \n  \n```  \n<bindings>  \n    <customBinding>  \n        <binding configurationName=”ReliabilityHTTP”>  \n            <reliableSession/>  \n        </binding>  \n    </customBinding>  \n</bindings>  \n```  \n  \n The following sample code demonstrates how to use ReliableSessionBindingElement in code.  \n  \n [!code-vb[S_Imperative#1](~/add/codesnippet/visualbasic/t-system.servicemodel.ch_0_1.vb)]\n [!code-cs[S_Imperative#1](~/add/codesnippet/csharp/t-system.servicemodel.ch_0_1.cs)]"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> 클래스입니다."
   syntax:
     content: public ReliableSessionBindingElement ();
     parameters: []
@@ -71,13 +71,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class that specifies whether message delivery must preserve the order in which messages are sent."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> 메시지 배달이 메시지를 보낸 순서를 유지 해야 하는지 여부를 지정 하는 클래스입니다."
   syntax:
     content: public ReliableSessionBindingElement (bool ordered);
     parameters:
     - id: ordered
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지를 보내지는; 순서 대로 배달 해야 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.#ctor*
   exceptions: []
   platform:
@@ -94,18 +94,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the interval of time that a destination waits before sending an acknowledgment to the message source on reliable channels that are created by the factory."
-  remarks: "The destination that receives messages on a reliable channel groups the acknowledgments for these messages together into a single message to reduce network traffic and to increase information density on messages. Grouping scales better as traffic increases. It does not attempt to send an acknowledgment for every message it receives as soon as possible, but rather waits for an interval of time, groups together the acknowledgments that have arrived during that interval, and then sends them all together. The first message that is received is the exception; it is acknowledged as soon as it is delivered. Also, if reliable sessions are used with single HTTP connections, as is the case for example with the <xref:System.ServiceModel.WSHttpBinding> but not <xref:System.ServiceModel.WSDualHttpBinding>, then this setting is not used.       The value that is set with the AcknowledgementInterval property is a recommendation to the infrastructure and not a hard limit."
+  summary: "팩터리에서 만든 신뢰할 수 있는 채널에서 메시지 소스에 승인을 보내기 전에 대상이 대기 하는 시간 간격을 가져오거나 설정 합니다."
+  remarks: "신뢰할 수 있는 채널에서 메시지를 받는 대상 메시지의 정보 밀도 증가 하 고 네트워크 트래픽을 줄이기 위해 단일 메시지에 이러한 메시지에 대 한 승인을 그룹화 합니다. 트래픽이 증가 함에 따라 수록 그룹화 비율이 합니다. 모든 메시지를 가능한 한 빨리 하지만 대신 될 때까지 대기 하는 시간 간격에 대 한 해당 간격 동안 도착 한 승인을 그룹화에 대 한 한 승인을 보내기 위해 시도 하지 않습니다 하 고 다음 보냅니다 모두 함께 합니다. 첫 번째 메시지 수신 되는 예외입니다. 가 배달 되는 즉시 승인 됩니다. 또한 신뢰할 수 있는 세션에 사용 되는 단일 HTTP 연결으로 되는 경우 예를 들어는 <xref:System.ServiceModel.WSHttpBinding>아닌 <xref:System.ServiceModel.WSDualHttpBinding>,이 설정을 사용 하지 않으면 다음.</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding>       AcknowledgementInterval 속성으로 설정 하는 값은은 하드 한도가 아니고 인프라에 권장 됩니다."
   syntax:
     content: public TimeSpan AcknowledgementInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds."
+      description: "<xref:System.TimeSpan>메시지 소스에 승인을 보낼 때까지 서비스가 대기 하는 시간 간격을 지정 하는.</xref:System.TimeSpan> 기본값은 2 초입니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.AcknowledgementInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "설정 값이&0; 보다 작은 경우"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
@@ -125,10 +125,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: System.ServiceModel.Channels.IChannelFactory{TChannel}
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -150,10 +150,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: System.ServiceModel.Channels.IChannelListener`1
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -220,13 +220,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Creates a copy of the current reliable session binding element."
+  summary: "현재 신뢰할 수 있는 세션 바인딩 요소의 복사본을 만듭니다."
   syntax:
     content: public override System.ServiceModel.Channels.BindingElement Clone ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "A <xref:System.ServiceModel.Channels.BindingElement> that is a clone of the current binding element."
+      description: "A <xref:System.ServiceModel.Channels.BindingElement>현재 바인딩 요소의 복제본입니다.</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Clone*
   exceptions: []
   platform:
@@ -243,13 +243,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether the reliable session has flow control enabled."
-  remarks: "Flow control is a mechanism that reliable sessions implement to ensure that senders do not send more messages than a receiver can handle. Receivers have a buffer of messages that is used to accommodate message bursts and out-of-order messages. Receivers advertise to senders the amount of space that remains in this buffer in each of their acknowledgements. Senders can use this information to stop sending new messages whenever the receiver has no buffer space left."
+  summary: "신뢰할 수 있는 세션에 흐름 제어를 사용할 수 있는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "흐름 제어는 발신자 보다 수신자가 처리할 수 있는 더 많은 메시지를 보내지 않습니다 수 있도록 신뢰할 수 있는 세션을 구현 하는 메커니즘입니다. 수신자는 메시지 버스트를 수용 하기 위해 사용 되는 메시지 및 메시지의 순서가의 버퍼입니다. 수신자는 각 승인에서이 버퍼에 남아 있는 공간의 양을 발신자에 알립니다. 보낸 사람 수신자의 버퍼 공간이 왼쪽 될 때마다 새 메시지를 전달 하지 않도록 하려면이 정보를 사용할 수 있습니다."
   syntax:
     content: public bool FlowControlEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reliable session has flow control enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>신뢰할 수 있는 세션에서 흐름 제어를 사용 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.FlowControlEnabled*
   exceptions: []
   platform:
@@ -271,10 +271,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "추가할 수 있습니다."
     return:
       type: T
-      description: "To be added."
+      description: "추가할 수 있습니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.GetProperty<T>*
   exceptions: []
   platform:
@@ -291,18 +291,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets an interval of time that a service remains inactive before closing."
-  remarks: "Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout parameter controls the maximum amount of time to keep an inactive session alive. If more than InactivityTimeout time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher can independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages are received or if there is a failure on the sender."
+  summary: "서비스를 닫기 전에 비활성 상태로 유지 하는 시간 간격을 가져오거나 설정 합니다."
+  remarks: "에서는 응용 프로그램 또는 인프라 메시지를 받는 채널 작업이 이루어집니다. 비활성 시간 제한 매개 변수는 비활성 세션을 유지 하는 최대 기간을 제어 합니다. 아무런 작업 없이 시간 간격이 경과할 InactivityTimeout 보다 더 많은, 세션은 인프라 및 채널에 오류가 발생 하 여 중단 됩니다. 신뢰할 수 있는 세션이 일방적으로 종료 합니다.       보내는 응용 프로그램에 신뢰할 수 있는 세션 다음 보낼 메시지가 없는 경우 비활성; 때문에 오류가 발생 되지 않습니다. 대신 연결 유지 메커니즘 세션이 무기한 활성 상태로 유지 합니다. Note 있는 발송자 수 독립적으로 중단할 신뢰할 수 있는 세션 없는 응용 프로그램 메시지 발신 이나 수신 하는 경우. 따라서는 비활성 시간 제한이 만료 네트워크 조건에 메시지가 수신 되지 않거나 발신자에 오류가 있는 경우."
   syntax:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "<xref:System.TimeSpan>는 서비스를 닫기 전에 비활성 상태로 유지 하는 시간 간격을 지정 하는.</xref:System.TimeSpan> 기본값은 10 분입니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than either <xref:System.Int32.MaxValue> or <xref:System.TimeSpan.MaxValue>."
+    description: "값 집합이 보다 작거나&0; 보다 크거나 중 하나 <xref:System.Int32.MaxValue>나 <xref:System.TimeSpan.MaxValue>.</xref:System.TimeSpan.MaxValue> </xref:System.Int32.MaxValue>"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels
@@ -317,18 +317,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of channels that can be pending during the reliable session."
-  remarks: "Channels are pending when they are waiting to be accepted. Once that limit is reached, no channels are created and put in pending mode until this number goes down (by accepting pending channels). This is a limit for each listener.       When the threshold is reached and a remote application tries to establish a new reliable session, the request is denied and the open operation that prompted this faults."
+  summary: "보류 중일 수 있는 채널의 최대 수를 가져오거나 설정 합니다. 신뢰할 수 있는 세션 중입니다."
+  remarks: "채널은 수락 대기 중인 보류 됩니다. 해당 제한에 도달 하지 채널이 생성 되 고 내려 대기 중 모드까지 숫자 (그대로 사용 하 여 보류 중인 채널). 각 수신기에 대 한 제한입니다.       때 임계값에 도달 하 고 원격 응용 프로그램을 신뢰할 수 있는 새 세션을 설정 하려고 하면 요청이 거부 되 고 열기 작업에이 오류가 표시 됩니다."
   syntax:
     content: public int MaxPendingChannels { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of channels that can be pending. The default value is 4."
+      description: "보류 중일 수 있는 채널의 최대 수입니다. 기본값은 4입니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than 16384."
+    description: "설정 된 값 보다 작거나 또는 0 16384 보다 큽니다."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount
@@ -343,18 +343,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the maximum number of times that a message attempts to be transferred during the reliable session."
-  remarks: "A message is considered to be transferred if its delivery at the recipient has been acknowledged by the recipient.       If an acknowledgment has not been received within a certain amount of time for a message that has been transmitted, the infrastructure automatically retransmits the message. The infrastructure tries to send the message for, at most, a MaxRetryCount number of times. Not receiving an acknowledgment before this limit is reached is considered a fatal communication failure and causes the channel faulted event to be raised.       The infrastructure uses an exponential back-off algorithm to determine when to retransmit, based on a computed average round-trip time. The initial retry time is computed based on the measured roundtrip time of establishing the session. The retransmission algorithm doubles the delay with every attempt, which results in approximately 8.5 minutes passing between the first transmission attempt and the last retransmission attempt. The time for the first retransmission attempt is adjusted according to the calculated round-trip time and the resulting stretch of time that those attempts take varies accordingly. This allows the retransmission time to dynamically adapt to varying network conditions."
+  summary: "메시지를 신뢰할 수 있는 세션 중에 전송 하는 최대 횟수를 가져오거나 설정 합니다."
+  remarks: "메시지 받는 사람이 받는 배달을 승인 했으면 전송할 간주 됩니다.       승인에는 특정 시간 내에 전송 된 메시지에 대 한 받지 않는 경우 인프라 다시 자동으로 메시지를 전송 합니다. 인프라 많아야 MaxRetryCount 여러 번에 메시지를 보내려고 시도 합니다. 이 한도 도달 하기 전에 승인을 받지 못하면 치명적인 통신 오류로 / 채널 오류 이벤트가 발생 하면 합니다.       인프라를 사용 하 여 지 수 백오프 알고리즘 재전송을 시기 결정 계산 된 평균 라운드트립 시간을 기반으로 합니다. 초기 재시도 시간은 세션을 설정 하는 측정 된 라운드트립 시간에 따라 계산 됩니다. 알고리즘은 재전송 시도 마다 약 8.5 분이 경과 첫 번째 재전송 시도 마지막 재전송 시도 사이 지연 두 배로 만듭니다. 계산된 된 라운드트립 시간에 따라 조정 되는 첫 번째 재전송 시도 대 한 고는 결과 재전송 시도 시간 늘어나는 달라 집니다. 따라서 재전송 시간을 다양 한 네트워크 조건에 맞게 동적으로 적용할 수 있습니다."
   syntax:
     content: public int MaxRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of times that a message attempts to be re-sent. The minimum value is 1; the maximum is <xref:System.Int32>; and the default value is 8."
+      description: "메시지를 다시 전송 시도 횟수 최대 수입니다. 최소값은 1입니다. 최대값은 <xref:System.Int32>; 이며 기본값은 8.</xref:System.Int32>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "설정 값이&0; 보다 작은 경우"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize
@@ -369,18 +369,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of messages that can exist in either the send buffer or the receive buffer."
-  remarks: "The value of the MaxTransferWindowSize property can be set on both the sender and the receiver. This value is included in the binding policy of the WSDL, so if you use the [ServiceModel Metadata Utility Tool (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) to construct your client, it has the same value. Otherwise this value is whatever you set it to be on the client.       When this limit is reached on the sender, additional calls to send are blocked. When this limit is reached on the receiver, new messages that arrive on the underlying channel are not accepted.       A reliable session uses a windowing protocol to help improve network utilization. The amount of buffering required is directly derived from the size of the transmission window. When tuning this value, note that the optimal transmission window is related to the bandwidth and the latency in a straight-forward way. The ideal maximum window size is the bandwidth times the latency. Anything smaller yields less than 100% network utilization; anything larger is just wasted space."
+  summary: "송신 버퍼 또는 수신 버퍼에 존재할 수 있는 메시지의 최대 수를 가져오거나 설정 합니다."
+  remarks: "발신자와 수신자 둘 다에서 MaxTransferWindowSize 속성의 값을 설정할 수 있습니다. 이 값은 포함 하는 WSDL의 바인딩 정책에 사용 하는 경우 그렇게는 [ServiceModel Metadata 유틸리티 도구 (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) 여 클라이언트를 구성 하려면 동일한 값을 갖습니다. 그렇지 않으면이 값은 설정한 클라이언트에 연결 해야 합니다.       보낸 사람에이 한도 도달 하면 추가적인 보내기 호출이 차단 됩니다. 받는 사람에 대해이 한도 도달 하면 기본 채널에 도착 하는 새 메시지 수락 되지 않습니다.       신뢰할 수 있는 세션 네트워크 사용률을 향상 시킬 수 있도록 윈도우 프로토콜을 사용 합니다. 필요한 버퍼링 양은 전송 윈도우의 크기에서 직접 파생 됩니다. 이 값을 튜닝할 때 note 직접적인 방법으로 최적의 전송 윈도우가 대역폭 및 대기 시간 관련 됩니다. 이상적인 최대 윈도우 크기는 대기 시간 대역폭입니다. 네트워크 사용률이 100%; 보다 작은 대상 생성 값 보다 크면 공간이 낭비 됩니다."
   syntax:
     content: public int MaxTransferWindowSize { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of messages that can be buffered. The minimum value is 1; the maximum value is 4096; and the default value is 32."
+      description: "버퍼링 할 수 있는 메시지의 최대 수입니다. 최소값은 1입니다. 최대값은 4096입니다. 및 기본값은 32입니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to one or greater than 4096."
+    description: "설정 된 값 보다 작거나 하나 또는 4096 보다 큰 경우"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered
@@ -395,13 +395,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "To get messages dispatched in order, you also must set the <xref:System.ServiceModel.ConcurrencyMode> to <xref:System.ServiceModel.ConcurrencyMode>."
+  summary: "메시지 배달이 메시지를 보낸 순서를 유지 해야 하는지 여부를 나타내는 값을 가져오거나 설정 합니다."
+  remarks: "순서 대로 디스패치 된 메시지를 얻기 위해 설정 해야 <xref:System.ServiceModel.ConcurrencyMode> <xref:System.ServiceModel.ConcurrencyMode>.</xref:System.ServiceModel.ConcurrencyMode> </xref:System.ServiceModel.ConcurrencyMode>"
   syntax:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>메시지를 보내지는; 순서 대로 배달 해야 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다. 기본값은 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered*
   exceptions: []
   platform:
@@ -418,13 +418,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the version of WS-ReliableMessaging specified by the binding element."
-  remarks: 'There are currently two versions of the WS-ReliableMessaging protocol supported by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS-ReliableMessaging1.1 and WS-ReliableMessagingFebruary2005. The default version is WS-ReliableMessagingFebruary2005.'
+  summary: "바인딩 요소에서 지정한 Ws-reliablemessaging 버전을 가져오거나 설정 합니다."
+  remarks: '현재 버전에서 지원 되는 Ws-reliablemessaging 프로토콜의은 [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: Ws-reliablemessagingfebruary2005 Ws-reliablemessaging1.1 및 w s. 기본 버전은 Ws-reliablemessagingfebruary2005 합니다.'
   syntax:
     content: public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { get; set; }
     return:
       type: System.ServiceModel.ReliableMessagingVersion
-      description: "An instance derived from <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;></xref> that represents the version of the WS-ReliableMessaging protocol used by the configuration element."
+      description: "파생 된 인스턴스로 <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;> </xref> 구성 요소에 의해 사용 되는 Ws-reliablemessaging 프로토콜의 버전을 나타냅니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.ReliableMessagingVersion*
   exceptions: []
   platform:
@@ -442,16 +442,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Maps the information contained in the reliable session binding element into the WSDL elements that enable a remote endpoint to access the service with a reliable session."
+  summary: "원격 끝점에 신뢰할 수 있는 세션을 통해 서비스를 액세스할 수 있도록 하는 WSDL 요소에 신뢰할 수 있는 세션 바인딩 요소에 포함 된 정보를 매핑합니다."
   syntax:
     content: void IPolicyExportExtension.ExportPolicy (System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context);
     parameters:
     - id: exporter
       type: System.ServiceModel.Description.MetadataExporter
-      description: "The <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;></xref> that exports the binding information in the reliable session binding element to the WSDL elements."
+      description: "<xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;> </xref> 신뢰할 수 있는 세션 바인딩 요소의 바인딩 정보를 WSDL 요소로 내보내는 하 합니다."
     - id: context
       type: System.ServiceModel.Description.PolicyConversionContext
-      description: "The <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;></xref> that provides the mapping from exported WSDL elements to the endpoint description."
+      description: "<xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;> </xref> 내보낸된 WSDL 요소에서 끝점 설명으로의 매핑을 제공 하는 합니다."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy*
   exceptions: []
   platform:

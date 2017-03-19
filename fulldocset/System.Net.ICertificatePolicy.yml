@@ -10,8 +10,8 @@ items:
   nameWithType: ICertificatePolicy
   fullName: System.Net.ICertificatePolicy
   type: Interface
-  summary: "Validates a server certificate."
-  remarks: "The ICertificatePolicy interface is used to provide custom security certificate validation for an application. The default policy is to allow valid certificates, as well as valid certificates that have expired. To change this policy, implement the ICertificatePolicy interface with a different policy, and then assign that policy to <xref:System.Net.ServicePointManager.CertificatePolicy%2A?displayProperty=fullName>.       ICertificatePolicy uses the Security Support Provider Interface (SSPI). For more information, see the SSPI documentation on MSDN."
+  summary: "서버 인증서의 유효성을 검사 합니다."
+  remarks: "ICertificatePolicy 인터페이스 하는 데 응용 프로그램에 대 한 사용자 지정 보안 인증서 유효성 검사를 제공 합니다. 기본 정책은으로 유효한 인증서 만료 된 유효한 인증서를 허용 하는 것입니다. 이 정책을 변경 하려면 다른 정책과 ICertificatePolicy 인터페이스를 구현 하 고 해당 정책을 <xref:System.Net.ServicePointManager.CertificatePolicy%2A?displayProperty=fullName>.</xref:System.Net.ServicePointManager.CertificatePolicy%2A?displayProperty=fullName> 지정       ICertificatePolicy 보안 지원 공급자 인터페이스 (SSPI)를 사용합니다. 자세한 내용은 MSDN에서 SSPI 설명서를 참조 합니다."
   example:
   - "The following example creates a certificate policy that returns `false` for any certificate problem and prints a message that indicates the problem on the console. The CertificateProblem enum defines SSPI constants for certificate problems, and the private GetProblemMessage method creates a printable message about the problem.  \n  \n [!code-cpp[Classic ICertificatePolicy Example#1](~/add/codesnippet/cpp/t-system.net.icertificat_1.cpp)]\n [!code-cs[Classic ICertificatePolicy Example#1](~/add/codesnippet/csharp/t-system.net.icertificat_1.cs)]\n [!code-vb[Classic ICertificatePolicy Example#1](~/add/codesnippet/visualbasic/t-system.net.icertificat_1.vb)]"
   syntax:
@@ -31,26 +31,26 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Validates a server certificate."
-  remarks: "The CheckValidationResult method implements the application certificate validation policy. The method can examine the `srvPoint`, `certificate`, `request`, and `certificateProblem` parameters to determine whether the certificate should be honored.       The `certificateProblem` parameter is a Security Support Provider Interface (SSPI) status code. For more information, see the SSPI documentation on MSDN."
+  summary: "서버 인증서의 유효성을 검사 합니다."
+  remarks: "CheckValidationResult 메서드는 응용 프로그램 인증서 유효성 검사 정책을 구현합니다. 메서드를 검사할 수는 `srvPoint`, `certificate`, `request`, 및 `certificateProblem` 인증서 허용 되어야 하는지 여부를 확인 하려면 매개 변수입니다.       `certificateProblem` 매개 변수는 보안 지원 공급자 인터페이스 (SSPI) 상태 코드입니다. 자세한 내용은 MSDN에서 SSPI 설명서를 참조 합니다."
   syntax:
     content: public bool CheckValidationResult (System.Net.ServicePoint srvPoint, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Net.WebRequest request, int certificateProblem);
     parameters:
     - id: srvPoint
       type: System.Net.ServicePoint
-      description: "The <xref href=&quot;System.Net.ServicePoint&quot;></xref> that will use the certificate."
+      description: "<xref href=&quot;System.Net.ServicePoint&quot;> </xref> 하는 인증서를 사용 합니다."
     - id: certificate
       type: System.Security.Cryptography.X509Certificates.X509Certificate
-      description: "The certificate to validate."
+      description: "인증서의 유효성을 검사 하는입니다."
     - id: request
       type: System.Net.WebRequest
-      description: "The request that received the certificate."
+      description: "이 요청에 인증서를 받은입니다."
     - id: certificateProblem
       type: System.Int32
-      description: "The problem that was encountered when using the certificate."
+      description: "인증서를 사용 하는 경우에 발생 한 문제입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the certificate should be honored; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>인증서; 허용 되어야 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Net.ICertificatePolicy.CheckValidationResult*
   exceptions: []
   platform:

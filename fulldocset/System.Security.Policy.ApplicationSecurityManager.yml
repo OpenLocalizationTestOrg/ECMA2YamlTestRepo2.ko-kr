@@ -12,8 +12,8 @@ items:
   nameWithType: ApplicationSecurityManager
   fullName: System.Security.Policy.ApplicationSecurityManager
   type: Class
-  summary: "Manages trust decisions for manifest-activated applications."
-  remarks: "The ApplicationSecurityManager class provides essential information for the execution of a manifest-based application. The <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property identifies the trust manager responsible for determining whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> method calls the application trust manager to determine whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A> property contains the cached trust decisions for the user."
+  summary: "응용 프로그램 매니페스트에 활성화에 대 한 신뢰 결정을 관리 합니다."
+  remarks: "ApplicationSecurityManager 클래스 매니페스트 기반 응용 프로그램의 실행에 대 한 중요 한 정보를 제공합니다. <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>속성을 식별 하려면 신뢰 관리자 응용 프로그램은 신뢰할 수 있는지 여부를 결정 합니다.</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A>메서드 호출 응용 프로그램 신뢰 관리자를 신뢰할 수 있는 응용 프로그램 인지 확인 합니다.</xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>속성 사용자에 대 한 캐시 된 신뢰 결정을 포함 합니다.</xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,18 +37,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the current application trust manager."
-  remarks: "In the current release there is only one trust manager, which can be a custom implementation of the <xref:System.Security.Policy.IApplicationTrustManager> interface. The default trust manager implementation prompts the user for permission to install the application and elevate the permissions granted to the application. Other trust manager implementations might have different user experiences. For example, an implementation might check an enterprise list for trusted applications, rather than prompting the user for that information."
+  summary: "현재 응용 프로그램 신뢰 관리자를 가져옵니다."
+  remarks: "현재 릴리스에서 사용자 지정 구현 될 수 있는 하나의 신뢰 관리자의는 <xref:System.Security.Policy.IApplicationTrustManager>인터페이스.</xref:System.Security.Policy.IApplicationTrustManager> 기본 트러스트 관리자 구현 메시지를 응용 프로그램을 설치 하 여 응용 프로그램에 부여 된 권한 상승을 사용 권한에 대해 사용자를 표시 합니다. 다른 신뢰 관리자 구현에서는 사용자 환경이 있을 수 있습니다. 예를 들어는 구현에는 해당 정보에 대 한 사용자에 게 확인 하는 것이 아니라 신뢰할 수 있는 응용 프로그램에 대 한 엔터프라이즈 목록을 확인할 수 있습니다."
   syntax:
     content: public static System.Security.Policy.IApplicationTrustManager ApplicationTrustManager { get; }
     return:
       type: System.Security.Policy.IApplicationTrustManager
-      description: "An <xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;></xref> that represents the current trust manager."
+      description: "<xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;> </xref> 현재 신뢰 관리자를 나타내는입니다."
   overload: System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager*
   exceptions:
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
-    description: "The policy on this application does not have a trust manager."
+    description: "이 응용 프로그램에서 정책을 신뢰 관리자를 없습니다."
   platform:
   - net462
 - uid: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust(System.ActivationContext,System.Security.Policy.TrustManagerContext)
@@ -63,20 +63,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the user approves the specified application to execute with the requested permission set."
-  remarks: "DetermineApplicationTrust uses the configured <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property to determine whether to allow execution of the specified application with the permission set requested in the application manifest. The trust manager&quot;s behavior is dependent on the trust manager implementation and the information passed in the `context` parameter. The default behavior of the trust manager is to establish a user interface (UI) dialog box to determine the user&quot;s approval. However, a trust manager can also determine an application&quot;s trust status based on other criteria, such as decisions provided by a corporate database. The trust decision can be persisted, depending upon the `context` parameters properties and the trust manager implementation. If the trust for the application is persisted for a decision based on a user dialog box, future calls to the <xref:System.Security.Policy.ApplicationSecurityManager> will not present the UI dialog box for every request for that application. DetermineApplicationTrust is called after the manifest, but before the application has been downloaded to the local system."
+  summary: "사용자가 요청 된 사용 권한 집합으로 실행 되도록 지정된 된 응용 프로그램을 승인 여부를 결정 합니다."
+  remarks: "DetermineApplicationTrust를 사용 하 여 구성 된 <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>권한 요청 된 응용 프로그램 매니페스트에 집합으로 지정된 된 응용 프로그램의 실행을 허용할지 여부를 결정 하는 속성.</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> 트러스트 관리자 동작은 트러스트 관리자 구현에 따라 달라 집니다. 및 전달 된 정보는 `context` 매개 변수입니다. 트러스트 관리자의 기본 동작은 사용자의 승인을 확인 하려면 사용자 인터페이스 (UI) 대화 상자를 설정 하는 것입니다. 그러나 신뢰 관리자는 회사 데이터베이스에서 제공 하는 결정 등의 다른 조건에 따라 응용 프로그램의 신뢰 상태를 결정할 수도 있습니다. 신뢰 결정을 내리도록 지속 가능에 따라는 `context` 매개 변수 속성 및 트러스트 관리자 구현 합니다. 미래에 대 한 호출이 사용자 대화 상자에 따라 결정에 대 한 응용 프로그램에 대 한 트러스트 지속 되 면는 <xref:System.Security.Policy.ApplicationSecurityManager>해당 응용 프로그램에 대 한 모든 요청에 대 한 UI 대화 상자를 표시 하지 것입니다.</xref:System.Security.Policy.ApplicationSecurityManager> DetermineApplicationTrust은 매니페스트에 하지만 로컬 시스템에 응용 프로그램 다운로드 되기 전에 호출 됩니다."
   syntax:
     content: public static bool DetermineApplicationTrust (ActivationContext activationContext, System.Security.Policy.TrustManagerContext context);
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "An <xref href=&quot;System.ActivationContext&quot;></xref> identifying the activation context for the application."
+      description: "<xref href=&quot;System.ActivationContext&quot;> </xref> 응용 프로그램에 대 한 활성화 컨텍스트를 식별 합니다."
     - id: context
       type: System.Security.Policy.TrustManagerContext
-      description: "A <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;></xref> identifying the trust manager context for the application."
+      description: "A <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;> </xref> 응용 프로그램에 대 한 트러스트 관리자 컨텍스트를 식별 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to execute the specified application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>지정 된 응용 프로그램을 실행 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust*
   exceptions:
   - type: System.ArgumentNullException
@@ -96,13 +96,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets an application trust collection that contains the cached trust decisions for the user."
-  remarks: "The trust decisions in the collection are maintained using the methods of the collection, such as the <xref:System.Security.Policy.ApplicationTrustCollection.Add%2A> method or the <xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> method."
+  summary: "사용자에 대 한 캐시 된 신뢰 결정을 포함 하는 응용 프로그램 신뢰 컬렉션을 가져옵니다."
+  remarks: "컬렉션에서 신뢰 결정 같은 컬렉션의 메서드를 사용 하 여 유지 관리 되는 <xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>메서드 또는 <xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A>메서드.</xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> </xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>"
   syntax:
     content: public static System.Security.Policy.ApplicationTrustCollection UserApplicationTrusts { get; }
     return:
       type: System.Security.Policy.ApplicationTrustCollection
-      description: "An <xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;></xref> that contains the cached trust decisions for the user."
+      description: "<xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;> </xref> 사용자에 대 한 캐시 된 신뢰 결정이 들어 있는입니다."
   overload: System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts*
   exceptions: []
   platform:
