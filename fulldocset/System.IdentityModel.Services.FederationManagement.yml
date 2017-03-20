@@ -14,8 +14,8 @@ items:
   nameWithType: FederationManagement
   fullName: System.IdentityModel.Services.FederationManagement
   type: Class
-  summary: "Defines static methods for creating Federation Metadata documents and for updating application configuration based on Federation Metadata documents."
-  remarks: 'For more information about Federation Metadata documents, see section three of the following specification: [Web Services Federation Language (WS-Federation) Version 1.2](http://go.microsoft.com/fwlink/?LinkID=210152) (http://go.microsoft.com/fwlink/?LinkID=210152).'
+  summary: "페더레이션 메타 데이터 문서를 만들기 위한 및 페더레이션 메타 데이터 문서를 기반으로 하는 응용 프로그램 구성을 업데이트 하기 위한 정적 메서드를 정의 합니다."
+  remarks: '페더레이션 메타 데이터 문서에 대 한 자세한 내용은 참조는 다음과 같은 사양의 섹션 3: [웹 서비스 페더레이션 언어 (Ws-federation) 버전 1.2](http://go.microsoft.com/fwlink/?LinkID=210152) (http://go.microsoft.com/fwlink/?LinkID=210152).'
   syntax:
     content: public static class FederationManagement
   inheritance:
@@ -36,28 +36,28 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Creates an XML document that contains Federation Metadata."
+  summary: "페더레이션 메타 데이터를 포함 하는 XML 문서를 만듭니다."
   syntax:
     content: public static System.Xml.XmlReader CreateApplicationFederationMetadata (Uri applicationUri, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, System.Collections.ObjectModel.Collection<System.IdentityModel.Metadata.DisplayClaim> claimsRequired, System.IdentityModel.Services.ApplicationType applicationType, System.Collections.ObjectModel.Collection<Uri> audienceUris);
     parameters:
     - id: applicationUri
       type: System.Uri
-      description: "The application URI."
+      description: "응용 프로그램 URI입니다."
     - id: certificate
       type: System.Security.Cryptography.X509Certificates.X509Certificate2
-      description: "The X.509 certificate to use to sign the metadata."
+      description: "메타 데이터에 서명 하는 데 X.509 인증서입니다."
     - id: claimsRequired
       type: System.Collections.ObjectModel.Collection{System.IdentityModel.Metadata.DisplayClaim}
-      description: "The claims required by the application."
+      description: "응용 프로그램에 클레임입니다."
     - id: applicationType
       type: System.IdentityModel.Services.ApplicationType
-      description: "One of the <xref href=&quot;System.IdentityModel.Services.ApplicationType&quot;></xref> values that specifies the type of application that the metadata describes. This is used to determine the endpoints to create."
+      description: "중 하나는 <xref href=&quot;System.IdentityModel.Services.ApplicationType&quot;> </xref> 메타 데이터를 설명 하는 응용 프로그램 종류를 지정 하는 값입니다. 만들려는 끝점을 결정 하는이 사용 됩니다."
     - id: audienceUris
       type: System.Collections.ObjectModel.Collection{System.Uri}
-      description: "The collection of acceptable URIs that can be used for this application."
+      description: "이 응용 프로그램에 사용할 수 있는 허용 가능한 Uri의 컬렉션입니다."
     return:
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the metadata document that was created by using the parameters."
+      description: "매개 변수를 사용 하 여 생성 된 메타 데이터 문서를 포함 하는 XML 판독기입니다."
   overload: System.IdentityModel.Services.FederationManagement.CreateApplicationFederationMetadata*
   exceptions: []
   platform:
@@ -74,27 +74,27 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Updates the specified application configuration, if needed, based on the specified Federation Metadata document and a value that specifies whether the claims offered list should be updated."
+  summary: "필요한 경우 지정된 된 페더레이션 메타 데이터 문서 및 클레임 목록을 업데이트 해야 제공 하는지 여부를 지정 하는 값에 따라 지정 된 응용 프로그램 구성을 업데이트 합니다."
   syntax:
     content: public static System.Xml.XmlReader UpdateIdentityProviderTrustInfo (System.Xml.XmlReader metadataReader, System.Xml.XmlReader inputConfiguration, bool claimsOfferedUpdate);
     parameters:
     - id: metadataReader
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the metadata document."
+      description: "메타 데이터 문서를 포함 하는 XML 판독기입니다."
     - id: inputConfiguration
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the configuration."
+      description: "구성이 포함 된 XML 판독기입니다."
     - id: claimsOfferedUpdate
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the claims offered list should be updated; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클레임 목록 업데이트 해야; 제공 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the updated configuration or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the configuration could not be updated."
+      description: "업데이트 된 구성이 포함 된 XML 판독기 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 구성을 업데이트할 수 없습니다."
   overload: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>metadataReader</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Boolean,System.IdentityModel.Metadata.MetadataSerializer)
@@ -109,30 +109,30 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Updates the specified application configuration, if needed, based on the specified Federation Metadata document and a value that specifies whether the claims offered list should be updated. The serializer with which to read the security token service (STS) metadata is also specified."
+  summary: "필요한 경우 지정된 된 페더레이션 메타 데이터 문서 및 클레임 목록을 업데이트 해야 제공 하는지 여부를 지정 하는 값에 따라 지정 된 응용 프로그램 구성을 업데이트 합니다. 보안 토큰 서비스 (STS) 메타 데이터를 읽을 수 있는 serializer가 지정 됩니다."
   syntax:
     content: public static System.Xml.XmlReader UpdateIdentityProviderTrustInfo (System.Xml.XmlReader metadataReader, System.Xml.XmlReader inputConfiguration, bool claimsOfferedUpdate, System.IdentityModel.Metadata.MetadataSerializer metadataSerializer);
     parameters:
     - id: metadataReader
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the metadata document."
+      description: "메타 데이터 문서를 포함 하는 XML 판독기입니다."
     - id: inputConfiguration
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the configuration."
+      description: "구성이 포함 된 XML 판독기입니다."
     - id: claimsOfferedUpdate
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the claims offered list should be updated; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>클레임 목록 업데이트 해야; 제공 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: metadataSerializer
       type: System.IdentityModel.Metadata.MetadataSerializer
-      description: "The serializer with which to read the STS metadata."
+      description: "STS 메타 데이터를 읽을 수 있는 serializer입니다."
     return:
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the updated configuration or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the configuration could not be updated."
+      description: "업데이트 된 구성이 포함 된 XML 판독기 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 경우 구성을 업데이트할 수 없습니다."
   overload: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>metadataSerializer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>metadataReader</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>metadataSerializer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Xml.XmlNodeReader@,System.Xml.XmlNodeReader@)
@@ -147,27 +147,27 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Updates the specified application configuration, if needed, based on the specified Federation Metadata document. Returns the configuration elements for the issuer name registry, as well as the configuration elements for the updated list of claims types offered, if it has been updated."
+  summary: "필요한 경우 지정된 된 페더레이션 메타 데이터 문서에 따라 지정 된 응용 프로그램 구성을 업데이트 합니다. 반환 발급자 이름 레지스트리에 대 한 구성 요소 뿐 아니라 구성 요소 업데이트 된 목록에 클레임 형식에 대해 제공 된, 업데이트 된 경우."
   syntax:
     content: public static void UpdateIdentityProviderTrustInfo (System.Xml.XmlReader metadataReader, System.Xml.XmlReader inputConfiguration, out System.Xml.XmlNodeReader newIssuerNameRegistry, out System.Xml.XmlNodeReader claimTypesOffered);
     parameters:
     - id: metadataReader
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the metadata document."
+      description: "메타 데이터 문서를 포함 하는 XML 판독기입니다."
     - id: inputConfiguration
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the configuration."
+      description: "구성이 포함 된 XML 판독기입니다."
     - id: newIssuerNameRegistry
       type: System.Xml.XmlNodeReader
-      description: "When this method returns, contains an XML node reader that contains the elements that specify the issuer name registry. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are is no issuer name registry specified. This parameter is treated as uninitialized."
+      description: "이 메서드가 반환 될 때에 발급자 이름 레지스트리를 지정 하는 요소가 포함 된 XML 노드 판독기 포함 되어 있습니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>없는 경우 발급자 이름 레지스트리 없습니다 지정 됩니다. 이 매개 변수 처리 되 상태로 있습니다."
     - id: claimTypesOffered
       type: System.Xml.XmlNodeReader
-      description: "When this method returns, if the list of claim types offered has been changed, contains an XML node reader that contains elements that specify new list. If the list has not been changed, returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is treated as uninitialized."
+      description: "때이 메서드가 반환 되 면 제공 클레임 형식 목록은 변경 된 경우 새 목록을 지정 하는 요소가 포함 된 XML 노드 판독기를 포함 합니다. 목록 변경 되지 않은 경우 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 이 매개 변수 처리 되 상태로 있습니다."
   overload: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code><code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>metadataReader</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code><code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo(System.Xml.XmlReader,System.Xml.XmlReader,System.Xml.XmlNodeReader@,System.Xml.XmlNodeReader@,System.IdentityModel.Metadata.MetadataSerializer)
@@ -182,30 +182,30 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services
-  summary: "Updates the specified application configuration, if needed, based on the specified Federation Metadata document. Returns configuration elements for the issuer name registry, as well as the configuration elements for the updated list of claims types offered, if it has been updated. The serializer with which to read the security token service (STS) metadata is also specified."
+  summary: "필요한 경우 지정된 된 페더레이션 메타 데이터 문서에 따라 지정 된 응용 프로그램 구성을 업데이트 합니다. 발급자 이름 레지스트리에 대 한 구성 요소를 반환 뿐 아니라 구성 요소 업데이트 된 목록에 클레임 형식에 대해 제공 된, 업데이트 된 경우. 보안 토큰 서비스 (STS) 메타 데이터를 읽을 수 있는 serializer가 지정 됩니다."
   syntax:
     content: public static void UpdateIdentityProviderTrustInfo (System.Xml.XmlReader metadataReader, System.Xml.XmlReader inputConfiguration, out System.Xml.XmlNodeReader newIssuerNameRegistry, out System.Xml.XmlNodeReader claimTypesOffered, System.IdentityModel.Metadata.MetadataSerializer metadataSerializer);
     parameters:
     - id: metadataReader
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the metadata document."
+      description: "메타 데이터 문서를 포함 하는 XML 판독기입니다."
     - id: inputConfiguration
       type: System.Xml.XmlReader
-      description: "An XML reader that contains the configuration."
+      description: "구성이 포함 된 XML 판독기입니다."
     - id: newIssuerNameRegistry
       type: System.Xml.XmlNodeReader
-      description: "When this method returns, contains an XML node reader that contains the elements that specify the issuer name registry. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are is no issuer name registry specified. This parameter is treated as uninitialized."
+      description: "이 메서드가 반환 될 때에 발급자 이름 레지스트리를 지정 하는 요소가 포함 된 XML 노드 판독기 포함 되어 있습니다. <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>없는 경우 발급자 이름 레지스트리 없습니다 지정 됩니다. 이 매개 변수 처리 되 상태로 있습니다."
     - id: claimTypesOffered
       type: System.Xml.XmlNodeReader
-      description: "When this method returns, if the list of claim types offered has been changed, contains an XML node reader that contains elements that specify new list. If the list has not been changed, returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is treated as uninitialized."
+      description: "때이 메서드가 반환 되 면 제공 클레임 형식 목록은 변경 된 경우 새 목록을 지정 하는 요소가 포함 된 XML 노드 판독기를 포함 합니다. 목록 변경 되지 않은 경우 반환 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 이 매개 변수 처리 되 상태로 있습니다."
     - id: metadataSerializer
       type: System.IdentityModel.Metadata.MetadataSerializer
-      description: "The serializer with which to read the STS metadata."
+      description: "STS 메타 데이터를 읽을 수 있는 serializer입니다."
   overload: System.IdentityModel.Services.FederationManagement.UpdateIdentityProviderTrustInfo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>metadataReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>metadataSerializer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>metadataReader</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>inputConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>metadataSerializer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:
