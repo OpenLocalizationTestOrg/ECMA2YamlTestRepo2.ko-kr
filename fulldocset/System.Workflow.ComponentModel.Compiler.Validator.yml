@@ -15,8 +15,8 @@ items:
   nameWithType: Validator
   fullName: System.Workflow.ComponentModel.Compiler.Validator
   type: Class
-  summary: "Base class for all validator components."
-  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]       The Validator class is used to ensure that activities are configured properly at design time. Validators are instantiated during design time when the designer validates the properties assigned to activities; if an activity&quot;s parameters are not configured properly, the designer will show smart tag errors for the incorrect values. Validators also run during compile time, and will return validation errors if constraints such as object parent or child type, minimum number of children, etc. are not correct.  Validators will also run at runtime when a markup-based workflow is instantiated using the <xref:System.Workflow.Runtime.WorkflowRuntime.CreateWorkflow%2A> method.       The main purpose of a Validator is to ensure that errors are known during design time, and are not exposed as exceptions during runtime.       Validators are associated with the activities that they validate using the <xref:System.Workflow.ComponentModel.Compiler.ActivityValidatorAttribute.ValidatorTypeName%2A> attribute; all activity validators must inherit from the <xref:System.Workflow.ComponentModel.Compiler.ActivityValidator> class.       By default, validators will validate meta properties; they do not validate instance properties which are settable at runtime."
+  summary: "모든 유효성 검사기 구성 요소에 대 한 기본 클래스입니다."
+  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]유효성 검사기 클래스는 활동이 디자인 타임에 적절히 구성 되어 있는지 확인 하는 데 사용 됩니다. 유효성 검사기 디자이너 작업에 할당 된 속성의 유효성을 검사 하면 디자인 타임 동안 인스턴스화됩니다. 활동의 매개 변수가 제대로 구성 되지 않은 경우 디자이너에 잘못 된 값에 대 한 스마트 태그 오류가 표시 됩니다. 유효성 검사기도 실행 하는 동안 컴파일 및 제약 조건 같은 개체 부모 또는 자식 형식, 최소 자식 수 등 올바르지 않은 경우 유효성 검사 오류를 반환 합니다.  유효성 검사기를 사용 하 여 마크업 기반 워크플로가 인스턴스화되는 또한 런타임 시 실행 됩니다는 <xref:System.Workflow.Runtime.WorkflowRuntime.CreateWorkflow%2A>메서드.</xref:System.Workflow.Runtime.WorkflowRuntime.CreateWorkflow%2A>       유효성 검사기의 주 목적은 오류가 디자인 타임 동안 알려져 있고 런타임 동안 예외로 노출 되지 않습니다 있도록 보장 하는 것입니다.       유효성 검사기가 사용 하는 <xref:System.Workflow.ComponentModel.Compiler.ActivityValidatorAttribute.ValidatorTypeName%2A>특성; 유효성 검사기 <xref:System.Workflow.ComponentModel.Compiler.ActivityValidator>클래스</xref:System.Workflow.ComponentModel.Compiler.ActivityValidator> 에서 상속 해야 하는 모든 활동의</xref:System.Workflow.ComponentModel.Compiler.ActivityValidatorAttribute.ValidatorTypeName%2A> 유효성을 검사 하는 동작으로 연결 됩니다.       유효성 검사기는 메타 속성을 확인 하는 데 기본적으로 런타임에 설정할 수 있는 인스턴스 속성의 유효성을 검사 하지 않습니다."
   syntax:
     content: >-
       [System.Obsolete("The System.Workflow.* types are deprecated.  Instead, please use the new types from System.Activities.*")]
@@ -40,7 +40,7 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "Initializes a new instance of the <xref href=&quot;System.Workflow.ComponentModel.Compiler.Validator&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Workflow.ComponentModel.Compiler.Validator&quot;> </xref> 클래스입니다."
   syntax:
     content: public Validator ();
     parameters: []
@@ -60,22 +60,22 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "Helper method to extract the full property name."
-  remarks: "Useful when the validated property is nested.  The method traverses the <xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext> in the stack to build the full name of the property.       For example: the name My.Actor.Bas is built using three <xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext> items.       If the validated property belongs to an object that is an item in a collection, the method will produce the name of the collection."
+  summary: "전체 속성 이름을 추출할 도우미 메서드입니다."
+  remarks: "유효성을 검사 한 속성이 중첩 되는 경우 유용 합니다.  메서드를 통과 <xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext>스택에서 속성의 전체 이름을 만듭니다.</xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext>       예: 이름 my.actor.bas는 세 가지를 사용 하 여 <xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext>항목.</xref:System.Workflow.ComponentModel.Compiler.PropertyValidationContext>       유효성이 검사 된 속성 컬렉션의 항목인 개체에 속하면 메서드가 컬렉션의 이름을 생성 합니다."
   syntax:
     content: protected string GetFullPropertyName (System.Workflow.ComponentModel.Compiler.ValidationManager manager);
     parameters:
     - id: manager
       type: System.Workflow.ComponentModel.Compiler.ValidationManager
-      description: "The <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationManager&quot;></xref> linked to the validation."
+      description: "<xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationManager&quot;> </xref> 유효성 검사에 연결 합니다."
     return:
       type: System.String
-      description: "The full property name."
+      description: "전체 속성 이름입니다."
   overload: System.Workflow.ComponentModel.Compiler.Validator.GetFullPropertyName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>manager</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>manager</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Workflow.ComponentModel.Compiler.Validator.Validate(System.Workflow.ComponentModel.Compiler.ValidationManager,System.Object)
@@ -90,24 +90,24 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "Validates the specified object and returns a collection of validation errors."
+  summary: "지정된 된 개체의 유효성을 검사 하 고 유효성 검사 오류의 컬렉션을 반환 합니다."
   syntax:
     content: public virtual System.Workflow.ComponentModel.Compiler.ValidationErrorCollection Validate (System.Workflow.ComponentModel.Compiler.ValidationManager manager, object obj);
     parameters:
     - id: manager
       type: System.Workflow.ComponentModel.Compiler.ValidationManager
-      description: "The validation manager linked to the validation."
+      description: "유효성 검사에 연결 된 유효성 검사 관리자입니다."
     - id: obj
       type: System.Object
-      description: "The <xref:System.Object> to be validated."
+      description: "<xref:System.Object>유효성을 검사 합니다.</xref:System.Object>"
     return:
       type: System.Workflow.ComponentModel.Compiler.ValidationErrorCollection
-      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;></xref> that contains the validation errors resulting from this operation."
+      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;> </xref> 이 작업으로 인해 발생 한 유효성 검사 오류가 들어 있는입니다."
   overload: System.Workflow.ComponentModel.Compiler.Validator.Validate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>obj</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
+    description: "<code>obj</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
   platform:
   - net462
 - uid: System.Workflow.ComponentModel.Compiler.Validator.ValidateActivityChange(System.Workflow.ComponentModel.Activity,System.Workflow.ComponentModel.ActivityChangeAction)
@@ -122,25 +122,25 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "When overridden in a derived class, validates a change based on a specified <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;></xref> being added or removed. This function is called during the application of changes that are made to the workflow during dynamic updates."
-  remarks: "In the base implementation, a null reference (Visual Basic `Nothing`) is returned."
+  summary: "파생된 클래스에서 재정의 되 면 지정 된에 따라 변경의 유효성을 검사 <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;> </xref> 추가 또는 제거 합니다. 이 함수는 동적 업데이트 중에 워크플로에 대 한 변경 내용 적용 하는 동안 호출 됩니다."
+  remarks: "기본 구현에서 null 참조 (Visual Basic `Nothing`)이 반환 됩니다."
   syntax:
     content: public virtual System.Workflow.ComponentModel.Compiler.ValidationError ValidateActivityChange (System.Workflow.ComponentModel.Activity activity, System.Workflow.ComponentModel.ActivityChangeAction action);
     parameters:
     - id: activity
       type: System.Workflow.ComponentModel.Activity
-      description: "The specified <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;></xref>."
+      description: "지정 된 <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;> </xref>합니다."
     - id: action
       type: System.Workflow.ComponentModel.ActivityChangeAction
-      description: "The specified <xref href=&quot;System.Workflow.ComponentModel.ActivityChangeAction&quot;></xref>."
+      description: "지정 된 <xref href=&quot;System.Workflow.ComponentModel.ActivityChangeAction&quot;> </xref>합니다."
     return:
       type: System.Workflow.ComponentModel.Compiler.ValidationError
-      description: "The <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationError&quot;></xref> generated by the operation."
+      description: "<xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationError&quot;> </xref> 작업에서 생성 합니다."
   overload: System.Workflow.ComponentModel.Compiler.Validator.ValidateActivityChange*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>action</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
+    description: "<code>action</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
   platform:
   - net462
 - uid: System.Workflow.ComponentModel.Compiler.Validator.ValidateProperties(System.Workflow.ComponentModel.Compiler.ValidationManager,System.Object)
@@ -155,24 +155,24 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "Helper method to automatically validate the specific objects properties."
+  summary: "자동으로 특정 개체 속성의 유효성 검사 도우미 메서드."
   syntax:
     content: public virtual System.Workflow.ComponentModel.Compiler.ValidationErrorCollection ValidateProperties (System.Workflow.ComponentModel.Compiler.ValidationManager manager, object obj);
     parameters:
     - id: manager
       type: System.Workflow.ComponentModel.Compiler.ValidationManager
-      description: "The validation manager linked to the validation."
+      description: "유효성 검사에 연결 된 유효성 검사 관리자입니다."
     - id: obj
       type: System.Object
-      description: "The <xref href=&quot;System.Workflow.ComponentModel.Activity&quot;></xref> to be validated."
+      description: "<xref href=&quot;System.Workflow.ComponentModel.Activity&quot;> </xref> 유효성을 검사 합니다."
     return:
       type: System.Workflow.ComponentModel.Compiler.ValidationErrorCollection
-      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;></xref> that contains the validation errors resulting from this operation."
+      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;> </xref> 이 작업으로 인해 발생 한 유효성 검사 오류가 들어 있는입니다."
   overload: System.Workflow.ComponentModel.Compiler.Validator.ValidateProperties*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>obj</code> is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
+    description: "<code>obj</code>가 null 참조 (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref>)."
   platform:
   - net462
 - uid: System.Workflow.ComponentModel.Compiler.Validator.ValidateProperty(System.Reflection.PropertyInfo,System.Object,System.Object,System.Workflow.ComponentModel.Compiler.ValidationManager)
@@ -187,26 +187,26 @@ items:
   assemblies:
   - System.Workflow.ComponentModel
   namespace: System.Workflow.ComponentModel.Compiler
-  summary: "Performs validation on a property and returns a <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;></xref> that contains the results of that validation."
-  remarks: "If no errors result from the validation, an empty <xref:System.Workflow.ComponentModel.Compiler.ValidationErrorCollection> is returned."
+  summary: "속성에 유효성 검사를 수행 하 고 반환 된 <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;> </xref> 해당 유효성 검사의 결과 포함 하는 합니다."
+  remarks: "빈 유효성 검사에서 결과 오류가 없으면 <xref:System.Workflow.ComponentModel.Compiler.ValidationErrorCollection>반환 됩니다.</xref:System.Workflow.ComponentModel.Compiler.ValidationErrorCollection>"
   syntax:
     content: protected System.Workflow.ComponentModel.Compiler.ValidationErrorCollection ValidateProperty (System.Reflection.PropertyInfo propertyInfo, object propertyOwner, object propertyValue, System.Workflow.ComponentModel.Compiler.ValidationManager manager);
     parameters:
     - id: propertyInfo
       type: System.Reflection.PropertyInfo
-      description: "The <xref:System.Reflection.PropertyInfo> on the subject property."
+      description: "<xref:System.Reflection.PropertyInfo>subject 속성에.</xref:System.Reflection.PropertyInfo>"
     - id: propertyOwner
       type: System.Object
-      description: "The owner of the property."
+      description: "속성의 소유자입니다."
     - id: propertyValue
       type: System.Object
-      description: "The value of the property."
+      description: "속성의 값입니다."
     - id: manager
       type: System.Workflow.ComponentModel.Compiler.ValidationManager
-      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationManager&quot;></xref> for this operation."
+      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationManager&quot;> </xref> 이 작업에 대 한 합니다."
     return:
       type: System.Workflow.ComponentModel.Compiler.ValidationErrorCollection
-      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;></xref> that contains the results of that validation."
+      description: "A <xref href=&quot;System.Workflow.ComponentModel.Compiler.ValidationErrorCollection&quot;> </xref> 해당 유효성 검사의 결과 포함 하는 합니다."
   overload: System.Workflow.ComponentModel.Compiler.Validator.ValidateProperty*
   exceptions: []
   platform:
