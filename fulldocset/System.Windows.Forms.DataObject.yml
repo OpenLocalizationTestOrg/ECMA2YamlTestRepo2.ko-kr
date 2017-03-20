@@ -49,8 +49,8 @@ items:
   nameWithType: DataObject
   fullName: System.Windows.Forms.DataObject
   type: Class
-  summary: "Implements a basic data transfer mechanism."
-  remarks: "DataObject implements the <xref:System.Windows.Forms.IDataObject> interface, whose methods provide a format-independent mechanism for data transfer.       A DataObject is typically used with the <xref:System.Windows.Forms.Clipboard> and in drag-and-drop operations. The DataObject class provides the recommended implementation of the <xref:System.Windows.Forms.IDataObject> interface. It is suggested that you use the DataObject class rather than implementing <xref:System.Windows.Forms.IDataObject> yourself.       Multiple pieces of data in different formats can be stored in a DataObject. Data is retrieved from a DataObject by its associated format. Because the target application might not be known, you can increase the likelihood that the data will be in the appropriate format for an application by placing the data in a DataObject in multiple formats. See <xref:System.Windows.Forms.DataFormats> for the predefined formats. You can implement your own format by creating an instance of the <xref:System.Windows.Forms.DataFormats.Format> class.       To store data in a DataObject, pass the data to the constructor or call <xref:System.Windows.Forms.DataObject.SetData%2A>. You can add data in multiple formats to the same DataObject. If you want the data you add to be retrieved in its native format only, call <xref:System.Windows.Forms.DataObject.SetData%28System.String%2CSystem.Boolean%2CSystem.Object%29> with the `autoConvert` parameter set to `false`.       Data can be retrieved from a DataObject in any format which is compatible with <xref:System.Windows.Forms.DataObject.GetData%2A>. For example, text can be converted to Unicode. To retrieve data in the format in which it was stored, call <xref:System.Windows.Forms.DataObject.GetData%2A> with the `autoConvert` parameter set to `false`.       To determine what formats the data is stored in, call <xref:System.Windows.Forms.DataObject.GetFormats%2A>. To determine if a format is available, call <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> with the desired format.       In [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], the DataObject class provides additional methods that make it easier to work with data in common formats. To add data of a particular format to the DataObject, use the appropriate `Set`*Format* method, such as <xref:System.Windows.Forms.DataObject.SetText%2A>. To retrieve data of a particular format from the DataObject, first call the appropriate `Contains`*Format* method (such as <xref:System.Windows.Forms.DataObject.ContainsText%2A>) to determine whether the DataObject contains data in that format, then call the appropriate `Get`*Format* method (such as <xref:System.Windows.Forms.DataObject.GetText%2A>) to retrieve the data if the DataObject contains it.      > [!NOTE] >  Special considerations may be necessary when using the metafile format with the Clipboard. Due to a limitation in the current implementation of the DataObject class, the metafile format used by the .NET Framework may not be recognized by applications that use an older metafile format. In this case, you must interoperate with the Win32 Clipboard application programming interfaces (APIs). For more information, see article 323530, &quot;Metafiles on Clipboard Are Not Visible to All Applications,&quot; in the Microsoft Knowledge Base at http://support.microsoft.com.   >    >  An object must be serializable for it to be put on the Clipboard. See <xref:System.Runtime.Serialization> for more information on serialization. If your target application requires a very specific data format, the headers added to the data in the serialization process may prevent the application from recognizing your data. To preserve your data format, add your data as a <xref:System.Byte> array to a <xref:System.IO.MemoryStream> and pass the <xref:System.IO.MemoryStream> to the <xref:System.Windows.Forms.DataObject.SetData%2A> method."
+  summary: "기본 데이터 전송 메커니즘을 구현합니다."
+  remarks: "DataObject를 구현 하는 <xref:System.Windows.Forms.IDataObject>인터페이스, 메서드 데이터 전송에 대 한 형식에 독립적인 메커니즘을 제공 합니다.</xref:System.Windows.Forms.IDataObject>       일반적으로 사용 되는 데이터는 <xref:System.Windows.Forms.Clipboard>및 끌어서 놓기 작업에서.</xref:System.Windows.Forms.Clipboard> DataObject 클래스의 권장된 구현을 제공는 <xref:System.Windows.Forms.IDataObject>인터페이스.</xref:System.Windows.Forms.IDataObject> DataObject 클래스를 사용 하는 것이 좋습니다. 구현 하는 대신 <xref:System.Windows.Forms.IDataObject>직접.</xref:System.Windows.Forms.IDataObject>       여러 가지 다른 형식의 데이터를 DataObject에 저장할 수 있습니다. 데이터에서 데이터를 검색 하 여 관련 된 형식을 합니다. 대상 응용 프로그램을 알 수 있습니다, 때문에 데이터를 여러 형식 DataObject에 데이터를 배치 하 여 응용 프로그램에 대 한 적절 한 형식이 될 가능성을 높일 수 있습니다. 참조 <xref:System.Windows.Forms.DataFormats>미리 정의 된 형식에 대 한.</xref:System.Windows.Forms.DataFormats> <xref:System.Windows.Forms.DataFormats.Format>클래스</xref:System.Windows.Forms.DataFormats.Format> 의 인스턴스를 만들어 고유의 형식을 구현할 수 있습니다.       DataObject의 데이터를 저장 하려면 생성자에 데이터를 전달 하거나 <xref:System.Windows.Forms.DataObject.SetData%2A>.</xref:System.Windows.Forms.DataObject.SetData%2A> 호출 동일한 DataObject에 데이터를 여러 형식에 추가할 수 있습니다. 데이터를 원할 경우 해당 네이티브 형식에 대해서만 호출에서 검색할 추가 <xref:System.Windows.Forms.DataObject.SetData%28System.String%2CSystem.Boolean%2CSystem.Object%29>와 `autoConvert` 매개 변수 설정 `false`.</xref:System.Windows.Forms.DataObject.SetData%28System.String%2CSystem.Boolean%2CSystem.Object%29>       DataObject <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 와 호환 되는 모든 형식에서에서 데이터를 검색할 수 있습니다. 예를 들어 텍스트 유니코드로 변환할 수 있습니다. 저장 된 형식에서 데이터를 검색 하려면 <xref:System.Windows.Forms.DataObject.GetData%2A>와 `autoConvert` 매개 변수 설정 `false`.</xref:System.Windows.Forms.DataObject.GetData%2A>       에 저장 된 데이터 형식을, <xref:System.Windows.Forms.DataObject.GetFormats%2A>.</xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출 형식을 사용할 수 있는지를 확인 하려면 호출 <xref:System.Windows.Forms.DataObject.GetDataPresent%2A>원하는 형식으로.</xref:System.Windows.Forms.DataObject.GetDataPresent%2A>       [!INCLUDE[dnprdnext](~/add/includes/dnprdnext-md.md)], 추가 메서드를 쉽게 해 주는 데이터 작업을 공통 형식 DataObject 클래스를 제공 합니다. 특정 형식의 데이터를 DataObject에 추가 하려면 사용 하 여 적절 한 `Set` *형식* <xref:System.Windows.Forms.DataObject.SetText%2A>.</xref:System.Windows.Forms.DataObject.SetText%2A> 등의 방법을 DataObject에서 특정 형식의 데이터를 검색 하려면 먼저 호출 하는 적절 한 `Contains` *형식* 메서드 (같은 <xref:System.Windows.Forms.DataObject.ContainsText%2A>)를 해당 형식으로 데이터를에서 DataObject에 포함 되는지 여부를 확인 하려면 다음 호출에서 적절 한 `Get` *형식* 메서드 (같은 <xref:System.Windows.Forms.DataObject.GetText%2A>) DataObject 포함 하는 경우 데이터를 검색 하</xref:System.Windows.Forms.DataObject.GetText%2A> </xref:System.Windows.Forms.DataObject.ContainsText%2A>      > [!NOTE] > 클립보드 메타 파일 형식을 사용 하는 경우 특별 한 고려 사항이 필요할 수 있습니다. DataObject 클래스의 현재 구현에서 제한으로 인해.NET Framework에서 사용 되는 메타 파일 형식 이전 메타 파일 형식을 사용 하는 응용 프로그램에서 인식 되지 않을 수 있습니다. 이 경우 Win32 클립보드 응용 프로그래밍 인터페이스 (Api) 상호 운용 해야 합니다. 자세한 내용은 문서 323530, &quot;메타 파일에 클립보드는 되지 표시 모든 응용 프로그램에,&quot; http://support.microsoft.com에서 Microsoft 기술 자료를 참조 합니다.   >> 개체를 클립보드에 저장 하도록 직렬화 할 수 있어야 합니다. 참조 <xref:System.Runtime.Serialization>serialization에 대 한 자세한 내용은.</xref:System.Runtime.Serialization> 대상 응용 프로그램에 매우 특정 한 데이터 형식이 필요한 경우 데이터 serialization 프로세스에 추가 된 헤더에는 응용 프로그램에서 데이터를 인식 되지 않을 수 있습니다. 을 유지 하기 위해 데이터 형식으로 데이터를 추가 <xref:System.Byte>배열을 <xref:System.IO.MemoryStream>전달는 <xref:System.IO.MemoryStream>에 <xref:System.Windows.Forms.DataObject.SetData%2A>메서드.</xref:System.Windows.Forms.DataObject.SetData%2A> </xref:System.IO.MemoryStream> </xref:System.IO.MemoryStream> </xref:System.Byte>"
   example:
   - "The following code example adds data in a DataObject. First, a new DataObject is created and a component is stored in it. Then, it checks to see if data in the appropriate type exists in the DataObject. The result is displayed in a text box. This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject Example#1](~/add/codesnippet/cpp/t-system.windows.forms.d_14_1.cpp)]\n [!code-vb[Classic DataObject Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.d_14_1.vb)]\n [!code-cs[Classic DataObject Example#1](~/add/codesnippet/csharp/t-system.windows.forms.d_14_1.cs)]  \n  \n The next example retrieves the data stored in a DataObject. First, a new DataObject is created with text data. Then, the data is retrieved, specifying its format as a string, and displayed in a text box. The data format is automatically converted from text to string. This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject Example#2](~/add/codesnippet/cpp/t-system.windows.forms.d_14_2.cpp)]\n [!code-vb[Classic DataObject Example#2](~/add/codesnippet/visualbasic/t-system.windows.forms.d_14_2.vb)]\n [!code-cs[Classic DataObject Example#2](~/add/codesnippet/csharp/t-system.windows.forms.d_14_2.cs)]"
   syntax:
@@ -78,7 +78,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> class."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 클래스입니다."
   remarks: ''
   example:
   - "The following code example creates a <xref:System.Windows.Forms.DataObject> and adds data to it. The example then retrieves and displays the data. This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.DataObject2 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_81_1.cpp)]\n [!code-vb[Classic DataObject.DataObject2 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_81_1.vb)]\n [!code-cs[Classic DataObject.DataObject2 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_81_1.cs)]"
@@ -101,8 +101,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> class and adds the specified object to it."
-  remarks: "You can add data in any format to the <xref:System.Windows.Forms.DataObject> when you use this constructor, or you can add data as an <xref:System.Windows.Forms.IDataObject> to provide multiple formats at once. If you are familiar with COM programming, you can also add a data object that implements the COM `IDataObject` interface. For more information, see `IDataObject` in the MSDN library at http://msdn.microsoft.com/library."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 클래스 및 지정 된 개체를 추가 합니다."
+  remarks: "모든 형식으로 데이터를 추가할 수 있습니다는 <xref:System.Windows.Forms.DataObject>때이 생성자를 사용 하거나 데이터를 추가할 수 있습니다는 <xref:System.Windows.Forms.IDataObject>여러 서식을 한 번에 제공 하기.</xref:System.Windows.Forms.IDataObject> </xref:System.Windows.Forms.DataObject> COM 프로그래밍에 익숙한 경우 COM 구현 하는 데이터 개체도 추가할 수 있습니다 `IDataObject` 인터페이스입니다. 자세한 내용은 참조 `IDataObject` http://msdn.microsoft.com/library에 MSDN library에서 합니다."
   example:
   - "The following code example creates a <xref:System.Windows.Forms.DataObject> that contains a string. The data is retrieved using its data format. The results are displayed in a text box. This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.DataObject3 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_89_1.cpp)]\n [!code-cs[Classic DataObject.DataObject3 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_89_1.cs)]\n [!code-vb[Classic DataObject.DataObject3 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_89_1.vb)]"
   syntax:
@@ -110,7 +110,7 @@ items:
     parameters:
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.#ctor*
   exceptions: []
   platform:
@@ -127,7 +127,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> class and adds the specified object in the specified format."
+  summary: "새 인스턴스를 초기화는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 클래스 및 지정 된 형식의 지정된 된 개체를 추가 합니다."
   remarks: ''
   example:
   - "The following code example creates a <xref:System.Windows.Forms.DataObject> class using a string that is specified as the string type. The data is retrieved from the <xref:System.Windows.Forms.DataObject> by specifying its format as text. The results are displayed in a text box. This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.DataObject4 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_96_1.cpp)]\n [!code-vb[Classic DataObject.DataObject4 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_96_1.vb)]\n [!code-cs[Classic DataObject.DataObject4 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_96_1.cs)]"
@@ -136,10 +136,10 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format of the specified data. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "지정된 된 데이터의 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.#ctor*
   exceptions: []
   platform:
@@ -156,14 +156,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the data object contains data in the <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;></xref> format."
-  remarks: "Use this method to determine whether the data object contains audio data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetAudioStream%2A> method."
+  summary: "데이터 개체 데이터가 포함 되어 있는지 여부를 나타냅니다는 <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;> </xref> 형식입니다."
+  remarks: "이 메서드를 사용 하 여 검색 하기 전에 데이터 개체에 오디오 데이터가 포함 되어 있는지 여부를 결정 하는 <xref:System.Windows.Forms.DataObject.GetAudioStream%2A>메서드.</xref:System.Windows.Forms.DataObject.GetAudioStream%2A>"
   syntax:
     content: public virtual bool ContainsAudio ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data object contains audio data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 개체에는 오디오 데이터를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.ContainsAudio*
   exceptions: []
   platform:
@@ -180,14 +180,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the data object contains data that is in the <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;></xref> format or can be converted to that format."
-  remarks: "A file drop list is a collection of strings containing path information for files.       Use this method to determine whether the data object contains a file drop list before retrieving it with the <xref:System.Windows.Forms.DataObject.GetFileDropList%2A> method."
+  summary: "데이터 개체에 있는 데이터가 포함 되어 있는지 여부를 나타냅니다는 <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;> </xref> 되어 있거나 해당 형식으로 변환 될 수 있습니다."
+  remarks: "파일 드롭 목록을 파일에 대 한 경로 정보를 포함 하는 문자열의 컬렉션입니다.       이 메서드를 사용 하 여 데이터 개체 파일 드롭 목록을 사용 하 여 검색 하기 전에 포함 되는지 여부를 결정 하는 <xref:System.Windows.Forms.DataObject.GetFileDropList%2A>메서드.</xref:System.Windows.Forms.DataObject.GetFileDropList%2A>"
   syntax:
     content: public virtual bool ContainsFileDropList ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data object contains a file drop list; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 개체는 파일 드롭 목록을 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.ContainsFileDropList*
   exceptions: []
   platform:
@@ -204,14 +204,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the data object contains data that is in the <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;></xref> format or can be converted to that format."
-  remarks: "Use this method to determine whether the data object contains image data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetImage%2A> method."
+  summary: "데이터 개체에 있는 데이터가 포함 되어 있는지 여부를 나타냅니다는 <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;> </xref> 되어 있거나 해당 형식으로 변환 될 수 있습니다."
+  remarks: "이 메서드를 사용 하 여 데이터 개체 검색 하기 전에 이미지 데이터가 포함 되어 있는지 여부를 결정 하는 <xref:System.Windows.Forms.DataObject.GetImage%2A>메서드.</xref:System.Windows.Forms.DataObject.GetImage%2A>"
   syntax:
     content: public virtual bool ContainsImage ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data object contains image data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 개체 이미지 데이터를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.ContainsImage*
   exceptions: []
   platform:
@@ -228,14 +228,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the data object contains data in the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> format."
-  remarks: "Use this method to determine whether the data object contains text data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetText%2A> method."
+  summary: "데이터 개체 데이터가 포함 되어 있는지 여부를 나타냅니다는 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 형식입니다."
+  remarks: "이 메서드를 사용 하 여 검색 하기 전에 데이터 개체에 텍스트 데이터가 포함 되어 있는지 여부를 결정 하는 <xref:System.Windows.Forms.DataObject.GetText%2A>메서드.</xref:System.Windows.Forms.DataObject.GetText%2A>"
   syntax:
     content: public virtual bool ContainsText ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data object contains text data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 개체에 텍스트 데이터가 포함 되어 있는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.ContainsText*
   exceptions: []
   platform:
@@ -252,22 +252,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the data object contains text data in the format indicated by the specified <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
-  remarks: "Use this method to determine whether the data object contains text data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetText%2A> method."
+  summary: "데이터 개체와 지정 된 지정 된 형식에서 텍스트 데이터가 포함 되어 있는지 여부를 나타냅니다. <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
+  remarks: "이 메서드를 사용 하 여 검색 하기 전에 데이터 개체에 텍스트 데이터가 포함 되어 있는지 여부를 결정 하는 <xref:System.Windows.Forms.DataObject.GetText%2A>메서드.</xref:System.Windows.Forms.DataObject.GetText%2A>"
   syntax:
     content: public virtual bool ContainsText (System.Windows.Forms.TextDataFormat format);
     parameters:
     - id: format
       type: System.Windows.Forms.TextDataFormat
-      description: "One of the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data object contains text data in the specified format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 개체에 지정 된 형식으로 텍스트 데이터를 포함 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.ContainsText*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>format</code> is not a valid <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
+    description: "<code>format</code>유효 하지 않거나 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.GetAudioStream
@@ -282,14 +282,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves an audio stream from the data object."
-  remarks: "Use the <xref:System.Windows.Forms.DataObject.ContainsAudio%2A> method to determine whether the data object contains audio data before retrieving it with this method.       Use the <xref:System.Windows.Forms.DataObject.SetAudio%2A> method to add audio data to the data object."
+  summary: "데이터 개체에서 오디오 스트림을 검색 합니다."
+  remarks: "사용 된 <xref:System.Windows.Forms.DataObject.ContainsAudio%2A>이 메서드로 검색 하기 전에 데이터 개체에 오디오 데이터가 포함 되어 있는지 여부를 결정 하는 메서드.</xref:System.Windows.Forms.DataObject.ContainsAudio%2A>       사용 하 여는 <xref:System.Windows.Forms.DataObject.SetAudio%2A>오디오 데이터 데이터 개체를 추가 하는 메서드.</xref:System.Windows.Forms.DataObject.SetAudio%2A>"
   syntax:
     content: public virtual System.IO.Stream GetAudioStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> containing audio data or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the data object does not contain any data in the <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;></xref> format."
+      description: "A <xref:System.IO.Stream>오디오 데이터를 포함 하 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 개체에 데이터에 없는 경우는 <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;> </xref> 형식.</xref:System.IO.Stream>"
   overload: System.Windows.Forms.DataObject.GetAudioStream*
   exceptions: []
   platform:
@@ -306,8 +306,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the data associated with the specified data format."
-  remarks: "If this method cannot find data in the specified format, it attempts to convert the data to the format. If the data cannot be converted to the specified format, or if the data was stored with automatic conversion set to `false`, this method returns `null`.       To determine whether data is associated with, or can be converted to, a format, call <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for a list of valid formats for the data stored in this <xref:System.Windows.Forms.DataObject>.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed, and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text.   >    >  When `format` is <xref:System.Windows.Forms.DataFormats.Html>, this method returns a UTF-8 encoded string in applications that target .NET 4.5 or higher, and an ANSI encoded string in applications that target .NET 4.0 or lower."
+  summary: "지정된 된 데이터 형식과 연관 된 데이터를 반환 합니다."
+  remarks: "이 메서드는 지정 된 형식의 데이터를 찾을 수 없습니다, 데이터 형식으로 변환 하려고 합니다. 지정된 된 형식으로 데이터를 변환할 수 없는 경우 또는 자동 변환을로 설정한 상태에서 데이터를 저장 하는 경우 `false`,이 메서드가 반환 `null`합니다.       데이터 연결 된 하거나 <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에</xref:System.Windows.Forms.DataObject.GetDataPresent%2A> 호출 된 형식으로 변환할 수 있는지 확인 하려면 <xref:System.Windows.Forms.DataObject.GetFormats%2A>이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> 에 저장 된 데이터에 대 한 유효한 형식의 목록에 대 한</xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출      > [!NOTE] > 요청한 형식이 저장 된와 호환 되 면 및 변환이 가능 하도록 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다.   >> 때 `format` 은 <xref:System.Windows.Forms.DataFormats.Html>이 메서드는.NET 4.5 이상을 대상으로 하는 응용 프로그램에서 u t F-8로 인코딩된 문자열을 반환 하 고 ANSI 인코딩 문자열 응용 프로그램에서.NET 4.0 또는 더 낮은 대상으로 하는.</xref:System.Windows.Forms.DataFormats.Html>"
   example:
   - "The following code example retrieves the data stored in a <xref:System.Windows.Forms.DataObject>. First, a new <xref:System.Windows.Forms.DataObject> is created with text data. Then, the data is retrieved, specifying its format as a string, and displayed in a text box.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cpp[classic dataobject example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_15_1.cpp)]\n [!code-vb[classic dataobject example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_15_1.vb)]\n [!code-cs[classic dataobject example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_15_1.cs)]"
   syntax:
@@ -315,10 +315,10 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format of the data to retrieve. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "검색할 데이터의 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     return:
       type: System.Object
-      description: "The data associated with the specified format, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "지정된 된 형식으로 연관 된 데이터 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
   platform:
@@ -335,8 +335,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the data associated with the specified class type format."
-  remarks: "If this method cannot find data in the specified format, it attempts to convert the data to the format. If the data cannot be converted to the specified format, or if the data was stored with automatic conversion set to `false`, this method returns `null`.       To determine whether data is associated with, or can be converted to, a format, call <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for a list of valid formats for the data stored in this <xref:System.Windows.Forms.DataObject>.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed, and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text."
+  summary: "지정 된 클래스 형식과 관련 된 데이터를 반환 합니다."
+  remarks: "이 메서드는 지정 된 형식의 데이터를 찾을 수 없습니다, 데이터 형식으로 변환 하려고 합니다. 지정된 된 형식으로 데이터를 변환할 수 없는 경우 또는 자동 변환을로 설정한 상태에서 데이터를 저장 하는 경우 `false`,이 메서드가 반환 `null`합니다.       데이터 연결 된 하거나 <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에</xref:System.Windows.Forms.DataObject.GetDataPresent%2A> 호출 된 형식으로 변환할 수 있는지 확인 하려면 <xref:System.Windows.Forms.DataObject.GetFormats%2A>이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> 에 저장 된 데이터에 대 한 유효한 형식의 목록에 대 한</xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출      > [!NOTE] > 요청한 형식이 저장 된와 호환 되 면 및 변환이 가능 하도록 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다."
   example:
   - "The following code example retrieves the data stored in a <xref:System.Windows.Forms.DataObject>. First, a new <xref:System.Windows.Forms.DataObject> is created with a component. Then, the data is retrieved, specifying its type. The type of the retrieved data is displayed in a text box.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cs[Classic DataObject.GetData2 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_50_1.cs)]\n [!code-cpp[Classic DataObject.GetData2 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_50_1.cpp)]\n [!code-vb[Classic DataObject.GetData2 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_50_1.vb)]"
   syntax:
@@ -344,10 +344,10 @@ items:
     parameters:
     - id: format
       type: System.Type
-      description: "A <xref:System.Type> representing the format of the data to retrieve."
+      description: "A <xref:System.Type>검색할 데이터의 형식을 나타내는.</xref:System.Type>"
     return:
       type: System.Object
-      description: "The data associated with the specified format, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "지정된 된 형식으로 연관 된 데이터 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
   platform:
@@ -364,8 +364,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns the data associated with the specified data format, using an automated conversion parameter to determine whether to convert the data to the format."
-  remarks: "If the `autoConvert` parameter is `true` and this method cannot find data in the specified format, it attempts to convert the data to the format. If the data cannot be converted to the specified format, or if the data was stored with the automatic conversion set to `false`, this method returns `null`.       If the `autoConvert` parameter is `false`, this method returns data in the specified format, or `null` if no data in this format can be found.       To determine whether data is associated with, or can be converted to, a format, call <xref:System.Windows.Forms.DataObject.GetDataPresent%2A> before calling GetData. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for a list of valid formats for the data stored in this <xref:System.Windows.Forms.DataObject>.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed, and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text.   >    >  When `format` is <xref:System.Windows.Forms.DataFormats.Html>, this method returns a UTF-8 encoded string in applications that target .NET 4.5 or higher, and an ANSI encoded string in applications that target .NET 4.0 or lower."
+  summary: "데이터 형식으로 변환할지 여부를 결정 하는 자동된 변환 매개 변수를 사용 하 여 지정 된 데이터 형식에 연결 된 데이터를 반환 합니다."
+  remarks: "경우는 `autoConvert` 매개 변수는 `true` 이 메서드가 지정 된 형식의 데이터를 찾을 수 없습니다 및 데이터 형식으로 변환 하려고 시도 합니다. 지정된 된 형식으로 데이터를 변환할 수 없는 경우 또는 자동 변환을로 설정한 상태에서 데이터를 저장 하는 경우 `false`,이 메서드가 반환 `null`합니다.       경우는 `autoConvert` 매개 변수는 `false`,이 메서드는 지정 된 형식의 데이터를 반환 하거나 `null` 이 형식에 데이터가 없는 찾을 수 있는 합니다.       데이터 연결 된 형식으로 변환할 수 하는지 여부를 확인 하려면 호출 <xref:System.Windows.Forms.DataObject.GetDataPresent%2A>GetData 호출 하기 전에.</xref:System.Windows.Forms.DataObject.GetDataPresent%2A> <xref:System.Windows.Forms.DataObject.GetFormats%2A>이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> 에 저장 된 데이터에 대 한 유효한 형식의 목록에 대 한</xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출      > [!NOTE] > 요청한 형식이 저장 된와 호환 되 면 및 변환이 가능 하도록 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다.   >> 때 `format` 은 <xref:System.Windows.Forms.DataFormats.Html>이 메서드는.NET 4.5 이상을 대상으로 하는 응용 프로그램에서 u t F-8로 인코딩된 문자열을 반환 하 고 ANSI 인코딩 문자열 응용 프로그램에서.NET 4.0 또는 더 낮은 대상으로 하는.</xref:System.Windows.Forms.DataFormats.Html>"
   example:
   - "The following code example retrieves the data stored in a <xref:System.Windows.Forms.DataObject>, using the `autoConvert` parameter to specify whether to convert the data format.  \n  \n First, a new <xref:System.Windows.Forms.DataObject> is created with text data. Then the example tries to retrieve the data, specifying its format as a string and no format conversion, that is, the `autoConvert` parameter is `false`. This operation fails because there is no string data in the <xref:System.Windows.Forms.DataObject>.  \n  \n Next, the example tries to retrieve the data again, with the `autoConvert` parameter set to `true`. This operation succeeds and the results are displayed in a <xref:System.Windows.Forms.MessageBox>.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.GetData Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_62_1.cpp)]\n [!code-vb[Classic DataObject.GetData Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_62_1.vb)]\n [!code-cs[Classic DataObject.GetData Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_62_1.cs)]"
   syntax:
@@ -373,13 +373,13 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format of the data to retrieve. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "검색할 데이터의 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     - id: autoConvert
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to the convert data to the specified format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터에 지정 된 형식의를 변환 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     return:
       type: System.Object
-      description: "The data associated with the specified format, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "지정된 된 형식으로 연관 된 데이터 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetData*
   exceptions: []
   platform:
@@ -396,8 +396,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines whether data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with, or can be converted to, the specified format."
-  remarks: "Call this method to determine whether a format exists before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for the formats that are available in this <xref:System.Windows.Forms.DataObject>.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed, and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text.      > [!NOTE] >  If no data can be retrieved, no exception will be thrown. Instead, `false` will be returned."
+  summary: "이 데이터를 저장 하는지 여부를 결정 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 관련 되어 있거나 지정된 된 형식으로 변환 될 수 있습니다."
+  remarks: "형식 <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에 있는지 여부를 확인 하려면이 메서드를 호출 합니다. <xref:System.Windows.Forms.DataObject.GetFormats%2A>형식에는에서 사용할 수 있는이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> </xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출      > [!NOTE] > 요청한 형식이 저장 된와 호환 되 면 및 변환이 가능 하도록 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다.      > [!NOTE] > 없는 데이터를 검색할 수 없으면 예외가 throw 됩니다. 대신, `false` 반환 됩니다."
   example:
   - "The following code example determines whether data currently stored in this <xref:System.Windows.Forms.DataObject> is associated with, or can be converted to, a specified format. A new <xref:System.Windows.Forms.DataObject> is initialized with a string and its associated format specified as text.  \n  \n Then the examples prints whether text data exists in the <xref:System.Windows.Forms.DataObject>. This code requires that `textBox1` has been created.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -405,10 +405,10 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format to check for. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "확인할 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with, or can be converted to, the specified format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 데이터를 저장 한 경우 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 관련 되어 있거나; 지정된 된 형식으로 변환 될 수 있으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
   platform:
@@ -425,8 +425,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines whether data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with, or can be converted to, the specified format."
-  remarks: "Call this method to determine whether a format exists before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for the formats that are available in this <xref:System.Windows.Forms.DataObject>.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed, and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text.      > [!NOTE] >  If no data can be retrieved, no exception will be thrown. Instead, `false` will be returned."
+  summary: "이 데이터를 저장 하는지 여부를 결정 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 관련 되어 있거나 지정된 된 형식으로 변환 될 수 있습니다."
+  remarks: "형식 <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에 있는지 여부를 확인 하려면이 메서드를 호출 합니다. <xref:System.Windows.Forms.DataObject.GetFormats%2A>형식에는에서 사용할 수 있는이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> </xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출      > [!NOTE] > 요청한 형식이 저장 된와 호환 되 면 및 변환이 가능 하도록 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다.      > [!NOTE] > 없는 데이터를 검색할 수 없으면 예외가 throw 됩니다. 대신, `false` 반환 됩니다."
   example:
   - "The following code example determines whether data of the specified type exists in a <xref:System.Windows.Forms.DataObject>, or whether the data can be converted to the specified type. The result is displayed in a text box. The code requires that `textBox1` has been created.  \n  \n [!code-cs[Classic DataObject.GetDataPresent Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_90_1.cs)]\n [!code-vb[Classic DataObject.GetDataPresent Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_90_1.vb)]\n [!code-cpp[Classic DataObject.GetDataPresent Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_90_1.cpp)]"
   syntax:
@@ -434,10 +434,10 @@ items:
     parameters:
     - id: format
       type: System.Type
-      description: "A <xref:System.Type> representing the format to check for."
+      description: "<xref:System.Type>&Gt;for 확인할 형식을 나타내는</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with, or can be converted to, the specified format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 데이터를 저장 한 경우 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 관련 되어 있거나; 지정된 된 형식으로 변환 될 수 있으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
   platform:
@@ -454,8 +454,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines whether this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> contains data in the specified format or, optionally, contains data that can be converted to the specified format."
-  remarks: "Call this method to determine whether a format exists before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. Call <xref:System.Windows.Forms.DataObject.GetFormats%2A> for the formats that are available in this <xref:System.Windows.Forms.DataObject>.       This method returns `true` when:      -   The `autoConvert` parameter is `true` and the data is in a format that can be converted to the appropriate format.      -   The `autoConvert` parameter is `false` and the data is in the appropriate format.       This method returns `false` when:      -   The `autoConvert` parameter is `true` and this method cannot find data in the specified format, and it cannot convert data to the specified format, or the data was stored with automatic conversion set to `false`.      -   The `autoConvert` parameter is `false` and data does not exist in this <xref:System.Windows.Forms.DataObject> in the specified format.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text.      > [!NOTE] >  If no data can be retrieved, no exception will be thrown. Instead, `false` will be returned."
+  summary: "결정 여부이 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 지정 된 형식의 데이터를 포함 하거나 필요에 따라 지정된 된 형식으로 변환 될 수 있는 데이터를 포함 합니다."
+  remarks: "형식 <xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에 있는지 여부를 확인 하려면이 메서드를 호출 합니다. <xref:System.Windows.Forms.DataObject.GetFormats%2A>형식에는에서 사용할 수 있는이 <xref:System.Windows.Forms.DataObject>.</xref:System.Windows.Forms.DataObject> </xref:System.Windows.Forms.DataObject.GetFormats%2A> 호출       이 메서드가 반환 `true` 경우:- `autoConvert` 매개 변수는 `true` 와 데이터는 적절 한 형식으로 변환 될 수 있는 형식입니다.      - `autoConvert` 매개 변수는 `false` 와 적절 한 형식의 데이터는 합니다.       이 메서드가 반환 `false` 경우:- `autoConvert` 매개 변수는 `true` 하 고이 메서드가 지정 된 형식의 데이터를 찾을 수 없습니다 및 데이터를 지정 된 형식으로 변환할 수 또는 자동 변환을로 설정한 상태에서 데이터를 저장 `false`합니다.      - `autoConvert` 매개 변수는 `false` 데이터에이 존재 하지 않는 및 <xref:System.Windows.Forms.DataObject>지정 된 형식의.</xref:System.Windows.Forms.DataObject>      > [!NOTE] > 변환이 가능 하도록 하 고 요청 된 형식 저장된 형식과 호환 되는 경우 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다.      > [!NOTE] > 없는 데이터를 검색할 수 없으면 예외가 throw 됩니다. 대신, `false` 반환 됩니다."
   example:
   - "The following code example determines whether data currently stored in the <xref:System.Windows.Forms.DataObject> is associated with a specified format. First, a new <xref:System.Windows.Forms.DataObject> is initialized with a string, specifying its format as text.  \n  \n Then the <xref:System.Windows.Forms.DataObject> is queried for data associated with the text format, specifying the `autoConvert` parameter as `false`. The result of this query is printed in a text box.  \n  \n Then the <xref:System.Windows.Forms.DataObject> is queried for data associated with string format, specifying the `autoConvert` parameter as `true`. The results are printed in the text box. This code requires that `textBox1` has been created.  \n  \n [!code-vb[Classic DataObject.GetDataPresent1 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_111_1.vb)]\n [!code-cpp[Classic DataObject.GetDataPresent1 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_111_1.cpp)]\n [!code-cs[Classic DataObject.GetDataPresent1 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_111_1.cs)]"
   syntax:
@@ -463,13 +463,13 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format to check for. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "확인할 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     - id: autoConvert
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to determine whether data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> can be converted to the specified format; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to check whether the data is in the specified format."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 데이터 저장 여부를 확인 하려면 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 지정 된 형식으로 변환할 수 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 데이터가 지정 된 형식에서 인지 여부를 확인 합니다."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data is in, or can be converted to, the specified format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터 형식이 있거나; 지정된 된 형식으로 변환 될 수 하는 경우 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
   overload: System.Windows.Forms.DataObject.GetDataPresent*
   exceptions: []
   platform:
@@ -486,14 +486,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves a collection of file names from the data object."
-  remarks: "A file drop list is a collection of strings containing path information for files.       A file drop list is stored in a data object as a <xref:System.String> array. This method converts this array to a <xref:System.Collections.Specialized.StringCollection> and returns the collection.       Use the <xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A> method to determine whether the data object contains a file drop list before retrieving it with this method.       Use the <xref:System.Windows.Forms.DataObject.SetFileDropList%2A> method to add a file drop list to the data object."
+  summary: "데이터 개체에서 파일 이름 컬렉션을 검색합니다."
+  remarks: "파일 드롭 목록을 파일에 대 한 경로 정보를 포함 하는 문자열의 컬렉션입니다.       파일 드롭 목록으로 데이터 개체에 저장 됩니다는 <xref:System.String>배열.</xref:System.String> 이 메서드는이 배열을 변환는 <xref:System.Collections.Specialized.StringCollection>는 컬렉션을 반환 합니다.</xref:System.Collections.Specialized.StringCollection>       사용 된 <xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A>이 메서드로 검색 하기 전에 파일 드롭 목록 데이터 개체에 포함 되는지 여부를 결정 하는 메서드.</xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A>       사용 하 여는 <xref:System.Windows.Forms.DataObject.SetFileDropList%2A>파일 드롭 목록 데이터 개체에 추가 하는 방법을.</xref:System.Windows.Forms.DataObject.SetFileDropList%2A>"
   syntax:
     content: public virtual System.Collections.Specialized.StringCollection GetFileDropList ();
     parameters: []
     return:
       type: System.Collections.Specialized.StringCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.StringCollection&quot;></xref> containing file names or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the data object does not contain any data that is in the <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;></xref> format or can be converted to that format."
+      description: "A <xref href=&quot;System.Collections.Specialized.StringCollection&quot;> </xref> 파일 이름이 포함 된 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 개체에 있는 데이터가 없는 경우는 <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;> </xref> 되어 있거나 해당 형식으로 변환 될 수 있습니다."
   overload: System.Windows.Forms.DataObject.GetFileDropList*
   exceptions: []
   platform:
@@ -510,8 +510,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a list of all formats that data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with or can be converted to."
-  remarks: "Call this method to get the supported data formats before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. See <xref:System.Windows.Forms.DataFormats> for the predefined formats.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text."
+  summary: "이 저장 된 데이터의 모든 형식 목록을 반환 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 와 관련 되어 있거나 변환할 수 있습니다."
+  remarks: "<xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에 지원 되는 데이터 형식을 가져오려면이 메서드를 호출 합니다. 참조 <xref:System.Windows.Forms.DataFormats>미리 정의 된 형식에 대 한.</xref:System.Windows.Forms.DataFormats>      > [!NOTE] > 변환이 가능 하도록 하 고 요청 된 형식 저장된 형식과 호환 되는 경우 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다."
   example:
   - "The following code example queries a <xref:System.Windows.Forms.DataObject> for the formats associated with its data, and the formats that the data can be converted to. The resulting list is displayed in a text box. This code requires that `textBox1` has been created.  \n  \n [!code-cs[Classic DataObject.GetFormats1 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_103_1.cs)]\n [!code-cpp[Classic DataObject.GetFormats1 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_103_1.cpp)]\n [!code-vb[Classic DataObject.GetFormats1 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_103_1.vb)]"
   syntax:
@@ -519,7 +519,7 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "An array of type <xref:System.String>, containing a list of all formats that are supported by the data stored in this object."
+      description: "형식의 배열 <xref:System.String>,이 개체에 저장 된 데이터에서 지원 되는 모든 형식 목록이 포함 된.</xref:System.String>"
   overload: System.Windows.Forms.DataObject.GetFormats*
   exceptions: []
   platform:
@@ -536,8 +536,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Returns a list of all formats that data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with or can be converted to, using an automatic conversion parameter to determine whether to retrieve only native data formats or all formats that the data can be converted to."
-  remarks: "Call this method to get the supported data formats before calling <xref:System.Windows.Forms.DataObject.GetData%2A>. See <xref:System.Windows.Forms.DataFormats> for the predefined formats.      > [!NOTE] >  Data can be converted to another format if it was stored specifying that conversion is allowed and if the requested format is compatible with the stored format. For example, data stored as Unicode can be converted to text."
+  summary: "이 저장 된 데이터의 모든 형식 목록을 반환 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 와 관련 되어 있거나는 자동 변환 매개 변수를 사용 하 여 네이티브 데이터 형식 또는 데이터를 변환할 수 있는 모든 형식을 검색 여부를 결정으로 변환 될 수 있습니다."
+  remarks: "<xref:System.Windows.Forms.DataObject.GetData%2A>.</xref:System.Windows.Forms.DataObject.GetData%2A> 를 호출 하기 전에 지원 되는 데이터 형식을 가져오려면이 메서드를 호출 합니다. 참조 <xref:System.Windows.Forms.DataFormats>미리 정의 된 형식에 대 한.</xref:System.Windows.Forms.DataFormats>      > [!NOTE] > 변환이 가능 하도록 하 고 요청 된 형식 저장된 형식과 호환 되는 경우 지정를 저장 한 경우 데이터가 다른 형식으로 변환 될 수 있습니다. 유니코드 텍스트로 변환할 수로 저장 된 데이터 예를 들어 있습니다."
   example:
   - "The following code example queries a <xref:System.Windows.Forms.DataObject> for the formats associated with its data. The first query specifies the `autoConvert` parameter as `false`, so only the native format of the data is returned. The second query specifies the `autoConvert` parameter as `true`, so the list of formats includes the formats that the data can be converted to.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.GetFormats Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_31_1.cpp)]\n [!code-cs[Classic DataObject.GetFormats Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_31_1.cs)]\n [!code-vb[Classic DataObject.GetFormats Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_31_1.vb)]"
   syntax:
@@ -545,10 +545,10 @@ items:
     parameters:
     - id: autoConvert
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to retrieve all formats that data stored in this <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> is associated with, or can be converted to; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to retrieve only native data formats."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>이 저장 된 데이터 형식을 모두 검색 하려면 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 가 연결 된 또는 변환할 수 있습니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> 를 네이티브 데이터 형식에만 검색 합니다."
     return:
       type: System.String[]
-      description: "An array of type <xref:System.String>, containing a list of all formats that are supported by the data stored in this object."
+      description: "형식의 배열 <xref:System.String>,이 개체에 저장 된 데이터에서 지원 되는 모든 형식 목록이 포함 된.</xref:System.String>"
   overload: System.Windows.Forms.DataObject.GetFormats*
   exceptions: []
   platform:
@@ -565,14 +565,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves an image from the data object."
-  remarks: "Use the <xref:System.Windows.Forms.DataObject.ContainsImage%2A> method to determine whether the data object contains image data before retrieving it with this method.       Use the <xref:System.Windows.Forms.DataObject.SetImage%2A> method to add image data to the data object."
+  summary: "데이터 개체에서 이미지를 검색합니다."
+  remarks: "사용 된 <xref:System.Windows.Forms.DataObject.ContainsImage%2A>이 메서드로 검색 하기 전에 데이터 개체에 이미지 데이터가 포함 되어 있는지 여부를 결정 하는 메서드.</xref:System.Windows.Forms.DataObject.ContainsImage%2A>       사용 하 여는 <xref:System.Windows.Forms.DataObject.SetImage%2A>이미지 데이터의 데이터 개체를 추가 하는 메서드.</xref:System.Windows.Forms.DataObject.SetImage%2A>"
   syntax:
     content: public virtual System.Drawing.Image GetImage ();
     parameters: []
     return:
       type: System.Drawing.Image
-      description: "An <xref href=&quot;System.Drawing.Image&quot;></xref> representing the image data in the data object or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the data object does not contain any data that is in the <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;></xref> format or can be converted to that format."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 데이터 개체의 이미지 데이터를 나타내는 또는 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 데이터 개체에 있는 데이터가 없는 경우는 <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;> </xref> 되어 있거나 해당 형식으로 변환 될 수 있습니다."
   overload: System.Windows.Forms.DataObject.GetImage*
   exceptions: []
   platform:
@@ -589,14 +589,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves text data from the data object in the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> format."
-  remarks: "Use the <xref:System.Windows.Forms.DataObject.ContainsText%2A> method to determine whether the data object contains text data before retrieving it with this method.       Use the <xref:System.Windows.Forms.DataObject.SetText%2A> method to add text data to the data object."
+  summary: "에 있는 데이터 개체에서 텍스트 데이터를 검색 된 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 형식입니다."
+  remarks: "사용 된 <xref:System.Windows.Forms.DataObject.ContainsText%2A>이 메서드로 검색 하기 전에 데이터 개체에 텍스트 데이터가 포함 되어 있는지 여부를 결정 하는 메서드.</xref:System.Windows.Forms.DataObject.ContainsText%2A>       사용 하 여는 <xref:System.Windows.Forms.DataObject.SetText%2A>텍스트 데이터의 데이터 개체를 추가 하는 메서드.</xref:System.Windows.Forms.DataObject.SetText%2A>"
   syntax:
     content: public virtual string GetText ();
     parameters: []
     return:
       type: System.String
-      description: "The text data in the data object or &lt;xref:System.String?displayProperty=fullName&gt; if the data object does not contain data in the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> format."
+      description: "데이터 개체의 텍스트 데이터가 또는 &lt;xref:System.String?displayProperty=fullName&gt; 데이터 개체에는 데이터가 포함 되어 있지 않습니다는 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 형식입니다."
   overload: System.Windows.Forms.DataObject.GetText*
   exceptions: []
   platform:
@@ -613,22 +613,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves text data from the data object in the format indicated by the specified <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
-  remarks: "Use the <xref:System.Windows.Forms.DataObject.ContainsText%2A> method to determine whether the data object contains text data before retrieving it with this method.       Use the <xref:System.Windows.Forms.DataObject.SetText%2A> method to add text data to the data object."
+  summary: "텍스트 데이터를 나타내는 지정한 형식의 데이터 개체에서 검색 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
+  remarks: "사용 된 <xref:System.Windows.Forms.DataObject.ContainsText%2A>이 메서드로 검색 하기 전에 데이터 개체에 텍스트 데이터가 포함 되어 있는지 여부를 결정 하는 메서드.</xref:System.Windows.Forms.DataObject.ContainsText%2A>       사용 하 여는 <xref:System.Windows.Forms.DataObject.SetText%2A>텍스트 데이터의 데이터 개체를 추가 하는 메서드.</xref:System.Windows.Forms.DataObject.SetText%2A>"
   syntax:
     content: public virtual string GetText (System.Windows.Forms.TextDataFormat format);
     parameters:
     - id: format
       type: System.Windows.Forms.TextDataFormat
-      description: "One of the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
     return:
       type: System.String
-      description: "The text data in the data object or &lt;xref:System.String?displayProperty=fullName&gt; if the data object does not contain data in the specified format."
+      description: "데이터 개체의 텍스트 데이터가 또는 &lt;xref:System.String?displayProperty=fullName&gt; 데이터 개체에 지정 된 형식의 데이터가 없는 경우."
   overload: System.Windows.Forms.DataObject.GetText*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>format</code> is not a valid <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
+    description: "<code>format</code>유효 하지 않거나 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetAudio(System.Byte[])
@@ -643,19 +643,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds a <xref:System.Byte> array to the data object in the <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;></xref> format after converting it to a <xref:System.IO.Stream>."
-  remarks: "To retrieve audio data from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsAudio%2A> method to determine whether the data object contains audio data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetAudioStream%2A> method."
+  summary: "추가 <xref:System.Byte>배열에 데이터 개체에는 <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;> </xref> 형식에 <xref:System.IO.Stream>.</xref:System.IO.Stream> 를 변환한 후</xref:System.Byte>"
+  remarks: "데이터 개체에서 오디오 데이터를 검색 하려면 먼저 사용 하는 <xref:System.Windows.Forms.DataObject.ContainsAudio%2A>검색 하기 전에 데이터 개체에 오디오 데이터가 포함 되어 있는지 여부를 확인 하는 <xref:System.Windows.Forms.DataObject.GetAudioStream%2A>메서드.</xref:System.Windows.Forms.DataObject.GetAudioStream%2A> </xref:System.Windows.Forms.DataObject.ContainsAudio%2A>"
   syntax:
     content: public virtual void SetAudio (byte[] audioBytes);
     parameters:
     - id: audioBytes
       type: System.Byte[]
-      description: "A <xref:System.Byte> array containing the audio data."
+      description: "A <xref:System.Byte>오디오 데이터가 들어 있는 배열입니다.</xref:System.Byte>"
   overload: System.Windows.Forms.DataObject.SetAudio*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>audioBytes</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>audioBytes</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetAudio(System.IO.Stream)
@@ -670,19 +670,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds a <xref:System.IO.Stream> to the data object in the <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;></xref> format."
-  remarks: "To retrieve audio data from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsAudio%2A> method to determine whether the data object contains audio data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetAudioStream%2A> method."
+  summary: "추가 <xref:System.IO.Stream>데이터 개체에 <xref href=&quot;System.Windows.Forms.DataFormats.WaveAudio&quot;> </xref> 형식.</xref:System.IO.Stream>"
+  remarks: "데이터 개체에서 오디오 데이터를 검색 하려면 먼저 사용 하는 <xref:System.Windows.Forms.DataObject.ContainsAudio%2A>검색 하기 전에 데이터 개체에 오디오 데이터가 포함 되어 있는지 여부를 확인 하는 <xref:System.Windows.Forms.DataObject.GetAudioStream%2A>메서드.</xref:System.Windows.Forms.DataObject.GetAudioStream%2A> </xref:System.Windows.Forms.DataObject.ContainsAudio%2A>"
   syntax:
     content: public virtual void SetAudio (System.IO.Stream audioStream);
     parameters:
     - id: audioStream
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> containing the audio data."
+      description: "A <xref:System.IO.Stream>오디오 데이터를 포함 합니다.</xref:System.IO.Stream>"
   overload: System.Windows.Forms.DataObject.SetAudio*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>audioStream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>audioStream</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetData(System.Object)
@@ -697,8 +697,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the specified object to the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> using the object type as the data format."
-  remarks: "If you do not know the format of the target application, you can store data in multiple formats using this method. Data stored using this method can be converted to a compatible format when it is retrieved.       The SetData overload stores the `data` value in a format that it determines by calling the <xref:System.Object.GetType%2A?displayProperty=fullName> method. If `data` implements the <xref:System.Runtime.Serialization.ISerializable> interface, this overload also stores the value in the <xref:System.Windows.DataFormats.Serializable> format."
+  summary: "지정된 된 개체를 추가 하는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 개체 유형을 사용 하 여 데이터 형식으로."
+  remarks: "대상 응용 프로그램의 형식을 모르는 경우이 메서드를 사용 하 여 여러 형식의 데이터를 저장할 수 있습니다. 이 메서드를 사용 하 여 저장 된 데이터 검색 시 호환 형식으로 변환할 수 있습니다.       SetData는 저장소 오버 로드는 `data` 값을 호출 하 여 결정 하는 형식에서 <xref:System.Object.GetType%2A?displayProperty=fullName>메서드.</xref:System.Object.GetType%2A?displayProperty=fullName> 경우 `data` 구현 하는 <xref:System.Runtime.Serialization.ISerializable>인터페이스를이 오버 로드에 대 한 값도 저장는 <xref:System.Windows.DataFormats.Serializable>형식.</xref:System.Windows.DataFormats.Serializable> </xref:System.Runtime.Serialization.ISerializable>"
   example:
   - "The following code example stores data in a <xref:System.Windows.Forms.DataObject>. First, a new <xref:System.Windows.Forms.DataObject> is created and a component is stored in it. Then, the data is retrieved by specifying the class. The result is displayed in a text box.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cs[Classic DataObject.SetData3 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_94_1.cs)]\n [!code-cpp[Classic DataObject.SetData3 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_94_1.cpp)]\n [!code-vb[Classic DataObject.SetData3 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_94_1.vb)]"
   syntax:
@@ -706,7 +706,7 @@ items:
     parameters:
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
   platform:
@@ -723,8 +723,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the specified object to the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> using the specified format."
-  remarks: "If you do not know the format of the target application, you can store data in multiple formats using this method.       Data stored using this method can be converted to a compatible format when it is retrieved."
+  summary: "지정된 된 개체를 추가 하는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 지정 된 형식을 사용 하 여 합니다."
+  remarks: "대상 응용 프로그램의 형식을 모르는 경우이 메서드를 사용 하 여 여러 형식의 데이터를 저장할 수 있습니다.       이 메서드를 사용 하 여 저장 된 데이터 검색 시 호환 형식으로 변환할 수 있습니다."
   example:
   - "The following code example stores data in a <xref:System.Windows.Forms.DataObject>, specifying its format as Unicode.  \n  \n Then the data is retrieved by specifying the text format, since the default is to convert the data when the final format is compatible. The result is displayed in a text box.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cpp[Classic DataObject.SetData1 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_97_1.cpp)]\n [!code-cs[Classic DataObject.SetData1 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_97_1.cs)]\n [!code-vb[Classic DataObject.SetData1 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_97_1.vb)]"
   syntax:
@@ -732,10 +732,10 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format associated with the data. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "데이터와 연결 된 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
   platform:
@@ -752,8 +752,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the specified object to the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> using the specified type as the format."
-  remarks: "If you do not know the format of the target application, you can store data in multiple formats using this method.       Data stored using this method can be converted to a compatible format when it is retrieved."
+  summary: "지정된 된 개체를 추가 하는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 형식으로 지정된 된 형식을 사용 하 여 합니다."
+  remarks: "대상 응용 프로그램의 형식을 모르는 경우이 메서드를 사용 하 여 여러 형식의 데이터를 저장할 수 있습니다.       이 메서드를 사용 하 여 저장 된 데이터 검색 시 호환 형식으로 변환할 수 있습니다."
   example:
   - "The following code example stores data in a <xref:System.Windows.Forms.DataObject> using a <xref:System.Type> as the data format. The data is then retrieved by calling <xref:System.Windows.Forms.DataObject.GetData%2A> using the <xref:System.Type> to specify the data format. The result is displayed in a text box.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-vb[Classic DataObject.SetData2 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_0_1.vb)]\n [!code-cs[Classic DataObject.SetData2 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_0_1.cs)]\n [!code-cpp[Classic DataObject.SetData2 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_0_1.cpp)]"
   syntax:
@@ -761,10 +761,10 @@ items:
     parameters:
     - id: format
       type: System.Type
-      description: "A <xref:System.Type> representing the format associated with the data."
+      description: "A <xref:System.Type>데이터와 관련 된 형식을 나타내는.</xref:System.Type>"
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
   platform:
@@ -781,8 +781,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the specified object to the <xref href=&quot;System.Windows.Forms.DataObject&quot;></xref> using the specified format and indicating whether the data can be converted to another format."
-  remarks: "If you do not know the format of the target application, you can store data in multiple formats using this method."
+  summary: "지정된 된 개체를 추가 하는 <xref href=&quot;System.Windows.Forms.DataObject&quot;> </xref> 지정 된 형식을 사용 하 고 데이터를 다른 형식으로 변환 될 수 있는지 여부를 나타내는입니다."
+  remarks: "대상 응용 프로그램의 형식을 모르는 경우이 메서드를 사용 하 여 여러 형식의 데이터를 저장할 수 있습니다."
   example:
   - "The following code example stores data in a <xref:System.Windows.Forms.DataObject> and specifies that the data can only be retrieved in its native format.  \n  \n First, a new <xref:System.Windows.Forms.DataObject> is created. Data in the Unicode format is stored in the <xref:System.Windows.Forms.DataObject>, with `autoConvert` set to `false`.  \n  \n Then, the <xref:System.Windows.Forms.DataObject> is queried for the list of available data formats. Only the Unicode format is returned, although Unicode data can be converted to text and other formats.  \n  \n This code requires that `textBox1` has been created.  \n  \n [!code-cs[Classic DataObject.SetData Example#1](~/add/codesnippet/csharp/35d23f60-f448-4594-8862-_1.cs)]\n [!code-cpp[Classic DataObject.SetData Example#1](~/add/codesnippet/cpp/35d23f60-f448-4594-8862-_1.cpp)]\n [!code-vb[Classic DataObject.SetData Example#1](~/add/codesnippet/visualbasic/35d23f60-f448-4594-8862-_1.vb)]"
   syntax:
@@ -790,13 +790,13 @@ items:
     parameters:
     - id: format
       type: System.String
-      description: "The format associated with the data. See <xref href=&quot;System.Windows.Forms.DataFormats&quot;></xref> for predefined formats."
+      description: "데이터와 연결 된 형식입니다. 참조 <xref href=&quot;System.Windows.Forms.DataFormats&quot;> </xref> 미리 정의 된 형식에 대 한 합니다."
     - id: autoConvert
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to allow the data to be converted to another format; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>데이터를 다른 형식으로 변환할 수 있게 하려면 그렇지 않으면 <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>합니다."
     - id: data
       type: System.Object
-      description: "The data to store."
+      description: "데이터를 저장 하는입니다."
   overload: System.Windows.Forms.DataObject.SetData*
   exceptions: []
   platform:
@@ -813,19 +813,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds a collection of file names to the data object in the <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;></xref> format."
-  remarks: "A file drop list is a collection of strings containing path information for files.       A file drop list is stored in a data object as a <xref:System.String> array. This method converts `filePaths` to a <xref:System.String> array before adding it to the data object.       To retrieve a file drop list from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A> method to determine whether the data object contains data in that format before retrieving it with the <xref:System.Windows.Forms.DataObject.GetFileDropList%2A> method."
+  summary: "파일 이름 컬렉션에 있는 데이터 개체에 추가 된 <xref href=&quot;System.Windows.Forms.DataFormats.FileDrop&quot;> </xref> 형식입니다."
+  remarks: "파일 드롭 목록을 파일에 대 한 경로 정보를 포함 하는 문자열의 컬렉션입니다.       파일 드롭 목록으로 데이터 개체에 저장 됩니다는 <xref:System.String>배열.</xref:System.String> 이 메서드는 변환 `filePaths` 에 <xref:System.String>데이터 개체를 추가 하기 전에 배열.</xref:System.String>       파일 드롭 목록에서 데이터 개체를 검색 하려면 먼저 사용 하 여는 <xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A>검색 하기 전에 데이터 개체에 해당 형식의 데이터가 포함 되어 있는지 여부를 확인 하 고 <xref:System.Windows.Forms.DataObject.GetFileDropList%2A>메서드.</xref:System.Windows.Forms.DataObject.GetFileDropList%2A> </xref:System.Windows.Forms.DataObject.ContainsFileDropList%2A>"
   syntax:
     content: public virtual void SetFileDropList (System.Collections.Specialized.StringCollection filePaths);
     parameters:
     - id: filePaths
       type: System.Collections.Specialized.StringCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.StringCollection&quot;></xref> containing the file names."
+      description: "A <xref href=&quot;System.Collections.Specialized.StringCollection&quot;> </xref> 이름을 포함 합니다."
   overload: System.Windows.Forms.DataObject.SetFileDropList*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>filePaths</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>filePaths</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetImage(System.Drawing.Image)
@@ -840,19 +840,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds an <xref href=&quot;System.Drawing.Image&quot;></xref> to the data object in the <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;></xref> format."
-  remarks: "To retrieve image data from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsImage%2A> method to determine whether the data object contains image data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetImage%2A> method."
+  summary: "추가 <xref href=&quot;System.Drawing.Image&quot;> </xref> 데이터 개체에 <xref href=&quot;System.Windows.Forms.DataFormats.Bitmap&quot;> </xref> 형식입니다."
+  remarks: "데이터 개체에서 이미지 데이터를 검색 하려면 먼저 사용 하는 <xref:System.Windows.Forms.DataObject.ContainsImage%2A>데이터 개체 검색 하기 전에 이미지 데이터가 포함 되어 있는지 여부를 확인 하는 <xref:System.Windows.Forms.DataObject.GetImage%2A>메서드.</xref:System.Windows.Forms.DataObject.GetImage%2A> </xref:System.Windows.Forms.DataObject.ContainsImage%2A>"
   syntax:
     content: public virtual void SetImage (System.Drawing.Image image);
     parameters:
     - id: image
       type: System.Drawing.Image
-      description: "The <xref href=&quot;System.Drawing.Image&quot;></xref> to add to the data object."
+      description: "<xref href=&quot;System.Drawing.Image&quot;> </xref> 데이터 개체에 추가 합니다."
   overload: System.Windows.Forms.DataObject.SetImage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>image</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>image</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetText(System.String)
@@ -867,19 +867,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds text data to the data object in the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> format."
-  remarks: "To retrieve text data from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsText%2A> method to determine whether the data object contains image data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetText%2A> method."
+  summary: "텍스트 데이터에서 데이터 개체를 추가 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 형식입니다."
+  remarks: "데이터 개체에서 텍스트 데이터를 검색 하려면 먼저 사용 하는 <xref:System.Windows.Forms.DataObject.ContainsText%2A>데이터 개체 검색 하기 전에 이미지 데이터가 포함 되어 있는지 여부를 확인 하는 <xref:System.Windows.Forms.DataObject.GetText%2A>메서드.</xref:System.Windows.Forms.DataObject.GetText%2A> </xref:System.Windows.Forms.DataObject.ContainsText%2A>"
   syntax:
     content: public virtual void SetText (string textData);
     parameters:
     - id: textData
       type: System.String
-      description: "The text to add to the data object."
+      description: "데이터 개체에 추가할 텍스트입니다."
   overload: System.Windows.Forms.DataObject.SetText*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or <xref:System.String>."
+    description: "<code>textData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or <xref:System.String>."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.SetText(System.String,System.Windows.Forms.TextDataFormat)
@@ -894,25 +894,25 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds text data to the data object in the format indicated by the specified <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
-  remarks: "To retrieve text data from the data object, first use the <xref:System.Windows.Forms.DataObject.ContainsText%2A> method to determine whether the data object contains image data before retrieving it with the <xref:System.Windows.Forms.DataObject.GetText%2A> method."
+  summary: "텍스트 데이터를 나타내는 지정한 형식의 데이터 개체 추가 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
+  remarks: "데이터 개체에서 텍스트 데이터를 검색 하려면 먼저 사용 하는 <xref:System.Windows.Forms.DataObject.ContainsText%2A>데이터 개체 검색 하기 전에 이미지 데이터가 포함 되어 있는지 여부를 확인 하는 <xref:System.Windows.Forms.DataObject.GetText%2A>메서드.</xref:System.Windows.Forms.DataObject.GetText%2A> </xref:System.Windows.Forms.DataObject.ContainsText%2A>"
   syntax:
     content: public virtual void SetText (string textData, System.Windows.Forms.TextDataFormat format);
     parameters:
     - id: textData
       type: System.String
-      description: "The text to add to the data object."
+      description: "데이터 개체에 추가할 텍스트입니다."
     - id: format
       type: System.Windows.Forms.TextDataFormat
-      description: "One of the <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> values."
+      description: "중 하나는 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
   overload: System.Windows.Forms.DataObject.SetText*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or <xref:System.String.Empty>."
+    description: "<code>textData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or <xref:System.String.Empty>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>format</code> is not a valid <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;></xref> value."
+    description: "<code>format</code>유효 하지 않거나 <xref href=&quot;System.Windows.Forms.TextDataFormat&quot;> </xref> 값입니다."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#DAdvise(System.Runtime.InteropServices.ComTypes.FORMATETC@,System.Runtime.InteropServices.ComTypes.ADVF,System.Runtime.InteropServices.ComTypes.IAdviseSink,System.Int32@)
@@ -928,26 +928,26 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a connection between a data object and an advisory sink. This method is called by an object that supports an advisory sink and enables the advisory sink to be notified of changes in the object&quot;s data."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "데이터 개체와 자문 싱크 간의 연결을 만듭니다. 이 메서드는 자문 싱크를 지원 하며 수 있도록 개체의 데이터의 변경 사항 알림을 받을 수 있는 개체에 의해 호출 됩니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: int IDataObject.DAdvise (ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetc, System.Runtime.InteropServices.ComTypes.ADVF advf, System.Runtime.InteropServices.ComTypes.IAdviseSink pAdvSink, out int pdwConnection);
     parameters:
     - id: pFormatetc
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "A <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format, target device, aspect, and medium that will be used for future notifications."
+      description: "A <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조, 형식, 대상 장치, 모양 및 이후의 알림에 사용할 중간 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>"
     - id: advf
       type: System.Runtime.InteropServices.ComTypes.ADVF
-      description: "One of the <xref:System.Runtime.InteropServices.ComTypes.ADVF> values that specifies a group of flags for controlling the advisory connection."
+      description: "중 하나는 <xref:System.Runtime.InteropServices.ComTypes.ADVF>권장 연결을 제어 하기 위한 플래그 그룹을 지정 하는 값입니다.</xref:System.Runtime.InteropServices.ComTypes.ADVF>"
     - id: pAdvSink
       type: System.Runtime.InteropServices.ComTypes.IAdviseSink
-      description: "A pointer to the <xref:System.Runtime.InteropServices.ComTypes.IAdviseSink> interface on the advisory sink that will receive the change notification."
+      description: "에 대 한 포인터는 <xref:System.Runtime.InteropServices.ComTypes.IAdviseSink>변경 알림의 받을 자문 싱크 인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IAdviseSink>"
     - id: pdwConnection
       type: System.Int32
-      description: "When this method returns, contains a pointer to a DWORD token that identifies this connection. You can use this token later to delete the advisory connection by passing it to <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise*>. If this value is zero, the connection was not established. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때이 연결을 식별 하는 DWORD 토큰에 대 한 포인터를 포함 합니다. <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise*>.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.DUnadvise*> 에 전달 하 여 권장 연결을 삭제 하려면이 토큰을 나중에 사용 이 값이&0; 인 경우에 연결이 설정 되지 않은 합니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Int32
-      description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> S_OK       </td><td> The advisory connection was created.       </td></tr><tr><td> E_NOTIMPL       </td><td> This method is not implemented on the data object.       </td></tr><tr><td> DV_E_LINDEX       </td><td> There is an invalid value for <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; currently, only -1 is supported.       </td></tr><tr><td> DV_E_FORMATETC       </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.       </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED       </td><td> The data object does not support change notification.       </td></tr></tbody></table>"
+      description: "이 메서드는 표준 반환 값 E_INVALIDARG, E_UNEXPECTED 및 E_OUTOFMEMORY와 함께 지원 뿐만 아니라 다음:       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> S_OK이 고       </td><td> 자문 연결이 만들어졌습니다.       </td></tr><tr><td> E_NOTIMPL       </td><td> 이 메서드는 데이터 개체에 구현 되지 않았습니다.       </td></tr><tr><td> DV_E_LINDEX       </td><td> 에 대 한 잘못 된 값이 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; 현재-1만 지원 됩니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>       </td></tr><tr><td> DV_E_FORMATETC       </td><td> 에 대 한 잘못 된 값이 고 <code> pFormatetc </code> 매개 변수입니다.       </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED       </td><td> 데이터 개체 변경 알림을 지원 하지 않습니다.       </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#DAdvise*
   exceptions: []
   platform:
@@ -965,14 +965,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Destroys a notification connection that had been previously established."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "이전에 설정 된 알림 연결을 제거 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: void IDataObject.DUnadvise (int dwConnection);
     parameters:
     - id: dwConnection
       type: System.Int32
-      description: "A DWORD token that specifies the connection to remove. Use the value returned by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*> when the connection was originally established."
+      description: "제거할 연결을 지정 하는 DWORD 토큰입니다. 반환 된 값을 사용 하 여 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*>연결이 처음으로 설정 합니다.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.DAdvise*>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#DUnadvise*
   exceptions: []
   platform:
@@ -990,17 +990,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates an object that can be used to enumerate the current advisory connections."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "현재 자문 연결을 열거 하는 데 사용할 수 있는 개체를 만듭니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: int IDataObject.EnumDAdvise (out System.Runtime.InteropServices.ComTypes.IEnumSTATDATA enumAdvise);
     parameters:
     - id: enumAdvise
       type: System.Runtime.InteropServices.ComTypes.IEnumSTATDATA
-      description: "When this method returns, contains an <xref href=&quot;System.Runtime.InteropServices.ComTypes.IEnumSTATDATA&quot;></xref> that receives the interface pointer to the new enumerator object. If the implementation sets `enumAdvise` to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, there are no connections to advisory sinks at this time. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때를 포함 한 <xref href=&quot;System.Runtime.InteropServices.ComTypes.IEnumSTATDATA&quot;> </xref> 새 열거자 개체에 대 한 인터페이스 포인터를 받는입니다. 구현에서는 설정 하는 경우 `enumAdvise` 를 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>,이 이번에는 자문 싱크로 연결이 없습니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Int32
-      description: "This method supports the standard return value E_OUTOFMEMORY, as well as the following:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> S_OK       </td><td> The enumerator object is successfully instantiated or there are no connections.       </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED       </td><td> This object does not support advisory notifications.       </td></tr></tbody></table>"
+      description: "이 메서드는 표준 반환 값 E_OUTOFMEMORY로 다음을 지원합니다.       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> S_OK이 고       </td><td> 열거자 개체는 인스턴스화 되었거나 연결이 없습니다.       </td></tr><tr><td> OLE_E_ADVISENOTSUPPORTED       </td><td> 이 개체는 자문 알림을 지원 하지 않습니다.       </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#EnumDAdvise*
   exceptions: []
   platform:
@@ -1018,17 +1018,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates an object for enumerating the <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structures for a data object. These structures are used in calls to <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> or <xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "열거 하기 위한 개체를 만듭니다.는 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>데이터 개체에 대 한 구조.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 이러한 구조에 대 한 호출에 사용 되 <> </> *> 또는 <> </> *> 합니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: System.Runtime.InteropServices.ComTypes.IEnumFORMATETC IDataObject.EnumFormatEtc (System.Runtime.InteropServices.ComTypes.DATADIR dwDirection);
     parameters:
     - id: dwDirection
       type: System.Runtime.InteropServices.ComTypes.DATADIR
-      description: "One of the <xref:System.Runtime.InteropServices.ComTypes.DATADIR> values that specifies the direction of the data."
+      description: "중 하나는 <xref:System.Runtime.InteropServices.ComTypes.DATADIR>데이터의 방향을 지정 하는 값입니다.</xref:System.Runtime.InteropServices.ComTypes.DATADIR>"
     return:
       type: System.Runtime.InteropServices.ComTypes.IEnumFORMATETC
-      description: "This method supports the standard return values E_INVALIDARG and E_OUTOFMEMORY, as well as the following:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> S_OK       </td><td> The enumerator object was successfully created.       </td></tr><tr><td> E_NOTIMPL       </td><td> The direction specified by the <code>direction</code> parameter is not supported.       </td></tr><tr><td> OLE_S_USEREG       </td><td> Requests that OLE enumerate the formats from the registry.       </td></tr></tbody></table>"
+      description: "이 방법은 지원 표준 반환 값 E_INVALIDARG 및 E_OUTOFMEMORY로 다음:       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> S_OK이 고       </td><td> 열거자 개체를 성공적으로 만들었습니다.       </td></tr><tr><td> E_NOTIMPL       </td><td> 에 지정 된 방향의 <code> direction </code> 매개 변수는 지원 되지 않습니다.       </td></tr><tr><td> OLE_S_USEREG       </td><td> OLE에서 레지스트리의 형식을 열거 하도록 요청 합니다.       </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#EnumFormatEtc*
   exceptions: []
   platform:
@@ -1046,20 +1046,20 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Provides a standard <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure that is logically equivalent to a more complex structure. Use this method to determine whether two different <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structures would return the same data, removing the need for duplicate rendering."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "표준 제공 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>논리적으로 더 복잡 한 구조에 해당 하는 구조체.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 이 메서드를 사용 하 여 두 개의 지 여부를 결정 다른 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조 중복 렌더링 필요 하지 않게 동일한 데이터를 반환 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: int IDataObject.GetCanonicalFormatEtc (ref System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcIn, out System.Runtime.InteropServices.ComTypes.FORMATETC pformatetcOut);
     parameters:
     - id: pformatetcIn
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "A pointer to a <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format, medium, and target device that the caller would like to use to retrieve data in a subsequent call such as <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>. The <xref:System.Runtime.InteropServices.ComTypes.TYMED> member is not significant in this case and should be ignored."
+      description: "<xref:System.Runtime.InteropServices.ComTypes.FORMATETC>형식, 보통, 및을 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> 등 후속 호출에서 데이터를 검색 하려면 사용 하려는 호출자에 게 대상 장치를 정의 하는 참조로 전달 되는 구조</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 에 대 한 포인터 <xref:System.Runtime.InteropServices.ComTypes.TYMED>멤버는이 경우에 중요 하지 않으므로 무시 해야 합니다.</xref:System.Runtime.InteropServices.ComTypes.TYMED>"
     - id: pformatetcOut
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "When this method returns, contains a pointer to a <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure that contains the most general information possible for a specific rendering, making it canonically equivalent to `formatetIn`. The caller must allocate this structure and the <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetCanonicalFormatEtc*> method must fill in the data. To retrieve data in a subsequent call such as <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>, the caller uses the supplied value of `formatOut`, unless the value supplied is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the method returns <xref uid=&quot;langword_csharp_DATA_S_SAMEFORMATETC&quot; name=&quot;DATA_S_SAMEFORMATETC&quot; href=&quot;&quot;></xref>. The <xref:System.Runtime.InteropServices.ComTypes.TYMED> member is not significant in this case and should be ignored. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때에 대 한 포인터를 포함 한 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>에 같은 특정 렌더링에 대 한 가장 일반적인의 정보가 포함 된 구조 `formatetIn`.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 호출자에 게가이 구조체를 할당 및 <> </> *> 메서드가 데이터를 입력 해야 합니다. 데이터를 검색 하는 후속 호출에서와 같은 <> </> *>, 제공 된 값을 사용 하 여 호출자에 게 `formatOut`지정 하지 않는 한, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>합니다. 이 값은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 메서드에서 반환 되 면 <xref uid=&quot;langword_csharp_DATA_S_SAMEFORMATETC&quot; name=&quot;DATA_S_SAMEFORMATETC&quot; href=&quot;&quot;> </xref>합니다. <xref:System.Runtime.InteropServices.ComTypes.TYMED>멤버는이 경우에 중요 하지 않으므로 무시 해야 합니다.</xref:System.Runtime.InteropServices.ComTypes.TYMED> 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
     return:
       type: System.Int32
-      description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> S_OK       </td><td> The returned <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure is different from the one that was passed.       </td></tr><tr><td> DATA_S_SAMEFORMATETC       </td><td> The <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structures are the same and <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned in the <code>formatOut</code> parameter.       </td></tr><tr><td> DV_E_LINDEX       </td><td> There is an invalid value for <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; currently, only -1 is supported.       </td></tr><tr><td> DV_E_FORMATETC       </td><td> There is an invalid value for the <code>pFormatetc</code> parameter.       </td></tr><tr><td> OLE_E_NOTRUNNING       </td><td> The application is not running.       </td></tr></tbody></table>"
+      description: "이 메서드는 표준 반환 값 E_INVALIDARG, E_UNEXPECTED 및 E_OUTOFMEMORY와 함께 지원 뿐만 아니라 다음:       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> S_OK이 고       </td><td> 반환 된 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조는 전달 된 것과에서 다른.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>       </td></tr><tr><td> DATA_S_SAMEFORMATETC       </td><td> <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조는 동일 하 고 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 에 반환 되는 <code> formatOut </code> 매개 변수.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>       </td></tr><tr><td> DV_E_LINDEX       </td><td> 에 대 한 잘못 된 값이 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; 현재-1만 지원 됩니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>       </td></tr><tr><td> DV_E_FORMATETC       </td><td> 에 대 한 잘못 된 값이 고 <code> pFormatetc </code> 매개 변수입니다.       </td></tr><tr><td> OLE_E_NOTRUNNING       </td><td> 응용 프로그램이 실행 되지 않습니다.       </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetCanonicalFormatEtc*
   exceptions: []
   platform:
@@ -1077,22 +1077,22 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Obtains data from a source data object. The <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> method, which is called by a data consumer, renders the data described in the specified <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure and transfers it through the specified <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> structure. The caller then assumes responsibility for releasing the <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> structure."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "소스 데이터 개체에서 데이터를 가져옵니다. <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>지정는에 설명 된 데이터를 렌더링 하는 데이터 소비자에 의해 호출 되는 메서드를 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조체이 고 지정 된를 통해 전송 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>구조.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> </xref:System.Runtime.InteropServices.ComTypes.FORMATETC> </xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> 호출자에 게 다음 역할을 담당 해제 하는 데는 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>구조.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: void IDataObject.GetData (ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, out System.Runtime.InteropServices.ComTypes.STGMEDIUM medium);
     parameters:
     - id: formatetc
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "A pointer to a <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format, medium, and target device to use when passing the data. It is possible to specify more than one medium by using the Boolean OR operator, allowing the method to choose the best medium among those specified."
+      description: "에 대 한 포인터는 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조, 형식, 미디어 및 데이터를 전달할 때 사용 하는 대상 장치를 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 메서드 중 지정 된 최상의 매체를 선택할 수 있도록 부울 OR 연산자를 사용 하 여 둘 이상의 미디어를 지정 하는 것이 불가능 합니다."
     - id: medium
       type: System.Runtime.InteropServices.ComTypes.STGMEDIUM
-      description: "When this method returns, contains a pointer to the <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> structure that indicates the storage medium containing the returned data through its <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> member, and the responsibility for releasing the medium through the value of its <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> member. If <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the receiver of the medium is responsible for releasing it; otherwise, <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> points to the <xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;></xref> interface on the appropriate object so its <xref uid=&quot;langword_csharp_Release&quot; name=&quot;Release&quot; href=&quot;&quot;></xref> method can be called. The medium must be allocated and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>. This parameter is passed uninitialized."
+      description: "이 메서드가 반환 될 때 포함에 대 한 포인터는 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>구조를 통해 반환 된 데이터를 포함 하는 저장소 미디어를 나타내는 해당 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>구성원과의 값을 통해 해당 미디어를 해제 하는 것에 대 한 책임의 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>멤버.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> </xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> </xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> 경우 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>은 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, 중간 규모의 수신기가 고, 그렇지 않으면 해제를 담당 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>가리키는 <xref uid=&quot;langword_csharp_IUnknown&quot; name=&quot;IUnknown&quot; href=&quot;&quot;> </xref> 하므로 인터페이스에서 적절 한 개체를 해당 <xref uid=&quot;langword_csharp_Release&quot; name=&quot;Release&quot; href=&quot;&quot;> </xref> 메서드를 호출할 수 있습니다.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> </xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> 미디어를 할당 하 고 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> 은 입력 해야 합니다. 이 매개 변수는 초기화 되지 않은 상태로 전달 됩니다."
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetData*
   exceptions:
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to perform this operation."
+    description: "메모리가 부족 하 여이 작업을 수행할 수 없습니다."
   platform:
   - net462
 - uid: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetDataHere(System.Runtime.InteropServices.ComTypes.FORMATETC@,System.Runtime.InteropServices.ComTypes.STGMEDIUM@)
@@ -1108,17 +1108,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Obtains data from a source data object. This method, which is called by a data consumer, differs from the <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> method in that the caller must allocate and free the specified storage medium."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "소스 데이터 개체에서 데이터를 가져옵니다. 와 다른 데이터 소비자에 의해 호출 되는이 메서드는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>메서드 호출자에 게 할당 하 고 지정 된 저장소 미디어를 해제 해야 한다는 점에서.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: void IDataObject.GetDataHere (ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM medium);
     parameters:
     - id: formatetc
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: 'A pointer to a <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format, medium, and target device to use when passing the data. Only one medium can be specified in <xref:System.Runtime.InteropServices.ComTypes.TYMED>, and only the following <xref:System.Runtime.InteropServices.ComTypes.TYMED> values are valid: <xref:System.Runtime.InteropServices.ComTypes.TYMED>, <xref:System.Runtime.InteropServices.ComTypes.TYMED>, <xref:System.Runtime.InteropServices.ComTypes.TYMED>, or <xref:System.Runtime.InteropServices.ComTypes.TYMED>.'
+      description: '에 대 한 포인터는 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조, 형식, 미디어 및 데이터를 전달할 때 사용 하는 대상 장치를 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 에 지정할 수 하나의 중간 <xref:System.Runtime.InteropServices.ComTypes.TYMED>, 및 다음만 <xref:System.Runtime.InteropServices.ComTypes.TYMED>유효한 값은: <xref:System.Runtime.InteropServices.ComTypes.TYMED>, <xref:System.Runtime.InteropServices.ComTypes.TYMED>, <xref:System.Runtime.InteropServices.ComTypes.TYMED>, 또는 <xref:System.Runtime.InteropServices.ComTypes.TYMED>.</xref:System.Runtime.InteropServices.ComTypes.TYMED> </xref:System.Runtime.InteropServices.ComTypes.TYMED> </xref:System.Runtime.InteropServices.ComTypes.TYMED> </xref:System.Runtime.InteropServices.ComTypes.TYMED> </xref:System.Runtime.InteropServices.ComTypes.TYMED> </xref:System.Runtime.InteropServices.ComTypes.TYMED>'
     - id: medium
       type: System.Runtime.InteropServices.ComTypes.STGMEDIUM
-      description: "A <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>, passed by reference, that defines the storage medium containing the data being transferred. The medium must be allocated by the caller and filled in by <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*>. The caller must also free the medium. The implementation of this method must always supply a value of <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for the <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM.pUnkForRelease> member of the <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> structure that this parameter points to."
+      description: "A <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>, 전송 되는 데이터를 포함 하는 저장 매체를 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> 미디어를 호출자가 할당 되 고 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*>.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetDataHere*> 은 입력 해야 합니다. 호출자에 게 미디어를 해제 해야 합니다. 이 메서드의 구현은의 값을 항상 제공 해야 <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> 에 대 한는 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM.pUnkForRelease>의 멤버는 <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>이 매개 변수를 가리키는 구조체입니다.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> </xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM.pUnkForRelease>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#GetDataHere*
   exceptions: []
   platform:
@@ -1136,17 +1136,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Determines whether the data object is capable of rendering the data described in the <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure. Objects attempting a paste or drop operation can call this method before calling <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> to get an indication of whether the operation may be successful."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "데이터 개체에 설명 된 데이터를 렌더링할 수 인지를 확인는 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC> 개체를 호출 하기 전에이 메서드를 호출할 수 붙여넣기 또는 drop 작업을 시도 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>작업이 성공할 수 있습니다 있는지 여부를 나타내는 값을 가져올.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>"
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: int IDataObject.QueryGetData (ref System.Runtime.InteropServices.ComTypes.FORMATETC formatetc);
     parameters:
     - id: formatetc
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "A pointer to a <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format, medium, and target device to use for the query."
+      description: "에 대 한 포인터는 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조, 형식, 미디어 및 쿼리에 사용할 대상 장치를 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>"
     return:
       type: System.Int32
-      description: "This method supports the standard return values E_INVALIDARG, E_UNEXPECTED, and E_OUTOFMEMORY, as well as the following:       <table><thead><tr><th> Value       </th><th> Description       </th></tr></thead><tbody><tr><td> S_OK       </td><td> A subsequent call to <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*> would probably be successful.       </td></tr><tr><td> DV_E_LINDEX       </td><td> An invalid value for <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; currently, only -1 is supported.       </td></tr><tr><td> DV_E_FORMATETC       </td><td> An invalid value for the <code>pFormatetc</code> parameter.       </td></tr><tr><td> DV_E_TYMED       </td><td> An invalid <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.tymed> value.       </td></tr><tr><td> DV_E_DVASPECT       </td><td> An invalid <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.dwAspect> value.       </td></tr><tr><td> OLE_E_NOTRUNNING       </td><td> The application is not running.       </td></tr></tbody></table>"
+      description: "이 메서드는 표준 반환 값 E_INVALIDARG, E_UNEXPECTED 및 E_OUTOFMEMORY와 함께 지원 뿐만 아니라 다음:       <table><thead><tr><th> 값       </th><th> 설명       </th></tr></thead><tbody><tr><td> S_OK이 고       </td><td> 후속 호출에 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>성공할 수 있습니다.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.GetData*>       </td></tr><tr><td> DV_E_LINDEX       </td><td> 잘못 된 값에 대 한 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>; 현재-1만 지원 됩니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC.lindex>       </td></tr><tr><td> DV_E_FORMATETC       </td><td> 에 잘못 된 값은 <code> pFormatetc </code> 매개 변수입니다.       </td></tr><tr><td> DV_E_TYMED       </td><td> 잘못 된 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.tymed>값.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC.tymed>       </td></tr><tr><td> DV_E_DVASPECT       </td><td> 잘못 된 <xref:System.Runtime.InteropServices.ComTypes.FORMATETC.dwAspect>값.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC.dwAspect>       </td></tr><tr><td> OLE_E_NOTRUNNING       </td><td> 응용 프로그램이 실행 되지 않습니다.       </td></tr></tbody></table>"
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#QueryGetData*
   exceptions: []
   platform:
@@ -1164,25 +1164,25 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Transfers data to the object that implements this method. This method is called by an object that contains a data source."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Forms.DataObject> is cast to an <xref:System.Runtime.InteropServices.ComTypes.IDataObject> interface."
+  summary: "이 메서드를 구현 하는 개체에 데이터를 전송 합니다. 이 메서드는 데이터 원본이 포함 된 개체에 의해 호출 됩니다."
+  remarks: "이 멤버는 명시적 인터페이스 멤버 구현 이며 사용할 수 있도록 경우에만 <xref:System.Windows.Forms.DataObject>로 캐스팅 되는 <xref:System.Runtime.InteropServices.ComTypes.IDataObject>인터페이스.</xref:System.Runtime.InteropServices.ComTypes.IDataObject> </xref:System.Windows.Forms.DataObject>"
   syntax:
     content: void IDataObject.SetData (ref System.Runtime.InteropServices.ComTypes.FORMATETC pFormatetcIn, ref System.Runtime.InteropServices.ComTypes.STGMEDIUM pmedium, bool fRelease);
     parameters:
     - id: pFormatetcIn
       type: System.Runtime.InteropServices.ComTypes.FORMATETC
-      description: "A <xref:System.Runtime.InteropServices.ComTypes.FORMATETC> structure, passed by reference, that defines the format used by the data object when interpreting the data contained in the storage medium."
+      description: "A <xref:System.Runtime.InteropServices.ComTypes.FORMATETC>구조, 저장소 미디어에 포함 된 데이터를 해석 하는 경우 데이터 개체에서 사용 하는 형식을 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.FORMATETC>"
     - id: pmedium
       type: System.Runtime.InteropServices.ComTypes.STGMEDIUM
-      description: "A <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM> structure, passed by reference, that defines the storage medium in which the data is being passed."
+      description: "A <xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>구조, 데이터 전달 되 고 저장 매체를 정의 하는 참조로 전달 합니다.</xref:System.Runtime.InteropServices.ComTypes.STGMEDIUM>"
     - id: fRelease
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to specify that the data object called, which implements <xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*>, owns the storage medium after the call returns. This means that the data object must free the medium after it has been used by calling the <xref uid=&quot;langword_csharp_ReleaseStgMedium&quot; name=&quot;ReleaseStgMedium&quot; href=&quot;&quot;></xref> function. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to specify that the caller retains ownership of the storage medium, and the data object called uses the storage medium for the duration of the call only."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>지정 된 데이터를 호출 하 고 구현 하는 개체가 하려면 <xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*>, 호출이 반환 된 후 저장 미디어를 소유 합니다.</xref:System.Runtime.InteropServices.ComTypes.IDataObject.SetData*> 즉, 호출 하 여 사용 된 후 데이터 개체가 미디어를 해제 해야 합니다는 <xref uid=&quot;langword_csharp_ReleaseStgMedium&quot; name=&quot;ReleaseStgMedium&quot; href=&quot;&quot;> </xref> 함수입니다. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>호출자에 게 저장 미디어의 한 소유권을 보유 하 고 호출 된 데이터 개체를 지정 하려면만 호출의 기간에 대 한 저장 미디어를 사용 합니다."
   overload: System.Windows.Forms.DataObject.System#Runtime#InteropServices#ComTypes#IDataObject#SetData*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "This method does not support the type of the underlying data object."
+    description: "이 메서드는 기본 데이터 개체의 유형을 지원 하지 않습니다."
   platform:
   - net462
 references:
